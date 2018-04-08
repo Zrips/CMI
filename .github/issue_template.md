@@ -1,4 +1,4 @@
-Description of issue or Feature request:
+Description of issue or feature request:
 
 #### IGNORE IF YOU ARE SUBMITTING A FEATURE REQUEST ####
 
@@ -9,6 +9,6 @@ ERROR:
 ####################
 ```
 
-Cmi version (using`/cmi version`): 
-Type of server (Spigot/Paperspigot/etc): 
-Server version (using `/ver`): 
+Cmi Version (using`/cmi version`): 
+Server Type (Spigot/Paperspigot/etc): 
+Server Version (using `/ver`): 
