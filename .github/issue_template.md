@@ -4,9 +4,9 @@ Description of issue or Feature request:
 
 ERROR:
 ```
-######################
+####################
 ## PASTE ERROR HERE ##
-######################
+####################
 ```
 
 Cmi version (using`/cmi version`): 
