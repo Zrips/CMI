@@ -11,9 +11,9 @@ ERROR (IGNORE IF YOU HAVE NO ERROR):
 
 CONFIG SECTION (IGNORE IF NOT RELEVENT):
 ```
-############################################
+###########################################
 ## PASTE CONFIG RELEVENT CONFIG SECTION HERE ##
-############################################
+###########################################
 ```
 
 Cmi Version (using`/cmi version`): 
