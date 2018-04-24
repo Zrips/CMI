@@ -12,7 +12,7 @@ ERROR (IGNORE IF YOU HAVE NO ERROR):
 CONFIG SECTION (IGNORE IF NOT RELEVANT):
 ```
 #####################################
-## PASTE RELEVENT CONFIG SECTION HERE ##
+## PASTE RELEVANT CONFIG SECTION HERE ##
 #####################################
 ```
 
