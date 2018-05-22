@@ -3,6 +3,7 @@
 
 
 #### DELETE IF YOU ARE SUBMITTING A FEATURE REQUEST ####
+
 **ERROR (DELETE IF YOU HAVE NO ERROR):**
 ```
 ####################
@@ -18,5 +19,7 @@
 ```
 
 **Cmi Version (using`/cmi version`):** 
+
 **Server Type (Spigot/Paperspigot/etc):** 
+
 **Server Version (using `/ver`):** 
