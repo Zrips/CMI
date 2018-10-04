@@ -1,8 +1,8 @@
 **Description of issue or feature request:**
 
+---
 
-
-#### DELETE IF YOU ARE SUBMITTING A FEATURE REQUEST ####
+#### DELETE THIS SECTION IF YOU ARE SUBMITTING A FEATURE REQUEST ####
 
 **ERROR (DELETE IF YOU HAVE NO ERROR):**
 ```
@@ -18,8 +18,12 @@
 #####################################
 ```
 
+---
+
 **Cmi Version (using`/cmi version`):** 
 
 **Server Type (Spigot/Paperspigot/etc):** 
 
 **Server Version (using `/ver`):** 
+
+**Relevant plugins (Delete if this isnt needed):** 
