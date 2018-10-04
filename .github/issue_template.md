@@ -26,4 +26,4 @@
 
 **Server Version (using `/ver`):** 
 
-**Relevant plugins (Delete if this isnt needed):** 
+**Relevant plugins (Delete if this isn't needed):** 
