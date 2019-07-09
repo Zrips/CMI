@@ -13,16 +13,16 @@ assignees: ''
 
 **ERROR (DELETE IF YOU HAVE NO ERROR):**
 ```
-####################
-## PASTE ERROR HERE ##
-####################
+######################
+## REPLACE WITH ERROR ##
+######################
 ```
 
 **CONFIG SECTION (DELETE IF NOT RELEVANT):**
 ```
-#####################################
-## PASTE RELEVANT CONFIG SECTION HERE ##
-#####################################
+#######################################
+## REPLACE WITH RELEVANT CONFIG SECTION  ##
+#######################################
 ```
 
 ---
