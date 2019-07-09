@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Suggest an idea/improvement
 title: ''
 labels: feature request
 assignees: ''
@@ -10,5 +10,5 @@ assignees: ''
 **Description of feature/improvement request:**
 
 ---
-### Detailed explanation what it should do and when and in what situations ###
-### Basic explanation why this feature is needed in CMI and how useful it would be to have it ###
+### Detailed explanation of what it should do, when and in what situation ###
+### Basic explanation as to why this feature is needed in CMI and why useful it would be to have ###
