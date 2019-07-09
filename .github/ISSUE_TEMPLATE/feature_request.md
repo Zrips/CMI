@@ -10,7 +10,7 @@ assignees: ''
 **Description of feature/improvement request:**
 
 ---
-### Detailed explanation of what it should do, when and in what situation ###
+### Detailed explanation of what it should do, when and in what situation: ###
 
-### Basic explanation as to why this feature is needed and/or useful to have ###
+### Basic explanation as to why this feature is needed and/or useful to have: ###
 
