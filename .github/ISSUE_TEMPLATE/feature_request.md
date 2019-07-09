@@ -11,4 +11,4 @@ assignees: ''
 
 ---
 ### Detailed explanation of what it should do, when and in what situation ###
-### Basic explanation as to why this feature is needed in CMI and why useful it would be to have ###
+### Basic explanation as to why this feature is needed and/or useful to have ###
