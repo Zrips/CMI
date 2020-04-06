@@ -1,0 +1,4405 @@
+# Full color code support and some variables
+# Keep in mind that variables wont work for some lines, when it will for anothers :)
+# Just keep them where there are now and everything will be ok :)
+# Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+# [serverName] to show server name
+# [playerName] to show target player name
+# [playerDisplayName] to show target player display name
+# [lvl] to show target player level
+# [exp] to show target player total exp
+# [hp] to show target player health
+# [maxHp] to show target player max health
+# [hunger] to show target player hunger level
+# [gameMode] to show target player gamemode
+# [prefix] to show target player prefix if possible
+# [suffix] to show target player suffix if possible
+# Sender is console or player who performs command. In example Zrips performs /heal Zhax then Zrips data will be used
+# [senderName] to show Sender player name
+# [senderDisplayName] to show Sender player display name
+# [senderLvl] to show Sender player level
+# [senderExp] to show Sender player total exp
+# [senderHp] to show Sender player health
+# [senderMaxHp] to show Sender player max health
+# [senderHunger] to show Sender player hunger level
+# [senderGameMode] to show Sender player gamemode
+# [senderPrefix] to show Sender player prefix if possible
+# [senderSuffix] to show Sender player suffix if possible
+# Source is player which is being used for extra info. In example Zrips performs /tp Zhax Zrips then Zhax data will be used as its location is being taken for new player location
+# [sourceName] to show source player name
+# [sourceDisplayName] to show source player display name
+# [sourceLvl] to show source player level
+# [sourceExp] to show source player total exp
+# [sourceHp] to show source player health
+# [sourceMaxHp] to show source player max health
+# [sourceHunger] to show source player hunger level
+# [sourceGameMode] to show source player gamemode
+# [sourcePrefix] to show source player prefix if possible
+# [sourceSuffix] to show source player suffix if possible
+# ***********************************************
+# Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
+# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+# If line starts with !actionbar! then player will get action bar message defined after this variable
+# If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, in example !broadcast!!title!
+# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+# If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
+# To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
+# <T> and </T> required, other is optional
+# Use /n to break line
+# To have more than one JSON message use <Next>
+# <C> performs command as a player who clicked
+# <CC> performs command from console once
+# <CCI> performs command from console every time player clicks text
+# <URL> includes url
+info:
+  # Use !prefix! in any locale line to automatically include this prefix
+  prefix: '&c&lCMI&r &b>> '
+  NoPermission: '&cУ вас нет разрешения!'
+  CantHavePermission: '&cУ вас нет разрешения на это!'
+  NoPlayerPermission: '&c[playerName] не имеет разрешения: [permission]'
+  Ingame: '&cВы можете использовать это только в игре!'
+  NoInformation: '&cИнформация не найдена!'
+  Console: '&cАдминистратор'
+  FromConsole: '&cВы можете использовать это только из консоли!'
+  NotOnline: '&cИгрок не в сети!'
+  NobodyOnline: '&cНет никого в сети!'
+  Same: '&cНе удалось открыть собственный инвентарь для редактирования!'
+  cantLoginWithDifCap: '&7Не удалось войти под другим ником! Старый ник: &c[oldName]&7.
+    Текущий: &c[currentName]'
+  Searching: '&7Поиск данных игрока, пожалуйста, подождите, это может занять некоторое
+    время!'
+  NoPlayer: '&cНе удалось найти игрока с таким ником!'
+  NoCommand: '&cКоманды с этим названием не существует!'
+  cantFindCommand: '&7Команда &c[%1]&7 не была найдена, возможно вы имели в виду &c[%2]&7?'
+  PurgeNotEnabled: '&cФункция очистки не включена в конфигурации!'
+  FeatureNotEnabled: '&cЭта функция не включена!'
+  TeamManagementDisabled: '&7Эта функция будет иметь ограниченный функционал, в то
+    время как DisableTeamManagement установлена на true!'
+  ModuleNotEnabled: '&cЭтот модуль не включен!'
+  versionNotSupported: '&cВерсия сервера не поддерживается для этой функции'
+  bungeeNoGo: '&cЭта функция не будет работать на серверах, связанных с bungee'
+  clickToTeleport: '&fНажмите, чтобы телепортироваться'
+  UseMaterial: '&cПожалуйста, используйте названия материалов!'
+  UseInteger: '&cПожалуйста, используйте числа!'
+  UseBoolean: '&cПожалуйста, используйте значения True или False!'
+  NoLessThan: '&cЧисло не может быть меньше чем [amount]!'
+  NoMoreThan: '&cЗначение не может быть больше чем [amount]'
+  NoGameMode: '&cПожалуйста, используйте значения 0/1/2/3 или Survival/Creative/Adventure/Spectator
+    или s/c/a/sp!'
+  NoWorld: '&cНе удалось найти мир с этим названием!'
+  IncorrectLocation: '&cМестоположение определено неправильно!'
+  NameChange: '&7Игрок &c[playerDisplayName] &7зашел на сервер, также известный как:
+    &c[namelist]'
+  Cooldowns: '&7Эта команда перезаряжается, подождите &c[time]'
+  specializedCooldowns: '&7Для этой команды действуют ограничения на использование,
+    пожалуйста, подождите &c[time]'
+  CooldownOneTime: '&cЭту команду можно использовать только один раз!'
+  WarmUp:
+    canceled: '&cКоманда была отменена из-за вашего движения'
+    counter: '!actionbar!&7--> &c[time] &7<--'
+    DontMove: '!title!!subtitle!&cНе двигайся!'
+  Spawner: '&rСпавнер [type]'
+  Elevator:
+    created: '&aТабличка-лифт успешно создана!'
+  CantPlaceSpawner: '&7Не удалось разместить спавнер так близко к другому спавнеру.
+    Минимальное расстояние: (&c[range]&7)'
+  ChunksLoading: '&7Данные чанков мира все еще загружаются. Пожалуйста, подождите
+    немного и попробуйте снова.'
+  ShulkerBox: Коробка шалкера
+  CantuseShulkerBox: '&7Не удалось использовать коробку шалкера во время PvP. Подождите:
+    [time]'
+  CantUseNonEncrypted: '!actionbar!&cКоманды для этого предмета не зашифрованы. Не
+    удалось использовать их!'
+  CantDecode: '!actionbar!&cНе удалось декодировать сообщение/команду. Файл ключа
+    содержит неверный ключ для этой задачи. Сообщите об этом администрации сервера'
+  Show: '&7Показать'
+  Remove: '&cУдалить'
+  Back: '&7Назад'
+  Forward: '&7Вперед'
+  Update: '&7Обновить'
+  Save: '&7Сохранить'
+  Delete: '&cУдалить'
+  Click: '&7Клик'
+  PasteOld: '&7Вставить старый текст'
+  ClickToPaste: '&7Нажмите, чтобы вставить в чат'
+  CantTeleportWorld: '&cВы не можете телепортироваться в этот мир'
+  CantTeleport: '&cВы не можете телепортироваться, потому что у вас слишком много
+    ограниченных предметов. Прокрутите эту строку, чтобы увидеть максимально допустимое
+    количество предметов.'
+  teleported: '&aВы были телепортированы.'
+  BlackList: '&7[material] [amount] &cМаксимум: [max]'
+  PlayerSpliter: '&7----- &c[playerDisplayName] &7-----'
+  Spliter: '&c--------------------------------------------------'
+  ListSpliter: ', '
+  ProgressBarFill: '&a▏'
+  ProgressBarEmpty: '&7▏'
+  nothingInHand: '&cВам нужно держать предмет в руке'
+  nothingInHandLeather: '&cВам нужно держать кожу в руке'
+  nothingToShow: '&cНечего показать'
+  noItem: '&cНе удалось найти предмет'
+  dontHaveItem: '&7У вас нет &c[amount]x [itemName] &7в вашем инвентаре'
+  wrongWorld: '&cНе удалось сделать это в этом мире'
+  differentWorld: '&cРазличные миры'
+  HaveItem: '&7У вас есть &c[amount]x [itemName] &7в вашем инвентаре'
+  ItemWillBreak: '!actionbar!&7Ваш предмет (&c[itemName]&7) скоро сломается! &7[current]&c/&7[max]'
+  cantDoForPlayer: '&7Вы не можете сделать это игроку &c[playerDisplayName]'
+  cantDoForYourSelf: '&7Вы не можете сделать это с собой'
+  cantDetermineMobType: '&7Не удалось определить тип моба из &c[type] &7доступных'
+  cantRename: '!actionbar!&7Вы не можете переименовать предмет на это имя'
+  wrongName: '&cНеправильное имя'
+  invalidName: '&cНеверное имя'
+  alreadyexist: '&cЭто имя занято'
+  dontexist: '&cНичего не найдено под этим именем'
+  worldDontExist: '&cУказанный мир больше недоступен. Не удалось телепортировать вас
+    туда!'
+  flyingToHigh: '&7Вы не можете летать так высоко, максимальная высота &c[max]&7!'
+  specializedItemFail: '&7Не удалось определить требование к специализированному предмету
+    по значению: &c[value]'
+  sunSpeeding: Спят [count] из [total] [hour] часов со скоростью [speed]X
+  sleepersRequired: '!actionbar!&f[sleeping] &7из &f[required] &7требуется для ускорения
+    ночного времени'
+  sunSpeedingTitle: '&7[hour]'
+  sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]X&7)'
+  repairConfirm: '&7Нажмите, чтобы подтвердить починку предмета &c[items] &7за &c[cost]'
+  bookDate: '&7Написано в &f[date]'
+  maintenance: '&7Технический режим'
+  notSet: не установлено
+  mapLimit: '&cНевозможно выйти за пределы 30 000 000 блоков'
+  startedEditingPainting: '&7Вы включили режим редактирования картины. Нажмите на
+    любой другой блок, чтобы отменить.'
+  canceledEditingPainting: '&7Вы отменили режим редактирования картины'
+  changedPainting: '!actionbar!&7Картина изменена на &c[name] &7с ID &c[id]'
+  noSpam: '!title!&cНе спамьте!'
+  noCmdSpam: '!title!&cНе спамьте командами!'
+  spamConsoleInform: '&7Игрок (&c[playerName]&7) спровоцировал (&c[rules]&7) чат фильтр:&r
+    [message]'
+  lookAtSign: '&7Посмотрите на табличку'
+  lookAtBlock: '&7Посмотрите на блок'
+  lookAtEntity: '&7Посмотрите на сущность'
+  notOnGround: '&7Вы не можете выполнить это во время полета'
+  FirstJoin: '&7Добро пожаловать &c[playerDisplayName] &7на наш сервер!'
+  LogoutCustom: ' &7Игрок &c[playerDisplayName] &7покинул игру'
+  LoginCustom: ' &7Игрок &c[playerDisplayName] &7присоединился к игре'
+  deathlocation: '&7Вы умерли на координатах x:&c[x]&7, y:&c[y]&7, z:&c[z]&7 в мире
+    &c[world]'
+  bungee:
+    Online: '&aОнлайн'
+    Offline: '&cОффлайн'
+    not: '&cСервер не подключен к BungeeCord'
+    noserver: '&cНе удалось найти сервер с таким названием!'
+    server: '&eServer: &7[name]'
+  variables:
+    Online: '&aОнлайн'
+    Offline: '&cОффлайн'
+    'True': '&aДа'
+    'False': '&cНет'
+    Enabled: '&aВключено'
+    Disabled: '&cВыключено'
+    survival: '&aВыживание'
+    creative: '&aКреатив'
+    adventure: '&aПриключение'
+    spectator: '&aНаблюдение'
+    flying: '&aЛетает'
+    notflying: '&cНе летает'
+  noSchedule: '&cРасписание по этому имени не найдено'
+  totem:
+    cooldown: '&7Задержка тотема: [time]'
+    warmup: '&7Эффект тотема: [time]'
+    cantConsume: '&7Использование тотема невозможно из-за перезарядки'
+  InventorySave:
+    info: '&0Информация: &8[playerDisplayName]'
+    saved: '&c[time] &7Инвентарь сохранен с ID: &c[id]'
+    NoSavedInv: '&7У этого игрока нет сохраненных инвентарей'
+    NoEntries: '&cФайл существует, но инвентарь не найден!'
+    CantFind: '&cНе удалось найти инвентарь с этим ID'
+    TopLine: '&c----------- &7Сохраненные инвентари игрока &c[playerDisplayName] &c-----------'
+    List: '&7ID: &c[id]&7. &c[time]'
+    KillerSymbol: '&c ☠'
+    Click: '&fНажмите, чтобы проверить сохраненный инвентарь ([id])'
+    IdDontExist: '&cЭтот ID сохранения не существует!'
+    Deleted: '&aСохраненный инвентарь был успешно удален!'
+    Restored: '&7Вы восстановили инвентарь игрока &c[sourcename] &7для игрока &c[targetname]&7.'
+    GotRestored: '&7Ваш инвентарь был восстановлен из инвентаря &c[sourcename] &c[time]'
+    LoadForSelf: '&7Загрузить этот инвентарь для себя'
+    LoadForOwner: '&7Загрузить этот инвентарь для владельца'
+    NextInventory: '&7Следующий инвентарь'
+    PreviousInventory: '&7Предыдущий инвентарь'
+    Editable: '&aРежим редактирования включен'
+    NonEditable: '&cРежим редактирования отключен'
+  years: '&c[years] &7лет, '
+  oneYear: '&c[years] &7год, '
+  day: '&c[days] &7дней, '
+  oneDay: '&c[days] &7день, '
+  hour: '&c[hours] &7часов, '
+  oneHour: '&c[hours] &7час, '
+  min: '&c[mins] &7мин, '
+  sec: '&c[secs] &7сек. '
+  vanishSymbolOn: '&8[&7СКРЫТ&8]&r'
+  vanishSymbolOff: ''
+  afkSymbolOn: '&8[&7AFK&8]&r'
+  afkSymbolOff: ''
+  prevPage: '&c[назад]'
+  prevPageGui: '&7Предыдущая страница '
+  prevPageClean: '&7Предыдущая '
+  prevPageOff: '&7&o[назад]'
+  prevPageHover: '&cНажмите, чтобы посмотреть предыдущую страницу'
+  firstPageHover: '&7|<'
+  nextPage: '&a[дальше]'
+  nextPageGui: '&7Следующая страница'
+  nextPageClean: '&7 Следующая'
+  nextPageOff: '&7&o[дальше]'
+  nextPageHover: '&aНажмите, чтобы посмотреть следующую страницу'
+  lastPageHover: '&7>|'
+  pageCount: ' &8&l| &7[current]&8/&7[total] &8&l|'
+  pageCountHover: '&7[totalEntries] записей'
+  skullOwner: '!actionbar!&7Владелец:&r [playerName]'
+  beehive: '!actionbar!&7Уровень мёда: &e[level]&7/&e5 &7Пчел внутри: &e[count]&7/&e3'
+  circle: '&cКруг'
+  square: '&5Площадь'
+  protectedArea: '&cДанная территория защищена. Не удалось сделать это здесь.'
+  valueToLong: '&7Значение слишком высокое. Максимум: [max]'
+  valueToShort: '&7Значение слишком низкое. Минимум: [min]'
+  InvEmpty:
+    armor: '&cВаши слоты брони должны быть пустыми!'
+    hand: '&cВаша рука должна быть пустой!'
+    maininv: '&vВаш основной инвентарь должен быть пустым!'
+    maininvslots: '&7Ваш основной инвентарь должен иметь как минимум &c[count] &7пустых
+      слотов!'
+    inv: '&cВаш инвентарь должен быть пустым!'
+    offhand: '&cВаша вторая рука должна быть пустой!'
+    quickbar: '&cВаш быстрый инвентарь должен быть пустым!'
+    quickbarslots: '&7Ваш навбар должен иметь как минимум &c[count] &7пустых слотов!'
+    subinv: '&cВаш суб инвентарь должен быть пустым!'
+    subinvslots: '&7Ваш суб инвентарь должен иметь как минимум &c[count] &7пустых
+      слотов!'
+  DamageCause:
+    block_explosion: Взрыв
+    contact: Блокирование повреждений
+    cramming: Переполнение
+    custom: Неизвестно
+    dragon_breath: Дыхание дракона
+    drowning: Утопление
+    dryout: Высыхание
+    entity_attack: Атака сущностей
+    entity_explosion: Взрыв
+    entity_sweep_attack: Атака снарядов
+    fall: Падение
+    falling_block: Падающий блок
+    fire: Огонь
+    fire_tick: Огонь
+    fly_into_wall: Полет в стене
+    hot_floor: Магма блок
+    lava: Лава
+    lightning: Молния
+    magic: Магия
+    melting: Переплавка
+    poison: Отравление
+    projectile: Снаряд
+    starvation: Голод
+    suffocation: Удушье
+    suicide: Самоубийство
+    thorns: Шипы
+    void: Пустота
+    wither: Иссушитель
+  Biomes:
+    BADLANDS: Бесплодные земли
+    BADLANDS_PLATEAU: Плато бесплодных земель
+    BAMBOO_JUNGLE: Бамбуковые джунгли
+    BAMBOO_JUNGLE_HILLS: Бамбуковые холмы джунглей
+    BEACH: Пляж
+    BIRCH_FOREST: Березовый лес
+    BIRCH_FOREST_HILLS: Березовые лесные холмы
+    COLD_OCEAN: Холодный океан
+    DARK_FOREST: Темный лес
+    DARK_FOREST_HILLS: Темные лесные холмы
+    DEEP_COLD_OCEAN: Глубокий холодный океан
+    DEEP_FROZEN_OCEAN: Глубоко замерзший океан
+    DEEP_LUKEWARM_OCEAN: Глубокий теплый океан
+    DEEP_OCEAN: Глубокий океан
+    DEEP_WARM_OCEAN: Глубокий теплый океан
+    DESERT: Пустыня
+    DESERT_HILLS: Пустынные холмы
+    DESERT_LAKES: Пустынные озера
+    END_BARRENS: Степи края
+    END_HIGHLANDS: Горные острова края
+    END_MIDLANDS: Средние острова края
+    ERODED_BADLANDS: Эродированные бесплодные земли
+    FLOWER_FOREST: Цветочный лес
+    FOREST: Лес
+    FROZEN_OCEAN: Замерзший океан
+    FROZEN_RIVER: Замерзшая река
+    GIANT_SPRUCE_TAIGA: Гигантская еловая тайга
+    GIANT_SPRUCE_TAIGA_HILLS: Гигантские еловые таежные холмы
+    GIANT_TREE_TAIGA: Гигантское дерево тайги
+    GIANT_TREE_TAIGA_HILLS: Гигантское дерево таежных холмов
+    GRAVELLY_MOUNTAINS: Гравийные горы
+    ICE_SPIKES: Ледяные шипы
+    JUNGLE: Джунгли
+    JUNGLE_EDGE: Край джунглей
+    JUNGLE_HILLS: Холмы джунглей
+    LUKEWARM_OCEAN: Теплый океан
+    MODIFIED_BADLANDS_PLATEAU: Измененное плато бесплодных земель
+    MODIFIED_GRAVELLY_MOUNTAINS: Измененные гравийные горы
+    MODIFIED_JUNGLE: Измененные джунгли
+    MODIFIED_JUNGLE_EDGE: Измененный край джунглей
+    MODIFIED_WOODED_BADLANDS_PLATEAU: Измененное лесистое плато бесплодных земель
+    MOUNTAINS: Горы
+    MOUNTAIN_EDGE: Горный край
+    MUSHROOM_FIELDS: Грибные поля
+    MUSHROOM_FIELD_SHORE: Грибной полевой берег
+    NETHER: Ад
+    OCEAN: Океан
+    PLAINS: Равнины
+    RIVER: Река
+    SAVANNA: Саванна
+    SAVANNA_PLATEAU: Саванна плато
+    SHATTERED_SAVANNA: Разрушенная саванна
+    SHATTERED_SAVANNA_PLATEAU: Расколотое плато саванны
+    SMALL_END_ISLANDS: Малые острова края
+    SNOWY_BEACH: Снежный пляж
+    SNOWY_MOUNTAINS: Снежные горы
+    SNOWY_TAIGA: Снежная тайга
+    SNOWY_TAIGA_HILLS: Снежно-таежные холмы
+    SNOWY_TAIGA_MOUNTAINS: Снежные таежные горы
+    SNOWY_TUNDRA: Снежная тундра
+    STONE_SHORE: Каменный берег
+    SUNFLOWER_PLAINS: Подсолнухи равнины
+    SWAMP: Болото
+    SWAMP_HILLS: Болотные холмы
+    TAIGA: Тайга
+    TAIGA_HILLS: Таежные холмы
+    TAIGA_MOUNTAINS: Таежные горы
+    TALL_BIRCH_FOREST: Высокий березовый лес
+    TALL_BIRCH_HILLS: Высокие березовые холмы
+    THE_END: Край
+    THE_VOID: Пустота
+    WARM_OCEAN: Теплый океан
+    WOODED_BADLANDS_PLATEAU: Лесистое плоскогорье
+    WOODED_HILLS: Лесистые холмы
+    WOODED_MOUNTAINS: Лесистые горы
+  EntityType:
+    area_effect_cloud: Облако эффектов
+    armor_stand: Стойка для брони
+    arrow: Стрела
+    bat: Летучая мышь
+    bee: Bee
+    blaze: Ифрит
+    boat: Лодка
+    cat: Кошка
+    cave_spider: Пещерный паук
+    chicken: Курица
+    cod: Треска
+    cow: Корова
+    creeper: Крипер
+    dolphin: Дельфин
+    donkey: Осел
+    dragon_fireball: Огненный шар дракона
+    dropped_item: Выпавший предмет
+    drowned: Утопленник
+    egg: Яйцо
+    elder_guardian: Древний страж
+    enderman: Эндермен
+    endermite: Эндермит
+    ender_crystal: Кристалл края
+    ender_dragon: Дракон края
+    ender_pearl: Жемчуг эндера
+    ender_signal: Сигнал эндера
+    evoker: Пробудитель
+    evoker_fangs: Шипы пробудителя
+    experience_orb: Шар опыта
+    falling_block: Падающий блок
+    fireball: Огненный шар
+    firework: Фейерверк
+    fishing_hook: Рыболовный крюк
+    fox: Лисица
+    ghast: Гаст
+    giant: Гигант
+    guardian: Страж
+    horse: Лошадь
+    husk: Кадавр
+    illusioner: Иллюзионист
+    iron_golem: Железный голем
+    item_frame: Рамка
+    leash_hitch: Поводок
+    lightning: Молния
+    llama: Лама
+    llama_spit: Плювок ламы
+    magma_cube: Лавовый куб
+    minecart: Вагонетка
+    minecart_chest: Грузовая вагонетка
+    minecart_command: Командная вагонетка
+    minecart_furnace: Самоходная вагонетка
+    minecart_hopper: Загрузочная вагонетка
+    minecart_mob_spawner: Вагонетка со спавнером
+    minecart_tnt: Вагонетка с динамитом
+    mule: Мул
+    mushroom_cow: Грибная корова
+    ocelot: Оцелот
+    painting: Картина
+    panda: Panda
+    parrot: Попугай
+    phantom: Фантом
+    pig: Свинья
+    pig_zombie: Свинозомби
+    pillager: Разбойник
+    player: Игрок
+    polar_bear: Белый медведь
+    primed_tnt: Заряженный динамит
+    pufferfish: Рыба фугу
+    rabbit: Кролик
+    ravager: Разрушитель
+    salmon: Лосось
+    sheep: Овца
+    shulker: Шалкер
+    shulker_bullet: Пуля шалкера
+    silverfish: Чешуйница
+    skeleton: Скелет
+    skeleton_horse: Лошадь-келет
+    slime: Слизнь
+    small_fireball: Малый огненный шар
+    snowball: Снежный шар
+    snowman: Снеговик
+    spectral_arrow: Спектральная стрелка
+    spider: Паук
+    splash_potion: Взрывное зелье
+    squid: Спрут
+    stray: Зимогор
+    thrown_exp_bottle: Брошенная бутылка с опытом
+    trader_llama: Лама торговца
+    trident: Трезубец
+    tropical_fish: Тропические рыбы
+    turtle: Черепаха
+    unknown: Неизвестно
+    vex: Вредина
+    villager: Житель
+    vindicator: Поборник
+    wandering_trader: Странствующий торговец
+    witch: Ведьма
+    wither: Иссушитель
+    wither_skeleton: Скелет-иссушитель
+    wither_skull: Голова иссушителя
+    wolf: Волк
+    zombie: Зомби
+    zombie_horse: Лошадь-зомби
+    zombie_villager: Зомби-житель
+  EnchantAliases:
+    protection_fire:
+    - Огнеупорность
+    damage_all:
+    - Острота
+    arrow_fire:
+    - Горящая_стрела
+    water_worker:
+    - Подводник
+    arrow_knockback:
+    - Откидывание
+    loyalty:
+    - Верность
+    depth_strider:
+    - Подводная_ходьба
+    vanishing_curse:
+    - Проклятие_утраты
+    durability:
+    - Прочность
+    knockback:
+    - Отдача
+    luck:
+    - Везучий рыбак
+    binding_curse:
+    - Проклятие_несъёмности
+    loot_bonus_blocks:
+    - Удача
+    protection_environmental:
+    - Защита
+    dig_speed:
+    - Эффективность
+    mending:
+    - Починка
+    frost_walker:
+    - Ледоход
+    lure:
+    - Приманка
+    loot_bonus_mobs:
+    - Добыча
+    piercing:
+    - Пронзающая_стрела
+    protection_explosions:
+    - Взрывоустойчивость
+    damage_undead:
+    - Небесная_кара
+    multishot:
+    - MULTISHOT
+    fire_aspect:
+    - Заговор_огня
+    channeling:
+    - Громовержец
+    sweeping_edge:
+    - Разящий_клинок
+    thorns:
+    - Шипы
+    damage_arthropods:
+    - Бич_членистоногих
+    oxygen:
+    - Подводное_дыхание
+    riptide:
+    - Тягун
+    silk_touch:
+    - Шёлковое_касание
+    quick_charge:
+    - Быстрая_перезарядка
+    protection_projectile:
+    - Защита_от_снарядов
+    impaling:
+    - Пронзатель
+    protection_fall:
+    - Невесомость
+    arrow_damage:
+    - Сила
+    arrow_infinite:
+    - Бесконечность
+  PotionEffectAliases:
+    speed:
+    - Скорость
+    slow:
+    - Замедление
+    fast_digging:
+    - Fast digging
+    slow_digging:
+    - Slow digging
+    increase_damage:
+    - Increase damage
+    heal:
+    - Heal
+    harm:
+    - Harm
+    jump:
+    - Jump
+    confusion:
+    - Confusion
+    regeneration:
+    - Regeneration
+    damage_resistance:
+    - Damage resistance
+    fire_resistance:
+    - Fire resistance
+    water_breathing:
+    - Water breathing
+    invisibility:
+    - Invisibility
+    blindness:
+    - Blindness
+    night_vision:
+    - Night vision
+    hunger:
+    - Hunger
+    weakness:
+    - Weakness
+    poison:
+    - Poison
+    wither:
+    - Wither
+    health_boost:
+    - Health boost
+    absorption:
+    - Absorption
+    saturation:
+    - Saturation
+    glowing:
+    - Glowing
+    levitation:
+    - Levitation
+    luck:
+    - Luck
+    unluck:
+    - Unluck
+    slow_falling:
+    - Slow falling
+    conduit_power:
+    - Conduit power
+    dolphins_grace:
+    - Dolphins grace
+    bad_omen:
+    - Bad omen
+    hero_of_the_village:
+    - Hero of the village
+direction:
+  n: Север
+  ne: Северо-Восток
+  e: Восток
+  se: Юго-Восток
+  s: Юг
+  sw: Юго-Запад
+  w: Запад
+  nw: Северо-Запад
+modify:
+  middlemouse: '&aСредняя кнопка мыши для редактирования'
+  newItem: '&7Поместите новый предмет сюда'
+  newLine: '&a< Новая линия>'
+  newLineHover: '&aДобавить новую строку'
+  newPage: '&a<Новая страница>'
+  newPageHover: '&aСоздать новую страницу'
+  removePage: '&c<Удалить страницу>'
+  removePageHover: '&cУдалить страницу'
+  deleteSymbol: ' &c[✘]'
+  deleteSymbolHover: '&cУдалить &7[text]'
+  extraEditSymbol: ' &c!'
+  addSymbol: '&a[+]'
+  addSymbolHover: '&aДобавить новый'
+  cancelSymbol: ' &7&l[X]'
+  cancelSymbolHover: '&aCancel'
+  acceptSymbol: ' &a&l[✓]'
+  acceptSymbolHover: '&aПринять'
+  denySymbol: ' &4&l[✘]'
+  denySymbolHover: '&cОтклонить'
+  enabledSymbol: '&a[+]'
+  disabledSymbol: '&c[-]'
+  enabled: '&aВключено'
+  disabled: '&cВыключено'
+  running: '&aЗапущено'
+  paused: '&cОстановлено'
+  editSymbol: '&7✎'
+  editSymbolHover: '&7Редактировать &c[text]'
+  listUpSymbol: '&c⇑'
+  listUpSymbolHover: '&7Поднять'
+  listDownSymbol: '&c⇓'
+  listDownSymbolHover: '&7Опустить'
+  ChangeHover: '&7Нажмите, чтобы изменить'
+  commandTitle: ' &7--- &c[name] &7---'
+  commandList: ' &7[command]  '
+  emptyLine: '&7[Empty line]'
+  commandEdit: '&7Редактировать список'
+  lineAddInfo: '&7Введите новую строку. Введите &ccancel&7, чтобы отменить'
+  commandAddInfo: '&7Введите новую команду. Введите &ccancel&7, чтобы отменить'
+  commandAddInformationHover: "&7[playerName] может быть использован для получения\
+    \ имени игрока \n&7Чтобы включить задержку в командах: \n&7delay! 5 \n&7Поддер\
+    живаютсяспециальные команды. Больше информации на \n&7https://www.zrips.net/cmi/commands/specialized/"
+  commandEditInfo: '&7Нажмите, чтобы вставить старый текст. Введите &ccancel&7, чтобы
+    отменить действие. Введите &cremove&7, чтобы убрать строку'
+  commandEditInfoHover: '&7Нажмите, чтобы вставить старый текст'
+warp:
+  list: '&7[pos]. &c[warpName] &f- &7[worldName] ([x]:[y]:[z])'
+teleportation:
+  relocation: '!actionbar!&4Ваше местоположение телепортации было заблокировано. Вы
+    были телепортированы в безопасное место.'
+afk:
+  'on': '&aAFK'
+  'off': '&7Играет'
+  left: '&c&lAFK &8| &7Игрок &c[playerDisplayName] &7больше не AFK'
+  MayNotRespond: '&7Игрок AFK и может не отвечать'
+  MayNotRespondStaff: '&7Сотрудник сервера AFK и может не отвечать. Попробуйте связаться
+    с нами в группе VK или Discord'
+BossBar:
+  hpBar: '&f[victim] &7[max]&f/&7[current] &f(&c-[damage]&f)'
+Potion:
+  Effects: '&8Эффекты зелья'
+  List: '&7[PotionName] [PotionAmplifier] &7Продолжительность: &7[LeftDuration] &7сек'
+  NoPotions: '&7Нет'
+Information:
+  Title: '&8Информация об игроке'
+  Health: '&7Здоровье: &c[Health]/[maxHealth]'
+  Hunger: '&7Голод: &c[Hunger]'
+  Saturation: '&7Насыщение: &c[Saturation]'
+  Exp: '&7Опыт: &c[Exp]'
+  NotEnoughExp: '&7Недостаточно опыта: &c[Exp]'
+  NotEnoughExpNeed: '&7Недостаточно опыта: &c[Exp]/[need]'
+  tooMuchExp: '&7Слишком много опыта: &c[Exp]/[need]'
+  NotEnoughVotes: '&7Недостаточно голосов: &c[votes]'
+  TooMuchVotes: '&7Слишком много голосов: &c[votes]'
+  BadGameMode: '&cВы не можете сделать это в вашем текущем игровом режиме'
+  BadArea: '&cВы не можете выполнить это действие в этой области'
+  GameMode: '&7Игровой режим: &c[GameMode]'
+  GodMode: '&7Режим бога: &c[GodMode]'
+  Flying: '&7Полет: &c[Flying]'
+  CanFly: '&7Может летать: &c[CanFly]'
+  Uuid: '&c[uuid]'
+  ip: '&7IP-адрес: &c[address]'
+  FirstConnection: '&7Дата регистрации: &c[time]'
+  Lastseen: '&7Последний заход: &c[time]'
+  Onlinesince: '&7В сети уже: &c[time]'
+  Money: '&7Баланс: &c[money]'
+  Group: '&7Ранг: &c[group]'
+econ:
+  disabled: '&cНевозможно использовать эту команду, ибо поддержка экономики отключена'
+  noMoney: '&cУ вас не достаточно денег'
+  notEnoughMoney: '&cYou dont have enough money. Required (&6[amount]&c)'
+  tooMuchMoney: '&cУ вас слишком много денег'
+Elytra:
+  Speed: '&7Скорость: &c[speed]&7км/ч'
+  SpeedBoost: ' &a+ '
+  SpeedSuperBoost: ' &a+ '
+  CanUse: '&cУ вас нет разрешения, чтобы одеть элитры!'
+  Charging: '&eЗаряд: &f[percentage]%'
+Selection:
+  SelectPoints: '&cВыделите две точки с помощью инструмента выделения: &c[tool]'
+  PrimaryPoint: '&cПервая &7точка выделения [point] &7выбрана'
+  SecondaryPoint: '&cВторая &7точка выделения [point] &7выбрана'
+  CoordsTop: '&7X:&c[x] &7Y:&c[y] &7Z:&c[z]'
+  CoordsBottom: '&7X:&c[x] &7Y:&c[y] &7Z:&c[z]'
+NetherPortal:
+  ToHigh: '&7Портал слишком большой, максимальная высота &c[max]&7!'
+  ToWide: '&7Портал слишком широкий, максимальная ширина &c[max]&7!'
+  Disabled: '&cСоздание портала отключено!'
+Location:
+  Title: '&8Расположение игрока'
+  Killer: '&7Убийца: &c[killer]'
+  OneLiner: '&eПоложение: &6[location]'
+  DeathReason: '&7Причина смерти: &c[reason]'
+  World: '&7Мир: &c[world]'
+  X: '&7X: &c[x]'
+  Y: '&7Y: &c[y]'
+  Z: '&7Z: &c[z]'
+  Pitch: '&7Высота: &c[pitch]'
+  Yaw: '&7Азимут: &c[yaw]'
+Ender:
+  Title: '&7Открыть сундук эндера'
+Chat:
+  localPrefix: '&c[ʟ] &r'
+  shoutPrefix: '&e[ɢ] &r'
+  shoutDeduction: '!actionbar!&c[amount] &7снято за сообщение, отправленное в глобальный
+    чат'
+  # Use \n to add new line
+  publicHover: '&eВремя отправки: &6%server_time_hh:mm:ss%\n&7&oТыкни, чтобы написать в ЛС'
+  privateHover: '&eВремя отправки: &6%server_time_hh:mm:ss%\n&7&oТыкни, чтобы написать в ЛС'
+  staffHover: '&eВремя отправки: &6%server_time_hh:mm:ss%\n&7&oТыкни, чтобы написать в ЛС'
+  helpopHover: '&eВремя отправки: &6%server_time_hh:mm:ss%\n&7&oТыкни, чтобы написать в ЛС'
+  link: '&l&4⦗&7ССЫЛКА&4⦘'
+  item: '&7⦗%cmi_iteminhand_displayname%[amount]&7⦘'
+  itemAmount: ' x[amount]'
+  itemEmpty: '&7⦗Могучий кулак&7⦘'
+command:
+  help:
+    output:
+      usage: '&cИспользование: &f%usage%'
+      cmdInfoFormat: '[command] &f- &7[description]'
+      cmdFormat: '&7/[command]&8[arguments]'
+      helpPageDescription: '&7* [description]'
+      explanation: '&7 * [explanation]'
+      title: '&c------ ======= &7Помощь&c &c======= ------'
+  nocmd:
+    help:
+      info: '&fПоказать все доступные команды'
+      args: ''
+  actionbarmsg:
+    help:
+      info: '&fОтправка сообщения в экшен бар игроку'
+      args: '[playerName/all] [message]'
+    info:
+      message: '&f[messsage]'
+  afk:
+    help:
+      info: '&fПереключение режима AFK. Причина может быть указана'
+      args: (-p:playerName) (reason)
+  afkcheck:
+    help:
+      info: '&fПроверка статуса игрока'
+      args: '[playerName]'
+    info:
+      feedback: '&c[playerDisplayName]&7: &c[status]'
+      feedbackInactive: '&7Неактивен уже &c[time]'
+      feedbackReason: '&c[reason]'
+  air:
+    help:
+      info: '&fУстановить воздух игроку'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&7Вы установили &c[amount]&7 воздуха для игрока &c[playerName]&7
+        (&c[offon]&7).'
+      targetFeedback: '&7Ваш воздух был установлен на &c[amount]&7 игроком &c[senderDisplayName]&7.'
+      current: '&7Текущий воздух игрока &c[playerDisplayName]&7: &c[amount]'
+  alert:
+    help:
+      info: '&fСообщение о входе игрока администрации сервера'
+      args: '[playerName] (reason)'
+      explanation:
+      - '&7Разрешение:'
+      - '&ccommand.alert.info.inform &7- чтобы увидеть оповещения при входе игрока'
+    info:
+      inform:
+      - '&7!ВНИМАНИЕ!******** &c[name] &4зашел на сервер! &7*******!ВНИМАНИЕ!'
+      reason: '&7Причина оповещения: &c[reason]'
+      removed: '&7Игрок &c[playerDisplayName] &7удален из списка отслеживания'
+      added: '&7Сообщение о входе игрока будет отправлено всем администраторам, если
+        игрок &c[playerDisplayName] &7зайдет на сервер в следующие 24 часа'
+      online: '&7Игрок &c[playerDisplayName] &7в сети'
+  aliaseditor:
+    help:
+      info: '&fРедактор алиасов'
+      args: (new) (alias-cmd)
+    info:
+      ListNumber: '&7[number].'
+      aliasName: ' &c[alias]   '
+      commandList: ' &7/[command]  '
+      commandListDelay: ' &c[command]  '
+      permReq: '&aТребуется специальное разрешение: &c[state]'
+      permReqExplanation: '&7Требуется &ccmi.customalias.[alias]&7, чтобы использовать
+        это'
+      newAliasInfo: '&7Введите новое имя алиаса команды и нажмите Enter'
+      addInfo: '&7Введите новую команду. Введите &ccancel&7, чтобы отменить'
+      addInformationHover: "&7Глобальные переменные, поддерживаемые с задержкой ка\
+        тегории \n&7отправителя! 5&c, чтобы включить задержку в команды \n&7$1 &cп\
+        римет переменную новой командой и поместит в это место \n&7$1- &c возьмет\
+        \ все переменные из этой точки и вставит в оригинальные команды \n&7? &cде\
+        лает его действительным при использовании любой последней переменной. Для\
+        \ использования страницы справки \n&7из консоли! будет выполнять команду и\
+        з консоли"
+      editInfo: '&7Нажмите, чтобы вставить старый текст. Введите &ccancel&7, чтобы
+        отменить действие. Введите &cremove&7, чтобы убрать строку'
+  anvil:
+    help:
+      info: '&fОткрыть наковальню'
+      args: (playerName)
+    info:
+      feedback: '&7Вы открыли наковальню для игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Игрок &c[senderDisplayName]&7 открыл наковальню для вас.'
+  armorstand:
+    help:
+      info: '&fОткрыть редактор стойки для брони'
+      args: (last/near)
+    info:
+      cantClick: '&cНе удалось сделать это. Кто-то уже редактирует эту стойку для
+        брони'
+      tooFar: '&cСтойка для брони стоит слишком далеко'
+      title: Редактор
+      coordX: '&cX'
+      coordY: '&aY'
+      coordZ: '&7Z'
+      body: '&7Вращение тела: &f[amount]'
+      head: '&7Голова [coord]&7: &f[amount]'
+      torso: '&7Торс [coord]&7: &f[amount]'
+      leftArm: '&7Левая рука [coord]&7: &f[amount]'
+      rightArm: '&7Правая рука [coord]&7: &f[amount]'
+      leftLeg: '&7Левая нога [coord]&7: &f[amount]'
+      rightLeg: '&7Правая нога [coord]&7: &f[amount]'
+      pos: '&7Позиция [coord]&7: &f[amount]'
+      plate: '&7Плита'
+      size: '&7Маленькая'
+      visible: '&7Видимость'
+      arms: '&7Видимые руки'
+      gravity: '&7Гравитация'
+      glow: '&7Свечение'
+      invulnerable: '&7Неуязвимость'
+      name: '&7Видимое имя'
+      interactable: '&7Взаимодействие'
+      explanation: '&8Левая или правая кнопка мыши регулирует значение'
+      explanation2: '&8Удерживайте SHIFT, чтобы сделать его в 10 раз быстрее'
+      disableGravity: '&cОтключите гравитацию, если хотите изменить это значение'
+  attachcommand:
+    help:
+      info: '&fПрикрепляет команду к предмету'
+      args: '[command/-clear]'
+      explanation:
+      - Отдельные команды с использованием ;;
+      - Вы можете определить запуск команды на левую или правую кнопкой мыши отдельно
+        с использованием
+      - '!left!, чтобы выполнить команду левой кнопкой мыши'
+      - '!right!, чтобы выполнить команду правой кнопкой мыши'
+      - '!limiteduse:[amount]! определяет, сколько раз вы можете использовать этот
+        предмет'
+      - '!cc! выполняет команду из консоли, требуется разрешение cmi.command.attachcommand.cc'
+      - '!cooldownn:[amount]! добавляет время восстановления при использовании предмета.'
+      - '[interactedPlayer] вставляет имя игрока, с которым вы взаимодействовали при
+        удержании предмета'
+      - Глобальные переменные, работающие в дополнении с [itemUses]
+    info:
+      list: ' &7[id]. &c[cmd]'
+      noCmds: ' &7К этому предмету не прикреплены команды'
+      uses: '&7Использование предметов: &c[amount]'
+      usesLeft: '!actionbar!&7Осталось использования предмета: &c[itemUses]'
+      cooldown: '&7Предмет находится на перезарядке. Подождите [time]'
+  back:
+    help:
+      info: '&fТелепортация к последнему сохраненному местоположению'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&cНет сохраненного места для телепортации!'
+      feedback: '&aТелепортация к последнему сохраненному местоположению...'
+  balance:
+    help:
+      info: '&fПроверить баланс игрока'
+      args: (playerName)
+    info:
+      balance: '&7Баланс: &c[money]'
+      balanceOther: '&7Баланс игрока &c[playerDisplayName]&7: &c[money]'
+  baltop:
+    help:
+      info: '&fПосмотреть топ по балансу'
+      args: (playerName)
+    info:
+      topLine: '&c&m-----&7 Топ по денежнему балансу &c&m-----'
+      topLineHover: '&7Всего валюты на сервере: &c[total]'
+      list: '&7[place]. &c[playerDisplayName]: &c[balance]'
+      ownLine: '&a[place]. &a[playerDisplayName]: &a[balance]'
+      recalculating: '&aТоп по денежнему балансу пересчитывается, пожалуйста, подождите
+        пару секунд и попробуйте снова'
+  ban:
+    help:
+      info: '&fБан игрока'
+      args: '[playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.ban.bypass - для обхода бана
+    info:
+      # Make sure that OverrideLoginMessage is enabled in config file
+      message: '&cВы забанены на этом сервере!'
+      reason: '&cПричина: &7[reason]'
+      defaultReason: '&7Нарушение правил сервера'
+      messageToAll: '&7Игрок &c[playerDisplayName] &7был забанен игроком &c[senderDisplayName]
+        &7по причине: &c[reason]'
+      banedSilent: '&7[&8Безшумно&7] &7Игрок &c[playerDisplayName] &7был забанен игроком
+        &c[senderDisplayName] &7по причине: &c[reason]'
+      noSelfBan: '&cВы не можете забанить себя'
+      cantBan: '&cВы не можете забанить этого игрока'
+  blockcycling:
+    help:
+      info: '&fСостояние циклических блоков'
+      args: ''
+  blockinfo:
+    help:
+      info: '&fПроверка информации о блоке'
+      args: ''
+    info:
+      Info: ' &7ID: &c[id][data] &7Материал: &c[name][ndata]'
+      RealName: ' &7Настоящее имя: &c[name]'
+      TempLight: ' &7Температура: &c[temp]&7, Светимость: &c[blevel]&7, небо: &c[slevel]&7,
+        overral: &c[level]'
+      Resistance: ' &7Сопротивление - Майнинг: &c[mining]&7, Взрыв: &c[explosion]'
+      noteBlock: ' &7Тон: &c[tone] &7Октава: &c[octave] &cИнструмент: &7[instrument]
+        &cВысота: &7[pitch]'
+      BlockState: ' &7[state]: &f[value]'
+  blocknbt:
+    help:
+      info: '&fПоказать NBT информацию блока'
+      args: ''
+    info:
+      noNbt: '&7Блок не содержит данных NBT'
+  book:
+    help:
+      info: '&fРедактирование книг'
+      args: '[Author/Title/Unlock] [value]'
+    info:
+      noitem: '&cВы должны держать книгу в руке.'
+      notBook: '&cПредмет, который вы держите в руке, не является письменной книгой.'
+      wrongValue: '&cПредмет не является письменной книгой.'
+      inccorectAction: '&7Неверное название действия.'
+      authorChanged: '&7Автор изменен на: [author]'
+      titleChanged: '&7Название изменено на: [title]'
+      unlocked: '&7Книга была разблокирована'
+  bossbarmsg:
+    help:
+      info: '&fОтправить сообщение в босс бар игроку'
+      args: '[playerName/all] (-sec:[seconds])(-t:[timeToKeepFor]) (-n:nameOfBar)
+        (-p:[maxValue/current]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
+        (-a:[ticks]) [message]'
+      explanation:
+      - PlaceHolderAPI поддерживается для прогрессии и текста самостоятельно
+      - Время определяется обычным образом, например, 1c - одна секунда, а 1m - одна
+        минута. Это будет определять, как долго будет висеть сообщение в босс баре,
+        прежде чем оно автоматически скроется
+      - nameOfBar является опцией, и при определении того же самого, текущий бар будет
+        обновляться с новой информацией
+      - 'Доступные цвета: red, green, pink, purple, white, yellow'
+      - Максимальные и текущие значения определяют заполнение бара, переменные PlaceHolderAPI
+        могут использоваться для динамического обновления
+      - 'Примеры:'
+      - /cmi bossbar Zrips BossBarTitle
+      - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:testbar
+        -c:red &aНазвание бара %server_online%/%server_max_players% &7%cmi_user_name%
+      - /cmi bossbarmsg all -p:+1 -n:testbar - добавит один процент к текущему индетификатору
+        по имени
+      - /cmi bossbarmsg all -p:-1 -n:testbar - возьмет один процент от текущего идентификатора
+        по имени
+      - /cmi bossbarmsg all -s:10 -n:testbar - установит стиль босс бара на 10 сегментов
+        по имени
+      - /cmi bossbarmsg all -sec:5 - будет отсчитывать в течении 5 секунд от 0 до
+        5
+      - /cmi bossbarmsg all -sec:-5 - будет отсчитывать в течении 5 секунд с 5 до
+        0
+      - "https://www.zrips.net/cmi/commands/bossbarmsg-handling/"
+  broadcast:
+    help:
+      info: '&fОтправка специального сообщения всем игрокам'
+      args: (!) [message] (-w:[worldName,worldName])
+      explanation:
+      - Если сообщение начинается с !, тогда будет показано чистое сообщение
+      - Миры могут быть определены для трансляции сообщений только в этих мирах
+    info:
+      format: '&7[&4ОБЪЯВЛЕНИЕ&7] &a[message]'
+  burn:
+    help:
+      info: '&fПоджечь игрока'
+      args: (playerName) (time) (-s)
+    info:
+      feedback: '&7Вы подожгли игрока &c[playerDisplayName]&7 на время &c[time] &7(&c[offon]&7).'
+      targetfeedback: '&7Вы были подожжены игроком &c[senderDisplayName]&7 на время
+        &c[time]&7.'
+  charges:
+    help:
+      info: '&fПоказать оставшееся количество зарядов спавнера'
+      args: '[playerName] [add/set/take/clear/reset] (-f)'
+    info:
+      charges: '&7* Заряды: &c[current]&7/&c[max] [bypass]'
+      cd: '&7* CD: &c[cdtime] &7Следующие через: &c[time]'
+      bypass: '&c(Обход)'
+      allUsed: '&7Все заряды использованы! Следующие через [time]'
+      noGroup: '&7Не имеет назначенной группы заряда'
+      cantBreak: '&7Вы не можете сломать, пока не назначите группу заряда'
+      minusCd: '&7 Отобрано &c[sec]&7сек на заряд спавнера'
+      add: '&7Добавлено &c[amount] &7зарядов спавнера для игрока &c[playerDisplayName]'
+      set: '&7Установлено &c[amount] &7зарядов спавнера для игрока &c[playerDisplayName]'
+      clear: '&7Очищены все заряды спавнера игрока &c[playerDisplayName]'
+      reset: '&7Группа зарядов спавнера сброшена для игрока &c[playerDisplayName]'
+      take: '&7Получено &c[amount] &7зарядов спавнера от игрока &c[playerDisplayName]'
+  chat:
+    help:
+      info: '&fЧат с целевым игроком через глобальные сообщения'
+      args: '[playerName/off]'
+    info:
+      toggledOn: '&7Постоянный чат начался с &c[playerDisplayName]&7. Теперь вы можете
+        писать сообщения в глобальном чате.'
+      toggledOff: '&7Постоянный чат был переключен'
+      toggle: '&7Игрок &c[playerDisplayName] &7включил постоянный чат с вами'
+  checkaccount:
+    help:
+      info: '&fПоиск других аккаунтов игрока'
+      args: (playerName/ip)
+      explanation:
+      - 'Дополнительное разрешение: cmi.command.checkaccount.showip'
+    info:
+      place: '&7[place]. &c'
+      ip: '&7[ip]&7: '
+      name: '&c[name]&7(&c[times]&7)'
+      nonIpList: '&7Аккаунты: &c'
+      nonIpName: '&c[name]'
+      click: '&fНажмите, чтобы проверить аккаунт &c[name]'
+      noData: '&cНет записей для этого игрока'
+  checkban:
+    help:
+      info: '&fПроверить статус бана игрока'
+      args: (playerName)
+    info:
+      list: '&c[place]&7. &7[playerDisplayName] &c[time]'
+      permanent: '&cПостоянный'
+      bannedUntil: '&7Забанен на: &c[time]'
+      reason: '&7Причина: &c[reason]'
+      bannedBy: '&7Забанен игроком: &c[sourceDisplayName]'
+      bannedWhen: '&7Дата: &c[date]'
+  checkcommand:
+    help:
+      info: '&fПоиск возможных команд по ключевому слову'
+      args: (key word)
+    info:
+      list: '&7[place]. &f[command] &7[args]'
+      hover: '&7[desc]'
+      variableColor: '&f'
+  checkexp:
+    help:
+      info: '&fПроверить количество опыта игрока'
+      args: (playerName)
+    info:
+      current: '&7Уровень: &c[currentLevel] &7Опыта: &c[levelExp] &7Всего опыта: &c[exp]'
+      need: '&7Требуется &c[missingExp] &7опыта до следующего уровня'
+  checkperm:
+    help:
+      info: '&fПроверить возможные узлы разрешений'
+      args: (key word)
+    info:
+      list: '&7[place]. [permission]'
+      hover: '&7[desc]'
+      permissionColor: '&c'
+      cmdPermissionColor: '&a'
+      variableColor: '&f'
+      noPermissionFound: '&7Нет разрешений по этому ключевому слову'
+  cheque:
+    help:
+      info: '&fКонвертировать деньги в чек'
+      args: (playerName) [amount]
+    info:
+      transfered: '&7Конвертировано &c[amount] &7на ваш аккаунт. Новый баланс: &c[balance]'
+      chequeName: '&7Чек на &c[amount]'
+      chequeLore:
+      - '&r&fВыдан игроком &7[senderDisplayName]'
+      - '&r&fПКМ, чтобы внести депозит'
+      holdPaper: '&cВы должны держать бумагу в руке'
+      cantUse: '&cНе удалось использовать этот листок бумаги. Он уже является чеком!'
+  clear:
+    help:
+      info: '&fОчистить инвентарь игрока'
+      args: (playerName) (item(-amount)) (-s)
+      explanation:
+      - 'Posible clearTypes: quickbar, inventory, partinventory, weapons, armorslots,
+        tools, armors, mainhand, offhand'
+      - Should start with + sign
+      - Multiple types can be used
+      - cmi clear +armors - will remove armor type items
+      - cmi clear +armorslots - will remove items from armorslots
+    info:
+      feedback: '&7Вы очистили инвентарь игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Ваш инвентарь был очищен игроком &c[senderDisplayName]&7.'
+      confirm: '&7Нажмите, чтобы подтвердить очистку инвентаря. &cВсе предметы будут
+        удалены!'
+  clearchat:
+    help:
+      info: '&fОчистить чат'
+      args: (self)
+      explanation:
+      - 'Разрешения:'
+      - ' &ccmi.command.clearchat.bypass &7- игнорирование очистки чата'
+    info:
+      information: '&7Чат был очищен игроком &c[senderDisplayName]'
+  clearender:
+    help:
+      info: '&fОчистить сундук эндера игрока'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&7Вы очистили сундук эндера игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Ваша сундук эндера был очищен игроком &c[senderDisplayName]&7.'
+  colorlimits:
+    help:
+      info: '&fПоказать все возможные цвета'
+      args: (playerName)
+    info:
+      publicmessage: ' &7Публичные: '
+      privatemessage: ' &7Приватные: '
+      nickname: ' &7Ник: '
+      signs: ' &7Таблички: '
+      books: ' &7Книги: '
+      me: ' &7Мне: '
+      None: '&7-'
+  colors:
+    help:
+      info: '&fПоказать все возможные цвета'
+      args: (playerName)
+    info:
+      List:
+      - '&7***************************************'
+      - '     &0&%0  &1&%1  &a&%2  &c&%3  &4&%4  &5&%5  &c&%6  &7&%7'
+      - '     &8&%8  &9&%9  &a&%a  &b&%b  &c&%c  &d&%d  &7&%e  &f&%f'
+      - '       &%k - &kМагический&r      &%l - &lЖирный'
+      - '       &%m - &mЗачеркнутый&r     &%n - &nПодчеркнутый'
+      - '       &%o - &oКурсивный&r      &%r - &rСброс'
+      - '&7***************************************'
+  commandspy:
+    help:
+      info: '&fПереключить commandspy'
+      args: (playerName) (-s)
+      explanation:
+      - cmi.command.commandspy.hide - Скрывает выполненные команды от commandspy
+    info:
+      command: '&7(CommandSpy) &7[&8[senderDisplayName]&7]&7: &7[command]'
+      toggled: '&7CommandSpy переключен на состояние &c[state]'
+  compass:
+    help:
+      info: '&fУстановить цель компаса игрока в ваше местоположение'
+      args: '[sourceName] (targetName) (x) (z) (worldname) (reset) (-s)'
+      explanation:
+      - 'Например: /cmi compass Zhax'
+      - /cmi compass Zrips Zhax
+      - /cmi compass LT_Craft 0 0 Zrips -s
+      - /cmi compass reset Zrips
+    info:
+      wrongworld: '&cЭтого мира не существует!'
+      feedback: '&7Вы установили стрелку компаса игрока &c[playerDisplayName] &7на
+        местоположение &c[sourceDisplayName]&7.'
+      feedbackCustom: '&7Вы установили стрелку компаса игрока &c[playerDisplayName]
+        &7на местоположение &c[x] [z] [world]&7.'
+      targetFeedback: '&7Ваш компас теперь показывает на местоположение игрока &c[sourceDisplayName]
+        &7, установленное игроком &c[senderName]&7.'
+      targetFeedbackCustom: '&7Ваш компас теперь показывает на &c[x] [z] [world] &7,
+        установленное игроком &c[sourceDisplayName]&7.'
+      reset: '&7Цель компаса была сброшена'
+  condense:
+    help:
+      info: '&fКонвертировать предметы в блоки'
+      args: (itemName)
+    info:
+      converted: '&7Конвертировано &7[items] &7предметов в &7[blocks] &7блоков'
+      nothing: '&cВ вашем инвентаре нет ничего, что можно было бы конвертировать.'
+  counter:
+    help:
+      info: '&fЗапустить отсчет для окружающих игроков'
+      args: '[join/leave/start] (t:time) (r:[range/-1]) (c:[world:x:y:z]) (msg:custom_message)
+        (-f)'
+      explanation:
+      - '&7Разрешения:'
+      - '&ccmi.command.counter.force &7- чтобы запустить принудительный отсчет для
+        всех игроков в радиусе '
+      - '&ccmi.command.counter.time &7- определить кастомный диапазон времени '
+      - '&ccmi.command.counter.range &7- определить кастомный диапазон'
+      - '&ccmi.command.counter.msg &7- определить кастомное сообщение'
+      - '&ccmi.command.counter.autojoin &7- автоматически присоеденится к счетчику'
+      - -f принудительный отсчет для всех игроков в радиусе
+      - 'Например: /cmi counter start r:30 t:7 msg:&7Кастомное_сообщение -f'
+    info:
+      join: '&7Счётчик входа'
+      leave: '&7Счётчик выхода'
+      go: '&7ВПЕРЕД!'
+      tooFast: '&cНе удалось повторить команду, подождите: &c[sec]&7сек'
+      noOne: '&cНикто не видит этот счётчик!'
+  cplaytime:
+    help:
+      info: '&fПодробное игровое время'
+      args: (playerName)
+    info:
+      moreDetails: '&7Нажмите, чтобы получить более подробную информацию'
+      title: '&7Игровое время игрока &8[playerDisplayName]'
+      date: '&8[date]'
+      time: '&7[hour]:00&f-&7[nextHour]:00'
+      thishour: '&7Текущий час'
+      hourback: '&7Предыдущий час'
+      today: '&7Сегодня'
+      yesterday: '&7Вчера'
+      thisweek: '&7Текущая неделя'
+      week: '&77-дневный диапазон'
+      thismonth: '&7Текущий месяц'
+      month: '&730-дневный диапазон'
+      thisyear: '&7Текущий год'
+      year: '&7365-дневный диапазон'
+      total: '&7Всего'
+  ctellraw:
+    help:
+      info: '&fОтправить сообщение типа Tellraw'
+      args: '[playerName/all] [formattedMessage]'
+      explanation:
+      - Использование такое же, как показано в команде customtext http://www.zrips.net/cmi/custom-text/
+  ctext:
+    help:
+      info: '&fПоказать пользовательский текст'
+      args: '[cText] (playerName/all) (sourcePlayer)'
+    info:
+      list: '&7Пользовательский текст: &c'
+      check: '&7Проверка: &c[text]'
+  cuff:
+    help:
+      info: '&fПриостановка действия игроков'
+      args: '[playername] (true/false)'
+    info:
+      noChat: '&cВсе ваши действия были приостановлены. Вы не можете писать в чат.'
+      noCommand: '&cВы не можете использовать команды в этом состоянии. &7Разрешенные
+        команды: &c/msg, /r, /tell'
+      cuffed: '&7Действия игрока &c[playerDisplayName] &7были приостановлены'
+      unCuffed: '&7Действия игрока &c[playerDisplayName] &7больше не приостановлены'
+      free: '&aТеперь вы свободны'
+      gotCuffed: '&cВы были закованы в наручники'
+      cuffedInfo: '&eYou are cuffed'
+      cantCuff: '&cВы не можете приостановить этого игрока!'
+  customrecipe:
+    help:
+      info: '&fУправление кастомными рецептами предметов'
+      args: ''
+    info:
+      removed: '&7Рецепт удален: [id]. Для ПОЛНОГО эффекта вам потребуется перезагрузка
+        сервера.'
+      noRecipe: '&cНет кастомного рецепта с этим ID'
+      edit: '&8Редактировать рецепта (&c[type]&8)'
+      addNew: '&7Добавить рецепт (&c[type]&7)'
+      shapelessRecipe: '&cСоздать новый бесформенный рецепт'
+      shapedRecipe: '&7Создать новый рецепт по форме'
+      furnaceRecipe: '&7Сделать новый рецепт в печи'
+      mainTitle: '&8Кастомные рецепты (&7[current]&8/&7[total]&8)'
+  dback:
+    help:
+      info: '&fВернуться на место смерти'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&cНет сохранённого местоположения, чтобы телепортироватся!'
+      feedback: '&aТелепортация к последнему сохраненному местоположению...'
+  disableenchant:
+    help:
+      info: '&fОтключить зачарования'
+      args: (enchant/id) (disable/enable)
+    info:
+      title: Отключенные зачарования
+      feedback: '&c[enchantName] &7был [state]'
+  dispose:
+    help:
+      info: '&fУтилизация ненужных предметов'
+      args: (playerName)
+    info:
+      title: '&cМусорка'
+  distance:
+    help:
+      info: '&fПроверить расстояние между двумя точками'
+      args: (playerName) (playerName)
+    info:
+      feedback: '&7Расстояние: &e[dist] &7x:&e[x] &7y:&e[y] &7z:&e[z] &7Направление:&e[dir]'
+  donate:
+    help:
+      info: '&fПожертвовать предмет, который вы держите в руке'
+      args: '[playerName] (amount)'
+    info:
+      donated: '&7Предмет &c[type]&7X&c[amount] &7был пожертвован игроку &c[playerDisplayName]'
+      got: '&7Пожертвование &c[type]&7X&c[amount] &7было получено от игрока &c[playerDisplayName]'
+      sentOffer: '&7Пожертвование было отправлено игроку &c[playerDisplayName]&7.
+        Подождите, пока игрок примет его'
+      gotOffer: '&7Пожертвование &c[type]&7X&c[amount] &7было получено от игрока &c[sourceDisplayName]&7.
+        Нажмите, чтобы принять его.'
+      doesnthave: '&cУ игрока больше нет этого предмета'
+  dsign:
+    help:
+      info: '&fУправление динамическими табличками'
+      args: (new)
+      explanation:
+      - Посмотрите на табличку и введите команду /cmi dsign new
+    info:
+      howTo: '&cЭто не динамическая табличка, чтобы создать новую, введите команду
+        &7/cmi dsign new'
+      gui: '&7---- &f<Открыть GUI> &7----'
+      guiHover: '&7Открыть настройки динамических табличек в GUI'
+      individual: '&7Индивидуальный: [state]'
+      individualLore:
+      - '&aTrue &7- Результат будет отличаться для каждого игрока'
+      - '&aTrue &7- Будет обновлять плейсхолдеры игроков'
+      - '&aFalse &7- Результатом станет физическое обновление таблички'
+      - '&aFalse &7- Является более эффективным, но более ограниченным в то же время'
+      interval: '&7Обновлять каждые &c[second] &7секунд'
+      intervalLore:
+      - '&7Как часто в секундах обновляется информация на табличке'
+      - '&7Это также определяет скорость прокрутки строки'
+      range: '&7Диапазон активации: &c[blocks]'
+      rangeLore:
+      - '&7Определяет область вокруг таблички для запуска обновлений'
+  dye:
+    help:
+      info: '&fПокраска кожанной брони'
+      args: (playerName) (red,green,blue/hexCode/colorName/random/clear/rainbow/day/biome/health)
+        (-s)
+    info:
+      color: '&7Текущий цвет - &c[red],&a[green],&9[blue] &7Hex:&c#[hex]'
+      custom: '&7Включен пользовательский цветовой режим: &c[mode]'
+      bound: '&eДуша привязана к: &6'
+      boundName: '[playerName]'
+  editctext:
+    help:
+      info: '&fПользовательский текстовый редактор'
+      args: ''
+    info:
+      noText: '&cНе удалось найти пользовательский текст по этому имени'
+      editInfo: '&7Нажмите, чтобы вставить старый текст. Введите &ccancel&7, чтобы
+        отменить действие. Введите &cremove&7, чтобы убрать строку'
+      addInfo: '&7Введите текст новой строки. Введите &ccancel&7, чтобы отменить'
+      addInformationHover: "&7Глобальные переменные, поддерживаемые в категории от\
+        правителя \n&7Чтобы включить кликабельные сообщения: \n&7<T>&rТекст&7</T><H>&rТ\
+        екст при наведении&7</H><C>&rкоманда&7</C><SC>&rПредложенный текст&7</SC>\
+        \ \n&c<T> &7и &c</T> &7требуется, другие не является обязательным \n&7Испо\
+        льзуйте \\u005Cn для разрыва линии \n&7Чтобы использовать более одного соо\
+        бщения JSON, используйте <Next> \n&c<CC> &7выполняет консольную команду од\
+        ин раз \n&c<CCI> &7выполняет команды из консоли каждый раз, когда игрок на\
+        жимает на текст \n&c<URL> &7позволяет добавить url для перенаправления игр\
+        ока на веб-страницу"
+      newInfo: '&7Введите имя нового пользовательского текста. Введите &ccancel&7,
+        чтобы отменить'
+      deleteInfo: '&7Введите &cconfirm&7, чтобы подтвердить удаление или введите &ccancel&7,
+        чтобы отменить это действие'
+      deleted: '&7Пользовательский текст (&c[ctext]&7) был удален'
+      createdNew: '&7Пользовательский текст (&c[ctext]&7) был создан'
+      createNew: '&a + '
+      createNewHover: '&7Добавить новый'
+      autoPage: '&7Авто страница: &c[state]'
+      autoAlias: '&7Авто алиас: &c[state]'
+      permReq: '&7Требуется разрешение: &c[state]'
+      list: '&7Пользовательский текст: &c'
+  editlocale:
+    help:
+      info: '&fРедактирование файла локализации'
+      args: (keyword(-s))
+    info:
+      found: '&7********* &7Найдено: [found] &7*********'
+  editplaytime:
+    help:
+      info: '&fИзменить наигранное время игроков'
+      args: (playerName) [add/take/set] [amount] (-s)
+    info:
+      cantSet: '&cНе удалось изменить наигранного времени'
+      set: '&7Изменено с &c[old] &7на &c[new]'
+  editwarnings:
+    help:
+      info: '&fПроверить предупреждения игрока'
+      args: (playerName/clearall) (clear)
+    info:
+      list: '&7[place]. &7[time] &cигроком [warnedBy] &cпо причине: &7[warnedFor]'
+      hover: '&7Истекает через: [time]'
+      cleared: '&7Все предупреждения игрока были удалены'
+      allCleared: '&7Все предупреждения ВСЕХ игроков были удалены'
+  editwarp:
+    help:
+      info: '&fРедактирование варпов'
+      args: (warpName)
+    info:
+      placeItem: '&aРазместите предмет, чтобы установить пользовательскую иконку'
+      placeOffItem: '&aРазместите предмет, чтобы установить пользовательскую иконку
+        выключения'
+      autoLore: '&aАвтогенерация описания: [state]'
+      permission: '&aТребуется разрешение на использование: [state]'
+      reqPermission: '&aПоказать без разрешения: [state]'
+      location: '&aУстановить новое местоположение'
+      slot: '&aСлот: &c[slot]'
+      page: '&aСтраница: &c[page]'
+      overllaps: '&aПерекрывается:'
+      notSet: '&7Не установлено'
+  effect:
+    help:
+      info: '&fДобавить эффект зелья для игрока. используйте clear, чтобы удалить
+        все эффекты'
+      args: '[playername/all] [effect/clear] (duration) (multiplier) (-s) (-visual)'
+      explanation:
+      - -visual добавит видимые пузыри и иконку в верхнем правом углу
+      - 'Примеры:'
+      - /cmi effect zrips nightvision 60 1 - даст 60 секунд ночного видения для игрока
+        Zrips
+      - /cmi effect zrips nightvision +10 - добавит 10 секунд к текущему ночному видению
+      - /cmi effect zrips nightvision -10 - отнимет 10 секунд из текущего времени
+        ночного видения
+      - /cmi effect all health_boost 60 1 - повысит hp на 1 для всех онлайн
+    info:
+      feedback: '&7Эффект зелья &c[effect] &7добавлен для игрока &c[playerDisplayName]&7
+        на &c[sec]сек&7 с силой &c[power] &7(&c[offon]&7).'
+      cleared: '&7Эффекты зелья были очищены для игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+  enchant:
+    help:
+      info: '&fЗачаровать предметы'
+      args: (playerName) [enchant] [level] (-o) (-onlyvalid) (-keeponlyvalid) (-inform)
+        (-s) (-i:[itemName(:data)])
+      explanation:
+      - -o зачаровать предмет в руке
+    info:
+      feedback: '&7Вы зачаровали предмет на &c[enchant]:[level]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      removed: '&7Вы удалили зачарование &c[enchant] &7для предмета игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      cleared: '&7Очищены &cВСЕ &7зачарования для предмета игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      noitem: '&cВ руке ничего нет.'
+      invalidEnchant: '&cУ вас нет разрешения на зачарование предмета недействительными
+        зачарованиями'
+      clearedInvalid: '&7Удалено &c[amount] &7недействительных чар от предмета'
+      inccorectId: '&7Неверное имя или ID зачарования.'
+      wrongItem: '&7Неправильный предмет в вашей руке'
+      enchantlimit: '&cYou dont have access to this enchantment'
+      levellimit: '&cУровень слишком высокий, максимально допустимый &7[level].'
+      posible: '&7Возможные зачарования: '
+      posibleList: '&c[enchant]'
+  ender:
+    help:
+      info: '&fОткрыть сундук эндера'
+      args: (playerName)
+      explanation:
+      - cmi.command.ender.preventmodify - предотвращает изменения инвентаря
+      - cmi.enderedit - позволяет редактировать чужой инвентарь
+    info:
+      title: '&8Сундук эндера игрока [playerDisplayName]'
+      feedback: '&7Вы редактируете сундук эндера игрока &c[playerDisplayName] (&c[offon]&7).'
+  endgateway:
+    help:
+      info: '&fПереключить луч ворот в энд'
+      args: ''
+    info:
+      'off': '&7Луч был &cвыключен'
+      'on': '&7Луч был &aвключен'
+  entityinfo:
+    help:
+      info: '&fПроверка информации об сущности'
+      args: ''
+    info:
+      type: '&7Тип объекта: &c[type]'
+      customName: '&7Пользовательское имя: &c[name]'
+      health: '&7Здоровье: &c[current]&7/&c[max]'
+      lastDamage: '&7Последняя причина повреждения: &c[cause]'
+      tamed: '&7Прирученный: &c[state]'
+      owner: '&7Владелец: &c[playerDisplayName]'
+  entitynbt:
+    help:
+      info: '&fПроверка информации об сущности'
+      args: ''
+  exp:
+    help:
+      info: '&fУстановить опыт игрока. Используйте L, чтобы установить уровень'
+      args: '[playerName] [add/set/take/clear] [amount]'
+      explanation:
+      - 'Например:'
+      - /exp 10
+      - /exp add 10
+      - /exp set 10L
+      - /exp take 10
+      - /exp Zrips clear
+      - /exp Zrips add 10
+    info:
+      current: '&7Игрок &c[playerDisplayName] &7имеет &c[lvl]&7уровень с &c[currentExp]&7опыта
+        или &c[exp]&7всего опыта.'
+      selfFeedback: '&c[exp] &7опыта было установлено игроку &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetFeedback: '&7Ваш опыт был установлен на &c[exp]&7 игроком &c[senderDisplayName]&7.'
+  ext:
+    help:
+      info: '&fПотушить игрока'
+      args: (playerName) (-s)
+    info:
+      feedback: '&7Вы потушили игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Вы были потушены игроком &c[senderDisplayName]&7.'
+  feed:
+    help:
+      info: '&fПокормить игрока'
+      args: (playerName)
+    info:
+      feedback: '&7Вы покормили игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Вы были накормлены игроком &c[senderDisplayName]&7.'
+  findbiome:
+    help:
+      info: '&fНайти ближайший биом по названию'
+      args: (biomeName/stop)
+    info:
+      infoShow: '&7TPS: &c[tps] &7Осталось &c[left] &7(&c[time]&7) &7Скорость: &c[speed]'
+      stopped: '&cПоиск биома остановлен!'
+      cantFindBiome: '&cНе удалось найти нужный биом. &7Проверено &c[amount] &7чанков'
+      teleportedTo: '&7Вы были телепортированы к биому &c[biome]'
+  fixchunk:
+    help:
+      info: '&fСканирование поврежденных чанков'
+      args: '&7w &c[worldName]&7 r &c[range in chunks]&7 c &c[x:z]&7 '
+      explanation:
+      - '&cПодкоманды:'
+      - '- &cstats &7- показать текущее состояние сканирования'
+      - '- &cpause &7- приостановление сканирования'
+      - '- &ccontinue &7- продолжить сканирование'
+      - '- &cstop &7- остановить сканирование'
+      - '- &cspeed [amount] &7- установить текущую скорость сканирования'
+      - '- &cautospeed [true/false] &7- включить или отключить автоскорость'
+      - '- &cmessages [true/false] &7- отключить или включить вывод сообщений'
+      - 'Пример:'
+      - /fixchunk w LT_Craft
+      - /fixchunk w LT_Craft r 50 c 1024:-2048
+      - /fixchunk w LT_Craft r g
+      - /fixchunk fix
+    info:
+      startScanning: '&7Найдено &c[amount] &7чанков для проверки. Запуск!'
+      paused: '&7Сканирование приостановлено, чтобы продолжить, используйте команду
+        &c/cmi fixchunk continue.'
+      continuing: '&7Сканирование продолжается'
+      stoped: '&7Сканирование остановлено. Вы можете проверить результаты с помощью
+        команды /cmi fixchunk info'
+      speedChange: '&7Скорость изменена на [amount]'
+      autospeedChange: '&7Автоскорость ​​изменена на [state]'
+      messagesChange: '&7Состояние сообщения изменено на [state]'
+      NoInfo: '&7Нет информации'
+      InfoShow: '&cTPS: &c[tps] &cОсталось &7[left] &c(&7[min]m:[sec]s&c) &cСкорость:
+        &7[speed] &cНайдено: &7[found]'
+      scanList: '&a[number]. &7X:&f[x] &7Z:&f[z]'
+      finished: '&7Сканирование завершено, используйте команду &c/cmi fixchunk fix&7,
+        чтобы исправить найденные проблемы. &cЧанки будут регенерированы!'
+      fixed: '&a[number] &7чанков исправлено'
+      total: '&7Проверено [current]/[until] от общего количества [total]'
+      stats:
+      - '&7************************************************************'
+      - '&8• &cЧанки: &7[checked]/[total]'
+      - '&8• &cДиапазон сканирования: &7[range]'
+      - '&8• &cСкорость сканирования: &7[scanspeed] &c(&7[autospeed]&c)'
+      - '&8• &cРеальная скорость сканирования: &7[cps] &cCPS (&7[avgcps] avg&c)'
+      - '&8• &cМир: &7[world]'
+      - '&8• &cНайдено: &7[found]'
+      - '&8• &cПрошло времени: &7[min]мин [sec]сек'
+      - '&7************************************************************'
+  flightcharge:
+    help:
+      info: '&fУправление и проверка заряда полета'
+      args: (add/take/set/show/expcharge/moneycharge/recharge) (playerName) (amount)
+    info:
+      charge: '&7Текущий заряд: &c[charge]&7/&c[max]'
+      changed: '&7Ваш уровень заряда полета изменен на &c[charge]'
+      newCharge: '&7Новый уровень заряда: &c[charge]'
+      bossbar: '&a>> &fЗаряд полета [charge][changeAmount]&7/&f[max] &a<<'
+      guiTitle: '&8Перезарядка полета'
+      buttonExp: '&cПерезарядить опытом'
+      buttonMoney: '&cПерезарядить деньгами'
+      max: '&cУже полностью заряжен'
+      guiLore:
+      - '&7Левый клик +1'
+      - '&cShift и левый клик +10'
+      - '&7Правый клик +100'
+      - '&cShift и правый клик +1000'
+      changeAmount: '&7([amount]&7)'
+  fly:
+    help:
+      info: '&fУстановить полет игроку на true или false'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&7Вы установили полет на &c[boolean]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetFeedback: '&7Вам установили полет на &c[boolean]&7 игроком &c[senderDisplayName]&7.'
+  flyc:
+    help:
+      info: '&fПереключить режим заряда полета'
+      args: (playerName) (true/false) (-s)
+    info:
+      feedback: '&7Вы установили режима заряда полета на &c[boolean]&7 для игрока
+        &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetFeedback: '&7Ваш режим заряда полета установлен на &c[boolean]&7 игроком
+        &c[senderDisplayName]&7.'
+      targetFeedbackSelf: '&7Ваш режим заряда полета установлен на &c[boolean]'
+      noCharge: '&7Заряд полета исчерпан'
+  flyspeed:
+    help:
+      info: '&fУстановить скорость полета игрока от 0 до 10'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&7Вы установили скорость полета на &c[amount]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&7Ваша скорость полета установлена на &c[amount]&7 игроком
+        &c[senderDisplayName]&7.'
+      max: '&7Максимально допустимая скорость полета для вас &c[max]&7.'
+  gamerule:
+    help:
+      info: '&fУправление gamerules'
+      args: ''
+  getbook:
+    help:
+      info: '&fПолучить книгу'
+      args: '[cTextName] (playerName)'
+    info:
+      list: '&7Книги: &c'
+      check: '&7Проверить: &c[text]'
+      title: '&7[title]'
+  give:
+    help:
+      info: '&fВыдать предмет игроку'
+      args: (playerName) [itemname] (amount)
+      explanation:
+      - Имя и описание поддерживают плейсхолдеры
+      - 'Пример: /give stone'
+      - /give Zrips stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give Zrips sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give Zrips sponge 1 e Knockback:%rand/1-5%
+      - /cmi give Zrips sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+    info:
+      feedback: '&7Выдан предмет &c[itemname] &cx[amount] &7(&c[customitemname]&7)
+        игроку &c[playerDisplayName]'
+      wrongEntityId: '&cНеверный ID сущности'
+      maxLimit: '&7Вы не можете выдать больше, чем &c[max] &7предметов за один раз'
+      maxLimitResize: '&7Вы не можете выдать больше, чем &c[max]. &7Измените размер
+        ограничения.'
+  giveall:
+    help:
+      info: '&fВыдать предмет всем игрокам'
+      args: '[itemname] (amount) (e|l|n|offline)'
+      explanation:
+      - '&7- выдать название предмету или его ID со значением данных'
+      - '&7- опционально указать количество, которое вы хотите выдать '
+      - '&7- &cn &7- определить наименование предмета '
+      - '&7- &cl &7- определить описание предмета '
+      - '&7- &ce &7 - определить зачарование предметов '
+      - '&7- &c-s &7 - не будет показывать сообщение о выдачи '
+      - '&7- &ch &7 - выдать предмет, который держит указанный игрок '
+      - '&7- &cinv &7 - выдать инвентарь указанного игрока '
+      - '&7- &coffline &7- включая оффлайн игроков'
+      - '&7cmi giveall stone 1 n &aUber_stone l &cStone_lore offline'
+      - '&7cmi giveall h Zrips'
+      - '&7cmi giveall inv Zrips'
+    info:
+      starting: '&cНачало выдачи предметов для всех игроков, это может занять некоторое
+        время.'
+      running: '&c[amount] уже получили предметы, продолжаем раздачу.'
+      feedback: '&cФиниш. &7[amount] &cигроков получили предметы.'
+  glow:
+    help:
+      info: '&fУстановить режим свечения игрока'
+      args: (playerName) [true/false/color/gui]
+      explanation:
+      - 'Пример: /glow Zrips red'
+      - 'Разрешение: cmi.command.glow.[color] - позволяет установить определенный
+        цвет свечения'
+    info:
+      feedback: '&7Вы установили [color] цвет свечения &7на &c[boolean]&7 для игрока
+        &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Ваш [color] цвет &7установлен на &c[boolean]&7 игроком &c[senderDisplayName]&7.'
+  gm:
+    help:
+      info: '&fУстановить режим игры для игрока'
+      args: (playerName) [gamemode]
+    info:
+      feedback: '&7Вы установили режим игры на &c[gameMode] &7игроку &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&7Ваш игровой режим был установлен на &c[gameMode]&7 игроком
+        &c[senderDisplayName]&7.'
+  god:
+    help:
+      info: '&fУстановить режим бога игроку на true или false'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&7Вы установили режим бога на &c[boolean]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&7Ваш режим бога был установлен на &c[boolean]&7 игроком &c[senderDisplayName]&7.'
+  groundclean:
+    help:
+      info: '&fОчистить сервер от ненужных предметов'
+      args: (+cb) (+cm) (+ci) (+b) (+tnt)
+      explanation:
+      - +cm будет очищать вагонетки
+      - +cb будет очищать лодки
+      - +ci определяет, будет ли включено оружие и доспехи
+      - +tnt определяет, будет ли включен активированный динамит
+      - +b оповещает всех игроков об этом
+    info:
+      removed: '&7Удалено -[list]'
+      items: ' &7Предметы: &c[items]'
+      arrows: ' &7Стрелы: &c[arrows]'
+      exporbs: ' &7Очки опыта: &c[exporbs]'
+      blocks: ' &7Падающие блоки: &c[blocks]'
+      projectiles: ' &7Снаряды: &c[projectiles]'
+      tnt: ' &7Активированный динамит: &c[tnt]'
+      boat: ' &7Лодки: &c[boat]'
+      minecart: ' &7Вагонетки: &c[minecart]'
+      nothing: '&7Ничего не удалено.'
+  haspermission:
+    help:
+      info: '&fПроверить, есть ли у игрока особое разрешение'
+      args: (playerName) [permissionNode]
+    info:
+      title: '&c[playerDisplayName] &7-> &c[permission]'
+      none: '&7Разрешение не установлено для игрока, и он не OP. Результат - &c[state]'
+      softSet: '&eSet by plugin.yml to &6[state]'
+      hardSet: '&7Принудительно установлен на &c[state] &7другим плагином'
+      notHardSet: '&7Не принудительно установлен, может привести к &cFalse &7в некоторых
+        случаях'
+      ops: '&7Результат &c[state] &7указывает, что игрок с OP'
+  hat:
+    help:
+      info: '&fОдеть предмет на голову'
+      args: (playerName)
+    info:
+      feedback: '&aВы успешно одели предмет на голову!'
+      targetfeedback: '&7Ваша шляпа была изменена игроком &c[senderDisplayName]&7!'
+      fullinv: '&7Инвентарь игрока &c[playerDisplayName] &7заполнен, не удалось сменить
+        шляпу!'
+  head:
+    help:
+      info: '&fВыдать голову игрока'
+      args: '[sourceName] (targetName) (-s)'
+    info:
+      Feedback: '&7Голова игрока &a[headName] &7выдана!'
+      targetFeedback: '&7Вы получили голову игрока &c[headName] &7от игрока &c[senderDisplayName]&7!'
+  heal:
+    help:
+      info: '&fИсцелить игрока'
+      args: '[playerName/all] (healamount/healpercent)'
+    info:
+      feedback: '&7Вы исцелили игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      feedbackMulti: '&7Вы исцелили &c[count] &7игроков.'
+      targetfeedback: '&7Вы были исцелены игроком &c[senderDisplayName]&7.'
+  helpop:
+    help:
+      info: '&fОтправить сообщение о помощи персоналу сервера'
+      args: '[message]'
+      explanation:
+      - Требуется разрешение cmi.command.helpop.inform для просмотра сообщений
+    info:
+      message: '&c[Помощь] &4[&7[senderDisplayName]&4]&r&c [message]'
+      feedback: '&c[Help]&7Your question was submitted to online staff'
+      offline: '&c[Help]&7There are no staff members currently online, try later'
+  hideflags:
+    help:
+      info: '&fСкрыть флаги предмета'
+      args: (playerName) [flagName/clear]
+    info:
+      feedback: '&7Вы добавили новый флаг для предмета игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      cleared: '&7Очищены &cВСЕ &7флаги для предмета игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      noitem: '&cВ руке ничего нет.'
+      inccorectId: '&7Неверное имя флага.'
+  hologram:
+    help:
+      info: '&fСоздать голограмму'
+      args: ''
+    info:
+      howTo: '&cЧтобы создать новую голограмму, выполните команду &7/cmi hologram
+        new &c[name]'
+      gui: '&7---- &f<Открыть настройки в GUI> &7----'
+      guiHover: '&7Открыть настройки голограммы в GUI'
+      interval: '&7Обновлять каждые &c[second] &7секунд'
+      intervalLore:
+      - '&7Как часто в секундах обновляется информация о голограмме'
+      - '&7Если текст не меняется, установите его на -1'
+      pageInterval: '&7Change page every &6[second] &7seconds'
+      pageIntervalLore:
+      - '&7How often, in seconds, hologram page is changed automatically'
+      pageIntervalNoPages: '&4This hologram doesn''t have any pages yet'
+      text: '&7Интервал для текста &c[space]'
+      usync: '&7Синхронное изменение текста: &c[state]'
+      reqPermission: '&7Requires permission to see: &6[state]'
+      teleport: '&7Телепортация к голограмме'
+      icon: '&7Интервал для иконок &c[space]'
+      iconLore:
+      - '&7Определение расстояния между объектами'
+      range: '&7Диапазон отображения: &c[blocks]'
+      rangeLore:
+      - '&7Определение области вокруг голограммы'
+      - '&7для отображения или скрытия ее'
+      updateRange: '&7Диапазон обновления: &c[blocks]'
+      updateRangeLore:
+      - '&7Определение области вокруг голограммы'
+      - '&7для вызова обновления'
+      relocate: '&7Переместить'
+      relocateLore:
+      - '&7Перемещение голограммы к вашему текущему'
+      - '&7местоположению'
+      interact: '&7Взаимодействие: &c[state]'
+      commands: '&7Команды:'
+      particles: '&7Показ частиц: &c[state]'
+      big: '&7Большая кнопка: &c[state]'
+      bigLore:
+      - '&7Имейте в виду, что режим большой кнопки'
+      - '&7Будет препятствовать вам двигаться мимо нее'
+      order: '&7Высота: &c[state]'
+      moveX: '&7X:&7[x]'
+      moveY: '&7Y:&7[y]'
+      moveZ: '&7Z:&7[z]'
+      shift:
+      - '&7Изменить на 0,01 или удерживайте Shift, чтобы изменить на 0,1'
+      list: '&c[place]&7. [name]'
+      addInfo: '&7Введите текст новой строки. Введите &ccancel&7, чтобы отменить.
+        Дополнительные переменные: &cICON:&7[Value] &cSICON:&7[Value]&7 где &7Value&7-
+        &7[MaterialName-amount]%enchanted%&7, &7%itemInHand%&7, &7Head:[headOwner]'
+  hologrampages:
+    help:
+      info: '&fИзменить страницу голограммы'
+      args: '[holoName] (playerName) (next/prev/[pageNumber])'
+  home:
+    help:
+      info: '&fТелепортация до местоположения точки дома'
+      args: (homeName) (playerName) (whoTeleport)
+    info:
+      list: '&7Точки дома: &c'
+      listNonePrivate: '&f'
+      listPrivate: '&a'
+      click: '&7Нажмите, чтобы телепортироватся к &c[home]'
+      teleported: '&7Вы телепортировались к точке дома: &c[home]'
+      noHomes: '&cНет сохраненных точек дома'
+      private: '&cЭто местоположение точки дома является приватным!'
+      remove: '&cShift + Правый клик, чтобы удалить точку дома'
+      title: '&8Точки дома игрока &0[playerDisplayName]'
+  homes:
+    help:
+      info: '&fСписок точек домов.'
+      args: (playerName)
+  hunger:
+    help:
+      info: '&fУстановить голод игроку'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&7Вы установили голод на &c[hunger]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&7Ваш голод был установлен на &c[hunger]&7 игроком &c[senderDisplayName]&7.'
+  ic:
+    help:
+      info: '&fСоздать интерактивную команду'
+      args: (new) (name)
+    info:
+      titleC: ' &7--- &c[name] '
+      titleB: '&7[type] &7---'
+      public: ' &a[Public]'
+      notPublic: ' &7[NotPublic]'
+      reqPerm: ' &2[ReqPerm]'
+      noPerm: ' &7[ReqPerm]'
+      permHover: ' &7Требуется разрешение &c[permission] &7для размещение этой таблички'
+      editSign: ' &7[EditSignLines]'
+      publicHover: "&7Изменить публичный статус. \nВерхняя строка таблички &7[ic:[name]]"
+      createdPublic: '&7Создана новая интерактивная табличка'
+      list: '&7[place]. &c[name]'
+      listType: ' &7[type]    '
+      editCommands: '&7Редактировать команды'
+      editBlocks: ' &7Редактировать блоки'
+      addBlock: '&7Добавить блок, на который вы смотрите'
+      addEntity: ' &7Добавить сущность, на которую вы смотрите'
+      manageCommands: '&7Переключиться в редактор команд'
+      manageBlockEnt: '&7Переключиться на редактор блоков/сущностей'
+      locList: '&7[place]. &c[type]   '
+      entList: '&7[place]. &c[type]   '
+      ListHover:
+      - '&7Мир: &c[world]'
+      - '&7X:[x] &cY:[y] &7Z:[z]'
+      notPublicIc: '&cВы не можете использовать это, это не является публичным'
+      noCommandBlocks: '&7Нет интерактивных команд'
+      commandList: ' &7[command]  '
+      block: (Блок)
+      entity: (Сущность)
+      both: (Оба)
+      none: (Нет)
+      addedNew: '&7Добавлен(а) новый блок/сущность для &c[name]'
+      dontExist: '&cИнтерактивная команда с таким именем не существует'
+      exists: '&cИнтерактивная команда с таким именем уже существует'
+      blockExist: '&cЭтот блок уже используется &7[name]'
+      entityExist: '&cЭта сущность уже используется &7[name]'
+      cantUsePlayer: '&cВы не можете использовать обычного игрока как командную сущность'
+      addInfo: '&7Введите новую команду. Введите &ccancel&7, чтобы отменить'
+      addInformationHover: "&7Глобальные переменные поддерживаются в категории отп\
+        равителя \n&7Включить задержку в команды: \n&7delay! 5 \n&7Дополнительные\
+        \ переменные могут быть использованы, чтобы вставить переменные в их место\
+        \ \n&7$1 примет предоставленную переменную по новой команде и разместит в\
+        \ этом месте \n&7$1- принимает все переменные с этой точки и вставляет в о\
+        ригинальные команды"
+      editInfo: '&7Нажмите, чтобы вставить старый текст. Введите &ccancel&7, чтобы
+        отменить действие. Введите &cremove&7, чтобы убрать строку'
+  ifoffline:
+    help:
+      info: '&fВыполнить команду только тогда, когда игрок не в сети'
+      args: '[playerName] (command)'
+  ifonline:
+    help:
+      info: '&fВыполнить команду только тогда, когда игрок в сети'
+      args: '[playerName] (command)'
+  ignore:
+    help:
+      info: '&fИгнорирование игрока'
+      args: (playerName/uuid/all)
+      explanation:
+      - cmi.command.ignore.bypass - обойти игнорирование
+    info:
+      self: '&cНе глупи, ты не можешь игнорировать себя'
+      added: '&7Теперь вы игнорируете игрока &c[playerDisplayName]'
+      addedAll: '&7Теперь вы игнорируете всех'
+      all: '&7Все'
+      removed: '&7Вы больше не игнорируете игрока &c[playerDisplayName]'
+      removedAll: '&7Вы больше не игнорируете всех'
+      list: '&7[place]. [playerDisplayName]  '
+      ignoringYou: '&7Игрок &c[playerDisplayName] &7игнорирует вас'
+      empty: '&7Список игнорируемых игроков пуст'
+  importfrom:
+    help:
+      info: '&fИмпорт данных из других плагинов'
+      args: '[essentials] [home/warp/nick/logoutlocation/money/mail]'
+    info:
+      converted: '&7Импортировано: &c[done]&7/&c[total] &7игроков'
+      convertedWarps: '&7Импортировано &c[amount] &7варпов'
+      noInfo: '&cВы забыли указать, что именно вы хотите импортировать'
+      saving: '&7Сохранение данных в базу данных '
+      HDfile: '&cНе удалось найти файл базы данных плагина HolographicDisplays. Прерывание.'
+      HDexist: '&cГолограмма &7[name] &cуже существует. Пропуск.'
+      HDfailed: '&cНе удалось загрузить голограмму (&7[name]&c)'
+      HDimported: '&7Импортировано &7[amount] &7голограмм'
+  importoldusers:
+    help:
+      info: '&fИмпортировать игроков из папки playerdata, которая находится в главной
+        папке мира. Сервер может лагать при импорте'
+      args: ''
+    info:
+      starting: '&7Начало импорта'
+      feedback: '&7Импортировано &c[amount] &7новых игроков'
+  info:
+    help:
+      info: '&fПоказать информацию об игроках'
+      args: '[playerName/uuid]'
+    info:
+      feedback:
+        uuid: '&fВставить uuid в окно чата'
+      Name: '&7Отображаемый ник: &c[dname] &7(&c[name]&7)'
+      knownAs: '&7Предыдущие ники: &c[namelist]'
+      Uuid: '&7UUID: &c[uuid]'
+      OnlineUuid: '&7OnlineUUID: &c[OnlineUuid]'
+      Ip: '&7IP: &c[ip]'
+      Op: '&7OP: &c[op]'
+      God: '&7Режим бога: &c[godmode]'
+      Money: '&7Баланс: &c[money]'
+      Group: '&7Ранг: &c[group]'
+      Gm: '&7Игровой режим: &c[mode]'
+      Hp: '&7Здоровье: &c[hp]&7/&c[maxhp]'
+      Air: '&7Воздух: &c[leftair]&7/&c[totalair]'
+      Hunger: '&7Голод: &c[food]&7/&c20'
+      Saturation: '&7(насыщение &a+&c[saturation]&7)'
+      Exp: '&7Опыт: &c[totalexp] &7опыта -> &c[currentexp]&7/&c[needexp] &7(&c[level]
+        &7уровень)'
+      Location: '&7Местоположение: &c[world] &7(&c[x]&7:&c[y]&7:&c[z]&7)'
+      deathLocation: '&fМесто смерти: &c[world] &7(&c[x]&7:&c[y]&7:&c[z]&7)'
+      bed: '&7Расположение кровати: &c[bworld] (&c[bx]&7:&c[by]&7:&c[bz]&7)'
+      respawn: '&7Следующий респавн: &c[rworld] (&c[rx]&7:&c[ry]&7:&c[rz]&7)'
+      flySpeed: '&7полет &c[flyspeed]'
+      walkSpeed: '&7ходьба &c[walkspeed]'
+      Sprint: '&7Бег: &c[sprinting]'
+      Sneek: '&7Крадется: &c[sneaking]'
+      Banned: '&7Забанен: &c[banned]'
+      Muted: '&7Заглушен: &c[muted]'
+      Jailed: '&7В тюрьме: &c[jailed]'
+      Cuffed: '&7Посадил: &c[cuffed]'
+      homes: '&7Точек дома: &c[homes]'
+      firstLogin: '&7Дата регистрации: &c[firstLogin]'
+      canSee: '&7Можете видеть вас: &c[canseeyou]'
+      afk: '&7AFK: &c[afk]'
+      Fly: '&7Может летать: &c[fly] &7(&c[isflying]&7)'
+      Online: '&7Онлайн: &c[online]&7, В сети уже: &c[logoff]'
+      CountryHoverNew: '&f[country] &7(&c[countryCode]&7)'
+      CityHover: '&f[city]'
+      LocalTimeHover: '&fМестное время: &7[time]'
+      List:
+      - '&c************************************************************'
+      - '&8• [name]'
+      - '&8• [knownAs]'
+      - '&8• [uuid]'
+      - '&8• [OnlineUuid]'
+      - '&8• [ip]'
+      - '&8• [op]&7, [godmode]&7, [fly]'
+      - '&8• [sprint]&7, [sneek]'
+      - '&8• [gm]&7, &7Скорость: [flySpeed]&7, [walkSpeed]'
+      - '&8• [money]&7, [group]'
+      - '&8• [hp]&7, [air]'
+      - '&8• [hunger]&7, [saturation]'
+      - '&8• [exp]'
+      - '&8• [location]'
+      - '&8• [bed]'
+      - '&8• [respawn]'
+      - '&8• [banned]&7, [canSee]&7, [afk]'
+      - '&8• [cuffed]&7, [muted]&7, [jailed] '
+      - '&8• [online]'
+      - '&8• [homes]&7, [firstLogin]'
+      - '&c************************************************************'
+  inv:
+    help:
+      info: '&fОткрыть инвентарь игрока'
+      args: '[playerName]'
+      explanation:
+      - cmi.command.inv.preventmodify - предотвращает редактирование инвентаря
+      - cmi.invedit - позволяет редактировать инвентарь
+      - cmi.command.inv.location - показывает расположение игрока
+    info:
+      feedback: '&7Вы редактируете инвентарь игрока &c[playerDisplayName] &7(&c[offon]&7).'
+  invcheck:
+    help:
+      info: '&fОткрыть сохраненный инвентарь игрока в режиме предварительного просмотра'
+      args: (playerName) [id] (-e) (last)
+  invlist:
+    help:
+      info: '&fПоказать сохраненный список инвентаря'
+      args: (playerName)
+  invload:
+    help:
+      info: '&fЗагрузить сохраненный инвентарь'
+      args: (sourceName) (targetName) [id/last]
+  invremove:
+    help:
+      info: '&fУдалить сохраненные инвентари игрока'
+      args: (playerName) [id/all/last]
+  invremoveall:
+    help:
+      info: '&fУдалить все сохраненные инвентари'
+      args: '[confirmed]'
+    info:
+      removed: '&7Все сохраненные инвентари удалены ([count])'
+  invsave:
+    help:
+      info: '&fСохранить инвентарь'
+      args: (playerName) (id) (-s)
+  ipban:
+    help:
+      info: '&fБан по IP'
+      args: '[ip/playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - для обхода бана по IP
+    info:
+      message: '&cВаш IP заблокирован на этом сервере!'
+      reason: '&cПричина: &7[reason]'
+      defaultReason: '&7Нарушение правил сервера'
+      messageToAll: '&7Игрок &c[playerDisplayName] &7забанен по IP игроком &c[senderDisplayName]
+        &7с причиной: &c[reason]'
+      banedSilent: '&7[&8Silent&7]&c[playerDisplayName] &7забанен по IP игроком &c[senderDisplayName]
+        &7с причиной: &c[reason]'
+  ipbanlist:
+    help:
+      info: '&fСписок банов IP'
+      args: ''
+    info:
+      list: '&7[place]. &7[ip] &7- &c[reason]  '
+      bannedBy: '&7Забанен игроком: &f[source]'
+      ends: '&7Окончание: &f[time]'
+      related: |-
+        &7Связанные аккаунты:
+        &f[list]
+  item:
+    help:
+      info: '&fВыдать предмет себе'
+      args: '[itemname] (amount)'
+      explanation:
+      - Имя и описание поддерживает плейсхолдеры
+      - 'Пример: /give stone'
+      - /give stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give sponge 1 e Knockback:%rand/1-5%
+      - /cmi give sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+  iteminfo:
+    help:
+      info: '&fПоказать информацию о предмете'
+      args: (playerName)
+    info:
+      id: ' &7ID: &c[id][data]'
+      realName: ' &7Настоящее название: &c[name]'
+      bukkitName: ' &7Название Bukkit: &c[name]'
+      mojangName: ' &7Название Mojang: &c[name]'
+      entityType: ' &eТип сущности: &6[type]'
+      durability: ' &7Прочность: &c[current]&7/&c[max]'
+  itemlore:
+    help:
+      info: '&fИзменить описание предмета'
+      args: (-p:[playerName]) [linenumber] [remove/insert/ новая строка описания]
+    info:
+      feedback: '&7Вы изменили строку описания на ''&r&5[loreLine]&7'' для игрока
+        &c[playerDisplayName]&7 (&c[offon]&7).'
+      noitem: '&cВ руке ничего нет.'
+      removed: '&7Строка описания &c[line] &7предмета была удалена для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      inserted: '&7Строка описания &c[line] &7предмета была вставлена для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      maxLines: '&7Существует только &c[lines] &7строк в описании.'
+      blocked: '&7Этот предмет заблокирован от повторного использования.'
+  itemname:
+    help:
+      info: '&fПереименовать предмет'
+      args: (-p:[playerName]) [remove/имя вашего нового предмета]
+    info:
+      feedback: '&7Вы переименовали предмет в &c[itemname]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      noitem: '&cВы не держите предмет в руке.'
+      removed: '&7Название предмета было удалено для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      blocked: '&cЭтот предмет нельзя переименовать'
+  itemnbt:
+    help:
+      info: '&fПоказать NBT информацию предмета'
+      args: (playerName)
+    info:
+      step: ' &c->: &c[name]'
+      final: '&7[value]'
+      list: '&7- &r[value]'
+      noNbt: '&7Предмет не содержит данных NBT'
+  jail:
+    help:
+      info: '&fПосадить игрока в тюрьму на определенный период времени'
+      args: '[playerName] (time) (jailName) (cellId) (-s) (r:jail_reasson)'
+    info:
+      jailed: '&7Вы посадили игрока &c[playerDisplayName] &7в тюрьму на [time]'
+      jailedPlayer: '&7Игрок &c[playerDisplayName] &7в тюрьме на &c[time]'
+      reason: ' &eПричина: &c[reason]'
+      leftTime: '!title!&7Осталось времени:!subtitle![time]'
+      jailedTarget: '&7Вас посадили в тюрьму на &c[time]'
+      cantTalk: '&cВы не можете говорить, пока находитесь в тюрьме'
+      cantTalkRange: '!actionbar!&fВаш диапазон чата ограничен до &c[range] &fблоков'
+      failed: '&cНе удалось посадить игрока в тюрьму. Проверьте имя тюрьмы, ID камеры
+        или формат времени'
+      bossbar: '&7Оставшееся время: &c[autoTimeLeft]'
+      noCommand: '&cВы не можете использовать эту команду в тюрьме!'
+  jailedit:
+    help:
+      info: '&fРедактировать тюрьму'
+      args: ''
+    info:
+      notInArea: '&cВы не находитесь в тюрьме'
+      noName: '&cНет тюрьмы c этим именем'
+      noCell: '&cНет камеры с этим ID'
+      exist: '&cТюрьма с таким названием уже существует'
+      createdJail: '&7Новая тюрьма (&c[jail]&7) успешно создана'
+      createdCell: '&7Новая тюремная камера (&c[jail]&7:&c[cellId]&7) успешно создана'
+      collides: '&cСидит в тюрьме &c[jailName]'
+      jailList: '&7[place]. &c[jail]&7, Камеры: &c[cells]&7, Количество заключенных:
+        &c[amount]    '
+      editCells: '&7Изменить список камер'
+      cellList: '&7ID камеры: &c[id]&7, Количество заключенных: &c[amount]    '
+      jailListTp: ' &7[tp] '
+      jailListTpHover: '&7Установить точку выхода'
+      jailListArea: ' &7[area] '
+      jailListAreaHover: '&7Переопределить область'
+      jailRemoved: '&7Тюрьма (&c[jail]&7) удалена'
+      jailOutside: '&7Новая точка выхода установлена'
+      jailArea: '&7Область для тюрьмы &c[jail] &7переопределена'
+      cellRemoved: '&7Камера (&c[cellId]&7) удалена из тюрьмы &c[jail]'
+  jaillist:
+    help:
+      info: '&fСписок тюрем'
+      args: (jailName) (cellId)
+    info:
+      jailList: '&7[place]. &c[jailName]&7, Камеры: &c[cellCount]&7, Заключенных:
+        &c[count]'
+      cellList: '&7[place]. &7ID: &c[cellId]&7, Заключенных: &c[count]'
+      cellJailedList: '&7[place]. &c[playerDisplayName]&7, выйдёт на свободу через
+        &c[time]'
+      Release: '&7Нажмите, чтобы выпустить'
+  jump:
+    help:
+      info: '&fПрыгнуть на блок, на который смотрите'
+      args: ''
+    info:
+      tooFar: '&cНет блока в поле зрения или он слишком далеко (максимум [max] блоков)'
+  kick:
+    help:
+      info: '&fКикнуть игрока с сообщением из сервера'
+      args: '[playerName/all] (message) (-s)'
+      explanation:
+      - cmi.command.kick.bypass - защита от кика
+    info:
+      defaultMessage: '&cВас кикнули с сервера'
+      cantKick: '&cНе удалось кикнуть этого игрока'
+      messageToAll: '&7Игрок &c[playerDisplayName] &7был кикнут с сервера.'
+      kickReason: ' &7Причина: &c[reason]'
+      all: '&7Кикнуто &c[amount] &7игроков с сервера'
+  killall:
+    help:
+      info: '&fУбить мобов вокруг вас'
+      args: (-monsters/-pets/-npc/-animals/-ambient/-named/-f/-lightning/-list/-m:[mobType])
+        (-r:range) (-s)
+    info:
+      infoList: '&a[category]&7: &c[amount] &7([list]&7)'
+      removedList: '&c[type]&7: &c[amount]'
+      total: '&7Всего убито: &c[amount] &7([list]&7)'
+      noRemove: '&cНечего убивать'
+      monsters: Монстроы
+      pets: Питомцев
+      npc: NPC
+      animals: Животных
+      ambient: Окружающие
+      vehicles: Транспорта
+      named: Переименованных
+  kit:
+    help:
+      info: '&fВыдать определенный набор.'
+      args: '[kitName] (playerName)'
+      explanation:
+      - '&7Разрешения:'
+      - '&ccmi.kit.[kitName] &7- позволяет использовать конкретный набор'
+      - '&ccmi.kit.bypass.money &7- обходить стоимость набора валюты'
+      - '&ccmi.kit.bypass.exp &7- обходить стоимость набора опыта'
+      - '&ccmi.kit.bypass.onetimeuse &7- обходить одноразовое использование'
+      - '&c/cmi kit [kitName] [playerName] &7- выдать набор другому игроку'
+    info:
+      noMoney: '&7Недостаточно средств. Стоимость: &c[cost], &7у вас есть &c[balance]'
+      noExp: '&7Недостаточно опыта. Стоимость: &c[cost], &7у вас есть &c[balance]'
+      noCondition: '&7У вас нет специального разрешения на использование этого набора:
+        &c[condition]'
+      oneTime: '&cЭто одноразовый набор, и вы уже использовали его!'
+      cantUseNow: '&7Вы не можете использовать этот набор еще [time]'
+      limitedTimeUseError: '&7Невозможно использовать больше, чем &c[times] &7раз'
+      limitedTimeUse: '&7Можно использовать &c[times] &7раз'
+      limitedTimeAllUsed: '&cВы не можете получить еще один'
+      canUseIn: "&7Можно использовать снова через: \n[time]"
+      cooldown: "&7Задержка: \n[time]"
+      noKit: '&cНе удалось найти набор с этим именем'
+      noKitAccess: '&cУ вас нет доступа к этому набору'
+      noFoundKit: '&7Не удалось найти доступные наборы'
+      givenKit: '&7Вы выдали набор &c[kit] &7игроку &c[playerDisplayName]'
+      title: '&8Наборы'
+      nameCanUse: '&6[kitName]'
+      nameCantUse: '&7[kitName]'
+      group: '&7Группа: &c[group]'
+      left: '&cЛевый &7клик, чтобы получить'
+      right: '&cПравый &7клик для предосмотра'
+      take: '&cПолучите этот набор!'
+  kitcdreset:
+    help:
+      info: '&fСбросить таймер определенного набора'
+      args: (kitName) (playerName)
+    info:
+      notCd: '&7Набор не находится в стадии перезарядки'
+      reset: '&7Задержка набора (&c[kit]&7) была сброшена для игрока &c[playerDisplayName]'
+      list: '&7[place]. &c[kit] &7[time]'
+      listHover: '&7Нажмите, чтобы сбросить'
+      noCd: '&7Нет наборов на перезарядке'
+  kiteditor:
+    help:
+      info: '&fРедактор наборов.'
+      args: ''
+      explanation:
+      - '&7Разрешения:'
+      - '&ccmi.kit.[kitName] &7- позволяет использовать определенный набор'
+      - '&ccmi.kit.bypass.money &7- обойти требование денег'
+      - '&ccmi.kit.bypass.exp &7- обойти требование опыта'
+      - '&c/cmi kiteditor &7- показать список китов'
+    info:
+      kits: '&7Наборы: '
+      noKit: '&7Не удалось найти набор с этим именем'
+      iconSet: '&7Новая иконка была установлена для набора &c[kitname]'
+      kitExists: '&7Набор с таким названием уже существует!'
+      deleteConfirm: '&7Нажмите на меня, если вы действительно хотите удалить набор
+        (&c[kitname]&7)!'
+      deleteConfirmFinal: '&cЭто действие необратимо!'
+      kitRemoved: '&7Набор (&c[kitname]&7) удален'
+      kitNotRemoved: '&cНабор (&c[kitname]&c) не может быть удален'
+      addNewInfo: '&7Введите имя набора в чат и нажмите ENTER. Введите ''&ccancel&7'',
+        чтобы отменить это действие.'
+      renameCommandInfo: '&7Введите новое имя &cкоманды &7набора в чат и нажмите Enter.
+        Введите ''&ccancel&7'', чтобы отменить это действие.'
+      renameConfigInfo: '&7Введите новое имя &cконфигурации &7набора в чат и нажмите
+        Enter. Введите ''&ccancel&7'', чтобы отменить это действие.'
+      groupInfo: '&7Введите новое имя группы в чат и нажмите Enter. Введите ''&cnone&7'',
+        чтобы удалить группу. Введите ''&ccancel&7'', чтобы отменить это действие.'
+      commandInfo: '&7Введите новую команду в чат и нажмите Enter. Введите ''&ccancel&7'',
+        чтобы отменить это действие. Возможные плейсхолдеры: &c{USERNAME} {DISPLAYNAME}
+        {WORLDNAME} {KITNAME} {RANDOMPLAYER}'
+      conditionsInfo: '&7Введите новое условие в чат и нажмите Enter. Введите ''&ccancel&7'',
+        чтобы отменить это действие'
+      descInfo: '&7Введите новое описание в чат и нажмите Enter. Введите ''&ccancel&7'',
+        чтобы отменить это действие'
+      renamed: '&7Набор &c[kitname] &7переименован в &c[newkitname]&7.'
+      groupSet: '&7Новая группа (&c[groupname]&7) установлена для &c[kitname]'
+      commandsListTitle: '&7✎&cКоманды:'
+      conditionsListTitle: '&7✎&cУсловия:'
+      descListTitle: '&7✎&cОписание:'
+      ListTitleHover: '&7Нажмите, чтобы открыть GUI'
+      ListNumber: '&7[number].'
+      ListUp: ' &c⇑'
+      ListDown: ' &c⇓ '
+      ListRemove: '&c[-]'
+      ListRemoveHover: '&cУдалить строку'
+      ListRemoveKitHover: '&fУдалить набор &c[kitname]'
+      ListEditKitHover: '&fРедактировать набор &c[kitname]'
+      ListAdd: ' &a[+]'
+      ListAddHover: '&aДобавить новый набор'
+      guiClickery:
+      - '&7ЛКМ для увеличения и ПКМ для уменьшения'
+      - '&7Удерживайте &cShift&7, чтобы ускорить процесс в 10 раз'
+      - '&7Быстрое нажатие приведёт к увеличению скорости'
+      - '&7Остановите нажатие в течении 1 секунды, чтобы вернуться к значению по умолчанию'
+      OffHand: '&7Поместите предмет сюда'
+      Helmet: '&7Поместите шлем сюда'
+      Chest: '&7Поместите нагрудник сюда'
+      Legs: '&7Поместите поножи сюда'
+      Boots: '&7Поместите ботинки сюда'
+      Weight: '&7Вес: &c[Weight]'
+      WeightExtra:
+      - '&7Более высокое значение имеет больший приоритет'
+      - '&7Наборы должны быть в одной группе'
+      despiteWeight: '&7Показать, несмотря на вес: &c[Weight]'
+      despiteWeightExtra:
+      - '&7Игрок не получает доступ к набору, но может просмотреть его'
+      Slot: '&7Слот: &c[slot]'
+      SlotAuto: '&cАвто'
+      Clone: '&7Клонировать предметы из инвентаря'
+      CloneExtra:
+      - '&7Используйте правую кнопку мыши, чтобы включить доспехи'
+      - '&7Нажмите еще раз, чтобы отменить изменения'
+      timeDelay: '&7Задержка: &c[time]'
+      usages: '&7Может быть использован &c[times] &7раз'
+      usagesUnlimited: '&cнеограниченное количество'
+      ignoreWeight: '&7Показать, несмотря на вес: &c[state]'
+      timeDelaySeconds: '&7В секундах: &c[time]'
+      moneyCost: '&7Стоимость денег: [cost]'
+      expCost: '&7Стоимость опыта: [cost]'
+      enabled: '&7Включено'
+      disabled: '&cВыключено'
+      clickToSwitch: '&7Нажмите, чтобы переключить состояние'
+      clickToEdit: '&7Нажмите, чтобы начать редактирование'
+      editConfigName:
+      - '&7Нажмите, чтобы переименовать имя конфигурации'
+      - '&7Это влияет только на узел разрешения'
+      editCommandName:
+      - '&7Нажмите, чтобы переименовать команду'
+      - '&7Это установит команду, которую нужно'
+      - '&7ввести, чтобы получить набор'
+      kitGroup: '&7Категория набора: &c[group]'
+      dropItems: '&7Удалить предмет, если инвентарь заполнен: &c[state]'
+      commands: '&7Команды:'
+      conditions: '&7Условия:'
+      desc: '&7Описание:'
+      mainMenu: '&7Главное меню'
+      settings: '&7Настройки'
+      icon: '&7Иконка используется, когда набор &aдоступен'
+      iconCd: '&7Иконка используется, когда набор &cне доступен'
+  kitusagereset:
+    help:
+      info: '&fСброс счетчика использования набора'
+      args: (kitName) (playerName)
+    info:
+      notLimited: '&7Набор не имеет ограниченного количества использования'
+      reset: '&7Количество использования набора (&c[kit]&7) было сброшено для игрока
+        &c[playerDisplayName]'
+      list: '&7[place]. &c[kit] &7[used]/[usages]'
+      listHover: '&7Нажмите, чтобы сбросить'
+      noCd: '&7Нет наборов, допустимого использования которых больше 0'
+  lastonline:
+    help:
+      info: '&fПоказать игроков, которые играют последние X минут'
+      args: '[timeRange/list/stop] [page]'
+    info:
+      searching: '&7Поиск &c[checked]&7/&c[total] &7(&c[found]&7)'
+      List: ' &c[place]&7. &a[name] &7-> &c[time].'
+  launch:
+    help:
+      info: '&fЗапуск в направлении, в которое вы смотрите или под углом'
+      args: (playerName) (p:[power]) (a:[angle]) (d:[direction]) (loc:[x]:[y]:[z])
+      explanation:
+      - cmi launch - будет запущен в направлении, в которое вы смотрите
+      - cmi launch p:3.2 - запустит с силой 3.2
+      - cmi launch p:2.5 a:25 - запустит в направлении, в которое вы смотрите с углом
+        25 градусов и с силой 2,5
+      - cmi launch Zrips d:east - будет запущен в восточном направлении в той же угол,
+        в который вы смотрите
+      - cmi launch Zrips d:0 - будет запускаться в направлении 0 градусов (юг) в той
+        же угол, в который вы смотрите
+      - cmi launch d:45 a:30 p:2 - будет запущен в направлении на юго-запад под углом
+        30 градусов с силой 2
+      - cmi launch loc:150:120:123 - запустит игрока в целевое местоположение
+    info:
+      feedback: '!actionbar!&e&nВЖУУУХ&e..'
+  lfix:
+    help:
+      info: '&fИсправить свет в чанках вокруг вас'
+      args: (range) (playerName)
+    info:
+      NoMore: '&7Диапазон не может быть больше, чем диапазон просмотра сервера. Изменено
+        на максимально допустимое.'
+      startFixing: '&7Найдено &c[amount] &7чанков для исправления. Запуск!'
+      InfoShow: '&cTPS: &c[tps] &cОсталось &7[left] &c(&7[min]m:[sec]s&c) &cСкорость:
+        &7[speed]'
+      Finished: '&7Исправление освещенности закончено'
+      Stopped: '&7Остановлено'
+  list:
+    help:
+      info: '&fПоказать список онлайн игроков'
+      args: ''
+      explanation:
+      - 'Разрешения: '
+      - cmi.command.list.admin
+      - cmi.command.list.staff
+      - cmi.command.list.hidden
+      - cmi.command.list.group.[groupnumber]
+    info:
+      # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on, you can have as many of those as you want and order them by your own liking
+      List:
+      - '&f'
+      - '&8>->->->-> &7Онлайн &c[amount][hidden] &7из &c[maxamount] &8<-<-<-<-<'
+      - '[staffLine]'
+      - '[groupLine]'
+      - '[adminLine]'
+      - '&f'
+      staffL: '&8• &7Персонал: &f[list]'
+      adminL: '&8• &7Администрация: &f[list]'
+      hiddenPref: '&7&7[Скрыт]'
+      hiddenCount: '&7&7([amount])'
+      groupL: '&7[groupName]: &f[list]'
+      player: '%cmi_user_afk_symbol%&f[playerDisplayName]'
+      groups:
+        group1: '&8• &7Игроки: &f[list]'
+        group2: '&8• &7Донатеры: &f[list]'
+        group3: '&8• &7Ютуберы: &f[list]'
+        group4: '&8• &7Хелперы: &f[list]'
+        group5: '&8• &7Модеры: &f[list]'
+      noGroupLine: '&7Список'
+  lockip:
+    help:
+      info: '&fПредотвращение входа в аккаунт с разных IP-адресов'
+      args: (playername) [add/remove/list/clear] [ip]
+    info:
+      CantLogin: '&cВы не можете войти с этого IP-адреса'
+      add: '&7Новый IP (&c[ip]&7) добавлено для игрока &c[playerDisplayName]'
+      remove: '&7IP (&c[ip]&7) удален для игрока &c[playerDisplayName]'
+      clear: '&7Все IP удалены для игрока &c[playerDisplayName]'
+      ipNotFound: '&cIP не найден'
+      empty: '&cСписок пуст'
+      list: '&c[place]&7. &c[ip]'
+  mail:
+    help:
+      info: '&fОтправка и получение почты'
+      args: '[send/clear/read] [playerName] (message)'
+    info:
+      sentMail: '&7Письмо отправлено игроку &c[playerDisplayName]'
+      gotMail: '!actionbar!&e&nВы получили письмо от игрока &c[senderDisplayName]'
+      clearMail: '&7Все письма были очищены!'
+      removedMail: '&7Письмо удалено'
+      noMailsById: '&7Для этого игрока нет писем с этим ID'
+      noMails: '&7У вас нет писем'
+      mailHover: '&7[senderName] /n &7[time]'
+      list: '&c[id]. &7[senderDisplayName]&7: [mail] '
+      waitingMail: '&7У вас есть &c[amount] &7новых писем. Нажмите, чтобы проверить
+        их.'
+  mailall:
+    help:
+      info: '&fПроверить или отправить письмо всем игрокам'
+      args: '[send/clear/remove] [message]'
+    info:
+      sentMail: '&7Отправлено &c[amount] &7писем'
+      clearMail: '&c[amount] &7писем было удалено'
+      removedMail: '&7Удалено &c[amount] &7писем'
+  maintenance:
+    help:
+      info: '&fУстановить технический режим на сервере'
+      args: (message)
+      explanation:
+      - cmi.command.maintenance.bypass - обойти технический режим
+    info:
+      feedback: '&7Сервер находится на техническом режиме. Вернитесь позже.'
+      set: '&7Технический режим сервера установлен на &c[state] &7с сообщением: [message]'
+  maxhp:
+    help:
+      info: '&fУстановить максимальное количество здоровья игрока'
+      args: set/add/take/clear [playerName] [amount] (-s)
+    info:
+      feedback: '&7Вы установили &c[maxHp] &7максимального количества здоровья для
+        игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Ваш максимальное количества здоровья была установлено на
+        &c[maxHp] &7игроком &c[senderDisplayName]&7.'
+  maxplayers:
+    help:
+      info: '&fИзменить максимальное количество игроков, которые могут подключиться
+        к серверу'
+      args: '[amount]'
+      explanation:
+      - '&7Разрешение: '
+      - '&ccmi.fullserver.bypass &7- присоединиться к заполному серверу'
+    info:
+      changed: '&7Изменено максимально допустимое количество игроков из &c[old] &7на
+        &c[new]&7. Онлайн: &c[current]'
+  me:
+    help:
+      info: '&fОтправить специальное сообщение всем игрокам'
+      args: '[message]'
+    info:
+      format: '&c* [senderDisplayName] &f[message]'
+  merchant:
+    help:
+      info: '&fОткрыть торговое окно'
+      args: '[type] (playerName)'
+    info:
+      incorrect: '&cНеправильная профессия.'
+      feedback: '&7Вы открыли &c[type] &7торговли для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&c[senderDisplayName]&7 открыл &c[type] &7торговли для вас.'
+  migratedatabase:
+    help:
+      info: '&fИзменение системы базы данных и перенос всех данных'
+      args: ''
+  mirror:
+    help:
+      info: '&fЗапуск зеркалирования размещения/разрушения блоков.'
+      args: (start/stop)
+    info:
+      started: '&7Зеркалирование запущено'
+      stopped: '&cЗеркалирование остановлено'
+      tooFar: '&cВы слишком далеко от зеркального центра (максимум &c[blocks] &cблоков).
+        Функция приостановлена!'
+      title: Зеркало
+      notSet: '&cЦентр не установлен'
+      set: '&aЦентр установлен'
+      noBlocks: '&cНедостаточно блоков'
+      used: '&7Использовано: &7[blocks]'
+      Action:
+        Name:
+          X: X
+          Y: Y
+          Z: Z
+          XY: XY
+          ZY: ZY
+          XZ: XZ
+          ZX: ZX
+          Rotate90V: Rotate90V
+          Rotate90H: Rotate90H
+          Rotate90HC: Rotate90HC
+          Rotate180H: Rotate180H
+          Pause: Пауза
+          Location: Местоположение
+        Desc:
+          X: '&7Зеркалирование по оси &cX'
+          Y: '&7Зеркалирование по оси &cY'
+          Z: '&7Зеркалирование по оси &cZ'
+          XY: '&7Зеркалирование по оси &cX &7к оси &cY'
+          ZY: '&7Зеркалирование по оси &cZ &7к оси &cY'
+          XZ: '&7Зеркалирование по оси &cX &7к оси &cZ'
+          ZX: '&7Зеркалирование по оси &cZ &7к оси &cY'
+          Rotate90V: '&7Поворот вверх'
+          Rotate90H: '&7Поворот на &c90 &7градусов по часовой стрелке'
+          Rotate90HC: '&7Поворот на &c90 &7градусов против часовой стрелки'
+          Rotate180H: '&7Поворот на &c180 &7градусов'
+          Pause: '&7Пауза зеркалирования'
+          Location: '&7Устанавливает расположение центра зеркалирования'
+  mobhead:
+    help:
+      info: '&fВыдать голову моба'
+      args: '[mobType] (entryNumber) (playerName) (-s)'
+    info:
+      got: '&7Голова моба &c[type] &7выдана'
+      base: '&7Базовый шанс выпадения: &f[chance]%'
+      personal: '&7Шанс выпадения для вас: &f[chance]%'
+      headSpecific: '&7Шанс выпадения конкретной головы: &f[chance]%'
+      criteria: '&7Критерии: &f[criteria]%'
+  money:
+    help:
+      info: '&fУправление денежным балансом'
+      args: '[pay/give/take/set] [playerName/all/alloffline] [amount/%rand/1-1000%/1%[min-max][playerName]]
+        (-s)'
+    info:
+      newBalance: '&7Новый баланс игрока &c[playerDisplayName]&7: &c[money]'
+      paid: '&7Вы отправили &c[amount] &7игроку &c[playerDisplayName]'
+      gotMoney: '&7Вы получили &c[amount] &7от игрока &c[senderDisplayName]&7. Баланс:
+        &c[money]'
+      gotMoneyGive: '&7Вы получили &c[amount]&7. Баланс: &c[money]'
+      noMoney: '&cУ вас не достаточно денег'
+      worldGroups: '&cВы не можете отправлять деньги между разными мировыми группами'
+      self: '&cВы не можете отправить деньги себе!'
+      confirm: '&7Нажмите, чтобы подтвердить передачу &c[money] &7игроку &c[playerDisplayName]
+        &a&l[✔]'
+      notAccepting: '&cЭтот пользователь не принимает платежи от других игроков'
+      giveAll: '&7Выдано &c[totalAmount] &c[playerCount] &7игрокам'
+      takeAll: '&7Отобрано &c[totalAmount] &7у &c[playerCount] &7игроков'
+  more:
+    help:
+      info: '&fЗаполнить стак предметов до максимального значения'
+      args: (playerName) (-clone/[amount])
+      explanation:
+      - '&7Разрешения:'
+      - ' &ccmi.command.more.oversize &7- чтобы получить увеличенный стак'
+    info:
+      feedback: '&7Заполнено &c[amount]&7 стаков для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+  msg:
+    help:
+      info: '&fОтправить личное сообщение игроку'
+      args: '[playerName] [message]'
+      explanation:
+      - Если сообщение начинается с ! - будет показано чистое сообщение без имени
+        отправителя
+      - Требуется разрешение cmi.command.msg.clean
+      - Если сообщение начинается с ! - будет показано чистое сообщение без имени
+        отправителя и без возможности ответить
+      - Требуется разрешение cmi.command.msg.noreply
+    info:
+      TargetMsg: '&7[&8[senderDisplayName] &7-> &8Я&7]&r&f [message]'
+      SenderMsg: '&7[&8Я &7-> &8[playerDisplayName]&7]&r&f [message]'
+      consoleMsg: '[[senderDisplayName] -> [playerDisplayName]] [message]'
+      noPM: '&cИгрок не принимает личные сообщения в данный момент'
+      badGroup: '&cВы не можете отправлять личные сообщения в эту группу игроков'
+  msgtoggle:
+    help:
+      info: '&fПереключить личные сообщения'
+      args: (playerName)
+    info:
+      feedbackOn: '&aЛичные сообщения теперь принимаются'
+      feedbackOff: '&cЛичные сообщения больше не принимаются'
+  mute:
+    help:
+      info: '&fЗаглушить игрока'
+      args: '[playerName] (time) (-s) (reason)'
+      explanation:
+      - 'Примеры: '
+      - /cmi mute zrips 1m
+      - /cmi mute zrips 1h
+      - /cmi mute zrips 1h Не матерись
+    info:
+      mutedFor: '&7Игрок &c[playerDisplayName] &7заглушен на &c[time]'
+      muted: '&7Вас заглушили на &c[time]'
+      reason: '&7Причина: &c[reason]'
+  mutechat:
+    help:
+      info: '&fОтключить публичные сообщения'
+      args: (time) (-s)
+      explanation:
+      - 'Например: '
+      - /cmi mutechat 1m
+      - '/cmi mutechat 1h '
+    info:
+      mutedFor: '&7Публичный чат отключен на &c[time]'
+      isMuted: '!actionbar!&7Публичный чат отключен на &c[time]'
+  nameplate:
+    help:
+      info: '&fУстановить префикс, суффикс или цвет имени игрока'
+      args: (playerName) (-pref:[prefix]) (-suf:[suffix]) (-c:[colorCode])
+    info:
+      feedback: '&7Вы обновили ник над головой для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&aВаш ник над головой обновлен'
+  near:
+    help:
+      info: '&fПроверить игроков поблизости'
+      args: (distance)
+    info:
+      nope: '&cРядом никого нет...'
+      list: '&7[place]. &c[playerDisplayName] &7- &c[distance]м'
+      aproxList: '&7[place]. &c[playerDisplayName] &7- &c[dir] &7~[distance]м'
+  nick:
+    help:
+      info: '&fИзменение ника игрока'
+      args: '[newNickName/off] (playerName) (-s)'
+      explanation:
+      - 'Чтобы сменить ник: cmi.command.nick.different'
+      - Чтобы обойти защиту длины, используйте cmi.command.nick.bypass.length
+    info:
+      changed: '&7Ник изменен с &r[oldNickName] &7на &r[newNickName]'
+      changedTarget: '&7Ваш ник изменен на &r[newNickName] &7игроком &r[senderDisplayName]'
+      reset: '&aНик сброшен'
+      sameNick: '&cУ вас нет разрешения менять ник. Вы можете изменять только цвета'
+      blockedNick: '&cВы не можете использовать этот ник'
+      blockedNickLength: '&cНик слишком длинный. &7Максимальное количество символов
+        &c[amount]'
+      blockedNickLengthMin: '&cНик слишком короткий. &7Минимальное количество символов
+        &c[amount]'
+      inUse: '&cНик уже используется другим игроком'
+  notarget:
+    help:
+      info: '&fПереключение режима атаки мобов'
+      args: (playerName) (true/false) (-s)
+    info:
+      enabled: '&aМонстры больше не будут атаковать вас!'
+      disabled: '&cМонстры теперь будут атаковать вас!'
+  note:
+    help:
+      info: '&fУправление заметками игроков'
+      args: (playerName) [add/remove/clear/list] (id/note)
+    info:
+      newNote: '&7Добавлена новая заметка для игрока'
+      clearNote: '&7Все записи очищены для игрока'
+      removedNote: '&7Удалена заметка для игрока'
+      noNotesById: '&cДля этого игрока нет сохраненных заметок по этому ID'
+      noNotes: '&cНет сохраненных заметок для игрока'
+      list: '&c[id]. &7[note]'
+  openbook:
+    help:
+      info: '&fОткрыть GUI книги'
+      args: (cText) (playerName)
+  oplist:
+    help:
+      info: '&fПроверка списка игроков с OP'
+      args: ''
+    info:
+      feedback: '&7* &c[number]. &7[playerName]'
+  panimation:
+    help:
+      info: '&fВоспроизвести кастомную анимацию частиц'
+      args: ''
+      explanation:
+      - Информацию об использовании можно найти на http://www.zrips.net/cmi/extra/particles/
+  patrol:
+    help:
+      info: '&fНаблюдение'
+      args: ''
+    info:
+      noPatrol: '&cНа данный момент нет игроков, за которыми вы можете наблюдать'
+      Patroling: '&7В настоящее время вы наблюдаете за игроком: &c[playerDisplayName]'
+      lastPatrol: '&7Последний раз наблюдение проводилось &c[time]&7назад'
+      notes: '&7Имеет &c[amount] &7заметок'
+  pay:
+    help:
+      info: '&fВыполнить денежную операцию'
+      args: '[playerName] [amount]'
+  paytoggle:
+    help:
+      info: '&fПереключение платежей от других игроков'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&aТеперь вы принимаете платежи от других игроков'
+      feedbackEnabled: '&cВы больше не принимаете платежи от других игроков'
+  ping:
+    help:
+      info: '&fПоказать пинг игроков'
+      args: (playerName)
+    info:
+      feedback: '&7Пинг: &c[ping]ms'
+      selffeedback: '&7Ваш пинг &c[ping]ms'
+      customMessage: '[message]'
+  placeholders:
+    help:
+      info: '&fСписок всех плейсхолдеров'
+      args: (parse) (placeholder) (playerName)
+    info:
+      list: '&7[place]. &c[placeholder]'
+      outputResult: ' &7Результат: &c[result]'
+      parse: '&c[placeholder] &7от [source] &7результат &8|&f[result]&8|'
+  playercollision:
+    help:
+      info: '&fУстановить режим столкновения игроков'
+      args: (playerName) [true/false] (-s)
+    info:
+      feedback: '&7Вы установили режим столкновение на &c[boolean]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&7Ваш режим столкновения изменен на &c[boolean]'
+  playtime:
+    help:
+      info: '&fПоказывает общее время игры игрока'
+      args: (playername)
+    info:
+      total: '&7* Общее время игры: [time]'
+      joined: '&7* Присоединился: &c[time]'
+  playtimetop:
+    help:
+      info: '&fПоказывает список игроков по общему времени игры'
+      args: '[page]'
+    info:
+      topLine: '&c----- &7Топ по времени игры &c-----'
+      scanning: '&7Данные в настоящее время сканируются, пожалуйста, подождите минуту
+        и ​​попробуйте снова'
+      loading: '&7Данные еще не загружены. Начинается процес сканирования, вы получите
+        результат после его завершения'
+      list: '&7[number]. &c[playerDisplayName] &7- &c[time]'
+      place: '&c[playerDisplayName] &7на &c[place] &7месте'
+  point:
+    help:
+      info: '&fУстановить точку на блоке'
+      args: (particleName) (playerName) (-self) (time) (-s:[speed])
+  portals:
+    help:
+      info: '&fУстановить портал'
+      args: (new/nearest) (portalName)
+    info:
+      collides: '&cПересекается с порталом &c[portalName]'
+      exist: '&cПортал с таким названием уже существует'
+      notExist: '&cПортал с таким именем не существует'
+      locationSet: '&7Расположение портала установлено на вашей позиции для &c[portalName]'
+      removed: '&7Портал &c[portalName] &7удален'
+      click: '&7Нажмите, чтобы установить местоположение телепортации для &c[portalName]
+        &7на вашей текущей позиции'
+      bungeeSet: '&7Переместитесь в нужное место и нажмите на это сообщение, чтобы
+        указать местоположение телепорта.'
+      list: '&7[number]. &c[portalName]'
+      redefine: '&7Переопределить область из текущего выделения'
+      particles: '&7Частицы: &c[state]'
+      particleType: '&7Тип частиц: &c[type]'
+      particleAmount: '&7Количество частиц: &c[amount]'
+      particlePercent: '&7Процент сторон частиц: &c[amount]%'
+      activationRange: '&7Диапазон активации: &c[amount]'
+      bungeeTeleport: '&7Телепортация в точное местоположение bungee: [state]'
+      requiresPermission: '&7Требуется разрешение &7[perm] &7для использования: [state]'
+      informPermission: '&7Информировать о недостающем разрешении: [state]'
+      teleportToLocation: '&7Телепортация в расположение портала'
+      teleportToTarget: '&7Телепортация к целевому порталу'
+      performCommandsWithoutTp: '&7Выполнение команд без допустимого местоположения
+        телепорта'
+      editCommands: '&7Редактировать команды портала'
+      setTeleportLocation: '&7Установить местоположение телепорта'
+      setSafeLocation: '&7Установить безопасное внешнее местоположение'
+      save: '&7Сохранить изменения в файл'
+      removePortal: '&7УДАЛИТЬ ПОРТАЛ'
+      cantUsePortal: '&cВы не можете использовать этот портал'
+  pos:
+    help:
+      info: '&fПоказать текущую позицию игрока'
+      args: (playerName)
+    info:
+      feedback: '&7[playerDisplayName] &7(&c[offon]&7) ([world]&7,&c[x]&7:&c[y]&7:&c[z]&7)'
+      feedbackRegion: '&7Чанк &c[chunkx]&7:&c[chunkz]&7 Регион &c[regionx]&7:&c[regionz]'
+      feedbackDirection: '&7Направление &c[direction] &7(&c[degrees] &7градусов)'
+      feedbackBiome: '&7Биом &c[biome]'
+      feedbackLight: '&7Уровень освещенности &c[lightLevel]'
+      netherCoord: '&7Координаты Ада: &7(&c[x]&7:&c[y]&7:&c[z]&7)'
+      normalCoord: '&7Координаты обычного мира: &7(&c[x]&7:&c[y]&7:&c[z]&7)'
+  preview:
+    help:
+      info: '&fПрогрузить чанк в заданном диапазоне'
+      args: '[range] (innerrange)'
+    info:
+      NoMore: '&7Диапазон не может быть больше 32 чанка. Изменено на максимально допустимое.'
+      startSending: '&7Найдено &c[amount] &7чанков для прогрузки. Запуск!'
+      InfoShow: '&cTPS: &c[tps] &cОсталось &7[left] &c(&7[min]m:[sec]s&c) &cСкорость:
+        &7[speed]'
+      Finished: '&7Финиш. Это может занять некоторое дополнительное время, чтобы прогрузить
+        все чанки на вашей стороне.'
+  prewards:
+    help:
+      info: '&fПроверить игровые награды'
+      args: (playerName)
+    info:
+      list: '&7[place]. &c[rewardName]&7 будет доступна через &c[time]'
+      listNoStack: '&7[place]. &c[rewardName]'
+      listOneTime: '&7[place]. &c[rewardName]'
+      claim: ' &a[Получить]'
+      claimAmount: ' &aПолучено(x[amount])!'
+      claimHover: '&aНажмите, чтобы получить награду!'
+      inform: '!actionbar!&a&nВас ждут неполученные награды!&a&l /prewards&r'
+  ptime:
+    help:
+      info: '&fУправление личным временем игрока'
+      args: ''
+      explanation:
+      - 'Примеры:'
+      - /ptime 13:00:00
+      - /ptime 1pm
+      - /ptime 13
+      - /ptime 7000ticks
+      - /ptime Zrips 1pm
+      - /ptime freeze
+      - /ptime unfreeze
+      - /ptime realtime
+      - /ptime reset
+    info:
+      check: '&7Личное время: &c[24h] &7или &c[12h] &7или &c[ticks]тиков'
+      frozen: ' &c(-)'
+      gotreseted: '&7Время было сброшено для игрока &c[playerDisplayName]'
+      gotfrozen: '&7Время было заморожено для игрока &c[playerDisplayName]'
+      gotunfrozen: '&7Время было разморожено для игрока &c[playerDisplayName]'
+      setto: '&7Время установлено на &c[24h] &7или &c[12h] &7или &c[ticks]тиков &7для
+        игрока &c[playerDisplayName]'
+  purge:
+    help:
+      info: '&fОчищение данных игрока из папки мира в неактивные дни'
+      args: (stop)
+    info:
+      stopped: Очистка остановлена.
+  pweather:
+    help:
+      info: '&fУправление погодой игрока'
+      args: (playerName) [sun/rain/reset] (-s)
+    info:
+      check: '&7Персональная погода: &c[weather]'
+      gotreseted: '&7Погода была сброшена для игрока &c[playerDisplayName]'
+      setto: '&7Персональная погода установлена ​​на &c[weather] &7для игрока &c[playerDisplayName]'
+      gotset: '&7Ваша персональная погода установлена на &c[weather]'
+      reset: '&7Погода сброшена'
+  rankdown:
+    help:
+      info: '&fУменьшить свой ранг'
+      args: (playerName) (rankName) (confirm) (-cmd) (-cost)
+      explanation:
+      - -cmd выполнит команду, определенную для ранга предыдущего ранга
+      - -cost взимает с игрока деньги, опыт или предметы, если они определены для
+        ранга предыдущего ранга
+    info:
+      noPrev: '&7Не удалось найти ни одного предыдущего ранга'
+      list: '&7Выберите ранг, который хотите &cпонизить &7до: '
+      confirm: '&7Нажмите меня, чтобы подтвердить &cпонижение &7до &c[rank]'
+      downranked: '&7Понизить до &c[rank]'
+  rankinfo:
+    help:
+      info: '&fИнформация о вашем ранге'
+      args: (playerName) (rankName)
+    info:
+      distanceCM: '[value]см'
+      distanceM: '[value]м'
+      distanceKm: '[value]км'
+      requiredMoney: ' &7Денег: [color][current]&7/&c[needed]'
+      requiredExp: ' &7Опыта: [color][current]&7/&c[needed]'
+      requiredVotes: ' &7Голосов: [color][current]&7/&c[needed]'
+      requiredPerm: ' &7Разрешение: '
+      requiredMcmmo: ' &7Mcmmo: '
+      requiredMcmmoList: '&7[color][name] '
+      requiredMcmmoListHover: ' &7[color][current]&7/&c[needed]'
+      requiredMcmmoPower: Сила
+      requiredJobs: ' &7Работа: '
+      requiredJobsList: ' &7[color][name]'
+      requiredJobsListHover: ' &7[color][current]&7/&c[needed]'
+      requiredJobsTotalLevel: Общий уровень
+      requiredItem: ' &7Предметы: '
+      requiredItemsList: '&7[color][name]'
+      requiredItemListHover: '&7[color][current]&7/&c[needed]'
+      currentRank: ' &7Ваш текщий ранг: &c[rankName]'
+      elseCurrentRank: ' &7Текущий ранг игрока &c[playerDisplayName]&7: &c[rankName]'
+      rankNameLine: ' &7------ &c[rankName] &7[rankupState] &7------'
+      canRankup: ' &aМожет повысить ранг!'
+      cantRankup: ''
+      requiredStats: ' &7[name][extra]&7: [color][current]&7/&c[needed]'
+      requiredStatsExtra: ' (&c[type]&7)'
+      nextRanks: ' &7Следующие ранги: '
+      finalRank: ' &7Это последний ранг'
+      noRank: ' &7Не удалось найти ранг'
+      check: '&7Проверить ранг &c[rank]'
+      progressBarHover: '&7Прогресс [percent]%'
+  ranklist:
+    help:
+      info: '&fСписок возможных рангов'
+      args: ''
+    info:
+      list: '&7[place]. [currentRankMarker]&c[rankName][currentRankMarker]'
+      currentRankMarker: '&c+'
+  rankset:
+    help:
+      info: '&fУстановить ранг игроков'
+      args: (playerName) [rankName] (-cmd) (-cost)
+      explanation:
+      - -cmd выполнит команду, определенную для этого ранга
+      - -cost взимает с игрока деньги, опыт или предметы, если они определены для
+        повышения ранга
+      - игрок получит ранг, даже если у него недостаточно денег, опыта или необходимых
+        предметов
+    info:
+      set: '&7Ранг изменен на &c[rankName] &7игроку &c[playerDisplayName]'
+  rankup:
+    help:
+      info: '&fПовысить свой ранг'
+      args: (playerName) (rankName) (confirm)
+    info:
+      noRank: ' &7У вас нет никакого ранга, связанного с вами'
+      requiresPrevious: ' &7Вы не можете повысить до этого ранга. Требуется ранг &c[rank]'
+      list: '&7Выберите ранг, который вы хотите присвоить: '
+      confirm: '&7Нажмите на меня, чтобы подтвердить повышение к &c[ranks]'
+  realname:
+    help:
+      info: '&fПроверить настоящий ник игрока'
+      args: (playerName/nickName)
+    info:
+      feedback: '&7Настоящий ник игрока &r[playerDisplayName] - &r[playerName]'
+  recipe:
+    help:
+      info: '&fПроверить рецепт предмета'
+      args: (itemName)
+    info:
+      type: '&0[type]'
+      page: ' &0[current]&7/&0[total]'
+      noRecipes: '&cНе удалось найти какие-либо рецепты для этого предмета'
+  reload:
+    help:
+      info: '&fПерезагрузить конфигурации и локализации плагина'
+      args: ''
+    info:
+      feedback: '&aКонфигурация перезагружена!'
+      failedConfig: '&cНе удалось загрузить файл конфигурации! Проверьте правописание!'
+      failedLocale: '&cНе удалось загрузить файл локализации! Проверьте правописание!'
+  removehome:
+    help:
+      info: '&fУдаление точек дома'
+      args: (homeName) (playerName)
+    info:
+      remove: '&cНажмите, чтобы удалить'
+      removed: '&7Точка дома (&c[home]&7) была удалена'
+  removeuser:
+    help:
+      info: '&fУдаление пользователя и его данные'
+      args: '[uuid/duplicates]'
+    info:
+      removed: '&7Пользователь (&c[uuid]&7) был удален'
+      removedDuplicate: '&c[amount]/[max] &7дубликатов удалено'
+  removewarp:
+    help:
+      info: '&fУдаление варпов'
+      args: (warpName)
+    info:
+      remove: '&cНажмите, чтобы удалить'
+      removed: '&7Варп (&c[warp]&7) был удален'
+      notYours: '&cЭтот варп не принадлежит вам!'
+  repair:
+    help:
+      info: '&fПочинка предметов'
+      args: '[hand/armor/all] (playerName)'
+      explanation:
+      - cmi.command.repair.hand - позволяет игроку починить предметы в руке
+      - cmi.command.repair.armor - позволяет игроку починить предметы в слотах для
+        брони
+      - cmi.command.repair.all - позволяет игроку починить весь инвентарь
+      - cmi.command.repair.repairshare.bypass - позволяет игроку починить предметы
+        без добавления защиты ремонта
+    info:
+      feedback: '&7Вы починили &c[amount]&7 предметов игроку &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      feedbackMoney: '&7Вы отремонтировали &c[amount]&7 предметов игроку &c[playerDisplayName]&7
+        (&c[offon]&7). Стоимость: &c[cost]'
+      itemOwner: '&7Последний ремонт: &c[owner]'
+      cantUse: '!title!&cНе удалось использовать этот предмет!!subtitle!&7Отремонтируйте
+        его самостоятельно!'
+  repaircost:
+    help:
+      info: '&fУстановить стоимость ремонта предметов'
+      args: (playerName) [amount]
+      explanation:
+      - 'Пример:'
+      - /repaircost 10
+      - /repaircost set 10
+      - /repaircost add 10
+      - /repaircost take 10
+      - /repaircost Zrips clear
+      - /repaircost Zrips add 10
+    info:
+      current: '&7Текущие базовые затраты на ремонт: &c[cost]&7.'
+      noitem: '&cВы должны держать предмет в руке.'
+      cantDetermineCost: '&cНе удалось определить базовую стоимость ремонта для этого
+        предмета.'
+      selffeedback: '&7Базовая стоимость ремонта была установлена ​​на &c[amount]
+        &7для предмета в руке игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Стоимость ремонта вашего предмета была установлена ​​на &c[amount]&7
+        игроком &c[senderDisplayNaame]&7.'
+  replaceblock:
+    help:
+      info: '&fЗаменение блоков в текущем мире вокруг вас'
+      args: '&7id &8[blockName:data/id:data]&7 w &8[blockName:data/id:data] &7r &8[range
+        in chunks/g]&7 y &8[max height]'
+      explanation:
+      - '&cПодкоманды:'
+      - '&7- &cpause &7- приостановить замещение'
+      - '- &ccontinue &7- продолжить замещение'
+      - '- &cstop &7- остановить замещение'
+      - '- &cspeed [amount] &7- установить текущую скорость замещение'
+      - '- &cautospeed [true/false] &7- включить или отключить автоматическую скорость'
+      - '- &cmessages [true/false] &7- отключить или включить вывод сообщений'
+      - 'Пример:'
+      - /cmi replaceblock id 52 w stone r 10
+      - /cmi replaceblock id 52,gold_block w stone r 15 y 100
+      - /cmi replaceblock id 52 w air r g y 100
+      - /cmi replaceblock id iron_ore%75 w stone%90,dirt%5 r g
+    info:
+      startScanning: '&7Найдено &c[amount] &7чанков для проверки. Запуск!'
+      paused: '&7Замещение приостановлено, для продолжения использования введите команду
+        &c/cmi blockreplace continue.'
+      continuing: '&aПроцесс замещения продолжается'
+      stoped: '&cПроцесс замещения остановлен.'
+      speedChange: '&7Скорость изменена на [amount]'
+      autospeedChange: '&7Автоматическую скорость ​​изменена на [state]'
+      messagesChange: '&7Состояние сообщений изменено на [state]'
+      infoShow: '&cTPS: &c[tps] &7Осталось &c[left] &7(&c[time]&7) &7Скорость: &c[speed]
+        &7Заменено: &7[found]'
+      finished: '&7Финиш!!! Заменено: &c[amount] &7блоков за &c[time]&7.'
+  reply:
+    help:
+      info: '&fОтветить на последнее сообщение'
+      args: '[message]'
+    info:
+      noOneToReplay: '&cНекому ответить'
+  resetdbfields:
+    help:
+      info: '&fСброс определенных столбцов базы данных к значению по умолчанию'
+      args: '[collumnName] (-w:[worldName]) (-p:[playerName])'
+    info:
+      feedback: '&7Обновлено &7[amount] &7игроков'
+      nofield: '&cНе удалось найти поле с этим именем'
+  ride:
+    help:
+      info: '&fЕзда на целевой сущности'
+      args: ''
+      explanation:
+      - ' cmi.command.ride.[entityType] - чтобы иметь доступ к езде на сущности'
+    info:
+      riding: '&7Вы оседлали &c[entityName]'
+      cantRide: '&cВы не можете оседлать сущность (&c[entityName]&c)'
+      someOneElse: '&cКто-то уже катается на этой сущности'
+      ridingYou: '&7Игрок &c[playerDisplayName] &7верхом на вас, введите &c/shakeitoff
+        &7чтобы сбросить его'
+  rt:
+    help:
+      info: '&fТелепортация в случайное место'
+      args: (playerName) (worldName)
+    info:
+      posible: '&7Телепортация доступна только в мирах: &c[worlds]'
+      tpLimit: '&7Вы не можете телепортироваться так быстро, пожалуйста, подождите
+        &c[time] &7и попробуйте еще раз.'
+      IncorrectLocation: '&cНе удалось найти правильное местоположение для телепорации,
+        пожалуйста, подождите &7[time] &cи попробуйте еще раз.'
+      teleported: '!actionbar!&e&nВы были случайно телепортированы!'
+  sameip:
+    help:
+      info: '&fСписок игроков, вошедших с того же IP'
+      args: ''
+    info:
+      list: '&7[place]. &c'
+      nothing: '&7Нечего показать'
+  saturation:
+    help:
+      info: '&fУстановить насыщение игроку'
+      args: (playerName) [amount]
+    info:
+      feedback: '&7Вы установили насыщение на &c[amount]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&7Ваше насыщение было установлено на &c[amount]&7 игроком &c[senderDisplayName]&7.'
+  saveall:
+    help:
+      info: '&fСохранить каждый инвентарь игрока'
+      args: (daysRange/-online)
+      explanation:
+      - -online переменная может быть использована для сохранения только онлайн инвентаря
+        игрока
+    info:
+      saving: '[simbol] &aпроверено: &7[checked]&a из &7[total]&a сохранено: &7[saved]
+        &aпропущено: &7[skipped] [simbol]'
+      saved: '&7Сохранение завершено. Сохранено: &c[saved] &7Пропущено: &c[skipped]'
+  saveditems:
+    help:
+      info: '&fСохранение или управление сохраненными предметами'
+      args: '[save/get/remove/list] (savedItemName) (-t:playerName) (-s)'
+    info:
+      info:
+      - '&fЛевый клик, чтобы получить предмет'
+      - '&fСредний клик, чтобы удалить'
+      got: '&7Предмет &c[name] &7получен'
+      give: '&7Предмет &c[name] &7выдан'
+      removed: '&7Предмет &c[name] &7удален'
+      saved: '&7Предмет &c[name] &7сохранен'
+      title: '&8[current]&7/&8[total]'
+  sc:
+    help:
+      info: '&fЗапуск процесса копирования табличек'
+      args: ''
+    info:
+      punch: '&7Кликните по табличке, чтобы вставить текст в нее, или кликните по
+        любому блоку без таблички, чтобы отменить процесс'
+      canceled: '&7Процесс копирования таблички отменен'
+      updated: '&7Табличка обновлена'
+  scan:
+    help:
+      info: '&fСканирование предметов в текущем мире'
+      args: ''
+      explanation:
+      - '&cПодкоманды:'
+      - '&7- &cstats &7- показать текущую статистику сканирования '
+      - '&7- &cpause &7- пауза сканирования '
+      - '- &ccontinue &7- продолжить сканирование '
+      - '- &cstop &7- остановить сканирование '
+      - '- &cspeed [amount] &7- установить текущую скорость сканирования '
+      - '- &cautospeed [true/false] &7- включить или выключить авто скорость '
+      - '- &cmessages [true/false] &7- отключить или включить вывод сообщений'
+      - 'Переменные:'
+      - '&7id &c[id:data]'
+      - '&7q &c[minimum quantity]'
+      - '&7r &c[range in chunks] &7- возможность использовать &cg &7вместо числа для
+        сканирования всей карты'
+      - '&7n &c[item name]'
+      - '&7l &c[item lore]'
+      - '&7h &cиспользует информацию из предмета в руке'
+      - '&7e &c[enchantname]'
+      - '&7elvl &c[enchantminlevel]'
+      - '&7oversize'
+      - '&7purge - удалить найденные предметы, эта функция должна быть включена в
+        конфигурации файла'
+      - 'Пример:'
+      - /scan id 52 r 30
+      - scan id diamond_block r g q 32
+    info:
+      loadingChunkInfo: '&7Загрузка информации о чанках!'
+      startScanning: '&7Найдено &c[amount] &7чанков для проверки. Запуск!'
+      paused: '&7Сканирование приостановлено, чтобы продолжить использование, введите
+        команду &c/cmi scan continue.'
+      continuing: '&7Сканирование продолжается'
+      holdItem: '&7Вам нужно держать предмет в руке'
+      stoped: '&7Сканирование остановлено. Вы можете проверить результаты с помощью
+        команды /cmi scan info'
+      speedChange: '&7Скорость изменена на [amount]'
+      autospeedChange: '&7Авто скорость ​​изменена на [state]'
+      messagesChange: '&7Состояние сообщения изменено на [state]'
+      NoInfo: '&7Нет никакой информации'
+      infoShow: '&7TPS: &c[tps] &7Осталось &c[left] &7(&c[time]&7) &7Скорость: &c[speed]
+        &7Найдено: &c[found]'
+      Teleport: '&7Нажмите, чтобы телепортироваться'
+      scanList: '&a[number]. &7[place] &c[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
+      scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
+      edit: ' &7(Редактировать)'
+      total: '&7Проверено [current]/[until] от общего количества [total]'
+      Stats:
+      - '&7************************************************************'
+      - '&7* &cЧанки: &7[checked]/[total]'
+      - '&7* &cДиапазон сканирования: &7[range]'
+      - '&7* &cСкорость сканирования: &7[scanspeed] &c(&7[autospeed]&c)'
+      - '&7* &cМир: &7[world]'
+      - '&7* &cНайдено: &7[found]'
+      - '&7* &cВремя: &7[time]'
+      - '&7* &cID: &7[id]'
+      - '&7* &cКоличество: &7[qty] и выше'
+      - '&7* &cИмя: &7[name]'
+      - '&7* &cОписание: &7[lore]'
+      - '&7************************************************************'
+  scavenge:
+    help:
+      info: '&fПереработать предмет и его зачарования'
+      args: (playerName)
+    info:
+      enchantWorth: '&7Стоимость зачарования: &c[price]'
+      enchantFailChance: '&7Шанс неудачи: &c[chance]%'
+      enchantFailed: '&7Не удалось. &c[enchant]&7 уровень &c[level] &7с шансом &c[chance]%
+        &7неудачи'
+      enchantLevelChance: '&7Шанс понижения уровня: &c[chance]%'
+      gotIngredients: '&7Вы получили &c[itemList]'
+      gotIngredientsFormat: '&c[material]&7-&c[amount]'
+      itemBroke: '&7Предмет может сломаться с [chance]% шансом'
+      confirm: '&aПодтвердить переработку. Стоимость: &c[price]'
+      itemBreakChance: '&7Шанс поломки предмета: &c[chance]%'
+      itemBreakChanceExtra: '&c[durability]% долговечности добавляет [chance]% шанса
+        поломки'
+      itemBreak: '&cПредмет сломается при клике!'
+      ingredientReturnChance: '&7Шанс возвращения ингриндиента: [chance]%'
+      cantScavenge: '&cНе удалось переработать'
+      insertItem: '&aПоложите предмет в слот выше'
+      scavengeCost: '&8Стоимость переработки: [cost]'
+      title: '&9Мусорщик'
+  schedule:
+    help:
+      info: '&fРасписание запуска'
+      args: '[scheduleName]'
+  se:
+    help:
+      info: '&fИзменение строки текста на табличках.'
+      args: '[SignLine] [Text]'
+      explanation:
+      - Используйте / n для дополнительной строки
+  search:
+    help:
+      info: '&fПоиск items/enchants/fly/maxhp/gm/oversize режимы и прочее от всех
+        игроков'
+      args: ''
+      explanation:
+      - '&7id &c[id:data] '
+      - '&7name &c[some_custom_itemname] '
+      - '&7lore &c[some_custom_lore] '
+      - '&7enchant &c[lowest enchant level] '
+      - '&7potion &c[lowest custom potion effect level] '
+      - '&7fly &c[true or false] '
+      - '&7gm &c[0/1/2/3 or survival/creative/adventure/spectator] '
+      - '&7maxhp &c[lowest hp player have] '
+      - '&7god &c[true/false]'
+      - '&7oversize'
+      - 'Например:'
+      - /search gm 1
+      - /search id 52
+      - /search lore Uber_lore
+    info:
+      started: '&7Поиск '
+      current: '&7В настоящее время найдено &c[amount] &7из &c[files] &7проверенных
+        файлов'
+      nothingfound: '&7Ничего не найдено по вашим критериям'
+      totalfound: '&7Всего найдено &c[amount] &7из возможных &c[files] &7проверенных
+        файлов'
+      total: '&7Проверено [current]/[until] от общего количества [total]'
+      location:
+        ender: '&cEnder'
+        inv: '&7Inv'
+        invS: '&7ShulkerBox'
+        PlayerVault: '&7PlayerVault'
+      localsearch: '&7 (L search)'
+      localsearchhover: |-
+        &7Будет открыт инвентарь из локальных файлов
+        &7Это займет больше времени
+      reglist: '&7[number]. &7[name]'
+      list: '&a[number]. [location] &c[name]'
+      listhover: '&7Нажмите, чтобы открыть инвентарь'
+  seen:
+    help:
+      info: '&fПроверить, когда игрока заходил в последний раз'
+      args: '[playerName/uuid]'
+    info:
+      feedback: '&7Игрок &c[playerDisplayName] &7(&c[offon]&7) &7был в сети &c[time]&7назад!'
+  sell:
+    help:
+      info: '&fПродать предметы из инвентаря'
+      args: (all/blocks/hand/same/gui)
+    info:
+      total: '&7Заработано &c[total] &7за продажу &c[amount] &7предметов. Новый баланс
+        &c[balance]'
+      close: '&8Поместите предметы, которые вы хотите продать'
+      sellInfo: '&8Стоимость: &a[price]'
+  sendall:
+    help:
+      info: '&fОтправить всех онлайн игроков на целевой сервер'
+      args: '[serverName]'
+  server:
+    help:
+      info: '&fПодключиться к серверу bungeecord'
+      args: '[serverName] (playerName)'
+  serverlist:
+    help:
+      info: '&eОтобразить список серверов'
+      args: ''
+    info:
+      listOnline: '&7[place]. &2[serverName] &6[count]&7/&6[max]'
+      listOffline: '&7[place]. &c[serverName] &60&7/&60'
+  servertime:
+    help:
+      info: '&fПоказывает время сервера'
+      args: ''
+    info:
+      time: '&7Время сервера: [time]'
+      format: MM/dd/YYYY HH:mm:ss
+      timeZone: '&7Название часового пояса: &c[name]'
+      timeZoneId: '&7ID часового пояса: &c[id]'
+      timeZoneOffset: '&7Смещение часового пояса: &c[offset]'
+  setenchantworth:
+    help:
+      info: '&fИзменение стоимости зачарования'
+      args: ''
+  setfirstspawn:
+    help:
+      info: '&fУстановить первую точку спавна'
+      args: (playerName)
+    info:
+      feedback: '&7Первая точка спавна установлена (&c[world]&7,&c[x]&7,&c[y]&7,&c[z]&7)!'
+  sethome:
+    help:
+      info: '&fУстановить точку дома'
+      args: (homeName) (playerName) (-p) (-l:worldName;x;y;z)
+      explanation:
+      - cmi.command.sethome.unlimited
+      - -l определит пользовательское местоположение для нового дома, это требует
+        узел разрешений cmi.command.sethome.customloc
+    info:
+      set: '&7Вы установили точку дома с именем &c[homeName]&7!'
+      setBed: '&7Местоположение респавна кровати установлено'
+      private: ' &a(приватная)'
+      noMore: '&cВы достигли максимального предела точек дома'
+      noOverwrite: '&cВы не можете перезаписывать существующие точки дома. Удалите
+        старые или выберите другое имя точки дома.'
+  setmotd:
+    help:
+      info: '&fУстановить MOTD сервера'
+      args: '[newMotd]'
+      explanation:
+      - используйте \n, чтобы создать вторую строчку
+    info:
+      changed: '&7MOTD изменено на:'
+  setrt:
+    help:
+      info: '&fУстановить случайные границы для телепортации'
+      args: (worldName) (center:[x]:[z]) (min:[range]) (max:[range]) (square/circle)
+        (enabled/disabled)
+    info:
+      list: '&c[place]. [world] [enabled] &7[centerX]:[centerZ] &7[maxDist]/[minDist]
+        [type]'
+  setspawn:
+    help:
+      info: '&fУстановить точку спавна для телепортации'
+      args: (playerName) (true/false) (-g:[groupName]) (-rng:[range]) (-w:world,world_nether)
+      explanation:
+      - Больше информации об использовании команды на https://www.zrips.net/cmi/commands/spawn/
+    info:
+      feedback: '&7Точка спавна установлена (&c[world],[x],[y],[z]&7)!'
+      group: ' &7([group])'
+      rng: ' &7(Rng: [rng])'
+      respawn: '&7Нажмите сюда, чтобы установить точку спавна'
+  setwarp:
+    help:
+      info: '&fУстановить точку варпа'
+      args: '[warpName] (reqPermission) (hand) (slot) (autoLore)'
+      explanation:
+      - 'Например:'
+      - /cmi setwarp spawn - простой варп для спавна
+      - /cmi setwarp spawn true - создает варп и требует узел разрешения на его использование
+        cmi.command.warp.[warpname]
+      - /cmi setwarp spawn hand - создает варп с предметом в руке, который будет отображатся
+        в GUI
+      - /cmi setwarp spawn 13 - создает варп и устанавливает слот GUI для использования
+        в GUI (1-54)
+      - /cmi setwarp spawn true hand 13 - создает варп с предметом из руки в слоте
+        13 и требует разрешения
+      - /cmi setwarp spawn true hand 13 false - такой же как предыдущий, но не создает
+        описание
+    info:
+      newSet: '&7Новый варп (&c[warp]&7) установлен'
+      noSet: '&cВарп с таким названием уже существует'
+      noMore: '&cВы достигли максимально допустимого предела варпов. ([max])'
+  setworth:
+    help:
+      info: '&fИзменить стоимость предмета'
+      args: (itemname)
+    info:
+      setSell: '&7Установить стоимость продажи товара &7[amount]'
+      setBuy: '&7Установить стоимость покупки товара &7[amount]'
+      notInUse: '&7В основном используется для возможного обнаружения эксплойтов'
+      sellPrice: '&fСтоимость продажи: &7[amount]'
+      buyPrice: '&fСтоимость покупки: &a[amount]'
+      exploit: '&4Возможный ЭКСПЛОИТ!'
+      ingridient: '&aИнгредиенты'
+      ingridients: '&7[ingridient]&f(&7[amount]&f) = &7[price]'
+      notSet: '&7цена не установлена'
+      result: '&aКрафтов из &7[result]&f(&7[amount]&f)'
+      ingridientsPrice: '&cЦена ингредиента: &7[price]'
+      resultPrice: '&cМожет быть продан за: &7[price]'
+  shakeitoff:
+    help:
+      info: '&fСтряхнуть сущность с себя'
+      args: ''
+    info:
+      shaked: '&7Вы стряхнули с себя: &c[entity]'
+      nothing: '&7Нечего стряхивать'
+  shoot:
+    help:
+      info: '&fВыстрелить снарядом'
+      args: (playerName) (-t:targetPlayer) (type) (speed)
+  signspy:
+    help:
+      info: '&fПереключить SignSpy'
+      args: (playerName)
+      explanation:
+      - cmi.command.signspy.hide - Скрывает созданные таблички от SignSpy
+    info:
+      text: '&7⦗SignSpy&7⦘ &7[&8[senderDisplayName]&7]&7: &7[text]'
+      toggled: '&7SignSpy переключен на состояние &c[state]'
+  silence:
+    help:
+      info: '&fСкрытие публичных сообщений'
+      args: ''
+      explanation:
+      - cmi.command.silence.bypass - для обхода скрытия публичных сообщений
+    info:
+      enabled: '&7Режим скрытия публичных сообщений &aвключен'
+      disabled: '&7Режим скрытия публичных сообщений &cвыключен'
+      inMode: '&7Игрок находится в режиме скрытия публичных сообщений'
+  silentchest:
+    help:
+      info: '&fПереключить безвучное открытие сундуков'
+      args: ''
+      explanation:
+      - '&7Игроки вокруг вас не увидят анимацию открытия сундука при его открытии'
+      - '&7ProtocolLib требуется для работы этой функции.'
+    info:
+      feedback: '&7Вы переключили безвучное открытие сундуков в режим &c[offon].'
+      onOpen: '&7Тихое открытие сундука...'
+  sit:
+    help:
+      info: '&fСядьте на свое место'
+      args: ''
+    info:
+      onSit: '!actionbar!&7&nВы сели'
+      onStandUp: '!actionbar!&7&nВы больше не сидите'
+      accupied: '!actionbar!&c&nКто-то уже сидит здесь!'
+  skin:
+    help:
+      info: '&fИзменить скин игрока'
+      args: '[skinName/off/update] (playerName)'
+    info:
+      changed: '&7Скин изменен на &c[skinOwner]'
+      failed: '&7Не удалось применить скин'
+      resetSteve: '&7Скин удален'
+      reset: '&7Применен скин по умолчанию'
+      update: '&7Скин обновлен'
+  smite:
+    help:
+      info: '&fУдарить землю или игрока молнией'
+      args: (playerName) (-s)
+    info:
+      gotSmited: '&7Вас ударили молнией!'
+  socialspy:
+    help:
+      info: '&fПереключить SocialSpy'
+      args: (playerName)
+    info:
+      msg: '&7⦗SocialSpy&7⦘ &7[&8[senderDisplayName] &7-> &8[playerDisplayName]&7]&7
+        [message]'
+      toggled: '&7SocialSpy переключен на состояние &c[state]'
+  solve:
+    help:
+      info: '&fРешить уравнение'
+      args: '[equation]'
+    info:
+      result: '&7Результат: &7[res]'
+      incorrect: '&cНеверный ввод: &7[input]'
+  sound:
+    help:
+      info: '&fВоспроизвести звук в выбранном месте'
+      args: '[sound] (-p:[pitch]) (-v:[volume]) (playerName/-all) (world) (x) (y)
+        (z) (-s)'
+    info:
+      playing: "&7Воспроизведение звука &c[sound] &7в &c[world] [x]:[y]:[z] \n&7Вы\
+        сота: &c[pitch] &7Громкость: &c[volume]"
+      playingMultiple: "&7Воспроизведение звука &c[sound] &7для &c[amount] &7игрок\
+        ов \n&7Высота: &c[pitch] &7Громкость: &c[volume]"
+  spawn:
+    help:
+      info: '&fТелепортация на точку спавна'
+      args: (playerName)
+    info:
+      notset: '&cТочка спавна не установлена!'
+      feedback: '&aТелепортация на спавн...'
+  spawner:
+    help:
+      info: '&fУстановка спавнеров'
+      args: '[EntityType]'
+    info:
+      feedback: '&7Тип спавнера установлен на &c[type]'
+      wrongEntityIdName: '&cНеверный ID сущности или имя'
+      cantSet: '&cНе удалось установить этот тип спавнер'
+      cantDetect: '&cНе удалось обнаружить спавнер'
+      pickOne: '&8Выберите тип спавнера'
+  spawnereditor:
+    help:
+      info: '&fРедактирование спавнера'
+      args: ''
+  spawnmob:
+    help:
+      info: '&fСоздать сущность в вашем местоположении'
+      args: '[EntityType]'
+      explanation:
+      - ' &7- Первый аргумент всегда является именем основного существа'
+      - ' &7- Вы можете указать состояния сущностей: baby, adult, dumb, tamed, n-[name],
+        upwards, glow, skull-[name], helmet-[itemname], chest-[itemname], legs-[itemname],
+        boots-[itemname], mhand-[itemname], ohand-[itemname], effect-levitation/10/1-speed/10/2.
+        /n Например: horse:baby:tamed:n-Horsy, zombie:skull-Zrips:n-AngryZombie:mhand-Diamond_Sword'
+      - ' &7- некоторые сущности имеют специальные переменные: '
+      - '    &cSheep &7- white, brown, red, rainbow и т.д... &cprimed_tnt &7- [ticks],
+        incendiary'
+      - '    &cHorse &7- white, chestnut, creamy, darkbrown, gray, black'
+      - '    &cOcelot &7- red, siamese, wild, black &cexperience_orb &7- [number]'
+      - '    &cSkeleton &7- wither, &cCreeper &7- charged &cWolf &7- angry'
+      - '    &cZombie &7- villager, blacksmith, butcher, farmer, priest, librarian'
+      - '    &cVillager &7- blacksmith, butcher, farmer, priest, librarian'
+      - '    &cSlime, MagmaCube &7- размер, указав число от 1. slime:3'
+      - '    &cArmorStands &7- nogravity, noplate, arms, noarms, small'
+      - '    &cShulkerBullet &7- [target], bounce'
+      - ' &7- Дополнительные переменные:'
+      - '     &cps:zombie:priest:baby-1 &7- наездник с количеством'
+      - '     &chp:20 &7- здоровье'
+      - '     &csp:3 &7- создает случайных существ в диапазоне'
+      - '     &cs:4 &7- скорость сущностей'
+      - '     &ct:[playername] &7- цель, которую одна сущность будет атаковать'
+      - '     &cq:10 &7- количество, которое вы хотите заспавнить'
+      - '     &c[playername] &7- спавнит сущностей в локации игрока'
+      - '     &cloc:123/13.0/-15/World &7- место появления. Имя мира необязательно,
+        если используется от имени игрока'
+      - 'Например: /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Chick_on_Sheep
+        q:10 sp:10 hp:50 s:2'
+    info:
+      wrongEntityName: '&7Неверное имя сущности'
+      wrongPlayerName: '&7Неверное имя игрока'
+      spawnedEntities: '&7Заспавнено &c[entities] &7сущностей '
+      spawnedPasangers: '&7и &c[passengers] &7наездников'
+      nothingSpawned: '&7Ни одна сущность не заспавнена'
+      cantSpawn: '&7Не удалось заспавнить этот тип сущности'
+  staffmsg:
+    help:
+      info: '&fОтправить сообщение в канал персонала сервера'
+      args: '[message/toggle/on/off]'
+    info:
+      message: '&6[ПЕРСОНАЛ] [[serverName]] [senderPrefix][senderDisplayName] ->&f
+        [message]'
+      toggledOn: '&aПостоянный чат персонала сервера был включен. Теперь вы можете
+        писать сообщения в общем чате.'
+      toggledOff: '&cПостоянный чат персонала сервера был выключен'
+  stats:
+    help:
+      info: '&fПроверить статистику игроков'
+      args: (playerName)
+    info:
+      distanceCM: '&c[value] см'
+      distanceM: '&c[value] м'
+      distanceKm: '&c[value] км'
+      list: '&f[name]:&7[amount]'
+      listCover: '&7([list]&7)'
+      Quit: '&7Выходов из игры: &c[value]'
+      PlayTime: '&7Наиграно времени: &c[value]'
+      SneakTime: '&7Времени приседаний: &c[value]'
+      Sleep: '&7Спал на кровати: &c[value]'
+      Joined: '&7Присоединился: &c[time]'
+      Jumps: '&7Прыжков: &c[value]'
+      SinceDeath: '&7Последняя смерть: &c[value]'
+      Deaths: '&7Количество смертей: &c[value]'
+      DeathsByMonsters: '&7Убито монстров: &c[value]'
+      TotalDistance: '&7Общее пройденное расстояние: &c[value]'
+      Walk: '&7Пройдено: &c[value]'
+      Crouch: '&7Крался: &c[value]'
+      Sprint: '&7Бежал: &c[value]'
+      Swim: '&7Плавал: &c[value]'
+      Fall: '&7Падал: &c[value]'
+      Climb: '&7Поднял: &c[value]'
+      Fly: '&7Летал: &c[value]'
+      Dive: '&7Нырял: &c[value]'
+      Minecart: '&7На вагонетке: &c[value]'
+      Boat: '&7На лодке: &c[value]'
+      Pig: '&7На свинье: &c[value]'
+      Horse: '&7На лошади: &c[value]'
+      Elytra: '&7На элитре: &c[value]'
+      Damage: '&7Урона &c[dealt] [taken]'
+      DamageDealt: '&7нанесено: &c[value]&7,'
+      DamageTaken: '&7получено: &c[value]'
+      JUMP: '&7Прыжков: &c[value]'
+      Kills: '&7Убийств &c'
+      KillsMob: '&7мобов: &c[value]&7,'
+      KillsPlayer: ' &7игроков: &c[value]'
+      Blocks: '&7Блоков &c'
+      BlocksMined: '&7добыто: &c[value]&7,'
+      BlocksPlaced: ' &7размещено: &c[value]'
+      Items: '&7Предметов &c'
+      ItemsUsed: '&7использовано: &c[value]&7,'
+      ItemsDrop: '&7выброшено: &c[value]&7,'
+      ItemsPicked: '&7поднято: &c[value]&7,'
+      ItemsBroken: '&7сломано: &c[value]&7,'
+      ItemsCrafted: '&7скрафчено: &c[value]&7,'
+      ItemsEnchanted: ' &7зачаровано: &c[value]'
+      Opened: '&7Открыто &c[list] '
+      OpenChest: '&7сундуков: &c[value]&7,'
+      OpenEnder: '&7эндер сундуков: &c[value]&7,'
+      OpenShulker: '&7коробок шалкеров: &c[value]'
+      Interacted: '&7Взаимодействий &c[list] '
+      InteractBeacon: '&7с маяком: &c[value]&7,'
+      InteractBrewingStand: '&7варочной стойкой: &c[value]&7,'
+      InteractCraftTable: '&7верстаком: &c[value]&7,'
+      InteractFurnace: '&7печью: &c[value]&7,'
+      Inspected: '&7Осмотрено &c[list]'
+      InspectDispenser: '&7раздатчиков: &c[value]&7,'
+      InspectDropper: '&7выбрасывателей: &c[value]&7,'
+      InspectHopper: '&7воронок: &c[value]'
+      Statistics:
+        LEAVE_GAME: Выходов из игры
+        PLAY_ONE_TICK: Наиграно времени
+        TIME_SINCE_DEATH: Последняя смерть
+        TIME_SINCE_REST: Последний отдых
+        SNEAK_TIME: Времени приседаний
+        ACOUNT_AGE: Возраст аккаунта
+        TRAVEL: Путешествие
+        WALK_ONE_CM: Ходьба
+        CROUCH_ONE_CM: Крался
+        SPRINT_ONE_CM: Бежал
+        SWIM_ONE_CM: Плавал
+        FALL_ONE_CM: Падел
+        CLIMB_ONE_CM: Подымался
+        FLY_ONE_CM: Летал
+        DIVE_ONE_CM: Нырял
+        WALK_UNDER_WATER_ONE_CM: Ходил под водой
+        WALK_ON_WATER_ONE_CM: Ходил по воде
+        MINECART_ONE_CM: На вагонетке
+        BOAT_ONE_CM: На лодке
+        PIG_ONE_CM: На свинье
+        HORSE_ONE_CM: На лошади
+        AVIATE_ONE_CM: На элитре
+        JUMP: Прыжок
+        DAMAGE_DEALT: Нанесено урона
+        DAMAGE_TAKEN: Получено урона
+        DAMAGE_DEALT_ABSORBED: Поглощено наносимого урона
+        DAMAGE_DEALT_RESISTED: Сопротивление наносимого урона
+        DAMAGE_BLOCKED_BY_SHIELD: Заблокировано урона щитом
+        DAMAGE_ABSORBED: Повреждений поглощено
+        DAMAGE_RESISTED: Сопротивление урона
+        DEATHS: Смертей
+        ENTITY_KILLED_BY: Убито
+        MOB_KILLS: Убийств мобов
+        PLAYER_KILLS: Убийств игроков
+        ITEM_ENCHANTED: Зачаровано предметов
+        ANIMALS_BRED: Разведено животных
+        FISH_CAUGHT: Поймано рыбы
+        TALKED_TO_VILLAGER: Разговор с жителями
+        TRADED_WITH_VILLAGER: Торговля с жителями
+        CAKE_SLICES_EATEN: Кусочков торта съедено
+        CAULDRON_FILLED: Котлов заполнено
+        CAULDRON_USED: Котлов использовано
+        ARMOR_CLEANED: Броней очищено
+        BANNER_CLEANED: Баннеров очищено
+        BREWINGSTAND_INTERACTION: Взаимодействий с варочной стойкой
+        BEACON_INTERACTION: Взаимодействий с маяком
+        CRAFTING_TABLE_INTERACTION: Взаимодействий с верстаком
+        FURNACE_INTERACTION: Осмотрено печек
+        DISPENSER_INSPECTED: Осмотрено раздатчиков
+        DROPPER_INSPECTED: Осмотрено выбрасывателей
+        HOPPER_INSPECTED: Осмотрено воронок
+        CHEST_OPENED: Открыто сундуков
+        TRAPPED_CHEST_TRIGGERED: Сработало сундуков ловушек
+        ENDERCHEST_OPENED: Открыто эндер сундуков
+        NOTEBLOCK_PLAYED: Проиграно нотных блоков
+        NOTEBLOCK_TUNED: Настроено нотных блоков
+        FLOWER_POTTED: Цветочных горшков
+        RECORD_PLAYED: Запись проиграно
+        SLEEP_IN_BED: Сон в кровати
+        SHULKER_BOX_OPENED: Открыто шалкер боксов
+        CLEAN_SHULKER_BOX: Очищено шалкер боксов
+        DROP: Выброшено предметов
+        MINE_BLOCK: Блоков сломано
+        BREAK_ITEM: Разрушено предметов
+        CRAFT_ITEM: Скрафчено предметов
+        USE_ITEM: Использовано предметов
+        PICKUP: Поднято предметов
+        KILL_ENTITY: Убито монстров
+  statsedit:
+    help:
+      info: '&fРедактирование статистики игроков'
+      args: (playerName) [add/take/set] [statistic] (subType) [amount] (-s)
+    info:
+      cantSet: '&cНе удалось установить этот тип статистики'
+      reqSubType: '&7Эта статистика требует определенного подтипа &c[type]'
+      set: '&7Изменено с &c[old] &7на значение &c[new] &7для &c[statistic] &7(&c[extra]&7)'
+  status:
+    help:
+      info: '&fПосмотреть статус сервера'
+      args: ''
+    info:
+      Platform: '&8• &7Платформа: &c[platform] &7(&c[os]&7), &7Запущенных потоков:
+        &c[threads]'
+      Tps: '&8• &7TPS: &c[tps]'
+      CpuUsage: '&8• &7Использование процессора: &c[cpuusage]% &7(&c[cores] ядер&7)'
+      Uptime:
+        main: '&8• &7Время безотказной работы: '
+        weeks: '&c[weeks] &7недель '
+        days: '&c[days] &7дней '
+        hours: '&c[hours] &7часов '
+        mins: '&c[mins] &7минут '
+        secs: '&c[secs] &7секунд '
+      MemoryUsage: '&8• &7Использование памяти: &c[percent]% &7(&c[current]&7/&c[max]
+        MB&7)'
+      MemoryUsageHover: "&fСвободно: &7[free] \n&fВыделено: &7[allocated] \n&fМакс\
+        имум: &7[max] \n&fВсего: &7[total]"
+      Java: '&8• &7Версия Java: &c[mainV].[majorV].[minorV]&7(&c[update]&7) Билд:
+        &c[build]'
+      DiskUsage: '&8• &7Использование диска: &c[percent]% &7(&c[current]&7/&c[max]
+        GB&7)'
+      Worlds: '&8•&c [number]. &7[world] &c[chunks] &7чанков, &c[entities] &7сущностей,
+        &c[tiles] &7тайлов, &c[players] &7игроков'
+  sudo:
+    help:
+      info: '&fПринудительно выполнить команду от имени другого игрока'
+      args: '[playerName] (command/c:[text])'
+      explanation:
+      - cmi.command.sudo.bypass - защищает игрока от 'троллинга'
+    info:
+      performed: '&7Команда ''&c[command]&7'' выполнена от имени игрока &c[playerDisplayName]'
+  suicide:
+    help:
+      info: '&fУбить себя'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&7Прощай жестокий мир...'
+      message: '&7Игрок &c[playerDisplayName] &7покончил с собой'
+  switchplayerdata:
+    help:
+      info: '&fПеренести все данные с одного игрока на другого'
+      args: '[sourcePlayerName/uuid] [targetPlayerName/uuid]'
+      explanation:
+      - Используйте UUID для более точных передач, особенно когда имена пользователей
+        совпадают
+    info:
+      same: '&7Целевые и исходные пользователи совпадают'
+      transferred: '&c[sourceName] &7данные были переключены на &c[Name]'
+  tablistupdate:
+    help:
+      info: '&fПринудительное обновление таблиста для всех или конкретного игрока'
+      args: (playerName)
+    info:
+      updated: '&7Таблист обновлен'
+  tagtoggle:
+    help:
+      info: '&fПереключить звуки тегов'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&cЗвук тегов отключен'
+      feedbackEnabled: '&aЗвук тегов включен'
+  tempban:
+    help:
+      info: '&fВременно забанить игрока'
+      args: '[playerName] [timeInSec] (reason) (-s)'
+      explanation:
+      - Максимальный диапазон бана зависит от cmi.command.tempban.max.[amount]
+      - cmi.command.tempban.max.unlimited - позволяет забанить столько, сколько вы
+        хотите
+      - В случае, если у игрока их нет, максимальное значение 60 секунд
+      - 'Пример: '
+      - /cmi tempban zrips 5m Не матерись
+    info:
+      messageToAll: '&7Игрок &c[playerDisplayName] &7был временно забанен игроком
+        &c[senderDisplayName] &7на: &c[time] &7по причине: &c[reason]'
+      banedSilent: '&7[&8Безшумно&7] &7Игрок &c[playerDisplayName] &7был временно
+        забанен игроком &c[senderDisplayName] &7на: &c[time] &7по причине: &c[reason]'
+      time: '&7Вы будете разбанены через &c[time]'
+      badTime: '&cВремя определено неправильно'
+      badTimeRanges: '&cYou can''t ban for longer than [time] &6([seconds])'
+  tempipban:
+    help:
+      info: '&fВременно забанить по IP'
+      args: '[ip/playerName] [time] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - для обхода бана
+    info:
+      message: '&cВы были забанены!'
+      reason: '&cПричина: &7[reason]'
+      defaultReason: '&7Нарушение правил сервера'
+      messageToAll: '&7Игрок &c[playerDisplayName] &7был забанен по IP на &7[time]&7игроком
+        &c[senderDisplayName]&7: &c[reason]'
+      banedSilent: '&7[&8Безшумно&7] &7Игрок &c[playerDisplayName] &7был забанен по
+        IP на &7[time]&7: &c[reason]'
+  tfly:
+    help:
+      info: '&fУстановить временный режим полета игроку до перезахода или до окончания
+        времени'
+      args: '[playerName] (timeInSec) (-s)'
+      explanation:
+      - 'Примеры:'
+      - tfly Zrips 30 - режим полета в течении следующих 30 секунд
+      - tfly Zrips +30 - добавить режим полета в течение дополнительных 30 секунд
+      - tfly Zrips 0 - режим полета до перезахода
+      - tfly Zrips - проверить, включен ли у игрока временный режим полета и до какого
+        времени
+    info:
+      setTimedFly: '&7Вы установили временный режим полета игроку &c[playerDisplayName]&7
+        на следующие [time]'
+      addTimedFly: '&7Вы добавили дополнительно [addTime] ([time]) для игрока &c[playerDisplayName]&7'
+      setUntilRelogFly: '&7Вы установили временный режим полета до перезахода для
+        игрока &c[playerDisplayName]&7.'
+      targetTimedEnabled: '&7Ваш полет был включен игроком &c[senderDisplayName]&7
+        на следующие [time].'
+      targetTimedEnabledAdd: '&7Ваше время полета было увеличено на [addTime] ([time]).'
+      targetUntilRelogEnabled: '&7Ваш полет был включен игроком &c[senderDisplayName]&7
+        до перезахода.'
+      setFor: '&7Временный режим полета включен до [time]'
+      setForRelog: '&7Временный режим полета включен до перезахода'
+      notSet: '&7Временный режим полета не включен для игрока'
+      willBeDisabled: '&7Режим полета будет отключен через [time]'
+      disabled: '&7Временный режим полета отключен!'
+  tgod:
+    help:
+      info: '&fУстановить временный режим бога для игрока до перезахода или окончания
+        времени'
+      args: '[playerName] (timeInSec) (-s)'
+      explanation:
+      - 'Примеры:'
+      - tgod Zrips 30 - режим бога в течении следующих 30 секунд
+      - tgod Zrips 0 - режим бога до перезахода
+      - tgod Zrips - проверить, включен ли у игрока временный режим бога и до какого
+        времени
+    info:
+      setTimedGod: '&7Вы установили временный режим бога для игрока &c[playerDisplayName]&7
+        на следующие [time]'
+      setUntilRelogGod: '&7Вы установили временный режим бога до перезахода для игрока
+        &c[playerDisplayName]&7.'
+      targetTimedEnabled: '&7Ваш режим бога был включен игроком &c[senderDisplayName]&7
+        на следующие [time].'
+      targetUntilRelogEnabled: '&7Ваш режим бога был включен игроком &c[senderDisplayName]&7
+        до перезахода.'
+      setFor: '&7Временный режим бога включен до [time]'
+      setForRelog: '&7Временный режим бога включен до перезапуска'
+      notSet: '&7Временный режим бога не включен для игрока'
+      willBeDisabled: '&7Режим бога будет отключен через [time]'
+      disabled: '&7Временный режим бога отключен!'
+  time:
+    help:
+      info: '&fУправление временем сервера'
+      args: (time) (world) (alter [value]) (-smooth)
+      explanation:
+      - 'Например:'
+      - /day
+      - /night
+      - /time 13:00:00
+      - /time 1pm
+      - /time 13
+      - /time 7000ticks
+      - /time 1pm Lt_Craft
+      - /time 1pm all
+      - /time add 0:30
+      - /time take 0:30
+      - /time freeze
+      - /time unfreeze
+      - /time realtime
+      - /time autorealtime start/stop
+    info:
+      check: '&7Время: &c[24h] &7или &c[12h] &7или &c[ticks]тиков &7в мире &c[world]'
+      frozen: ' &c(-)'
+      frozenTime: '&7Заморозка времени'
+      real: ' &c(+)'
+      realTime: '&7Автоматический режим реального времени'
+      autorealstart: '&7Автоматическая настройка времени для мира &c[world] &7запущена'
+      autorealstop: '&7Автоматическая настройка времени для мира &c[world] &7остановлена'
+      gotfrozen: '&7Время в мире &c[world] &7было заморожено'
+      gotunfrozen: '&7Время в мире &c[world] &7было разморожено'
+      cantset: '&cНе удалось установить время на это значение'
+      setto: '&7Время установлено на &c[24h] &7или &c[12h] &7или &c[ticks]тиков &7в
+        мире &c[world]'
+      am: '&7 утра'
+      pm: '&7 вечера'
+  titlemsg:
+    help:
+      info: '&fОтправить тайтл-сообщение игроку'
+      args: "[playerName/all] [title \n subtitle] (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])"
+    info:
+      message: '&f[messsage]'
+  toast:
+    help:
+      info: '&fОтправить достижение в виде сообщения игроку'
+      args: '[playerName/all] (-t:[advType]) (-icon:[material]) [message]'
+    info:
+      message: '&f[messsage]'
+  togglecompass:
+    help:
+      info: '&fПереключение показа босс бара компаса'
+      args: ''
+    info:
+      ToggleOff: '&cПоказ босс бара компаса выключено'
+      ToggleOn: '&aПоказ босс бара компаса включено'
+  toggleshiftedit:
+    help:
+      info: '&fПереключение редактирования табличек клавишей SHIFT'
+      args: ''
+    info:
+      feedbackDisabled: '&cРедактирование табличек клавишей SHIFT выключено'
+      feedbackEnabled: '&aРедактирование табличек клавишей SHIFT включено'
+  toggletotem:
+    help:
+      info: '&fПоказать или скрыть панель восстановления тотема'
+      args: ''
+    info:
+      toggle: '&eTotem cooldown bar toggled ([state]&e)'
+  top:
+    help:
+      info: '&fТелепортация на самую высокую точку в вашем местоположении'
+      args: '[playerName] (-s)'
+  tp:
+    help:
+      info: '&fТелепортация к местоположению игрока'
+      args: '[playerName] (playerName)'
+    info:
+      feedback: '&7Вы были телепортированы к местоположению игрока &c[sourceDisplayName]
+        &7(&c[offon]&7).'
+      bad:
+        msg: '&cМестоположение телепортации небезопасно. [reason]'
+        extraMsg: '&7Используйте &c/tpbypass &7для обхода этого. У вас есть [time]'
+        lava: '&cЛава'
+        void: '&cПустота'
+        suffocation: '&cУдушье'
+        unknown: '&cНеизвестно'
+        plugin: '&cСторонний плагин'
+      notAllowed: '&cНе удалось телепортироваться к этому игроку'
+      prevented: '&cТелепортация была предотвращена другим плагином'
+  tpa:
+    help:
+      info: '&fЗапрос на телепортацию к игроку'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      requestSent: '&7Запрос отправлен игроку &c[playerDisplayName]'
+      gotRequest: '&7Игрок &c[senderDisplayName] &7просит телепортироваться к вам!'
+      time: '&7У вас есть &c[time]&7, чтобы принять этот запрос'
+      canceled: '&eCanceled'
+      alreadyRequesting: '&7Вы уже отправили запрос игроку &c[playerDisplayName] &7на
+        телепортацию'
+      banned: '&7Вы не можете отправить запрос на телепортацию к игроку &c[playerDisplayName]
+        &7в течении &c[time]'
+  tpaall:
+    help:
+      info: '&fЗапросить, чтобы все игроки онлайн телепортировалиcь к вашему местоположению'
+      args: ''
+    info:
+      requestSent: '&7Запрос отправлен всем игрокам'
+  tpaccept:
+    help:
+      info: '&fПринять запрос на телепортацию'
+      args: (playerName)
+    info:
+      noRequest: '&7Нет запросов на телепортацию'
+      NotOnline: '&7Игрок оффлайн'
+      accepted: '&7Игрок &c[playerDisplayName] &7принял ваш запрос'
+      youAccepted: '&7Запрос на телепортацию принят'
+  tpahere:
+    help:
+      info: '&fЗапросить игрока принять телепортацию к вам'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      gotRequest: '&7Игрок &c[senderDisplayName] &7просит телепортироватся к нему!'
+      accept: '&6Click to accept teleportation request!'
+  tpall:
+    help:
+      info: '&fТелепортация всех онлайн игроков в местоположение'
+      args: (playerName)
+    info:
+      feedback: '&7Вы были телепортированы в местоположение ([world],[x],[y],[z])
+        игрока &c[playerDisplayName]&7.'
+  tpallworld:
+    help:
+      info: '&fТелепортировать ВСЕХ игроков из определенного мира'
+      args: '[worldName] (worldName;x;y;z(;yaw;pitch))'
+      explanation:
+      - -a variable will teleport everyone who are in no longer existing world to
+        target location
+    info:
+      started: '&7Телепортация началась!'
+      current: '&7В настоящее время телепортировано &c[amount] &7и &c[files] &7проверенных
+        файлов'
+      total: '&7Всего телепортировано &c[amount] &7из возможного &c[files] &7проверенных
+        пользователей'
+      WorldNotFound: '&7Мир &7[name] &7не загружен. Убедитесь, что имя мира правильное.'
+  tpbypass:
+    help:
+      info: '&fОбход телепортации в небезопасное место'
+      args: (playername)
+    info:
+      noSavedTp: '&cНет сохраненных плохих мест для телепортации'
+      feedback: '&7Телепортация в небезопасное место...'
+  tpdeny:
+    help:
+      info: '&fОтменить запрос на телепортацию'
+      args: (playerName)
+    info:
+      noRequest: '&7У вас нет активных запросов на телепортацию!'
+      youDenied: '&7Запрос на телепортацию был отклонен!'
+      denied: '&7[senderDisplayName] &7отклонил ваш запрос.'
+  tphere:
+    help:
+      info: '&fТелепортация игрока к вам'
+      args: '[playerName] (playerName)'
+    info:
+      feedback:
+        offline: '&7Вы установили точку спавна (&c[world]&7,&c[x]&7,&c[y]&7,&c[z]&7)
+          для игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+        online: '&7Вы телепортировали игрока &c[playerDisplayName] &7к вашему местоположению'
+        player: '&7Вы телепортировались к местоположению игрока &c[sourceDisplayName]'
+      notAllowed: '&cНе удалось телепортировать этого игрока'
+  tpo:
+    help:
+      info: '&fПринудительно телепортироватся к игроку'
+      args: '[playerName] (playerName)'
+  tpohere:
+    help:
+      info: '&fПринудительно телепортировать игрока к вам'
+      args: '[playerName] (playerName)'
+  tpopos:
+    help:
+      info: '&fПринудительно телепортировать игрока к местоположению'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&7Вы были телепортированы...'
+      feedbackOther: '&7Игрок &c[playerDisplayName] &7был телепортирован (&c[world],[x],[y],[z]&7).'
+  tppos:
+    help:
+      info: '&fТелепортация по координатам'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&7Вы были телепортированы...'
+      feedbackOther: '&7Игрок &c[playerDisplayName] &7был телепортирован (&c[world],[x],[y],[z]&7).'
+  tps:
+    help:
+      info: '&fПроверить состояние TPS сервера'
+      args: ''
+    info:
+      Tps: '&7TPS: &c[tps]'
+  tptoggle:
+    help:
+      info: '&fПереключить доступ к телепортации игрока'
+      args: (playerName)
+    info:
+      feedbackNoTp: '&cТелепортация теперь выключена'
+      feedbackTp: '&aТелепортация теперь включена'
+  tree:
+    help:
+      info: '&fСоздать дерево там, куда вы смотрите'
+      args: (TreeType) (-p:[playerName])
+    info:
+      feedback: '&c[tree] &7создано.'
+      cantSpawn: '&cНе удалось создать дерево (&7[tree]&c) на этом блоке.'
+  unban:
+    help:
+      info: '&fРазбанить игрока или IP'
+      args: '[playerName/ip] (-s)'
+    info:
+      unBaned: '!broadcast!&7Игрок &c[playerDisplayName] &7разбанен'
+      unBanedSilent: '&7[&8Безшумно&7] &7Игрок &c[playerDisplayName] &7разбанен'
+      notBanned: '&7Игрок &c[playerDisplayName] &7не забанен'
+  unbreakable:
+    help:
+      info: '&fСделать предмет неразрушаемым'
+      args: (playerName) (true/false)
+    info:
+      feedback: '&7Вы сделали предмет [state] &7для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      breakable: '&cразрушаемым'
+      unbreakable: '&cнеразрушаемым'
+  uncondense:
+    help:
+      info: '&fРазбить предметы на маленькие части'
+      args: (itemName)
+    info:
+      converted: '&7Конвертировано &7[blocks] &7блоков в &7[items] &7предметов'
+      nothing: '&cВ вашем инвентаре нет ничего, что может быть разбито.'
+  unjail:
+    help:
+      info: '&fОсвободить игрока из тюрьмы'
+      args: '[playerName]'
+    info:
+      notInJail: '&cУказанный игрок не находится в тюрьме'
+      unjailed: '&7Вы выпустили игрока &c[playerDisplayName] &7из тюрьмы'
+      unjailedTarget: '&7Вы были освобождены из тюрьмы!'
+  unloadchunks:
+    help:
+      info: '&fВыгрузить чанки из памяти сервера'
+      args: (-f)
+      explanation:
+      - -f переменная будет принудительно выгружать все чанки за один раз.
+    info:
+      removed: '&7Удалено -[list]'
+      startScanning: '&c&lНайдено &c&l[amount] &c&lчанков для выгрузки. Запуск!'
+      InfoShow: '&e&lTPS: &c&l[tps] &e&lОсталось &c&l[left] &e&l(&c&l[min]мин:[sec]сек&e&l)
+        &e&lСкорость: &c&l[speed] &e&lВыгружено: &c&l[found]'
+      Finished: '&c&lФиниш!!! Выгружено: &c&l[amount] &c&lчанков! За &c&l[minutes]
+        &c&lмин &c&l[seconds] &c&lсек.'
+  unmute:
+    help:
+      info: '&fРазглушить игрока'
+      args: '[playerName] (-s)'
+    info:
+      notMuted: '&cИгрок не заглушен'
+      unmuted: '&aИгрок теперь может говорить'
+      unmutedTarget: '&aТеперь вы можете говорить'
+  unmutechat:
+    help:
+      info: '&fРазглушить публичный чат'
+      args: (-s)
+    info:
+      unmuted: '&aПубличный чат разглушен'
+  usermeta:
+    help:
+      info: '&fУправление данными игроков'
+      args: '[playerName] [add/remove/clear/list/increment] (key) (value) (-s)'
+      explanation:
+      - Любые данные игрока можно вывести при помощи %cmi_user_meta_[key]% вокруг
+        плагина
+    info:
+      added: '&7Добавлена ​​данные для игрока &c[playerDisplayName] &7с ключом &c[key]
+        &7и значением &c[value]'
+      cleared: '&7Данные оищены для игрока &c[playerDisplayName]'
+      removed: '&7Данные &c[key] &7удалены у игрока &c[playerDisplayName]'
+      changed: '&7Данные &c[key] &7изменены из &c[oldValue] &7до нового значения &c[newValue]'
+      list: '&7[place]. &c[key]&7: [value]   '
+  util:
+    help:
+      info: '&fАдминистративные возможности'
+      args: (removeseats/testtarget)
+    info:
+      removedSits: '&7Удалено &c[count] &7пустых сидений во всех мирах.'
+  vanish:
+    help:
+      info: '&fСкрыть игрока'
+      args: (playerName/list) (on/off)
+    info:
+      vanished: '&aВы исчезли. &7Используйте команду &c/vanishedit &7для настройки
+        режима скрытия.'
+      unvanish: '&aВы снова видимы'
+      targetVanished: '&7Игрок &c[playerDisplayName] &7исчез'
+      targetUnvanish: '&7Игрок &c[playerDisplayName] &7снова видимый'
+      list: '&7[place]. &c[playerDisplayName] &7(&c[offon]&7)'
+      noVanished: '&cСкрытых игроков нет'
+  vanishedit:
+    help:
+      info: '&fРедактирование режима скрытия для игрока'
+      args: (playerName)
+    info:
+      isVanished: '&7Режим скрытия'
+      damageToEntity: '&7Может наносить урон другим'
+      playerDamage: '&7Может получать урон'
+      itemPickup: '&7Может поднимать предметы'
+      mobAggro: '&7Мобы вас видят'
+      interaction: '&7Может физически взаимодействовать'
+      silentChest: '&7Сундуки открываются со звуком'
+      informOnLeave: '&7Показывает сообщение о выходе'
+      informOnJoin: '&7Показывает сообщение о входе'
+      PrivateMessages: '&7Личные сообщения'
+      nightVision: '&7Применить ночное видение'
+      relogDisable: '&7Отключить ваниш при перезаходе'
+      bossbar: '&7Показать босс бар при исчезновении'
+      afkcommands: '&7Включать AFK при исчезновении'
+      bossbarTitle: '&fРежим скрытия'
+  version:
+    help:
+      info: '&fПоказать версию плагина'
+      args: ''
+    info:
+      cmiVersion: '&7Версия плагина CMI: &c[version]'
+      cmiVersionNew: '&7-> [newVersion]'
+      Server: '&7Версия сервера: &c[version]'
+      Vault: '&7Версия Vault: &c[version]'
+      Bungee: ' &cBungeeCord '
+  viewrange:
+    help:
+      info: '&fИзменить дальность прорисовки'
+      args: '[range] (playerName)'
+    info:
+      changed: '&7Дальность прорисовки изменена на &c[range]'
+      NoProtocolLib: '&cЭта функция требует наличие ProtocolLib!'
+      NoMore: '&7Дальность прорисовки не может быть больше 32 чанков. Изменено на
+        32.'
+  voteedit:
+    help:
+      info: '&fУправление голосами игроков'
+      args: (playerName) [add/set/take/clear] [amount] (-s)
+      explanation:
+      - 'Например:'
+      - /voteedit Zrips
+      - /voteedit add 10
+      - /voteedit take 10
+      - /voteedit Zrips clear
+      - /voteedit Zrips add 10
+    info:
+      currentVotes: '&7Игрок &c[playerDisplayName] &7имеет &c[votes] &7голосов'
+      selfFeedback: '&7Было установлено &c[votes] &7голосов игроку &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetFeedback: '&7Ваше количество голосов было установлено на &c[votes]&7 игроком
+        &c[senderDisplayName]&7.'
+  votes:
+    help:
+      info: '&fПроверить количество голосов игрока'
+      args: (playerName)
+    info:
+      currentVoteSelf: '&7Вы создали &c[votes] &7голосов'
+      currentVotes: '&7Игрок &c[playerDisplayName] &7имеет &c[votes] &7голосов'
+      voteCooldown: '&7Вам нужно будет подождать &c[time]&7, чтобы голосовать снова'
+      voteLimit: '&7Вы достигли лимита голосов за сегодня. Вам нужно будет подождать
+        &c[time]&7, чтобы голосовать снова'
+  votetop:
+    help:
+      info: '&fПоказать топ голосов'
+      args: (playerName)
+    info:
+      topLine: '&7----- Топ голосов &7-----'
+      list: '&7[place]. &c[playerDisplayName]: &7[votes]'
+      ownLine: '&a[place]. &a[playerDisplayName]: &a[votes]'
+  walkspeed:
+    help:
+      info: '&fУстановить скорость ходьбы игрока от 0 до 10'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&7Вы установили скорость ходьбы &c[amount]&7 для игрока &c[playerDisplayName]&7
+        (&c[offon]&7).'
+      targetfeedback: '&7Ваша скорость ходьбы установлена ​​на &c[amount]&7 игроком
+        &c[senderDisplayName]&7.'
+      max: '&7Максимально допустимая скорость ходьбы для вас &c[max]&7.'
+  warn:
+    help:
+      info: '&fПредупредить игрока'
+      args: '[playerName] (category) (reason) (-s)'
+    info:
+      noSelfWarning: '&cВы не можете предупредить себя'
+      cantBan: '&cНе удалось предупредить этого игрока'
+      messageToAll: '&7Игрок &c[playerDisplayName] &7получил предупреждение от игрока
+        &c[senderDisplayName] &7по причине: &c[reason]'
+      banedSilent: '&7[&8Безшумно&7] &7Игрок &c[playerDisplayName] &7получил предупреждение
+        от игрока &c[senderDisplayName] &7по причине: &c[reason]'
+  warnings:
+    help:
+      info: '&fПроверить предупреждения игрока'
+      args: (playerName)
+    info:
+      totalPoints: '&7---- &7Общее количество очков нарушения игрока &c[playerDisplayName]&7:
+        &c[totalPoints] &7----'
+      noWarnings: '&7У игрока нет предупреждений'
+      list: '&7[place]. &c[time] &7игроком &c[warnedBy] &7по причине: &c[warnedFor]'
+      hover:
+      - '&7Истекает через: &c[time]'
+      - '&7Очков нарушений: &c[points]'
+  warp:
+    help:
+      info: '&fТелепортация на варп'
+      args: (warpName) (playerName) (-s)
+    info:
+      list: '&7Варпы: &c'
+      click: '&7Нажмите, чтобы телепортироваться на варп &c[warp]'
+      teleported: '&7Вы телепортировались на варп: &c[warp]'
+      noWarps: '&cНет сохраненных варпов'
+      noWarpByName: '&cВарпа с этим названием не существует'
+      noAccess: '&cНет доступа к этому варпу'
+      guiTitle: '&7Варпы'
+      creator: '&7Создатель: &c[creator]'
+  weather:
+    help:
+      info: '&fУправление погодой сервера'
+      args: (sun/rain/storm) (lock/duration) (worldName/all)
+      explanation:
+      - 'Дополнительные форматы времени могут быть: s/m/h/d/w/M/Y'
+      - 'Пример:'
+      - /sun
+      - /rain
+      - /storm
+      - /sun lock
+      - /sun 120
+      - /sun Lt_Craft
+      - /sun 1h
+      - /sun 10m
+    info:
+      currentState: '&c[world] &7-> &c[weather] &7на следующие &c[time]'
+      sunny: солнечно
+      rainy: дождливо
+      thundering: громово
+  whowas:
+    help:
+      info: '&fОтображение предыдущих ников игрока'
+      args: '[playerName]'
+    info:
+      list: ' &7[place]. &c[name] &7- [date]'
+      original: '&7Реальный ник'
+  workbench:
+    help:
+      info: '&fОткрыть верстак'
+      args: (playerName)
+    info:
+      feedback: '&7Вы открыли верстак для игрока &c[playerDisplayName]&7 (&c[offon]&7).'
+      targetfeedback: '&7Игрок &c[senderDisplayName]&7 открыл верстак для вас.'
+  world:
+    help:
+      info: '&fТелепортация в другие мира'
+      args: (normal/nether/end/1/2/3...) (playerName) (-s)
+      explanation:
+      - Требуется разрешение cmi.command.world.[worldName] в дополнение к базовому
+        узлу разрешения
+    info:
+      here: '&cВы уже находитесь в этом мире'
+  worth:
+    help:
+      info: '&fПроверить стоимость товара'
+      args: (all/blocks/hand)
+    info:
+      worthless: '&cНе стоит ничего'
+      basePrice: '&c[itemName]&7(&7[amount]&c) -> &f[price]'
+      fullPrice: '&7[price]'
+      total: '&7Общая стоимость: &c[total]'

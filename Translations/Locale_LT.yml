@@ -1,0 +1,4354 @@
+# Full color code support and some variables
+# Keep in mind that variables wont work for some lines, when it will for anothers :)
+# Just keep them where there are now and everything will be ok :)
+# Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+# [serverName] to show server name
+# [playerName] to show target player name
+# [playerDisplayName] to show target player display name
+# [lvl] to show target player level
+# [exp] to show target player total exp
+# [hp] to show target player health
+# [maxHp] to show target player max health
+# [hunger] to show target player hunger level
+# [gameMode] to show target player gamemode
+# [prefix] to show target player prefix if possible
+# [suffix] to show target player suffix if possible
+# Sender is console or player who performs command. In example Zrips performs /heal Zhax then Zrips data will be used
+# [senderName] to show Sender player name
+# [senderDisplayName] to show Sender player display name
+# [senderLvl] to show Sender player level
+# [senderExp] to show Sender player total exp
+# [senderHp] to show Sender player health
+# [senderMaxHp] to show Sender player max health
+# [senderHunger] to show Sender player hunger level
+# [senderGameMode] to show Sender player gamemode
+# [senderPrefix] to show Sender player prefix if possible
+# [senderSuffix] to show Sender player suffix if possible
+# Source is player which is being used for extra info. In example Zrips performs /tp Zhax Zrips then Zhax data will be used as its location is being taken for new player location
+# [sourceName] to show source player name
+# [sourceDisplayName] to show source player display name
+# [sourceLvl] to show source player level
+# [sourceExp] to show source player total exp
+# [sourceHp] to show source player health
+# [sourceMaxHp] to show source player max health
+# [sourceHunger] to show source player hunger level
+# [sourceGameMode] to show source player gamemode
+# [sourcePrefix] to show source player prefix if possible
+# [sourceSuffix] to show source player suffix if possible
+# ***********************************************
+# Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
+# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+# If line starts with !actionbar! then player will get action bar message defined after this variable
+# If line starts with !broadcast! then everyone will receive message
+# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+# If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
+# To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
+# <T> and </T> required, other is optional
+# Use /n to break line
+# To have more than one JSON message use <Next>
+# <C> performs command as a player who clicked
+# <CC> performs command from console once
+# <CCI> performs command from console every time player clicks text
+# <URL> includes url
+info:
+  # Use !prefix! in any locale line to automatically include this prefix
+  prefix: '&e[&cCMI&e] '
+  NoPermission: '&cJus neturite tam jokių teisių!'
+  CantHavePermission: '&cJus negalite turėti šio leidimo!'
+  NoPlayerPermission: '&c[playerName] neturi teisės: [permission]'
+  Ingame: '&cJus galite tai naudoti tik būdami prisijungę!'
+  NoInformation: '&cNerasta jokios informacijos!'
+  Console: '&cKonsole'
+  FromConsole: '&cJus tai galite naudoti tik konsolėje!'
+  NotOnline: '&cŽaidėjas yra neprisijungęs!'
+  NobodyOnline: '&cNėra nei vieno prisijungusio žaidėjo!'
+  Same: '&cNegalite atidaryti savo inventoriaus redagavimui!'
+  cantLoginWithDifCap: '&cNeina prisijungti su kito dydžio raidėmis! Senas vardas:
+    &e[oldName]&c. Dabartinis: &e[currentName]'
+  Searching: '&7Ieškomi žaidėjo duomenys, prašome palaukti, tai gali užimti kažkiek
+    laiko'
+  NoPlayer: '&cToks žaidėjas serveryje neegzistuoja!'
+  NoCommand: '&cTokia komanda serveryje neegzistuoja!'
+  cantFindCommand: '&cNepavyko rasti komandos &7[%1]&c, ar jus turėjote galvoje &7[%2]&c?'
+  PurgeNotEnabled: '&cValymo funkcija yra išjungta konfigūracijos faile!'
+  FeatureNotEnabled: '&cŠi galimybė šiuo metu yra išjungta!'
+  TeamManagementDisabled: '&7Šios funkcijos funkcionalumas bus ribotas, o DisableTeamManagement
+    nustatyta kaip true!'
+  ModuleNotEnabled: '&cŠis modulys yra išjungtas!'
+  versionNotSupported: '&cŠios funkcijos serverio versija nepalaikoma'
+  bungeeNoGo: '&cŠi funkcija neveiks benunge tinklo serveriuose'
+  clickToTeleport: '&bSpauskite, kad teleportuotis'
+  UseMaterial: '&4Prašome naudoti medžiagų pavadinimus!'
+  UseInteger: '&4Prašome naudoti tik skaičius!'
+  UseBoolean: '&4Prašome naudoti tik True arba False!'
+  NoLessThan: '&4Skaičius negali būti mažesnis už [amount]!'
+  NoMoreThan: '&4Skaičius negali būti didesnis už [amount]'
+  NoGameMode: '&cPrašome naudoti 0/1/2/3 arba Survival/Creative/Adventure/Spectator
+    arba s/c/a/sp!'
+  NoWorld: '&4Toks pasaulis neegzistuoja!'
+  IncorrectLocation: '&4Įvesta lokacija yra neteisinga!'
+  NameChange: '&b[playerDisplayName] &7prisijungė į serverį, kitaip žinomas: &b[namelist]'
+  Cooldowns: '&cŠios komandos negalite naudoti taip dažnai, palaukite &7[time]'
+  specializedCooldowns: '&cŠios komandos negalite naudoti taip dažnai, palaukite &7[time]'
+  CooldownOneTime: '&cŠią komandą galima naudoti tik vieną kartą!'
+  WarmUp:
+    canceled: '&7Komanda buvo atšaukta, nes pajudėjote iš vietos'
+    counter: '!actionbar!&b--> &7[time] &b<--'
+    DontMove: '!title!!subtitle!&bPrašome nejudėti!'
+  Spawner: '&r[type] Narvas'
+  Elevator:
+    created: '&bSukurtas lifto ženklas'
+  CantPlaceSpawner: '&cJus negalite dėti spawnerių arti vienas kito (&7[range]&c)'
+  ChunksLoading: '&eVis dar įkeliami pasaulio masto duomenys. Palaukite šiek tiek
+    ir bandykite dar kartą.'
+  ShulkerBox: Šulkerio dėžutė
+  CantuseShulkerBox: '&cJus negalite naudoti shulker box, kol esate pvp režime. Palaukite:
+    &7[time]'
+  CantUseNonEncrypted: '!actionbar!&cKomandos ant šio daikto nėra užkoduotos. Jus
+    negalite naudoti jį!'
+  CantDecode: '!actionbar!&cNepavyko iššifruoti pranešimo / komandos. Rakto faile
+    yra neteisingas šios užduoties raktas. Apie tai informuokite serverio administraciją'
+  Show: '&bRodyti'
+  Remove: '&cPašalinti'
+  Back: '&bGrįžti'
+  Forward: '&cĮ priekį'
+  Update: '&bAtnaujinti'
+  Save: '&aIšsaugoti'
+  Delete: '&cIštrinti'
+  Click: '&bPaspausti'
+  PasteOld: '&bĮklijuoti seną'
+  ClickToPaste: '&bPaspauskite, kad įklijuotumėte į chat'
+  CantTeleportWorld: '&cJus negalite atsiteleportuoti į šį pasaulį'
+  CantTeleport: '&cJus negalite teleportuotis, nes turite per daug ribotų daiktų.
+    Pereikite per šią eilutę, kad pamatytumėte didžiausią leistiną daiktų kiekį.'
+  teleported: '&bJus nusiteleportavote.'
+  BlackList: '&7[material] [amount] &bDidžiausias: [max]'
+  PlayerSpliter: '&7----- &b[playerDisplayName] &7-----'
+  Spliter: '&r'
+  ListSpliter: ', '
+  ProgressBarFill: '&a▏'
+  ProgressBarEmpty: '&7▏'
+  nothingInHand: '&cJus turite laikyti daiktą rankoje'
+  nothingInHandLeather: '&cJus turite laikyti odinį daiktą rankoje'
+  nothingToShow: '&cNėra ko parodyti'
+  noItem: '&cNepavyko rasti tokio daikto'
+  dontHaveItem: '&cJus inventoriuje neturite &7[amount]x [itemName]'
+  wrongWorld: '&cJus negalite to daryti šiame pasaulyje.'
+  differentWorld: '&cSkirtingi pasauliai'
+  HaveItem: '&cJus inventoriuje turite &7[amount]x [itemName]'
+  ItemWillBreak: '!actionbar!&7Jūsų daiktas (&b[itemName]&7) greitai sulūš! &b[current]&7/&b[max]'
+  cantDoForPlayer: '&cJus negalite to padaryti žaidėjui &7[playerDisplayName]'
+  cantDoForYourSelf: '&cJus negalite to padaryti sau'
+  cantDetermineMobType: '&cNepavyko nustatyti monstro tipo, kurio tipas buvo &7[type]'
+  cantRename: '!actionbar!&cJus negalite naudoti šio slapyvardžio'
+  wrongName: '&cNeteisingas slapyvardis'
+  invalidName: '&cNetinkamas slapyvardis'
+  alreadyexist: '&4Šis slapyvardis jau yra užimtas'
+  dontexist: '&4Nerasta jokių rezultatų su šiuo slapyvardžiu'
+  worldDontExist: '&cĮ šį pasaulį daugiau negalima patekti. Čia, jūsų atiteleportuoti
+    negalime!'
+  flyingToHigh: '&cJus negalite skraidyti taip aukštai, max aukštis yra &7[max]&c!'
+  specializedItemFail: '&cNeįmanoma nustatyti specializuotų daiktų poreikio pagal
+    vertę: &7[value]'
+  sunSpeeding: Miega [count] iš [total] [hour] val. [speed]X greitis
+  sleepersRequired: '&f[sleeping] &7apie &f[required] &7miegojimas nuo būtino nakties
+    laiko pagreitinimo'
+  sunSpeedingTitle: '&b[hour]'
+  sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]X&7)'
+  repairConfirm: '&7Spauskite, kad patvirtinti &b[items] &7daiktų sutaisymą už &b[cost]'
+  bookDate: '&7Buvo parašyta &b[date]'
+  maintenance: '&7Priežiūros režimas'
+  notSet: nenustatyta
+  mapLimit: '&cNegalima peržengti 30 000 000 blokų'
+  startedEditingPainting: '&7Jus pradėjote redaguoti paveikslą. Paspauskite ant kito
+    bloko, kad baigtumėte redagavimą.'
+  canceledEditingPainting: '&7Jus baigėte paveikslo redagavimą'
+  changedPainting: '!actionbar!&7Paveikslas pakeistas į &b[name] &7, kurio id buvo
+    &b[id]'
+  noSpam: '!title!&cPrašome nespaminti!'
+  noCmdSpam: '!title!&cPrašome nespaminti komandų!'
+  spamConsoleInform: '&cŽaidėjas (&7[playerName]&c) pažeidė (&7[rules]&c) pokalbių
+    filtras susekė bandymą parašyti:&r [message]'
+  lookAtSign: '&7Žiūrėkite į sign'
+  lookAtBlock: '&7Žiūrėkite į bloką'
+  lookAtEntity: '&7Žiūrėkite į mob'
+  notOnGround: '&cJus negalite to daryti, kai esate skraidymo režime.'
+  FirstJoin: '&7Sveikiname žaidėją &b[playerDisplayName] &7pirmą kartą prisijungus į serverį!'
+  LogoutCustom: ' &7[playerDisplayName] &cpaliko serverį'
+  LoginCustom: ' &7[playerDisplayName] &bprisijungė į serverį'
+  deathlocation: '&7Jus mirėte x:&b[x]&7, y:&b[y]&7, z:&b[z]&7 koordinatėse, &b[world]&7
+    pasaulyje.'
+  bungee:
+    Online: '&aĮjungtas'
+    Offline: '&cIšjungtas'
+    not: '&cServeris nepriklauso bungee tinklui'
+    noserver: '&cNepavyko rasti serverio su tokiu pavadinimu!'
+    server: '&7Serveris: &b[name]'
+  variables:
+    Online: '&cPrisijunges'
+    Offline: '&cAtsijunges'
+    'True': '&aTiesa'
+    'False': '&cNetiesa'
+    Enabled: '&aĮjungtas'
+    Disabled: '&cIšjunktas'
+    survival: '&cIšlikimas'
+    creative: '&aKūrybinis'
+    adventure: '&cNuotykių'
+    spectator: '&cStebėtojas'
+    flying: '&cSkraidyti'
+    notflying: '&cNe skraidyti'
+  noSchedule: '&cSchedule tokiu pavadinimu nepavyko rasti'
+  totem:
+    cooldown: '&7Totemo cooldownas: &b[time]'
+    warmup: '&7Totemo efektas: &b[time]'
+    cantConsume: '&cTotemo naudojimas buvo atmestas dėl jo cooldowno laiko'
+  InventorySave:
+    info: '&7Info: &b[playerDisplayName]'
+    saved: '&b[time] &7Inventorius išsaugotas, kurio id: &b[id]'
+    NoSavedInv: '&7Šis žaidėjas neturi jokių išsaugotų inventorių'
+    NoEntries: '&4Failas egzistuoja, tačiau išsaugotų inventorių nepavyko rasti!'
+    CantFind: '&cNepavyko rasti inventoriaus su tokiu id'
+    TopLine: '&7----------- &b[playerDisplayName] išsaugotas inventorius &7-----------'
+    List: '&7id: &b[id]&7. &b[time]'
+    KillerSymbol: '&c ☠'
+    Click: '&bSpauskite, kad patikrintumėte ([id]) išsaugotą inventorių'
+    IdDontExist: '&4Šis išsaugotas inventoriaus ID neegzistuoja!'
+    Deleted: '&bIšsaugotas inventorius buvo sėkmingai ištrintas!'
+    Restored: '&bJus atstatėte &7[sourcename] &binventorių žaidėjui &7[targetname].'
+    GotRestored: '&7Jūsų inventorius buvo sėkmingai atstatytas iš &b[sourcename] &7išsaugoto
+      inventoriaus, &b[time]'
+    LoadForSelf: '&7Užkrauti jūsų išsaugotą inventorių'
+    LoadForOwner: '&7Užkrauti šį inventorių savininkui'
+    NextInventory: '&7Kitas inventorius'
+    PreviousInventory: '&7Ankstesnis inventorius'
+    Editable: '&7Redagavimo režimas įjungtas'
+    NonEditable: '&7Redagavimo režimas išjungtas'
+  years: '&b[years] &7metai '
+  oneYear: '&b[years] &7metai '
+  day: '&b[days] &7dienos '
+  oneDay: '&e[days] &7diena '
+  hour: '&b[hours] &7valandos '
+  oneHour: '&b[hours] &7valanda '
+  min: '&b[mins] &7minutės '
+  sec: '&b[secs] &7sekundės '
+  vanishSymbolOn: '&8[&7V&8]&r'
+  vanishSymbolOff: ''
+  afkSymbolOn: '&7[&cAFK&7]&r'
+  afkSymbolOff: ''
+  prevPage: '&b----<< &7Atgal '
+  prevPageGui: '&7Ankstesnis puslapis '
+  prevPageClean: '&7Atgal '
+  prevPageOff: '&b----<< &7Atgal '
+  prevPageHover: '&7<<<'
+  firstPageHover: '&7|<'
+  nextPage: '&b Toliau &7>>----'
+  nextPageGui: '&7Sekantis puslapis'
+  nextPageClean: '&7 Toliau'
+  nextPageOff: '&7 Sekantis &b>>----'
+  nextPageHover: '&7>>>'
+  lastPageHover: '&7>|'
+  pageCount: '&b[current]&7/&b[total]'
+  pageCountHover: '&b[totalEntries] įrašai'
+  circle: '&3Apskritimas'
+  square: '&5Kvadratas'
+  protectedArea: '&cApsaugota teritorija. Čia to negalite daryti.'
+  valueToLong: '&cVertė per didelė. Max: [max]'
+  valueToShort: '&cVertė per maža. Min: [min]'
+  InvEmpty:
+    armor: '&eJūsų šarvų vietos turėtų būti tuščios!'
+    hand: '&eJūsų ranka turėtų būti tuščia!'
+    maininv: '&ePagrindinis jūsų inventorius neturėtų būti tuščias!'
+    maininvslots: '&eJūsų pagrindinis inventorius turėtų būti mažiausiai &6[count]
+      &elaisvų vietų!'
+    inv: '&eJūsų inventorius turėtų būti tuščios!'
+    offhand: '&eJūsų kairė ranka turėtų būti tuščia!'
+    quickbar: '&eInventoriaus greita juosta turėtų būti tuščia!'
+    quickbarslots: '&eGreita juosta turėtų būti atlaisvinta mažiausiai &6[count] &elaisvų
+      vietų!'
+    subinv: '&eYour sub inventory should be empty!'
+    subinvslots: '&eJūsų  kitas inventorius turėtų būti atlaisvinta mažiausiai &6[count]
+      &elaisvų vietų!'
+  DamageCause:
+    block_explosion: Sprogimas
+    contact: Bloko žala
+    cramming: cramming
+    custom: Nežinoma
+    dragon_breath: Drakono Kvėpavimas
+    drowning: Paskendimas
+    dryout: Išdžiūvimas
+    entity_attack: Subjekto ataka
+    entity_explosion: Sprogimas
+    entity_sweep_attack: entity sweep attack
+    fall: Nukritimas
+    falling_block: Prispaudė blokai
+    fire: Ugnis
+    fire_tick: Ugnis
+    fly_into_wall: Skrisdamas atsimušo į sieną
+    hot_floor: Magmaos Blokas
+    lava: Lava
+    lightning: Žaibas
+    magic: Magija
+    melting: Ištirpo
+    poison: Nuodų
+    projectile: Sviedinio
+    starvation: Bado
+    suffocation: Uždusimas
+    suicide: Nusižudymas
+    thorns: Spyglių
+    void: Pasaulio kraštas
+    wither: Wither
+  Biomes:
+    BADLANDS: Badlands
+    BADLANDS_PLATEAU: Badlands plateau
+    BAMBOO_JUNGLE: Bamboo jungle
+    BAMBOO_JUNGLE_HILLS: Bamboo jungle hills
+    BEACH: Beach
+    BIRCH_FOREST: Birch forest
+    BIRCH_FOREST_HILLS: Birch forest hills
+    COLD_OCEAN: Cold ocean
+    DARK_FOREST: Dark forest
+    DARK_FOREST_HILLS: Dark forest hills
+    DEEP_COLD_OCEAN: Deep cold ocean
+    DEEP_FROZEN_OCEAN: Deep frozen ocean
+    DEEP_LUKEWARM_OCEAN: Deep lukewarm ocean
+    DEEP_OCEAN: Deep ocean
+    DEEP_WARM_OCEAN: Deep warm ocean
+    DESERT: Desert
+    DESERT_HILLS: Desert hills
+    DESERT_LAKES: Desert lakes
+    END_BARRENS: End barrens
+    END_HIGHLANDS: End highlands
+    END_MIDLANDS: End midlands
+    ERODED_BADLANDS: Eroded badlands
+    FLOWER_FOREST: Flower forest
+    FOREST: Forest
+    FROZEN_OCEAN: Frozen ocean
+    FROZEN_RIVER: Frozen river
+    GIANT_SPRUCE_TAIGA: Giant spruce taiga
+    GIANT_SPRUCE_TAIGA_HILLS: Giant spruce taiga hills
+    GIANT_TREE_TAIGA: Giant tree taiga
+    GIANT_TREE_TAIGA_HILLS: Giant tree taiga hills
+    GRAVELLY_MOUNTAINS: Gravelly mountains
+    ICE_SPIKES: Ice spikes
+    JUNGLE: Jungle
+    JUNGLE_EDGE: Jungle edge
+    JUNGLE_HILLS: Jungle hills
+    LUKEWARM_OCEAN: Lukewarm ocean
+    MODIFIED_BADLANDS_PLATEAU: Modified badlands plateau
+    MODIFIED_GRAVELLY_MOUNTAINS: Modified gravelly mountains
+    MODIFIED_JUNGLE: Modified jungle
+    MODIFIED_JUNGLE_EDGE: Modified jungle edge
+    MODIFIED_WOODED_BADLANDS_PLATEAU: Modified wooded badlands plateau
+    MOUNTAINS: Mountains
+    MOUNTAIN_EDGE: Mountain edge
+    MUSHROOM_FIELDS: Mushroom fields
+    MUSHROOM_FIELD_SHORE: Mushroom field shore
+    NETHER: Nether
+    OCEAN: Ocean
+    PLAINS: Plains
+    RIVER: River
+    SAVANNA: Savanna
+    SAVANNA_PLATEAU: Savanna plateau
+    SHATTERED_SAVANNA: Shattered savanna
+    SHATTERED_SAVANNA_PLATEAU: Shattered savanna plateau
+    SMALL_END_ISLANDS: Small end islands
+    SNOWY_BEACH: Snowy beach
+    SNOWY_MOUNTAINS: Snowy mountains
+    SNOWY_TAIGA: Snowy taiga
+    SNOWY_TAIGA_HILLS: Snowy taiga hills
+    SNOWY_TAIGA_MOUNTAINS: Snowy taiga mountains
+    SNOWY_TUNDRA: Snowy tundra
+    STONE_SHORE: Stone shore
+    SUNFLOWER_PLAINS: Sunflower plains
+    SWAMP: Swamp
+    SWAMP_HILLS: Swamp hills
+    TAIGA: Taiga
+    TAIGA_HILLS: Taiga hills
+    TAIGA_MOUNTAINS: Taiga mountains
+    TALL_BIRCH_FOREST: Tall birch forest
+    TALL_BIRCH_HILLS: Tall birch hills
+    THE_END: The end
+    THE_VOID: The void
+    WARM_OCEAN: Warm ocean
+    WOODED_BADLANDS_PLATEAU: Wooded badlands plateau
+    WOODED_HILLS: Wooded hills
+    WOODED_MOUNTAINS: Wooded mountains
+  EntityType:
+    area_effect_cloud: Area effect cloud
+    armor_stand: Armor stand
+    arrow: Arrow
+    bat: Bat
+    blaze: Blaze
+    boat: Boat
+    cat: Cat
+    cave_spider: Cave spider
+    chicken: Chicken
+    cod: Cod
+    cow: Cow
+    creeper: Creeper
+    dolphin: Dolphin
+    donkey: Donkey
+    dragon_fireball: Dragon fireball
+    dropped_item: Dropped item
+    drowned: Drowned
+    egg: Egg
+    elder_guardian: Elder guardian
+    enderman: Enderman
+    endermite: Endermite
+    ender_crystal: Ender crystal
+    ender_dragon: Ender dragon
+    ender_pearl: Ender pearl
+    ender_signal: Ender signal
+    evoker: Evoker
+    evoker_fangs: Evoker fangs
+    experience_orb: Experience orb
+    falling_block: Falling block
+    fireball: Fireball
+    firework: Firework
+    fishing_hook: Fishing hook
+    fox: Fox
+    ghast: Ghast
+    giant: Giant
+    guardian: Guardian
+    horse: Horse
+    husk: Husk
+    illusioner: Illusioner
+    iron_golem: Iron golem
+    item_frame: Item frame
+    leash_hitch: Leash hitch
+    lightning: Lightning
+    llama: Llama
+    llama_spit: Llama spit
+    magma_cube: Magma cube
+    minecart: Minecart
+    minecart_chest: Minecart chest
+    minecart_command: Minecart command
+    minecart_furnace: Minecart furnace
+    minecart_hopper: Minecart hopper
+    minecart_mob_spawner: Minecart mob spawner
+    minecart_tnt: Minecart tnt
+    mule: Mule
+    mushroom_cow: Mushroom cow
+    ocelot: Ocelot
+    painting: Painting
+    panda: Panda
+    parrot: Parrot
+    phantom: Phantom
+    pig: Pig
+    pig_zombie: Pig zombie
+    pillager: Pillager
+    player: Player
+    polar_bear: Polar bear
+    primed_tnt: Primed tnt
+    pufferfish: Pufferfish
+    rabbit: Rabbit
+    ravager: Ravager
+    salmon: Salmon
+    sheep: Sheep
+    shulker: Shulker
+    shulker_bullet: Shulker bullet
+    silverfish: Silverfish
+    skeleton: Skeleton
+    skeleton_horse: Skeleton horse
+    slime: Slime
+    small_fireball: Small fireball
+    snowball: Snowball
+    snowman: Snowman
+    spectral_arrow: Spectral arrow
+    spider: Spider
+    splash_potion: Splash potion
+    squid: Squid
+    stray: Stray
+    thrown_exp_bottle: Thrown exp bottle
+    trader_llama: Trader llama
+    trident: Trident
+    tropical_fish: Tropical fish
+    turtle: Turtle
+    unknown: Unknown
+    vex: Vex
+    villager: Villager
+    vindicator: Vindicator
+    wandering_trader: Wandering trader
+    witch: Witch
+    wither: Wither
+    wither_skeleton: Wither skeleton
+    wither_skull: Wither skull
+    wolf: Wolf
+    zombie: Zombie
+    zombie_horse: Zombie horse
+    zombie_villager: Zombie villager
+  EnchantAliases:
+    protection_fire:
+    - FireProtection
+    damage_all:
+    - Sharpness
+    arrow_fire:
+    - Flame
+    water_worker:
+    - AquaAffinity
+    arrow_knockback:
+    - Punch
+    loyalty:
+    - LOYALTY
+    depth_strider:
+    - DepthStrider
+    vanishing_curse:
+    - VanishingCurse
+    durability:
+    - Unbreaking
+    knockback:
+    - Knockback
+    luck:
+    - Luck
+    binding_curse:
+    - BindingCurse
+    loot_bonus_blocks:
+    - Fortune
+    protection_environmental:
+    - Protection
+    dig_speed:
+    - Efficiency
+    mending:
+    - Mending
+    frost_walker:
+    - FrostWalker
+    lure:
+    - Lure
+    loot_bonus_mobs:
+    - Looting
+    piercing:
+    - PIERCING
+    protection_explosions:
+    - BlastProtection
+    damage_undead:
+    - Smite
+    multishot:
+    - MULTISHOT
+    fire_aspect:
+    - FireAspect
+    channeling:
+    - CHANNELING
+    sweeping_edge:
+    - SweepingEdge
+    thorns:
+    - Thorns
+    damage_arthropods:
+    - BaneOfArthropods
+    oxygen:
+    - Respiration
+    riptide:
+    - RIPTIDE
+    silk_touch:
+    - SilkTouch
+    quick_charge:
+    - QUICKCHARGE
+    protection_projectile:
+    - ProjectileProtection
+    impaling:
+    - IMPALING
+    protection_fall:
+    - FallProtection
+    - FeatherFalling
+    arrow_damage:
+    - Power
+    arrow_infinite:
+    - Infinity
+  PotionEffectAliases:
+    speed:
+    - Speed
+    slow:
+    - Slow
+    fast_digging:
+    - Fast digging
+    slow_digging:
+    - Slow digging
+    increase_damage:
+    - Increase damage
+    heal:
+    - Heal
+    harm:
+    - Harm
+    jump:
+    - Jump
+    confusion:
+    - Confusion
+    regeneration:
+    - Regeneration
+    damage_resistance:
+    - Damage resistance
+    fire_resistance:
+    - Fire resistance
+    water_breathing:
+    - Water breathing
+    invisibility:
+    - Invisibility
+    blindness:
+    - Blindness
+    night_vision:
+    - Night vision
+    hunger:
+    - Hunger
+    weakness:
+    - Weakness
+    poison:
+    - Poison
+    wither:
+    - Wither
+    health_boost:
+    - Health boost
+    absorption:
+    - Absorption
+    saturation:
+    - Saturation
+    glowing:
+    - Glowing
+    levitation:
+    - Levitation
+    luck:
+    - Luck
+    unluck:
+    - Unluck
+    slow_falling:
+    - Slow falling
+    conduit_power:
+    - Conduit power
+    dolphins_grace:
+    - Dolphins grace
+    bad_omen:
+    - Bad omen
+    hero_of_the_village:
+    - Hero of the village
+direction:
+  n: Šiaurė
+  ne: Šiaurės Rytai
+  e: Rytai
+  se: Pietryčiai
+  s: Pietūs
+  sw: Pietvakariai
+  w: Vakarai
+  nw: Šiaurės Vakarai
+modify:
+  middlemouse: '&aPaspauskite vidurinį pelės mygtuką, kad redaguoti'
+  newItem: '&7Įdėti naują daiktą čia'
+  newLine: '&b<NewLine>'
+  newLineHover: '&7Pridėti naują eilutę'
+  newPage: '&b<NewPage>'
+  newPageHover: '&7Sukurti naują puslapį'
+  removePage: '&c<RemovePage>'
+  removePageHover: '&cPanaikinti puslapį'
+  deleteSymbol: ' &c[X]'
+  deleteSymbolHover: '&cIštrinti &e[text]'
+  extraEditSymbol: ' &b!'
+  addSymbol: '&a[+]'
+  addSymbolHover: '&7Pridėti naują'
+  acceptSymbol: ' &a&l[✔]'
+  acceptSymbolHover: '&aSutikti'
+  denySymbol: ' &4&l[X]'
+  denySymbolHover: '&cAtmesti'
+  enabledSymbol: '&a[+]'
+  disabledSymbol: '&c[-]'
+  enabled: '&aĮjungtas'
+  disabled: '&cIšjungtas'
+  running: '&aVeikia'
+  paused: '&cSustabdytas'
+  editSymbol: '&b✎'
+  editSymbolHover: '&7Redaguoti &b[text]'
+  listUpSymbol: '&b⇑'
+  listUpSymbolHover: '&7Aukštyn'
+  listDownSymbol: '&b⇓'
+  listDownSymbolHover: '&7Žemyn'
+  ChangeHover: '&7Spauskite, kad pakeistumėte'
+  commandTitle: ' &7--- &b[name] &7---'
+  commandList: ' &b[command]  '
+  emptyLine: '&7[Empty line]'
+  commandEdit: '&7Keisti sąrašą'
+  lineAddInfo: '&7Įvesti naują eilutę. Rašykite &bcancel &7, kad baigtumėte'
+  commandAddInfo: '&7Įveskite naują komandą. Rašykite &bcancel &7, kad baigtumėte'
+  commandAddInformationHover: "&b[playerName] can be used to get player name \n&eTo\
+    \ include delay in commands: \n&edelay! 5 \n&eSpecialized commands are supported.\
+    \ More info at \n&ehttps://www.zrips.net/cmi/commands/specialized/"
+  commandEditInfo: '&7Spauskite, kad įklijuotumėte seną tekstą. Rašykite &bcancel
+    &7, kad baigtumėte veiksmą. Rašykite &bremove &7, kad ištrintumėte eilutę'
+  commandEditInfoHover: '&7Spauskite, kad įklijuotumėte seną tekstą'
+warp:
+  list: '&7[pos]. &b[warpName] &f- &7[worldName] ([x]:[y]:[z])'
+teleportation:
+  relocation: '!actionbar!&4Jūsų teleportacijos vieta buvo užstatyta. Jus buvote nuteleportuotas
+    į saugią lokaciją.'
+afk:
+  'on': '&4AFK'
+  'off': '&aŽaidžia'
+  left: '&b[playerDisplayName] &7grįžo iš AFK'
+  MayNotRespond: '&cŽaidėjas, kuriam rašote yra &7AFK&c, todėl jis gali neatsakyti.'
+  MayNotRespondStaff: '&6✦ &4Administracijos narys yra &7AFK&4, todėl jis gali neatsakyti.
+    Prašome susisiekti per discord.'
+BossBar:
+  hpBar: '&f[victim] &b[max]&f/&b[current] &f(&c-[damage]&f)'
+Potion:
+  Effects: '&8Potion efektai'
+  List: '&b[PotionName] [PotionAmplifier] &7Duration: &b[LeftDuration] &7sec'
+  NoPotions: '&cNėra'
+Information:
+  Title: '&8Žaidėjų informacija'
+  Health: '&7Gyvybės: &b[Health]/[maxHealth]'
+  Hunger: '&7Alkis: &b[Hunger]'
+  Saturation: '&7Sotumas: &b[Saturation]'
+  Exp: '&7Exp: &b[Exp]'
+  NotEnoughExp: '&7Trūksta exp: &b[Exp]'
+  NotEnoughExpNeed: '&7Trūksta exp: &b[Exp]/[need]'
+  tooMuchExp: '&7Per daug exp: &b[Exp]/[need]'
+  NotEnoughVotes: '&7Nepakankamai balsų: &b[votes]'
+  TooMuchVotes: '&7Per daug balsų: &b[votes]'
+  BadGameMode: '&cJus negalite to daryti esamam režime'
+  BadArea: '&cJus negalite įvykdyti šio veiksmo šioje teritorijoje'
+  GameMode: '&7GameMode: &b[GameMode]'
+  GodMode: '&7GodMode: &b[GodMode]'
+  Flying: '&7Skraido: &b[Flying]'
+  CanFly: '&7Gali skraidyt: &b[CanFly]'
+  Uuid: '&b[uuid]'
+  ip: '&7Ip adresas: &b[address]'
+  FirstConnection: '&7Pirmą kartą prisijungė: &b[time]'
+  Lastseen: '&7Paskutinį kartą prisijungė: &b[time]'
+  Onlinesince: '&7Prisijungęs nuo: &b[time]'
+  Money: '&7Balansas: &b[money]'
+  Group: '&7Grupė: &b[group]'
+econ:
+  disabled: '&cNeįmanoma naudoti šios komandos, kai ekonomikos palaikymas yra išjungtas'
+  noMoney: '&cJus neturite pinigų'
+  notEnoughMoney: '&cJus neturite pakankamai pinigų. Reikia (&7[amount]&c)'
+  tooMuchMoney: '&cJus turite per daug pinigų'
+Elytra:
+  Speed: '&7Greitis: &b[speed]&7km/h'
+  SpeedBoost: ' &a+ '
+  SpeedSuperBoost: ' &2+ '
+  CanUse: '&cNegalima užsidėti Elytra neturint tam jokių teisių!'
+  Charging: '&7Kraunama &f[percentage]&7%'
+Selection:
+  SelectPoints: '&cPasirinkite 2 taškus su žymėjimo įrankiu! Tiksliau: &7[tool]'
+  PrimaryPoint: '&7Pasirinktas &bpirmas &7žymėjimo taškas [point]'
+  SecondaryPoint: '&7Pasirinktas &bantras &7žymėjimo taškas [point]'
+  CoordsTop: '&7X:&b[x] &7Y:&b[y] &7Z:&b[z]'
+  CoordsBottom: '&7X:&b[x] &7Y:&b[y] &7Z:&b[z]'
+NetherPortal:
+  ToHigh: '&cPortalas per didelis, didžiausias aukštis &7[max]&c!'
+  ToWide: '&cPortalas per platus, didžiausias plotis &7[max]&c!'
+  Disabled: '&cPortalų kūrimas išjungtas!'
+Location:
+  Title: '&8Žaidėjo lokacija'
+  Killer: '&7Žudikas: &b[killer]'
+  OneLiner: '&7Lokacija: &b[location]'
+  DeathReason: '&7Mirties priežastis: &b[reason]'
+  World: '&7Pasaulis: &b[world]'
+  X: '&7X: &b[x]'
+  Y: '&7Y: &b[y]'
+  Z: '&7Z: &b[z]'
+  Pitch: '&7Duobė: &b[pitch]'
+  Yaw: '&7Yaw: &b[yaw]'
+Ender:
+  Title: '&7Atidaryti ender skrynią'
+Chat:
+  localPrefix: ''
+  shoutPrefix: '&c[S]&r'
+  shoutDeduction: '!actionbar!&cBuvo atimta &7[amount] &cuž pranešimą'
+  # Use \n to add new line
+  publicHover: '&7Išsiuntimo laikas: &b%server_time_hh:mm:ss%'
+  privateHover: '&7Išsiuntimo laikas: &b%server_time_hh:mm:ss%'
+  staffHover: '&7Išsiuntimo laikas: &b%server_time_hh:mm:ss%'
+  helpopHover: '&7Išsiuntimo laikas: &b%server_time_hh:mm:ss%'
+  link: '&l&4[&7LINK&4]'
+  item: '&7[%cmi_iteminhand_displayname%[amount]&7]'
+  itemAmount: ' x[amount]'
+  itemEmpty: '&7[Mighty fist]'
+command:
+  help:
+    output:
+      usage: '&7Naudojimas: &b%usage%'
+      cmdInfoFormat: '[command] &f- &e[description]'
+      cmdFormat: '&b/[command]&7[arguments]'
+      helpPageDescription: '&5* [description]'
+      explanation: '&5 * [explanation]'
+      title: '&7------ ======= &5Pagalba&7 &7======= ------'
+  nocmd:
+    help:
+      info: '&7Parodyti visas egzistuojanas komandas'
+      args: ''
+  actionbarmsg:
+    help:
+      info: '&7Išsiųsti action bar žinutę žaidėjui'
+      args: '[Vardas/all] [žinutė]'
+    info:
+      message: '&f[messsage]'
+  afk:
+    help:
+      info: '&7Įjungti/išjungti afk režimą. Galima pateikti priežastį'
+      args: (-p:Vardas) (priežastis)
+  afkcheck:
+    help:
+      info: '&7Tikrinti žaidėjo AFK statusą'
+      args: '[Vardas]'
+    info:
+      feedback: '&b[playerDisplayName]&7: &7[status]'
+      feedbackInactive: '&7Neaktyvus kaip &b[time]'
+      feedbackReason: '&7[reason]'
+  air:
+    help:
+      info: '&7Nustatyti žaidėjo deguonį'
+      args: '[Vardas] [skaičius]'
+    info:
+      feedback: '&7Jus nustatėte &b[amount]&7 deguonį žaidėjui &b[playerName]&7 (&b[offon]&7).'
+      targetFeedback: '&7Jūsų deguonis buvo nustatyta į &b[amount]&7 žaidėjo &b[senderDisplayName]&7.'
+      current: '&7Žaidėjo &b[playerDisplayName] &7deguonis: &b[amount]'
+  alert:
+    help:
+      info: '&7Pranešti administratoriams apie kiekvieną žaidėjo prisijungimą'
+      args: '[Vardas] (priežastis)'
+      explanation:
+      - '&ePermissions:'
+      - '&6command.alert.info.inform &e- norėdami pamatyti įspėjimus apie žaidėjo
+        prisijungimą'
+    info:
+      inform:
+      - '&c!Alert!******** &7[name] &4prisijungė į serverį! &c*******!Alert!'
+      reason: '&cPriežastis: &7[reason]'
+      removed: '&7[playerDisplayName] &cištrintas iš sąrašo'
+      added: '&7Įspėjimo žinutę išsiųs visiems administratoriams, kai &b[playerDisplayName]
+        &7prisijungs į serverį per 24 val.'
+      online: '&b[playerDisplayName] &7jau yra prisijungęs'
+  aliaseditor:
+    help:
+      info: '&7Alias redagavimas'
+      args: (new) (alias-cmd)
+    info:
+      ListNumber: '&e[number].'
+      aliasName: ' &6[alias]   '
+      commandList: ' &e/[command]  '
+      commandListDelay: ' &6[command]  '
+      permReq: '&2Reikalingas išskirtinis permission/leidimas: &6[state]'
+      permReqExplanation: '&7Reikės &6cmi.customalias.[alias] &7jog galėtų juo naudotis.'
+      newAliasInfo: '&eĮveskite naują alias komandos pavadinimą ir paspauskite enter'
+      addInfo: '&eĮveskite naują komandą. Naudokite &6cancel &enorėdami atšaukti'
+      addInformationHover: "&eVisuotiniai kintamieji, palaikomi kaip siuntėjo kategorija\
+        \ \n&edelay! 5 &6įtraukti komandų vėlavimą \n&e$1 &6paims pateiktą kintamą\
+        jį pagal naują komandą ir įsikurs toje vietoje \n&e$1- &6imasi visų kintamų\
+        jų nuo šio taško ir įterpiamas į originalias komandas \n&e? &6daro jį galiojanč\
+        iu kai naudojamas bet kuris paskutinis kintamasis. Dėl pagalbos puslapio naudojimo\n\
+        &efromConsole! atliks komanda iš pulto/konsolės"
+      editInfo: '&eSpustelėkite, kad įklijuotumėte seną tekstą. Tipas &6cancel &eatšaukti
+        veiksmą. Rašykite &6remove &enorėdami panaikinti šią eilutę'
+  armorstand:
+    help:
+      info: '&eAtidaryti šarvų stendo redaktorių'
+      args: (last/near)
+    info:
+      cantClick: '&cNegalite to padaryti. Kažkas jau redaguoja šį šarvų stendą'
+      tooFar: '&cŠarvų stovas yra per toli'
+      coordX: '&cX'
+      coordY: '&2Y'
+      coordZ: '&eZ'
+      body: '&7Kūno sukimasis: &f[amount]'
+      head: '&7Galva [coord]&7: &f[amount]'
+      torso: '&7Liemens [coord]&7: &f[amount]'
+      leftArm: '&7Kairė ranka [coord]&7: &f[amount]'
+      rightArm: '&7Dešnė ranka [coord]&7: &f[amount]'
+      leftLeg: '&7Kairė koja [coord]&7: &f[amount]'
+      rightLeg: '&7Dešnė koja [coord]&7: &f[amount]'
+      pos: '&7Pozicija [coord]&7: &f[amount]'
+      plate: '&7Plokštė'
+      size: '&7Mažas'
+      visible: '&7Matomas'
+      arms: '&7Matomos rankos'
+      gravity: '&7Gravitacija'
+      glow: '&7Švytintis'
+      invulnerable: '&7Neliečiamas'
+      name: '&7Matomas vardas'
+      interactable: '&7Interaktyvus'
+      explanation: '&8Kairysis arba dešinysis pelės mygtukas sureguliuoja vertę'
+      explanation2: '&8Laikykite SHIFT, kad padarytumėte 10x greičiau'
+      disableGravity: '&eIšjunkite gravitaciją, jei norite pakeisti šią vertę'
+  attachcommand:
+    help:
+      info: '&ePrideda komandą prie daikto'
+      args: '[command/-clear]'
+      explanation:
+      - Atskirkite komandas su ;;
+      - Galite apibrėžti paleisti komandą kairiuoju arba dešiniuoju pelės mygtuko
+        paspaudimu atskirai naudodami
+      - '!left! atlikti komandą kairiuoju pelės mygtuko paspaudimu'
+      - '!right! Norėdami atlikti komandą dešiniuoju pelės mygtuku spustelėkite'
+      - '!limiteduse:[amount]! nusako, kiek kartų galite naudoti šį elementą'
+      - '!cc! vykdo komandą iš pulto, reikalauja cmi.command.attachcommand.cc leidimo'
+      - '!cooldownn:[amount]! prideda cooldowna ant daikto naudojimo.'
+      - '[interactedPlayer] įterpia žaidėjo, su kuriuo bendravote, pavadinimą, laikydami
+        elementą'
+      - Visuotiniai kintamieji, veikiantys kartu su [itemUses]
+    info:
+      list: ' &e[id]. &6[cmd]'
+      noCmds: ' &eAnt šio daikto nėra uždėta jokių komandų'
+      uses: '&eDaikto panaudojimas: &6[amount]'
+      usesLeft: '!actionbar!&eElementas naudojamas kairėje: &6[itemUses]'
+      cooldown: '&7Daiktas turi aktyvų cooldown. Palaukite [time]'
+  back:
+    help:
+      info: '&7Grįžti atgal į mirimo tašką'
+      args: (Vardas) (-s)
+    info:
+      noinfo: '&4Nėra išsaugotos lokacijos, kur sugrįžti!'
+      feedback: '&7Grįžo į išsaugotą lokaciją (&b[worldName]&7,&b[x]&7,&b[y]&7,&b[z]&7)!'
+  balance:
+    help:
+      info: '&7Patikrinti žaidėjo balansą'
+      args: (Vardas)
+    info:
+      balance: '&7Pinigų balansas: &b[money]'
+      balanceOther: '&b[playerDisplayName] &7pinigų balansas: &b[money]'
+  baltop:
+    help:
+      info: '&7Peržiūrėti TOP sąrašą pagal pinigus'
+      args: (Vardas)
+    info:
+      topLine: '&7&m-----&b TOP pagal balansą &7&m-----'
+      topLineHover: '&cServeryje iš viso pinigų: &7[total]'
+      list: '&7[place]. &b[playerDisplayName]: &7[balance]'
+      ownLine: '&2[place]. &2[playerDisplayName]: &2[balance]'
+      recalculating: '&2Balansų TOP yra perskaičiuojamas, prašome palaukti.'
+  ban:
+    help:
+      info: '&7Užblokuoti žaidėją'
+      args: '[Vardas] (priežastis) (-s)'
+      explanation:
+      - cmi.command.ban.bypass - to bypass ban
+    info:
+      message: '&cJus buvote užblokuotas!'
+      reason: '&cPriežastis: &7[reason]'
+      defaultReason: '&7Serverio taisyklių pažeidimas'
+      messageToAll: '&b[playerDisplayName] &7buvo užblokuotas administratoriaus &b[senderDisplayName]
+        &7už: &b[reason]'
+      banedSilent: '&7[&8Silent&7]&b[playerDisplayName] &7buvo užblokuotas administratoriaus
+        &b[senderDisplayName] &7už: &b[reason]'
+      noSelfBan: '&cJus negalite užblokuoti savęs'
+      cantBan: '&cJus negalite užblokuoti šio žaidėjo'
+  blockcycling:
+    help:
+      info: '&7Cycle block states'
+      args: ''
+  blockinfo:
+    help:
+      info: '&7Patikrinti bloko informaciją'
+      args: ''
+    info:
+      Info: ' &7Id: &b[id][data] &7Medžiaga: &b[name][ndata]'
+      RealName: ' &7Tikras pavadinimas: &b[name]'
+      TempLight: ' &7Temperatūra: &b[temp]&7, Light - block: &b[blevel]&7, sky: &b[slevel]&7,
+        overral: &b[level]'
+      Resistance: ' &7Resistance - Mining: &b[mining]&7, Explosion: &b[explosion]'
+      noteBlock: ' &7Tone: &b[tone] &7Octave: &b[octave] &7Instrument: &b[instrument]
+        &7Pitch: &b[pitch]'
+      BlockState: ' &7[state]: &f[value]'
+  blocknbt:
+    help:
+      info: '&7Parodyti bloko NBT informaciją'
+      args: ''
+    info:
+      noNbt: '&cBlock does not contain any NBT data'
+  book:
+    help:
+      info: '&7Redaguoti knygą'
+      args: '[Autorius/Pavadinimas/Atrakinti] [value]'
+    info:
+      noitem: '&cNelaikote jokio daikto rankose.'
+      notBook: '&cŠis daiktas nėra rašomoji knyga.'
+      wrongValue: '&cItem is not closed written book.'
+      inccorectAction: '&cIncorrect action name.'
+      authorChanged: '&bAutorius pakeistas į: &7[author]'
+      titleChanged: '&bPavadinimas pakeistas į: &7[title]'
+      unlocked: '&bKnyga buvo atrakinta'
+  bossbarmsg:
+    help:
+      info: '&7Išsiųsti boss bar žinutę žaidėjui'
+      args: '[playerName/all] (-sec:[seconds])(-t:[timeToKeepFor]) (-n:nameOfBar)
+        (-p:[maxValue/current]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
+        (-a:[ticks]) [message]'
+      explanation:
+      - PlaceHolderAPI palaikoma progresija ir teksto rašymas
+      - Laikas nustatomas reguliariai, pavyzdžiui, 1s yra viena sekundė, o 1m yra
+        viena minutė. Tai lems, kiek laiko žaidėjo juosta bus rodoma prieš automatiškai
+        paslepiant
+      - nameOfBar yra parinktis, o kai apibrėžiate tą pačią, tada dabartinė juosta
+        bus atnaujinta su nauja informacija
+      - 'spalvos gali būti: red, green, pink, purple, white, yellow'
+      - maksimalios ir dabartinės vertės lemia juostos užpildymą, PlaceHolderAPI kintamieji
+        gali būti naudojami dinaminiams atnaujinimams
+      - 'Pavyzdžiui:'
+      - /cmi bossbar Zrips BossBarTitle
+      - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:testbar
+        -c:red &2Juostos pavadinimas %server_online%/%server_max_players% &e%cmi_user_name%
+      - /cmi bossbarmsg all -p:+1 -n:testbar - bus pridėkitas vieną procentą prie
+        dabartinės progresijos juostos pagal pavadinimą
+      - /cmi bossbarmsg all -p:-1 -n:testbar - bus ištraukitas vieną procentą iš dabartinės
+        progresijos juostos pagal pavadinimą
+      - /cmi bossbarmsg all -s:10 -n:testbar - nustato BossBar stilių iki 10 segmentų
+        pagal juostos pavadinimą
+      - /cmi bossbarmsg all -sec:5 - skaičiuos 5 sekundes nuo 0 iki 5
+      - /cmi bossbarmsg all -sec:-5 - skaičiuos 5 sekundes nuo 5 iki 0
+      - "https://www.zrips.net/cmi/commands/bossbarmsg-handling/"
+  broadcast:
+    help:
+      info: '&7Išsiųsti svarbią žinutę žaidėjams'
+      args: (!) [message] (-w:[worldName,worldName])
+      explanation:
+      - Jei pranešimas prasideda! tada pasirodys švarius pranešimas
+      - Pasaulius galima apibrėžti taip, kad jie transliuotų pranešimus tik tuose
+        pasauliuose
+    info:
+      format: '&9☣ &f[message]'
+  burn:
+    help:
+      info: '&7Uždegti žaidėją'
+      args: (Vardas) (laikas) (-s)
+    info:
+      feedback: '&7Jus uždegėte žaidėją &b[playerDisplayName]&7 &b[time] &7(&b[offon]&7).'
+      targetfeedback: '&7Jus buvote padegtas administratoriaus &b[senderDisplayName]&7
+        &b[time]&7.'
+  charges:
+    help:
+      info: '&7Parodo likusią narvo įkrovą'
+      args: '[playerName] [add/set/take/clear/reset] (-f)'
+    info:
+      charges: '&e* Įkrovą: &6[current]&e/&6[max] [bypass]'
+      cd: '&e* CD: &6[cdtime] &eNext in: &6[time]'
+      bypass: '&6(Bypass)'
+      allUsed: '&eVisos įkrovos naudojamos! Dar artimiausias [time]'
+      noGroup: '&eNeturite priskirtos įkrovos grupės'
+      cantBreak: '&eNegalite pertraukti, kol nebūsite paskyrę įkrovos grupės'
+      minusCd: '&e Atimta &6[sec]&esec ant spawnerio įkrovos cooldownas'
+      add: '&ePridėta &6[amount] &eant spawnerio įkrovos žaidėjui &6[playerDisplayName]'
+      set: '&eNustatyta &6[amount] &eant spawnerio įkrovos žaidėjui &6[playerDisplayName]'
+      clear: '&ePanaikintos visos spawnerių įkrovos žaidėjui &6[playerDisplayName]'
+      reset: '&eAtkurti spawnerio įkrovimo grupę &6[playerDisplayName]'
+      take: '&ePaimta &6[amount] &espawnerio mokesčiai nuo &6[playerDisplayName]'
+  chat:
+    help:
+      info: '&7Susirašinėti su žaidėju per viešą pokalbį'
+      args: '[Vardas/off]'
+    info:
+      toggledOn: '&bPrivatus pokalbis su &7[playerDisplayName]&b buvo pradėtas. Dabar
+        jus galite rašyti viešai į chat, pokalbį tarp jūsų matys tik pašnekovas ir
+        jus.'
+      toggledOff: '&cIšjungtas viešas privatus pokalbis'
+      toggle: '&b[playerDisplayName] &7nori privačiai susirašinėti su jumis per viešą
+        pokalbį'
+  checkaccount:
+    help:
+      info: '&7 Ieškoti žaidėjo kitų paskyrų'
+      args: (playerName/ip)
+      explanation:
+      - 'Extra permission: cmi.command.checkaccount.showip'
+    info:
+      place: '&7[place]. &b'
+      ip: '&b[ip]&7: '
+      name: '&b[name]&7(&b[times]&7)'
+      nonIpList: '&7Paskyros: &b'
+      nonIpName: '&b[name]'
+      click: '&7Spauskite, kad patikrinti &b[name] &7paskyrą'
+      noData: '&cNėra jokių išsaugotų duomenų apie šį žaidėją'
+  checkban:
+    help:
+      info: '&7Patikrinti žaidėjo ban statusą'
+      args: (Vardas)
+    info:
+      list: '&b[place]&7. &b[playerDisplayName] &7[time]'
+      permanent: '&cAmžinai'
+      bannedUntil: '&7Laikas: &b[time]'
+      reason: '&7Priežastis: &b[reason]'
+      bannedBy: '&7Administratorius: &b[sourceDisplayName]'
+      bannedWhen: '&7Užblokavimo data: &b[date]'
+  checkcommand:
+    help:
+      info: '&7Ieškoti įmanomų komandų pagal raktažodį'
+      args: (raktažodis)
+    info:
+      list: '&7[place]. &b[command] &7[args]'
+      hover: '&b[desc]'
+      variableColor: '&f'
+  checkexp:
+    help:
+      info: '&7Pažiūrėti žaidėjo exp'
+      args: (Vardas)
+    info:
+      current: '&7Lygis: &b[currentLevel] &7Exp: &b[levelExp] &7Viso exp: &b[exp]'
+      need: '&7Trūksta xp iki kito lygio: &b[missingExp]'
+  checkperm:
+    help:
+      info: '&ePatikrinkite galimus leidimo mazgus'
+      args: (key word)
+    info:
+      list: '&e[place]. [permission]'
+      hover: '&e[desc]'
+      permissionColor: '&6'
+      cmdPermissionColor: '&2'
+      variableColor: '&f'
+      noPermissionFound: '&7Pagal šį raktinį žodį nerasta jokių leidimų.'
+  cheque:
+    help:
+      info: '&eKonvertuokite pinigus į čekį'
+      args: (playerName) [amount]
+    info:
+      transfered: '&ePerduota &6[amount] &eį jūsų sąskaitą. Dabartinis balansas: &6[balance]'
+      chequeName: '&eČekio vertė &6[amount]'
+      chequeLore:
+      - '&r&fSukūrė &7[senderDisplayName]'
+      - '&r&fDešnys klavišas, paimsite pinigus'
+      holdPaper: '&eLaikykite popierių rankoje'
+      cantUse: '&eNegalite naudoti šio popieriaus lapo. Toks čekis jau yra!'
+  clear:
+    help:
+      info: '&7Išvalyti žaidėjo inventorių'
+      args: (Vardas) (item(-amount)) (-s)
+      explanation:
+      - 'Galimi clearTypes: quickbar, inventory, partinventory, weapons, armorslots,
+        tools, armors, mainhand, offhand'
+      - Turėtų pradėti nuo + ženklas
+      - Galima naudoti kelis tipus
+      - cmi clear +armors - pašalins šarvų tipo daiktus
+      - cmi clear +armorslots - pašalins daiktus iš šarvų vietų
+    info:
+      feedback: '&7Jus išvalėte žaidėjo &b[playerDisplayName]&7 inventorių (&b[offon]&7).'
+      targetfeedback: '&7Jūsų inventorių išvalė &b[senderDisplayName]&7.'
+      confirm: '&7Spauskite, kad patvirtinti inventoriaus išvalymą. &cVisi daiktai
+        bus ištrinti!'
+  clearchat:
+    help:
+      info: '&7Išvalyti chat'
+      args: (self)
+      explanation:
+      - 'Permission:'
+      - ' &6cmi.command.clearchat.bypass &e- ignoruoti pokalbių valymą'
+    info:
+      information: '&7Pokalbis buvo išvalytas administratoriaus &b[senderDisplayName]'
+  clearender:
+    help:
+      info: '&7Išvalyti žaidėjo ender chest'
+      args: '[Vardas] (-s)'
+    info:
+      feedback: '&7Jus išvalėte žaidėjo &b[playerDisplayName]&7 ender chest (&b[offon]&e).'
+      targetfeedback: '&7Jūsų ender chest buvo išvalytas administratoriaus &b[senderDisplayName]&7.'
+  colorlimits:
+    help:
+      info: '&7Parodyti visas įmanomas spalvas'
+      args: (Vardas)
+    info:
+      publicmessage: ' &7Public: '
+      privatemessage: ' &7Private: '
+      nickname: ' &7Slapyvardis: '
+      signs: ' &7Signs: '
+      books: ' &7Books: '
+      me: ' &7Me: '
+      None: '&c-'
+  colors:
+    help:
+      info: '&7Parodyti visas įmanomas spalvas'
+      args: (Vardas)
+    info:
+      List:
+      - '&7***************************************'
+      - '     &0&%0  &1&%1  &2&%2  &3&%3  &4&%4  &5&%5  &6&%6  &7&%7'
+      - '     &8&%8  &9&%9  &a&%a  &b&%b  &c&%c  &d&%d  &e&%e  &f&%f'
+      - '       &%k - &kMagic&r      &%l - &lBold'
+      - '       &%m - &mStrike&r     &%n - &nUline'
+      - '       &%o - &oItalic&r      &%r - &rReset'
+      - '&7***************************************'
+  commandspy:
+    help:
+      info: '&7Įjungti/išjungti komandų matymą'
+      args: (Vardas) (-s)
+      explanation:
+      - cmi.command.commandspy.hide - Slėpia vykdomų komandų matymą.
+    info:
+      command: '&cC&7Spy&8[&b[senderDisplayName]&8]&7: &f[command]'
+      toggled: '&7Komandų matymas buvo nustatytas į &b[state] &7būseną'
+  compass:
+    help:
+      info: '&7Nustatyti žaidėjo kompaso tašką į jūsų lokaciją'
+      args: (targetName) (sourceName) (x) (z) (worldname) (reset) (-s)
+      explanation:
+      - 'Example: /cmi compass Zhax'
+      - /cmi compass Zhax Zrips
+      - /cmi compass Zhax LT_Craft 0 0 -s
+      - /cmi compass reset Zhax
+    info:
+      wrongworld: '&cJūsų nurodytas pasaulis neegzistuoja!'
+      feedback: '&7Jus nustatėte žaidėjo &b[playerDisplayName] &7kompaso rodyklę į
+        &b[sourceDisplayName] &7lokaciją.'
+      feedbackCustom: '&7Jus nustatėte žaidėjo &b[playerDisplayName] &7kompaso rodyklę
+        į &b[x] [z] [world] &7lokaciją.'
+      targetFeedback: '&7Jūsų kompaso taškas buvo nustatytas į &b[sourceDisplayName]
+        &7lokaciją administratoriaus &b[senderName]&7.'
+      targetFeedbackCustom: '&7Jūsų kompaso taškas buvo nustatytas į &b[x] [z] [world]
+        &7koordinates administratoriaus &b[sourceDisplayName]&7.'
+      reset: '&7Kompaso taškas buvo atstatytas'
+  condense:
+    help:
+      info: '&7Paversti daiktus į blokus'
+      args: (itemName)
+    info:
+      converted: '&7Konvertuota &b[items] &7daiktų į &b[blocks] &7blokų'
+      nothing: '&cJūsų inventoriuje nėra to, ką būtų galima iškeisti.'
+  counter:
+    help:
+      info: '&ePradeda skaičiuoti aplinkinius žaidėjus'
+      args: '[join/leave/start] (t:time) (r:[range/-1]) (c:[world:x:y:z]) (msg:custom_message)
+        (-f)'
+      explanation:
+      - '&eLeidimai:'
+      - '&6cmi.command.counter.force &e- priversti skaitiklį visiems diapazonui '
+      - '&6cmi.command.counter.time &e- apibrėžti pasirinktinį laiko intervalą '
+      - '&6cmi.command.counter.range &e- apibrėžti pasirinktinį diapazoną'
+      - '&6cmi.command.counter.msg &e- apibrėžti pasirinktinį pranešimą'
+      - '&6cmi.command.counter.autojoin &e- automatiškai prisijungia prie skaitiklio'
+      - -f privers priešintis visiems žaidėjams
+      - 'Pavyzdžiui: /cmi counter start r:30 t:7 msg:&eCustom_message -f'
+    info:
+      join: '&ePrisijungė prie skaitiklio'
+      leave: '&eAtsijungimų skaitiklis'
+      go: '&eParuoštas naudoti!'
+      tooFast: '&cNegalima pakartoti komandos taip greitai, palaukite: &6[sec]&esec'
+      noOne: '&cNiekas nemato šio skaitiklio!'
+  cplaytime:
+    help:
+      info: '&7Detalus žaidėjo pražaistas laikas'
+      args: (Vardas)
+    info:
+      moreDetails: '&bSpauskite, kad gautumėte daugiau informacijos'
+      title: '&b[playerDisplayName] &7pražaistas laikas'
+      date: '&b[date]'
+      time: '&b[hour]:00&f-&b[nextHour]:00'
+      thishour: '&7Šią valandą'
+      hourback: '&7Praeitą valandą'
+      today: '&7Šiandien'
+      yesterday: '&7Vakar'
+      thisweek: '&7Šią savaitę'
+      week: '&7Apie 7 dienas'
+      thismonth: '&7Šį mėnesį'
+      month: '&7Apie 30 dienų'
+      thisyear: '&7Šiais metais'
+      year: '&7Apie 365 dienų'
+      total: '&7Viso'
+  ctellraw:
+    help:
+      info: '&7Išsiųsti tellraw tipo žinutę'
+      args: '[Vardas/all] [formattedMessage]'
+      explanation:
+      - Naudojimas yra toks pat, kaip parodytas http://www.zrips.net/cmi/custom-text/
+        dar žinomas kaip teksto komanda
+  ctext:
+    help:
+      info: '&7Parodo pasirinktinį tekstą'
+      args: '[cText] (playerName/all) (sourcePlayer)'
+    info:
+      list: '&7Pasirinktinis tekstas: &b'
+      check: '&7Patikrinti: &b[text]'
+  cuff:
+    help:
+      info: '&7Sustabdyti žaidėjo veiksmus'
+      args: '[Vardas] (true/false)'
+    info:
+      noChat: '&cVisi jūsų veiksmai yra uždrausti. Jus negalite rašyti.'
+      noCommand: '&cVisos jūsų komandos yra uždraustos. &7Leidžiamos komandos: &c/msg,
+        /r, /tell'
+      cuffed: '&b[playerDisplayName] &7surakintas'
+      unCuffed: '&b[playerDisplayName] &7atrakintas'
+      free: '&7Dabar jus esate laisvas'
+      gotCuffed: '&7Jus buvote surakintas'
+      cuffedInfo: '&eJūs esate cuffed'
+      cantCuff: '&cJus negalite surakinti šio žaidėjo!'
+  customrecipe:
+    help:
+      info: '&7Tvarko pasirinktinius daiktų receptus'
+      args: ''
+    info:
+      removed: '&7Receptas panaikintas: [id]. Dėl pilno efekto būtina serverio perkrova.'
+      noRecipe: '&7Pagal šį ID nėra tinkinto recepto'
+      edit: '&8Redaguoti receptą (&7[type]&8)'
+      addNew: '&7Pridėti naują receptą (&b[type]&7)'
+      shapelessRecipe: '&bPadarykite naują beformį receptą'
+      shapedRecipe: '&7Padarykite naujos formos receptą'
+      furnaceRecipe: '&aSudarykite naują krosnies receptą'
+      mainTitle: '&7Individualūs receptai (&b[current]&7/&b[total]&7)'
+  dback:
+    help:
+      info: '&7Grįžti į mirties tašką'
+      args: (Vardas) (-s)
+    info:
+      noinfo: '&4Nėra išsaugotas mirties taškas, neturite kur teleportuotis!'
+      feedback: '&bGrįžta į išsaugotą lokaciją ([world],[x],[y],[z])!'
+  disableenchant:
+    help:
+      info: '&7Išjungti enchantment'
+      args: (enchant/id) (disable/enable)
+    info:
+      title: Enchant išjungimas
+      feedback: '&b[enchantName] &7buvo [state]'
+  dispose:
+    help:
+      info: '&7Išmesti nereikalingus daiktus'
+      args: (Vardas)
+    info:
+      title: '&cAtsikratykite daiktų, kurie jums yra nereikalingi'
+  distance:
+    help:
+      info: '&ePatikrinkite atstumą tarp 2 taškų'
+      args: (playerName) (playerName)
+    info:
+      feedback: '&7Atstumas: &e[dist] &7x:&e[x] &7y:&e[y] &7z:&e[z] &7Kryptis:&e[dir]'
+  donate:
+    help:
+      info: '&7Paaukoti daiktą, kurį laikote rankose'
+      args: '[Vardas] (skaičius)'
+    info:
+      donated: '&7Paaukojote &b[type]&7X&b[amount] &7daiktus žaidėjui &b[playerDisplayName]'
+      got: '&7Gavote &b[type]&7X&b[amount] &7aukojimą iš &b[playerDisplayName]'
+      sentOffer: '&7Nusiuntė paramą &6[playerDisplayName]&e. Laukiama, kol žaidėjas
+        jį priims.'
+      gotOffer: '&eGavote &6[type]&eX&6[amount] &eparamą iš &6[sourceDisplayName]&e.
+        Spustelkite norint priimti.'
+      doesnthave: '&cŽaidėjas nebeturi šio daikto!'
+  dsign:
+    help:
+      info: '&7Tvarkyti dinaminius sign'
+      args: (new)
+      explanation:
+      - Pažvelkite į ženklą ir rašykite /cmi dsign new
+    info:
+      howTo: '&cTai nėra dinamiškas ženklas, sukurti naują dizainą galite naudodami
+        &e/cmi dsign new'
+      gui: '&7---- &f<Open gui> &7----'
+      guiHover: '&7Atidarykite dinaminių ženklų nustatymus GUI'
+      individual: '&7Individualus: [state]'
+      individualLore:
+      - '&2Tiesa &7- Rezultato ženklas bus skirtingas kiekvienam žaidėjui'
+      - '&2Tiesa &7- Bus atnaujintas žaidėjui placeholders'
+      - '&2Ne tiesa &7- Dėl to ženklas bus fiziškai atnaujintas'
+      - '&2Ne tiesa &7- Yra efektyvesnis, bet tuo pačiu metu labiau ribotas'
+      interval: '&7Atnaujinkite kiekvieną &6[second] &7sekundės'
+      intervalLore:
+      - '&7Kaip dažnai, per kelias sekundes, informacija apie ženklą atnaujinama'
+      - '&7Tai taip pat nusako linijos slinkties greitį'
+      range: '&7Aktyvinimo diapazonas: &6[blocks]'
+      rangeLore:
+      - '&7Apibrėžia plotą aplink ženklą, kad būtų suaktyvinti atnaujinimai'
+  dye:
+    help:
+      info: '&7Nudažyti odinius šarvus'
+      args: (Vardas) (red,green,blue/hexCode/colorName/random/clear/rainbow/day/biome/health)
+        (-s)
+    info:
+      color: '&7Dabartinė spalva - &c[red],&2[green],&9[blue] &eHex:&6#[hex]'
+      custom: '&7Enabled custom color mode: &b[mode]'
+      bound: '&eSoulBound to: &6'
+      boundName: '[playerName]'
+  editctext:
+    help:
+      info: '&7Custom text editor'
+      args: ''
+    info:
+      noText: '&cNegalime rasti išskirtinio teksto, šiuo pavadinimu'
+      editInfo: '&7Spustelėkite, kad įklijuotumėte seną tekstą. Rašykite &bcancel
+        &7norėdami atšaukti užklausą. Naudokite &bremove &7norėdami panaikinti šią
+        eilutę'
+      addInfo: '&7Įveskite naujos eilutės tekstą. Naudokite &bcancel &7norėdami atšaukti'
+      addInformationHover: "&7Visuotiniai kintamieji, palaikomi kaip siuntėjo kategorija\
+        \ \n&eNorėdami įtraukti pranešimus, kuriuos galima spustelėti: \n&7<T>&rTekstas&7</T><H>&rUž\
+        veskite pelės žymeklį ant teksto&7</H><C>&rkomanda&7</C><SC>&rSiūloma tekstas&7</SC>\
+        \ \n&b<T> &7ir &b</T> &7reikalauja, kita yra neprivaloma \n&7Naudokite \\\
+        u005Cn utraukti liniją \n&7Norėdami naudoti daugiau nei vieną JSON praneš\
+        imą <Next> \n&b<CC> &7vieną kartą atlieka konsolės komandą \n&b<CCI> &7vykdo\
+        \ konsolių komandas kiekvieną kartą, kai žaidėjas spustelėja tekstą \n&b<URL>\
+        \ &7leidžia pridėti URL nukreipti žaidėją į interneto puslapį"
+      newInfo: '&7Įveskite naujo pasirinktinio teksto pavadinimą. Naudokite &bcancel
+        &7norėdami atšaukti'
+      deleteInfo: '&7Rašykite &bconfirm &7norėdami patvirtinti panaikinimą arba naudokite
+        &bcancel &7norėdami atšaukti šią užklausą'
+      deleted: '&7Išskirtinis tekstas (&b[ctext]&7) sėkmingai panaikintas'
+      createdNew: '&7Išskirtinis tekstas (&b[ctext]&7) sėkmingai sukurtas'
+      createNew: '&a + '
+      createNewHover: '&7Pridėti naują'
+      autoPage: '&7Automatinis puslapis: &b[state]'
+      autoAlias: '&7Automatinė užklausa/alias: &b[state]'
+      permReq: '&7Reikalauja leidimo, permissions: &b[state]'
+      list: '&7Išskirtinis tekstas [-ai]: &b'
+  editlocale:
+    help:
+      info: '&7Redaguokite kalbos/lokalės failą'
+      args: (keyword(-s))
+    info:
+      found: '&7********* &bRasta: [found] &7*********'
+  editplaytime:
+    help:
+      info: '&7Redaguoti žaidėjo pražaistą laiką.'
+      args: (žaidėjoSlapyvardis) [add/take/set] [suma] (-s)
+    info:
+      cantSet: '&cNepavyko pakeisti žaidimo laiko'
+      set: '&7Pakeiskite naudodami &b[seną] &7to &b[naują]'
+  editwarnings:
+    help:
+      info: '&7Patikrinkite žaidėjų įspėjimus'
+      args: (playerName/clearall) (clear)
+    info:
+      list: '&7[place]. &b[time] &7įspėjo &b[warnedBy] &7už: &b[warnedFor]'
+      hover: '&7Galiojimas baigiasi: &b[time]'
+      cleared: '&7Visi žaidėjo įspėjimai buvo pašalinti'
+      allCleared: '&7Visi visų žaidėjų įspėjimai buvo pašalinti'
+  editwarp:
+    help:
+      info: '&7Redaguoti warps'
+      args: (warpName)
+    info:
+      placeItem: '&2Padėkite daiktą, kad nustatytumėte pasirinktinę ikoną'
+      placeOffItem: '&2Padėkite daiktą, kad nustatytumėte pasirinktinio išjungimo
+        ikoną'
+      autoLore: '&2Auto lore generavimas: [state]'
+      permission: '&2Reikia naudoti leidimą: [state]'
+      reqPermission: '&2Rodyti be leidimo: [state]'
+      location: '&2Nustatyti naują vietą'
+      slot: '&2Lizdas: &6[slot]'
+      page: '&2Puslapis: &6[page]'
+      overllaps: '&2Sutampa su:'
+      notSet: '&eNenustatyta'
+  effect:
+    help:
+      info: '&7Prideda potion efektą žaidėjui. naudokite clear, kad pašalintumėte
+        visus efektus'
+      args: '[playername/all] [effect/clear] (duration) (multiplier) (-s) (-visual)'
+      explanation:
+      - -visual pridės matomus burbulus ir piktogramą viršutiniame dešiniajame kampe
+      - 'Pavyzdžiui:'
+      - /cmi effect zrips nightvision 60 1 - will give 60 sec night vision for Zrips
+      - /cmi effect zrips nightvision +10 - will add 10 sec to current night vision
+        time
+      - /cmi effect zrips nightvision -10 - will take out 10 sec from current night
+        vision time
+      - /cmi effect all health_boost 60 1 - will boost hp by 1 for everyone online
+    info:
+      feedback: '&7Eleksyro efektas &b[effect] &7pridėtas žaidėjui &b[playerDisplayName]&7
+        laikui &b[sec]sek&7 galingumas &b[power] &7(&b[offon]&7).'
+      cleared: '&7Eleksyrų efektai žaidėjui &b[playerDisplayName]&7 buvo panaikinti
+        (&b[offon]&7).'
+  enchant:
+    help:
+      info: '&7Užkerėti daiktus'
+      args: (playerName) [enchant] [level] (-o) (-onlyvalid) (-keeponlyvalid) (-inform)
+        (-s) (-i:[itemName(:data)])
+      explanation:
+      - -o paims daiktą iš išorinės [rankos]
+    info:
+      feedback: '&eJūs užkerėjote elementą su &3[enchant]:[level]&e užkerėjimas žaidėjui
+        &3[playerDisplayName]&e (&3[offon]&e).'
+      removed: '&eūs pašalinote &3[enchant] &eužkerėtas daiktas žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      cleared: '&ePanaikinti &3VISUS &eužkerėjimus žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNeturėdamas rankoje jokio daikto.'
+      invalidEnchant: '&cJūs neturite leidimo užkerėti daiktą su negaliojančia užkerėjimu'
+      clearedInvalid: '&ePanaikinta &6[amount] &eklaidingas užbūrimas ant daikto'
+      inccorectId: '&eNeteisingas užburiantis vardas arba ID.'
+      wrongItem: '&eBlogas daiktas jūsų rankoje'
+      enchantlimit: '&cJūs neturite leidimo šiam kerėjimui'
+      levellimit: '&cLygis pernelyg aukštas, maksimalus ir leistinas yra &e[level].'
+      posible: '&eGalimi užkeikimai: '
+      posibleList: '&6[enchant]'
+  ender:
+    help:
+      info: '&7Atidaryti žaidėjo ender chest'
+      args: (Vardas)
+      explanation:
+      - cmi.command.ender.preventmodify - neleidžia keisti inventoriaus
+      - cmi.enderedit - leidžia redaguoti atidarytą inventorių
+    info:
+      title: '&b[playerDisplayName] &7Pabaigos Skrynia'
+      feedback: '&7Jus tvarkote žaidėjo &b[playerDisplayName] &7pabaigos skrynę (&b[offon]&7).'
+  endgateway:
+    help:
+      info: '&7Perjungti vartų sijos galą'
+      args: ''
+    info:
+      'off': '&7Plotas buvo perjungtas į &cĮjungta'
+      'on': '&7Plotas buvo perjungtas į &aIšjungta'
+  entityinfo:
+    help:
+      info: '&7Patikrinkite subjekto informaciją'
+      args: ''
+    info:
+      type: '&7Subjekto tipas: &b[type]'
+      customName: '&7Išskirtinis vardas: &b[name]'
+      health: '&7Gyvybės: &b[current]&7/&b[max]'
+      lastDamage: '&7Paskutinė žalos priežastis: &b[cause]'
+      tamed: '&7Prijaukintas: &b[state]'
+      owner: '&7Savininkas: &b[playerDisplayName]'
+  entitynbt:
+    help:
+      info: '&ePatikrinkite subjekto nbt informaciją'
+      args: ''
+  exp:
+    help:
+      info: '&7Nustatyti žaidėjo exp. Naudokite L, kad nustatytumėte lygį'
+      args: '[Vardas] [add/set/take/clear] [skaičius]'
+      explanation:
+      - 'Pavyzdys:'
+      - /exp 10
+      - /exp add 10
+      - /exp set 10L
+      - /exp take 10
+      - /exp Zrips clear
+      - /exp Zrips add 10
+    info:
+      current: '&b[playerDisplayName] &7yra &b[lvl]&7lygio su &b[currentExp]&7exp
+        arba iš viso su &b[exp]&7exp.'
+      selfFeedback: '&7Exp buvo nustatytas į &b[exp] &7žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      targetFeedback: '&7Jūsų exp buvo nustatytas į &b[exp]&7 administratoriaus &b[senderDisplayName]&7.'
+  ext:
+    help:
+      info: '&7Užgesinti žaidėją'
+      args: (Vardas) (-s)
+    info:
+      feedback: '&7Jus užgesinote žaidėją &b[playerDisplayName]&7 (&b[offon]&7).'
+      targetfeedback: '&7Jus buvote užgesintas administratoriaus &b[senderDisplayName]&7.'
+  feed:
+    help:
+      info: '&7Pamaitinti žaidėją'
+      args: (Vardas/all) (-s)
+    info:
+      feedback: '&7Jus pamaitinote žaidėją &b[playerDisplayName]&7 (&b[offon]&7).'
+      targetfeedback: '&7Jus buvote pamaitintas žaidėjo &b[senderDisplayName]&7.'
+  findbiome:
+    help:
+      info: '&7Pagal pavadinimą suranda artimiausią biomą'
+      args: '&b(biomeName/stop/stopall)'
+    info:
+      infoShow: '&7TPS: &b[tps] &7Liko &b[left] &7(&b[time]&7) &7Greitis: &b[speed]'
+      stopped: '&cSustabdyta!'
+      cantFindBiome: '&cNepavyko rasti norimo biomo. Patikrinta &7[amount] &cchunkų'
+      teleportedTo: '&7Buvote nukeltas į &b[biome] &7biomą'
+  fixchunk:
+    help:
+      info: '&7Nuskaityta, ar nėra pažeistų chunkų'
+      args: '&ew &6[worldName]&e r &6[range in chunks]&e c &6[x:z]&e '
+      explanation:
+      - '&6Papildomos komandos:'
+      - '- &6stats &e- rodyti dabartinę nuskaitymo statistiką'
+      - '- &6pause &e- pristabdyti nuskaitymą'
+      - '- &6continue &e- tęsti nuskaitymą'
+      - '- &6stop &e- nustoti nuskaityti'
+      - '- &6stopall &e- sustabdykite visus nuskaitymus'
+      - '- &6speed [amount] &e- nustatyti dabartinį nuskaitymo greitį'
+      - '- &6autospeed [true/false] &e- nustatytas automatinis greitis yra išjungtas
+        arba įjungtas'
+      - '- &6messages [true/false] &e- pranešimo išvedimą išjungti arba įjungti'
+      - 'Example:'
+      - /fixchunk w LT_Craft
+      - /fixchunk w LT_Craft r 50 c 1024:-2048
+      - /fixchunk w LT_Craft r g
+      - /fixchunk fix
+    info:
+      startScanning: '&eRasta &6[amount] &echunkų patikrinimas. Pradėtas!'
+      paused: '&eSkenavimas sustabdytas, norėdami tęsti naudokite &6/cmi fixchunk
+        continue.'
+      continuing: '&eNuskaitymas tęsiamas'
+      stoped: '&eNuskaitymas sustabdytas. Rezultatus galite patikrinti naudodami /cmi
+        fixchunk info'
+      speedChange: '&eGreitis pakeistas į [amount]'
+      autospeedChange: '&eAutoSpeed pakeista į [state]'
+      messagesChange: '&ePranešimo būsena pakeista į [state]'
+      NoInfo: '&eNėra informacijos'
+      InfoShow: '&6TPS: &3[tps] &6Liko &e[left] &6(&e[min]m:[sec]s&6) &6Greitis: &e[speed]
+        &6Rasta: &e[found]'
+      scanList: '&2[number]. &7X:&f[x] &7Z:&f[z]'
+      finished: '&eSkenavimas baigtas, naudokite &6/cmi fixchunk fix &enorėdami sutvarkyti
+        rastas klaidas. &cVienetai bus regeneruojami!'
+      fixed: '&2[number] &esutvarkyti chunkai'
+      total: '&eTikrinimas nuo [current]/[until] iš viso [total]'
+      stats:
+      - '&e************************************************************'
+      - '&e* &6Chunkai: &e[checked]/[total]'
+      - '&e* &6Nuskaitymo diapazonas: &e[range]'
+      - '&e* &6Nuskaitymo greitis: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6Tikras greitis: &e[cps] &6CPS (&e[avgcps] avg&6)'
+      - '&e* &6Pasaulis: &e[world]'
+      - '&e* &6Rasta: &e[found]'
+      - '&e* &6Laikas: &e[min]min [sec]sek'
+      - '&e************************************************************'
+  flightcharge:
+    help:
+      info: '&eTvarkykite ir patikrinkite skrydžio mokesčius'
+      args: (add/take/set/show/expcharge/moneycharge/recharge) (playerName) (amount)
+    info:
+      charge: '&eDabartinis mokestis: &6[charge]&e/&6[max]'
+      changed: '&eJūsų skrydžio mokesčio lygis pasikeitė į &6[charge]'
+      newCharge: '&eNaujas įkrovimo lygis: &6[charge]'
+      bossbar: '&2>> &fSkrydžio Įkrova [charge][changeAmount]&7/&f[max] &2<<'
+      guiTitle: '&8Skrydžio įkrovimas'
+      buttonExp: '&6Įkraukite su exp'
+      buttonMoney: '&6Įkraukite au pinigais'
+      max: '&6Jau visiškai įkrautas'
+      guiLore:
+      - '&eKairysis spustelėjimas +1'
+      - '&6Shift ir kairysis pelės klavišas +10'
+      - '&eDešnysis spustelėjimas +100'
+      - '&6Shift ir dešnysis pelės klavišas +1000'
+      changeAmount: '&e([amount]&e)'
+  fly:
+    help:
+      info: '&7Nustatyti žaidėjui skraidymą'
+      args: '[Vardas] (true/false) (-s)'
+    info:
+      feedback: '&7Jus nustatėte skraidymo režimą į &b[boolean]&7 žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      targetFeedback: '&7Jūsų skraidymo režimas buvo nustatytas į &b[boolean]&7 administratoriaus
+        &b[senderDisplayName]&7.'
+  flyc:
+    help:
+      info: '&ePerjungti skrydžio įkrovos režimą'
+      args: (Vardas) (true/false) (-s)
+    info:
+      feedback: '&7Jus nustatėte skraidymo krovimosi režimą į &b[boolean]&7 žaidėjui
+        &b[playerDisplayName]&7 (&b[offon]&7).'
+      targetFeedback: '&7Jūsų skraidymo krovimosi režimas buvo nustatytas į &b[boolean]&7
+        administratoriaus &b[senderDisplayName]&7.'
+      targetFeedbackSelf: '&7Jūsų skraidymo krovimosi režimas buvo nustatytas į &b[boolean]'
+      noCharge: '&7Skraidymo krovimosi režimas buvo išjungtas'
+  flyspeed:
+    help:
+      info: '&7Nustatyti skraidymo režimo greitį nuo 0 iki 10'
+      args: '[Vardas] [greitis] (-s)'
+    info:
+      feedback: '&7Jus nustatėte &b[amount]&7 skraidymo greitį žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      targetfeedback: '&7Jūsų skraidymo greitis buvo nustatytas į &b[amount]&7 administratoriaus
+        &b[senderDisplayName]&7.'
+      max: '&cMaksimalus skraidymo režimo greitis yra &7[max]&c.'
+  gamerule:
+    help:
+      info: '&7Tvarkykite žaidimo taisykles'
+      args: ''
+  getbook:
+    help:
+      info: '&7Gauti knygą'
+      args: '[cTextName] (playerName)'
+    info:
+      list: '&7Knygos: &b'
+      check: '&eCheck: &6[text]'
+      title: '&b[title]'
+  give:
+    help:
+      info: '&7Duoti daiktą žaidėjui'
+      args: (playerName) [itemname] (amount)
+      explanation:
+      - Vardų ir lore palaikymas su placeholders
+      - 'Pavyzdžiui: /give stone'
+      - /give Zrips stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give Zrips sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give Zrips sponge 1 e Knockback:%rand/1-5%
+      - /cmi give Zrips sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+    info:
+      feedback: '&7Duota &b[amount] &7daikto &7[itemname] &7(&b[customitemname]&7)
+        žaidėjui &b[playerDisplayName]'
+      wrongEntityId: '&cBlogas subjekto ID'
+      maxLimit: '&cJūs negalite duoti daugiau nei &7[max] &cdaiktų vienu kartu'
+      maxLimitResize: '&cJūs negalite duoti daugiau nei &7[max]. &cKeičiamas dydis
+        norint apriboti.'
+  giveall:
+    help:
+      info: '&eDuokite daiktą visiems žaidėjams'
+      args: '[itemname] (amount) (e|l|n|offline)'
+      explanation:
+      - '&e- duoti prekės pavadinimą arba jo ID su duomenų reikšme'
+      - '&e- nebūtinai pateikite norimą sumą '
+      - '&e- &6n &e- apibrėžti prekės pavadinimą '
+      - '&e- &6l &e- apibrėžti daikto lore '
+      - '&e- &6e &e - apibrėžti daikto užkerėjimą '
+      - '&e- &6-s &e - įpratęs rodyti grįžtamąjį pranešimą '
+      - '&e- &6h &e - po žaidėjo vardo duos daiktą iš jo rankos '
+      - '&e- &6inv &e - po žaidėjo vardo gausite visą inventorių kitiems '
+      - '&e- &6offline &e- įtraukti neprisijungusius žaidėjus'
+      - '&ecmi giveall stone 1 n &2Uber_stone l &3Stone_lore offline'
+      - '&ecmi giveall h Zrips'
+      - '&ecmi giveall inv Zrips'
+    info:
+      starting: '&bPradėta dalinti daiktų visiems prisijungusiems žaidėjams, tai gali
+        užtrūkti.'
+      running: '&b[amount] &7jau gavo daiktų, vis dar dalinama.'
+      feedback: '&aBaigta. &7[amount] &ažaidėjų gavo daiktų.'
+  glow:
+    help:
+      info: '&7Nustatykite žaidėjų švytėjimo režimą'
+      args: (playerName) [true/false/color/gui]
+      explanation:
+      - 'Pavyzdžiui: /glow Zrips red'
+      - 'Leidimas: cmi.command.glow.[color] - leidžia nustatyti tam tikrą švytėjimo
+        spalvą'
+    info:
+      feedback: '&7Nustatėte [color]apšvietimą &7į &b[boolean]&7 žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      targetfeedback: '&7Jūsų [color]apšvietimo režimas buvo nustatytas į&b[boolean]&7
+        administratoriaus &b[senderDisplayName]&7.'
+  gm:
+    help:
+      info: '&7Nustatyti žaidėjo game mode'
+      args: (Vardas) [gamemode]
+    info:
+      feedback: '&7Jus nustatėte žaidėjo &b[playerDisplayName]&7 (&b[offon]&7) režimą
+        į &b[gameMode]&7.'
+      targetfeedback: '&7Jūsų game mode režimas buvo nustatytas į &b[gameMode]&7 administratoriaus
+        &b[senderDisplayName]&7.'
+  god:
+    help:
+      info: '&7Nustatyti žaidėjo nemirtingumo režimą'
+      args: '[Vardas] (true/false) (-s)'
+    info:
+      feedback: '&7Jus nustatėte nemirtingumo režimą į &b[boolean]&7 žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      targetfeedback: '&7Jūsų nemirtingumo režimas buvo nustatytas į &b[boolean]&7
+        administratoriaus &b[senderDisplayName]&7.'
+  groundclean:
+    help:
+      info: '&eIšvalo serverį nuo nereikalingų elementų'
+      args: (+cb) (+cm) (+ci) (+b) (+tnt)
+      explanation:
+      - +cm bus įtraukti vagonai į valymą
+      - +cb bus įtrauktos valtys į valymą
+      - +ci apibrėžia, jei norite įtraukti ginklus ir šarvus
+      - +tnt apibrėžia, jei norite įtraukti užpildytą tnt
+      - +b boradcast pranešimas visiems
+    info:
+      removed: '&7Išvalyta -[list]'
+      items: ' &7Daiktų: &b[items]'
+      arrows: ' &7Strelių: &b[arrows]'
+      exporbs: ' &7ExpOrbs: &b[exporbs]'
+      blocks: ' &7SkraidantysBlokai: &b[blocks]'
+      projectiles: ' &7Sviediniai: &b[projectiles]'
+      tnt: ' &7ĮžiebtiTNT: &b[tnt]'
+      boat: ' &7Valčių: &b[boat]'
+      minecart: ' &7Vagonėlių: &b[minecart]'
+      nothing: '&cNebuvo ko ištrinti.'
+  haspermission:
+    help:
+      info: '&ePatikrinkite, ar žaidėjas turi tam tikrą leidimą'
+      args: (playerName) [permissionNode]
+    info:
+      title: '&6[playerDisplayName] &e-> &6[permission]'
+      none: '&eLeidimas žaidėjui nenustatytas ir jis nėra Operatorius. Rezultatai
+        į &6[state]'
+      softSet: '&eNustato plugin.yml į &6[state]'
+      hardSet: '&eSunku nustatyti &6[state] &ekažkokiu įskiepiu'
+      notHardSet: '&eNėra sunku nustatyti, gali nustatyti &cFalse &eKai kuriais atvejais'
+      ops: '&eRezultatai į &6[state] &enes žaidėjas yra Operatorius'
+  hat:
+    help:
+      info: '&7Užsidėti daiktą kaip kepurę'
+      args: (Vardas)
+    info:
+      feedback: '&bJus sėkmingai užsidėjote daiktą!'
+      targetfeedback: '&7Jūsų kepurė buvo pakeista administratoriaus &b[senderDisplayName]&7!'
+      fullinv: '&7[playerDisplayName] &cinventorius yra pilnas, negalima pakeisti
+        kepurės!'
+  head:
+    help:
+      info: '&7Gauti žaidėjo galvą'
+      args: '[sourceName] (targetName) (-s)'
+    info:
+      Feedback: '&b[headName] &7galva sukurta!'
+      targetFeedback: '&7Jus gavote &b[headName] &7galvą iš &b[senderDisplayName]&7!'
+  heal:
+    help:
+      info: '&7Pagydyti žaidėją'
+      args: '[Vardas/all] (healamount/healpercent)'
+    info:
+      feedback: '&7Jus pagydėte &b[playerDisplayName]&7 (&b[offon]&7).'
+      feedbackMulti: '&7Jus pagydėte &b[count] &7žaidėjų.'
+      targetfeedback: '&7Jus buvote pagydytas žaidėjo &b[senderDisplayName]&7.'
+  helpop:
+    help:
+      info: '&7Išsiųsti žinutę, kad gauti pagalbos iš administracijos'
+      args: '[žinutė]'
+      explanation:
+      - Reikalauja cmi.command.helpop.inform norint matyti pranešimus
+    info:
+      message: '&c[Help]&4[&7[senderDisplayName]&4]&r&c [message]'
+  hideflags:
+    help:
+      info: '&eHides item flags'
+      args: (playerName) [flagName/clear]
+    info:
+      feedback: '&eJūs pridėjote naują flag prie daikto žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      cleared: '&eIšvalyti &3VISI &eflags nuo daikto žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNeturėdamas rankoje jokio daikto.'
+      inccorectId: '&eNeteisingas flag pavadinimas.'
+  hologram:
+    help:
+      info: '&eKurti hologramas'
+      args: ''
+    info:
+      howTo: '&cNorėdami sukurti naują hologramą, rašykite &e/cmi hologram new &6[pavadinimas]'
+      gui: '&7---- &f<Atidaryti nustatymų gui> &7----'
+      guiHover: '&7Atidarykite hologramos nustatymų GUI'
+      interval: '&7Atnaujinkite kiekvieną &6[second] &7sekundę'
+      intervalLore:
+      - '&7Kaip dažnai, per kelias sekundes, informacija apie hologramoje atnaujinama'
+      - '&7Jei tekstas nesikeičia, nustatykite jį į -1'
+      pageInterval: '&7Keisti puslapį kas &6[second] &7sekundės'
+      pageIntervalLore:
+      - '&7Kaip dažnai, per kelias sekundes, hologramos puslapis keičiamas automatiškai'
+      pageIntervalNoPages: '&4Ši holograma dar neturi puslapių'
+      text: '&7Tarpai tekstui &6[space]'
+      usync: '&7Teksto keitimas sinchronizuojant: &6[state]'
+      reqPermission: '&7Reikalingas leidimas pamatyti: &6[state]'
+      teleport: '&7Teleportuokite į hologramos vietą'
+      icon: '&7Tarpai tarp piktogramų &6[space]'
+      iconLore:
+      - '&7Apibrėžia atstumą tarp objektų'
+      range: '&7Rodyti diapazoną: &6[blocks]'
+      rangeLore:
+      - '&7Apibrėžia plotą aplink hologramą, kad ją būtų galima parodyti ar paslėpti'
+      updateRange: '&7Atnaujinti diapazoną: &6[blocks]'
+      updateRangeLore:
+      - '&7Apibrėžia sritį aplink hologramą, kad būtų galima atnaujinti'
+      relocate: '&7Perkelti'
+      relocateLore:
+      - '&7Perkelia hologramą į jūsų dabartinę vietą'
+      interact: '&7Interaktyvus: &6[state]'
+      commands: '&7Komandos:'
+      particles: '&7Rodyti daleles: &6[state]'
+      big: '&7Didelis mygtukas: &6[state]'
+      bigLore:
+      - '&7Atminkite, kad didelis mygtuko režimas'
+      - '&7Neleis jums pereiti pro tai'
+      order: '&7Vieta žemyn: &6[state]'
+      moveX: '&7X:&e[x]'
+      moveY: '&7Y:&e[y]'
+      moveZ: '&7Z:&e[z]'
+      shift:
+      - '&ePakeiskite 0.01 or palaikykite Shift, kad pakeistumėte į 0.1'
+      list: '&6[place]&e. [name]'
+      addInfo: '&eĮveskite naujos eilutės tekstą. Naudokite &6cancel &enorėdami atšaukti.
+        Papildomi kintamieji: &6IKONA:&7[Value] &6SICONAS:&7[Value]&e kur &7Vertė&e-
+        &7[MaterialName-amount]%enchanted%&e, &7%itemInHand%&e, &7Galva:[headOwner]'
+  hologrampages:
+    help:
+      info: '&eKeisti hologramos puslapį'
+      args: '[holoName] (playerName) (next/prev/[pageNumber])'
+  home:
+    help:
+      info: '&7Teleportuotis į namus'
+      args: (homeName) (playerName) (whoTeleport)
+    info:
+      list: '&7Namai: &b'
+      listNonePrivate: '&f'
+      listPrivate: '&2'
+      click: '&7Spauskite, kad nusiteleportuoti į &b[home]'
+      teleported: '&7Nusiteleportavote į: &b[home]'
+      noHomes: '&cNeturite išsaugotų namų'
+      private: '&cŠie namai yra privatūs!'
+      remove: '&cShift+Right, kad panaikinti namus'
+      title: '&7[playerDisplayName] &8namai'
+  homes:
+    help:
+      info: '&7Sąrašas namų, į kuriuos galite atsiteleportuoti.'
+      args: (playerName)
+  hunger:
+    help:
+      info: '&7Nustatyti žaidėjo alkį'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&7Jus nustatėte &b[hunger]&7 alkį žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      targetfeedback: '&7Jūsų alkis buvo nustatytas į &b[hunger]&7 administratoriaus
+        &b[senderDisplayName]&7.'
+  ic:
+    help:
+      info: '&7Sukurti interaktyvią komandą'
+      args: (new) (name)
+    info:
+      titleC: ' &e--- &6[name] '
+      titleB: '&e[type] &e---'
+      public: ' &2[Public]'
+      notPublic: ' &7[NotPublic]'
+      reqPerm: ' &2[ReqPerm]'
+      noPerm: ' &7[ReqPerm]'
+      permHover: ' &eReikalauja &7[permission] &eleidimas pastatyti šį ženklą'
+      editSign: ' &e[EditSignLines]'
+      publicHover: "&eKeisti visuomenės statusą. \nŽenklai viršutinėje eilutėje &7[ic:[name]]"
+      createdPublic: '&eSukurtas naujas interaktyvus ženklas'
+      list: '&e[place]. &6[name]'
+      listType: ' &e[type]    '
+      editCommands: '&eRedaguoti komandas'
+      editBlocks: ' &eRedaguoti blokus'
+      addBlock: '&ePridėti bloką, į kurį žiūrite'
+      addEntity: ' &ePridėti subjektą, į kurį žiūrite'
+      manageCommands: '&ePerjungti į komandų redaktorių'
+      manageBlockEnt: '&ePerjungti į blokų/subjektų redaktorių'
+      locList: '&e[place]. &6[type]   '
+      entList: '&e[place]. &6[type]   '
+      ListHover:
+      - '&ePasaulis: &6[world]'
+      - '&eX:[x] &6Y:[y] &eZ:[z]'
+      notPublicIc: '&cJūs negalite tuo naudotis, jis nėra viešas'
+      noCommandBlocks: '&eNėra interaktyvių komandų'
+      commandList: ' &e[command]  '
+      block: (Blokas)
+      entity: (Subjektas)
+      both: (Abu)
+      none: (Nėra)
+      addedNew: '&ePridėtas naujas blokas/subjektas &6[name]'
+      dontExist: '&cŠiuo vardu nėra interaktyvios komandos'
+      exists: '&cInteraktyvioji komanda tokiu pavadinimu jau yra'
+      blockExist: '&cŠis blokas jau naudojamas pavadinimu &e[name]'
+      entityExist: '&cŠis subjektas jau naudojamas &e[name]'
+      cantUsePlayer: '&cJūs negalite naudoti įprasto žaidėjo kaip komandos subjekto'
+      addInfo: '&eĮveskite naują komandą. Naudokite &6cancel &enorėdami atšaukti'
+      addInformationHover: "&eVisuotiniai kintamieji, palaikomi kaip siuntėjo kategorija\
+        \ \n&eĮtraukti komandų vėlavimą: \n&edelay! 5 \n&ePapildomi kintamieji gali\
+        \ būti naudojami įterpti kintamuosius pagal jų vietą \n&e$1 paims pateiktą\
+        \ kintamąjį pagal naują komandą ir įsikurs toje vietoje \n&e$1- imasi visų\
+        \ kintamųjų nuo šio taško ir įterpiamas į originalias komandas"
+      editInfo: '&eSpustelėkite, kad įklijuotumėte seną tekstą. Naudokite &6cancel
+        &enorėdami atšaukti komandą. Naudokite &6remove &enorėdami panaikinti liniją'
+  ifoffline:
+    help:
+      info: '&7Įvykdyti komandą, kai žaidėjas yra atsijungęs'
+      args: '[Vardas] (komanda)'
+  ifonline:
+    help:
+      info: '&7Įvykdyti komandą, kai žaidėjas yra prisijungęs'
+      args: '[Vardas] (komanda)'
+  ignore:
+    help:
+      info: '&7Ignoruoti žaidėją'
+      args: (Vardas/uuid/all)
+      explanation:
+      - cmi.command.ignore.bypass - apeiti ignoruojamų sąrašą
+    info:
+      self: '&cJus negalite ignoruoti savęs'
+      added: '&7Nuo šiol jus ignoruojate &b[playerDisplayName]'
+      addedAll: '&7Nuo šiol jus ignoruojate visus žaidėjus'
+      all: '&7Visi'
+      removed: '&7Jus nebeignoruojate &b[playerDisplayName]'
+      removedAll: '&7Jus nebeignoruojate visų žaidėjų'
+      list: '&7[place]. &b[playerDisplayName]  '
+      ignoringYou: '&c[playerDisplayName] &rjus ignoruoja'
+      empty: '&cIgnoravimo sąrašas yra tuščias'
+  importfrom:
+    help:
+      info: '&eImportuokite duomenis iš kitų papildinių'
+      args: '[essentials] [home/warp/nick/logoutlocation/money/mail]'
+    info:
+      converted: '&eKonvertuota: &6[done]&e/&6[total] &ežaidėjai'
+      convertedWarps: '&eKonvertuota &6[amount] &ewarps'
+      noInfo: '&cPamiršote pateikti informaciją, ką norite tiksliai importuoti'
+      saving: '&eDuomenų kaupimas duomenų bazėje'
+      HDfile: '&cNegalėjau rasti HolographicDisplays papildinių duomenų bazės failas.
+        Nutraukimas.'
+      HDexist: '&cHolograma pavadinimu &7[name] &cšiuo vardu jau yra. Praleidžiama.'
+      HDfailed: '&cNepavyko įkelti hologramos (&7[name]&c)'
+      HDimported: '&eImportuota &7[amount] &ehologramos'
+  importoldusers:
+    help:
+      info: '&eImportuoja vartotojus iš pagrindinio pasaulio aplanko „playerdata“
+        aplanko. Įterpimo metu galimas LAG.'
+      args: ''
+    info:
+      starting: '&ePradedamas importuoti'
+      feedback: '&eImportuota &6[amount] &enaujų žaidėjų'
+  info:
+    help:
+      info: '&7Parodyti žaidėjo informaciją'
+      args: '[Vardas/uuid]'
+    info:
+      feedback:
+        uuid: '&7Įklijuoti uuid į pokalbių langą'
+      Name: '&7Slapyvardis: &b[dname] &7(&b[name]&7)'
+      knownAs: '&7Kitaip žinomas kaip: &b[namelist]'
+      Uuid: '&7UUID: &b[uuid]'
+      OnlineUuid: '&7OnlineUUID: &b[OnlineUuid]'
+      Ip: '&7Ip: &b[ip]'
+      Op: '&7OP: &b[op]'
+      God: '&7God: &b[godmode]'
+      Money: '&7Pinigai: &b[money]'
+      Group: '&7Grupė: &b[group]'
+      Gm: '&7Game mode: &b[mode]'
+      Hp: '&7Gyvybės: &b[hp]&7/&b[maxhp]'
+      Air: '&7Oras: &b[leftair]&7/&b[totalair]'
+      Hunger: '&7Alkis: &b[food]&7/&b20'
+      Saturation: '&7(sotumas +&b[saturation]&ų)'
+      Exp: '&7Exp: &b[totalexp]&7exp -> &b[currentexp]&7/&b[needexp] &7(&b[level]&7lvl)'
+      Location: '&7Vieta: &b[world] (&7[x]&b:&7[y]&b:&7[z]&b)'
+      deathLocation: '&7Mirties vieta: &b[world] (&7[x]&b:&7[y]&b:&7[z]&b)'
+      bed: '&7Lovos vieta: &b[bworld] (&7[bx]&b:&7[by]&b:&7[bz]&b)'
+      respawn: '&7Kitas atsiradimas: &b[rworld] (&7[rx]&b:&7[ry]&b:&7[rz]&b)'
+      flySpeed: '&7Skraidymas &b[flyspeed]'
+      walkSpeed: '&7Vaikščiojimas &b[walkspeed]'
+      Sprint: '&7Bėga: &b[sprinting]'
+      Sneek: '&7Sneaking: &b[sneaking]'
+      Banned: '&7Užblokuotas: &b[banned]'
+      Muted: '&7Užtildytas: &b[muted]'
+      Jailed: '&7Įkalintas: &b[jailed]'
+      Cuffed: '&7Surakintas: &b[cuffed]'
+      homes: '&7Namai: &b[homes]'
+      firstLogin: '&7Pirmas prisijungimas: &b[firstLogin]'
+      canSee: '&7Gali matyti jus: &b[canseeyou]'
+      afk: '&7Afk: &b[afk]'
+      Fly: '&7Gali skraidyti: &b[fly] &7(&b[isflying]&7)'
+      Online: '&7Prisijungęs: &b[online]&7 nuo: &b[logoff]'
+      CountryHoverNew: '&b[country] &f(&2[countryCode]&f)'
+      CityHover: '&b[city]'
+      LocalTimeHover: '&fVietos laikas: &b[time]'
+      List:
+      - '&7************************************************************'
+      - '&7* [name]'
+      - '&7* [knownAs]'
+      - '&7* [uuid]'
+      - '&7* [OnlineUuid]'
+      - '&7* [ip]'
+      - '&7* [op] [godmode] [fly]'
+      - '&7* [sprint] [sneek]'
+      - '&7* [gm] &eSpeed: [flySpeed] [walkSpeed]'
+      - '&7* [money] [group]'
+      - '&7* [hp] [air]'
+      - '&7* [hunger] [saturation]'
+      - '&7* [exp]'
+      - '&7* [location]'
+      - '&7* [bed]'
+      - '&7* [respawn]'
+      - '&7* [banned] [canSee] [afk]'
+      - '&7* [cuffed] [muted] [jailed] '
+      - '&7* [online]'
+      - '&7* [homes] [firstLogin]'
+      - '&7************************************************************'
+  inv:
+    help:
+      info: '&7Atidaryti žaidėjo inventorių'
+      args: '[Vardas]'
+      explanation:
+      - cmi.command.inv.preventmodify - prevents inventory editing
+      - cmi.invedit - allows to edit inventory
+      - cmi.command.inv.location - shows players location
+    info:
+      feedback: '&7Jus tvarkote žaidėjo &b[playerDisplayName] &7inventorių (&b[offon]&7).'
+  invcheck:
+    help:
+      info: '&7Atidaryti išsaugotą inventorių peržiūros režime'
+      args: (Vardas) [id] (-e) (last)
+  invlist:
+    help:
+      info: '&7Rodyti išsaugotų inventorių sąrašą'
+      args: (playerName)
+  invload:
+    help:
+      info: '&7Užkrauti išsaugotą inventorių'
+      args: (sourceName) (targetName) [id/last]
+  invremove:
+    help:
+      info: '&7Ištrinti žaidėjo išsaugotą inventorių'
+      args: (playerName) [id/all/last]
+  invremoveall:
+    help:
+      info: '&7Ištrinti visus išsaugotus inventorius'
+      args: '[confirmed]'
+    info:
+      removed: '&cVisi išsaugoti inventoriai buvo ištrinti (&7[count]&c)'
+  invsave:
+    help:
+      info: '&7Išsaugoti inventorių'
+      args: (Vardas) (id) (-s)
+  ipban:
+    help:
+      info: '&7Ban ip'
+      args: '[ip/Vardas] (priežastis) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - to bypass ban
+    info:
+      message: '&cJūsų IP adresas buvo užblokuotas!'
+      reason: '&cPriežastis: &7[reason]'
+      defaultReason: '&7Serverio taisyklių pažeidimas'
+      messageToAll: '&b[playerDisplayName] &7IP adresas buvo užblokuotas administratoriaus
+        &b[senderDisplayName] &7dėl: &b[reason]'
+      banedSilent: '&7[&8Silent&7]&b[playerDisplayName] &7IP adresas buvo užblokuotas
+        administratoriaus &b[senderDisplayName] &7dėl: &b[reason]'
+  ipbanlist:
+    help:
+      info: '&7Užblokuotų IP sąrašas'
+      args: ''
+    info:
+      list: '&7[place]. &c[ip] &7- &c[reason]  '
+      bannedBy: '&7Užblokuotas: &b[source]'
+      ends: '&7Laikas: &b[time]'
+      related: |-
+        &7Related accounts:
+        &f[list]
+  item:
+    help:
+      info: '&ePasiimk daiktą sau'
+      args: '[itemname] (amount)'
+      explanation:
+      - Vardas ir Lore palaiko placeholders
+      - 'Pavyzdžiui: /give stone'
+      - /give stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give sponge 1 e Knockback:%rand/1-5%
+      - /cmi give sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+  iteminfo:
+    help:
+      info: '&7Parodyti diakto informaciją'
+      args: (playerName)
+    info:
+      id: ' &7Id: &b[id][data]'
+      realName: ' &7Tikras pavadinimas: &b[name]'
+      bukkitName: ' &7Bukkit pavadinimas: &b[name]'
+      mojangName: ' &7Mojang pavadinimas: &b[name]'
+      entityType: ' &eEntity Type: &6[type]'
+      durability: ' &7Patvarumas: &b[current]&7/&b[max]'
+  itemlore:
+    help:
+      info: '&7Keisti daikto aprašą'
+      args: (-p:[playerName]) [linenumber] [remove/insert/ new lore line]
+    info:
+      feedback: '&eJūs pakeitėte lore liniją į ''&r&5[loreLine]&e'' žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNeturite rankoje jokio daikto.'
+      removed: '&eDaikto lore eilutė &6[line] &ebuvo panaikinta, žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      inserted: '&eDaikto lore eilutė &6[line] &ebuvo įterpta, žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      maxLines: '&eYra tik &6[lines] &elinijos, lore.'
+      blocked: '&eŠis elementas yra užblokuotas nuo re-loring.'
+  itemname:
+    help:
+      info: '&7Pervadinti daiktą'
+      args: (-p:[playerName]) [remove/your new item name]
+    info:
+      feedback: '&eJūs pervadinote elementą į [itemname]&e žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNeturite rankoje jokio daikto.'
+      removed: '&eDaikto pavadinimas buvo pašalintas &3[playerDisplayName]&e (&3[offon]&e).'
+      blocked: '&eŠis elementas negali būti pervadintas'
+  itemnbt:
+    help:
+      info: '&eRodyti elementą NBT informacija'
+      args: (playerName)
+    info:
+      step: ' &6->: &6[name]'
+      final: '&e[value]'
+      list: '&e- &r[value]'
+      noNbt: '&eDaikte nėra jokių NBT duomenų'
+  jail:
+    help:
+      info: '&7Įkalinti žaidėją kuriam laikui'
+      args: '[Vardas] (laikas) (jailName) (cellId) (-s) (r:jail_reason)'
+    info:
+      jailed: '&7Jus pasodinote žaidėją &b[playerDisplayName] &7į kalėjimą &b[time]'
+      jailedPlayer: '&b[playerDisplayName] &7buvo pasodintas į kalėjimą &b[time]'
+      reason: ' &7Priežastis: &b[reason]'
+      leftTime: '!title!&7Laikas:!subtitle!&b[time]'
+      jailedTarget: '&7Jus buvote pasodintas į kalėjimą! &b[time]'
+      cantTalk: '&cJus negalite kalbėti, kol esate kalėjime'
+      cantTalkRange: '!actionbar!&fJūsų susirašinėjimo tolis buvo sumažintas iki &c[range]
+        &fblokų'
+      failed: '&cNepavyko pasodinti į kalėjimą. Patikrinkite kalėjimo pavadinimą,
+        kameros id arba laiko formatą'
+      bossbar: '&7Kalėjimo laikas: &b[autoTimeLeft]'
+      noCommand: '&cJus negalite naudoti šios komandos, kol esate kalėjime!'
+  jailedit:
+    help:
+      info: '&7Redaguoti kalėjimus'
+      args: ''
+    info:
+      notInArea: '&cJūs nestovite kalėjimo srityje'
+      noName: '&cNėra jokio kalėjimo tokiu vardu'
+      noCell: '&cNėra vienutės pagal šį ID'
+      exist: '&cKalėjimas tokiu pavadinimu jau yra'
+      createdJail: '&eSėkmingai sukurtas naujas kalėjimas (&6[jail]&e)'
+      createdCell: '&eSėkmingai sukurta nauja kalėjimo kamera (&6[jail]&e:&6[cellId]&e)'
+      collides: '&cSusiduria su &6[jailName] &ekalėjimas'
+      jailList: '&e[place]. &6[jail] &eVienutės:&6[cells] &eĮkalinti: &6[amount]    '
+      editCells: '&eRedaguoti kamerų sąrašą'
+      cellList: '&eKameros id:&6[id] &eįkalinti: &6[amount]    '
+      jailListTp: ' &7[tp] '
+      jailListTpHover: '&eNustatykite laisvės teleporto vietą'
+      jailListArea: ' &7[area] '
+      jailListAreaHover: '&eIš naujo apibrėžkite sritį'
+      jailRemoved: '&ePanaikintas (&6[jail]&e) kalėjimas'
+      jailOutside: '&eNustatykite naują laisvės teleporto vietą'
+      jailArea: '&eIš naujo apibrėžta sritis &6[jail]'
+      cellRemoved: '&ePanaikinta (&6[cellId]&e) kamera kalėjime &6[jail]'
+  jaillist:
+    help:
+      info: '&7Kalėjimų sąrašas'
+      args: (jailName) (cellId)
+    info:
+      jailList: '&b[place]. &7[jailName] &bKameros:&7[cellCount] &bPasodinta:&7[count]'
+      cellList: '&b[place]. &7Id:&b[cellId] &7Pasodinta:&b[count]'
+      cellJailedList: '&7[place]. &b[playerDisplayName] &7bus paleistas už &b[time]'
+      Release: '&aSpauskite, kad paleisti iš kalėjimo'
+  jump:
+    help:
+      info: '&7Užšokti ant nusitaikyto bloko'
+      args: ''
+    info:
+      tooFar: '&cNėra bloko matomoje vietoje arba jis per toli (max &7[max] &cblokų)'
+  kick:
+    help:
+      info: '&7Išmesti žaidėją iš serverio'
+      args: '[Vardas/all] (žinutė) (-s)'
+      explanation:
+      - cmi.command.kick.bypass - neleidžia būti išmestam
+    info:
+      defaultMessage: '&7Išmestas iš serverio'
+      cantKick: '&cŠio žaidėjo negalite išmesti iš serverio'
+      messageToAll: '&b[playerDisplayName] &7buvo išmestas iš serverio.'
+      kickReason: ' &7Priežastis: &b[reason]'
+      all: '&7Išmesta &b[amount] &7žaidėjų iš serverio'
+  killall:
+    help:
+      info: '&7Nužudyti visus monstrus aplink jus'
+      args: (-monsters/-pets/-npc/-animals/-ambient/-named/-f/-lightning/-list/-m:[mobType])
+        (-r:range) (-s)
+    info:
+      infoList: '&2[category]&7: &b[amount] &7([list]&7)'
+      removedList: '&b[type]&7: &b[amount]'
+      total: '&7Nužudyta viso: &b[amount] &7([list]&7)'
+      noRemove: '&cNieko nebuvo nužudyta'
+      monsters: Monstrai
+      pets: Augintiniai
+      npc: NPCs
+      animals: Gyvūnai
+      ambient: Ambient
+      vehicles: Tr.priemonės
+      named: Su išskirtiniu vardu
+  kit:
+    help:
+      info: '&7Duoti rinkinuką.'
+      args: '[kitName] (Vardas)'
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.kit.[kitName] &e- leidžia naudoti tam tikrą rinkinį'
+      - '&6cmi.kit.bypass.money &e- apeiti pinigų reikalavimą'
+      - '&6cmi.kit.bypass.exp &e- apeiti exp reikalavimą'
+      - '&6cmi.kit.bypass.onetimeuse &e- apeiti vienkartinį naudojimą'
+      - '&6/cmi kit [kitName] [playerName] &e- duos rinkinį kitam žaidėjui'
+    info:
+      noMoney: '&cJus neturite pakankamai pinigų. Kaina: &7[cost] &cjus turite &7[balance]'
+      noExp: '&cJus neturite pakankamai exp. Kaina: &7[cost] &cjus turite &7[balance]'
+      noCondition: '&cJus neturite teisės naudoti šio kit: &7[condition]'
+      oneTime: '&cŠį rinkinį galima pasiimti tik vieną kartą ir jus jį jau esate pasiėmę!'
+      cantUseNow: '&cJus negalite naudoti šio kit dar &7[time]'
+      limitedTimeUseError: '&cŠio rinkinio negalima naudoti daugiau nei &7[times]
+        &ckartų'
+      limitedTimeUse: '&7Galima naudoti tik &c[times] &7kartų'
+      limitedTimeAllUsed: '&cJus nebegalite pasiimti šio rinkinio'
+      canUseIn: "&7Galėsite naudoti po: \n&b[time]"
+      cooldown: "&7Laikas: \n&b[time]"
+      noKit: '&cToks rinkinys neegzistuoja. Pasitikrinkite ir bandykite dar kartą'
+      noKitAccess: '&cJus neturite teisės naudoti šio rinkinio'
+      noFoundKit: '&cNepavyko rasti jokių rinkinių'
+      givenKit: '&7Jus davėte &b[kit]&7 rinkinį žaidėjui &b[playerDisplayName]'
+      title: '&8Rinkiniai'
+      nameCanUse: '&6[kitName]'
+      nameCantUse: '&7[kitName]'
+      group: '&7Grupė: &b[group]'
+      left: '&bKairys pelės mygtukas &7, kad atsiimti'
+      right: '&bDešinys pelės mygtukas &7, kad peržiūrėti'
+      take: '&bAtsiimti šį rinkinį!'
+  kitcdreset:
+    help:
+      info: '&7Atstatyti rinkinių laiką'
+      args: (kitName) (playerName)
+    info:
+      notCd: '&7Kit is not in cooldown stage'
+      reset: '&7Rinkinio (&b[kit]&7) laikas buvo atstatytas žaidėjui &b[playerDisplayName]'
+      list: '&7[place]. &b[kit] &7[time]'
+      listHover: '&bSpauskite, kad atstatytumėte'
+      noCd: '&cThere are no kit''s on cooldown'
+  kiteditor:
+    help:
+      info: '&7Rinkinių redagavimas.'
+      args: ''
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.kit.[kitName] &e- leidžia naudoti tam tikrą rinkinį'
+      - '&6cmi.kit.bypass.money &e- apeiti pinigų reikalavimą'
+      - '&6cmi.kit.bypass.exp &e- apeiti exp reikalavimą'
+      - '&6/cmi kiteditor &e- rodo rinkinių sąrašą'
+    info:
+      kits: '&bRinkiniai: '
+      noKit: '&cToks rinkinys neegzistuoja!'
+      iconSet: '&7Nauja ikona nustatyta &b[kitname] &7rinkiniui'
+      kitExists: '&eKomplektas tokiu pavadinimu jau yra!'
+      deleteConfirm: '&eSpustelėkite čia, jei tikrai norite pašalinti (&6[kitname]&e)
+        rinkinį!'
+      deleteConfirmFinal: '&cŠis veiksmas negrįžtamas!'
+      kitRemoved: '&eRinkinys (&6[kitname]&e) sėkmingai panaikintas'
+      kitNotRemoved: '&cRinkinio (&6[kitname]&c) nepavyko pašalinti'
+      addNewInfo: '&eĮveskite rinkinio pavadinimą pokalbyje ir paspauskite enter.
+        Naudokite ''&6cancel&e'' norėdami atšaukti šį veiksmą.'
+      renameCommandInfo: '&eĮveskite naują rinkinio &6komanda &epavadinimą į susirašinėjimo
+        langą ir spustelkite enter. Rašykite ''&6cancel&e'' norėdami atšaukti šį veiksmą.'
+      renameConfigInfo: '&eĮveskite naujo rinkinio &6konfigūracijos &epavadinimą į
+        susirašinėjimo langą ir spustelkite enter. Rašykite ''&6cancel&e'' norėdami
+        atšaukti šį veiksmą.'
+      groupInfo: '&eĮveskite naują grupės pavadinimą pokalbyje ir paspauskite Enter.
+        Parašykite ''&6none&e'' norėdami panaikinti grupę. Rašykite ''&6cancel&e''
+        norėdami atšaukti šį veiksmą.'
+      commandInfo: '&eĮveskite naują komandą į pokalbį ir paspauskite Enter. Rašykite
+        ''&6cancel&e'' norėdami atšaukti šį veiksmą. Galimi placeholders: &6{USERNAME}
+        {DISPLAYNAME} {WORLDNAME} {KITNAME} {RANDOMPLAYER}'
+      conditionsInfo: '&eĮveskite naują sąlygą į pokalbį ir paspauskite Enter. Rašykite
+        ''&6cancel&e'' norėdami atšaukti šį veiksmą.'
+      descInfo: '&eĮveskite naują aprašą pokalbyje ir paspauskite Enter. Rašykite
+        ''&6cancel&e'' norėdami atšaukti šį veiksmą.'
+      renamed: '&ePervadintas &6[kitname] &eį &6[newkitname]&e.'
+      groupSet: '&eNauja grupė (&6[groupname]&e) nustatyta į &6[kitname]'
+      commandsListTitle: '&e✎&6Komandos:'
+      conditionsListTitle: '&e✎&6Sąlygos:'
+      descListTitle: '&e✎&6Aprašymas:'
+      ListTitleHover: '&eSpustelėkite, kad atidarytumėte GUI'
+      ListNumber: '&e[number].'
+      ListUp: ' &6⇑'
+      ListDown: ' &6⇓ '
+      ListRemove: '&cX'
+      ListRemoveHover: '&cPanaikinti liniją'
+      ListRemoveKitHover: '&cPanaikinti &6[kitname]'
+      ListEditKitHover: '&cRedaguoti &6[kitname]'
+      ListAdd: ' &2+'
+      ListAddHover: '&2Pridėti naują'
+      guiClickery:
+      - '&eKairiuoju pelės mygtuku spustelėkite, jei norite'
+      - '&epadidinti ir dešiniuoju pelės mygtuku spustelėkite, kad sumažintumėte'
+      - '&eLaikykite &6Shift &epagreitinti procesą iki 10 kartų'
+      - '&ePakartotinis greitas paspaudimas padidins sumą'
+      - '&eNorėdami grįžti į numatytąją sumą, 1 sekundę nuspauskite mygtuką'
+      OffHand: '&ePadėkite iš kitos rankos daiktą čia'
+      Helmet: '&ePadėkite šalmo šarvą čia'
+      Chest: '&ePadėkite čia antkrūčio šarvą'
+      Legs: '&ePadėkite čia kelnių šarvą'
+      Boots: '&ePadėkite čia batų šarvą'
+      Weight: '&eSvoris: &6[Weight]'
+      WeightExtra:
+      - '&eDidesnė reikšmė turi didesnį prioritetą'
+      - '&eRinkiniai turėtų būti toje pačioje grupėje'
+      despiteWeight: '&eParodykite nepaisant svorio: &6[Weight]'
+      despiteWeightExtra:
+      - '&eŽaidėjas negauna prieigos prie rinkinio, tačiau gali jį peržiūrėti'
+      Slot: '&eSlotas: &6[slot]'
+      SlotAuto: '&6Automatinis'
+      Clone: '&eKlonuoti daiktus iš inventoriaus'
+      CloneExtra:
+      - '&eNorėdami įtraukti šarvus, naudokite dešinįjį pelės mygtuką'
+      - '&eSpustelėkite dar kartą, kad sugrąžintumėte pakeitimus'
+      timeDelay: '&eDelsimas: &6[time]'
+      usages: '&eGalima naudoti &6[times] &ekartų'
+      usagesUnlimited: '&6Neribota'
+      ignoreWeight: '&eParodykite nepaisant svorio: &6[state]'
+      timeDelaySeconds: '&ePer kelias sekundes: &6[time]'
+      moneyCost: '&ePinigų kaina: [cost]'
+      expCost: '&eExp kaina: [cost]'
+      enabled: '&eAktyvuota'
+      disabled: '&6Deaktyvuota'
+      clickToSwitch: '&eSpustelėkite, jei norite perjungti būseną'
+      clickToEdit: '&eSpustelėkite, kad pradėtumėte redaguoti'
+      editConfigName:
+      - '&eSpustelėkite, kad pervardytumėte konfigūracijos pavadinimą'
+      - '&eTai tik lemia permission mazgą'
+      editCommandName:
+      - '&eSpustelėkite, kad pervardytumėte komandos pavadinimą'
+      - '&eTai nustato komandą, kurią turite naudoti norėdami gauti šį rinkinį'
+      kitGroup: '&eRinkinio grupė: &6[group]'
+      dropItems: '&ePames daiktus, jei jų pilna: &6[state]'
+      commands: '&eKomandos:'
+      conditions: '&eSąlygos:'
+      desc: '&eAprašymas:'
+      mainMenu: '&ePagrindinisMeniu'
+      settings: '&eNustatymai'
+      icon: '&ePiktograma naudojama, kai yra rinkinys &2prieinama'
+      iconCd: '&ePiktograma naudojama, kai yra rinkinys &cneprieinamas'
+  kitusagereset:
+    help:
+      info: '&eIš naujo nustatyti rinkinio naudojimo skaitiklį'
+      args: (kitName) (playerName)
+    info:
+      notLimited: '&eKomplekto naudojimas nėra ribotas'
+      reset: '&eRinkinio (&6[kit]&e) naudojimo suma buvo nustatyta iš naujo &6[playerDisplayName]'
+      list: '&e[place]. &6[kit] &e[used]/[usages]'
+      listHover: '&eSpustelėkite, jei norite iš naujo nustatyti'
+      noCd: '&eAukščiau nėra jokių rinkinių 0'
+  lastonline:
+    help:
+      info: '&7Parodyti visus žaidusius žaidėjus prieš x minutes'
+      args: '[timeRange/list/stop] [page]'
+    info:
+      searching: '&bIeškoma &7[checked]&b/&7[total] &b(&7[found]&b)'
+      List: ' &b[place]&7. &b[name] &7-> &b[time].'
+  launch:
+    help:
+      info: '&ePradėkite žiūrima kryptimi arba kampu'
+      args: (playerName) (p:[power]) (a:[angle]) (d:[direction]) (loc:[x]:[y]:[z])
+      explanation:
+      - cmi launch - will paleiskite ta kryptimi, kuria dabar žiūrite
+      - cmi launch p:3.2 - will paleisti su galia 3.2
+      - cmi launch p:2.5 a:25 - bus paleista jūsų norima kryptimi 25 dgrees kampu
+        ir 2,5 galia
+      - cmi launch Zrips d:east - pradės paleista (į rytus) tuo pačiu kampu, kurį
+        žiūrite
+      - cmi launch Zrips d:0 - bus paleista 0 laipsnių kryptimi (į pietus) tuo pačiu
+        kampu, kurį žiūrite
+      - cmi launch d:45 a:30 p:2 - bus paleista į pietvakarius 30 laipsnių kampu ir
+        2 galios
+      - cmi launch loc:150:120:123 - paleis žaidėją į tikslinę vietą
+    info:
+      feedback: '!actionbar!&6[&fWhoosh!&6]'
+  lfix:
+    help:
+      info: '&eUžfiksuokite šviesą chunkuose aplink jus'
+      args: (range) (playerName) (stop/stopall)
+    info:
+      NoMore: '&eDiapazonas negali būti didesnis nei serverio rodinių diapazonas.
+        Pakeista į maksimalų leidžiamą.'
+      startFixing: '&eRasta &6[amount] &echunkų pataisymas. Pradėtas!'
+      InfoShow: '&6TPS: &3[tps] &6Liko &e[left] &6(&e[min]m:[sec]s&6) &6Greitis: &e[speed]'
+      Finished: '&eŠviesos tvirtinimas baigtas'
+      Stopped: '&eSustabdyta'
+  list:
+    help:
+      info: '&7Parodyti visus prisijungusius žaidėjus'
+      args: ''
+      explanation:
+      - 'Perm: '
+      - cmi.command.list.admin
+      - cmi.command.list.staff
+      - cmi.command.list.hidden
+      - cmi.command.list.group[number]
+    info:
+      List:
+      - '&7========================'
+      - '&7Prisijungę žaidėjai &b[amount][hidden]&7/&b[maxamount]'
+      - '[adminLine]'
+      - '[staffLine]'
+      - '[groupLine]'
+      - '&7========================'
+      staffL: '&4Staff: &f[list]'
+      adminL: '&cAdmin: &f[list]'
+      hiddenPref: '&e&7[H]'
+      hiddenCount: '&e&7([amount])'
+      groupL: '&6[groupName]: &f[list]'
+      player: '%cmi_user_afk_symbol%&f[playerDisplayName]'
+      # Add as many groups as you wish, by default there is only 10, to create new one, just copy paste one line and add increment into lines name, like group11 or group12 and so on.
+      # Player have to have appropriate permission node to be placed in group cmi.command.list.group.[groupnumber], bigger number have priority
+      groups:
+        group1: '&eGroup1: &f[list]'
+        group2: '&eGroup2: &f[list]'
+        group3: '&eGroup3: &f[list]'
+        group4: '&eGroup4: &f[list]'
+        group5: '&eGroup5: &f[list]'
+        group6: '&eGroup6: &f[list]'
+        group7: '&eGroup7: &f[list]'
+        group8: '&eGroup8: &f[list]'
+        group9: '&eGroup9: &f[list]'
+        group10: '&eGroup10: &f[list]'
+      noGroupLine: '&eList'
+  lockip:
+    help:
+      info: '&7Uždrausti žaidėjui jungtis iš kito IP adreso'
+      args: (playername) [add/remove/list/clear] [ip]
+    info:
+      CantLogin: '&cJus negalite prisijungti iš šito IP adreso'
+      add: '&7Naujas IP adresas (&b[ip]&7) pridėtas žaidėjui &b[playerDisplayName]'
+      remove: '&7Ip (&b[ip]&7) ištrintas iš žaidėjo &b[playerDisplayName]'
+      clear: '&7Visi IP adresai buvo ištrinti iš &b[playerDisplayName]'
+      ipNotFound: '&cIP adresas nerastas'
+      empty: '&cSąrašas yra tuščias'
+      list: '&b[place]&7. &b[ip]'
+  mail:
+    help:
+      info: '&eSiųsti ir gauti paštą'
+      args: '[send/clear/read] [playerName] (message)'
+    info:
+      sentMail: '&ePaštas išsiųstas &6[playerDisplayName]'
+      gotMail: '!actionbar!&eGavote laišką iš &6[senderDisplayName]'
+      clearMail: '&eisi laiškai buvo išvalyti!'
+      removedMail: '&ePašalintas paštas'
+      noMailsById: '&eTokio žaidėjo nepavyko rasti pagal ID'
+      noMails: '&eJūs neturite laiškų'
+      mailHover: '&e[senderName] /n &e[time]'
+      list: '&6[id]. &7[senderDisplayName]&e: [mail] '
+      waitingMail: '&eJūs turite &6[amount] &elaiškus. Spustelėkite, kad juos patikrintumėte.'
+  mailall:
+    help:
+      info: '&7Patikrinti ar išsiųsti laišką visiems žaidėjams'
+      args: '[send/clear/remove] [message]'
+    info:
+      sentMail: '&7Išsiųsta &b[amount] &7laiškų'
+      clearMail: '&b[amount] &7laiškų buvo išvalyta'
+      removedMail: '&7Ištrinta &b[amount] &7laiškų'
+  maintenance:
+    help:
+      info: '&7Nustatyti serverį tvarkymo darbams'
+      args: (žinutė)
+      explanation:
+      - cmi.command.maintenance.bypass - to bypass maintenance mode
+    info:
+      feedback: '&cServeris yra uždarytas tvarkymo darbams. Prašome prisijungti vėliau.'
+      set: '&7Serverio tvarkymo darbai nustatyti į &b[state] &7su žinute: [message]'
+  maxhp:
+    help:
+      info: '&7Nustatyti žaidėjo max hp'
+      args: set/add/take/clear [playerName] [amount] (-s)
+    info:
+      feedback: '&7Jus nustatėte &b[maxHp] &7max hp žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      targetfeedback: '&7Jūsų max HP buvo nustatytas į &b[maxHp] &7administratoriaus
+        &b[senderDisplayName]&7.'
+  maxplayers:
+    help:
+      info: '&7Pakeisti maksimalų žaidėjų skaičių'
+      args: '[skaičius]'
+      explanation:
+      - '&ePermissions: '
+      - '&6cmi.fullserver.bypass &e- join full server'
+    info:
+      changed: '&7Pakeistas maksimalus žaidėjų skaičius iš &b[old] &7į &b[new]&7.
+        Prisijungę: &b[current]'
+  me:
+    help:
+      info: '&7Išsiųsti specialią žinutę visiems žaidėjams'
+      args: '[žinutė]'
+    info:
+      format: '&5* [senderDisplayName] &5[message]'
+  merchant:
+    help:
+      info: '&7Atidarykite prekybininkų prekybos langą'
+      args: '[type] (playerName)'
+    info:
+      incorrect: '&cNeteisinga profesija.'
+      feedback: '&eJūs atidarėte &6[type] &emainytis su &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e atidarė &6[type] &emainus su jumis.'
+  migratedatabase:
+    help:
+      info: '&ePakeičia duomenų bazės sistemą ir perkelia visus duomenis'
+      args: ''
+  mirror:
+    help:
+      info: '&ePradeda blokus statyti/griauti veidrodžio tipu.'
+      args: (start/stop)
+    info:
+      started: '&eVeidrodinis statymas pradėtas'
+      stopped: '&6Veidrodinis statymas sustabdytas'
+      tooFar: '&cJūs esate per toli nuo veidrodžio statymo centro (max &6[blocks]
+        &cblocks). Funkcija pristabdyta!'
+      title: Veidrodinis statymas
+      notSet: '&cCentras nėra nustatytas'
+      set: '&2Centras nustatytas'
+      noBlocks: '&cNepakanka blokų'
+      used: '&7Sunaudota: &7[blocks]'
+      Action:
+        Name:
+          X: X
+          Y: Y
+          Z: Z
+          XY: XY
+          ZY: ZY
+          XZ: XZ
+          ZX: ZX
+          Rotate90V: Pasukti90V
+          Rotate90H: Pasukti90H
+          Rotate90HC: Pasukti90HC
+          Rotate180H: Pasukti180H
+          Pause: Pauzė
+          Location: Lokacija
+        Desc:
+          X: '&eVeidrodžiai pagal &6X &eašį'
+          Y: '&eVeidrodžiai pagal &6Y &eašį'
+          Z: '&eVeidrodžiai pagal &6Z &eašį'
+          XY: '&eVeidrodžiai pagal &6X &esu &6Y &eašį'
+          ZY: '&eVeidrodžiai pagal &6Z &esu &6Y &eašį'
+          XZ: '&eVeidrodžiai pagal &6X &esu &6Z &eašį'
+          ZX: '&eVeidrodžiai pagal &6Z &esu &6Y &eašį'
+          Rotate90V: '&eSukasi aukštyn'
+          Rotate90H: '&eSukasi &690 &elaipsnių pagal laikrodį'
+          Rotate90HC: '&eSukasi &690 &elaipsnių prieš laikrodį'
+          Rotate180H: '&eSukasi &6180 &elaipsnių'
+          Pause: '&ePristabdo veidrodį'
+          Location: '&eNustato veidrodinio centro vietą'
+  mobhead:
+    help:
+      info: '&7Gauti monstro galvą'
+      args: '[mobType] (entryNumber) (playerName) (-s)'
+    info:
+      got: '&7Gavote &b[type] &7monstro galvą'
+  money:
+    help:
+      info: '&7Tvarkyti pinigų balansą'
+      args: '[pay/give/take/set] [playerName/all/alloffline] [amount/%rand/1-1000%/1%[min-max][playerName]]
+        (-s)'
+    info:
+      newBalance: '&b[playerDisplayName] &7naujas balansas: &b[money]'
+      paid: '&7Jus pervedėte &b[amount] &7žaidėjui &b[playerDisplayName]'
+      gotMoney: '&7Jus gavote &b[amount] &7iš &b[senderDisplayName]&7. Balansas: &b[money]'
+      gotMoneyGive: '&7Jus gavote &b[amount]&7. Balansas: &b[money]'
+      noMoney: '&cJus neturite pinigų'
+      worldGroups: '&cJus negalite pervesti pinigų būdami skirtinguose pasauliuose'
+      self: '&cJus negalite sau pervesti pinigų!'
+      confirm: '&bSpauskite, kad patvirtintumėte &7[money] &bpervedimą žaidėjui &7[playerDisplayName]
+        &a&l[✔]'
+      notAccepting: '&7Šis žaidėjas nepriėma jokių pervedimų iš kitų žaidėjų'
+      giveAll: '&7Pervesta &b[totalAmount] [playerCount] &7žaidėjams'
+      takeAll: '&7Atimta &b[totalAmount] &7iš &b[playerCount] &7žaidėjų'
+  more:
+    help:
+      info: '&eUžpildo daiktais maksimalia suma'
+      args: (playerName) (-clone/[amount])
+      explanation:
+      - '&ePermissions:'
+      - ' &6cmi.command.more.oversize &e- gauti negabaritinius krūvus'
+    info:
+      feedback: '&eUžpildyta krūva į &3[amount]&e žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+  msg:
+    help:
+      info: '&7Išsiųsti žinutę žaidėjui'
+      args: '[Vardas] [žinutė]'
+      explanation:
+      - If message starts with ! then clean message without sender name will be shown
+      - Requires cmi.command.msg.clean permission
+      - If message starts with !- then clean message without sender name will be shown
+        and without option to reply
+      - Requires cmi.command.msg.noreply permission
+    info:
+      TargetMsg: '&d[senderDisplayName] &f➲ &bman &r&f [message]'
+      SenderMsg: '&baš &f➲ &d[playerDisplayName] &r&f [message]'
+      consoleMsg: '[[senderDisplayName] -> [playerDisplayName]] [message]'
+      noPM: '&cŠis žaidėjas nepriėma privačių žinučių iš kitų žaidėjų'
+      badGroup: '&cJus negalite siųsti privačių žinučių šios grupėms žaidėjams'
+  msgtoggle:
+    help:
+      info: '&7Įjungti/išjungti privačias žinutes'
+      args: (Vardas)
+    info:
+      feedbackOn: '&aNuo šiol jus priėmate privačias žinutes'
+      feedbackOff: '&cNuo šiol jus nepriėmate privačių žinučių'
+  mute:
+    help:
+      info: '&7Užtildyti žaidėją'
+      args: '[Vardas] (laikas) (-s) (priežastis)'
+      explanation:
+      - 'Examples: '
+      - /cmi mute zrips 1m
+      - /cmi mute zrips 1h
+      - /cmi mute zrips 1h For swearing
+    info:
+      mutedFor: '&b[playerDisplayName] &7buvo užtildytas &b[time]'
+      muted: '&7Jus buvote užtildytas &b[time]'
+      reason: '&7Priežastis: &b[reason]'
+  mutechat:
+    help:
+      info: '&7Uždrausti viešą pokalbį'
+      args: (laikas) (-s)
+      explanation:
+      - 'Examples: '
+      - /cmi mutechat 1m
+      - '/cmi mutechat 1h '
+    info:
+      mutedFor: '&cViešas pokalbis buvo išjungtas &7[time]'
+      isMuted: '!actionbar!&cViešas pokalbis buvo išjungtas &7[time]'
+  nameplate:
+    help:
+      info: '&eNustatykite žaidėjų vardinių lentelių priešdėlius, priesagas ar jų
+        spalvą'
+      args: (playerName) (-pref:[prefix]) (-suf:[suffix]) (-c:[colorCode])
+    info:
+      feedback: '&eJūs atnaujinote vardą virš galvos žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eJūsų vardas virš galvos buvo atnaujintas/pakeistas'
+  near:
+    help:
+      info: '&7Patikrinti, kas yra šalia jūsų'
+      args: (atstumas)
+    info:
+      nope: '&7Šalia jūsų nėra nei vieno žaidėjo'
+      list: '&7[place]. &b[playerDisplayName] &7- &b[distance]m'
+      aproxList: '&7[place]. &b[playerDisplayName] &7- &b[dir] &7~[distance]m'
+  nick:
+    help:
+      info: '&7Pakeisti slapyvardį'
+      args: '[newNickName/off] (vardas) (-s)'
+      explanation:
+      - 'To change into different nick name: cmi.command.nick.different'
+      - To bypass length protection use cmi.command.nick.bypass.length
+    info:
+      changed: '&7Slapyvardis buvo pakeistas į &r[newNickName] &7iš &r[oldNickName]'
+      changedTarget: '&7Jūsų slapyvardis buvo pakeistas į &r[newNickName] &7administratoriaus
+        &r[senderDisplayName]'
+      reset: '&7Slapyvardis buvo atstatytas'
+      sameNick: '&cJus neturite teisės keisti slapyvardžio. Jus galite keisti tik
+        spalvą'
+      blockedNick: '&cJus negalite naudoti šio slapyvardžio'
+      blockedNickLength: '&cSlapyvardis per ilgas. Max &7[amount] &csimboliai'
+      blockedNickLengthMin: '&cSlapyvardis per trumpas. Min &7[amount] &csimboliai'
+      inUse: '&cŠį slapyvardį jau naudoja kitas žaidėjas'
+  notarget:
+    help:
+      info: '&7Įjungti/išjungti monstrų puolimą'
+      args: (Vardas) (true/false) (-s)
+    info:
+      enabled: '&aMonstrai nuo šiol jūsų neatakuos!'
+      disabled: '&cMonstrai jus pradės atakuoti!'
+  note:
+    help:
+      info: '&eTvarkykite žaidėjų užrašus'
+      args: (playerName) [add/remove/clear/list] (id/note)
+    info:
+      newNote: '&ePridėta nauja žaidėjui pastaba'
+      clearNote: '&eVisos žaidėjo pastabos buvo išvalytos'
+      removedNote: '&ePašalinta žaodėjo pastaba'
+      noNotesById: '&eŠiuo ID nėra įrašytų žaidėjo įrašų'
+      noNotes: '&eNėra išsaugotų žaidėjo užrašų'
+      list: '&6[id]. &e[note]'
+  openbook:
+    help:
+      info: '&eAtidaryti knygos gui'
+      args: (cText) (playerName)
+  oplist:
+    help:
+      info: '&7Peržiūrėti operatorių žaidėjų sąrašą'
+      args: ''
+    info:
+      feedback: '&b* &7[number]. &b[playerName]'
+  panimation:
+    help:
+      info: '&eAtkurkite pasirinktinę dalelių animacija'
+      args: ''
+      explanation:
+      - Informaciją apie naudojimą galima rasti tinklalapyje http://www.zrips.net/cmi/extra/particles/
+  patrol:
+    help:
+      info: '&ePatrulis'
+      args: ''
+    info:
+      noPatrol: '&eŠiuo metu nėra žaidėjų, kuriuos galėtumėte patruliuoti'
+      Patroling: '&eŠiuo metu patruliuoja: &6[playerDisplayName]'
+      lastPatrol: '&ePaskutinį kartą patruliavo &6[time]&eprieš'
+      notes: '&eTuri &6[amount] &eužrašų'
+  pay:
+    help:
+      info: '&7Pinigų pervedimas kitam žaidėjui'
+      args: '[Vardas] [skaičius]'
+  paytoggle:
+    help:
+      info: '&7Įjungti/išjungti pervedimus iš kitų žaidėjų'
+      args: (Vardas)
+    info:
+      feedbackDisabled: '&aNuo šiol jus priėmate pervedimus iš kitų žaidėjų'
+      feedbackEnabled: '&cNuo šiol kiti žaidėjai negalės jums pervesti pinigų'
+  ping:
+    help:
+      info: '&7Parodyti žaidėjo ping'
+      args: (Vardas)
+    info:
+      feedback: '&7Ping: &b[ping]ms'
+      selffeedback: '&7Jūsų ping yra &b[ping]ms'
+      customMessage: '[message]'
+  placeholders:
+    help:
+      info: '&7Placeholders sąrašas'
+      args: (parse) (placeholder) (playerName)
+    info:
+      list: '&7[place]. &b[placeholder]'
+      outputResult: ' &7rezultatas: &b[result]'
+      parse: '&6[placeholder] &eby [source] &6result &8|&f[result]&8|'
+  playercollision:
+    help:
+      info: '&7Nustatykite žaidėjų susidūrimo režimą'
+      args: (playerName) [true/false] (-s)
+    info:
+      feedback: '&eJūs nustatėte susidūrimą į &3[boolean]&e žaidėjui &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eJūsų susidūrimo režimas pakeistas į &3[boolean]'
+  playtime:
+    help:
+      info: '&7Parodyti žaidėjo pražaistą laiką'
+      args: (Vardas)
+    info:
+      total: '&7* Viso pražaista: &b[time]'
+      joined: '&7* Pirmą kartą buvo prisijungęs: &b[time]'
+  playtimetop:
+    help:
+      info: '&7Parodyti top sąrašą pagal pražaistą laiką'
+      args: '[page]'
+    info:
+      topLine: '&7----- &bTOP Aktyviausi &7-----'
+      scanning: '&eŠiuo metu duomenys skenuojami. Palaukite minutę ir bandykite dar
+        kartą'
+      loading: '&eDuomenys dar nėra įkelti. Prasidės nuskaitymo procesas, o kai baigsis
+        gausite rezultatą'
+      list: '&b[number]. [playerDisplayName] &7- &b[time]'
+      place: '&b[playerDisplayName] &7yra &b[place] &7vietoje'
+  point:
+    help:
+      info: '&ePažymėkite blokąk'
+      args: (particleName) (playerName) (-self) (time) (-s:[speed])
+  portals:
+    help:
+      info: '&7Nustatyti portalą'
+      args: (new/nearest) (portalName)
+    info:
+      collides: '&cCollides with &6[portalName] &eportal'
+      exist: '&cPortal with this name already exist'
+      notExist: '&cPortal with this name doesn''t exist'
+      locationSet: '&ePortal location set to your position for &6[portalName]'
+      removed: '&ePortal &6[portalName] &eremoved'
+      click: '&eClick to set tp location for &6[portalName] &eto your current position'
+      bungeeSet: '&eTravel to position and click on this message to set teleport location'
+      list: '&e[number]. &6[portalName]'
+      redefine: '&eRedefine area from current selection'
+      particles: '&eParticles: &6[state]'
+      particleType: '&eParticle type: &6[type]'
+      particleAmount: '&eParticle amount: &6[amount]'
+      particlePercent: '&ePercentage of sides shrinked particles: &6[amount]%'
+      activationRange: '&eActivation range: &6[amount]'
+      bungeeTeleport: '&eTeleport to exact bungee location: [state]'
+      requiresPermission: '&eRequires &7[perm] &epermission to use: [state]'
+      informPermission: '&eInform on missing permission: [state]'
+      teleportToLocation: '&eTeleport to portal location'
+      teleportToTarget: '&eTeleport to portal target location'
+      performCommandsWithoutTp: '&ePerform commands without valid teleport location'
+      editCommands: '&eEdit portal commands'
+      setTeleportLocation: '&eSet teleport location'
+      setSafeLocation: '&eSet safe outside location'
+      save: '&eSave changes to file'
+      removePortal: '&eREMOVE PORTAL'
+      cantUsePortal: '&cYou can''t use this portal'
+  pos:
+    help:
+      info: '&7Išgauti žaidėjo poziciją'
+      args: (Vardas)
+    info:
+      feedback: '&b[playerDisplayName] &7(&b[offon]&7) ([world]&7,&b[x]&7:&b[y]&7:&b[z]&7)'
+      feedbackRegion: '&7Chunk &b[chunkx]&7:&b[chunkz]&7 Region &b[regionx]&7:&b[regionz]'
+      feedbackDirection: '&7Direction &b[direction] &7(&b[degrees] &7degrees)'
+      feedbackBiome: '&7Biome &b[biome]'
+      feedbackLight: '&7Light level &b[lightLevel]'
+      netherCoord: '&7Nether World coord: &7(&b[x]&7:&b[y]&7:&b[z]&7)'
+      normalCoord: '&7Normal world coord: &7(&b[x]&7:&b[y]&7:&b[z]&7)'
+  preview:
+    help:
+      info: '&eLoad chunk for given range'
+      args: '[range] (innerrange)'
+    info:
+      NoMore: '&eRange can''t be more than 32 chunks. Changed to maximum allowed.'
+      startSending: '&eFound &6[amount] &echunks to send. Starting!'
+      InfoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[min]m:[sec]s&6) &6Speed: &e[speed]'
+      Finished: '&eFinished. It can take some extra time to load all chunks on your
+        side.'
+  prewards:
+    help:
+      info: '&7Peržiūrėti prizus už pražaistą laiką'
+      args: (Vardas)
+    info:
+      list: '&7[place]. &b[rewardName] &7prizas po &b[time]'
+      listNoStack: '&7[place]. &b[rewardName]'
+      listOneTime: '&7[place]. &b[rewardName]'
+      claim: ' &aAtsiimti!'
+      claimAmount: ' &aAtsiimti(x[amount])!'
+      claimHover: '&aSpauskite, kad atsiimti prizą!'
+      inform: '!actionbar!&aJus turite neatsiimtų prizų už praleistą laiką! /prewards'
+  ptime:
+    help:
+      info: '&7Keisti asmeninį žaidėjo laiką'
+      args: ''
+      explanation:
+      - 'Example:'
+      - /ptime 13:00:00
+      - /ptime 1pm
+      - /ptime 13
+      - /ptime 7000ticks
+      - /ptime Zrips 1pm
+      - /ptime freeze
+      - /ptime unfreeze
+      - /ptime realtime
+      - /ptime reset
+    info:
+      check: '&7Asmeninis laikas: &b[24h] &7ar &b[12h] &7ar &b[ticks]ticks'
+      frozen: ' &c(-)'
+      gotreseted: '&b[playerDisplayName] &7laikas buvo atstatytas'
+      gotfrozen: '&b[playerDisplayName] &7laikas buvo užšaldytas'
+      gotunfrozen: '&b[playerDisplayName] &7laikas buvo atšaldytas'
+      setto: '&7Laikas buvo nustatytas į &b[24h] &7ar &b[12h] &7ar &b[ticks]ticks
+        &7žaidėjui &b[playerDisplayName]'
+  purge:
+    help:
+      info: '&7Cleans player data from world folder by inactive days'
+      args: (stop)
+    info:
+      stopped: Purge stopped.
+  pweather:
+    help:
+      info: '&7Keisti asmeninį žaidėjo orą'
+      args: (Vardas) [sun/rain/reset] (-s)
+    info:
+      check: '&7Asmeninis žaidėjo oras: &b[weather]'
+      gotreseted: '&b[playerDisplayName] &7oras buvo atstatytas'
+      setto: '&7Asmeninis oras buvo nustatytas į &b[weather] &7žaidėjui &b[playerDisplayName]'
+      gotset: '&7Jūsų asmeninis oras buvo nustatytas į &b[weather]'
+      reset: '&7Orai atstatyti'
+  rankdown:
+    help:
+      info: '&7Pažeminti rank'
+      args: (Vardas) (rankName) (confirm) (-cmd) (-cost)
+      explanation:
+      - -cmd will perform command defined for previous rank rankup
+      - -cost will charge player with money, exp or items if defined for previous
+        rank rankup
+    info:
+      noPrev: '&cNepavyko rasti žemesnio rank'
+      list: '&bPasirinkite rank, iki kurio norite &cnusileisti: '
+      confirm: '&aSpauskite, kad patvirtintumėte &crank nusileidimą &aiki &c[rank]'
+      downranked: '&cNusileidote iki &7[rank]&c rank'
+  rankinfo:
+    help:
+      info: '&7Jūsų rank informacija'
+      args: (Vardas) (rankName)
+    info:
+      distanceCM: '[value]cm'
+      distanceM: '[value]m'
+      distanceKm: '[value]km'
+      requiredMoney: ' &7Pinigai: [color][current]&7/&b[needed]'
+      requiredExp: ' &7Exp: [color][current]&7/&b[needed]'
+      requiredVotes: ' &7Balsai: [color][current]&7/&b[needed]'
+      requiredPerm: ' &7Leidimai: '
+      requiredMcmmo: ' &7Mcmmo: '
+      requiredMcmmoList: '&7[color][name] '
+      requiredMcmmoListHover: ' &7[color][current]&7/&b[needed]'
+      requiredMcmmoPower: Power
+      requiredJobs: ' &7Darbai: '
+      requiredJobsList: ' &7[color][name]'
+      requiredJobsListHover: ' &7[color][current]&7/&b[needed]'
+      requiredJobsTotalLevel: Viso lygių
+      requiredItem: ' &7Daiktai: '
+      requiredItemsList: '&7[color][name]'
+      requiredItemListHover: '&7[color][current]&7/&b[needed]'
+      currentRank: ' &7Jūsų dabartinis rank: &b[rankName]'
+      elseCurrentRank: ' &b[playerDisplayName] &7dabartinis rank: &b[rankName]'
+      rankNameLine: ' &7------ &b[rankName] &c[rankupState] &7------'
+      canRankup: ' &aGalite pasikelti!'
+      cantRankup: ''
+      requiredStats: ' &7[name][extra]&7: [color][current]&7/&b[needed]'
+      requiredStatsExtra: ' (&b[type]&7)'
+      nextRanks: ' &7Kitas rank: '
+      finalRank: ' &cTai yra paskutinis rank'
+      noRank: ' &cNepavyko rasti rank'
+      check: '&7Patikrinti &c[rank] &7rank'
+      progressBarHover: '&7Progresas &a[percent]%'
+  ranklist:
+    help:
+      info: '&7Rank sąrašas'
+      args: ''
+    info:
+      list: '&7[place]. [currentRankMarker]&b[rankName][currentRankMarker]'
+      currentRankMarker: '&a+'
+  rankset:
+    help:
+      info: '&7Nustatyti žaidėjo rank'
+      args: (Vardas) [rankName] (-cmd) (-cost)
+      explanation:
+      - -cmd will perform command defined for that rank rankup
+      - -cost will charge player with money, exp or items if defined for that rank
+        rankup
+      - player will get rank even if he doesnt have enough money, exp or required
+        items
+    info:
+      set: '&7Rank pakeistas žaidėjui &b[playerDisplayName] &7į &b[rankName]'
+  rankup:
+    help:
+      info: '&7Pakelti rank'
+      args: (Vardas) (rankName) (confirm)
+    info:
+      noRank: ' &cJus neturite jokių su jumis susijusių rank'
+      requiresPrevious: ' &cJus negalite pasikelti iki šio rank. Jus turite būti &7[rank]
+        &crank'
+      list: '&7Pasirinkite rank, iki kurio norite pakilti: '
+      confirm: '&aPaspauskite, kad patvirtintumėte pakylimą į &7[ranks]&a rank'
+  realname:
+    help:
+      info: '&7Sužinoti žaidėjo tikrą vardą'
+      args: (playerName/nickName)
+    info:
+      feedback: '&r[playerDisplayName] &7tikras vardas &r[playerName]'
+  recipe:
+    help:
+      info: '&7Sužinoti daikto receptą'
+      args: (itemName)
+    info:
+      title: '&0[itemName]'
+      page: ' &0[current]&7/&0[total]'
+      noRecipes: '&cNepavyko rasti jokio šio daikto recepto'
+  reload:
+    help:
+      info: '&eReloads plugins config and locale files'
+      args: ''
+    info:
+      feedback: '&6Configs and locale files reloaded!'
+      failedConfig: '&4Failed to load config file! Check spelling!'
+      failedLocale: '&4Failed to load locale file! Check spelling!'
+  removehome:
+    help:
+      info: '&7Ištrinti namą'
+      args: (homeName) (playerName)
+    info:
+      remove: '&cSpauskite, kad ištrintumėte namą'
+      removed: '&7Namas (&b[home]&7) ištrintas'
+  removeuser:
+    help:
+      info: '&7Ištrinti žaidėją ir jo duomenis'
+      args: '[uuid/duplicates]'
+    info:
+      removed: '&7Žaidėjas (&b[uuid]&7) ištrintas'
+      removedDuplicate: '&b[amount]/[max] &7dublikatų ištrinta'
+  removewarp:
+    help:
+      info: '&7Ištrinti warp'
+      args: (warpName)
+    info:
+      remove: '&cSpauskite, kad ištrintumėte warp'
+      removed: '&7Warp (&b[warp]&7) ištrintas'
+      notYours: '&cŠis warp daugiau nepriklauso jums!'
+  repair:
+    help:
+      info: '&7Sutaisyti daiktus'
+      args: '[hand/armor/all] (playerName)'
+      explanation:
+      - cmi.command.repair.hand - allows a user to repair items in their hand
+      - cmi.command.repair.armor - allows a user to repair items in armor slots
+      - cmi.command.repair.all - allows a user to repair their whole inventory
+      - cmi.command.repair.repairshare.bypass - allows a user to repair items without
+        adding repair share protection
+    info:
+      feedback: '&7Jus sutaisėte &b[amount]&7 daiktus žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      feedbackMoney: '&7Jus sutaisėte &b[amount]&7 daiktus žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7). Kaina: &b[cost]'
+      itemOwner: '&7Paskutinį kartą buvo sutaisyta: &b[owner]'
+      cantUse: '!title!&cJus negalite naudoti šio daikto!!subtitle!&7Susitaisykite
+        pats!'
+  repaircost:
+    help:
+      info: '&7Nustatyti daiktų sutaisymo kainą'
+      args: (playerName) [amount]
+      explanation:
+      - 'Example:'
+      - /repaircost 10
+      - /repaircost set 10
+      - /repaircost add 10
+      - /repaircost take 10
+      - /repaircost Zrips clear
+      - /repaircost Zrips add 10
+    info:
+      current: '&eCurrent items base repair cost: &6[cost]&e.'
+      noitem: '&cNeturite rankoje jokio daikto.'
+      cantDetermineCost: '&cCan''t determine base repair cost for this item.'
+      selffeedback: '&eBase repair cost was set to &3[amount] &efor &3[playerDisplayName]&e
+        item in hand (&3[offon]&e).'
+      targetfeedback: '&eYour item repair cost was set to &3[amount]&e by &3[senderDisplayNaame]&e.'
+  replaceblock:
+    help:
+      info: '&eReplaces blocks in current world around you'
+      args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range
+        in chunks/g]&e y &6[max height]'
+      explanation:
+      - '&6SubCommands:'
+      - '&e- &6pause &e- pause replacing'
+      - '- &6continue &e- continue replacing'
+      - '- &6stop &e- stop replacing'
+      - '- &6speed [amount] &e- set current replace speed'
+      - '- &6autospeed [true/false] &e- set autospeed turned off or on'
+      - '- &6messages [true/false] &e- set message output to off or on'
+      - 'Example:'
+      - /cmi replaceblock id 52 w stone r 10
+      - /cmi replaceblock id 52,gold_block w stone r 15 y 100
+      - /cmi replaceblock id 52 w air r g y 100
+      - /cmi replaceblock id iron_ore%75 w stone%90,dirt%5 r g
+    info:
+      startScanning: '&eFound &6[amount] &echunks to check. Starting!'
+      paused: '&eReplacing paused, to continue use &6/cmi blockreplace continue.'
+      continuing: '&eReplacing continuing'
+      stoped: '&eReplacing stopped.'
+      speedChange: '&eSpeed changed to [amount]'
+      autospeedChange: '&eAutoSpeed changed to [state]'
+      messagesChange: '&eMessage state changed to [state]'
+      infoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[time]&6) &6Speed: &e[speed]
+        &6Replaced: &e[found]'
+      finished: '&eFinished!!! Replaced: &6[amount] &eblocks! In &6[time]&e.'
+  reply:
+    help:
+      info: '&7Atsakyti į kątik gautą žinutę'
+      args: '[žinutė]'
+    info:
+      noOneToReplay: '&cNeturite kam atsakyti'
+  resetdbfields:
+    help:
+      info: '&eResets particular database columns to default value'
+      args: '[collumnName] (-w:[worldName]) (-p:[playerName])'
+    info:
+      feedback: '&eUpdated &7[amount] &eplayers'
+      nofield: '&cCant find field by this name'
+  ride:
+    help:
+      info: '&eRide target entity'
+      args: ''
+      explanation:
+      - ' cmi.command.ride.[entityType] - to have access in riding entity'
+    info:
+      riding: '&eYou are riding &6[entityName]'
+      cantRide: '&cYou cant ride (&6[entityName]&c) entity'
+      someOneElse: '&cSome one is already riding this entity'
+      ridingYou: '&6[playerDisplayName] &eis riding you, do &6/shakeitoff &eto get
+        them off'
+  rt:
+    help:
+      info: '&7Teleportacija į random vietą'
+      args: (Vardas) (worldName)
+    info:
+      posible: '&7Įmanomi pasauliai: &b[worlds]'
+      tpLimit: '&cJus negalite dažnai teleportuotis, prašome palaukti &7[time] &cir
+        bandyti dar kartą'
+      IncorrectLocation: '&cNepavyko rasti teisingos random lokacijos, prašome palaukti
+        &7[time] &cir bandyti dar kartą.'
+      teleported: '!actionbar!&bJus nusiteleportavote į random vietą!'
+  sameip:
+    help:
+      info: '&7Sąrašas žaidėjų, su tuo pačiu IP adresu'
+      args: ''
+    info:
+      list: '&7[place]. &b'
+      nothing: '&cNėra ką parodyti'
+  saturation:
+    help:
+      info: '&eSet players saturation'
+      args: (playerName) [amount]
+    info:
+      feedback: '&eYou have set &3[amount]&e saturation for &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eYour saturation was set to &3[amount]&e by &3[senderDisplayName]&e.'
+  saveall:
+    help:
+      info: '&eSaves every player inventory'
+      args: (daysRange/-online)
+      explanation:
+      - -online variable can be used to save only online player inventories
+    info:
+      saving: '[simbol] &2checked: &e[checked]&2 from &e[total]&2 saved: &e[saved]
+        &2skipped: &e[skipped] [simbol]'
+      saved: '&eSave finished. Saved: &6[saved] &eSkipped: &6[skipped]'
+  saveditems:
+    help:
+      info: '&eSave or manage saved items'
+      args: '[save/get/remove/list] (savedItemName) (-t:playerName) (-a:amount) (-s)'
+    info:
+      info:
+      - '&fLeft click to get item'
+      - '&fMiddle mouse click to detele'
+      got: '&eGot &6[name] &eitem'
+      give: '&eGive &6[name] &eitem'
+      removed: '&eRemoved &6[name] &eitem'
+      saved: '&eSaved &6[name] &eitem'
+      title: '&8[current]&7/&8[total]'
+  sc:
+    help:
+      info: '&eStarts sign copy process'
+      args: (playerName)
+    info:
+      punch: '&ePunch sign to paste text into it, or punch any non-sign block to cancel
+        process'
+      canceled: '&eSign copy process cancelled'
+      updated: '&eSign updated'
+  scan:
+    help:
+      info: '&eScans for items in current world'
+      args: ''
+      explanation:
+      - '&6SubCommands:'
+      - '&e- &6stats &e- show current scanning stats '
+      - '&e- &6pause &e- pause scanning '
+      - '- &6continue &e- continue scanning '
+      - '- &6stop &e- stop scanning '
+      - '- &6stopall &e- stops all scannings '
+      - '- &6speed [amount] &e- set current scan speed '
+      - '- &6autospeed [true/false] &e- set AutoSpeed turned off or on '
+      - '- &6messages [true/false] &e- set message output to off or on'
+      - 'Variables:'
+      - '&eid &6[id:data]'
+      - '&eq &6[minimum quantity]'
+      - '&er &6[range in chunks] &e- option to use &6g &einstead of number to scan
+        entire map'
+      - '&en &6[item name]'
+      - '&el &6[item lore]'
+      - '&eh &6uses info from item in hand'
+      - '&ee &6[enchantname]'
+      - '&eelvl &6[enchantminlevel]'
+      - '&eoversize'
+      - '&epurge - removed found items, this feature should be enabled in config file'
+      - 'Example:'
+      - /scan id 52 r 30
+      - scan id diamond_block r g q 32
+    info:
+      loadingChunkInfo: '&eLoading chunk information!'
+      startScanning: '&eFound &6[amount] &echunks to check. Starting!'
+      paused: '&eScanning paused, to continue use &6/cmi scan continue.'
+      continuing: '&eScanning continuing'
+      holdItem: '&eYou need to hold the item in hand'
+      stoped: '&eScanning stoppeds. You can check the results with /cmi scan info'
+      speedChange: '&eSpeed changed to [amount]'
+      autospeedChange: '&eAutoSpeed changed to [state]'
+      messagesChange: '&eMessage state changed to [state]'
+      NoInfo: '&eThere is no info'
+      infoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[time]&6) &6Speed: &e[speed]
+        &6Found: &e[found]'
+      Teleport: '&ePress to teleport'
+      scanList: '&2[number]. &e[place] &6[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
+      scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
+      edit: ' &e(Edit)'
+      total: '&eChecking from [current]/[until] from total of [total]'
+      Stats:
+      - '&e************************************************************'
+      - '&e* &6Chunks: &e[checked]/[total]'
+      - '&e* &6Scan range: &e[range]'
+      - '&e* &6Scan speed: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6World: &e[world]'
+      - '&e* &6Found: &e[found]'
+      - '&e* &6Time: &e[time]'
+      - '&e* &6id: &e[id]'
+      - '&e* &6Qty: &e[qty] and up'
+      - '&e* &6Name: &e[name]'
+      - '&e* &6Lore: &e[lore]'
+      - '&e************************************************************'
+  scavenge:
+    help:
+      info: '&7Recycle item and its enchantments'
+      args: (Vardas)
+    info:
+      enchantWorth: '&7Enchantment worth: &b[price]'
+      enchantFailChance: '&4Fail chance: &7[chance]%'
+      enchantFailed: '&cFailed. &7[enchant]&c level &7[level] &cWith &7[chance]% &cfail
+        chance'
+      enchantLevelChance: '&cLevel lower chance: &7[chance]%'
+      gotIngredients: '&7You got [itemList]'
+      gotIngredientsFormat: '&b[material]&7-&b[amount]'
+      itemBroke: '&cItem broke with &7[chance]% &cbreak chance'
+      confirm: '&2Confirm scavenge. Cost: &c[price]'
+      itemBreakChance: '&cItem break chance: [chance]%'
+      itemBreakChanceExtra: '&c[durability]% durability adds [chance]% break chance'
+      itemBreak: '&cItem will break on click!'
+      ingredientReturnChance: '&7Ingredient return chance: [chance]%'
+      cantScavenge: '&cCan''t scavenge'
+      insertItem: '&2Insert item in a slot above'
+      scavengeCost: '&8Scavenge cost: [cost]'
+      title: '&2Scavenger'
+  schedule:
+    help:
+      info: '&eTrigger schedule'
+      args: '[scheduleName]'
+  se:
+    help:
+      info: '&7Pakeisti sign teksto eilutę.'
+      args: '[SignLine] [Text]'
+      explanation:
+      - Naudokite / n, kad rašytumėte iš kitos eilutės
+  search:
+    help:
+      info: '&7Search items/enchants/fly/maxhp/gm/oversize modes and other stuff from
+        all users'
+      args: ''
+      explanation:
+      - '&7id &b[id:data] '
+      - '&7name &b[some_custom_itemname] '
+      - '&7lore &b[some_custom_lore] '
+      - '&7enchant &b[lowest enchant level] '
+      - '&7potion &b[lowest custom potion effect level] '
+      - '&7fly &b[true or false] '
+      - '&7gm &b[0/1/2/3 or survival/creative/adventure/spectator] '
+      - '&7maxhp &b[lowest hp player have] '
+      - '&7god &b[true/false]'
+      - '&7oversize'
+      - 'Example:'
+      - /search gm 1
+      - /search id 52
+      - /search lore Uber_lore
+    info:
+      started: '&7Ieškoma '
+      current: '&7Šiuo metu rasta &b[amount] &7iš &b[files] &7patikrintų failų'
+      nothingfound: '&7Nieko nebuvo rasta pagal jūsų kriterijus'
+      totalfound: '&7Viso rasta &b[amount] &7iš įmanomų &b[files] &7tikrintų žaidėjų'
+      total: '&7Tikrinama iš &b[current]&7/&b[until]&7 iš visų [total]'
+      location:
+        ender: '&bEnder'
+        inv: '&7Inv'
+        invS: '&7ShulkerBox'
+        PlayerVault: '&7PlayerVault'
+      localsearch: '&7 (L search)'
+      localsearchhover: |-
+        &eWill open inv from local files
+        &eThis will take longer
+      reglist: '&7[number]. &7[name]'
+      list: '&b[number]. [location] &7[name]'
+      listhover: '&bSpauskite, kad atidarytumėte inventorių'
+  seen:
+    help:
+      info: '&7Patikrinti kada žaidėjas paskutinį kartą buvo prisijungęs'
+      args: '[Vardas/uuid]'
+    info:
+      feedback: '&b[playerDisplayName] &7yra &b[offon] &7prieš &b[time]&7!'
+  sell:
+    help:
+      info: '&7Parduoti daiktus iš inventoriaus'
+      args: (all/blocks/hand/same/gui)
+    info:
+      total: '&7Uždirbta &b[total] &7pardavus &b[amount] &7daiktus. Naujas balansas
+        &b[balance]'
+      close: '&7Įdėkite daiktus, kuriuos norite parduoti'
+      sellInfo: '&7Parduoti už: &b[price]'
+  sendall:
+    help:
+      info: '&7Išsiųsti prisijungusiems žaidėjams žinutę nurodytame serveryje'
+      args: '[serverName]'
+  server:
+    help:
+      info: '&7Jungtis į bungeecord serverį'
+      args: '[serverName] (playerName) (-f)'
+  serverlist:
+    help:
+      info: '&7Parodyti serverių sąrašą'
+      args: ''
+    info:
+      listOnline: '&7[place]. &a[serverName] &6[count]&7/&6[max]'
+      listOffline: '&7[place]. &c[serverName] &60&7/&60'
+  servertime:
+    help:
+      info: '&7Parodyti serverio laiką'
+      args: ''
+    info:
+      time: '&7Serverio laikas: &b[time]'
+      format: MM/dd/YYYY HH:mm:ss
+      timeZone: '&7Laiko zonos pavadinimas: &b[name]'
+      timeZoneId: '&7Laiko zonos id: &b[id]'
+      timeZoneOffset: '&7GMT: &b[offset]'
+  setenchantworth:
+    help:
+      info: '&7Pakeisti enchantement vertę'
+      args: ''
+  setfirstspawn:
+    help:
+      info: '&7Nustatyti pirmą atsiradimo vietą'
+      args: (playerName)
+    info:
+      feedback: '&7Pirma atsiradimo vieta buvo nustatyta (&b[world]&7,&b[x]&7,&b[y]&7,&b[z]&7)!'
+  sethome:
+    help:
+      info: '&7Nustatyti home lokaciją'
+      args: (homeName) (playerName) (-p) (-l:worldName;x;y;z)
+      explanation:
+      - cmi.command.sethome.unlimited
+      - -l will define custom location for new home location, this requires cmi.command.sethome.customloc
+        permission node
+    info:
+      set: '&7Jus susikūrėte namus su pavadinimu &b[homeName]&7!'
+      setBed: '&7Sukurta atsiradimo lokacija šioje lovoje'
+      private: ' &a(privatus)'
+      noMore: '&cJus pasiekėte namų limitą'
+      noOverwrite: '&cJus neturite teisės perrašyti esamų namų. Panaikinkite esamus
+        namus arba susikūrkite kitus.'
+  setmotd:
+    help:
+      info: Nustatyti serverio motd
+      args: '[newMotd] (-s)'
+      explanation:
+      - naudokite \n, kad perkelti į kitą eilutę
+    info:
+      changed: '&7Motd pakeistas į:'
+  setrt:
+    help:
+      info: '&7Nustatyti random teleport ribas'
+      args: (worldName) (center:[x]:[z]) (min:[range]) (max:[range]) (square/circle)
+        (enabled/disabled)
+    info:
+      list: '&b[place]. [world] [enabled] &7[centerX]:[centerZ] &b[maxDist]/[minDist]
+        [type]'
+  setspawn:
+    help:
+      info: '&7Nustatyti atsiradimo vietos tašką'
+      args: (playerName) (true/false) (-g:[groupName]) (-rng:[range]) (-w:world,world_nether)
+      explanation:
+      - More info on command usage at https://www.zrips.net/cmi/commands/spawn/
+    info:
+      feedback: '&bAtsiradimo vietos taškas nustatytas &7([world],[x],[y],[z])!'
+      group: ' &7([group])'
+      rng: ' &7(Rng: [rng])'
+      respawn: '&bSpauskite, kad nustatytumėte šią vietą kaip atsiradimo'
+  setwarp:
+    help:
+      info: '&7Nustatyti warp lokaciją'
+      args: '[warpName] (reqPermission) (hand) (slot) (autoLore)'
+      explanation:
+      - '&7Pavyzdžiai:'
+      - /cmi setwarp spawn - simple warp to spawn
+      - /cmi setwarp spawn true - creates warp and will require cmi.command.warp.[warpname]
+        permission node to use it
+      - /cmi setwarp spawn hand - creates warp will take item from hand to display
+        in gui for this warp
+      - /cmi setwarp spawn 13 - creates warp and sets gui slot to be used in gui (1-54)
+      - /cmi setwarp spawn true hand 13 - creates warp with icon from hand, slot 13
+        and requires permission
+      - /cmi setwarp spawn true hand 13 false - same as previous, but doesn't generate
+        lore
+    info:
+      newSet: '&7Naujas warp (&b[warp]&7) buvo nustatytas'
+      noSet: '&cWarp šiuo pavadinimu jau egzistuoja'
+      noMore: '&cJus pasiekėte warp limitą. (&7[max]&c)'
+  setworth:
+    help:
+      info: '&7Pakeisti daikto vertę'
+      args: (itemname) -s:(sellPrice)
+    info:
+      setSell: '&7Nustatėte daikto pardavimo kainą į &b[amount]'
+      setBuy: '&7Nustatėte daikto pirkimo kainą į &b[amount]'
+      notInUse: '&7Šis daiktas nėra naudojamas pardavimams'
+      sellPrice: '&fPardavimo kaina: &7[amount]'
+      buyPrice: '&fPirkimo kaina: &a[amount]'
+      exploit: '&4Įmanoma klaida!'
+      ingridient: '&aIngredientai'
+      ingridients: '&7[ingridient]&b(&7[amount]&b) = &a[price]'
+      notSet: '&ckaina nėra nustatyta'
+      result: '&2Crafts into &7[result]&f(&7[amount]&f)'
+      ingridientsPrice: '&cIngredientų kaina: &7[price]'
+      resultPrice: '&cGali būti parduotas už: &7[price]'
+  shakeitoff:
+    help:
+      info: '&7Dismount any entity riding you'
+      args: ''
+    info:
+      shaked: '&eYou have shaken off: &6[entity]'
+      nothing: '&eNothing to shake off'
+  shoot:
+    help:
+      info: '&eShoot projectile'
+      args: (playerName) (-t:targetPlayer) (type) (speed)
+  signspy:
+    help:
+      info: '&7Įjungti/išjungti sign spy'
+      args: (Vardas)
+      explanation:
+      - cmi.command.signspy.hide - Hides created signs from signspy
+    info:
+      text: '&5Sign&2Spy&7[&8[senderDisplayName]&7]&7: &f[text]'
+      toggled: '&7Sign spy buvo nustatytas į &b[state] &7būseną'
+  silence:
+    help:
+      info: '&7Uždrausti viešus pokalbius'
+      args: ''
+      explanation:
+      - cmi.command.silence.bypass - to bypass silence
+    info:
+      enabled: '&7Vieši pokalbiai buvo &bįjungti'
+      disabled: '&7Vieši pokalbiai buvo &cišjungti'
+      inMode: '&cŽaidėjui yra uždrausta rašyti į viešą pokalbį'
+  silentchest:
+    help:
+      info: '&7Įjungti/išjungti nematomą skrynių atidarinėjimą'
+      args: ''
+      explanation:
+      - '&ePlayers arround you wont see chest opening animation when you opening chest'
+      - '&eProtocollib required for this feature to work.'
+    info:
+      feedback: '&7Jus nustatėte nematomą skrynių atidarinėjimą į &b[offon].'
+      onOpen: '&7Skrynia buvo atidaryta nematomai.'
+  sit:
+    help:
+      info: '&7Atsisėsti esamoje pozicijoje'
+      args: ''
+    info:
+      onSit: '!actionbar!&7Jus šiuo metu sėdite'
+      onStandUp: '!actionbar!&7Jus nebesėdite'
+      accupied: '!actionbar!&cKažkas šioje vietoje jau sėdi!'
+  skin:
+    help:
+      info: '&7Pakeisti žaidėjo skin'
+      args: '[skinName/off/update] (playerName) (-s)'
+    info:
+      changed: '&7Pakeistas žaidėjo skin į &b[skinOwner]'
+      failed: '&cNepavyko nustatyti šio skin'
+      resetSteve: '&cSkin buvo panaikintas.'
+      reset: '&aBuvo uždėtas pagrindinis skin'
+      update: '&aJūsų skin buvo atnaujintas'
+  smite:
+    help:
+      info: '&7Trenkti į žemę ar į žmogų su žaibu'
+      args: (Vardas) (-s)
+    info:
+      gotSmited: '&7Jus buvote nutrenktas žaibo!'
+  socialspy:
+    help:
+      info: '&7Įjungti/išjungti social spy'
+      args: (Vardas)
+    info:
+      msg: '&aSpy&7[&8[senderDisplayName] &7-> &8[playerDisplayName]&7]&f [message]'
+      toggled: '&7Social spy buvo nustatytas į &b[state] &7būseną'
+  solve:
+    help:
+      info: '&7Išspręsti klausimą'
+      args: '[equation]'
+    info:
+      result: '&7Rezultatas: &b[res]'
+      incorrect: '&cNeteisingas įvestas tekstas: &7[input]'
+  sound:
+    help:
+      info: '&7Paleisti garsą pasirinktoje teritorijoje'
+      args: '[sound] (-p:[pitch]) (-v:[volume]) (playerName/-all) (world) (x) (y)
+        (z) (-s)'
+    info:
+      playing: |-
+        &7Šiuo metu groja &b[sound] &7, &b[world] [x]:[y]:[z] &7pasaulyje
+        &7Pitch: &b[pitch] &7Garsumas: &b[volume]
+      playingMultiple: "&7Šiuo metu groja &b[sound] &b[amount] &7žaidėjams \n&ePitch:\
+        \ &b[pitch] &7Garsumas: &b[volume]"
+  spawn:
+    help:
+      info: '&7Atiteleportuoti žaidėją į spawn'
+      args: (Vardas)
+    info:
+      notset: '&4Spawn taškas nėra nustatytas!'
+      feedback: '&bJus buvote nuteleportuotas į spawn!'
+  spawner:
+    help:
+      info: '&7Nustatyti spawnerį'
+      args: '[Mob tipas]'
+    info:
+      feedback: '&7Spawnerio tipas buvo nustatytas į &b[type]'
+      wrongEntityIdName: '&cBlogas mob tipas'
+      cantSet: '&cJus negalite nustatyti šio tipo spawnerio'
+      cantDetect: '&cNerastas spawneris'
+      pickOne: '&cPasirinkite spawnerio tipą'
+  spawnereditor:
+    help:
+      info: '&7Tvarkyti spawnerį'
+      args: ''
+  spawnmob:
+    help:
+      info: '&7Atspawninti mobą jūsų esamoje lokacijoje'
+      args: '[Mob tipas]'
+      explanation:
+      - ' &7- First argument always is main entities name'
+      - ' &e- You can define entities states: baby, adult, dumb, tamed, n-[name],
+        upwards, glow, skull-[name], helmet-[itemname], chest-[itemname], legs-[itemname],
+        boots-[itemname], mhand-[itemname], ohand-[itemname], effect-levitation/10/1-speed/10/2.
+        /n Example: horse:baby:tamed:n-Horsy, zombie:skull-Zrips:n-AngryZombie:mhand-Diamond_Sword'
+      - ' &e- some entities have special variables: '
+      - '    &6Sheep &e- white, brown, red, rainbow and so on... &6primed_tnt &e-
+        [ticks], incendiary'
+      - '    &6Horse &e- white, chestnut, creamy, darkbrown, gray, black'
+      - '    &6Ocelot &e- red, siamese, wild, black &6experience_orb &e- [number]'
+      - '    &6Skeleton &e- wither, &6Creeper &e- charged &6Wolf &e- angry'
+      - '    &6Zombie &e- villager, blacksmith, butcher, farmer, priest, librarian'
+      - '    &6Villager &e- blacksmith, butcher, farmer, priest, librarian'
+      - '    &6Slime, MagmaCube &e- size by giving number from 1. slime:3'
+      - '    &6ArmorStands &e- nogravity, noplate, arms, noarms, small'
+      - '    &6ShulkerBullet &e- [target], bounce'
+      - ' &e- Extra variables:'
+      - '     &6ps:zombie:priest:baby-1 &e- passanger with amount'
+      - '     &6hp:20 &e- health'
+      - '     &6sp:3 &e- spreads randomly entities in range'
+      - '     &6s:4 &e- entities speed'
+      - '     &6t:[playername] &e- target which one entities will atack'
+      - '     &6q:10 &e- amount you want to spawn'
+      - '     &6[playername] &e- spawns entities at players location'
+      - '     &6loc:123/13.0/-15/World &e- spawn location. World name is optional
+        if used as player'
+      - 'Example: /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Chick_on_Sheep
+        q:10 sp:10 hp:50 s:2'
+    info:
+      wrongEntityName: '&cNeteisingas mob tipas'
+      wrongPlayerName: '&cNeteisingas žaidėjo slapyvardis'
+      spawnedEntities: '&7Atspawninta &b[entities] &7mobų '
+      spawnedPasangers: '&7ir &b[passengers] &7keleivių'
+      nothingSpawned: '&7Nėra atspawnintų mobų'
+      cantSpawn: '&7Jus negalite atspawninti šio mob tipo'
+  staffmsg:
+    help:
+      info: '&7Išsiųsti žinutę administratoriams'
+      args: '[žinutė/toggle/on/off]'
+    info:
+      message: '&7[&aAdministracija]&4[&7[senderDisplayName]&4]&r&c [message]'
+      toggledOn: '&bAdministratorių susirašinėjimas įjungtas. Dabar galite viešai
+        rašyti į chat.'
+      toggledOff: '&cAdministratorių susirašinėjimas išjungtas.'
+  stats:
+    help:
+      info: '&7Peržiūrėti žaidėjo statistiką'
+      args: (Vardas)
+    info:
+      distanceCM: '&7[value]&bcm'
+      distanceM: '&7[value]&bm'
+      distanceKm: '&7[value]&bkm'
+      list: '&7[name]:&b[amount]'
+      listCover: '&7([list]&7)'
+      Quit: '&7Kartų atsijungta: &b[value]'
+      PlayTime: '&7Laiko pražaista: &b[value]'
+      SneakTime: '&7Sneak laikas: &b[value]'
+      Sleep: '&7Pramiegota lovoje: &b[value]'
+      Joined: '&7Paskutinį kartą buvo prisijungęs: &b[time]'
+      Jumps: '&7Pašokimai: &b[value]'
+      SinceDeath: '&7Paskutinė mirtis: &b[value]'
+      Deaths: '&7Mirčių skaičius: &b[value]'
+      DeathsByMonsters: '&7Buvo nužudytas monstrų: &b[value]'
+      TotalDistance: '&7Viso nukeliauta: &b[value]'
+      Walk: '&7Pravaikščiota: &b[value]'
+      Crouch: '&7Atsitupta: &b[value]'
+      Sprint: '&7Bėgta: &b[value]'
+      Swim: '&7Plaukta: &b[value]'
+      Fall: '&7Nukrista: &b[value]'
+      Climb: '&7Climbed: &b[value]'
+      Fly: '&7Nuskrista: &b[value]'
+      Dive: '&7Nunerta: &b[value]'
+      Minecart: '&7Minecart: &b[value]'
+      Boat: '&7Boat: &b[value]'
+      Pig: '&7Pig: &b[value]'
+      Horse: '&7Horse: &b[value]'
+      Elytra: '&7Elytra: &b[value]'
+      Damage: '&7Žalos &b[dealt] [taken]'
+      DamageDealt: '&7Padaryta: &b[value]'
+      DamageTaken: '&7Gauta: &b[value]'
+      JUMP: '&7Pašokimai: &b[value]'
+      Kills: '&7Nužudymai &b'
+      KillsMob: '&7Mob: &b[value]'
+      KillsPlayer: ' &7Žaidėjo: &b[value]'
+      Blocks: '&7Blokai &b'
+      BlocksMined: '&7Iškasta: &b[value]'
+      BlocksPlaced: ' &7Pastatyta: &b[value]'
+      Items: '&7Daiktai &b'
+      ItemsUsed: '&7Panaudota:&b[value]'
+      ItemsDrop: '&7Išmesta:&b[value]'
+      ItemsPicked: '&7Paimta:&b[value]'
+      ItemsBroken: '&7Sulaužyta:&b[value]'
+      ItemsCrafted: ' &7Pagaminta:&b[value]'
+      ItemsEnchanted: ' &7Enchantinta:&b[value]'
+      Opened: '&7Atidaryta &b[list]'
+      OpenChest: '&7Skrynių:&b[value]'
+      OpenEnder: '&7Ender skrynių:&b[value]'
+      OpenShulker: '&7ShulkerBox:&b[value]'
+      Interacted: '&7Interacted &b[list]'
+      InteractBeacon: '&bBeacon:&7[value]'
+      InteractBrewingStand: '&7BrewStand:&b[value]'
+      InteractCraftTable: '&7CraftTable:&b[value]'
+      InteractFurnace: '&7Furnace:&b[value]'
+      Inspected: '&7Peržiūrėta &b[list]'
+      InspectDispenser: '&7Dispenser:&b[value]'
+      InspectDropper: '&7Dropper:&b[value]'
+      InspectHopper: '&7Hopper:&b[value]'
+      Statistics:
+        LEAVE_GAME: Atsijungta iš žaidimo
+        PLAY_ONE_TICK: Pražaista laiko
+        TIME_SINCE_DEATH: Nuo paskutinio mirimo
+        TIME_SINCE_REST: From last rest
+        SNEAK_TIME: Prisėlinimo laikas
+        ACOUNT_AGE: Paskyros amžius
+        TRAVEL: Nukeliauta
+        WALK_ONE_CM: Nueita
+        CROUCH_ONE_CM: Prisėlinta
+        SPRINT_ONE_CM: Nubėgta
+        SWIM_ONE_CM: Nuplaukta
+        FALL_ONE_CM: Nukrista
+        CLIMB_ONE_CM: Lipkita
+        FLY_ONE_CM: Nuskrista
+        DIVE_ONE_CM: Nunerta
+        WALK_UNDER_WATER_ONE_CM: Vaikščiota po vandeniu
+        WALK_ON_WATER_ONE_CM: Vaikščiota ant vandens
+        MINECART_ONE_CM: Nukeliauta su minecart
+        BOAT_ONE_CM: Nukeliauta su valtimi
+        PIG_ONE_CM: Nukeliauta su kiaule
+        HORSE_ONE_CM: Nukeliauta su arkliu
+        AVIATE_ONE_CM: Nuskrista su elytra
+        JUMP: Pašokta
+        DAMAGE_DEALT: Padaryta žalos
+        DAMAGE_TAKEN: Gauta žalos
+        DAMAGE_DEALT_ABSORBED: Padaryta žala padengta
+        DAMAGE_DEALT_RESISTED: Dėl padarytos žalos pasipriešinta
+        DAMAGE_BLOCKED_BY_SHIELD: Apsaugota žalos su skydu
+        DAMAGE_ABSORBED: Gauta žala
+        DAMAGE_RESISTED: Pasipriešinimas žalai
+        DEATHS: Mirtys
+        ENTITY_KILLED_BY: Nužudytas
+        MOB_KILLS: Mob nužudymai
+        PLAYER_KILLS: Žaidėjų nužudymai
+        ITEM_ENCHANTED: Daiktų užkerėjimas
+        ANIMALS_BRED: Animals bred
+        FISH_CAUGHT: Pagauta žuvų
+        TALKED_TO_VILLAGER: Pašnekėta su gyventoju
+        TRADED_WITH_VILLAGER: Apsimainyta su gyvnetoju
+        CAKE_SLICES_EATEN: Valgomi pyrago griežinėliai
+        CAULDRON_FILLED: Katilas papildytas
+        CAULDRON_USED: Katilas naudotas
+        ARMOR_CLEANED: Šarvai išvalyti
+        BANNER_CLEANED: Baneris išvalytas
+        BREWINGSTAND_INTERACTION: Eleksyrų staliuko sąveikos
+        BEACON_INTERACTION: Švyturio sąveikos
+        CRAFTING_TABLE_INTERACTION: Darbastalio sąveikos
+        FURNACE_INTERACTION: Krosnės sąveikos
+        DISPENSER_INSPECTED: Mėtytuvas apžiūrėtas
+        DROPPER_INSPECTED: Dalytuvas apžiūrėtas
+        HOPPER_INSPECTED: Piltuvas apžiūrėtas
+        CHEST_OPENED: Skrynių atidaryta
+        TRAPPED_CHEST_TRIGGERED: Spastų skrynia sujudinta
+        ENDERCHEST_OPENED: Ender skrynių atidaryta
+        NOTEBLOCK_PLAYED: Natų blokas paleistas
+        NOTEBLOCK_TUNED: Natų blokas sureguliuotas
+        FLOWER_POTTED: Gėlių vazonai
+        RECORD_PLAYED: Įrašas grojo
+        SLEEP_IN_BED: Pramiegota lovoje
+        SHULKER_BOX_OPENED: Shulker box atidaryta
+        CLEAN_SHULKER_BOX: Shulker dėžė išvalyta
+        DROP: Išmesta daiktų
+        MINE_BLOCK: Iškasta blokų
+        BREAK_ITEM: Sulaužyta daiktų
+        CRAFT_ITEM: Pagaminta daiktų
+        USE_ITEM: Panaudota daiktų
+        PICKUP: Paimta daiktų
+        KILL_ENTITY: Monstrų nužudymai
+  statsedit:
+    help:
+      info: '&7Redaguoti žaidėjo statistiką'
+      args: (Vardas) [add/take/set] [statistic] (subType) [amount] (-s)
+    info:
+      cantSet: '&cJus negalite nustatyti tokio statistikos tipo'
+      reqSubType: '&cŠi statistika reikalauja &7[type] &csubtipo'
+      set: '&7Pakeistas iš &6[old] &eį &6[new] &evertė nustatyta į &6[statistic] &e(&6[extra]&e)'
+  status:
+    help:
+      info: '&7Parodyti serverio statusą'
+      args: ''
+    info:
+      Platform: ' &7Platforma: &b[platform] &7(&b[os]&7) &7Running threads: &b[threads]'
+      Tps: ' &7TPS: &b[tps]'
+      CpuUsage: ' &7Cpu naudojimas: &b[cpuusage]% &7(&b[cores] branduoliai&7)'
+      Uptime:
+        main: ' &7Serveris veikia: '
+        weeks: '&7[weeks] &bsavaites '
+        days: '&7[days] &bdienas '
+        hours: '&7[hours] &bvalandas '
+        mins: '&7[mins] &bminutes '
+        secs: '&7[secs] &bsekundes '
+      MemoryUsage: ' &7Atminties naudojimas: &b[percent]% &7(&b[current]&7/&b[max]
+        MB&7)'
+      MemoryUsageHover: "&7Laisvas: &b[free] \n&7Skirta: &b[allocated] \n&7Maksimalus:\
+        \ &b[max] \n&7Iš viso: &b[total]"
+      Java: ' &7Java versijs: &b[mainV].[majorV].[minorV]&7(&b[update]&7) Build: &b[build]'
+      DiskUsage: ' &7Disko naudojimas: &b[percent]% &7(&b[current]&7/&b[max] GB&7)'
+      Worlds: '&7 [number]. &b[world] &7[chunks] Chunkai &b[entities] Subjektai &7[tiles]
+        tiles &b[players] žaidėjai'
+  sudo:
+    help:
+      info: '&7Priverstinai įvykdyti žaidėjui komandą'
+      args: '[Vardas] (command/c:[text])'
+      explanation:
+      - cmi.command.sudo.bypass - apsaugo žaidėją nuo buvimo 'patrolintu'
+    info:
+      performed: '&7Įvykdyta ''&b[command]&7'' komanda žaidėjui &b[playerDisplayName]'
+  suicide:
+    help:
+      info: '&7Nusižudyti'
+      args: '[Vardas] (-s)'
+    info:
+      feedback: '&bViso gero, pasauli...'
+      message: '&b[playerDisplayName] &7nusižudė!'
+  switchplayerdata:
+    help:
+      info: '&7Apkeisti visus duomenis iš vieno žaidėjo į kitą'
+      args: '[sourcePlayerName/uuid] [targetPlayerName/uuid]'
+      explanation:
+      - Use UUID for more accurate transfers, especially when usernames matching each
+        other
+    info:
+      same: '&cNurodyti žaidėjai jau yra vienodi!'
+      transferred: '&b[sourceName] &7duomenys buvo apkeisti su &b[Name]'
+  tablistupdate:
+    help:
+      info: '&7Priverstinai atnaujinti tablist žaidėjui'
+      args: (Vardas)
+    info:
+      updated: '&7Tablist atnaujintas'
+  tagtoggle:
+    help:
+      info: '&7Įjungti/išjungti tag garsus'
+      args: (Vardas)
+    info:
+      feedbackDisabled: '&cTag garsai buvo išjungti'
+      feedbackEnabled: '&bTag garsai buvo įjungti'
+  tempban:
+    help:
+      info: '&7Laikinas žaidėjo užblokavimas'
+      args: '[Vardas] [laikas] (priežastis) (-s)'
+      explanation:
+      - Ban max diapazonas priklauso nuo cmi.command.tempban.max.[amount]
+      - cmi.command.tempban.max.unlimited - leidžia uždrausti tiek, kiek norite
+      - Jei žaidėjas nieko nenurodo, maksimali vertė bus 60 sek
+      - 'Pavyzdžiui: '
+      - /cmi tempban zrips 5m Už keiksmus
+    info:
+      messageToAll: '&b[playerDisplayName] &7buvo laikinai užblokuotas &b[time] &7administratoriaus
+        &b[senderDisplayName] &7už: &b[reason]'
+      banedSilent: '&7[&bUžblokavimas&7]&b[playerDisplayName] &7buvo laikinai užblokuotas
+        &b[time] &7administratoriaus &b[senderDisplayName] &7už: &b[reason]'
+      time: '&7Jus busite atblokuotas už &b[time]'
+      badTime: '&7Nurodytas laikas yra neteisingas'
+      badTimeRange: '&cJus negalite užblokuoti šio žaidėjo ilgiau nei &b[seconds]'
+  tempipban:
+    help:
+      info: '&7Laikinas IP užblokavimas'
+      args: '[ip/vardas] [laikas] (priežastis) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - to bypass ban
+    info:
+      message: '&cUžblokuotas žaidėjas!'
+      reason: '&cPriežastis: &7[reason]'
+      defaultReason: '&7Serverio taisyklių pažeidimas'
+      messageToAll: '&b[playerDisplayName] &7IP adresas buvo laikinai užblokuotas
+        &b[time]&7administratoriaus &b[senderDisplayName]&7: &b[reason]'
+      banedSilent: '&7[&bUžblokavimas&7]&b[playerDisplayName] &7IP adresas buvo laikinai
+        užblokuotas &b[time]&7: &b[reason]'
+  tfly:
+    help:
+      info: '&7Nustatyti žaidėjui skraidymo režimą tol, kol nepasibaigs'
+      args: '[Vardas] (laikas sekundėmis) (-s)'
+      explanation:
+      - '&7Pavyzdys:'
+      - '&btfly &7Slapyvardis 30 - &bskraidymo režimas 30 sek.'
+      - '&btfly &7Slapyvardis +30 - &bpridėti 30 sek. prie skraidymo režimo.'
+      - '&btfly &7Zrips 0 - &bskraidymo režimas kol neatsijungs'
+      - '&btfly &7Zrips - &bpatikrinti kiek žaidėjui liko turėti skraidymo režimą'
+    info:
+      setTimedFly: '&7Jus nustatėte žaidėjui &b[playerDisplayName]&7 laikiną skraidymo
+        režimą &b[time]'
+      addTimedFly: '&7Jus pridėjote papildomo laiko &b[addTime] &7(&b[time]&&) prie
+        skraidymo režimo žaidėjui &b[playerDisplayName]'
+      setUntilRelogFly: '&7Jus nustatėte žaidėjui &b[playerDisplayName]&7 laikiną
+        skraidymo režimą, kol neatsijungs.'
+      targetTimedEnabled: '&7Jums buvo uždėtas laikinas skraidymo režimas nuo &b[senderDisplayName]&7,
+        &b[time].'
+      targetTimedEnabledAdd: '&7Jūsų skraidymo režimas buvo prailgintas &b[addTime]
+        &7(&b[time]&7).'
+      targetUntilRelogEnabled: '&7Jums buvo įjungtas skraidymo režimas nuo &b[senderDisplayName]&7,
+        kol neatsijungsite.'
+      setFor: '&7Laikinas skraidymo režimas yra įjungtas &b[time]'
+      setForRelog: '&7Laikinas skraidymo režimas yra įjungtas tol, kol neatsijungs'
+      notSet: '&cŠiam žaidėjui nėra įjungtas laikinas skraidymo režimas'
+      willBeDisabled: '&7Skraidymo režimas išsijungs už &b[time]'
+      disabled: '&cLaikinas skraidymo režimas yra išjungtas!'
+  tgod:
+    help:
+      info: '&7Nustatyti žaidėjui nemirtingumą tol, kol nepasibaigs'
+      args: '[Vardas] &b(laikas sekundėmis) (-s)'
+      explanation:
+      - '&7Pavyzdys:'
+      - '&btgod &7Slapyvardis 30 - &bnemirtingumo režimas 30 sek.'
+      - '&btgod &7Slapyvardis 0 - &bnemirtingumo režimas kol neatsijungs'
+      - '&btgod &7Slapyvardis - &bpatikrinti kiek žaidėjui liko turėti nemirtingumo
+        režimą.'
+    info:
+      setTimedGod: '&7Jus nustatėte žaidėjui &b[playerDisplayName]&7 laikiną nemirtingumo
+        režimą &b[time]'
+      setUntilRelogGod: '&7Jus nustatėte žaidėjui &b[playerDisplayName]&7 laikiną
+        nemirtingumo režimą kol neatsijungs.'
+      targetTimedEnabled: '&7Jums buvo uždėtas laikinas nemirtingumo režimas nuo &b[senderDisplayName]&7,
+        &b[time].'
+      targetUntilRelogEnabled: '&7Jums buvo uždėtas laikinas nemirtingumo režimas
+        nuo &b[senderDisplayName]&7 tol, kol neatsijungsite'
+      setFor: '&7Laikinas nemirtingumo režimas yra įjungtas &b[time]'
+      setForRelog: '&7Laikinas nemirtingumo režimas yra įjungtas tol, kol neatsijungs'
+      notSet: '&cŠiam žaidėjui laikinas nemirtingumo režimas nėra įjungtas'
+      willBeDisabled: '&7Nemirtingumo režimas išsijungs už &b[time]'
+      disabled: '&cLaikinas nemirtingumo režimas yra išjungtas!'
+  time:
+    help:
+      info: '&7Nustatyti serverio laiką'
+      args: (time) (world) (alter [value]) (-smooth)
+      explanation:
+      - '&7Pavyzdys:'
+      - '&b/day'
+      - '&b/night'
+      - '&b/time &713:00:00'
+      - '&b/time &71pm'
+      - '&b/time &713'
+      - '&b/time &77000ticks'
+      - '&b/time &71pm Slapyvardis'
+      - '&b/time &71pm all'
+      - '&b/time &7add 0:30'
+      - '&b/time &7take 0:30'
+      - '&b/time &7freeze'
+      - '&b/time &7unfreeze'
+      - '&b/time &7realtime'
+      - '&b/time &7autorealtime start/stop'
+    info:
+      check: '&7Laikas: &b[24h] &7ar &b[12h] &7ar &b[ticks]ticks &b[world]&7 pasaulyje'
+      frozen: ' &c(-)'
+      frozenTime: '&7Užšalęs laikas'
+      real: ' &b(+)'
+      realTime: '&7Automatinis realus laikas'
+      autorealstart: '&7Automatinis laiko koregavimas &b[world] &7prasidėjo'
+      autorealstop: '&7Automatinis laiko koregavimas &b[world] &7sustojo'
+      gotfrozen: '&b[world] &7laikas buvo įšaldytas'
+      gotunfrozen: '&b[world] &7laikas buvo neužšalęs'
+      cantset: '&cNegalima nustatyti tokio laiko.'
+      setto: '&7Laikas nustatytas į &b[24h] &7ar &b[12h] &7ar &b[ticks]ticks &b[world]
+        &7pasaulyje'
+      am: '&7AM'
+      pm: '&7PM'
+  titlemsg:
+    help:
+      info: '&7Išsiųsti title žinutę žaidėjui'
+      args: "[Vardas/all] [title \n subtitle] (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])"
+    info:
+      message: '&f[messsage]'
+  toast:
+    help:
+      info: '&7Išsiųsti tosto pranešimą žaidėjui'
+      args: '[Vardas/all] (-t:[advType]) (-icon:[material]) [žinutė]'
+    info:
+      message: '&f[messsage]'
+  togglecompass:
+    help:
+      info: '&7Rodyti ar slėpti kompaso bossbar'
+      args: ''
+    info:
+      ToggleOff: '&cKompaso boss bar buvo išjungtas'
+      ToggleOn: '&bKompaso boss bar buvo įjungtas'
+  toggleshiftedit:
+    help:
+      info: '&7Įjungti/išjungti shift sign redagavimą'
+      args: ''
+    info:
+      feedbackDisabled: '&cIšjungėte shift sign redagavimą'
+      feedbackEnabled: '&bĮjungėte shift sign redagavimą'
+  toggletotem:
+    help:
+      info: '&7Rodyti ar slėpti totem cooldown bar'
+      args: ''
+    info:
+      notActive: '&cTotem cooldown yra neaktyvus'
+  top:
+    help:
+      info: '&7Atsiteleportuoti aukščiau jūsų esamoje lokacijoje'
+      args: '[Vardas] (-s)'
+  tp:
+    help:
+      info: '&7Atsiteleportuoti į žaidėjo lokaciją'
+      args: '[Jūsų vardas] (Žaidėjo vardas)'
+    info:
+      feedback: '&7Jus buvote atiteleportuotas į &b[sourceDisplayName] &7lokaciją
+        (&b[offon]&7).'
+      bad:
+        msg: '&cTeleportavimosi lokacija nesaugi. Priežastis: [reason]'
+        extraMsg: '&7Naudokite &b/tpbypass &7, kad atsikeltumėte čia. Jums liko &b[time]'
+        lava: '&7Lava'
+        void: '&7Void'
+        suffocation: '&7Suffocation'
+        unknown: '&7Nežinoma'
+        plugin: '&73rd party plugin'
+      notAllowed: '&cJus negalite teleportuotis pas šį žaidėją'
+      prevented: '&cTeleportacija yra uždrausta kito plugino'
+  tpa:
+    help:
+      info: '&7Išsiųsti žaidėjui prašymą atsiteleportuoti pas jį'
+      args: '[Jūsų  vardas] (Žaidėjo vardas) (-c)'
+    info:
+      requestSent: '&7Išsiuntėte prašymą žaidėjui &b[playerDisplayName]'
+      gotRequest: '&b[senderDisplayName] &7atsiuntė prašymą atsiteleportuoti pas jus!'
+      time: '&7Jus turite &b[time]&7, kad priimti prašymą'
+      alreadyRequesting: '&7Jus jau esate išsiuntę prašymą teleportuotis žaidėjui
+        &b[playerDisplayName]'
+      banned: '&7Jus negalite išsiųsti prašymo teleportuotis žaidėjui &b[playerDisplayName]
+        &7palaukite &b[time]'
+  tpaall:
+    help:
+      info: '&7Išsiųsti visiems žaidėjams prašymą atsiteleportuoti pas jus'
+      args: ''
+    info:
+      requestSent: '&7Prašymas atsiteleportuoti pas jus išsiųstas visiems žaidėjams'
+  tpaccept:
+    help:
+      info: '&7Priimti teleportacijos prašymą'
+      args: (Vardas)
+    info:
+      noRequest: '&cJus neturite jokių prašymų teleportuotis pas jus'
+      NotOnline: '&cŽaidėjas jau yra atsijungęs'
+      accepted: '&b[playerDisplayName] &7priėmė teleportacijos prašymą'
+      youAccepted: '&7Priėmėte teleportacijos prašymą'
+  tpahere:
+    help:
+      info: '&7Atsiųsti žaidėjui prašymą atsiteleportuoti į jūsų esamą lokaciją'
+      args: '[Žaidėjo vardas] (Jūsų vardas) (-c)'
+    info:
+      gotRequest: '&b[senderDisplayName] &7atsiuntė prašymą atsiteleportuoti pas jį!'
+      accept: '&bPaspauskite, kad sutiktumėte atsiteleportuoti pas jį!'
+  tpall:
+    help:
+      info: '&7Atiteleportuoti visus prisijungusius žaidėjus į jūsų lokaciją'
+      args: (Vardas)
+    info:
+      feedback: '&7Jus buvote atiteleportuotas į (&b[world],[x],[y],[z]&7) koordinates,
+        pas &b[playerDisplayName]'
+  tpallworld:
+    help:
+      info: '&7Atiteleportuoti visus žaidėjus iš tam tikro pasaulio'
+      args: '[worldName] (worldName;x;y;z(;yaw;pitch)) (-a)'
+      explanation:
+      - '&7-a Kintamasis teleportuos visus, kurių jau nėra pasaulyje, į tikslinę vietą'
+    info:
+      started: '&ePrasidėjo perkėlimas!'
+      current: '&eŠiuo metu perkėli &7[amount] &eir &7[files] &epatikrinti failai'
+      total: '&eIš viso perkelta &7[amount] &eiš &7[files] &ežaidėjai patikrinti'
+      WorldNotFound: '&ePasaulis pagal duotą &7[name] &evardą neįkeltas. Įsitikinkite,
+        kad jis teisingas. Panaudosime kaip yra.'
+  tpbypass:
+    help:
+      info: '&7Apeikite teleportaciją į nesaugią vietą'
+      args: (Vardas)
+    info:
+      noSavedTp: '&cNėra išsaugotų pavojingų teleportacijų'
+      feedback: '&7Nusiteleportavote į nesaugią teleportaciją'
+  tpdeny:
+    help:
+      info: '&7Atmesti teleportacijos prašymą'
+      args: (Vardas)
+    info:
+      noRequest: '&cJus neturite jokių aktyvių prašymų teleportuotis pas jus!'
+      youDenied: '&7Atmetėte prašymą teleportuotis pas jus!'
+      denied: '&b[senderDisplayName] &7atmetė prašymą teleportuotis pas jus.'
+  tphere:
+    help:
+      info: '&7Atiteleportuoti žaidėją į jūsų lokaciją'
+      args: '[Žaidėjo slapyvardis] (Jūsų slapyvardis)'
+    info:
+      feedback:
+        offline: '&7Jus nustatėte (&b[world],[x],[y],[z])&7 atsiradimo lokaciją žaidėjui
+          &b[playerDisplayName]&7 (&b[offon]&e).'
+        online: '&7Jus atiteleportavote žaidėją &b[playerDisplayName] &7į jūsų esamą
+          lokaciją'
+        player: '&7Jus gavote prašymą atsiteleportuoti pas &b[sourceDisplayName]'
+      notAllowed: '&cJus negalite teleportuoti šio žaidėjo.'
+  tpo:
+    help:
+      info: '&7Priverstinai atsiteleportuoti į esamą žaidėjo lokaciją'
+      args: '[Jūsų vardas] (Žaidėjo vardas)'
+  tpohere:
+    help:
+      info: '&7Priverstinai atiteleportuoti žaidėją į jūsų lokaciją'
+      args: '[Žaidėjo vardas] (Jūsų vardas)'
+  tpopos:
+    help:
+      info: '&7Priverstinai teleportuotis į koordinates'
+      args: (-p:Vardas) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&7Jus buvote priverstinai nuteleportuotas į (&b[world],[x],[y],[z]&7).'
+      feedbackOther: '&b[playerDisplayName] &7buvo priverstinai nuteleportuotas į
+        (&b[world],[x],[y],[z]&7).'
+  tppos:
+    help:
+      info: '&7Teleportuotis į koordinates'
+      args: (-p:Vardas) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&7Jus buvote nuteleportuotas į (&b[world],[x],[y],[z]&7).'
+      feedbackOther: '&b[playerDisplayName] &7buvo nuteleportuotas į (&b[world],[x],[y],[z]&7).'
+  tps:
+    help:
+      info: '&7Patikrinti serverio tps statusą'
+      args: ''
+    info:
+      Tps: '&7TPS: &b[tps]'
+  tptoggle:
+    help:
+      info: '&7Išjungti/įjungti teleportacijos režimą'
+      args: (Vardas)
+    info:
+      feedbackNoTp: '&cUždraudėte kitiems žaidėjams atsiteleportuoti pas jus.'
+      feedbackTp: '&bLeidote kitiems žaidėjams atsiteleportuoti pas jus.'
+  tree:
+    help:
+      info: '&7Pastatyti medį ten, kur žiūrite'
+      args: (Medžio tipas) (-p:[Vardas])
+    info:
+      feedback: '&b[tree] &7medis pastatytas.'
+      cantSpawn: '&cNegalite pastatyti medžio (&7[tree]&c) ant šio bloko.'
+  unban:
+    help:
+      info: '&7Atblokuoti žaidėją arba jo IP'
+      args: '[Vardas/ip] (-s)'
+    info:
+      unBaned: '!broadcast!&b[playerDisplayName] &7buvo atblokuotas.'
+      unBanedSilent: '&7[&bServeris&7]&b[playerDisplayName] &7buvo atblokuotas'
+      notBanned: '&b[playerDisplayName] &cnėra užblokuotas'
+  unbreakable:
+    help:
+      info: '&7Padaryti daiktą nesibaigiančiu'
+      args: (Vardas) (true/false)
+    info:
+      feedback: '&7Jus padarėte daiktą [state] &7žaidėjui &b[playerDisplayName]&7
+        (&b[offon]&7).'
+      breakable: '&bbesibaigiančiu'
+      unbreakable: '&bnesibaigiančiu'
+  uncondense:
+    help:
+      info: '&7Uncondense items into smaller parts'
+      args: (itemName)
+    info:
+      converted: '&7Konvertuota &b[blocks] &7blokų į &b[items] &7daiktų'
+      nothing: '&cJūsų inventoriuje nėra nieko, kad būtų galima iškeisti į daiktus.'
+  unjail:
+    help:
+      info: '&7Paleisti žaidėją iš kalėjimo'
+      args: '[Vardas]'
+    info:
+      notInJail: '&cŠis žaidėjas nėra kalėjime!'
+      unjailed: '&7Paleidote žaidėją &b[playerDisplayName] &7iš kalėjimo.'
+      unjailedTarget: '&bJus buvote paleistas iš kalėjimo!'
+  unloadchunks:
+    help:
+      info: '&7Unloads chunks from server memory'
+      args: (-f)
+      explanation:
+      - -f variable will force for all chunks to be unloaded in one go.
+    info:
+      removed: '&7Removed -[list]'
+      startScanning: '&7Found &b[amount] &7chunks to unload. Starting!'
+      InfoShow: '&bTPS: &7[tps] &bLeft &7[left] &b(&7[min]m:[sec]s) &bSpeed: &7[speed]
+        &bUnloaded: &7[found]'
+      Finished: '&7Finished!!! Unloaded: &b[amount] &7chunks! In &b[minutes] &7min
+        &b[seconds] &7sec.'
+  unmute:
+    help:
+      info: '&7Atitildyti žaidėją'
+      args: '[Vardas] (-s)'
+    info:
+      notMuted: '&cŠis žaidėjas nėra užtildytas!'
+      unmuted: '&7Atitildėte žaidėją &b[playerDisplayName]'
+      unmutedTarget: '&bJus ir vėl galite kalbėti. Pasistenkite nenusižengti taisyklėms!'
+  unmutechat:
+    help:
+      info: '&7Atitildyti viešą pokalbių langą'
+      args: (-s)
+    info:
+      unmuted: '&aPokalbių langas atitildytas!'
+  usermeta:
+    help:
+      info: '&7Tvarkyti žaidėjo meta duomenis'
+      args: '[Vardas] [add/remove/clear/list/increment] (key) (value) (-s)'
+      explanation:
+      - Any set meta can be displayed with %cmi_user_meta_[key]% placeholder around
+        plugin
+    info:
+      added: '&7Added meta for &b[playerDisplayName] &7with key as &b[key] &7and value
+        as &b[value]'
+      cleared: '&7Cleared meta from &b[playerDisplayName]'
+      removed: '&7Removed &b[key] &7meta from &b[playerDisplayName]'
+      changed: '&7Changed &b[key] &7meta from &b[oldValue] &7to new value of &b[newValue]'
+      list: '&7[place]. &b[key]&7: [value]   '
+  util:
+    help:
+      info: '&aAdministracijos įrankiai'
+      args: (removeseats/testtarget)
+    info:
+      removedSits: '&7Pašalinta &b[count] &7tuščios sėdimos vietos iš visų pasaulių.'
+  vanish:
+    help:
+      info: '&7Padaryti žaidėją nematomu'
+      args: (Vardas/list) (on/off)
+    info:
+      vanished: '&7Jus tapote nematomu!'
+      unvanish: '&7Jus ir vėl esate matomas kitiems.'
+      targetVanished: '&b[playerDisplayName] &7tapo nematomu'
+      targetUnvanish: '&b[playerDisplayName] &7tapo matomu kitiems'
+      list: '&7[place]. &b[playerDisplayName] &7(&b[offon]&7)'
+      noVanished: '&cNėra žaidėjų esančių vanish režime'
+  vanishedit:
+    help:
+      info: '&7Pakeisti žaidėjo vanish režimo nustatymus'
+      args: (Vardas)
+    info:
+      isVanished: '&7Nematomas'
+      damageToEntity: '&7Gali padaryti žalos kitiems'
+      playerDamage: '&7Gali priimti žalą'
+      itemPickup: '&7Gali pakelti daiktus'
+      mobAggro: '&7Gali žudyti monstrus'
+      interaction: '&7Gali fiziškai bendrauti'
+      silentChest: '&7Triukšmingai atidaryti skrynias'
+      informOnLeave: '&7Atsijungiant parašo pranešimą'
+      informOnJoin: '&7Prisijungiant parašo pranešimą'
+      PrivateMessages: '&7Privačios žinutės'
+      nightVision: '&7Gauna naktinio matymo efektą'
+      bossbar: '&7Rodo bossBar kai yra nematomas'
+      afkcommands: '&7Gali būti afk kai yra nematomas'
+      bossbarTitle: '&fNematomas'
+  version:
+    help:
+      info: '&7Parodyti plugino versiją'
+      args: ''
+    info:
+      cmiVersion: '&7CMI: &b[version]'
+      cmiVersionNew: '&7-> [newVersion]'
+      Server: '&7Serverio versija: &b[version]'
+      Vault: '&7Vault versija: &b[version]'
+      Bungee: ' &7BungeeCord '
+  viewrange:
+    help:
+      info: '&7Pakeisti matymo tolį'
+      args: '[tolis] (Vardas)'
+    info:
+      changed: '&7Matymo tolis pakeistas į &b[range]'
+      NoProtocolLib: '&cŠi funkcija reikalauja &7ProtocolLib!'
+      NoMore: '&7Matymo tolis negali būti didesnis nei &b32 chunks. &7Pakeista į 32.'
+  voteedit:
+    help:
+      info: '&7Tvarkyti žaidėjų balsus'
+      args: (Vardas) [add/set/take/clear] [skaičius] (-s)
+      explanation:
+      - '&7Pavyzdys:'
+      - '&b/voteedit &7[&bSlapyvardis&7]'
+      - '&b/voteedit &7add 10'
+      - '&b/voteedit &7take 10'
+      - '&b/voteedit &7[&bSlapyvardis&7] &bclear'
+      - '&b/voteedit &7Zrips add 10'
+    info:
+      currentVotes: '&b[playerDisplayName] &7turi &b[votes] &7balsų'
+      selfFeedback: '&7Votes was set to &3[votes] &efor &3[playerDisplayName]&e (&3[offon]&e).'
+      targetFeedback: '&eYour vote count was set to &3[votes]&e by &3[senderDisplayName]&e.'
+  votes:
+    help:
+      info: '&7Peržiūrėti žaidėjo balsus'
+      args: (Vardas)
+    info:
+      currentVoteSelf: '&7Jus turite &b[votes] &7balsų'
+      currentVotes: '&b[playerDisplayName] &7turi &b[votes] &7balsų'
+      voteCooldown: '&7Jus turite palaukti &b[time]&7, kad vėl galėtumėte balsuoti'
+      voteLimit: '&7Jus pasiekėte šios dienos limitą. Jus turite palaukti &b[time]&7,
+        kad vėl galėtumėte balsuoti'
+  votetop:
+    help:
+      info: '&7Peržiūrėti balsuotojų top sąrašą'
+      args: (Vardas)
+    info:
+      topLine: '&7----- &bTop Balsai &7-----'
+      list: '&7[place]. &b[playerDisplayName]: &7[votes]'
+      ownLine: '&7[place]. &b[playerDisplayName]: &7[votes]'
+  walkspeed:
+    help:
+      info: '&7Nustatyti žaidėjo judėjimo greitį nuo 0 iki 10'
+      args: '[Vardas] [greitis]'
+    info:
+      feedback: '&7Jus nustatėte &b[amount]&7 judėjimo greitį žaidėjui &b[playerDisplayName]&7
+        (&3[offon]&7).'
+      targetfeedback: '&7Jūsų judėjimo greitis buvo nustatytas į &b[amount]&7 žaidėjo
+        &b[senderDisplayName]&7.'
+      max: '&cJūsų judėjimo greitis negali būti didesnis už &7[max]&c.'
+  warn:
+    help:
+      info: '&7Įspėti žaidėją'
+      args: '[Vardas] (kategorija) (priežastis) (-s)'
+    info:
+      noSelfWarning: '&cJus negalite įspėti savęs.'
+      cantBan: '&cJus negalite įspėti šio žaidėjo!'
+      messageToAll: '&b[playerDisplayName] &7buvo įspėtas administratoriaus &b[senderDisplayName]
+        &7dėl: &b[reason]'
+      banedSilent: '&7[&bĮspėjimai&7]&7[playerDisplayName] &cbuvo įspėtas administratoriuas
+        &7[senderDisplayName] &cdėl: &7[reason]'
+  warnings:
+    help:
+      info: '&7Peržiūrėti žaidėjo įspėjimus'
+      args: (Vardas)
+    info:
+      totalPoints: '&7---- &b[playerDisplayName] &7iš viso įspėjimų: &b[totalPoints]
+        &7----'
+      noWarnings: '&cŽaidėjas neturi jokių įspėjimų!'
+      list: '&7[place]. &b[time] &7nuo &b[warnedBy] &7už: &b[warnedFor]'
+      hover:
+      - '&7Pasibaigs po: &b[time]'
+      - '&7Įspėjimai: &b[points]'
+  warp:
+    help:
+      info: '&7Teleportacijos'
+      args: (Warp Pavadinimas) (Vardas) (-s)
+    info:
+      list: '&7Warps: &b'
+      click: '&7Spauskite, kad nusiteleportuoti į &b[warp]'
+      teleported: '&7Nusiteleportavote į: &b[warp]'
+      noWarps: '&cNėra išsaugotų warp'
+      noWarpByName: '&cToks warp šiame serveryje neegzistuoja!'
+      noAccess: '&cNeturite priėjimo naudoti šiuo warp'
+      guiTitle: '&bWarps'
+      creator: '&7Kūrėjas: &b[creator]'
+  weather:
+    help:
+      info: '&7Oro keitimas visam pasauliui'
+      args: (sun/rain/storm) (lock/duration) (worldName/all)
+      explanation:
+      - '&7Norint nustatyti orą tam tikram laikui, laiką nurodykite taip: &bs/m/h/d/w/M/Y'
+      - '&7Pavyzdys:'
+      - '&b/sun'
+      - '&b/rain'
+      - '&b/storm'
+      - '&b/sun &7lock'
+      - '&b/sun &7120'
+      - '&b/sun [&7Vardas&b]'
+      - '&b/sun &71h'
+      - '&b/sun &710m'
+    info:
+      currentState: '&7Pasaulyje &b[world] &7buvo nustatytas &b[weather] oras, &b[time]&7laikui.'
+      sunny: saulėtas
+      rainy: lietingas
+      thundering: griausmingas
+  whowas:
+    help:
+      info: '&7Parodo, koks buvo žaidėjo slapyvardis prieš tai'
+      args: '[Vardas]'
+    info:
+      list: ' &7[place]. &b[name] - &7[date]'
+      original: '&aOriginalus slapyvardis'
+  workbench:
+    help:
+      info: '&7Atidaryti darbastalį'
+      args: (Vardas)
+    info:
+      feedback: '&7Atidarėte darbastalį žaidėjui &b[playerDisplayName]&7 (&3[offon]&7).'
+      targetfeedback: '&b[senderDisplayName]&7 atidarė jums darbastalį.'
+  world:
+    help:
+      info: '&7Teleportacija tarp pasaulių'
+      args: (normal/nether/end/1/2/3...) (Vardas) (-s)
+      explanation:
+      - Requires cmi.command.world.[worldName] in addition to base permission node
+    info:
+      here: '&cJus jau esate šiame pasaulyje!'
+  worth:
+    help:
+      info: '&7Patikrinti daikto vertę'
+      args: (all/blocks/hand)
+    info:
+      worthless: |-
+        &7
+        &7Galimai šis daiktas neturi vertės.
+      basePrice: '&b[itemName]&7(&b[amount]&7) -> &b[price]'
+      fullPrice: '&b[price]'
+      total: '&7Visų daiktų vertė: &b[total]'
