@@ -1,3 +1,8 @@
+# --------------------------------- #
+# RUS by DarkFort :3                #
+# vk.com/darkfortmc | t.me/darkfort #
+# --------------------------------- #
+#
 # Full color code support and some variables
 # Keep in mind that variables wont work for some lines, when it will for anothers :)
 # Just keep them where there are now and everything will be ok :)
@@ -122,6 +127,7 @@ info:
   PasteOld: '&7Вставить старый текст'
   ClickToPaste: '&7Нажмите, чтобы вставить в чат'
   CantTeleportWorld: '&cВы не можете телепортироваться в этот мир'
+  CantTeleportNoWorld: '&cTarget world doesn''t exist. Teleportation canceled'
   CantTeleport: '&cВы не можете телепортироваться, потому что у вас слишком много
     ограниченных предметов. Прокрутите эту строку, чтобы увидеть максимально допустимое
     количество предметов.'
@@ -141,11 +147,13 @@ info:
   differentWorld: '&cРазличные миры'
   HaveItem: '&7У вас есть &c[amount]x [itemName] &7в вашем инвентаре'
   ItemWillBreak: '!actionbar!&7Ваш предмет (&c[itemName]&7) скоро сломается! &7[current]&c/&7[max]'
+  ArmorWillBreak: '!actionbar!&7Ваш предмет (&c[itemName]&7) скоро сломается! &7[current]&c/&7[max]'
   cantDoForPlayer: '&7Вы не можете сделать это игроку &c[playerDisplayName]'
   cantDoForYourSelf: '&7Вы не можете сделать это с собой'
   cantDetermineMobType: '&7Не удалось определить тип моба из &c[type] &7доступных'
-  cantRename: '!actionbar!&7Вы не можете переименовать предмет на это имя'
+  cantRename: '!actionbar!&4&nВы не можете переименовать предмет на это имя!'
   wrongName: '&cНеправильное имя'
+  unknown: unknown
   invalidName: '&cНеверное имя'
   alreadyexist: '&cЭто имя занято'
   dontexist: '&cНичего не найдено под этим именем'
@@ -154,9 +162,9 @@ info:
   flyingToHigh: '&7Вы не можете летать так высоко, максимальная высота &c[max]&7!'
   specializedItemFail: '&7Не удалось определить требование к специализированному предмету
     по значению: &c[value]'
-  sunSpeeding: Спят [count] из [total] [hour] часов со скоростью [speed]X
-  sleepersRequired: '!actionbar!&f[sleeping] &7из &f[required] &7требуется для ускорения
-    ночного времени'
+  sunSpeeding: Спят [count] из [total] игроков | [hour] часов | Ускорение [speed]X
+  sleepersRequired: '!toast! -t:goal -icon:clock &6&lВНИМАНИЕ: &f[sleeping] &7из &f[required]&7
+    игроков требуется для ускорения ночного времени!'
   sunSpeedingTitle: '&7[hour]'
   sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]X&7)'
   repairConfirm: '&7Нажмите, чтобы подтвердить починку предмета &c[items] &7за &c[cost]'
@@ -176,6 +184,7 @@ info:
   lookAtBlock: '&7Посмотрите на блок'
   lookAtEntity: '&7Посмотрите на сущность'
   notOnGround: '&7Вы не можете выполнить это во время полета'
+  # This line can have extra variables: [totalUsers] [onlinePlayers]
   FirstJoin: '&7Добро пожаловать &c[playerDisplayName] &7на наш сервер!'
   LogoutCustom: ' &7Игрок &c[playerDisplayName] &7покинул игру'
   LoginCustom: ' &7Игрок &c[playerDisplayName] &7присоединился к игре'
@@ -186,7 +195,7 @@ info:
     Offline: '&cОффлайн'
     not: '&cСервер не подключен к BungeeCord'
     noserver: '&cНе удалось найти сервер с таким названием!'
-    server: '&eServer: &7[name]'
+    server: '&7Сервер: &c[name]'
   variables:
     Online: '&aОнлайн'
     Offline: '&cОффлайн'
@@ -225,6 +234,7 @@ info:
     PreviousInventory: '&7Предыдущий инвентарь'
     Editable: '&aРежим редактирования включен'
     NonEditable: '&cРежим редактирования отключен'
+  TimeNotRecorded: '&c-Нет записей-'
   years: '&c[years] &7лет, '
   oneYear: '&c[years] &7год, '
   day: '&c[days] &7дней, '
@@ -252,7 +262,7 @@ info:
   pageCount: ' &8&l| &7[current]&8/&7[total] &8&l|'
   pageCountHover: '&7[totalEntries] записей'
   skullOwner: '!actionbar!&7Владелец:&r [playerName]'
-  beehive: '!actionbar!&7Уровень мёда: &e[level]&7/&e5 &7Пчел внутри: &e[count]&7/&e3'
+  beehive: '!actionbar!&7Уровень мёда: &c[level]&7/&c5 &7Пчел внутри: &c[count]&7/&c3'
   circle: '&cКруг'
   square: '&5Площадь'
   protectedArea: '&cДанная территория защищена. Не удалось сделать это здесь.'
@@ -435,7 +445,7 @@ info:
     mushroom_cow: Грибная корова
     ocelot: Оцелот
     painting: Картина
-    panda: Panda
+    panda: Панда
     parrot: Попугай
     phantom: Фантом
     pig: Свинья
@@ -662,6 +672,7 @@ modify:
   listUpSymbolHover: '&7Поднять'
   listDownSymbol: '&c⇓'
   listDownSymbolHover: '&7Опустить'
+  listNumber: '&e[number].'
   ChangeHover: '&7Нажмите, чтобы изменить'
   commandTitle: ' &7--- &c[name] &7---'
   commandList: ' &7[command]  '
@@ -727,7 +738,7 @@ Elytra:
   SpeedBoost: ' &a+ '
   SpeedSuperBoost: ' &a+ '
   CanUse: '&cУ вас нет разрешения, чтобы одеть элитры!'
-  Charging: '&eЗаряд: &f[percentage]%'
+  Charging: '&7Заряд: &c[percentage]%'
 Selection:
   SelectPoints: '&cВыделите две точки с помощью инструмента выделения: &c[tool]'
   PrimaryPoint: '&cПервая &7точка выделения [point] &7выбрана'
@@ -741,7 +752,7 @@ NetherPortal:
 Location:
   Title: '&8Расположение игрока'
   Killer: '&7Убийца: &c[killer]'
-  OneLiner: '&eПоложение: &6[location]'
+  OneLiner: '&7Положение: &c[location]'
   DeathReason: '&7Причина смерти: &c[reason]'
   World: '&7Мир: &c[world]'
   X: '&7X: &c[x]'
@@ -757,10 +768,10 @@ Chat:
   shoutDeduction: '!actionbar!&c[amount] &7снято за сообщение, отправленное в глобальный
     чат'
   # Use \n to add new line
-  publicHover: '&eВремя отправки: &6%server_time_hh:mm:ss%\n&7&oТыкни, чтобы написать в ЛС'
-  privateHover: '&eВремя отправки: &6%server_time_hh:mm:ss%\n&7&oТыкни, чтобы написать в ЛС'
-  staffHover: '&eВремя отправки: &6%server_time_hh:mm:ss%\n&7&oТыкни, чтобы написать в ЛС'
-  helpopHover: '&eВремя отправки: &6%server_time_hh:mm:ss%\n&7&oТыкни, чтобы написать в ЛС'
+  publicHover: '&7Отправленное время: &c%server_time_hh:mm:ss%'
+  privateHover: '&7Отправленное время: &c%server_time_hh:mm:ss%'
+  staffHover: '&7Отправленное время: &c%server_time_hh:mm:ss%'
+  helpopHover: '&7Отправленное время: &c%server_time_hh:mm:ss%'
   link: '&l&4⦗&7ССЫЛКА&4⦘'
   item: '&7⦗%cmi_iteminhand_displayname%[amount]&7⦘'
   itemAmount: ' x[amount]'
@@ -882,6 +893,12 @@ command:
       explanation: '&8Левая или правая кнопка мыши регулирует значение'
       explanation2: '&8Удерживайте SHIFT, чтобы сделать его в 10 раз быстрее'
       disableGravity: '&cОтключите гравитацию, если хотите изменить это значение'
+      copyLabel: '&7Открыть сборщик клона'
+      copyTitle: '&8Выберите то, что вы хотите клонировать'
+      click: '&7Нажмите по стойке для брони, чтобы скопировать ее, или ударьте по
+        любом блоке, чтобы отменить процесс'
+      canceled: '&7Процесс копирования стойки для брони отменен'
+      updated: '&7Стойка для брони обновлена'
   attachcommand:
     help:
       info: '&fПрикрепляет команду к предмету'
@@ -947,6 +964,10 @@ command:
         &c[senderDisplayName] &7по причине: &c[reason]'
       noSelfBan: '&cВы не можете забанить себя'
       cantBan: '&cВы не можете забанить этого игрока'
+  banlist:
+    help:
+      info: '&fБанлист'
+      args: ''
   blockcycling:
     help:
       info: '&fСостояние циклических блоков'
@@ -1012,7 +1033,7 @@ command:
         5
       - /cmi bossbarmsg all -sec:-5 - будет отсчитывать в течении 5 секунд с 5 до
         0
-      - "https://www.zrips.net/cmi/commands/bossbarmsg-handling/"
+      - https://www.zrips.net/cmi/commands/bossbarmsg-handling/
   broadcast:
     help:
       info: '&fОтправка специального сообщения всем игрокам'
@@ -1103,6 +1124,10 @@ command:
     info:
       list: '&7[place]. [permission]'
       hover: '&7[desc]'
+      others: |-
+        &4
+        ---->When command is used on another player<----
+        &cBase command required
       permissionColor: '&c'
       cmdPermissionColor: '&a'
       variableColor: '&f'
@@ -1278,7 +1303,7 @@ command:
       unCuffed: '&7Действия игрока &c[playerDisplayName] &7больше не приостановлены'
       free: '&aТеперь вы свободны'
       gotCuffed: '&cВы были закованы в наручники'
-      cuffedInfo: '&eYou are cuffed'
+      cuffedInfo: '&7Вы в наручниках'
       cantCuff: '&cВы не можете приостановить этого игрока!'
   customrecipe:
     help:
@@ -1319,7 +1344,7 @@ command:
       info: '&fПроверить расстояние между двумя точками'
       args: (playerName) (playerName)
     info:
-      feedback: '&7Расстояние: &e[dist] &7x:&e[x] &7y:&e[y] &7z:&e[z] &7Направление:&e[dir]'
+      feedback: '&7Расстояние: &c[dist] &7x:&c[x] &7y:&c[y] &7z:&c[z] &7Направление:&c[dir]'
   donate:
     help:
       info: '&fПожертвовать предмет, который вы держите в руке'
@@ -1364,7 +1389,7 @@ command:
     info:
       color: '&7Текущий цвет - &c[red],&a[green],&9[blue] &7Hex:&c#[hex]'
       custom: '&7Включен пользовательский цветовой режим: &c[mode]'
-      bound: '&eДуша привязана к: &6'
+      bound: '&7Душа привязана к: &c'
       boundName: '[playerName]'
   editctext:
     help:
@@ -1423,6 +1448,9 @@ command:
       info: '&fРедактирование варпов'
       args: (warpName)
     info:
+      exists: '&7Варп с этим именем (&c[newName]&7) уже существует. Выберите другое
+        название'
+      updated: '&7Варп с названием &c[oldName]&7 был изменен на &c[newName]'
       placeItem: '&aРазместите предмет, чтобы установить пользовательскую иконку'
       placeOffItem: '&aРазместите предмет, чтобы установить пользовательскую иконку
         выключения'
@@ -1712,6 +1740,7 @@ command:
       feedback: '&7Вы установили [color] цвет свечения &7на &c[boolean]&7 для игрока
         &c[playerDisplayName]&7 (&c[offon]&7).'
       targetfeedback: '&7Ваш [color] цвет &7установлен на &c[boolean]&7 игроком &c[senderDisplayName]&7.'
+      title: Pick glow color
   gm:
     help:
       info: '&fУстановить режим игры для игрока'
@@ -1757,7 +1786,7 @@ command:
     info:
       title: '&c[playerDisplayName] &7-> &c[permission]'
       none: '&7Разрешение не установлено для игрока, и он не OP. Результат - &c[state]'
-      softSet: '&eSet by plugin.yml to &6[state]'
+      softSet: '&7Устанавливается файлом plugin.yml в &c[state]'
       hardSet: '&7Принудительно установлен на &c[state] &7другим плагином'
       notHardSet: '&7Не принудительно установлен, может привести к &cFalse &7в некоторых
         случаях'
@@ -1972,7 +2001,7 @@ command:
       converted: '&7Импортировано: &c[done]&7/&c[total] &7игроков'
       convertedWarps: '&7Импортировано &c[amount] &7варпов'
       noInfo: '&cВы забыли указать, что именно вы хотите импортировать'
-      saving: '&7Сохранение данных в базу данных '
+      savingInProgress: '&7Данные будут сохранены в базе данных в течение следующих нескольких минут в зависимости от того, сколько записей нам нужно сохранить'
       HDfile: '&cНе удалось найти файл базы данных плагина HolographicDisplays. Прерывание.'
       HDexist: '&cГолограмма &7[name] &cуже существует. Пропуск.'
       HDfailed: '&cНе удалось загрузить голограмму (&7[name]&c)'
@@ -2137,7 +2166,7 @@ command:
       realName: ' &7Настоящее название: &c[name]'
       bukkitName: ' &7Название Bukkit: &c[name]'
       mojangName: ' &7Название Mojang: &c[name]'
-      entityType: ' &eТип сущности: &6[type]'
+      entityType: ' &7Тип сущности: &c[type]'
       durability: ' &7Прочность: &c[current]&7/&c[max]'
   itemlore:
     help:
@@ -2180,7 +2209,7 @@ command:
     info:
       jailed: '&7Вы посадили игрока &c[playerDisplayName] &7в тюрьму на [time]'
       jailedPlayer: '&7Игрок &c[playerDisplayName] &7в тюрьме на &c[time]'
-      reason: ' &eПричина: &c[reason]'
+      reason: ' &7Причина: &c[reason]'
       leftTime: '!title!&7Осталось времени:!subtitle![time]'
       jailedTarget: '&7Вас посадили в тюрьму на &c[time]'
       cantTalk: '&cВы не можете говорить, пока находитесь в тюрьме'
@@ -2300,6 +2329,7 @@ command:
     info:
       notCd: '&7Набор не находится в стадии перезарядки'
       reset: '&7Задержка набора (&c[kit]&7) была сброшена для игрока &c[playerDisplayName]'
+      resetAll: '&7Задержка для набора (&c[kit]&7) была сброшена для &c[count] &7игроков'
       list: '&7[place]. &c[kit] &7[time]'
       listHover: '&7Нажмите, чтобы сбросить'
       noCd: '&7Нет наборов на перезарядке'
@@ -2344,12 +2374,6 @@ command:
       conditionsListTitle: '&7✎&cУсловия:'
       descListTitle: '&7✎&cОписание:'
       ListTitleHover: '&7Нажмите, чтобы открыть GUI'
-      ListNumber: '&7[number].'
-      ListUp: ' &c⇑'
-      ListDown: ' &c⇓ '
-      ListRemove: '&c[-]'
-      ListRemoveHover: '&cУдалить строку'
-      ListRemoveKitHover: '&fУдалить набор &c[kitname]'
       ListEditKitHover: '&fРедактировать набор &c[kitname]'
       ListAdd: ' &a[+]'
       ListAddHover: '&aДобавить новый набор'
@@ -2501,7 +2525,8 @@ command:
       args: '[send/clear/read] [playerName] (message)'
     info:
       sentMail: '&7Письмо отправлено игроку &c[playerDisplayName]'
-      gotMail: '!actionbar!&e&nВы получили письмо от игрока &c[senderDisplayName]'
+      gotMail: '&8[&e&li&8] &fВы получили письмо от&c [senderDisplayName]&f. Прочитать
+        - &c/mail read'
       clearMail: '&7Все письма были очищены!'
       removedMail: '&7Письмо удалено'
       noMailsById: '&7Для этого игрока нет писем с этим ID'
@@ -2975,7 +3000,7 @@ command:
       requiredItem: ' &7Предметы: '
       requiredItemsList: '&7[color][name]'
       requiredItemListHover: '&7[color][current]&7/&c[needed]'
-      currentRank: ' &7Ваш текщий ранг: &c[rankName]'
+      currentRank: ' &7Ваш текущий ранг: &c[rankName]'
       elseCurrentRank: ' &7Текущий ранг игрока &c[playerDisplayName]&7: &c[rankName]'
       rankNameLine: ' &7------ &c[rankName] &7[rankupState] &7------'
       canRankup: ' &aМожет повысить ранг!'
@@ -3335,7 +3360,6 @@ command:
       nothingfound: '&7Ничего не найдено по вашим критериям'
       totalfound: '&7Всего найдено &c[amount] &7из возможных &c[files] &7проверенных
         файлов'
-      total: '&7Проверено [current]/[until] от общего количества [total]'
       location:
         ender: '&cEnder'
         inv: '&7Inv'
@@ -3373,7 +3397,7 @@ command:
       args: '[serverName] (playerName)'
   serverlist:
     help:
-      info: '&eОтобразить список серверов'
+      info: '&fОтобразить список серверов'
       args: ''
     info:
       listOnline: '&7[place]. &2[serverName] &6[count]&7/&6[max]'
@@ -3413,6 +3437,8 @@ command:
       noMore: '&cВы достигли максимального предела точек дома'
       noOverwrite: '&cВы не можете перезаписывать существующие точки дома. Удалите
         старые или выберите другое имя точки дома.'
+      slotTaken: '!actionbar!&cДомашний слот уже используется &7[homeName]&c, рассмотрите
+        другой'
   setmotd:
     help:
       info: '&fУстановить MOTD сервера'
@@ -3765,6 +3791,7 @@ command:
         CLEAN_SHULKER_BOX: Очищено шалкер боксов
         DROP: Выброшено предметов
         MINE_BLOCK: Блоков сломано
+        PLACE_BLOCK: Блоков поставлено
         BREAK_ITEM: Разрушено предметов
         CRAFT_ITEM: Скрафчено предметов
         USE_ITEM: Использовано предметов
@@ -3860,7 +3887,7 @@ command:
         забанен игроком &c[senderDisplayName] &7на: &c[time] &7по причине: &c[reason]'
       time: '&7Вы будете разбанены через &c[time]'
       badTime: '&cВремя определено неправильно'
-      badTimeRanges: '&cYou can''t ban for longer than [time] &6([seconds])'
+      badTimeRanges: '&cВы не можете забанить дольше, чем на [time] &6([seconds])'
   tempipban:
     help:
       info: '&fВременно забанить по IP'
@@ -3994,7 +4021,7 @@ command:
       info: '&fПоказать или скрыть панель восстановления тотема'
       args: ''
     info:
-      toggle: '&eTotem cooldown bar toggled ([state]&e)'
+      toggle: '&7Перезарядка тотема была переключена на ([state]&7)'
   top:
     help:
       info: '&fТелепортация на самую высокую точку в вашем местоположении'
@@ -4024,7 +4051,9 @@ command:
       requestSent: '&7Запрос отправлен игроку &c[playerDisplayName]'
       gotRequest: '&7Игрок &c[senderDisplayName] &7просит телепортироваться к вам!'
       time: '&7У вас есть &c[time]&7, чтобы принять этот запрос'
-      canceled: '&eCanceled'
+      canceled: '&cОтменено'
+      # This line cant contain anything else then default variables ([message][cancelButton]), you can switch them around to your liking tho
+      senderFeedbackMessageFormat: '[message][cancelButton]'
       alreadyRequesting: '&7Вы уже отправили запрос игроку &c[playerDisplayName] &7на
         телепортацию'
       banned: '&7Вы не можете отправить запрос на телепортацию к игроку &c[playerDisplayName]
@@ -4043,14 +4072,14 @@ command:
       noRequest: '&7Нет запросов на телепортацию'
       NotOnline: '&7Игрок оффлайн'
       accepted: '&7Игрок &c[playerDisplayName] &7принял ваш запрос'
-      youAccepted: '&7Запрос на телепортацию принят'
+      youAccepted: '&aЗапрос на телепортацию принят'
   tpahere:
     help:
       info: '&fЗапросить игрока принять телепортацию к вам'
       args: '[playerName] (playerName) (-c)'
     info:
       gotRequest: '&7Игрок &c[senderDisplayName] &7просит телепортироватся к нему!'
-      accept: '&6Click to accept teleportation request!'
+      accept: '&6Нажмите, чтобы принять запрос на телепортацию!'
   tpall:
     help:
       info: '&fТелепортация всех онлайн игроков в местоположение'
@@ -4063,8 +4092,7 @@ command:
       info: '&fТелепортировать ВСЕХ игроков из определенного мира'
       args: '[worldName] (worldName;x;y;z(;yaw;pitch))'
       explanation:
-      - -a variable will teleport everyone who are in no longer existing world to
-        target location
+      - -переменная телепортирует всех, кто больше не существует, в целевое местоположение
     info:
       started: '&7Телепортация началась!'
       current: '&7В настоящее время телепортировано &c[amount] &7и &c[files] &7проверенных
@@ -4085,7 +4113,7 @@ command:
       args: (playerName)
     info:
       noRequest: '&7У вас нет активных запросов на телепортацию!'
-      youDenied: '&7Запрос на телепортацию был отклонен!'
+      youDenied: '&cЗапрос на телепортацию был отклонен!'
       denied: '&7[senderDisplayName] &7отклонил ваш запрос.'
   tphere:
     help:
@@ -4237,19 +4265,19 @@ command:
       args: (playerName)
     info:
       isVanished: '&7Режим скрытия'
-      damageToEntity: '&7Может наносить урон другим'
-      playerDamage: '&7Может получать урон'
-      itemPickup: '&7Может поднимать предметы'
+      damageToEntity: '&7Урон по сущностям'
+      playerDamage: '&7Получение урона'
+      itemPickup: '&7Поднятие предметов'
       mobAggro: '&7Мобы вас видят'
-      interaction: '&7Может физически взаимодействовать'
-      silentChest: '&7Сундуки открываются со звуком'
-      informOnLeave: '&7Показывает сообщение о выходе'
-      informOnJoin: '&7Показывает сообщение о входе'
-      PrivateMessages: '&7Личные сообщения'
-      nightVision: '&7Применить ночное видение'
-      relogDisable: '&7Отключить ваниш при перезаходе'
-      bossbar: '&7Показать босс бар при исчезновении'
+      interaction: '&7Физическое взаимодействие'
+      noisyChest: '&eШумное открытие сундуков'
+      informOnLeave: '&7Отображение сообщения о выходе'
+      informOnJoin: '&7Отображение сообщения о входе'
+      nightVision: '&7Применение ночного видения'
+      bossbar: '&7Отобразить босс бар при исчезновении'
       afkcommands: '&7Включать AFK при исчезновении'
+      PrivateMessages: '&7Личные сообщения'
+      relogDisable: '&7Отключить скрытие при перезаходе'
       bossbarTitle: '&fРежим скрытия'
   version:
     help:
@@ -4347,10 +4375,19 @@ command:
       click: '&7Нажмите, чтобы телепортироваться на варп &c[warp]'
       teleported: '&7Вы телепортировались на варп: &c[warp]'
       noWarps: '&cНет сохраненных варпов'
+      autoLoreName: '&7[warpName]'
+      autoLoreFormat:
+      - '&7[worldName]'
+      - '&e[x]:[y]:[z]'
+      - '[creator]'
+      creator: '&7Создатель: &c[creator]'
       noWarpByName: '&cВарпа с этим названием не существует'
       noAccess: '&cНет доступа к этому варпу'
       guiTitle: '&7Варпы'
-      creator: '&7Создатель: &c[creator]'
+      pageTitles:
+      - '&2Warps 1'
+      - '&8Warps 2'
+      - '&0Warps 3'
   weather:
     help:
       info: '&fУправление погодой сервера'
