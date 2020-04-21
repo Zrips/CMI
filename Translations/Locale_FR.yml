@@ -1,0 +1,4293 @@
+
+# Traduction en français par Thoma Boehi. Pour des corrections, contactez moi sur Discord: WAXIE#8800
+
+# Full color code support and some variables
+# Keep in mind that variables wont work for some lines, when it will for anothers :)
+# Just keep them where there are now and everything will be ok :)
+# Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+# [serverName] to show server name
+# [playerName] to show target player name
+# [playerDisplayName] to show target player display name
+# [lvl] to show target player level
+# [exp] to show target player total exp
+# [hp] to show target player health
+# [maxHp] to show target player max health
+# [hunger] to show target player hunger level
+# [gameMode] to show target player gamemode
+# [prefix] to show target player prefix if possible
+# [suffix] to show target player suffix if possible
+# Sender is console or player who performs command. In example Zrips performs /heal Zhax then Zrips data will be used
+# [senderName] to show Sender player name
+# [senderDisplayName] to show Sender player display name
+# [senderLvl] to show Sender player level
+# [senderExp] to show Sender player total exp
+# [senderHp] to show Sender player health
+# [senderMaxHp] to show Sender player max health
+# [senderHunger] to show Sender player hunger level
+# [senderGameMode] to show Sender player gamemode
+# [senderPrefix] to show Sender player prefix if possible
+# [senderSuffix] to show Sender player suffix if possible
+# Source is player which is being used for extra info. In example Zrips performs /tp Zhax Zrips then Zhax data will be used as its location is being taken for new player location
+# [sourceName] to show source player name
+# [sourceDisplayName] to show source player display name
+# [sourceLvl] to show source player level
+# [sourceExp] to show source player total exp
+# [sourceHp] to show source player health
+# [sourceMaxHp] to show source player max health
+# [sourceHunger] to show source player hunger level
+# [sourceGameMode] to show source player gamemode
+# [sourcePrefix] to show source player prefix if possible
+# [sourceSuffix] to show source player suffix if possible
+# ***********************************************
+# Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
+# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+# If line starts with !actionbar! then player will get action bar message defined after this variable
+# If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, in example !broadcast!!title!
+# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+# If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
+# To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
+# <T> and </T> required, other is optional
+# Use /n to break line
+# To have more than one JSON message use <Next>
+# <C> performs command as a player who clicked
+# <CC> performs command from console once
+# <CCI> performs command from console every time player clicks text
+# <URL> includes url
+info:
+  # Use !prefix! in any locale line to automatically include this prefix
+  prefix: '&e[&aCMI&e] '
+  NoPermission: '&cTu n''as pas la permission!'
+  CantHavePermission: '&cTu ne peux pas avoir la permission!'
+  NoPlayerPermission: '&c[playerName] n''a pas la permission de: [permission]'
+  Ingame: '&cTu peux utiliser ceci seulement en jeu!'
+  NoInformation: '&cAucune information trouvée!'
+  Console: '&6Serveur'
+  FromConsole: '&cTu peux faire ça seulement à partir de la console!'
+  NotOnline: '&cLe joueur n''est pas en ligne!'
+  NobodyOnline: '&cIl n''y a personne en ligne!'
+  Same: '&cTu ne peux pas ouvrir ton propre inventaire pour l''édition!'
+  cantLoginWithDifCap: '&cTu ne peux pas te connecter avec différentes lettres en capitales! Ancien pseudo:
+    &e[oldName]&c. Actuel: &e[currentName]'
+  Searching: '&eRecherche des données du joueurs, merci de patienter, cette action peut prendre du temps.'
+  NoPlayer: '&cImpossible de trouver un joueur avec ce pseudo!'
+  NoCommand: '&cCette commande n''existe pas!'
+  cantFindCommand: '&5Impossible de trouver la commande &7[%1]&5, voulais-tu dire &7[%2]&5?'
+  PurgeNotEnabled: '&cLa fonction Purge n''est pas activé dans les configs!'
+  FeatureNotEnabled: '&cCette fonctionnalité n''est pas activée!'
+  TeamManagementDisabled: '&7Cette fonctionnalité sera limitée car le paramètres DisableTeamManagement
+    est réglé sur true!'
+  ModuleNotEnabled: '&cCe module n''est pas activé!'
+  versionNotSupported: '&cCette version du serveur ne supporte pas cette fonctionnalité'
+  bungeeNoGo: '&cCette fonctionnalité ne va pas sur les serveur Bungee'
+  clickToTeleport: '&eClique pour te téléporter'
+  UseMaterial: '&4Utilise un nom de matériel!'
+  UseInteger: '&4Utilise un nombre!'
+  UseBoolean: '&4Utilise True ou False!'
+  NoLessThan: '&4La valeur ne peut pas être inférieur à [amount]!'
+  NoMoreThan: '&4La valeur ne peut pas être supérieur à [amount]'
+  NoGameMode: '&cUtilise 0/1/2/3 ou Survival/Creative/Adventure/Spectator ou s/c/a/sp!'
+  NoWorld: '&4Impossible de trouver un monde avec ce nom!'
+  IncorrectLocation: '&4Localisation définie de manière incorrecte!'
+  NameChange: '&6[playerDisplayName] &es''est connecté, aussi connu sous le pseudo: &6[namelist]'
+  Cooldowns: '&eAttends &6[time] &eavant de refaire cette commande.'
+  specializedCooldowns: '&eRecharge en cours pour cette commande, attends &6[time]'
+  CooldownOneTime: '&eCette commande ne peut être utilisée qu''une seule fois!'
+  WarmUp:
+    canceled: '&eLa commande a été annulée car tu as bougé'
+    counter: '!actionbar!&6--> &e[time] &6<--'
+    DontMove: '!title!!subtitle!&6Ne bouge pas!'
+  Spawner: '&r[type] Spawner'
+  Elevator:
+    created: '&ePancarte d''ascenseur créé'
+  CantPlaceSpawner: '&eImpossible de placer un spaner si proche d''un autre spawner (&6[range]&e)'
+  ChunksLoading: '&eLes données des chunks se chargent encore. Attends encore un peu...'
+  ShulkerBox: Shulker Box
+  CantuseShulkerBox: '&cTu ne peux pas utiliser une shulker box en combat.
+    Attends: [time]'
+  CantUseNonEncrypted: '!actionbar!&cLes commandes sur cet item ne sont pas encryptées. Impossible de les utiliser!'
+  CantDecode: '!actionbar!&cImpossible de décoder le message/la commande. Le fichier Key contient des clés invalides. Informe l''administrateur.'
+  Show: '&eMontrer'
+  Remove: '&cRetirer'
+  Back: '&eRetour'
+  Forward: '&eArrière'
+  Update: '&eMettre à jour'
+  Save: '&eEnregistrer'
+  Delete: '&cSupprimer'
+  Click: '&eCliquer'
+  PasteOld: '&eColler ancien'
+  ClickToPaste: '&eClique pour coller dans le chat'
+  CantTeleportWorld: '&eTu ne peux pas te téléporter dans ce monde'
+  CantTeleportNoWorld: '&cCe monde n''existe pas. Téléportation annulée'
+  CantTeleport: '&eVous ne pouvez pas vous téléporter car vous avez trop d''articles limités. Passe sur ce message pour voir le maximum autorisé.'
+  teleported: '&eTu as été télporté.'
+  BlackList: '&e[material] [amount] &6Max: [max]'
+  PlayerSpliter: '&e----- &6[playerDisplayName] &e-----'
+  Spliter: '&e--------------------------------------------------'
+  ListSpliter: ', '
+  ProgressBarFill: '&2▏'
+  ProgressBarEmpty: '&e▏'
+  nothingInHand: '!actionbar!&eTu dois tenir l''item dans ta main'
+  nothingInHandLeather: '&eTu dois tenir le cuir dans ta main'
+  nothingToShow: '&eRien à afficher'
+  noItem: '&cImpossible de trouver l''item'
+  dontHaveItem: '&cTu n''as pas &6[amount]x [itemName] &cdans ton inventaire'
+  wrongWorld: '&cTu ne peux pas faire ça dans ce monde'
+  differentWorld: '&cMonde différent'
+  HaveItem: '&cTu as &6[amount]x [itemName] &cdans ton inventaire'
+  ItemWillBreak: '!actionbar!&eTon item (&6[itemName]&e) va bientôt se briser! &e[current]&6/&e[max]'
+  ArmorWillBreak: '!actionbar!&eTon [itemName] va bientôt se briser! &e[current]&6/&e[max]'
+  cantDoForPlayer: '&eTu ne peux pas faire ça à &6[playerDisplayName]'
+  cantDoForYourSelf: '&eTu ne peux pas te faire ça à toi-même'
+  cantDetermineMobType: '&cImpossible de déterminer le type de mob à partir de la variable &e[type]'
+  cantRename: '!actionbar!&eTu ne peux pas utiliser ce pseudo'
+  wrongName: '&cMauvais pseudo'
+  unknown: inconnu
+  invalidName: '&cPseudo inconnu'
+  alreadyexist: '&4Ce pseudo est pris'
+  dontexist: '&4Rien trouvé à partir de ce pseudo'
+  worldDontExist: '&cCe monde n''est plus accessible. Impossible de t''y téléporter!'
+  flyingToHigh: '&cTu ne peux pas voler si haut, la hauteur maximale est &6[max]&c!'
+  specializedItemFail: '&cImpossible de déterminer l''exigence d''un article spécialisé par valeur: &7[value]'
+  sunSpeeding: Dorment [count] sur [total] [hour] heures [speed]X vitesse
+  sleepersRequired: '!actionbar!&f[sleeping] &7sur &f[required] &7requis au lit pour faire passer la nuit plus vite'
+  sunSpeedingTitle: '&7[hour]'
+  sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]X&7)'
+  repairConfirm: '&eClique pour confirmer la réparation de &7[items] &epour &7[cost]'
+  bookDate: '&7Écris à &f[date]'
+  maintenance: '&7Mode Maintenance'
+  notSet: pas activé
+  mapLimit: '&cImpossible de dépasser 30 000 000 blocs'
+  startedEditingPainting: '&eTu as commencé à éditer une peinture. Clique sur n''importe quel autre bloc pour annuler.'
+  canceledEditingPainting: '&eTu as annulé l''éditage'
+  changedPainting: '!actionbar!&ePeinture changée en &6[name] &eavec l''id &6[id]'
+  noSpam: '!title!&cPas de spam!'
+  noCmdSpam: '!title!&cPas de spam avec les commandes!'
+  spamConsoleInform: '&cLe joueur (&7[playerName]&c) a activé (&7[rules]&c) filtre chat
+    avec:&r [message]'
+  lookAtSign: '&eRegarde vers la pancarte'
+  lookAtBlock: '&eRegarde vers le bloc'
+  lookAtEntity: '&eRegarde vers l''entité'
+  notOnGround: '&eTu ne peux pas faire ça ne volant'
+  # This line can have extra variables: [totalUsers] [onlinePlayers]
+  FirstJoin: '&eBienvenue &6[playerDisplayName] &esur notre serveur!'
+  LogoutCustom: ' &6[playerDisplayName] &ea quitté le jeu'
+  LoginCustom: ' &6[playerDisplayName] &ea rejoint le jeu'
+  deathlocation: '&eTu es mort au coordonnées x:&6[x]&e, y:&6[y]&e, z:&6[z]&e dans &6[world]'
+  bungee:
+    Online: '&6En ligne'
+    Offline: '&cHors ligne'
+    not: '&cLe serveur ne fait pas partie d''un réseau Bungee'
+    noserver: '&cImpossible de trouver un serveur avec ce nom!'
+    server: '&eServeur: &7[name]'
+  variables:
+    Online: '&6En ligne'
+    Offline: '&cHors ligne'
+    'True': '&6Vrai'
+    'False': '&cFaux'
+    Enabled: '&6Activé'
+    Disabled: '&cDésactivé'
+    survival: '&6Survie'
+    creative: '&6Créatif'
+    adventure: '&6Aventure'
+    spectator: '&6Spectateur'
+    flying: '&6Vole'
+    notflying: '&6Ne vole pas'
+  noSchedule: '&cAucune plannification à ce nom'
+  totem:
+    cooldown: '&eRecharge Totem: [time]'
+    warmup: '&eEffets Totem: [time]'
+    cantConsume: '&eL''utilisation du totem a été refusée (rechargement pas terminé)'
+  InventorySave:
+    info: '&8Info: &8[playerDisplayName]'
+    saved: '&e[time] &eInventaire enregistré avec l''id: &e[id]'
+    NoSavedInv: '&eCe joueur n''a aucun inventaire enregistré'
+    NoEntries: '&4Le fhichier existe, mais aucun inventaire trouvé!'
+    CantFind: '&eImpossible de trouver un inventaire avec ce nom'
+    TopLine: '&e----------- &6[playerDisplayName] inventaire enregistré &e-----------'
+    List: '&eid: &6[id]&e. &6[time]'
+    KillerSymbol: '&c ☠'
+    Click: '&eClique pour contrôler ([id]) l''inventaire sauvegardé'
+    IdDontExist: '&4Cet ID n''existe pas!'
+    Deleted: '&eInventaire enregistré a été supprimé!'
+    Restored: '&eTu as restauré vers &e[sourcename] &el''inventaire de &e[targetname]&e.'
+    GotRestored: '&eTon inventaire a été restauré de &e[sourcename] &eenregistré le &e[time]'
+    LoadForSelf: '&eCharge cet inventaire pour toi-même'
+    LoadForOwner: '&eCharge cet inventaire pour le propriétaire'
+    NextInventory: '&eInventaire suivant'
+    PreviousInventory: '&eInventaire précédent'
+    Editable: '&eMode édition activé'
+    NonEditable: '&eMode édition activé'
+  TimeNotRecorded: '&e-Aucun enregistrement-'
+  years: '&e[years] &6ans '
+  oneYear: '&e[years] &6an '
+  day: '&e[days] &6jours '
+  oneDay: '&e[days] &6jour '
+  hour: '&e[hours] &6heures '
+  oneHour: '&e[hours] &6heure '
+  min: '&e[mins] &6min '
+  sec: '&e[secs] &6sec '
+  vanishSymbolOn: '&8[&7H&8]&r'
+  vanishSymbolOff: ''
+  afkSymbolOn: '&8[&7Afk&8]&r'
+  afkSymbolOff: ''
+  prevPage: '&2----<< &6Préc '
+  prevPageGui: '&6Page précédente '
+  prevPageClean: '&6Préc '
+  prevPageOff: '&2----<< &7Préc '
+  prevPageHover: '&7<<<'
+  firstPageHover: '&7|<'
+  nextPage: '&6 Suiv &2>>----'
+  nextPageGui: '&6Page suivante'
+  nextPageClean: '&6 Suiv'
+  nextPageOff: '&7 Suiv &2>>----'
+  nextPageHover: '&7>>>'
+  lastPageHover: '&7>|'
+  pageCount: '&2[current]&7/&2[total]'
+  pageCountHover: '&e[totalEntries] entries'
+  skullOwner: '!actionbar!&7Propriétaire:&r [playerName]'
+  beehive: '!actionbar!&7Niveau de miel: &e[level]&7/&e5 &7Abeilles à l''int: &e[count]&7/&e3'
+  circle: '&3Cercle'
+  square: '&5Carré'
+  protectedArea: '&cZone protégée. Tu ne peux pas faire ça ici.'
+  valueToLong: '&eValeur trop haute. Max: [max]'
+  valueToShort: '&eValeur trop faible. Min: [min]'
+  InvEmpty:
+    armor: '&eTon slot d''armur doit être vide!'
+    hand: '&eTa main doit être vide!'
+    maininv: '&eTon inventaire principal doit être vide!'
+    maininvslots: '&eTon inventaire principal doit avoir au moins &6[count] &eplaces libres!'
+    inv: '&eTon inventaire doit être libre!'
+    offhand: '&eYour offhand should be empty!'
+    quickbar: '&eTa quick bar doit être vide!'
+    quickbarslots: '&eTa quick bar doit avoir au moins &6[count] &eplaces libres!'
+    subinv: '&eTon inventaire secondaire doit être libre!'
+    subinvslots: '&eTon inventaire secondaire doit avoir au moins &6[count] &eplace libre!'
+  DamageCause:
+    block_explosion: Explosion
+    contact: Dommages de blocs
+    cramming: entassé
+    custom: Inconnu
+    dragon_breath: Souffle de Dragon
+    drowning: Noyage
+    dryout: déssechement 
+    entity_attack: Attaque d'entité
+    entity_explosion: Explosion
+    entity_sweep_attack: Attaque balayage d'entité
+    fall: Chute
+    falling_block: Bloc tombé
+    fire: Feu
+    fire_tick: Feu
+    fly_into_wall: Voler dans les murs
+    hot_floor: Bloc de Magma
+    lava: Lave
+    lightning: Éclair
+    magic: Magie
+    melting: Fusion
+    poison: Poison
+    projectile: Projectile
+    starvation: Famine
+    suffocation: Suffocation
+    suicide: Suicide
+    thorns: Épines
+    void: Vide
+    wither: Fléaud
+  Biomes:
+    BADLANDS: Badlands
+    BADLANDS_PLATEAU: Plateau de Badlands
+    BAMBOO_JUNGLE: Jungle de bambous
+    BAMBOO_JUNGLE_HILLS: Colline de bambous
+    BEACH: Plage
+    BIRCH_FOREST: Forêt de bouleaux
+    BIRCH_FOREST_HILLS: Collines de bouleaux
+    COLD_OCEAN: Océan froid
+    DARK_FOREST: Forêt sombre
+    DARK_FOREST_HILLS: Collines de forêt sombre
+    DEEP_COLD_OCEAN: Océan froid profond
+    DEEP_FROZEN_OCEAN: Océan gelé profond
+    DEEP_LUKEWARM_OCEAN: Océan tiède profond
+    DEEP_OCEAN: Océan profond
+    DEEP_WARM_OCEAN: Océan chaud profond
+    DESERT: Désert
+    DESERT_HILLS: Collines désertiques
+    DESERT_LAKES: Lacs de désert
+    END_BARRENS: Terres stériles de l'End
+    END_HIGHLANDS: Terres hautes de l'End
+    END_MIDLANDS: Terres moyennes de l'End
+    ERODED_BADLANDS: Badlands érodés
+    FLOWER_FOREST: Forêt de fleurs
+    FOREST: Forêt
+    FROZEN_OCEAN: Océan gelé
+    FROZEN_RIVER: Rivière gelée
+    GIANT_SPRUCE_TAIGA: Taïga à grands sapins
+    GIANT_SPRUCE_TAIGA_HILLS: Collines de taïga à grands sapins
+    GIANT_TREE_TAIGA: Taïga à grands arbres
+    GIANT_TREE_TAIGA_HILLS: Collines de taïga à grands arbres
+    GRAVELLY_MOUNTAINS: Montagnes graveleuses
+    ICE_SPIKES: Stalagmites de glace
+    JUNGLE: Jungle
+    JUNGLE_EDGE: Orée de la jungle
+    JUNGLE_HILLS: Collines de la jungle
+    LUKEWARM_OCEAN: Océan tiède
+    MODIFIED_BADLANDS_PLATEAU: Plateau de badlands modifiées
+    MODIFIED_GRAVELLY_MOUNTAINS: Montagnes graveleuses +
+    MODIFIED_JUNGLE: Jungle modifiées
+    MODIFIED_JUNGLE_EDGE: Orée de la jungle modifiées
+    MODIFIED_WOODED_BADLANDS_PLATEAU: Plateau de badlands boisées modifiées
+    MOUNTAINS: Montagnes
+    MOUNTAIN_EDGE: Bord de montagne
+    MUSHROOM_FIELDS: Champs de champignons
+    MUSHROOM_FIELD_SHORE: Rive de champ de champignons
+    NETHER: Nether
+    OCEAN: Océan
+    PLAINS: Plaines
+    RIVER: Rivière
+    SAVANNA: Savane
+    SAVANNA_PLATEAU: Plateau de savane
+    SHATTERED_SAVANNA: Savane accidentée
+    SHATTERED_SAVANNA_PLATEAU: Plateau de savane accidentée
+    SMALL_END_ISLANDS: Petites îles de l'End
+    SNOWY_BEACH: Plage enneigée
+    SNOWY_MOUNTAINS: Montagnes enneigées
+    SNOWY_TAIGA: Taïga enneigée
+    SNOWY_TAIGA_HILLS: Collin de taïga enneigée
+    SNOWY_TAIGA_MOUNTAINS: Montagnes de taïga enneigée
+    SNOWY_TUNDRA: Toundra enneigée
+    STONE_SHORE: Côte rocheuse
+    SUNFLOWER_PLAINS: Plaines de tournesols
+    SWAMP: Marais
+    SWAMP_HILLS: Collines de marais
+    TAIGA: Taïga
+    TAIGA_HILLS: Collines de taïga
+    TAIGA_MOUNTAINS: Montagnes de taïga
+    TALL_BIRCH_FOREST: Forêt de grands bouleaux
+    TALL_BIRCH_HILLS: Collines de grands bouleaux
+    THE_END: The End
+    THE_VOID: Le Vide
+    WARM_OCEAN: Océan chaud
+    WOODED_BADLANDS_PLATEAU: Plateau de badlands boisées
+    WOODED_HILLS: Collines boisées
+    WOODED_MOUNTAINS: Montagnes boisées
+  EntityType:
+    area_effect_cloud: Nuage à effet de zone
+    armor_stand: Porte-armure
+    arrow: Flèche
+    bat: Chauve-souris
+    bee: Abeille
+    blaze: Blaze
+    boat: Bateau
+    cat: Chat
+    cave_spider: Araignée venimeuse
+    chicken: Poule
+    cod: Morue
+    cow: Vache
+    creeper: Creeper
+    dolphin: Dauphin
+    donkey: Âne
+    dragon_fireball: Boule d'acide d'Ender
+    dropped_item: Item laché
+    drowned: Noyé
+    egg: Oeuf
+    elder_guardian: Gardien
+    enderman: Enderman
+    endermite: Endermite
+    ender_crystal: Cristal de l'End
+    ender_dragon: Dragon de l'Ender
+    ender_pearl: Perle de l'Ender
+    ender_signal: Ender signal
+    evoker: Évocateur
+    evoker_fangs: Mâchoires d'évocateur
+    experience_orb: Expérience
+    falling_block: Bloc qui tombe
+    fireball: Boule de feu
+    firework: Feu d'artifice
+    fishing_hook: Hameçons
+    fox: Renard
+    ghast: Ghast
+    giant: Géant
+    guardian: Gardien
+    horse: Cheval
+    husk: Zombie
+    illusioner: Illusionniste
+    iron_golem: Golem de fer
+    item_frame: Cadre
+    leash_hitch: Attache en laisse
+    lightning: Éclair
+    llama: Lama
+    llama_spit: Crachat de lamat
+    magma_cube: Cube de magma
+    minecart: Wagonnet
+    minecart_chest: Wagonnet de stockage
+    minecart_command: Wagonnet à bloc de commande
+    minecart_furnace: Wagonnet motorisé
+    minecart_hopper: Wagonnet à entonnoir
+    minecart_mob_spawner: Wagonnet générateur
+    minecart_tnt: Wagonnet à TNT
+    mule: Mûle
+    mushroom_cow: Champimeuh
+    ocelot: Ocelot
+    painting: Tableau
+    panda: Panda
+    parrot: Perroquet
+    phantom: Fantôme
+    pig: Cochon
+    pig_zombie: Cochon zombie
+    pillager: Pillard
+    player: Joueur
+    polar_bear: Ours polaire
+    primed_tnt: TNT amorcée
+    pufferfish: Poisson
+    rabbit: Lapin
+    ravager: Ravageur
+    salmon: Saumon
+    sheep: Mouton
+    shulker: Shulker
+    shulker_bullet: Balle de shulker
+    silverfish: Silverfish
+    skeleton: Squelette 
+    skeleton_horse: Cheval-squelette
+    slime: Slime
+    small_fireball: Petite boule de feu
+    snowball: Boule de neige
+    snowman: Golem de neige
+    spectral_arrow: Flèche spectrale
+    spider: Arraignée
+    splash_potion: Potion jetable
+    squid: Poulpe
+    stray: Vagabond
+    thrown_exp_bottle: Bouteille d'exp
+    trader_llama: Lama de marchand ambulant
+    trident: Trident
+    tropical_fish: Poisson tropical
+    turtle: Tortue
+    unknown: Inconnu
+    vex: Vex
+    villager: Villageois
+    vindicator: Vindicateur
+    wandering_trader: Marchand ambulant
+    witch: Sorcier
+    wither: Wither
+    wither_skeleton: Wither squelette
+    wither_skull: Tête de wither
+    wolf: Loup
+    zombie: Zombie
+    zombie_horse: Cheval-zombie
+    zombie_villager: Zombie-villageois
+  EnchantAliases:
+    protection_fire:
+    - Protection contre le feu
+    damage_all:
+    - Tranchant
+    arrow_fire:
+    - Flamme
+    water_worker:
+    - Affinité aquatique
+    arrow_knockback:
+    - Frappe
+    loyalty:
+    - Loyauté
+    depth_strider:
+    - Agilité aquatique
+    vanishing_curse:
+    - Malédiction de disparition
+    durability:
+    - Solidité
+    knockback:
+    - Recul
+    luck:
+    - Chance de la mer
+    binding_curse:
+    - Malédiction du lieu éternel
+    loot_bonus_blocks:
+    - Fortune
+    protection_environmental:
+    - Protection
+    dig_speed:
+    - Efficacité
+    mending:
+    - Raccommodage
+    frost_walker:
+    - Semelles givrantes
+    lure:
+    - Appât
+    loot_bonus_mobs:
+    - Butin
+    piercing:
+    - Perforation
+    protection_explosions:
+    - Protection contre les explosions
+    damage_undead:
+    - Châtiment
+    multishot:
+    - Tir multiple
+    fire_aspect:
+    - Aura de feu
+    channeling:
+    - Canalisation
+    sweeping_edge:
+    - Affilage
+    thorns:
+    - Épines
+    damage_arthropods:
+    - Fléau des arthropodes
+    oxygen:
+    - Apnée
+    riptide:
+    - Impulsion
+    silk_touch:
+    - Toucher de soie
+    quick_charge:
+    - Charge rapide
+    protection_projectile:
+    - Protection contre les projectiles
+    impaling:
+    - Empalement
+    protection_fall:
+    - Chute amortie
+    - Chute amortie
+    arrow_damage:
+    - Puissance
+    arrow_infinite:
+    - Infinité
+  PotionEffectAliases:
+    speed:
+    - Vitesse
+    slow:
+    - Lenteur
+    fast_digging:
+    - Creusage rapide
+    slow_digging:
+    - Creusage lent
+    increase_damage:
+    - Dégâts augmentés
+    heal:
+    - Guérir
+    harm:
+    - Faire du mal
+    jump:
+    - Sauter
+    confusion:
+    - Confusion
+    regeneration:
+    - Regénération
+    damage_resistance:
+    - Résistance aux dommages
+    fire_resistance:
+    - Résistance au feu
+    water_breathing:
+    - Apnée
+    invisibility:
+    - Invisibilité
+    blindness:
+    - Cécité
+    night_vision:
+    - Nyctalopie
+    hunger:
+    - Faim
+    weakness:
+    - Faiblesse
+    poison:
+    - Poison
+    wither:
+    - Wither
+    health_boost:
+    - Bonus de vie
+    absorption:
+    - Absorption
+    saturation:
+    - Saturation
+    glowing:
+    - Surbrillance
+    levitation:
+    - Lévitation
+    luck:
+    - Chance
+    unluck:
+    - Malchance
+    slow_falling:
+    - Chute lente
+    conduit_power:
+    - Force de conduit
+    dolphins_grace:
+    - Grâce du dauphin
+    bad_omen:
+    - Mauvais présage
+    hero_of_the_village:
+    - Héros du village
+direction:
+  n: Nord
+  ne: Nord Est
+  e: Est
+  se: Sud Est
+  s: Sud
+  sw: Sud Ouest
+  w: Ouest
+  nw: Nord Ouest
+modify:
+  middlemouse: '&2Clic du milieu de la souris pour éditer'
+  newItem: '&7Placer un nouvel item ici'
+  newLine: '&2<NouvelleLigne>'
+  newLineHover: '&2Ajouter une nouvelle ligne'
+  newPage: '&2<NouvellePage>'
+  newPageHover: '&2Créer une nouvelle page'
+  removePage: '&c<RetirerUnePage>'
+  removePageHover: '&cRetirer une page'
+  deleteSymbol: ' &c[X]'
+  deleteSymbolHover: '&cSupprimer &e[text]'
+  extraEditSymbol: ' &6!'
+  addSymbol: '&2[+]'
+  addSymbolHover: '&2Ajouter nouveau'
+  cancelSymbol: ' &7&l[X]'
+  cancelSymbolHover: '&aAnnuler'
+  acceptSymbol: ' &2&l[✔]'
+  acceptSymbolHover: '&aConfirmer'
+  denySymbol: ' &4&l[X]'
+  denySymbolHover: '&cRefuser'
+  enabledSymbol: '&2[+]'
+  disabledSymbol: '&c[-]'
+  enabled: '&2Activé'
+  disabled: '&cDésactivé'
+  running: '&2En fonction'
+  paused: '&cEn pause'
+  editSymbol: '&e✎'
+  editSymbolHover: '&eÉditer &6[text]'
+  editLineColor: '&f'
+  listUpSymbol: '&6⇑'
+  listUpSymbolHover: '&eHaut'
+  listDownSymbol: '&6⇓'
+  listDownSymbolHover: '&eBas'
+  listNumber: '&e[number].'
+  ChangeHover: '&eClique pour changer'
+  commandTitle: ' &e--- &6[name] &e---'
+  commandList: ' &e[command]  '
+  emptyLine: '&7[Empty line]'
+  commandEdit: '&eÉditer la liste'
+  lineAddInfo: '&eEntre une nouvelle ligne. Tape &6cancel &epour annuler'
+  commandAddInfo: '&eEntre une nouvelle commande. Tape &6cancel &epour annuler'
+  commandAddInformationHover: "&e[playerName] peut être utiliser pour avoir le pseudo \n&ePour\
+    \ inclure un délai dans la commande: \n&edelay! 5 \n&eLes commandes spécialisées sont prises en charge.\
+    \ Plus d'infos: \n&ehttps://www.zrips.net/cmi/commands/specialized/"
+  commandEditInfo: '&eClique pour coller un ancien texte. Tape &6cancel &epour annuler l''action'
+  commandEditInfoHover: '&eClique pour coller un ancien texte'
+warp:
+  list: '&e[pos]. &6[warpName] &f- &7[worldName] ([x]:[y]:[z])'
+teleportation:
+  relocation: '!actionbar!&4Votre emplacement de téléportation a été obstrué. Vous avez été télporté vers un endroit sûr.'
+afk:
+  'on': '&6AFK'
+  'off': '&7Joue'
+  left: '&6[playerDisplayName] &en''est plus AFK.'
+  MayNotRespond: '&eLe joueur est AFK et risque de ne pas répondre'
+  MayNotRespondStaff: '&eCe membre du staff est AFK et risque de ne pas répondre. Essaie de nous contacter par le discord'
+BossBar:
+  hpBar: '&f[victim] &e[max]&f/&e[current] &f(&c-[damage]&f)'
+Potion:
+  Effects: '&8Effets de potion'
+  List: '&e[PotionName] [PotionAmplifier] &eDurée: &e[LeftDuration] &esec'
+  NoPotions: '&eAucun'
+Information:
+  Title: '&8Informations du joueur'
+  Health: '&eVie: &6[Health]/[maxHealth]'
+  Hunger: '&eFaim: &6[Hunger]'
+  Saturation: '&eSaturation: &6[Saturation]'
+  Exp: '&eExp: &6[Exp]'
+  NotEnoughExp: '&ePas assez d''exp: &6[Exp]'
+  NotEnoughExpNeed: '&ePas assez d''exp: &6[Exp]/[need]'
+  tooMuchExp: '&eTrop d''exp: &6[Exp]/[need]'
+  NotEnoughVotes: '&ePas assez de votes: &6[votes]'
+  TooMuchVotes: '&eTrop de votes: &6[votes]'
+  BadGameMode: '&cTu ne peux pas faire ça dans ce gamemode'
+  BadArea: '&cTu ne peux pas effectuer cette action dans cette zone'
+  GameMode: '&eGameMode: &6[GameMode]'
+  GodMode: '&eGodMode: &6[GodMode]'
+  Flying: '&eVole: &6[Flying]'
+  CanFly: '&ePeut Voler: &6[CanFly]'
+  Uuid: '&6[uuid]'
+  ip: '&eAdresse IP: &6[address]'
+  FirstConnection: '&ePremière connexion: &6[time]'
+  Lastseen: '&eVu la dernière fois: &6[time]'
+  Onlinesince: '&eEn ligne depuis: &6[time]'
+  Money: '&eSolde: &6[money]'
+  Group: '&eGroupe: &6[group]'
+econ:
+  disabled: '&cImpossible d''utiliser cette commande si l''economie est désactivé.'
+  noMoney: '&cTu n''as pas assez d''argent'
+  notEnoughMoney: '&cTu n''as pas assez d''argent. Requis (&6[amount]&c)'
+  tooMuchMoney: '&cTu as trop d''argent'
+Elytra:
+  Speed: '&eVitesse: &6[speed]&ekm/h'
+  SpeedBoost: ' &a+ '
+  SpeedSuperBoost: ' &2+ '
+  CanUse: '&cImpossible d''équiper l''Élytre sans permission!'
+  Charging: '&eCharge &f[percentage]&e%'
+Selection:
+  SelectPoints: '&cSélectionne 2 points avec l''outil de séléction! AKA: &6[tool]'
+  PrimaryPoint: '&6Premier &epoint sélectionner [point]'
+  SecondaryPoint: '&6Second &epoint sélectionner [point]'
+  CoordsTop: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
+  CoordsBottom: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
+NetherPortal:
+  ToHigh: '&cLe portail est trop haut, la taille maximale est &6[max]&c!'
+  ToWide: '&cLe portail est trop large, la taille maximale est &6[max]&c!'
+  Disabled: '&cCréation de portail désactivée!'
+Location:
+  Title: '&8Emplacement du joueur'
+  Killer: '&eTueur: &6[killer]'
+  OneLiner: '&eEmplacement: &6[location]'
+  DeathReason: '&eRaison de la mort: &6[reason]'
+  World: '&eMonde: &6[world]'
+  X: '&eX: &6[x]'
+  Y: '&eY: &6[y]'
+  Z: '&eZ: &6[z]'
+  Pitch: '&ePitch: &6[pitch]'
+  Yaw: '&eYaw: &6[yaw]'
+Ender:
+  Title: '&7Ouvrir l''ender chest'
+Chat:
+  localPrefix: ''
+  shoutPrefix: '&c[S]&r'
+  shoutDeduction: '!actionbar!&&e[amount] &cdéduis pour avoir crié'
+  # Use \n to add new line
+  publicHover: '&eHeure d''envoi: &6%server_time_hh:mm:ss%'
+  privateHover: '&eHeure d''envoi: &6%server_time_hh:mm:ss%'
+  staffHover: '&eHeure d''envoi: &6%server_time_hh:mm:ss%'
+  helpopHover: '&eHeure d''envoi: &6%server_time_hh:mm:ss%'
+  link: '&l&4[&7LINK&4]'
+  item: '&7[%cmi_iteminhand_displayname%[amount]&7]'
+  itemAmount: ' x[amount]'
+  itemEmpty: '&7[Mighty fist]'
+command:
+  help:
+    output:
+      usage: '&eUtilisation: &7%usage%'
+      cmdInfoFormat: '[command] &f- &e[description]'
+      cmdFormat: '&6/[command]&f[arguments]'
+      helpPageDescription: '&e* [description]'
+      explanation: '&e * [explanation]'
+      title: '&e------ ======= &6Help&e &e======= ------'
+  nocmd:
+    help:
+      info: '&eAffiche toutes les commandes disponibles'
+      args: ''
+  actionbarmsg:
+    help:
+      info: '&eEnvoie un message de barre d''action au joueur'
+      args: '[playerName/all] [message]'
+    info:
+      message: '&f[messsage]'
+  afk:
+    help:
+      info: '&eActiver le mode AFK. La raison peut être fournie'
+      args: (-p:playerName) (reason)
+  afkcheck:
+    help:
+      info: '&eVérifier le statut AFK des joueurs'
+      args: '[playerName]'
+    info:
+      feedback: '&e[playerDisplayName]&e: &6[status]'
+      feedbackInactive: '&eInactif depuis &6[time]'
+      feedbackReason: '&7[reason]'
+  air:
+    help:
+      info: '&eRégler le niveau d''air du joueur'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&eTu as réglé le niveau d''air à &3[amount]&e pour &3[playerName]&e (&3[offon]&e).'
+      targetFeedback: '&eTon niveau d''air à été réglé sur &3[amount]&e par &3[senderDisplayName]&e.'
+      current: '&eNiveau d''air actuel de &3[playerDisplayName] &e: &3[amount]'
+  alert:
+    help:
+      info: '&eAlerter l''administration lors de la connexion d''un joueur'
+      args: '[playerName] (reason)'
+      explanation:
+      - '&ePermissions:'
+      - '&6command.alert.info.inform &e- pour recevoir les alertes'
+    info:
+      inform:
+      - '&e!Alerte!******** &6[name] &4vient de se connecter! &e*******!Alerte!'
+      reason: '&eRaison de l''alerte: &6[reason]'
+      removed: '&6[playerDisplayName] &eretirer de la liste d''alerte'
+      added: '&eLe message d''alerte sera envoyé à tous les administrateurs, si &6[playerDisplayName]
+        &ese connecte dans les 24 prochaines heures'
+      online: '&6[playerDisplayName] &eest déjà en ligne'
+  aliaseditor:
+    help:
+      info: '&eÉditeur d''alias'
+      args: (new) (alias-cmd)
+    info:
+      ListNumber: '&e[number].'
+      aliasName: ' &6[alias]   '
+      commandList: ' &e/[command]  '
+      commandListDelay: ' &6[command]  '
+      permReq: '&2Nécessite une autorisation personnalisée: &6[state]'
+      permReqExplanation: '&7Requiert la permission &6cmi.customalias.[alias] &7pour être utilisée'
+      newAliasInfo: '&eSaisissez un nouveau nom de commande d''alias et appuyez sur Entrée'
+      addInfo: '&eEntre la commande. Tape &6cancel &epour annuler'
+      addInformationHover: "&eVariables globales prises en charge à partir de la catégorie d'expéditeur \n\
+        &edelay! 5 &6pour inclure un délai dans la commande \n&e$1 &6prendra la variable fournie\
+        \ par une nouvelle commande et se placera à cet endroit \n&e$1- &6prend toutes les variables\
+        \ à partir de ce point et insère dans les commandes originales \n&e? &6le rend valide\
+        \ lors de l'utilisation d'une dernière variable. For Help page usage\n&efromConsole! will perform\
+        \ command from console"
+      editInfo: '&eCliquez pour coller l''ancien texte. Tape &6cancel &epour annuler l''action. Tape
+        &6remove &epour retirer une ligne'
+  anvil:
+    help:
+      info: '&eOuvrir l''enclume'
+      args: (playerName)
+    info:
+      feedback: '&eTu as ouvert l''enclume pour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e t''a ouvert l''enclume.'
+  armorstand:
+    help:
+      info: '&eOuvrir l''éditeur de porte-armure'
+      args: (last/near)
+    info:
+      cantClick: '&cImpossible. Quelqu''un édite déjà ce porte-armure'
+      tooFar: '&cLe porte-armure est trop éloigné'
+      title: Editeur
+      coordX: '&cX'
+      coordY: '&2Y'
+      coordZ: '&eZ'
+      body: '&7Rotation du corps: &f[amount]'
+      head: '&7Tête [coord]&7: &f[amount]'
+      torso: '&7Torse [coord]&7: &f[amount]'
+      leftArm: '&7Bras gauche [coord]&7: &f[amount]'
+      rightArm: '&7Bras droite [coord]&7: &f[amount]'
+      leftLeg: '&7Jambe gauche [coord]&7: &f[amount]'
+      rightLeg: '&7Jambre droite [coord]&7: &f[amount]'
+      pos: '&7Position [coord]&7: &f[amount]'
+      plate: '&7Plaque'
+      size: '&7Petit'
+      visible: '&7Visible'
+      arms: '&7Bras visible'
+      gravity: '&7Gravité'
+      glow: '&7Surbrillance'
+      invulnerable: '&7Invulnérable'
+      name: '&7Nom visible'
+      interactable: '&7Interagissable'
+      explanation: '&8Bouton gauche ou droit de la souris pour ajuster la valeur'
+      explanation2: '&8Maintenez shift pour le rendre 10x plus rapide'
+      disableGravity: '&eDésactivez la gravité si vous souhaitez modifier cette valeur'
+      copyLabel: '&7Ouvrir le sélecteur de clones'
+      copyTitle: '&8Choisissez ce que vous voulez cloner'
+      click: '&eCliquez sur le support d''armure pour le dupliquer ou perforez n''importe quel bloc pour annuler le processus'
+      canceled: '&eCopiage annulé'
+      updated: '&ePorte-armure actualisé'
+  attachcommand:
+    help:
+      info: '&eAttacher la commande à l''item'
+      args: '[command/-clear]'
+      explanation:
+      - Séparez les commandes avec ;;
+      - 'Vous pouvez définir d''exécuter la commande sur le clic gauche ou droit de la souris séparément avec'
+      - '!left! pour exécuter la commande sur le clic gauche de la souris'
+      - '!right! pour exécuter la commande sur un clic droit'
+      - '!limiteduse:[amount]! définit combien de fois vous pouvez utiliser cet élément'
+      - '!safelimiteduse:[amount]! ne supprimera pas l''élément une fois toutes les utilisations utilisées'
+      - '!cc! exécute la commande à partir de la console, requiert la permission cmi.command.attachcommand.cc'
+      - '!cooldownn:[amount]! ajoute un temps de recharge sur l''utilisation des items.'
+      - '[interactedPlayer] insère le nom du joueur avec lequel vous avez interagi tout en maintenant l''item'
+      - Variables globales fonctionnant en plus avec [itemUses]
+    info:
+      list: ' &e[id]. &6[cmd]'
+      noCmds: ' &eAucune commande attachée à cet item'
+      uses: '&eUtilisation de l''objet: &6[amount]'
+      usesLeft: '!actionbar!&eUtilisation de l''item restante: &6[itemUses]'
+      cooldown: '&7L''item est en cours de récupération. Attends [time]'
+  back:
+    help:
+      info: '&eTéléportation vers le dernier emplacement connu'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&4Aucun emplacement vers lequel retourner!'
+      feedback: '&eRetourné vers le dernier emplacement (&6[worldName]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
+  balance:
+    help:
+      info: '&eVérifier le solde d''argent'
+      args: (playerName)
+    info:
+      balance: '&eSolde: &6[money]'
+      balanceOther: '&eSolde de &6[playerDisplayName]&e: &6[money]'
+  baltop:
+    help:
+      info: '&eVérifiez la liste des meilleurs fonds'
+      args: (playerName)
+    info:
+      topLine: '&e&m-----&6 Top des meilleurs soldes &e&m-----'
+      topLineHover: '&6Total serveur: &c[total]'
+      list: '&e[place]. &6[playerDisplayName]: &e[balance]'
+      ownLine: '&2[place]. &2[playerDisplayName]: &2[balance]'
+      recalculating: '&2Le top est recalculé, merci de patienter...'
+  ban:
+    help:
+      info: '&eBannir un joueur'
+      args: '[playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.ban.bypass - pour bypass le bannissement
+    info:
+      # Make sure that OverrideLoginMessage is enabled in config file
+      message: '&cTu es banni de ce serveur!'
+      reason: '&6Raison: &e[reason]'
+      defaultReason: '&eRègles de serveur violées'
+      messageToAll: '&6[playerDisplayName] &ea été banni par &6[senderDisplayName] &epour:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &ea été banni par &6[senderDisplayName]
+        &epour: &6[reason]'
+      noSelfBan: '&cTu ne peux pas te bannir'
+      cantBan: '&cTu ne peux pas bannir ce joueur'
+  banlist:
+    help:
+      info: '&eListe des bannis'
+      args: ''
+  blockcycling:
+    help:
+      info: '&eÉtats des blocs de cycle'
+      args: ''
+  blockinfo:
+    help:
+      info: '&eVérifier les informations du bloc'
+      args: ''
+    info:
+      Info: ' &eId: &6[id][data] &eMateriel: &6[name][ndata]'
+      RealName: ' &eNom: &6[name]'
+      TempLight: ' &eTempérature: &6[temp]&e, Lumière - bloc: &6[blevel]&e, ciel: &6[slevel]&e,
+        global: &6[level]'
+      Resistance: ' &eResistance - Minage: &6[mining]&e, Explosion: &6[explosion]'
+      noteBlock: ' &eTon: &6[tone] &eOctave: &6[octave] &6Instrument: &e[instrument]
+        &6Pitch: &7[pitch]'
+      BlockState: ' &7[state]: &f[value]'
+  blocknbt:
+    help:
+      info: '&eAfficher les informations NBT du bloc'
+      args: ''
+    info:
+      noNbt: '&eLe bloc ne contient aucune information NBT'
+  book:
+    help:
+      info: '&eÉditeur de livre'
+      args: '[Author/Title/Unlock] [value]'
+    info:
+      noitem: '&cAucun item en main.'
+      notBook: '&cCet item n''est pas un livre écrit.'
+      wrongValue: '&cCet item n''est pas un livre écrit verouillé.'
+      inccorectAction: '&eNom d''action incorrect..'
+      authorChanged: '&eL''auteur est devenu: [author]'
+      titleChanged: '&eLe titre a été remplacé par: [title]'
+      unlocked: '&eLe livre a été déverrouillé.'
+  bossbarmsg:
+    help:
+      info: '&eEnvoie un message de barre de boss au joueur'
+      args: '[playerName/all] (-sec:[seconds])(-t:[timeToKeepFor]) (-n:nameOfBar)
+        (-p:[maxValue/current]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
+        (-a:[ticks]) [message]'
+      explanation:
+      - PlaceHolderAPI est pris en charge pour la progression et le texte lui-même.
+      - Le temps est défini tel que 1s est une seconde et 1m est une minute.
+        Cela déterminera la durée pendant laquelle la barre sera affichée pour le joueur.
+      - nameOfBar est une option et lors de sa définition, la barre actuelle sera mise à jour avec de nouvelles informations.
+      - 'la couleur peut être: red (rouge), green (vert), pink (rose), purple (violet), white (blanc), yellow (jaune)'
+      - max et current values déterminent le remplissage de la barre, les variables PlaceHolderAPI peuvent être utilisées pour les mises à jour dynamiques.
+      - 'Exemples:'
+      - /cmi bossbar Zrips BossBarTitre
+      - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:testbar
+        -c:red &2Titre de la bar %server_online%/%server_max_players% &e%cmi_user_name%
+      - /cmi bossbarmsg all -p:+1 -n:testbar - ajoutera un pour cent à la barre de progression actuelle (testbar).
+      - /cmi bossbarmsg all -p:-1 -n:testbar - supprimera un pour cent de la barre de progression actuelle (testbar).
+      - /cmi bossbarmsg all -s:10 -n:testbar - définira le style bossbar sur 10 segments (testbar).
+      - /cmi bossbarmsg all -sec:5 - comptera pendant 5 secondes de 0 à 5
+      - /cmi bossbarmsg all -sec:-5 - comptera pendant 5 secondes de 5 à 0
+      - http://www.zrips.net/cmi/commands/bossbarmsg-handling/
+  broadcast:
+    help:
+      info: '&eEnvoie un message spécial à tous les joueurs'
+      args: (!) [message] (-w:[worldName,worldName])
+      explanation:
+      - Si le message commence par ! alors un message propre sera affiché
+      - Les mondes peuvent être définis pour diffuser des messages uniquement dans ces mondes
+    info:
+      format: '&e[&4Broadcast&e] &2[message]'
+  burn:
+    help:
+      info: '&eBrûler un joueur'
+      args: (playerName) (time) (-s)
+    info:
+      feedback: '&eTu as mis &3[playerDisplayName]&e en feu pour &6[time] &e(&3[offon]&e).'
+      targetfeedback: '&eTu as été mis en feu par &3[senderDisplayName]&e pour
+        &6[time]&e.'
+  charges:
+    help:
+      info: '&eShows left spawner charges'
+      args: '[playerName] [add/set/take/clear/reset] (-f)'
+    info:
+      charges: '&e* Charges: &6[current]&e/&6[max] [bypass]'
+      cd: '&e* CD: &6[cdtime] &eNext in: &6[time]'
+      bypass: '&6(Bypass)'
+      allUsed: '&eAll charges used! Next in [time]'
+      noGroup: '&eDon''t have assigned charge group'
+      cantBreak: '&eYou can''t break until you will have assigned charge group'
+      minusCd: '&e Minus &6[sec]&esec on spawner charge cooldown'
+      add: '&eAdded &6[amount] &espawner charges for &6[playerDisplayName]'
+      set: '&eSet &6[amount] &espawner charges for &6[playerDisplayName]'
+      clear: '&eCleared all spawner charges for &6[playerDisplayName]'
+      reset: '&eReset spawner charge group for &6[playerDisplayName]'
+      take: '&eTook &6[amount] &espawner charges from &6[playerDisplayName]'
+  chat:
+    help:
+      info: '&eDiscutez avec le joueur cible via des messages publics'
+      args: '[playerName/off]'
+    info:
+      toggledOn: '&eLe chat persistant a été démarré avec &6[playerDisplayName]&e.
+        Vous pouvez maintenant écrire des messages dans le chat public.'
+      toggledOff: '&eDésactivé le chat persistant'
+      toggle: '&6[playerDisplayName] &esouhaite activer le chat persistant avec toi'
+  checkaccount:
+    help:
+      info: '&eRechercher un autre compte du joueur'
+      args: (playerName/ip)
+      explanation:
+      - 'Extra permission: cmi.command.checkaccount.showip'
+    info:
+      place: '&e[place]. &6'
+      ip: '&6[ip]&e: '
+      name: '&6[name]&e(&6[times]&e)'
+      nonIpList: '&eComptes: &6'
+      nonIpName: '&6[name]'
+      click: '&eClique pour vérifier &6[name]'
+      noData: '&cIl n''y a aucun enregistrement pour cet utilisateur'
+  checkban:
+    help:
+      info: '&eVérifier le statut de bannissement du joueur'
+      args: (playerName)
+    info:
+      list: '&6[place]&e. &e[playerDisplayName] &6[time]'
+      permanent: '&3Permanent'
+      bannedUntil: '&eBanni pour: &6[time]'
+      reason: '&eRaison: &6[reason]'
+      bannedBy: '&eBanni par: &6[sourceDisplayName]'
+      bannedWhen: '&eBanni le: &6[date]'
+  checkcommand:
+    help:
+      info: '&eRecherche de commandes possibles par mot-clé'
+      args: (key word)
+    info:
+      list: '&e[place]. &f[command] &7[args]'
+      hover: '&e[desc]'
+      variableColor: '&f'
+  checkexp:
+    help:
+      info: '&eVérifier l''exp d''un joueur'
+      args: (playerName)
+    info:
+      current: '&eNiveau: &6[currentLevel] &eExp: &6[levelExp] &eExp total: &6[exp]'
+      need: '&eExp requis pour niveau suivant: &6[missingExp]'
+  checkperm:
+    help:
+      info: '&eVérifier les noeuds d''autorisation possibles'
+      args: (key word)
+    info:
+      list: '&e[place]. [permission]'
+      hover: '&e[desc]'
+      others: |-
+        &4
+        ---->Quand la commande est utilisée sur un autre joueur<----
+        &cCommande de base requise
+      permissionColor: '&6'
+      cmdPermissionColor: '&2'
+      variableColor: '&f'
+      noPermissionFound: '&7Aucune permission trouvée avec ce mot clé'
+  cheque:
+    help:
+      info: '&eConvertir de l''argent en chèque'
+      args: (playerName) [amount]
+    info:
+      transfered: ' &6[amount] &etransféré vers ton compte. Nouveau solde: &6[balance]'
+      chequeName: '&eChèque pour &6[amount]'
+      chequeLore:
+      - '&r&fDélivré par &7[senderDisplayName]'
+      - '&r&fClic droit pour déposer'
+      holdPaper: '&eTenez le papier dans votre main'
+      cantUse: '&eImpossible d''utiliser ce morceau de papier. C''est déjà un chèque!'
+  clear:
+    help:
+      info: '&eEffacer l''inventaire des joueurs'
+      args: (playerName) (item(-amount)) (-s) (+clearType)
+      explanation:
+      - 'clearTypes possibles: quickbar, inventory, partinventory, weapons, armorslots,
+        tools, armors, mainhand, offhand'
+      - Doit commencer avec le signe +
+      - Plusieurs types peuvent être utilisés
+      - cmi clear +armors - supprimera les éléments de type armure
+      - 'cmi clear +armorslots - supprimera les éléments des lots d''armures'
+    info:
+      feedback: '&eTu as effacé l''inventaire de &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTon inventaire a été effacé par &3[senderDisplayName]&e.'
+      confirm: '&7Cliquer pour confirmer la commande. &cTous les items vont être éffacés!'
+  clearchat:
+    help:
+      info: '&eEfface le chat'
+      args: (self)
+      explanation:
+      - 'Permission:'
+      - ' &6cmi.command.clearchat.bypass &e- ignorer le nettoyage du chat'
+    info:
+      information: '&eLe chat a été effacé par &6[senderDisplayName]'
+  clearender:
+    help:
+      info: '&eEfface l''ender chest d''un joueur'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&eTu as effacé l''ender chest de &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTon ender chest a été effacé par &3[senderDisplayName]&e.'
+  colorlimits:
+    help:
+      info: '&eAffiche toutes les couleurs possibles'
+      args: (playerName)
+    info:
+      publicmessage: ' &ePublique: '
+      privatemessage: ' &ePrivé: '
+      nickname: ' &eSurnom: '
+      signs: ' &ePancartes: '
+      books: ' &eLivres: '
+      me: ' &eMoi: '
+      None: '&e-'
+  colors:
+    help:
+      info: '&eAffiche toutes les couleurs possibles'
+      args: (playerName)
+    info:
+      List:
+      - '&e***************************************'
+      - '     &0&%0  &1&%1  &2&%2  &3&%3  &4&%4  &5&%5  &6&%6  &7&%7'
+      - '     &8&%8  &9&%9  &a&%a  &b&%b  &c&%c  &d&%d  &e&%e  &f&%f'
+      - '       &%k - &kMagique&r      &%l - &lGras'
+      - '       &%m - &mRayer&r        &%n - &nUline'
+      - '       &%o - &oItalique&r     &%r - &rReset'
+      - '&e***************************************'
+  commandspy:
+    help:
+      info: '&eBasculer la commande espion'
+      args: (playerName) (-s)
+      explanation:
+      - cmi.command.commandspy.hide - Masque les commandes exécutées de commandspy
+    info:
+      command: '&5C&2Spy&7[&8[senderDisplayName]&7]&7: &f[command]'
+      toggled: '&eLa commande spy basculée sur &6[state]'
+  compass:
+    help:
+      info: '&eDéfinissez le point cardinal des joueurs sur votre position'
+      args: (targetName) (sourceName) (x) (z) (worldname) (reset) (-s)
+      explanation:
+      - 'Example: /cmi compass Zhax'
+      - /cmi compass Zhax Zrips
+      - /cmi compass Zhax LT_Craft 0 0 -s
+      - /cmi compass reset Zhax
+    info:
+      wrongworld: '&cCe monde n''existe pas!'
+      feedback: '&eVous avez défini la flèche de la boussole de &3[playerDisplayName] &esur l''emplacement de &3[sourceDisplayName]&e.'
+      feedbackCustom: '&eVous aveu défini la flèche de la boussole de &3[playerDisplayName] &evers les coordonnées &3[x] [z] [world] &e.'
+      targetFeedback: '&eTa flèche de la boussole a été définie pointant vers l''emplacement &3[sourceDisplayName] &epar &3[senderName]&e.'
+      targetFeedbackCustom: '&eTa flèche de la boussole a été définie pointant vers l''emplacement &3[x] [z] [world] &epar &3[sourceDisplayName]&e.'
+      reset: '&eLa cible de la boussole a été réinitialisée'
+  condense:
+    help:
+      info: '&eCondenser les articles en blocs'
+      args: (itemName)
+    info:
+      converted: '&7[items] &econvertis en &7[blocks]'
+      nothing: '&cIl n''y a rien dans votre inventaire qui puisse être condensé.'
+  counter:
+    help:
+      info: '&eLance le compteur pour les joueurs environnants'
+      args: '[join/leave/start] (t:time) (r:[range/-1]) (c:[world:x:y:z]) (msg:custom_message)
+        (-f)'
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.command.counter.force &e- pour forcer le compteur pour tout le monde à portée '
+      - '&6cmi.command.counter.time &e- définir une plage de temps personnalisée '
+      - '&6cmi.command.counter.range &e- définir une plage distance personnalisée'
+      - '&6cmi.command.counter.msg &e- définir un message personnalisé'
+      - '&6cmi.command.counter.autojoin &e- rejoint automatiquement le compteur'
+      - -f forcera le compteur à tous les joueurs à portée
+      - 'Exemple: /cmi counter start r:30 t:7 msg:&eMessage_personnalisé -f'
+    info:
+      join: '&ea rejoint le compteur'
+      leave: '&ea quitté le compteur'
+      go: '&eGO!'
+      tooFast: '&cImpossible de répéter cette commande si vite, attends: &6[sec]&esec'
+      noOne: '&cPersonne ne voit ce compteur!'
+  cplaytime:
+    help:
+      info: '&eTemps de jeu détaillé'
+      args: (playerName)
+    info:
+      moreDetails: '&7Clique pour plus de détails'
+      title: '&7Temps de jeu de &8[playerDisplayName]'
+      date: '&8[date]'
+      time: '&7[hour]:00&f-&7[nextHour]:00'
+      thishour: '&7Heure actuelle'
+      hourback: '&7Dernière heure'
+      today: '&7Aujourd''hui'
+      yesterday: '&7Hier'
+      thisweek: '&7Cette semaine'
+      week: '&7Par semaine'
+      thismonth: '&7Ce mois'
+      month: '&7Par mois'
+      thisyear: '&7Cette année'
+      year: '&7Par année'
+      total: '&7Total'
+  ctellraw:
+    help:
+      info: '&eEnvoyer un message tellraw'
+      args: '[playerName/all] [formattedMessage]'
+      explanation:
+      - 'L''utilisation est la même que celle indiquée dans http://www.zrips.net/cmi/custom-text/ aka customtext command'
+  ctext:
+    help:
+      info: '&eAffiche le texte personnalisé'
+      args: '[cText] (playerName/all) (sourcePlayer)'
+    info:
+      list: '&eTexte personnalisé: &6'
+      check: '&eVérifier: &6[text]'
+  cuff:
+    help:
+      info: '&eSuspend les actions des joueurs'
+      args: '[playername] (true/false)'
+    info:
+      noChat: '&cToutes vos actions sont suspendues. Vous ne pouvez pas discuter.'
+      noCommand: '&cVous ne pouvez pas utiliser les commandes pendant la suspension. &ePermises: &6/msg, /r,
+        /tell'
+      cuffed: '&6[playerDisplayName] &emenotté'
+      unCuffed: '&6[playerDisplayName] &edémenotté'
+      free: '&eTu es libre'
+      gotCuffed: '&eTu as été menotté'
+      cuffedInfo: '&eTu es menotté'
+      cantCuff: '&cTu ne peux pas menotter ce joueur!'
+  customrecipe:
+    help:
+      info: '&eGère les recettes personnalisées des items'
+      args: ''
+    info:
+      removed: '&eRecette retirée: [id]. Pour un effet COMPLET, vous devrez redémarrer le serveur.'
+      noRecipe: '&eIl n''y a pas de recette personnalisée avec cet identifiant.'
+      edit: '&8Éditer la recette (&6[type]&8)'
+      addNew: '&eAjouter une nouvelle recette (&6[type]&e)'
+      shapelessRecipe: '&6Faire une nouvelle recette informe'
+      shapedRecipe: '&eFaire une nouvelle recette en forme'
+      furnaceRecipe: '&2Faire une nouvelle recette de four'
+      mainTitle: '&8Recettes personnalisées (&7[current]&8/&7[total]&8)'
+  dback:
+    help:
+      info: '&eRetourne au lieu de la mort'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&4Il n''y a pas de lieu enregistré où revenir!'
+      feedback: '&6Retourné au dernier emplacement enregistré ([world],[x],[y],[z])!'
+  disableenchant:
+    help:
+      info: '&eDésactiver l''enchantement'
+      args: (enchant/id) (disable/enable)
+    info:
+      title: 'Désactiver d''enchantement'
+      feedback: '&6[enchantName] &ea été [state]'
+  dispose:
+    help:
+      info: '&eJeter les items inutiles'
+      args: (playerName)
+    info:
+      title: '&cPlacez tous les items dont vous n''avez pas besoin'
+  distance:
+    help:
+      info: '&eVérifier la distance entre 2 points'
+      args: (playerName) (playerName)
+    info:
+      feedback: '&7Distance: &e[dist] &7x:&e[x] &7y:&e[y] &7z:&e[z] &7Direction:&e[dir]'
+  donate:
+    help:
+      info: '&eDonnez l''item que vous détenez'
+      args: '[playerName] (amount)'
+    info:
+      donated: '&6[type]&eX&6[amount] &edonné à &6[playerDisplayName]'
+      got: '&6[type]&eX&6[amount] &ereçu(s) de &6[playerDisplayName]'
+      sentOffer: '&eEnvoyé à &6[playerDisplayName]&e. Attente que le joueur accepte.'
+      gotOffer: '&6[type]&eX&6[amount] &ereçu de &6[sourceDisplayName]&e.
+        Clique pour accepter.'
+      doesnthave: '&eLe joueur n''a plus cet item.'
+  dsign:
+    help:
+      info: '&eGérer les pancartes dynamiques'
+      args: (new)
+      explanation:
+      - Pointe une pancarte puis fais la commande /cmi dsign new
+    info:
+      howTo: '&cCe n''est pas une pancarte dynamique, pour en créer une nouvelle fais &e/cmi dsign new'
+      gui: '&7---- &f<Ouvrir gui> &7----'
+      guiHover: '&7Open dynamic sign settings GUI'
+      individual: '&7Individuel: [state]'
+      individualLore:
+      - '&2True &7- Le signe sera différent pour chaque joueur'
+      - '&2True &7- Mettra à jour le placeholders du joueur'
+      - '&2False &7- Le signe sera mis à jour physiquement'
+      - '&2False &7- Est plus efficace mais plus limité en même temps'
+      interval: '&7Mis à jour toutes les &6[second] &7secondes'
+      intervalLore:
+      - '&7Combien de fois, en secondes, les informations de la pancarte sont actualisés'
+      - '&7Cela définit également la vitesse de défilement des lignes'
+      range: '&7Distance d''activation: &6[blocks]'
+      rangeLore:
+      - '&7Définit la zone autour du signe pour déclencher les mises à jour'
+  dye:
+    help:
+      info: '&eArmure en cuir teint'
+      args: (playerName) (red,green,blue/hexCode/colorName/random/clear/rainbow/day/biome/health)
+        (-s)
+    info:
+      color: '&eCouleur actuelle- &c[red],&2[green],&9[blue] &eHex:&6#[hex]'
+      custom: '&eMode couleur personnalisé activé: &6[mode]'
+      bound: '&eÂme lié à: &6'
+      boundName: '[playerName]'
+  editctext:
+    help:
+      info: '&eÉditeur de texte personnalisé'
+      args: ''
+    info:
+      noText: '&cImpossible de trouver un texte personnalisé de ce nom'
+      editInfo: '&eCliquez pour coller l''ancien texte. Tape &6cancel &epour annuler l''action. Tape
+        &6remove &epour retirer une ligne'
+      addInfo: '&eEntre le texte de la nouvelle ligne. Tape &6cancel &epour annuler'
+      addInformationHover: "&eVariables globales prises en charge à partir de la catégorie d'expéditeur \n\
+        &ePour inclure des messages cliquables: \n&e<T>&rTexte&e</T><H>&rTexte de survol&e</H><C>&rcommande&e</C><SC>&rTexte\
+        \ suggéré&e</SC> \n&6<T> &eet &6</T> &erequis, le reste est optionnel \n&eFais \\\
+        u005Cn pour changer de ligne \n&ePour avoir plus de messages JSON utilise <Next> \n\
+        &6<CC> &eexécute la commande de la console une fois \n&6<CCI> &eexécute les commandes de la console\
+        \ chaque fois que le joueur clique sur du texte \n&6<URL> &epermet d'ajouter une URL pour rediriger\
+        \ le joueur vers la page web"
+      newInfo: '&eEntrez le nom du nouveau texte personnalisé. Tape &6cancel &epour annuler'
+      deleteInfo: '&eTape &6confirm &epour confirmer la suppression tape &6cancel &epour annuler cette action'
+      deleted: '&eLe texte personnalisé (&6[ctext]&e) a été supprimé'
+      createdNew: '&eLe texte personnalisé (&6[ctext]&e) a été créé'
+      createNew: '&2 + '
+      createNewHover: '&eAjouter nouveau'
+      autoPage: '&ePage automatique: &6[state]'
+      autoAlias: '&eAlias automatique: &6[state]'
+      permReq: '&ePermission requise: &6[state]'
+      list: '&eTextes personnalisés: &6'
+  editlocale:
+    help:
+      info: '&eModifier tes fichiers locaux'
+      args: (keyword(-s))
+    info:
+      found: '&7********* &eTrouvé: [found] &7*********'
+  editplaytime:
+    help:
+      info: '&eModifier le temps de jeu des joueurs'
+      args: (playerName) [add/take/set] [amount] (-s)
+    info:
+      cantSet: '&cImpossible de modifier le temps de jeu'
+      set: '&eChangé de &6[old] &eà &6[new]'
+  editwarnings:
+    help:
+      info: '&eVérifier les avertissements des joueurs'
+      args: (playerName/clearall) (clear)
+    info:
+      list: '&7[place]. &e[time] &6par [warnedBy] &cpour: &7[warnedFor]'
+      hover: '&7Expire dans: [time]'
+      cleared: '&eTous les avertissements du joueur ont été effacés'
+      allCleared: '&eTous les avertissements de TOUS les joueurs ont été effacés'
+  editwarp:
+    help:
+      info: '&eÉditer les Warps'
+      args: (warpName) (newName)
+    info:
+      exists: '&cUn warp de ce nom (&7[newName]&c) existe déjà. Choisis-en un autre.'
+      updated: '&eNom modifié de &7[oldName]&e à &7[newName]'
+      placeItem: '&2Place l''item pour définir l''item personnalisé'
+      placeOffItem: '&2Place l''item pour définir l''item de désactivation personnalisé'
+      autoLore: '&2Génération automatique de description: [state]'
+      permission: '&2Permission requise pour utilisation: [state]'
+      reqPermission: '&2Montrer sans permission: [state]'
+      location: '&2Définir le nouvel emplacement'
+      slot: '&2Slot: &6[slot]'
+      page: '&2Page: &6[page]'
+      overllaps: '&2Chevauche avec:'
+      notSet: '&eNon défini'
+  effect:
+    help:
+      info: '&eAjoute un effet de potion au joueur. utilisez clear pour supprimer tous les effets'
+      args: '[playername/all] [effect/clear] (duration) (multiplier) (-s) (-visual)'
+      explanation:
+      - -le visuel ajoutera des bulles visibles et une icône dans le coin supérieur droit
+      - 'Exemples:'
+      - /cmi effect zrips nightvision 60 1 - donnera 60 secondes de vision nocturne pour Zrips
+      - /cmi effect zrips nightvision +10 - ajoutera 10 secondes au temps de vision nocturne actuel
+      - /cmi effect zrips nightvision -10 - supprimera 10 secondes du temps de vision nocturne actuel
+      - /cmi effect all health_boost 60 1 - augmentera la puissance de hp de 1 pour tout le monde en ligne
+    info:
+      feedback: '&eEffet de potion &6[effect] &eajouté à &3[playerDisplayName]&e pour
+        &6[sec]sec&e avec puissnace niveau &6[power] &e(&3[offon]&e).'
+      cleared: '&eLes effets de potion ont été clear pour &3[playerDisplayName]&e (&3[offon]&e).'
+  enchant:
+    help:
+      info: '&eEnchanter un item'
+      args: (playerName) [enchant] [level] (-o) (-onlyvalid) (-keeponlyvalid) (-inform)
+        (-s) (-i:[itemName(:data)])
+      explanation:
+      - '-o prendra l''item de main levée'
+    info:
+      feedback: '&eTu as enchanté l''item avec &3[enchant]:[level]&e
+        pour &3[playerDisplayName]&e (&3[offon]&e).'
+      removed: '&eTu as retiré l''enchantement &3[enchant] &ede l''item du joueur &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      cleared: '&3TOUS &e les enchantement ont été retiré pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cAucun item dans ta main.'
+      invalidEnchant: '&cVous n''avez pas la permission d''enchanter un item avec un enchantement invalide'
+      clearedInvalid: '&&6[amount] &eenchantements invalides retirés de cet item'
+      inccorectId: '&eNom ou identifiant d''enchantement incorrect.'
+      wrongItem: '&eMauvais item dans votre main'
+      enchantlimit: '&cTu n''as pas accès à cet enchantement'
+      levellimit: '&cLe niveau est trop haut, maximum permis &e[level].'
+      posible: '&eEnchantements possibles: '
+      posibleList: '&6[enchant]'
+  ender:
+    help:
+      info: '&eOuvrir l''ender chest d''un joueur'
+      args: (playerName)
+      explanation:
+      - 'cmi.command.ender.preventmodify - empêche les modifications d''inventaire'
+      - 'cmi.enderedit - permet de modifier l''inventaire ouvert'
+    info:
+      title: '&8[playerDisplayName] Ender Chest'
+      feedback: '&eTu édites l''ender chest de &3[playerDisplayName] (&3[offon]&e).'
+  endgateway:
+    help:
+      info: '&eBasculer la poutre de passerelle de l''end'
+      args: ''
+    info:
+      'off': '&7Le faisceau a été basculé sur &eOff'
+      'on': '&7Le faisceau a été basculé sur &6On'
+  entityinfo:
+    help:
+      info: '&eVérifier les informations sur l''entité'
+      args: ''
+    info:
+      type: '&eType d''entité: &6[type]'
+      customName: '&eNom customisé: &6[name]'
+      health: '&eVie: &6[current]&e/&6[max]'
+      lastDamage: '&eDernier damage causé par: &6[cause]'
+      tamed: '&eApprivoisé: &6[state]'
+      owner: '&ePropriétaire: &6[playerDisplayName]'
+  entitynbt:
+    help:
+      info: '&eVérifier les informations NBT de l''entité'
+      args: ''
+  exp:
+    help:
+      info: '&eDéfinir l''exp d''un joueur. Utilise L pour définir le niveau'
+      args: '[playerName] [add/set/take/clear] [amount]'
+      explanation:
+      - 'Exemples:'
+      - /exp 10
+      - /exp add 10
+      - /exp set 10L
+      - /exp take 10
+      - /exp Zrips clear
+      - /exp Zrips add 10
+    info:
+      current: '&e[playerDisplayName] &eest au niveau &6[lvl]&e avec &6[currentExp]&eexp
+        ou avec &6[exp]&eexp au total.'
+      selfFeedback: '&eExp a été défini à &3[exp] &epour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetFeedback: '&eTon exp à été défini à &3[exp]&e par &3[senderDisplayName]&e.'
+  ext:
+    help:
+      info: '&eÉteindre un joueur'
+      args: (playerName) (-s)
+    info:
+      feedback: '&eTu as éteinds &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTu as été éteint par &3[senderDisplayName]&e.'
+  feed:
+    help:
+      info: '&eNourrir un joueur'
+      args: (playerName/all) (-s)
+    info:
+      feedback: '&eTu as rassasié &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTu as été rassasié par &3[senderDisplayName]&e.'
+  findbiome:
+    help:
+      info: '&eTrouver le biome le plus proche par son nom'
+      args: '&3(biomeName/stop/stopall)'
+    info:
+      infoShow: '&6TPS: &3[tps] &6Restant &e[left] &6(&e[time]&6) &6Vitesse: &e[speed]'
+      stopped: '&eStoppé!'
+      cantFindBiome: '&eImpossible de trouver le biome que vous vouliez. &6[amount] &echunks testés'
+      teleportedTo: '&eTeleporté au biome &6[biome]'
+  fixchunk:
+    help:
+      info: '&eRecherche de chunks endommagés'
+      args: '&ew &6[worldName]&e r &6[distance en chunks]&e c &6[x:z]&e '
+      explanation:
+      - '&6Sous-commandes:'
+      - '- &6stats &e- afficher les stats de scan actuelles'
+      - '- &6pause &e- pause le scan'
+      - '- &6continue &e- continuer le scan'
+      - '- &6stop &e- stopper le scan'
+      - '- &6stopall &e- stop tout le scan'
+      - '- &6speed [amount] &e- définir la vitesse de scan actuelle'
+      - '- &6autospeed [true/false] &e- activer ou désactiver la vitesse automatique'
+      - '- &6messages [true/false] &e- activer ou désactiver la sortie des messages'
+      - 'Example:'
+      - /fixchunk w LT_Craft
+      - /fixchunk w LT_Craft r 50 c 1024:-2048
+      - /fixchunk w LT_Craft r g
+      - /fixchunk fix
+    info:
+      startScanning: '&6[amount] &echunks trouvé à vérifier. Départ!'
+      paused: '&eScan interrompu, pour continuer fais &6/cmi fixchunk continue.'
+      continuing: '&eScan poursuivi...'
+      stoped: '&eScan stoppé. Tu peux vérifier le résultat /cmi fixchunk info'
+      speedChange: '&eVitesse changée à [amount]'
+      autospeedChange: '&eVitesse automatique changé à [state]'
+      messagesChange: '&eMessage changé à [state]'
+      NoInfo: '&eIl n''y a pas d''informations'
+      InfoShow: '&6TPS: &3[tps] &6Restant &e[left] &6(&e[min]m:[sec]s&6) &6Vitesse: &e[speed]
+        &6Trouvé: &e[found]'
+      scanList: '&2[number]. &7X:&f[x] &7Z:&f[z]'
+      finished: '&eScan terminé, fais &6/cmi fixchunk fix &epour fixé les erreurs.
+        &cLes chunks seront régénérés!'
+      fixed: '&2[number] &echunks fixés'
+      total: '&eVérification à partir de [current]/[until] du total de [total]'
+      stats:
+      - '&e************************************************************'
+      - '&e* &6Chunks: &e[checked]/[total]'
+      - '&e* &6Scan portée: &e[range]'
+      - '&e* &6Scan vitesse: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6Vitesse réelle: &e[cps] &6CPS (&e[avgcps] avg&6)'
+      - '&e* &6Monde: &e[world]'
+      - '&e* &6Trouvé: &e[found]'
+      - '&e* &6Temps: &e[min]min [sec]sec'
+      - '&e************************************************************'
+  flightcharge:
+    help:
+      info: '&eGérer et vérifier les frais de vol'
+      args: (add/take/set/show/expcharge/moneycharge/recharge) (playerName) (amount)
+    info:
+      charge: '&eCharge actuelle: &6[charge]&e/&6[max]'
+      changed: '&eVotre niveau de frais de vol est passé à &6[charge]'
+      newCharge: '&eNouveau niveau de frais: &6[charge]'
+      bossbar: '&2>> &fFrais de vol [charge][changeAmount]&7/&f[max] &2<<'
+      guiTitle: '&8Recharge de vol'
+      buttonExp: '&6Recharger avec exp'
+      buttonMoney: '&6Recharger avec de l''argent'
+      max: '&6Déjà complètement chargé'
+      guiLore:
+      - '&eClic gauche +1'
+      - '&6Shift clic gauche +10'
+      - '&eClic droit +100'
+      - '&6Shift clic droit +1000'
+      changeAmount: '&e([amount]&e)'
+  fly:
+    help:
+      info: '&eDéfinir si le joueur vole true ou false'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&eTu as définis le vole sur &3[boolean]&e pour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetFeedback: '&eTon vole a été définis sur &3[boolean]&e par &3[senderDisplayName]&e.'
+  flyc:
+    help:
+      info: '&eBasculer le mode de frais de vol'
+      args: (playerName) (true/false) (-s)
+    info:
+      feedback: '&eVous avez défini le mode de frais de vol sur &3[boolean]&e pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetFeedback: '&eVotre mode de frais de vol est réglé sur &3[boolean]&e by &3[senderDisplayName]&e.'
+      targetFeedbackSelf: '&eVotre mode de frais de vol est réglé sur &3[boolean]'
+      noCharge: '&eLes frais de vol sont épuisés'
+  flyspeed:
+    help:
+      info: '&eRéglez la vitesse de vol des joueurs de 0 à 10'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&eTu as définis la vitesse en vol à &3[amount] &epour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTa vitesse en vol a été définie à &3[amount]&e par &3[senderDisplayName]&e.'
+      max: '&eLa vitesse maximale est à &6[max]&e.'
+  gamerule:
+    help:
+      info: '&eGérer les gamerules'
+      args: ''
+  getbook:
+    help:
+      info: '&eObtenir un livre'
+      args: '[cTextName] (playerName)'
+    info:
+      list: '&eLivres: &6'
+      check: '&eVérifié: &6[text]'
+      title: '&7[title]'
+  give:
+    help:
+      info: '&eDonner un item à un joueur'
+      args: (playerName) [itemname] (amount)
+      explanation:
+      - Le nom et la description prennent en charge les placeholders
+      - 'Exemple: /give stone'
+      - /give Zrips stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give Zrips sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give Zrips sponge 1 e Knockback:%rand/1-5%
+      - /cmi give Zrips sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+    info:
+      feedback: '&e[amount] [itemname] &6(&e[customitemname]&6) donné à &e[playerDisplayName]'
+      wrongEntityId: '&cIdentifiant d''entité incorrect'
+      maxLimit: '&cTu ne peux pas donner plus que &7[max] &citems à la fois'
+      maxLimitResize: '&cTu ne peux pas donner plus que &7[max]. &cRedimensionnement à la limite.'
+  giveall:
+    help:
+      info: '&eDonner des items à tous les joueurs'
+      args: '[itemname] (amount) (e|l|n|offline)'
+      explanation:
+      - '&e- donner le nom de l''item ou son identifiant avec la valeur des données'
+      - '&e- fournir éventuellement le montant que vous souhaitez donner '
+      - '&e- &6n &e- pour définir le nom d''élément '
+      - '&e- &6l &e- pour définir la description '
+      - '&e- &6e &e - pour définir les enchantements '
+      - '&e- &6-s &e - ne montrera pas de message de feedback '
+      - '&e- &6h &e - suivi du nom du joueur donnera l''objet dans sa main '
+      - '&e- &6inv &e - suivi du nom du joueur donnera l''inventaire complet pour les autres '
+      - '&e- &6offline &e- pour inclure des joueurs hors ligne'
+      - '&ecmi giveall stone 1 n &2Uber_stone l &3Stone_lore offline'
+      - '&ecmi giveall h Zrips'
+      - '&ecmi giveall inv Zrips'
+    info:
+      starting: '&6Give des items à tous les joueurs, cela peut prendre un certain temps.'
+      running: '&6[amount] ont déjà l''item, toujours en cours.'
+      feedback: '&6Fini. &e[amount] &6joueurs ont reçu l''item.'
+  glow:
+    help:
+      info: '&eDéfinir le mode d''éclat des joueurs'
+      args: (playerName) [true/false/color/gui]
+      explanation:
+      - 'Exemple: /glow Zrips red'
+      - 'Permissions: cmi.command.glow.[color] - permet de définir une couleur de lueur particulière'
+    info:
+      feedback: '&eTu as défini la surbrillance en [color] &eà &3[boolean]&e pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTa surbrillance a été défini en [color] &eà &3[boolean]&e par &3[senderDisplayName]&e.'
+      title: Choisissez la couleur de lueur
+  gm:
+    help:
+      info: '&eDéfinir le mode de jeu des joueurs'
+      args: (playerName) [gamemode]
+    info:
+      feedback: '&eTu as défini le mode de &3[playerDisplayName]&e (&3[offon]&e) en
+        &3[gameMode]&e.'
+      targetfeedback: '&eTon mode de jeu a été défini en &3[gameMode]&e par &3[senderDisplayName]&e.'
+  god:
+    help:
+      info: '&eRéglez le mode Dieu des joueurs sur true ou false'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&eTu as défini le mode Dieu sur &3[boolean]&e pour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTon mode Dieu a été défini sur &3[boolean]&e par &3[senderDisplayName]&e.'
+  groundclean:
+    help:
+      info: '&eEfface le serveur des drops inutiles'
+      args: (+cb) (+cm) (+ci) (+b) (+tnt) (-w:[worldName])
+      explanation:
+      - +cm inclura les minecarts dans le nettoyage
+      - +cb inclura des bateaux dans le nettoyage
+      - +ci définit si vous souhaitez inclure les armes et les armures
+      - +tnt définit si vous voulez inclure un tnt amorcé
+      - +b diffuse un message à tous du nettoyage
+    info:
+      removed: '&eSupprimé -[list]'
+      items: ' &eItems: &6[items]'
+      arrows: ' &eFlèches: &6[arrows]'
+      exporbs: ' &eOrbes d''Exp: &6[exporbs]'
+      blocks: ' &eBlocs qui tombent: &6[blocks]'
+      projectiles: ' &eProjectiles: &6[projectiles]'
+      tnt: ' &eTnt amorcée: &6[tnt]'
+      boat: ' &eBateaux: &6[boat]'
+      minecart: ' &eMinecarts: &6[minecart]'
+      nothing: '&eRien à supprimer.'
+  haspermission:
+    help:
+      info: '&eVérifiez si le joueur dispose d''une autorisation particulière'
+      args: (playerName) [permissionNode]
+    info:
+      title: '&6[playerDisplayName] &e-> &6[permission]'
+      none: '&eL''autorisation n''est pas définie pour le joueur et il n''est pas OP. Résultats à &6[state]'
+      softSet: '&eDéfini par plugin.yml sur &6[state]'
+      hardSet: '&eDéfini psur &6[state] &epar '
+      notHardSet: '&eNot hard set, can result to &cFalse &ein some cases'
+      ops: '&eResults to &6[state] &ebecause player is OP'
+  hat:
+    help:
+      info: '&ePlacer l''item comme chapeau'
+      args: (playerName)
+    info:
+      feedback: '!actionbar!&6Chapeau modifié avec succès!'
+      targetfeedback: '&6Ton chapeau a été changé par &3[senderDisplayName]&6!'
+      fullinv: '&3[playerDisplayName] &6a son inventaire plein, impossible de changer de chapeau!'
+  head:
+    help:
+      info: '&eObtenir la tête d''un joueur'
+      args: '[sourceName] (targetName) (-s) (amount)'
+    info:
+      Feedback: '&3[headName] &6tête créée!'
+      targetFeedback: '&eTu as reçu la tête de &3[headName] &epar &3[senderDisplayName]&e!'
+  heal:
+    help:
+      info: '&eGuérir le joueur'
+      args: '[playerName/all] (healamount/healpercent)'
+    info:
+      feedback: '&eTu as guéri &3[playerDisplayName]&e (&3[offon]&e).'
+      feedbackMulti: '&eTu as guéri &3[count] &eplayers.'
+      targetfeedback: '&eTu as été guéri par &3[senderDisplayName]&e.'
+  helpop:
+    help:
+      info: '&eEnvoie un message d''aide aux membres du staff'
+      args: '[message]'
+      explanation:
+      - Requires cmi.command.helpop.inform too see messages
+    info:
+      message: '&c[Help]&4[&7[senderDisplayName]&4]&r&c [message]'
+      feedback: '&c[Help]&7Ta question a été soumise aux membres du staff en ligne'
+      offline: '&c[Help]&7Aucun membre du staff n''est actuellement en ligne, réessaies plus tard'
+  hideflags:
+    help:
+      info: '&eMasquer les flags des items'
+      args: (playerName) [flagName/clear] (flagName)
+    info:
+      feedback: '&eTu as ajouté un nouveau flags à l''item &3[playerDisplayName]&e (&3[offon]&e).'
+      cleared: '&eEffacé &3TOUS &eles flags de l''item pour &3[playerDisplayName]&e (&3[offon]&e).'
+      noitem: '&cPas d''item dans la main.'
+      inccorectId: '&eNom incorrect.'
+  hologram:
+    help:
+      info: '&eCréer un hologramme'
+      args: ''
+    info:
+      howTo: '&cPour créer un nouvel hologramme fais &e/cmi hologram new &6[name]'
+      gui: '&7---- &f<Ouvrir les paramètres GUI> &7----'
+      guiHover: '&7Ouvrir les paramètres GUI de l''hologramme'
+      interval: '&7Mis à jour toutes les &6[second] &7secondes'
+      intervalLore:
+      - '&7Fréquence à laquelle, en secondes, les informations sur l''hologramme sont mises à jour'
+      - '&7Si le texte ne change pas, définis-le sur -1'
+      pageInterval: '&7Changer de page toutes les &6[second] &7secondes'
+      pageIntervalLore:
+      - '&7Après combien de temps, en secondes, la page de l''hologramme est changée automatiquement'
+      pageIntervalNoPages: '&4Cet hologramme n''a aucune page configurée.'
+      text: '&7Espacement du texte &6[space]'
+      usync: '&7Changement de texte en synchronisation: &6[state]'
+      reqPermission: '&7Nécessite la permission pour voir: &6[state]'
+      teleport: '&7Se téléporter à l''hologramme'
+      icon: '&7Espacement des icônes &6[space]'
+      iconLore:
+      - '&7Définit la distance entre les objets'
+      range: '&7Afficher la distance: &6[blocks]'
+      rangeLore:
+      - '&7Définit la zone autour de l''hologramme pour l''afficher ou la masquer'
+      updateRange: '&7Distance de mise à jour: &6[blocks]'
+      updateRangeLore:
+      - '&7Définit la zone autour de l''hologramme pour déclencher la mise à jour'
+      relocate: '&7Relocaliser'
+      relocateLore:
+      - '&7Relocaliser l''hologram à ton emplacement actuel'
+      interact: '&7Interagissable: &6[state]'
+      commands: '&7Commandes:'
+      particles: '&7Afficher des particules: &6[state]'
+      big: '&7Gros bouton: &6[state]'
+      bigLore:
+      - '&7Gardez à l''esprit que le mode gros bouton'
+      - '&7vous empêchera de passer devant'
+      order: '&7Placement vers le bas: &6[state]'
+      moveX: '&7X:&e[x]'
+      moveY: '&7Y:&e[y]'
+      moveZ: '&7Z:&e[z]'
+      shift:
+      - '&eChanger par 0.01 ou maintiens SHIFT pour changer par 0.1'
+      list: '&6[place]&e. [name]'
+      addInfo: '&eSaisis un nouveau texte pour la ligne. Tape &6cancel &epour annuler. Variables supplémentaires:
+        &6ICON:&7[Value] &6SICON:&7[Value]&e where &7Value&e- &7[MaterialName-amount]%enchanted%&e,
+        &7%itemInHand%&e, &7Head:[headOwner]'
+  hologrampages:
+    help:
+      info: '&eChanger la page de l''hologramme'
+      args: '[holoName] (playerName) (next/prev/[pageNumber])'
+  home:
+    help:
+      info: '&eTéléportation vers le home'
+      args: (homeName) (playerName) (whoTeleport)
+    info:
+      list: '&eHomes: &6'
+      listNonePrivate: '&f'
+      listPrivate: '&2'
+      click: '&eClique pour te téléporter &6[home]'
+      teleported: '&eTéléporté au home: &6[home]'
+      noHomes: '&cAucun Home enregistré.'
+      private: '&cCet emplacement de home est privé!'
+      remove: '&cShift+Clic droit pour retirer un home'
+      title: '&0[playerDisplayName] &8homes'
+  homes:
+    help:
+      info: '&eUne liste de homes sur lesquelles tu peux cliquer pour te téléporter.'
+      args: (playerName)
+  hunger:
+    help:
+      info: '&eDéfinir la faim d''un joueur'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&eTu as réglé la faim sur &3[hunger]&e pour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTa faim a été réglé sur &3[hunger]&e par &3[senderDisplayName]&e.'
+  ic:
+    help:
+      info: '&eCréer une commande interactive'
+      args: (new) (name)
+    info:
+      titleC: ' &e--- &6[name] '
+      titleB: '&e[type] &e---'
+      public: ' &2[Public]'
+      notPublic: ' &7[NotPublic]'
+      reqPerm: ' &2[ReqPerm]'
+      noPerm: ' &7[ReqPerm]'
+      permHover: ' &eRequiert la permission &7[permission] &epour placer une pancarte'
+      editSign: ' &e[EditSignLines]'
+      publicHover: "&eModifier le statut public. \nPremière ligne de la pancarte &7[ic:[name]]"
+      createdPublic: '&eNouveau panneau interactif créé'
+      list: '&e[place]. &6[name]'
+      listType: ' &e[type]    '
+      editCommands: '&eModifier les commandes'
+      editBlocks: ' &eModifier les blocs'
+      addBlock: '&eAjouter le bloc que tu regardes'
+      addEntity: ' &eAjouter l''entité que tu regardes'
+      manageCommands: '&ePasser à l''éditeur de commandes'
+      manageBlockEnt: '&ePasser à l''éditeur de blocs / d''entités'
+      locList: '&e[place]. &6[type]   '
+      entList: '&e[place]. &6[type]   '
+      ListHover:
+      - '&eMonde: &6[world]'
+      - '&eX:[x] &6Y:[y] &eZ:[z]'
+      notPublicIc: '&Tu ne peux pas l''utiliser, ce n''est pas public'
+      noCommandBlocks: '&eIl n''y a pas de commandes interactives'
+      commandList: ' &e[command]  '
+      block: (Block)
+      entity: (Entity)
+      both: (Both)
+      none: (None)
+      addedNew: '&eAjout d''un nouveau bloc / entité pour &6[name]'
+      dontExist: '&cAucune commande interactive de ce nom n''existe'
+      exists: '&cIl existe déjà une commande interactive avec ce nom'
+      blockExist: '&cCe bloc est déjà utilisé par &e[name]'
+      entityExist: '&cCette entité est déjà utilisée par &e[name]'
+      cantUsePlayer: '&cTu ne peux pas pas utiliser le joueur comme entité de commande'
+      addInfo: '&eEntre une nouvelle commande. Tape &6cancel &epour annuler'
+      addInformationHover: "&eVariables globales prises en charge à partir de la catégorie d'expéditeur \n\
+        &eInclure un délai: \n&edelay! 5 \n&eDes variables supplémentaires peuvent\
+        \ être utilisées pour insérer des variables par leur place \n&e$1 prendra la variable fournie\
+        \ par une nouvelle commande et se placera à cet endroit \n&e$1- prend toutes les variables\
+        \ à partir de ce point et insère dans les commandes originales"
+      editInfo: '&eClique pour coller l''ancien texte. Tape &6cancel &epour annuler l''action. Tape
+        &6remove &epour retirer la ligne'
+  ifoffline:
+    help:
+      info: '&eExécuter la commande uniquement lorsque le joueur est hors ligne'
+      args: '[playerName] (command)'
+  ifonline:
+    help:
+      info: '&eExécuter la commande uniquement lorsque le joueur est en ligne'
+      args: '[playerName] (command)'
+  ignore:
+    help:
+      info: '&eIgnorer le joueur'
+      args: (playerName/uuid/all)
+      explanation:
+      - cmi.command.ignore.bypass - bypass la liste d'ignorance
+    info:
+      self: '&cNe sois pas idiot, tu ne peux pas t''ignorer'
+      added: '&eTu ignores maintenant &6[playerDisplayName]'
+      addedAll: '&eTu ignores maintenant tout le monde'
+      all: '&eTout le monde'
+      removed: '&eTu n''ignores plus &6[playerDisplayName]'
+      removedAll: '&eTu n''ignores plus tout le monde'
+      list: '&e[place]. [playerDisplayName]  '
+      ignoringYou: '&c[playerDisplayName] &et''ignore'
+      empty: '&7Liste d''ignorance vide'
+  importfrom:
+    help:
+      info: '&eImporter des données à partir d''autres plugins'
+      args: '[essentials] [home/warp/nick/logoutlocation/money/mail]'
+    info:
+      converted: '&eConverti: &6[done]&e/&6[total] &eutilisateurs'
+      convertedWarps: '&eConverti &6[amount] &ewarps'
+      noInfo: '&cTu as oublié de fournir les informations que tu souhaites importer exactement'
+      savingInProgress: '&eLes données seront enregistrées dans la base de données dans les deux prochaines minutes en fonction du nombre d''entrées que nous devons enregistrer'
+      HDfile: '&cImpossible de trouver le fichier de base de données du plug-in HolographicDisplays. Abandon.'
+      HDexist: '&cL''hologramme du nom de &7[name] &cexiste déjà. Passe.'
+      HDfailed: '&cImpossible de charger l''hologramme (&7[name]&c)'
+      HDimported: '&7[amount] &ehologrammes importés'
+  importoldusers:
+    help:
+      info: '&eImporte les utilisateurs du dossier playerdata dans le dossier principal du monde. Le serveur peut subir un pic de décalage lors de l''importation'
+      args: ''
+    info:
+      starting: '&eDémarrage de l''importation...'
+      feedback: '&6[amount] &enouveaux utilisateurs importés'
+  info:
+    help:
+      info: '&eAfficher les informations des joueurs'
+      args: '[playerName/uuid]'
+    info:
+      feedback:
+        uuid: '&eColler uuid dans la boîte de chat'
+      Name: '&eNom: &6[dname] &e(&6[name]&e)'
+      knownAs: '&eAussi connu sous le nom de: &6[namelist]'
+      Uuid: '&eUUID: &6[uuid]'
+      OnlineUuid: '&eOnlineUUID: &6[OnlineUuid]'
+      Ip: '&eIp: &6[ip]'
+      Op: '&eOP: &6[op]'
+      God: '&eDieu: &6[godmode]'
+      Money: '&eArgent: &6[money]'
+      Group: '&eGroupe: &6[group]'
+      Gm: '&eMode de jeu: &6[mode]'
+      Hp: '&eHp: &6[hp]&e/&6[maxhp]'
+      Air: '&eAir: &6[leftair]&e/&6[totalair]'
+      Hunger: '&eFaim: &6[food]&e/&620'
+      Saturation: '&e(saturation +&6[saturation]&e)'
+      Exp: '&eExp: &6[totalexp]&eexp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&elvl)'
+      Location: '&eEmplacement: &6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      deathLocation: '&eEmplacement de mort: &6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      bed: '&eLit: &6[bworld] (&e[bx]&6:&e[by]&6:&e[bz]&6)'
+      respawn: '&eProchain respawn: &6[rworld] (&e[rx]&6:&e[ry]&6:&e[rz]&6)'
+      flySpeed: '&eVole &6[flyspeed]'
+      walkSpeed: '&eMarche &6[walkspeed]'
+      Sprint: '&eSprinte: &6[sprinting]'
+      Sneek: '&eRampe: &6[sneaking]'
+      Banned: '&eBanni: &6[banned]'
+      Muted: '&eMuté: &6[muted]'
+      Jailed: '&eEmprisonné: &6[jailed]'
+      Cuffed: '&eMenotté: &6[cuffed]'
+      homes: '&eHomes: &6[homes]'
+      firstLogin: '&ePremière connexion: &6[firstLogin]'
+      canSee: '&ePeut te voir: &6[canseeyou]'
+      afk: '&eAfk: &6[afk]'
+      Fly: '&ePeut voler: &6[fly] &e(&6[isflying]&e)'
+      Online: '&eEn ligne: &6[online]&e Depuis: &6[logoff]'
+      CountryHoverNew: '&7[country] &f(&2[countryCode]&f)'
+      CityHover: '&7[city]'
+      LocalTimeHover: '&fHeure locale: &7[time]'
+      List:
+      - '&e************************************************************'
+      - '&e* [name]'
+      - '&e* [knownAs]'
+      - '&e* [uuid]'
+      - '&e* [OnlineUuid]'
+      - '&e* [ip]'
+      - '&e* [op] [godmode] [fly]'
+      - '&e* [sprint] [sneek]'
+      - '&e* [gm] &eSpeed: [flySpeed] [walkSpeed]'
+      - '&e* [money] [group]'
+      - '&e* [hp] [air]'
+      - '&e* [hunger] [saturation]'
+      - '&e* [exp]'
+      - '&e* [location]'
+      - '&e* [bed]'
+      - '&e* [respawn]'
+      - '&e* [banned] [canSee] [afk]'
+      - '&e* [cuffed] [muted] [jailed] '
+      - '&e* [online]'
+      - '&e* [homes] [firstLogin]'
+      - '&e************************************************************'
+  inv:
+    help:
+      info: '&eOuvrir l''inventaire des joueurs'
+      args: '[playerName]'
+      explanation:
+      - 'cmi.command.inv.preventmodify - empêche la modification de l''inventaire'
+      - 'cmi.invedit - permet de modifier l''inventaire'
+      - 'cmi.command.inv.location - montre l''emplacement des joueurs'
+    info:
+      feedback: '&eTu modifie l''inventaire de &3[playerDisplayName] &e(&3[offon]&e).'
+  invcheck:
+    help:
+      info: '&eOuvrir l''inventaire enregistré en mode aperçu'
+      args: (playerName) [id] (-e) (last)
+  invlist:
+    help:
+      info: '&eAfficher la liste des inventaires enregistrés'
+      args: (playerName)
+  invload:
+    help:
+      info: '&eCharger l''inventaire enregistré'
+      args: (sourceName) (targetName) [id/last]
+  invremove:
+    help:
+      info: '&eSupprimer les inventaires enregistrés pour le joueur'
+      args: (playerName) [id/all/last]
+  invremoveall:
+    help:
+      info: '&eSupprimer tous les inventaires enregistrés'
+      args: '[confirmed]'
+    info:
+      removed: '&eTous les inventaires enregistrés ont été supprimés ([count])'
+  invsave:
+    help:
+      info: '&eEnregistrer l''inventaire'
+      args: (playerName) (id) (-s)
+  ipban:
+    help:
+      info: '&eBan ip'
+      args: '[ip/playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - pour bypass le ban
+    info:
+      message: '&cTon ip est banni de ce serveur!'
+      reason: '&6Raison: &e[reason]'
+      defaultReason: '&eRègles de serveur violées'
+      messageToAll: '&6[playerDisplayName] &ea été ban-ip par &6[senderDisplayName]
+        &epour: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &ea été ban-ip par &6[senderDisplayName]
+        &epour: &6[reason]'
+  ipbanlist:
+    help:
+      info: '&eListe Ban ip'
+      args: ''
+    info:
+      list: '&e[place]. &7[ip] &e- &6[reason]  '
+      bannedBy: '&7Banni par: &f[source]'
+      ends: '&7Fin: &f[time]'
+      related: |-
+        &7Comptes associés:
+        &f[list]
+  item:
+    help:
+      info: '&eSe donner un item'
+      args: '[itemname] (amount)'
+      explanation:
+      - Le nom et le lore supportent les placeholders
+      - 'Exeemple: /give stone'
+      - /give stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give sponge 1 e Knockback:%rand/1-5%
+      - /cmi give sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+  iteminfo:
+    help:
+      info: '&eAfficher les informations sur l''item'
+      args: (playerName)
+    info:
+      id: ' &eId: &6[id][data]'
+      realName: ' &eVrai nom: &6[name]'
+      bukkitName: ' &eNom Bukkit: &6[name]'
+      mojangName: ' &eNom Mojang: &6[name]'
+      entityType: ' &eType d''Entité: &6[type]'
+      durability: ' &eDurabilité: &6[current]&e/&6[max]'
+  itemlore:
+    help:
+      info: '&eChanger le lore de l''item'
+      args: (-p:[playerName]) [linenumber] [remove/insert/ new lore line]
+    info:
+      feedback: '&eTu as changé la ligne du lore ''&r&5[loreLine]&e'' pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cAucun item en main.'
+      removed: '&eLore de l''Item ligne &6[line] &ea été retiré pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      inserted: '&eLore de l''Item ligne &6[line] &ea été inséré pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      maxLines: '&eIl y a seulement &6[lines] &elignes de lore.'
+      blocked: '&eImpossible de re-lore cet item.'
+  itemname:
+    help:
+      info: '&eRenommer l''item'
+      args: (-p:[playerName]) [remove/your new item name]
+    info:
+      feedback: '&eTu as renommé l''item en [itemname]&e pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cAucun item en main.'
+      removed: '&eLe nom de l''item a été retiré pour &3[playerDisplayName]&e (&3[offon]&e).'
+      blocked: '&eImpossible de renommer cet item'
+  itemnbt:
+    help:
+      info: '&eVoir les informations NBT de cet item'
+      args: (playerName)
+    info:
+      step: ' &6->: &6[name]'
+      final: '&e[value]'
+      list: '&e- &r[value]'
+      noNbt: '&eCet item ne contient aucune information NBT'
+  jail:
+    help:
+      info: '&eEnfermer un joueur pour une période'
+      args: '[playerName] (time) (jailName) (cellId) (-s) (r:jail_reason)'
+    info:
+      jailed: '&eTu as enfermé &6[playerDisplayName] &epour les prochaines [time]'
+      jailedPlayer: '&6[playerDisplayName] &eenfermé pour les prochaines [time]'
+      reason: ' &eRaison: &c[reason]'
+      leftTime: '!title!&7Prison:!subtitle![time]'
+      jailedTarget: '&eTu as été enfermé! [time]'
+      cantTalk: '&cTu ne peux pas parlé quand tu es enfermé'
+      cantTalkRange: '!actionbar!&fTa distance de chat est limitée à &c[range] &fblocs'
+      failed: '&cImpossible d''enfermer le joeuur. Contrôle le nom de la prison, l''id de cellule ou le format du temps'
+      bossbar: '&7Prison restante: [autoTimeLeft]'
+      noCommand: '&cTu ne peux pas utiliser cette commande quand tu es enfermé!'
+  jailedit:
+    help:
+      info: '&eModifier les prisons'
+      args: ''
+    info:
+      notInArea: '&cTu n''es pas dans une zone de prison'
+      noName: '&cAucune prison de ce nom'
+      noCell: '&cAucune cellule par cet ID'
+      exist: '&cUne prison existe déjà sous ce nom'
+      createdJail: '&eNouvelle prison créée avec succès (&6[jail]&e)'
+      createdCell: '&eNouvelle cellule créée ave succès (&6[jail]&e:&6[cellId]&e)'
+      collides: '&cEntre en collision avec la prison &6[jailName]'
+      jailList: '&e[place]. &6[jail] &eCellules:&6[cells] &eEnfermés: &6[amount]    '
+      editCells: '&eModifier la liste des cellules'
+      cellList: '&eID de cellule:&6[id] &eenfermés: &6[amount]    '
+      jailListTp: ' &7[tp] '
+      jailListTpHover: '&eDéfinir l''emplacement de téléportation extérieur'
+      jailListArea: ' &7[area] '
+      jailListAreaHover: '&eRedéfinir la zone'
+      jailRemoved: '&ePrison (&6[jail]&e) retirée'
+      jailOutside: '&eDéfinir un nouvel emplacement extérieur'
+      jailArea: '&eZone redéfinie pour la prison &6[jail]'
+      cellRemoved: '&eCellule (&6[cellId]&e) retirée de la prison &6[jail]'
+  jaillist:
+    help:
+      info: '&eListe des prisons'
+      args: (jailName) (cellId)
+    info:
+      jailList: '&6[place]. &e[jailName] &7Cellules:&e[cellCount] &7Enfermés:&6[count]'
+      cellList: '&6[place]. &7Id:&e[cellId] &7Enfermés:&6[count]'
+      cellJailedList: '&6[place]. &e[playerDisplayName] &7libéré dans &e[time]'
+      Release: '&7Clique pour le libérer'
+  jump:
+    help:
+      info: '&eAller au bloc cible'
+      args: ''
+    info:
+      tooFar: '&cAucun bloc en vue ou c''est trop loin (max [max] blocs)'
+  kick:
+    help:
+      info: '&eExclure un joueur avec un message personnalisé'
+      args: '[playerName/all] (message) (-s)'
+      explanation:
+      - 'cmi.command.kick.bypass - empêche d''être expulsé'
+    info:
+      defaultMessage: '&eExclu du serveur'
+      cantKick: '&eTu ne peux pas exclure ce joueur'
+      messageToAll: '&6[playerDisplayName] &ea été viré du serveur.'
+      kickReason: ' &eRaison: &6[reason]'
+      all: '&6[amount] &ejoueurs virés du serveur'
+  killall:
+    help:
+      info: '&eTue les mobs autour de toi'
+      args: (-monsters/-pets/-npc/-animals/-ambient/-named/-f/-lightning/-list/-m:[mobType])
+        (-r:range) (-s) (-w:[worldName])
+    info:
+      infoList: '&2[category]&e: &7[amount] &e([list]&e)'
+      removedList: '&6[type]&e: &7[amount]'
+      total: '&eTotal supprimé: &7[amount] &e([list]&e)'
+      noRemove: '&eRien à retirer'
+      monsters: Monstres
+      pets: Animaux domestiques
+      npc: NPCs
+      animals: Animaux
+      ambient: Ambiant
+      vehicles: Vehicules
+      named: Avec un nom personnalisé
+  kit:
+    help:
+      info: '&eDonne un kit prédéfini.'
+      args: '[kitName] (playerName)'
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.kit.[kitName] &e- permet d''utiliser un kit particulier'
+      - '&6cmi.kit.bypass.money &e- bypass les besoins en argent'
+      - '&6cmi.kit.bypass.exp &e- bypass les exigences d''exp'
+      - '&6cmi.kit.bypass.onetimeuse &e- bypass l''utilisation unique'
+      - '&6/cmi kit [kitName] [playerName] &e- donnera le kit à un autre joueur'
+    info:
+      noMoney: '&ePas assez d''argent. Coût: &6[cost] &etu as &6[balance]'
+      noExp: '&ePas assez d''exp. Coût: &6[cost] &etu as &6[balance]'
+      noCondition: '&eTu n''as pas la condition spéciale requise pour utiliser ce kit:
+        &6[condition]'
+      oneTime: '&cCe kit est à utilisation unique et tu l''as déjà utilisé!'
+      cantUseNow: '&cTu ne pourras plus utiliser ce kit durant [time]'
+      limitedTimeUseError: '&eImpossible d''utiliser ce kit plus de &6[times] &efois'
+      limitedTimeUse: '&7Tu peux utiliser ce kit &c[times] &7fois'
+      limitedTimeAllUsed: '&cTu ne peux plus en avoir'
+      canUseIn: "&Disponible dans: \n[time]"
+      cooldown: "&eRechargement: \n[time]"
+      noKit: '&eAucun kit de ce nom'
+      kitDoesntExist: '&eCe kit n''existe pas ([kitName])'
+      noKitAccess: '&cTu n''as pas accès à ce kit'
+      noFoundKit: '&eAucun kit trouvé'
+      givenKit: '&eTu as donné le kit &6[kit] &eà &6[playerDisplayName]'
+      title: '&8Kits'
+      nameCanUse: '&6[kitName]'
+      nameCantUse: '&7[kitName]'
+      group: '&eGroupe: &6[group]'
+      left: '&eClic &6gauche &epour prendre'
+      right: '&eClic &6droit &epour prévisualiser'
+      take: '&6Prends ce kit!'
+  kitcdreset:
+    help:
+      info: '&eRéinitialiser la minuterie du kit'
+      args: (kitName) (playerName/all)
+    info:
+      notCd: '&eLe kit n''est pas en phase de recharge'
+      reset: '&eLa recharge du kit (&6[kit]&e) a été reset pour &6[playerDisplayName]'
+      resetAll: '&eLa recharge du kit (&6[kit]&e) a été reset pour &6[count] &ejoueurs'
+      list: '&e[place]. &6[kit] &e[time]'
+      listHover: '&eClique pour reset'
+      noCd: '&eAucun kit en rechargement'
+  kiteditor:
+    help:
+      info: '&eÉditeur de kit.'
+      args: ''
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.kit.[kitName] &e- permet d''utiliser un kit particulier'
+      - '&6cmi.kit.bypass.money &e- bypass les besoins en argent'
+      - '&6cmi.kit.bypass.exp &e- bypass les besoins en exp'
+      - '&6/cmi kiteditor &e- affiche la liste des kits'
+    info:
+      kits: '&eKits: '
+      iconSet: '&eNouvel icône défini pour le kit &6[kitname]'
+      kitExists: '&eUn kit de ce nom existe déjà!'
+      deleteConfirm: '&eClique-moi si tu souhaites vraiment retirer ce kit (&6[kitname]&e) !'
+      deleteConfirmFinal: '&cCette action est irréversible!'
+      kitRemoved: '&eKit (&6[kitname]&e) retiré'
+      kitNotRemoved: '&cKit (&6[kitname]&c) ne peux pas être retiré'
+      addNewInfo: '&eTape le nom du kit dans le chat puis appuies sur Entré. Tape ''&6cancel&e''
+        pour annuler cette action.'
+      renameCommandInfo: '&eTape le nouveau nom de &6commande &ede kit dans le chat puis appuies sur Entrée.
+        Tape ''&6cancel&e'' pour annuler l''action.'
+      renameConfigInfo: '&eTape le nouveau nom de &6config &edans le chat et appuies sur Entrée.
+        Tape ''&6cancel&e'' pour annuler l''action.'
+      groupInfo: '&eTape le nouveau nom de groupe puis appuies sur entrée. Tape ''&6none&e''
+        pour retirer le groupe. Tape ''&6cancel&e'' pour annuler l''action.'
+      commandInfo: '&eTape la nouvelle commande puis appuies sur Enter. Tape ''&6cancel&e'' pour annuler l''action. Placeholders dispos: &6{USERNAME} {DISPLAYNAME} {WORLDNAME}
+        {KITNAME} {RANDOMPLAYER}'
+      conditionsInfo: '&eTape la nouvelle condition dans le chat puis appuies sur Entrée. Tape ''&6cancel&e'' pour annuler l''action.'
+      descInfo: '&eTape la nouvelle description dans le chat puis appuies sur entrée. Tape ''&6cancel&e'' pour annuler l''action.'
+      renamed: '&eKit &6[kitname] &erenommé en &6[newkitname]&e.'
+      groupSet: '&eNouveau groupe défini (&6[groupname]&e) pour le kit &6[kitname]'
+      commandsListTitle: '&e✎&6Commandes:'
+      conditionsListTitle: '&e✎&6Conditions:'
+      descListTitle: '&e✎&6Description:'
+      ListTitleHover: '&eClique pour ouvrir le menu GUI'
+      ListEditKitHover: '&cÉditer &6[kitname]'
+      ListAdd: ' &2+'
+      ListAddHover: '&2Ajouter un nouveau'
+      guiClickery:
+      - '&eClic gauche de la souris pour augmenter et clic droit pour diminuer'
+      - '&eMaintiens &6Shift &epour accélérer le processus de 10 fois'
+      - '&eLa répétition de clics rapides accélérera le changement de montant'
+      - '&eArrêtez de cliquer pendant 1 seconde pour revenir au montant par défaut'
+      OffHand: '&ePlacer l''item offHand ici'
+      Helmet: '&ePlacer le casque ici'
+      Chest: '&ePlacer le plastron ici'
+      Legs: '&ePlacer les jambières ici'
+      Boots: '&ePlacer les bottes ici'
+      Weight: '&ePoids: &6[Weight]'
+      WeightExtra:
+      - '&eUne valeur plus élevée a une priorité plus grande'
+      - '&eLes kits doivent être dans le même groupe'
+      despiteWeight: '&eMontrer malgré le poids: &6[Weight]'
+      despiteWeightExtra:
+      - '&eLe joueur n''a pas accès au kit, mais peut le prévisualiser'
+      Slot: '&eSlot: &6[slot]'
+      SlotAuto: '&6Auto'
+      Clone: '&eCloner des items de l''inventaire'
+      CloneExtra:
+      - '&eUtilisez le bouton droit de la souris pour inclure les armures'
+      - '&eCliquez à nouveau pour annuler les modifications'
+      timeDelay: '&eDelai: &6[time]'
+      usages: '&ePeut être utilisé &6[times] &efois'
+      usagesUnlimited: '&6Illimité'
+      ignoreWeight: '&eMontrer malgré le poids: &6[state]'
+      timeDelaySeconds: '&eEn secondes: &6[time]'
+      moneyCost: '&ePrix en argent: [cost]'
+      expCost: '&ePrix en exp: [cost]'
+      enabled: '&eActivé'
+      disabled: '&6Désactivé'
+      clickToSwitch: '&eCliquez pour changer d''état'
+      clickToEdit: '&eCliquez pour commencer l''édition'
+      editConfigName:
+      - '&eClique pour renommer le nom de la configuration'
+      - '&eCela détermine uniquement le noeud d''autorisation'
+      editCommandName:
+      - '&eCliquez pour renommer le nom de la commande'
+      - '&eCeci définit la commande que vous devez utiliser pour obtenir ce kit'
+      kitGroup: '&eGroupe du kit: &6[group]'
+      dropItems: '&eDrop item si plein: &6[state]'
+      commands: '&eCommandes:'
+      conditions: '&eConditions:'
+      desc: '&eDescription:'
+      mainMenu: '&eMenuPrincipal'
+      settings: '&eRéglages'
+      icon: '&eIcône utilisé quand le kit est &2disponible'
+      iconCd: '&eIcône utilisé quand le kit est &cindisponible'
+  kitusagereset:
+    help:
+      info: '&eRéinitialiser le compteur d''utilisation du kit'
+      args: (kitName) (playerName)
+    info:
+      notLimited: '&eLe kit n''a pas une quantité limitée d''utilisation'
+      reset: '&eL''utilisation du kit (&6[kit]&e) a été réinitialisé pour &6[playerDisplayName]'
+      list: '&e[place]. &6[kit] &e[used]/[usages]'
+      listHover: '&eClique pour réinitialiser'
+      noCd: '&eIl n''y a pas de kit avec une utilisation supérieure à 0'
+  lastonline:
+    help:
+      info: '&eSAfficher les joueurs ayant joué des dernières x minutes'
+      args: (-p:[page])
+    info:
+      searching: '&eRecherche &6[checked]&e/&6[total] &e(&6[found]&e)'
+      List: ' &6[place]&e. &2[name] &e-> &6[time].'
+  launch:
+    help:
+      info: '&eSe lancer dans la direction dans laquelle tu regardes'
+      args: (playerName) (p:[power]) (a:[angle]) (d:[direction]) (loc:[x]:[y]:[z])
+      explanation:
+      - cmi launch - lancera dans la direction que tu regardes
+      - cmi launch p:3.2 - va lancer avec une puissance de 3.2
+      - cmi launch p:2.5 a:25 - lancera dans la direction dans laquelle tu regardes avec un angle de 25 degrés et une puissance de 2,5
+      - cmi launch Zrips d:east - lancera vers la direction est et le même angle que tu regardes
+      - cmi launch Zrips d:0 - lancera à 0 degrés direction (sud) le même angle que tu regardes
+      - cmi launch d:45 a:30 p:2 - lancera au sud-ouest à un angle de 30 degrés avec une puissance de 2
+      - 'cmi launch loc:150:120:123 - lancera le joueur sur l''emplacement cible'
+    info:
+      feedback: '!actionbar!&6[&fWhoosh!&6]'
+  lfix:
+    help:
+      info: '&eCorriger la lumière dans les chunks autour de toi'
+      args: (range) (playerName) (stop/stopall)
+    info:
+      NoMore: '&eLa distance ne peut pas être plus grande que la distance d''affichage du serveur. Changé au maximum permis.'
+      startFixing: '&6[amount] &echunks trouvé à corriger. Début!'
+      InfoShow: '&6TPS: &3[tps] &6Restant &e[left] &6(&e[min]m:[sec]s&6) &6Vitesse: &e[speed]'
+      Finished: '&eTerminé la correction'
+      Stopped: '&eStoppé'
+  list:
+    help:
+      info: '&eAffiche la liste des joueurs en ligne'
+      args: ''
+      explanation:
+      - 'Perm: '
+      - cmi.command.list.admin
+      - cmi.command.list.staff
+      - cmi.command.list.hidden
+      - cmi.command.list.group.[number]
+    info:
+      # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on, you can have as many of those as you want and order them by your own liking
+      List:
+      - '&7========================'
+      - '&eJoueurs en ligne &6[amount][hidden]&e/&6[maxamount]'
+      - '[adminLine]'
+      - '[staffLine]'
+      - '[groupLine]'
+      - '&7========================'
+      staffL: '&7Staff: &f[list]'
+      adminL: '&8Admin: &f[list]'
+      hiddenPref: '&e&7[H]'
+      hiddenCount: '&e&7([amount])'
+      groupL: '&6[groupName]: &f[list]'
+      player: '%cmi_user_afk_symbol%&f[playerDisplayName]'
+      groups:
+        group1: '&eGroup1: &f[list]'
+        group2: '&eGroup2: &f[list]'
+        group3: '&eGroup3: &f[list]'
+        group4: '&eGroup4: &f[list]'
+        group5: '&eGroup5: &f[list]'
+        group6: '&eGroup6: &f[list]'
+        group7: '&eGroup7: &f[list]'
+        group8: '&eGroup8: &f[list]'
+        group9: '&eGroup9: &f[list]'
+        group10: '&eGroup10: &f[list]'
+      noGroupLine: '&eListe'
+  lockip:
+    help:
+      info: '&eEmpêche la connexion au compte à partir de différentes IP'
+      args: (playername) [add/remove/list/clear] [ip]
+    info:
+      CantLogin: '&cTu ne peux pas te connecter à partir de cette adresse IP'
+      add: '&eNouvel IP (&6[ip]&e) ajouté pour &6[playerDisplayName]'
+      remove: '&eIp (&6[ip]&e) retiré pour &6[playerDisplayName]'
+      clear: '&eTous les IP retirés pour &6[playerDisplayName]'
+      ipNotFound: '&cIp introuvable'
+      empty: '&cLa liste est vide'
+      list: '&6[place]&e. &6[ip]'
+  mail:
+    help:
+      info: '&eEnvoyer et recevoir des emails'
+      args: '[send/clear/read] [playerName] (message)'
+    info:
+      sentMail: '&eMail envoyé à &6[playerDisplayName]'
+      gotMail: '!actionbar!&eTu as reçu un mail de &6[senderDisplayName]'
+      clearMail: '&eTous les mails ont été supprimés!'
+      removedMail: '&eMail supprimé'
+      noMailsById: '&eIl n''y a pas de mail avec cet ID pour ce joueur'
+      noMails: '&eTu n''as aucun mail'
+      mailHover: '&e[senderName] /n &e[time]'
+      list: '&6[id]. &7[senderDisplayName]&e: [mail] '
+      waitingMail: '&eTu as &6[amount] &emails. Clique pour les lire.'
+  mailall:
+    help:
+      info: '&eVérifier ou envoyer du courrier à tous les joueurs'
+      args: '[send/clear/remove] [message]'
+    info:
+      sentMail: '&6[amount] &email(s) envoyé(s)'
+      clearMail: '&6[amount] &email(s) ont été retiré'
+      removedMail: '&6[amount] &email(s) retiré(s)'
+  maintenance:
+    help:
+      info: '&eMettre le serveur en mode maintenance'
+      args: (message)
+      explanation:
+      - cmi.command.maintenance.bypass - pour bypass le mode de maintenance
+    info:
+      feedback: '&eLe serveur est en maintenance. Reviens plus tard.'
+      set: '&eLe mode maintenance du serveur a été réglé sur &6[state] &eavec le message: [message]'
+  maxhp:
+    help:
+      info: '&eDéfinir la vie maximale d''un joueur'
+      args: set/add/take/clear [playerName] [amount] (-s)
+    info:
+      feedback: '&eTu as définis la vie maximale sur &3[maxHp] &epour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTa vie maximale a été défini sur &3[maxHp] &epar &3[senderDisplayName]&e.'
+  maxplayers:
+    help:
+      info: '&eModifie le nombre maximum de joueurs pouvant se connecter au serveur'
+      args: '[amount]'
+      explanation:
+      - '&ePermissions: '
+      - '&6cmi.fullserver.bypass &e- rejoindre le serveur complet'
+    info:
+      changed: '&eNombre maximum de joueurs changé de &6[old] &eà &6[new]&e. En ligne:
+        &6[current]'
+  me:
+    help:
+      info: '&eEnvoie un message spécial à tous les joueurs'
+      args: '[message]'
+    info:
+      format: '&5* [senderDisplayName] &5[message]'
+  merchant:
+    help:
+      info: '&eOuvrir la fenêtre du commerce marchand'
+      args: '[type] (playerName)'
+    info:
+      incorrect: '&cProffession incorrecte.'
+      feedback: '&eTu as ouvert &6[type] &epour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e a ouvert &6[type] &epour toi.'
+  migratedatabase:
+    help:
+      info: '&eModifie le système de base de données et migre toutes les données'
+      args: ''
+  mirror:
+    help:
+      info: '&eDémarre la construction en miroir. (mirroring)'
+      args: (start/stop)
+    info:
+      started: '&eMirroring démarré'
+      stopped: '&6Mirroring stoppé'
+      tooFar: '&cTu es trop loin du centre du miroir (max &6[blocks] &cblocs). La fonctionnalité est en pause!'
+      title: Miroir
+      notSet: '&cCentre non défini'
+      set: '&2Centre défini'
+      noBlocks: '&cPas assez de blocs'
+      used: '&7Utilisé: &7[blocks]'
+      Action:
+        Name:
+          X: X
+          Y: Y
+          Z: Z
+          XY: XY
+          ZY: ZY
+          XZ: XZ
+          ZX: ZX
+          Rotate90V: Tourner90V
+          Rotate90H: Tourner90H
+          Rotate90HC: Tourner90HC
+          Rotate180H: Tourner180H
+          Pause: Pause
+          Location: Emplacement
+        Desc:
+          X: '&eMiroirs par axe &6X'
+          Y: '&eMiroirs par axe &6Y'
+          Z: '&eMiroirs par axe &6Z'
+          XY: '&eMiroirs par axe &6X &eà &6Y'
+          ZY: '&eMiroirs par axe &6Z &eà &6Y'
+          XZ: '&eMiroirs par axe &6X &eà &6Z'
+          ZX: '&eMiroirs par axe &6Z &eà &6Y'
+          Rotate90V: '&eRotation vers le haut'
+          Rotate90H: '&eRotation de &690 &edegrés dans le sens des aiguilles d''une montre'
+          Rotate90HC: '&eRotation de &690 &edegrés dans le sens des aiguilles d''une montre'
+          Rotate180H: '&eRotation de &6180 &edegrés'
+          Pause: '&eMirroring interrompu'
+          Location: '&eDéfinit l''emplacement du centre du mirroring'
+  mobhead:
+    help:
+      info: '&eObtenir la tête d''un mob'
+      args: '[mobType] (entryNumber) (playerName) (-s)'
+    info:
+      got: '&eTête de &6[type] &ereçue'
+      base: '&7Chance de drop: &f[chance]%'
+      personal: '&7Chance de drop pour toi: &f[chance]%'
+      headSpecific: '&7Chance de drop pour cette tête: &f[chance]%'
+      criteria: '&7Critères: &f[criteria]%'
+  money:
+    help:
+      info: '&eGérer le solde d''argent'
+      args: '[pay/give/take/set] [playerName/all/alloffline] [amount][%rand/1-1000%][1%[min-max]][playerName]]
+        (-s)'
+    info:
+      newBalance: '&6[playerDisplayName] &enouveau solde: &6[money]'
+      paid: '&eTu as envoyé &6[amount] &eà &6[playerDisplayName]'
+      gotMoney: '&eTu as reçu &6[amount] &ede &6[senderDisplayName]&e. Balance: &6[money]'
+      gotMoneyGive: '&eTu as reçu &6[amount]&e. Solde: &6[money]'
+      noMoney: '&cTu n''as pas assez d''argent'
+      worldGroups: '&cTu ne peux pas envoyer d''argent entre différents groupes de mondes'
+      self: '&cTu ne peux pas t''envoyer d''argent!'
+      confirm: '&eClique pour confirmer la trasaction de &6[money] &eà &6[playerDisplayName]
+        &a&l[✔]'
+      notAccepting: '&eCet utilisateur n''accepte pas les paiements d''autres joueurs'
+      giveAll: '&eDonné &6[totalAmount] &epour &6[playerCount] &ejoueurs'
+      takeAll: '&ePris &6[totalAmount] &ede &6[playerCount] &ejoueurs'
+  more:
+    help:
+      info: '&eRemplir le stack d''item au maximum'
+      args: (playerName) (-clone/[amount])
+      explanation:
+      - '&ePermissions:'
+      - ' &6cmi.command.more.oversize &e- pour obtenir des stacks surdimensionnés'
+    info:
+      feedback: '&eStack rempli à &3[amount]&e pour &3[playerDisplayName]&e (&3[offon]&e).'
+  msg:
+    help:
+      info: '&eEnvoyer un message à un joueur'
+      args: '[playerName] [message]'
+      explanation:
+      - 'Si le message commence avec ! un message clair sans nom d''expéditeur s''affichera'
+      - Requiert la permission cmi.command.msg.clean
+      - 'Si le message commence avec !- un message clair sans nom d''expéditeur s''affichera
+               et sans possibilité de réponse'
+      - Requiert la permission cmi.command.msg.noreply
+    info:
+      TargetMsg: '&7[&8[senderDisplayName] &7-> &8me&7]&r&f [message]'
+      SenderMsg: '&7[&8me &7-> &8[playerDisplayName]&7]&r&f [message]'
+      consoleMsg: '[[senderDisplayName] -> [playerDisplayName]] [message]'
+      noPM: '&cLe joueur n''accepte pas les messages privés pour le moment'
+      badGroup: '&cImpossible d''envoyer des messages privés à ce groupe de joueurs'
+  msgtoggle:
+    help:
+      info: '&eBasculer les messages privés'
+      args: (playerName)
+    info:
+      feedbackOn: '&7Accepte les messages privé'
+      feedbackOff: '&7N''accepte plus les messages privés'
+  mute:
+    help:
+      info: '&eMute un joueur'
+      args: '[playerName] (time) (-s) (reason)'
+      explanation:
+      - 'Exemples: '
+      - /cmi mute zrips 1m
+      - /cmi mute zrips 1h
+      - /cmi mute zrips 1h Pour insulte
+    info:
+      mutedFor: '&e[playerDisplayName] muted pour &6[time]'
+      muted: '&eTu es mute poour &6[time]'
+      reason: '&eRaison: &7[reason]'
+  mutechat:
+    help:
+      info: '&eEmpêcher les messages publics'
+      args: (time) (-s)
+      explanation:
+      - 'Exemples: '
+      - /cmi mutechat 1m
+      - '/cmi mutechat 1h '
+    info:
+      mutedFor: '&eChat publique mute pour &6[time]'
+      isMuted: '!actionbar!&eLe chat publique est mute pour &6[time]'
+  nameplate:
+    help:
+      info: '&eDéfinir le préfixe, le suffixe ou sa couleur de la plaque de pseudo des joueurs'
+      args: (playerName) (-pref:[prefix]) (-suf:[suffix]) (-c:[colorCode])
+    info:
+      feedback: '&eTu as mis à jour la plaque de pseudo de &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTa plaque de pseudo a été mise à jour'
+  near:
+    help:
+      info: '&eVérifie qui est proche de toi'
+      args: (distance)
+    info:
+      nope: '&ePersonne n''est proche de toi'
+      list: '&e[place]. &6[playerDisplayName] &e- &7[distance]m'
+      aproxList: '&e[place]. &6[playerDisplayName] &e- &6[dir] &7~[distance]m'
+  nick:
+    help:
+      info: '&eChanger le surnom du joueur'
+      args: '[newNickName/off] (playerName) (-s)'
+      explanation:
+      - 'Pour changer de surnom différent: cmi.command.nick.different'
+      - Pour bypass la longueur maximale utilise cmi.command.nick.bypass.length
+    info:
+      changed: '&eSurnom changé en &r[newNickName] &ede &r[oldNickName]'
+      changedTarget: '&eTon surnom a changé en &r[newNickName] &epar &r[senderDisplayName]'
+      reset: '&ePseudo défini par défaut'
+      sameNick: '&cTu n''as pas la permission de changer de surnom. Tu peux seulement
+        changer la couleur'
+      blockedNick: '&cTu ne peux pas utiliser ce surnom'
+      blockedNickLength: '&eSurnom trop long. Charactères max: &6[amount]'
+      blockedNickLengthMin: '&eSurnom trop court. Charactères min &6[amount]'
+      inUse: '&cCe surnom est déjà utilisé par un autre joueur'
+  notarget:
+    help:
+      info: '&eActiver le mode ''pas ciblé par les mobs'''
+      args: (playerName) (true/false) (-s)
+    info:
+      enabled: '&eLes monstres ne t''attaqueront plus!'
+      disabled: '&eLes monstres t''attaque à nouveau!'
+  note:
+    help:
+      info: '&eGérer les notes des joueurs'
+      args: (playerName) [add/remove/clear/list] (id/note)
+    info:
+      newNote: '&eAjout d''une nouvelle note pour le joueur'
+      clearNote: '&eToutes les notes effacées pour le joueur'
+      removedNote: '&eNote supprimée pour le joueur'
+      noNotesById: '&eIl n''y a pas de notes enregistrées avec cet ID pour ce joueur'
+      noNotes: '&eIl n''y a pas de notes enregistrées pour ce joueur'
+      list: '&6[id]. &e[note]'
+  openbook:
+    help:
+      info: '&eOuvrir l''interface graphique du livre'
+      args: (cText) (playerName)
+  oplist:
+    help:
+      info: '&eVérifier la liste des opérateurs'
+      args: ''
+    info:
+      feedback: '&e* &6[number]. &e[playerName]'
+  panimation:
+    help:
+      info: '&eJoueur une animation de particules personnalisée'
+      args: ''
+      explanation:
+      - 'Informations supplémentaires sur l''utilisation http://www.zrips.net/cmi/extra/particles/'
+  patrol:
+    help:
+      info: '&ePatrouille'
+      args: ''
+    info:
+      noPatrol: '&eAucun joueur à patrouiller'
+      Patroling: '&eEn train de patrouiller: &6[playerDisplayName]'
+      lastPatrol: '&eDernière patrouille il y a &6[time]'
+      notes: '&eA &6[amount] &enotes'
+  pay:
+    help:
+      info: '&eEffectuer une transaction d''argent'
+      args: '[playerName] [amount] (-s)'
+  paytoggle:
+    help:
+      info: '&eAccepter ou non de recevoir de l''argent'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&eTu peux maintenant recevoir de l''argent'
+      feedbackEnabled: '&eTu n''accepte plus d''argent des autres joueurs'
+  ping:
+    help:
+      info: '&eVoir le ping des joueurs'
+      args: (playerName/message)
+    info:
+      feedback: '&ePing: &6[ping]ms'
+      selffeedback: '&eTon ping est de &6[ping]ms'
+      customMessage: '[message]'
+  placeholders:
+    help:
+      info: '&eLister tous les placeholders'
+      args: (parse) (placeholder) (playerName)
+    info:
+      list: '&e[place]. &6[placeholder]'
+      outputResult: ' &eRésultat: &6[result]'
+      parse: '&6[placeholder] &epar [source] &6résulte &8|&f[result]&8|'
+  playercollision:
+    help:
+      info: '&eDéfinir le mode de collision des joueurs'
+      args: (playerName) [true/false] (-s)
+    info:
+      feedback: '&eTu as défini la collision sur &3[boolean]&e pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTon mode de collision à changé en &3[boolean]'
+  playtime:
+    help:
+      info: '&eVoir le temps de jeu total d''un joueur'
+      args: (playername)
+    info:
+      total: '&e* Temps de jeu total: [time]'
+      joined: '&e* Rejoint le: &6[time]'
+  playtimetop:
+    help:
+      info: '&eAfficher la liste des TOPs temps de jeu'
+      args: '[page]'
+    info:
+      topLine: '&e----- Top Temps de Jeu &e-----'
+      scanning: '&eLes données sont en cours d''analyse, merci de patienter une minute et de réessayer'
+      loading: '&eLes données ne sont pas encore chargées. Le scan commencera et tu obtiendras le résultat une fois terminé'
+      list: '&e[number]. [playerDisplayName] &e- &6[time]'
+      place: '&6[playerDisplayName] &eest à la &6[place] &eplace'
+  point:
+    help:
+      info: '&ePointe vers un bloc'
+      args: (particleName) (playerName) (-self) (time) (-s:[speed])
+  portals:
+    help:
+      info: '&eDéfinir le portail'
+      args: (new/nearest) (portalName)
+    info:
+      collides: '&cEntre en collision avec le portail &6[portalName]'
+      exist: '&cUn portail de ce nom existe déjà'
+      notExist: '&cAucun portail de ce nom n''existe'
+      locationSet: '&eEmplacement du portail défini ici pour &6[portalName]'
+      removed: '&ePortail &6[portalName] &eretiré'
+      click: '&eClique pour définir l''emplacement de téléportation du &6[portalName] &eà la position actuelle'
+      bungeeSet: '&eRendez-vous à la position et cliquez sur ce message pour définir l''emplacement de téléportation'
+      list: '&e[number]. &6[portalName]'
+      redefine: '&eRedéfinir la zone pour la sélection actuelle'
+      particles: '&eParticules: &6[state]'
+      particleType: '&eType de Particules: &6[type]'
+      particleAmount: '&eNombre de Particles: &6[amount]'
+      particlePercent: '&ePourcentage de particules rétrécies sur les côtés: &6[amount]%'
+      activationRange: '&eDistance d''activation: &6[amount]'
+      bungeeTeleport: '&eTéléportion à l''emplacement exact du bungee: [state]'
+      requiresPermission: '&eRequiert la permission &7[perm] &epour l''utiliser: [state]'
+      informPermission: '&eInformer de la permission manquante: [state]'
+      teleportToLocation: '&eSe téléporter à l''emplacement du portail'
+      teleportToTarget: '&eSe téléporter à l''emplacement ciblé par le portail'
+      performCommandsWithoutTp: '&eExécuter des commandes sans emplacement de téléportation valide'
+      editCommands: '&eÉditer les commandes du portail'
+      setTeleportLocation: '&eDéfinir l''emplacement de téléportation'
+      setSafeLocation: '&eDéfinir un emplacement extérieur sûr'
+      save: '&eEnregistrer les changements dans le fichier'
+      removePortal: '&eRETIRER LE PORTAIL'
+      cantUsePortal: '&cTu ne peux pas utiliser ce portail'
+  pos:
+    help:
+      info: '&eAfficher la position actuelle d''un joueur'
+      args: (playerName)
+    info:
+      feedback: '&e[playerDisplayName] &e(&3[offon]&e) ([world]&e,&6[x]&e:&6[y]&e:&6[z]&e)'
+      feedbackRegion: '&eChunk &6[chunkx]&e:&6[chunkz]&e Region &6[regionx]&e:&6[regionz]'
+      feedbackDirection: '&eDirection &6[direction] &e(&6[degrees] &edegrees)'
+      feedbackBiome: '&eBiome &6[biome]'
+      feedbackLight: '&eNiveau de lumière &6[lightLevel]'
+      netherCoord: '&eCoord du monde Nether: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
+      normalCoord: '&eCoord du monde Normal: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
+  preview:
+    help:
+      info: '&eCharger les chunks pour la distance donnée'
+      args: '[range] (innerrange)'
+    info:
+      NoMore: '&eLa distance ne peux pas être supérieur à 32 chunks. Modifié au maximum autorisé.'
+      startSending: '&6[amount] &echunks trouvé à envoyer. Départ!'
+      InfoShow: '&6TPS: &3[tps] &6Restant &e[left] &6(&e[min]m:[sec]s&6) &6Vitesse: &e[speed]'
+      Finished: '&eTerminé. Le chargement des chunk peut prendre plus de temps de ton côté.'
+  prewards:
+    help:
+      info: '&eVérifiez les récompenses de temps de jeu'
+      args: (playerName)
+    info:
+      list: '&e[place]. &6[rewardName] &erécompensé en &6[time]'
+      listNoStack: '&e[place]. &6[rewardName]'
+      listOneTime: '&e[place]. &6[rewardName]'
+      claim: ' &2Prendre!'
+      claimAmount: ' &2Prendre(x[amount])!'
+      claimHover: '&2Clique pour prendre la récompense!'
+      inform: '!actionbar!&2Tu n''as pas pris des récompenses qui t''attendent! /prewards'
+  ptime:
+    help:
+      info: '&eContrôle le temps personnel du joueur'
+      args: ''
+      explanation:
+      - 'Exemples:'
+      - /ptime 13:00:00
+      - /ptime 1pm
+      - /ptime 13
+      - /ptime 7000ticks
+      - /ptime Zrips 1pm
+      - /ptime freeze
+      - /ptime unfreeze
+      - /ptime realtime
+      - /ptime reset
+    info:
+      check: '&eTemps personnel: &6[24h] &eou &6[12h] &eou &6[ticks]ticks'
+      frozen: ' &c(-)'
+      gotreseted: '&eLe temps de &6[playerDisplayName] &ea été réinitialisé'
+      gotfrozen: '&eLe temps de &6[playerDisplayName] &ea été figé'
+      gotunfrozen: '&eLe temps de &6[playerDisplayName] &ea été défigé'
+      setto: '&eTemps défini sur &6[24h] &eou &6[12h] &eou &6[ticks]ticks &epour &6[playerDisplayName]'
+  purge:
+    help:
+      info: '&eNettoie les données des joueurs du dossier world par jours inactifs'
+      args: (stop)
+    info:
+      stopped: Purge stoppé.
+  pweather:
+    help:
+      info: '&eContrôle la météo des joueurs'
+      args: (playerName) [sun/rain/reset] (-s)
+    info:
+      check: '&eMétéo personnelle: &6[weather]'
+      gotreseted: '&eLa météo de &6[playerDisplayName] &ea été réinitialisée'
+      setto: '&eMétéo personnelle défini sur &6[weather] &epour &6[playerDisplayName]'
+      gotset: '&eTa météo personnelle a été définie sur &6[weather]'
+      reset: '&eMétéo réinitialisée'
+  rankdown:
+    help:
+      info: '&eDiminuez votre rang'
+      args: (playerName) (rankName) (confirm) (-cmd) (-cost)
+      explanation:
+      - -cmd exécutera la commande définie pour le dégradement précédent.
+      - '-cost chargera le joueur avec de l''argent, exp ou des items si défini dans le précédent
+              rang'
+    info:
+      noPrev: '&eImpossible de trouver les rangs précédents'
+      list: '&eChoisissez un rang que tu souhaites &cdégrader &evers: '
+      confirm: '&eClique pour confirmer le &cdégrade &evers &6[rank]'
+      downranked: '&eDégradé vers &6[rank]'
+  rankinfo:
+    help:
+      info: '&eTes informations de rang'
+      args: (playerName) (rankName)
+    info:
+      distanceCM: '[value]cm'
+      distanceM: '[value]m'
+      distanceKm: '[value]km'
+      requiredMoney: ' &eArgent: [color][current]&e/&6[needed]'
+      requiredExp: ' &eExp: [color][current]&e/&6[needed]'
+      requiredVotes: ' &eVotes: [color][current]&e/&6[needed]'
+      requiredPerm: ' &ePerm: '
+      requiredMcmmo: ' &eMcmmo: '
+      requiredMcmmoList: '&e[color][name] '
+      requiredMcmmoListHover: ' &e[color][current]&e/&6[needed]'
+      requiredMcmmoPower: Power
+      requiredJobs: ' &eJobs: '
+      requiredJobsList: ' &e[color][name]'
+      requiredJobsListHover: ' &e[color][current]&e/&6[needed]'
+      requiredJobsTotalLevel: LevelTotal
+      requiredItem: ' &eItems: '
+      requiredItemsList: '&e[color][name]'
+      requiredItemListHover: '&e[color][current]&e/&6[needed]'
+      currentRank: ' &eTon rang actuel: &6[rankName]'
+      elseCurrentRank: ' &6[playerDisplayName] &erang actuel: &6[rankName]'
+      rankNameLine: ' &e------ &6[rankName] &e[rankupState] &e------'
+      canRankup: ' &2Tu peux augmenter ton rang!'
+      cantRankup: ''
+      requiredStats: ' &e[name][extra]&e: [color][current]&e/&6[needed]'
+      requiredStatsExtra: ' (&6[type]&e)'
+      nextRanks: ' &eProchain rang: '
+      finalRank: ' &eC''est le dernier rang'
+      noRank: ' &eImpossible de trouver le rang'
+      check: '&eVérifie le rang &6[rank]'
+      progressBarHover: '&eProgression [percent]%'
+  ranklist:
+    help:
+      info: '&eListe des rangs possibles'
+      args: ''
+    info:
+      list: '&e[place]. [currentRankMarker]&6[rankName][currentRankMarker]'
+      currentRankMarker: '&6+'
+  rankset:
+    help:
+      info: '&eDéfinir le rang d''un joueur'
+      args: (playerName) [rankName] (-cmd) (-cost)
+      explanation:
+      - -cmd éxecutera la commande pour la gradation
+      - '-cost chargera le joueur par de l''argent, de l''exp ou des items si défini pour ce rang'
+      - 'le joueur obtiendra le rang même s''il n''a pas assez d''argent, d''exp ou l''item
+              requis'
+    info:
+      set: '&eRang changé pour &6[playerDisplayName] &evers &6[rankName]'
+  rankup:
+    help:
+      info: '&eAugmentez votre rang'
+      args: (playerName) (rankName) (confirm)
+    info:
+      noRank: ' &eTu n''as aucun rang associé à toi'
+      requiresPrevious: ' &eTu ne peux pas atteindre ce rang. Tu dois avoir le(s) rang(s)
+        &6[rank]'
+      list: '&eChoisis un rang que tu souhaites atteindre: '
+      confirm: '&eClique-moi pour confirmer le rang &6[ranks]'
+  realname:
+    help:
+      info: '&eVérifier le vrai nom du joueur'
+      args: (playerName/nickName)
+    info:
+      feedback: '&eLe vrai nom de &r[playerDisplayName] &eest &r[playerName]'
+  recipe:
+    help:
+      info: '&eVérifier la recette de l''item'
+      args: (itemName)
+    info:
+      type: '&0[type]'
+      page: ' &0[current]&7/&0[total]'
+      noRecipes: '&cAucune recette pour cet item'
+  reload:
+    help:
+      info: '&eRechargement des configurations et des fichiers locaux'
+      args: ''
+    info:
+      feedback: '&6Configs et fichiers locaux rechargés!'
+      failedConfig: '&4Impossible de charger le fichier de configuration! Vérifier l''orthographe!'
+      failedLocale: '&4Impossible de charger les fichiers locaux! Vérifier l''orthographe!'
+  removehome:
+    help:
+      info: '&eRetirer un home'
+      args: (homeName) (playerName)
+    info:
+      remove: '&cClique pour retirer'
+      removed: '&eHome (&6[home]&e) retiré'
+  removeuser:
+    help:
+      info: '&eSupprime l''utilisateur et ses données'
+      args: '[uuid/duplicates]'
+    info:
+      removed: '&eUtilisateur (&6[uuid]&e) retiré'
+      removedDuplicate: '&6[amount]/[max] &eduplication retirée'
+  removewarp:
+    help:
+      info: '&eWarp retiré'
+      args: (warpName)
+    info:
+      remove: '&cClique pour retirer'
+      removed: '&eWarp (&6[warp]&e) retiré'
+      notYours: '&cCe warp ne t''appartient pas'
+  repair:
+    help:
+      info: '&eRéparer un item'
+      args: '[hand/armor/all] (playerName)'
+      explanation:
+      - 'cmi.command.repair.hand - permet à un utilisateur de réparer un item en main'
+      - 'cmi.command.repair.armor - permet à un utilisateur de réparer ses armures dans les slots d''armures'
+      - c'mi.command.repair.all - permet à un utilisateur de réparer tout son inventaire'
+      - cmi.command.repair.repairshare.bypass - permet à un utilisateur de réparer des éléments sans ajouter de protection de partage de réparation
+    info:
+      feedback: '&eTu as réparé &3[amount]&e items pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      feedbackMoney: '&eTu as réparé &3[amount]&e items pour &3[playerDisplayName]&e
+        (&3[offon]&e). Coûts: &7[cost]'
+      itemOwner: '&eDernière réparation par: &6[owner]'
+      cantUse: '!title!&cImpossible d''utiliser cet item!!subtitle!&eRépare-le toi-même!'
+  repaircost:
+    help:
+      info: '&eDéfinir les coûts de réparation'
+      args: (playerName) [amount]
+      explanation:
+      - 'Exemples:'
+      - /repaircost 10
+      - /repaircost set 10
+      - /repaircost add 10
+      - /repaircost take 10
+      - /repaircost Zrips clear
+      - /repaircost Zrips add 10
+    info:
+      current: '&eCoûts de réparation de base des items actuels: &6[cost]&e.'
+      noitem: '&cAucun item en main.'
+      cantDetermineCost: '&cImpossible de déterminer le prix de réparation de cet item.'
+      selffeedback: '&eLe prix de réparation de base a été défini à &3[amount] &epour &3[playerDisplayName]&e
+        de l''item en main (&3[offon]&e).'
+      targetfeedback: '&eLe prix de réparation de ton item a été fixé à &3[amount]&e par &3[senderDisplayNaame]&e.'
+  replaceblock:
+    help:
+      info: '&eRemplacer les blocs t''entourant dans ce monde'
+      args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range
+        in chunks/g]&e y &6[max height]'
+      explanation:
+      - '&6SubCommands:'
+      - '&e- &6pause &e- pause le remplacement'
+      - '- &6continue &e- continuer le remplacement'
+      - '- &6stop &e- stopper le remplacement'
+      - '- &6speed [amount] &e- définir la vitesse de remplacement'
+      - '- &6autospeed [true/false] &e- activer ou désactiver la vitesse automatique'
+      - '- &6messages [true/false] &e- activer ou désactiver le feedback des messages'
+      - 'Exemples:'
+      - /cmi replaceblock id 52 w stone r 10
+      - /cmi replaceblock id 52,gold_block w stone r 15 y 100
+      - /cmi replaceblock id 52 w air r g y 100
+      - /cmi replaceblock id iron_ore%75 w stone%90,dirt%5 r g
+    info:
+      startScanning: '&eTrouvé &6[amount] &echunks à vérifier. Départ!'
+      paused: '&eRemplacement mis en pause, pour continuer fais &6/cmi blockreplace continue.'
+      continuing: '&eRemplecement repris'
+      stoped: '&eReplacement stoppé.'
+      speedChange: '&eVitesse changée à [amount]'
+      autospeedChange: '&eVitesse automatique changée à [state]'
+      messagesChange: '&eFeedback changé à [state]'
+      infoShow: '&6TPS: &3[tps] &6Restant &e[left] &6(&e[time]&6) &6Vitesse: &e[speed]
+        &6Remplacé: &e[found]'
+      finished: '&eFinis!!! Remplacé: &6[amount] &eblocs! En &6[time]&e.'
+  reply:
+    help:
+      info: '&eRépondre à l''expéditeur du dernier message'
+      args: '[message]'
+    info:
+      noOneToReplay: '&eIl n''y a personne à qui répondre'
+  resetdbfields:
+    help:
+      info: '&eRéinitialise des colonnes de base de données particulières à la valeur par défaut'
+      args: '[collumnName] (-w:[worldName]) (-p:[playerName])'
+    info:
+      feedback: '&eMis à jour &7[amount] &ejoueurs'
+      nofield: '&cImpossible de trouver un champ de ce nom'
+  ride:
+    help:
+      info: '&eMonter l''entité ciblée'
+      args: ''
+      explanation:
+      - ' cmi.command.ride.[entityType] - pour pouvoir monter ce type d''entité'
+    info:
+      riding: '&eTu montes &6[entityName]'
+      cantRide: '&cTu ne peux pas monter cette entité (&6[entityName]&c)'
+      someOneElse: '&cQuelqu''un monte déjà cette entité'
+      ridingYou: '&6[playerDisplayName] &ete monte, fais &6/shakeitoff &epour
+        t''en débarasser'
+  rt:
+    help:
+      info: '&eTéléportation à un emplacement aléatoire'
+      args: (playerName) (worldName)
+    info:
+      posible: '&eMondes disponibles: &6[worlds]'
+      tpLimit: '&eTu ne peux pas te téléporter si vite, attends &6[time] &eet rééssaies'
+      IncorrectLocation: '&6Aucun emplacement correct trouvé, attends
+        &e[time] &6et réessaies.'
+      teleported: '!actionbar!&6Zoum!!!'
+  sameip:
+    help:
+      info: '&eListe des joueurs connectés depuis la même IP'
+      args: ''
+    info:
+      list: '&e[place]. &6'
+      nothing: '&eRien à afficher'
+  saturation:
+    help:
+      info: '&eDéfinir la saturation du joueur'
+      args: (playerName) [amount]
+    info:
+      feedback: '&eTu as défini sur &3[amount]&e la saturation de &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTa saturation a été réglée sur &3[amount]&e par &3[senderDisplayName]&e.'
+  saveall:
+    help:
+      info: '&eEnregistre l''inventaire de chaque joueur'
+      args: (daysRange/-online)
+      explanation:
+      - -online variable peut être utilisée pour enregistrer uniquement les inventaires des joueurs en ligne
+    info:
+      saving: '[simbol] &2vérifié: &e[checked]&2 de &e[total]&2 enregistré: &e[saved]
+        &2sauté: &e[skipped] [simbol]'
+      saved: '&eEnregistrement terminé. Enregistré: &6[saved] &eSauté: &6[skipped]'
+  saveditems:
+    help:
+      info: '&eEnregistrer ou gérer les items enregistrés'
+      args: '[save/get/remove/list] (savedItemName) (-t:playerName) (-a:amount) (-s)'
+    info:
+      info:
+      - '&fClic gauche pour obtenir l''item'
+      - '&fClic du milieu pour le supprimer'
+      got: '&6[name] &ereçu'
+      give: '&6[name] &edonné'
+      removed: '&6[name] &eretiré'
+      saved: '&6[name] &eenregistré'
+      title: '&8[current]&7/&8[total]'
+  sc:
+    help:
+      info: '&eDémarrer le processus de copie des pancartes'
+      args: (playerName)
+    info:
+      punch: '&eFrappe une pancarte pour coller le texte dessus, ou frappe n''importe quel autre bloc
+        pour annuler le processus'
+      canceled: '&eCopie de pancarte annulée'
+      updated: '&ePancarte mise à jour'
+  scan:
+    help:
+      info: '&eRecherche des items dans le monde actuel'
+      args: ''
+      explanation:
+      - '&6SubCommands:'
+      - '&e- &6stats &e- afficher les statistiques de scan actuelles '
+      - '&e- &6pause &e- pause le scan '
+      - '- &6continue &e- continuer le scan '
+      - '- &6stop &e- stoppé le scan '
+      - '- &6stopall &e- stoppé tous les scans '
+      - '- &6speed [amount] &e- définir la vitesse actuelle de scan '
+      - '- &6autospeed [true/false] &e- activer ou désactiver la vitesse automatique '
+      - '- &6messages [true/false] &e- activer ou désactiver les messages de feedback'
+      - 'Variables:'
+      - '&eid &6[id:data]'
+      - '&eq &6[minimum quantity]'
+      - '&er &6[range in chunks] &e- option pour utiliser &6g &eau lieu de scanner
+        la map entière'
+      - '&en &6[item name]'
+      - '&el &6[item lore]'
+      - '&eh &6utilises les infos de l''item en main'
+      - '&ee &6[enchantname]'
+      - '&eelvl &6[enchantminlevel]'
+      - '&eoversize'
+      - '&epurge - retire les items trouvé, cette fonctionnalité doit être activée dans le fichier configs'
+      - 'Exemple:'
+      - /scan id 52 r 30
+      - scan id diamond_block r g q 32
+    info:
+      loadingChunkInfo: '&eChargement des informations de chunks!'
+      startScanning: '&6[amount] &echunks trouvés à vérifier. Démarrage!'
+      paused: '&eScan mis en pause, pour continuer fais &6/cmi scan continue.'
+      continuing: '&eScan continué...'
+      holdItem: '&eTu dois tenir l''item en main'
+      stoped: '&eScan stoppé. Tu peux vérifier les résultats en faisant /cmi scan info'
+      speedChange: '&eVitesse changé à [amount]'
+      autospeedChange: '&eVitesse automatique changée à [state]'
+      messagesChange: '&eMessages de feedback changés à [state]'
+      NoInfo: '&eIl n''y a aucune information'
+      infoShow: '&6TPS: &3[tps] &6Restant &e[left] &6(&e[time]&6) &6Vitesse: &e[speed]
+        &6Trouvé: &e[found]'
+      Teleport: '&eClique pour te téléporter'
+      scanList: '&2[number]. &e[place] &6[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
+      scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
+      edit: ' &e(Edit)'
+      total: '&eVérification à partir de [current]/[until] du total de [total]'
+      Stats:
+      - '&e************************************************************'
+      - '&e* &6Chunks: &e[checked]/[total]'
+      - '&e* &6Distance de scan: &e[range]'
+      - '&e* &6Vitesse de scan: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6Monde: &e[world]'
+      - '&e* &6Trouvé: &e[found]'
+      - '&e* &6Temps: &e[time]'
+      - '&e* &6id: &e[id]'
+      - '&e* &6Qté: &e[qty] and up'
+      - '&e* &6Nom: &e[name]'
+      - '&e* &6Lore: &e[lore]'
+      - '&e************************************************************'
+  scavenge:
+    help:
+      info: '&eRecycler un item et son enchantement'
+      args: (playerName)
+    info:
+      enchantWorth: '&eL''Enchantement vaut: &7[price]'
+      enchantFailChance: '&4Chance d''échec: &7[chance]%'
+      enchantFailed: '&cÉchec. &7[enchant]&c niveau &7[level] &cavec &7[chance]% &cd''échec'
+      enchantLevelChance: '&cNiveau de chance inférieur: &7[chance]%'
+      gotIngredients: '&eTu as reçu [itemList]'
+      gotIngredientsFormat: '&6[material]&7-&6[amount]'
+      itemBroke: '&cItem s''est cassé avec [chance]% de chance de se casser'
+      confirm: '&2Confirmer le recyclage. Coût: &c[price]'
+      itemBreakChance: '&cChance de se casser: [chance]%'
+      itemBreakChanceExtra: '&c[durability]% de durabilité ajouté [chance]% chance de se casser'
+      itemBreak: '&cItem va se casser au clic!'
+      ingredientReturnChance: '&7Chance de retourner les ingrédients: [chance]%'
+      cantScavenge: '&cImpossible de recycler'
+      insertItem: '&2Insérer un item dans un slot au-dessus'
+      scavengeCost: '&8Coût du recyclage: [cost]'
+      title: '&2Recycleur'
+  schedule:
+    help:
+      info: '&eDéclencheur automatisé'
+      args: '[scheduleName]'
+  se:
+    help:
+      info: '&eChanger le texte sur la ligne d''une pancarte.'
+      args: '[SignLine] [Text]'
+      explanation:
+      - Fais / n pour une ligne additionnelle
+  search:
+    help:
+      info: '&eChercher items/enchantement/fly/viemax/gm/surchargement modes et d''autres choses de
+        tous les joueurs'
+      args: ''
+      explanation:
+      - '&eid &6[id:data] '
+      - '&ename &6[some_custom_itemname] '
+      - '&elore &6[some_custom_lore] '
+      - '&eenchant &6[lowest enchant level] '
+      - '&epotion &6[lowest custom potion effect level] '
+      - '&efly &6[true or false] '
+      - '&egm &6[0/1/2/3 or survival/creative/adventure/spectator] '
+      - '&emaxhp &6[lowest hp player have] '
+      - '&egod &6[true/false]'
+      - '&eoversize'
+      - 'Exmples:'
+      - /search gm 1
+      - /search id 52
+      - /search lore Uber_lore
+    info:
+      started: '&eRecherche... '
+      current: '&eTrouvé pour l''instant &3[amount] &edepuis &3[files] &efichiers scanné'
+      nothingfound: '&eRien n''a été trouvé avec ces critères.'
+      totalfound: '&3[amount] &etrouvé depuis &3[files] &eutilisateurs
+        scannés'
+      location:
+        ender: '&3End'
+        inv: '&eInv'
+        invS: '&eShulkerBox'
+        PlayerVault: '&ePlayerVault'
+      localsearch: '&e (L search)'
+      localsearchhover: |-
+        '&eOuvrira l''inventaire depuis les fichiers locaux'
+        '&Cela va prendre un peu plus de temps'
+      reglist: '&e[number]. &e[name]'
+      list: '&2[number]. [location] &6[name]'
+      listhover: '&eClique pour ouvrir l''inventaire'
+  seen:
+    help:
+      info: '&eVoir quand le joueur a été vu pour la dernière fois'
+      args: '[playerName/uuid]'
+    info:
+      feedback: '&6[playerDisplayName] &ea été &6[offon] &edepuis &6[time] &e!'
+  sell:
+    help:
+      info: '&eVendre des itemps depuis l''inventaire'
+      args: (all/blocks/hand/same/gui)
+    info:
+      total: '&6[total] &egagné en vendant &6[amount] &eitems. Nouveau solde &6[balance]'
+      close: '&8Place les items que tu souhaites vendre'
+      sellInfo: '&8À vendre pour: &2[price]'
+  sendall:
+    help:
+      info: '&eEnvoyer tous les joueurs connecté vers un serveur'
+      args: '[serverName]'
+  server:
+    help:
+      info: '&eSe connecter à un serveur bungeecord'
+      args: '[serverName] (playerName) (-f)'
+  serverlist:
+    help:
+      info: '&eVoir la liste des serveurs'
+      args: ''
+    info:
+      listOnline: '&7[place]. &2[serverName] &6[count]&7/&6[max]'
+      listOffline: '&7[place]. &c[serverName] &60&7/&60'
+  servertime:
+    help:
+      info: '&eAfficher l''heure du serveur'
+      args: ''
+    info:
+      time: '&eHeure du serveur: [time]'
+      format: MM/dd/YYYY HH:mm:ss
+      timeZone: '&eNom de la Time zone: &6[name]'
+      timeZoneId: '&eID de la Time zone: &6[id]'
+      timeZoneOffset: '&eDécalage de la Time zone: &6[offset]'
+  setenchantworth:
+    help:
+      info: '&eChanger la valeur de l''enchantement'
+      args: ''
+  setfirstspawn:
+    help:
+      info: '&eDéfinir l''emplacement du premier spawn'
+      args: (playerName)
+    info:
+      feedback: '&ePremier spawn défini (&6[world]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
+  sethome:
+    help:
+      info: '&eDéfinir un emplacement de home'
+      args: (homeName) (playerName) (-p) (-l:worldName;x;y;z) (block/Material) (slotNumber)
+      explanation:
+      - cmi.command.sethome.unlimited
+      - -l will define custom location for new home location, this requires cmi.command.sethome.customloc
+        permission node
+    info:
+      set: '&eTu as créé un nouveau home du nom de &6[homeName]&e!'
+      setBed: '&eHome du lit créé'
+      private: ' &2(private)'
+      noMore: '&cTu as atteint le nombre maximum de homes'
+      noOverwrite: '&cTu n''as pas la permission d''écraser un home existant.
+        Retire l''ancien ou utilise un nouveau nom.'
+      slotTaken: '!actionbar!&cCe home est déjà utlisé par &7[homeName]&c, utilises-en un autre'
+  setmotd:
+    help:
+      info: Définir le motd du serveur
+      args: '[newMotd] (-s)'
+      explanation:
+      - fais \n pour changer de ligne
+    info:
+      changed: '&eMotd changé:'
+  setrt:
+    help:
+      info: '&eDéfinir des limites de la téléportation aléatoire'
+      args: (worldName) (center:[x]:[z]) (min:[range]) (max:[range]) (square/circle)
+        (enabled/disabled)
+    info:
+      list: '&6[place]. [world] [enabled] &7[centerX]:[centerZ] &e[maxDist]/[minDist]
+        [type]'
+  setspawn:
+    help:
+      info: '&eDéfinir le point de spawn pour la commande /spawn'
+      args: (playerName) (true/false) (-g:[groupName]) (-rng:[range]) (-w:world,world_nether)
+        (loc:[world;x;y;z;yaw;pitch])
+      explanation:
+      - 'Plus d''information sur l''utilisation de cette commande http://www.zrips.net/cmi/commands/spawn/'
+    info:
+      feedback: '&6Point de spawn défini ([world],[x],[y],[z])!'
+      group: ' &e([group])'
+      rng: ' &e(Rng: [rng])'
+      respawn: '&7Clique pour définir ce point d''apparition comme emplacement de réapparition possible'
+  setwarp:
+    help:
+      info: '&eDéfinir un emplacement de warp'
+      args: '[warpName] (reqPermission) (hand) (slot) (autoLore)'
+      explanation:
+      - 'Exemples:'
+      - /cmi setwarp spawn - simple warp vers spawn
+      - /cmi setwarp spawn true - créé un warp qui requiert la permission cmi.command.warp.[warpname]
+        pour être utilisé
+      - '/cmi setwarp spawn hand - créer un warp qui prendra l''item dans la main pour
+              l''afficher dans l''interface graphique comme item'
+      - '/cmi setwarp spawn 13 - créer un warp et le définir à la position 13 dans l''interface graphique (1-54)'
+      - '/cmi setwarp spawn true hand 13 - créer un warp avec l''item en main, slot 13
+              et qui requiert la permission'
+      - /cmi setwarp spawn true hand 13 false - comme avant, mais ne génère pas de
+        lore
+    info:
+      newSet: '&eNouveau warp (&6[warp]&e) défini'
+      noSet: '&cUn warp de ce nom existe déjà'
+      noMore: '&cTu as atteint la limite maximale de warp. ([max])'
+  setworth:
+    help:
+      info: '&eChanger la valeur d''un item'
+      args: (itemname) -s:(sellPrice)
+    info:
+      setSell: '&eDéfinir la valeur de vente &7[amount]'
+      setBuy: '&eDéfinir la valeur d''achat &7[amount]'
+      notInUse: '&ePrincipalement utilisé pour une éventuelle détection d''exploits'
+      sellPrice: '&fPrix de vente: &e[amount]'
+      buyPrice: '&fPrix d''achat: &2[amount]'
+      exploit: '&4EXPLOIT Possible!'
+      ingridient: '&2Ingrédients'
+      ingridients: '&7[ingridient]&f(&7[amount]&f) = &e[price]'
+      notSet: '&eprix non défini'
+      result: '&2Crafts en &7[result]&f(&7[amount]&f)'
+      ingridientsPrice: '&cPrix des ingéridents: &7[price]'
+      resultPrice: '&cPeut être vendu pour: &7[price]'
+  shakeitoff:
+    help:
+      info: '&eFaire descendre n''importe quelle entitée te montant'
+      args: ''
+    info:
+      shaked: '&eTu as fait descendre: &6[entity]'
+      nothing: '&eRien d''autre à enlever'
+  shoot:
+    help:
+      info: '&eTirer un projectile'
+      args: (playerName) (-t:targetPlayer) (type) (speed)
+  signspy:
+    help:
+      info: '&eActiver ou désactiver le mode Sign Spy (voir les pancartes créée)'
+      args: (playerName)
+      explanation:
+      - cmi.command.signspy.hide - Cache les pancartes créée de signspy
+    info:
+      text: '&5Sign&2Spy&7[&8[senderDisplayName]&7]&7: &f[text]'
+      toggled: '&eSign spy basculé sur &6[state]'
+  silence:
+    help:
+      info: '&eBloquer les messages publiques'
+      args: ''
+      explanation:
+      - cmi.command.silence.bypass - pour bypass le silence
+    info:
+      enabled: '&eMode silence &2activé'
+      disabled: '&eMode silence &cdésactivé'
+      inMode: '&eLe joueur est en mode silence'
+  silentchest:
+    help:
+      info: '&eBasculer le mode coffres silencieux'
+      args: ''
+      explanation:
+      - '&eLes joueurs autour de toi ne verront pas l''animation d''ouverture de coffre'
+      - '&eProtocollib est requis pour que ça fonctionne.'
+    info:
+      feedback: '&eTu as basculé le monde coffres silencieux sur &3[offon].'
+      onOpen: '&eOouverture du coffre en silence.'
+  sit:
+    help:
+      info: '&eAssieds-toi à cet emplacement'
+      args: ''
+    info:
+      onSit: '!actionbar!&eTu es assis'
+      onStandUp: '!actionbar!&eTu n''es plus assis'
+      accupied: '!actionbar!&cQuelqu''un est déjà assis ici!'
+  skin:
+    help:
+      info: '&eChanger le skin d''un joueur'
+      args: '[skinName/off/update] (playerName) (-s)'
+    info:
+      changed: '&eSkin changé en &6[skinOwner]'
+      failed: '&eErreur lors de l''application du skin'
+      resetSteve: '&eSkin retirée'
+      reset: '&eSkin par défaut appliqué'
+      update: '&eSkin mis à jour'
+  smite:
+    help:
+      info: '&eFrappez le sol ou le joueur avec la foudre'
+      args: (playerName) (-s)
+    info:
+      gotSmited: '&eTu as été foudroyé!'
+  socialspy:
+    help:
+      info: '&eActiver ou désactiver le socialspy (voir les messages privés des joueurs)'
+      args: (playerName)
+    info:
+      msg: '&2Spy&7[&8[senderDisplayName] &7-> &8[playerDisplayName]&7]&f [message]'
+      toggled: '&eSocial basculé sur &6[state]'
+  solve:
+    help:
+      info: '&eRésoudre une équation'
+      args: '[equation]'
+    info:
+      result: '&7Résultat: &e[res]'
+      incorrect: '&cEntrée incorrecte: &e[input]'
+  sound:
+    help:
+      info: '&eJouer un son à l''emplacement ciblé'
+      args: '[sound] (-p:[pitch]) (-v:[volume]) (playerName/-all) (world) (x) (y)
+        (z) (-s)'
+    info:
+      playing: "&eLecture de &6[sound] &eà l'emplacement [world] [x]:[y]:[z] \n&ePitch: &6[pitch]\
+        \ &eVolume: &6[volume]"
+      playingMultiple: "&eLecture de &6[sound] &epour &6[amount] &ejoueurs \n&ePitch:\
+        \ &6[pitch] &eVolume: &6[volume]"
+  spawn:
+    help:
+      info: '&eSe téléporter au point d''apparition'
+      args: (playerName)
+    info:
+      notset: '&4Le point d''apparition n''a pas été défini!'
+      feedback: '&6Téporté au point d''apparition!'
+  spawner:
+    help:
+      info: '&eDéfinir le spawner'
+      args: '[EntityType]'
+    info:
+      feedback: '&eLe spawner a été défini sur type &6[type]'
+      wrongEntityIdName: '&cID ou nom incorrecte'
+      cantSet: '&cImpossible de définir ce type de spawner'
+      cantDetect: '&cImpossible de détecter le spawner'
+      pickOne: '&8Choisis le type de spawner'
+  spawnereditor:
+    help:
+      info: '&eÉditer le spawner'
+      args: ''
+  spawnmob:
+    help:
+      info: '&eSpawn des entités à ton emplacement'
+      args: '[EntityType]'
+      explanation:
+      - ' &e- Le premier argument est toujours le nom de l''entité'
+      - ' &e- Tu peux définir l''états de l''entités: baby, adult, dumb, tamed, n-[name],
+        upwards, glow, skull-[name], helmet-[itemname], chest-[itemname], legs-[itemname],
+        boots-[itemname], mhand-[itemname], ohand-[itemname], effect-levitation/10/1-speed/10/2.
+        /n Exemple: horse:baby:tamed:n-Horsy, zombie:skull-Zrips:n-AngryZombie:mhand-Diamond_Sword'
+      - ' &e- certaines entitées ont des variables spéciales: '
+      - '    &6Sheep &e- white, brown, red, rainbow etc. &6primed_tnt &e-
+        [ticks], incendiary'
+      - '    &6Horse &e- white, chestnut, creamy, darkbrown, gray, black'
+      - '    &6Ocelot &e- red, siamese, wild, black &6experience_orb &e- [number]'
+      - '    &6Skeleton &e- wither, &6Creeper &e- charged &6Wolf &e- angry'
+      - '    &6Zombie &e- villager, blacksmith, butcher, farmer, priest, librarian'
+      - '    &6Villager &e- blacksmith, butcher, farmer, priest, librarian'
+      - '    &6Slime, MagmaCube &e- size by giving number from 1. slime:3'
+      - '    &6ArmorStands &e- nogravity, noplate, arms, noarms, small'
+      - '    &6ShulkerBullet &e- [target], bounce'
+      - ' &e- Variables supplémentaires:'
+      - '     &6ps:zombie:priest:baby-1 &e- passager avec montant'
+      - '     &6hp:20 &e- vie'
+      - '     &6sp:3 &e- se propage au hasard'
+      - '     &6s:4 &e- vitesse de l''entitée'
+      - '     &6t:[playername] &e- la cible que l''entitée va attaquer'
+      - '     &6q:10 &e- le nombre à spawner'
+      - '     &6[playername] &e- spawn des entités à l''emplacement du joueur'
+      - '     &6loc:123/13.0/-15/World &e- emplacement de spawn. Nom du monde optionnel
+        si joueur spécifié'
+      - 'Exemple: /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Chick_on_Sheep
+        q:10 sp:10 hp:50 s:2'
+    info:
+      wrongEntityName: '&eNom d''entité incorrect'
+      wrongPlayerName: '&eNom de joueur incorrect'
+      spawnedEntities: '&6[entities] &espawné(s) '
+      spawnedPasangers: '&eet comme passager &6[passengers]'
+      nothingSpawned: '&eAucune entité spawné'
+      cantSpawn: '&eImpossible de spawn ce type d''entité'
+  staffmsg:
+    help:
+      info: '&eEnvoyer un message au staff'
+      args: '[message/toggle/on/off]'
+    info:
+      message: '&2[Staff]&4[&7[senderDisplayName]&4]&r&c [message]'
+      toggledOn: '&eUne conversation a été démarrée avec le staff. Tu peux maintenant écrire
+        dans le chat publique.'
+      toggledOff: '&eConversation avec le staff terminée'
+  stats:
+    help:
+      info: '&eVérifier les stats d''un joueur'
+      args: (playerName)
+    info:
+      distanceCM: '&e[value]&6cm'
+      distanceM: '&e[value]&6m'
+      distanceKm: '&e[value]&6km'
+      list: '&e[name]:&6[amount]'
+      listCover: '&e([list]&e)'
+      Quit: '&eJeux arrêtés: &6[value]'
+      PlayTime: '&eTemps de jeu: &6[value]'
+      SneakTime: '&eTemps en sneak: &6[value]'
+      Sleep: '&eDodo: &6[value]'
+      Joined: '&eRejoint le: &6[time]'
+      Jumps: '&eSauts: &6[value]'
+      SinceDeath: '&eDepuis la dernière mort: &6[value]'
+      Deaths: '&eNombre de morts: &6[value]'
+      DeathsByMonsters: '&eTué par un monstre: &6[value]'
+      TotalDistance: '&eDistance totale parcourue: &6[value]'
+      Walk: '&eMarche: &6[value]'
+      Crouch: '&eAccroupi: &6[value]'
+      Sprint: '&eCourse: &6[value]'
+      Swim: '&eNage: &6[value]'
+      Fall: '&eChute: &6[value]'
+      Climb: '&eEscalade: &6[value]'
+      Fly: '&eVole: &6[value]'
+      Dive: '&ePlongée: &6[value]'
+      Minecart: '&eMinecart: &6[value]'
+      Boat: '&eBateau: &6[value]'
+      Pig: '&eCochon: &6[value]'
+      Horse: '&eCheval: &6[value]'
+      Elytra: '&eElytra: &6[value]'
+      Damage: '&eDommage &6[dealt] [taken]'
+      DamageDealt: '&eDonné: &6[value]'
+      DamageTaken: '&eReçu: &6[value]'
+      JUMP: '&eSauts: &6[value]'
+      Kills: '&eKills &6'
+      KillsMob: '&eMob: &6[value]'
+      KillsPlayer: ' &eJoueurs: &6[value]'
+      Blocks: '&eBlocs &6'
+      BlocksMined: '&eMiné: &6[value]'
+      BlocksPlaced: ' &ePosé: &6[value]'
+      Items: '&eItems &6'
+      ItemsUsed: '&eUtilisé:&6[value]'
+      ItemsDrop: '&eDroppé:&6[value]'
+      ItemsPicked: '&eRamassé:&6[value]'
+      ItemsBroken: '&eCassé:&6[value]'
+      ItemsCrafted: ' &eCrafté:&6[value]'
+      ItemsEnchanted: ' &eEnchanté:&6[value]'
+      Opened: '&eOuvert &6[list]'
+      OpenChest: '&eCoffre:&6[value]'
+      OpenEnder: '&eEnderChest:&6[value]'
+      OpenShulker: '&eShulkerBox:&6[value]'
+      Interacted: '&eIntérragi &6[list]'
+      InteractBeacon: '&eBalise:&6[value]'
+      InteractBrewingStand: '&eAlambic:&6[value]'
+      InteractCraftTable: '&eTable de craft:&6[value]'
+      InteractFurnace: '&eFour:&6[value]'
+      Inspected: '&eInspecté &6[list]'
+      InspectDispenser: '&eDistributeur:&6[value]'
+      InspectDropper: '&eDropper:&6[value]'
+      InspectHopper: '&eEntonnoir:&6[value]'
+      Statistics:
+        LEAVE_GAME: Jeu quitté
+        PLAY_ONE_TICK: Temps de jeu
+        TIME_SINCE_DEATH: Depuis la dernière mort
+        TIME_SINCE_REST: Dernière nuit complète
+        SNEAK_TIME: Sneak time
+        ACOUNT_AGE: Age tu compte
+        TRAVEL: Voyage
+        WALK_ONE_CM: Marche
+        CROUCH_ONE_CM: Sneak
+        SPRINT_ONE_CM: Course
+        SWIM_ONE_CM: Nage
+        FALL_ONE_CM: Chute
+        CLIMB_ONE_CM: Escalade
+        FLY_ONE_CM: Vole
+        DIVE_ONE_CM: Plongée
+        WALK_UNDER_WATER_ONE_CM: 'Marche sous l''eau'
+        WALK_ON_WATER_ONE_CM: 'Marche sur l''eau'
+        MINECART_ONE_CM: Voyage avec un minecraft
+        BOAT_ONE_CM: Voyage avec un bateau
+        PIG_ONE_CM: Voyage avec un cochon
+        HORSE_ONE_CM: Voyage à cheval
+        AVIATE_ONE_CM: Voyage en Elytre
+        JUMP: Sauts
+        DAMAGE_DEALT: Dommage donné
+        DAMAGE_TAKEN: Dommage reçu
+        DAMAGE_DEALT_ABSORBED: Dommage reçu absorbé
+        DAMAGE_DEALT_RESISTED: Dommage reçu résisté
+        DAMAGE_BLOCKED_BY_SHIELD: Dommage bloqués avec le bouclier
+        DAMAGE_ABSORBED: Dommage absorbé
+        DAMAGE_RESISTED: Dommage resisté
+        DEATHS: Morts
+        ENTITY_KILLED_BY: Tué par
+        MOB_KILLS: Kills de mob
+        PLAYER_KILLS: Kills de joueurs
+        ITEM_ENCHANTED: Item enchanté
+        ANIMALS_BRED: Animaux élevés
+        FISH_CAUGHT: Poissons pêchés
+        TALKED_TO_VILLAGER: Parlé aux villageois
+        TRADED_WITH_VILLAGER: Échangé avec un villageois
+        CAKE_SLICES_EATEN: Part de gateau mangées
+        CAULDRON_FILLED: Chaudron remplis
+        CAULDRON_USED: Chaudron utilisé
+        ARMOR_CLEANED: Armur nettoyée
+        BANNER_CLEANED: Bannière nettoyée
+        BREWINGSTAND_INTERACTION: 'Interactions avec l''Alambic'
+        BEACON_INTERACTION: Interactions avec la Balise
+        CRAFTING_TABLE_INTERACTION: Interactions avec la table de craft
+        FURNACE_INTERACTION: Interactions avec le four
+        DISPENSER_INSPECTED: Distributeurs inspectés
+        DROPPER_INSPECTED: Droppers inspectés
+        HOPPER_INSPECTED: Entonnoirs inspectés
+        CHEST_OPENED: Coffres ouvert
+        TRAPPED_CHEST_TRIGGERED: Coffres piégés activés
+        ENDERCHEST_OPENED: Ender chest ouvert
+        NOTEBLOCK_PLAYED: Bloc musical actionné
+        NOTEBLOCK_TUNED: Bloc musical tuné
+        FLOWER_POTTED: Fleur mise en pot
+        RECORD_PLAYED: Record joué
+        SLEEP_IN_BED: Dormi dans un lit
+        SHULKER_BOX_OPENED: Shulker box ouvert
+        CLEAN_SHULKER_BOX: Shulker box nettoyé
+        DROP: Item droppé
+        MINE_BLOCK: Blocs minés
+        PLACE_BLOCK: Blocs placés
+        BREAK_ITEM: Item cassés
+        CRAFT_ITEM: Item craftés
+        USE_ITEM: Items utilisés
+        PICKUP: Item ramassé
+        KILL_ENTITY: Monstres tués
+  statsedit:
+    help:
+      info: '&eÉditer les statistiques d''un joueur'
+      args: (playerName) [add/take/set] [statistic] (subType) [amount] (-s)
+    info:
+      cantSet: '&cImpossible de trouver ce style de statistiques.'
+      reqSubType: '&cCette statistique nécessite un &6[type] &csous-type défini'
+      set: '&eChangé de &6[old] &evers &6[new] &epour &6[statistic] &e(&6[extra]&e)'
+  status:
+    help:
+      info: '&eAfficher l''état du serveur'
+      args: ''
+    info:
+      Platform: ' &ePlatforme: &6[platform] &e(&6[os]&e) &eExécution de threads: &6[threads]'
+      Tps: ' &eTPS: &6[tps]'
+      CpuUsage: ' &eUtilisation CPU: &6[cpuusage]% &e(&6[cores] cores&e)'
+      Uptime:
+        main: ' &eDurée de fonctionnement: '
+        weeks: '&e[weeks] &6semaines '
+        days: '&e[days] &6jours '
+        hours: '&e[hours] &6hrs '
+        mins: '&e[mins] &6mins '
+        secs: '&e[secs] &6secs '
+      MemoryUsage: ' &eUtilisation de la mémoire: &6[percent]% &e(&6[current]&e/&6[max] MB&e)'
+      MemoryUsageHover: "&fLibre: &7[free] \n&fAlloué: &7[allocated] \n&fMax: &7[max]\
+        \ \n&fTotal: &7[total]"
+      Java: ' &eVersion Java: &6[mainV].[majorV].[minorV]&e(&6[update]&e) Build: &6[build]'
+      DiskUsage: ' &eUtilisation Disque: &6[percent]% &e(&6[current]&e/&6[max] GB&e)'
+      Worlds: '&e [number]. &6[world] &e[chunks] Chunks &6[entities] Entités &e[tiles]
+        tiles &6[players] joueurs'
+  sudo:
+    help:
+      info: '&eForcer un autre joueur à exécuter la commande'
+      args: '[playerName] (command/c:[text])'
+      explanation:
+      - 'cmi.command.sudo.bypass - protège le joueur d''être ''trollé'''
+    info:
+      performed: '&eLa commande ''&6[command]&e'' a été exécuté pour le joueur &6[playerDisplayName]'
+  suicide:
+    help:
+      info: '&eSuicide toi'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&eAu revoir monde cruel...'
+      message: '&6[playerDisplayName] &es''est ôté la vie'
+  switchplayerdata:
+    help:
+      info: '&ePasser toutes les données d''un joueur à un autre'
+      args: '[sourcePlayerName/uuid] [targetPlayerName/uuid]'
+      explanation:
+      - Utilise l''UUID pour un transfert plus précis, spécialement quand les deux pseudos se ressemblent
+    info:
+      same: '&eLa cible et la source sont déjà les mêmes'
+      transferred: '&6[sourceName] &eles données ont été commutées avec &6[Name]'
+  tablistupdate:
+    help:
+      info: '&eForcer la mise à jour du tablist pour une partie ou tous les joueurs'
+      args: (playerName)
+    info:
+      updated: '&eTablist mis à jour'
+  tagtoggle:
+    help:
+      info: '&eToggle tag commands'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&eDisabled tag commands'
+      feedbackEnabled: '&eEnabled tag commands'
+  tempban:
+    help:
+      info: '&eBan temporaire d''un joueur'
+      args: '[playerName] [timeValue] (reason) (-s)'
+      explanation:
+      - Temps maximal de ban dépend de la permission cmi.command.tempban.max.[amount]
+      - cmi.command.tempban.max.unlimited - pour permettre de ban autant de temps que voulu
+      - 'Si rien n''est défini, 60 sec seront la valeur maximale'
+      - 'Exemple: '
+      - /cmi tempban zrips 5m Pour insulte
+    info:
+      messageToAll: '&6[playerDisplayName] &ea été banni temporairement par &6[senderDisplayName]
+        &epour: &6[time] &eraison: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &ea été banni temporairement par &6[senderDisplayName]
+        &epour: &6[time] &eraison: &6[reason]'
+      time: '&eTu seras debanni après &6[time]'
+      badTime: '&cLe temps n''est pas correctement défini'
+      badTimeRanges: '&cTu ne peux pas bannir plus que [time] &6([seconds])'
+  tempipban:
+    help:
+      info: '&eBan temporaire d''IP'
+      args: '[ip/playerName] [time] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - pour bypass le bannissement
+    info:
+      message: '&cLe marteau du bannissement a frappé!'
+      reason: '&6Raison: &e[reason]'
+      defaultReason: '&eRègles de serveur violées'
+      messageToAll: '&6[playerDisplayName] &7a été ban-ip temporairement &7[time]&7par &6[senderDisplayName]&7:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &7a été ban-ip temporairement &7[time]&7:
+        &6[reason]'
+  tfly:
+    help:
+      info: '&eDéfinissez le mode de vol des joueurs temporaires jusqu''à la reconnexion ou jusqu''à la fin du temps'
+      args: '[playerName] (timeInSec) (-s)'
+      explanation:
+      - 'Examples:'
+      - tfly Zrips 30 - Mode vol pour les 30 prochaines secondes
+      - tfly Zrips +30 - Ajouter 30 secondes de vol
+      - 'tfly Zrips 0 - Mode vol jusqu''à la prochaine reconnexion'
+      - 'tfly Zrips - vérifie si le mode tfly est activé et jusqu''à quand'
+    info:
+      setTimedFly: '&eTu as défini le mode de vol temporaire à &6[playerDisplayName]&e pour la durée
+        [time]'
+      addTimedFly: '&eTu as ajouté [addTime] ([time]) pour &6[playerDisplayName]&e'
+      setUntilRelogFly: '&eTu as défini le mode de vol temporaire &6[playerDisplayName]&e jusqu''à la prochaine
+        reconnexion.'
+      targetTimedEnabled: '&eTon mode vol a été activé par &3[senderDisplayName]&e pour
+        les prochaines [time].'
+      targetTimedEnabledAdd: '&eTon temps de vol a été augmenté [addTime] ([time]).'
+      targetUntilRelogEnabled: '&eTon vol a été activé par &3[senderDisplayName]&e
+        jusqu''à la prochaine reconnexion.'
+      setFor: '&eMode de vol temporaire activé pour [time]'
+      setForRelog: '&eMode de vol temporaire activé jusqu''à la prochaine reconnexion'
+      notSet: '&eLe mode de vol temporaire n''est pas activé pour ce joueur'
+      willBeDisabled: '&eLe mode de vol sera désactivé dans [time]'
+      disabled: '&eMode de vol temporaire désactivé!'
+  tgod:
+    help:
+      info: '&eDéfinir temporairement le mode Dieu des joueurs jusqu''à la reconnexion ou la fin du temps'
+      args: '[playerName] &3(timeInSec) (-s)'
+      explanation:
+      - 'Exemples:'
+      - tgod Zrips 30 - mode Dieu pour les 30 prochaines secondes
+      - 'tgod Zrips 0 - mode Dieu jusqu''à la prochaine reconnexion'
+      - 'tgod Zrips - vérifie combien de temps un joueur a tgod, et jusqu''à quand.'
+    info:
+      setTimedGod: '&eTu as activé le mode Dieu pour &6[playerDisplayName]&e pour les prochaines
+        [time]'
+      setUntilRelogGod: '&eTu as activé le mode Dieu de &6[playerDisplayName]&e jusqu''à la prochaine
+        reconnexion.'
+      targetTimedEnabled: '&eTon mode Dieu a été temporairement activé par &3[senderDisplayName]&e
+        pour les prochaines [time].'
+      targetUntilRelogEnabled: '&eTon mode Dieu a été temporairement activé par &3[senderDisplayName]&e
+        jusqu''à ta prochaine reconnexion'
+      setFor: '&eMode Dieu temporairement activé [time]'
+      setForRelog: '&eMode Dieu temporairement activé jusqu''à la prochaine reconnexion'
+      notSet: '&eMode Dieu temporaire non-activé pour ce joueur'
+      willBeDisabled: '&eMode Dieu désactivé dans [time]'
+      disabled: '&eMode Dieu désactivé!'
+  time:
+    help:
+      info: '&eContrôle l''heure du serveur'
+      args: (time) (world) (alter [value]) (-smooth)
+      explanation:
+      - 'Exemples:'
+      - /day
+      - /night
+      - /time 13:00:00
+      - /time 1pm
+      - /time 13
+      - /time 7000ticks
+      - /time 1pm Lt_Craft
+      - /time 1pm all
+      - /time add 0:30
+      - /time take 0:30
+      - /time freeze
+      - /time unfreeze
+      - /time realtime
+      - /time autorealtime start/stop
+    info:
+      check: '&eTemps: &6[24h] &eou &6[12h] &eou &6[ticks]ticks &edans &6[world]'
+      frozen: ' &c(-)'
+      frozenTime: '&eTemps figé'
+      real: ' &6(+)'
+      realTime: '&eTemps réel automatique'
+      autorealstart: '&eRéglage automatique de l''heure pour &6[world] &edémarré'
+      autorealstop: '&eRéglage automatique de l''heure pour &6[world] &estoppé'
+      gotfrozen: '&eLe temps dans &6[world] &ea été figé'
+      gotunfrozen: '&eLe temps dans &6[world] &ea été défigé'
+      cantset: '&eImpossible de régler l''heure sur cette valeur'
+      setto: '&eTemps réglé sur &6[24h] &eou &6[12h] &eou &6[ticks]ticks &epour &6[world]'
+      am: '&eAM'
+      pm: '&ePM'
+  titlemsg:
+    help:
+      info: '&eEnvoyer un message titre aux joueurs'
+      args: '[playerName/all] [title \n subtitle] (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])'
+    info:
+      message: '&f[messsage]'
+  toast:
+    help:
+      info: '&eSends toast message to player'
+      args: '[playerName/all] (-t:[advType]) (-icon:[material]) [message]'
+    info:
+      message: '&f[messsage]'
+  togglecompass:
+    help:
+      info: '&eAfficher ou masquer la boussole de la bossbar'
+      args: ''
+    info:
+      ToggleOff: '&eBoussole de bossbar désactivée'
+      ToggleOn: '&6Boussole de bossbar activée'
+  toggleshiftedit:
+    help:
+      info: '&eActive ou désactive la modification des pancartes (avec touche Maj)'
+      args: ''
+    info:
+      feedbackDisabled: '&eÉdition des pancartes désactivée (Maj)'
+      feedbackEnabled: '&eÉdition des pancartes activée (Maj)'
+  toggletotem:
+    help:
+      info: '&eAfficher ou masquer la barre de recharge du totem'
+      args: ''
+    info:
+      toggle: '&eBarre de recharge Totem basculée ([state]&e)'
+  top:
+    help:
+      info: '&eTéléporte-toi au point le plus élevé de ton emplacement'
+      args: '[playerName] (-s)'
+  tp:
+    help:
+      info: '&eTéléporte à l''emplacement du joueur'
+      args: '[playerName] (playerName)'
+    info:
+      feedback: '&eTu as été téléporté à l''emplacement de &3[sourceDisplayName] &e(&3[offon]&e).'
+      bad:
+        msg: '&cL''emplacement de téléportation n''est pas sûr. [reason]'
+        extraMsg: '&eUtilise &6/tpbypass &epour bypass ça. Tu as [time]'
+        lava: '&cLave'
+        void: '&cVide'
+        suffocation: '&cSuffocation'
+        unknown: '&cInconnu'
+        plugin: '&cPlugin tierce'
+      notAllowed: '&cImpossible de se téléporter vers ce joueur'
+      prevented: '&cLa téléportation a été empêchée par un autre plugin'
+  tpa:
+    help:
+      info: '&eDemander au joueur si tu peux te téléporter à lui'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      requestSent: '&eRequête envoyé à &6[playerDisplayName]'
+      gotRequest: '&6[senderDisplayName] &esouhaite se téléporter à toi!'
+      time: '&eTu as &6[time]&e pour accepter cette requête'
+      canceled: '&eLa demande de téléportation a été annulée'
+      # This line cant contain anything else then default variables ([message][cancelButton]), you can switch them around to your liking tho
+      senderFeedbackMessageFormat: '[message][cancelButton]'
+      alreadyRequesting: '&eTu as déjà demandé à &6[playerDisplayName]
+        &ed''accepter ta demande de téléportation'
+      banned: '&eTu ne peux plus envoyer de demande de téléportatin à &6[playerDisplayName]
+        &epour les prochaines &6[time]'
+  tpaall:
+    help:
+      info: '&eDemander à tous les joueurs en ligne de se téléporter à toi'
+      args: ''
+    info:
+      requestSent: '&eRequête envoyé à tous les joueurs'
+  tpaccept:
+    help:
+      info: '&eAccepter les demandes de téléportation'
+      args: (playerName)
+    info:
+      noRequest: '&eAucune demande'
+      NotOnline: '&eLe joueur n''est plus en ligne'
+      accepted: '&6[playerDisplayName] &ea acceptée la demande'
+      youAccepted: '&eTéléportation acceptée'
+  tpahere:
+    help:
+      info: '&eDemande au joueur d''accepter la téléportation vers ton emplacement'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      gotRequest: '&6[senderDisplayName] &edemande à te téléporter vers lui!'
+      accept: '&6Clique pour accepter la demande!'
+  tpall:
+    help:
+      info: '&eTéléporte tous les joueurs en ligne vers un emplacement'
+      args: (playerName)
+    info:
+      feedback: '&eTu as été téléporté ([world],[x],[y],[z]) vers l''emplacement de &3[playerDisplayName]'
+  tpallworld:
+    help:
+      info: '&eTéléporte TOUS les joueurs d''un monde spécifique'
+      args: '[worldName] (worldName;x;y;z(;yaw;pitch)) (-a)'
+      explanation:
+      - '-a variable téléportera tous ceux qui ne sont plus dans le monde existant vers l''emplacement cible'
+    info:
+      started: '&eTéléportations démarrée!'
+      current: '&eTéléporté &7[amount] &eet &7[files] &efichiers vérifiés'
+      total: '&eTéléporté un total de &7[amount] &edepuis les &7[files] &eutilisateurs vérifiés'
+      WorldNotFound: '&eLe monde du nom de &7[name] &en''est pas chargé. Contrôle que ce nom
+        soit le bon.'
+  tpbypass:
+    help:
+      info: '&eBypass la téléportation vers un endroit dangereux'
+      args: (playername)
+    info:
+      noSavedTp: '&cIl n''y a aucun mauvais emplacement de téléportation enregistré'
+      feedback: '&eTéléporté vers un endroit dangereux'
+  tpdeny:
+    help:
+      info: '&eRefuser la demande de téléportation'
+      args: (playerName)
+    info:
+      noRequest: '&eTu n''as aucune demande de téléportation!'
+      youDenied: '&eTa demande de téléportation a été refusée!'
+      denied: '&e[senderDisplayName] &ea refusé ta demande.'
+  tphere:
+    help:
+      info: '&eTéléporte le joueur à votre emplacement'
+      args: '[playerName] (playerName)'
+    info:
+      feedback:
+        offline: '&eTu as défini le point d''apparition ([world],[x],[y],[z]) pour &3[playerDisplayName]&e
+          (&3[offon]&e).'
+        online: '&eTu as téléporté &6[playerDisplayName] &eà ton emplacement'
+        player: '&eTu as été téléporté à l''emplacement de &6[sourceDisplayName]'
+      notAllowed: '&eImpossible de téléporter ce joueur'
+  tpo:
+    help:
+      info: '&eSe téléporter à l''emplacement du joueur de force'
+      args: '[playerName] (playerName)'
+  tpohere:
+    help:
+      info: '&eTéléporte le joueur à ton emplacement de force'
+      args: '[playerName] (playerName)'
+  tpopos:
+    help:
+      info: '&eTéléporte à l''emplacement de force'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&eTu as été téléporté ([world],[x],[y],[z]).'
+      feedbackOther: '&e[playerDisplayName] a été téléporté ([world],[x],[y],[z]).'
+  tppos:
+    help:
+      info: '&eTéléporte à l''emplacement'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&eTu as été téléporté ([world],[x],[y],[z]).'
+      feedbackOther: '&e[playerDisplayName] a été téléporté ([world],[x],[y],[z]).'
+  tps:
+    help:
+      info: '&eVoir le statut TPS du serveur'
+      args: ''
+    info:
+      Tps: '&eTPS: &6[tps]'
+  tptoggle:
+    help:
+      info: '&eBasculer l''accès à la téléportation aux joueurs'
+      args: (playerName)
+    info:
+      feedbackNoTp: '&eTéléportation désactivée'
+      feedbackTp: '&eTéléportation activée'
+  tree:
+    help:
+      info: '&eFaire apparaitre des arbes là où tu regardes'
+      args: (TreeType) (-p:[playerName])
+    info:
+      feedback: '&6[tree] &espawné.'
+      cantSpawn: '&cImpossible de spawn (&e[tree]&c) sur ce bloc.'
+  unban:
+    help:
+      info: '&eDéban un joueur ou une IP'
+      args: '[playerName/ip] (-s)'
+    info:
+      unBaned: '!broadcast!&6[playerDisplayName] &edébanni'
+      unBanedSilent: '&7[&8Silent&7]&6[playerDisplayName] &edébanni'
+      notBanned: '&6[playerDisplayName] &en''était pas banni'
+  unbreakable:
+    help:
+      info: '&eRendre un item incassable'
+      args: (playerName) (true/false)
+    info:
+      feedback: '&eTu as rendu l''item [state] &epour &3[playerDisplayName]&e (&3[offon]&e).'
+      breakable: '&6cassable'
+      unbreakable: '&6incassable'
+  uncondense:
+    help:
+      info: '&eFragmenter l''item pour en faire des plus petites partie'
+      args: (itemName)
+    info:
+      converted: '&7[blocks] &econverti en &7[items]'
+      nothing: '&cIl n''y a rien dans ton inventaire à fragmenter.'
+  unjail:
+    help:
+      info: '&eLibérer un joueur de la prison'
+      args: '[playerName]'
+    info:
+      notInJail: '&cCe joueur n''est pas en prison'
+      unjailed: '&eTu as sorti &6[playerDisplayName] &ede prison'
+      unjailedTarget: '&eTu as été libéré de la prison!'
+  unloadchunks:
+    help:
+      info: '&eDécharger des chunks de la mémoire du serveur'
+      args: (-f)
+      explanation:
+      - -f variable forcera le déchargement de tous les chunks en une seule fois.
+    info:
+      removed: '&eRetiré -[list]'
+      startScanning: '&6[amount] &echunks trouvé à déchargé. Démarrage!'
+      InfoShow: '&6TPS: &3[tps] &6Restant &e[left] &6(&e[min]m:[sec]s&6) &6Vitesse: &e[speed]
+        &6Déchargé: &e[found]'
+      Finished: '&eTerminé!!! Déchargé: &6[amount] &echunks! En &6[minutes] &emin
+        &6[seconds] &esec.'
+  unmute:
+    help:
+      info: '&eDemute un joueur'
+      args: '[playerName] (-s)'
+    info:
+      notMuted: '&eLe joueur n''est pas mute'
+      unmuted: '&eLe joueur peut maintenant parler'
+      unmutedTarget: '&eTu peux à nouveau parler'
+  unmutechat:
+    help:
+      info: '&eDemute le chat publique'
+      args: (-s)
+    info:
+      unmuted: '&eChat publique demuté'
+  usermeta:
+    help:
+      info: '&eGérer les métadonnées des joueurs'
+      args: '[playerName] [add/remove/clear/list/increment] (key) (value) (-s)'
+      explanation:
+      - Toute méta définie peut être affichée avec le placeholder %cmi_user_meta_[key]% dans le
+        plugin
+    info:
+      added: '&eMéta ajouté &6[playerDisplayName] &eavec la key &6[key] &eet la valeur
+        &6[value]'
+      cleared: '&eMéta effacé de &6[playerDisplayName]'
+      removed: '&eMéta &6[key] &eretiré de &6[playerDisplayName]'
+      changed: '&eMéta &6[key] &echangé de &6[oldValue] &evers nouvelle valeur &6[newValue]'
+      list: '&e[place]. &6[key]&e: [value]   '
+  util:
+    help:
+      info: '&Outils d''administration'
+      args: (removeseats/testtarget)
+    info:
+      removedSits: '&6[count] &esits vides retirés de tous les mondes.'
+  vanish:
+    help:
+      info: '&eVanish le joueur (rendre invisible)'
+      args: (playerName/list) (on/off)
+    info:
+      vanished: '&eTu es invisible'
+      unvanish: '&eTu es visible'
+      targetVanished: '&6[playerDisplayName] &eest invisible'
+      targetUnvanish: '&6[playerDisplayName] &eest visible'
+      list: '&e[place]. &6[playerDisplayName] &e(&6[offon]&e)'
+      noVanished: '&eAucun joueur invisible'
+  vanishedit:
+    help:
+      info: '&eÉditer le mode Vanish pour les joueurs'
+      args: (playerName)
+    info:
+      isVanished: '&eInvisible'
+      damageToEntity: '&ePeut faire des dégâts aux autres'
+      playerDamage: '&ePeut prendre des dégâts'
+      itemPickup: '&ePeut ramasser des items'
+      mobAggro: '&eLes mobs peuvent le cibler'
+      interaction: '&ePeut intérragir physiquement'
+      noisyChest: '&eCoffre bruyant'
+      informOnLeave: '&eAfficher le message de départ du serveur'
+      informOnJoin: '&eAfficher le message d''arrivée sur le serveur'
+      nightVision: '&eDonner la vision nocturne'
+      bossbar: '&eVoir la bossbar en Vanish'
+      afkcommands: '&eBasculer en AFK en mode Vanish'
+      PrivateMessages: '&eRecevoir des messages privés'
+      relogDisable: '&eDésactivé Vanish à la reconnexion'
+      bossbarTitle: '&fInvisible'
+  version:
+    help:
+      info: '&eVoir la version du plugin'
+      args: ''
+    info:
+      cmiVersion: '&eCMI: &6[version]'
+      cmiVersionNew: '&e-> [newVersion]'
+      Server: '&eVersion du serveur: &6[version]'
+      Vault: '&eVersion de Vault: &6[version]'
+      Bungee: ' &eBungeeCord '
+  viewrange:
+    help:
+      info: '&eChanger la distance de vue'
+      args: '[range] (playerName)'
+    info:
+      changed: '&eDistance de vue changée à &6[range]'
+      NoProtocolLib: '&cCette fonction requiert ProtocolLib!'
+      NoMore: '&eLa distance ne peut pas être supérieur à 32 Chunks. Changé à 32.'
+  voteedit:
+    help:
+      info: '&eGérer les votes des joueurs'
+      args: (playerName) [add/set/take/clear] [amount] (-s)
+      explanation:
+      - 'Exemples:'
+      - /voteedit Zrips
+      - /voteedit add 10
+      - /voteedit take 10
+      - /voteedit Zrips clear
+      - /voteedit Zrips add 10
+    info:
+      currentVotes: '&e[playerDisplayName] &ea &6[votes] &evotes'
+      selfFeedback: '&eVotes a été défini sur &3[votes] &epour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetFeedback: '&eVotre décompte de votes a été défini sur &3[votes]&e par &3[senderDisplayName]&e.'
+  votes:
+    help:
+      info: '&eVérifier le nombre de votes des joueurs'
+      args: (playerName)
+    info:
+      currentVoteSelf: '&eTu as voté &6[votes] &efois'
+      currentVotes: '&e[playerDisplayName] &ea voté &6[votes] &efois'
+      voteCooldown: '&eTu vas devoir attendre &6[time]&epour revoter'
+      voteLimit: '&eTu as atteint ta limite de vote pour aujourd''hui. Tu vas devoir
+        attendre &6[time]&epour revoter'
+  votetop:
+    help:
+      info: '&eConsultez la liste des meilleurs votes'
+      args: (playerName)
+    info:
+      topLine: '&e----- TopVotes &e-----'
+      list: '&e[place]. &6[playerDisplayName]: &e[votes]'
+      ownLine: '&2[place]. &2[playerDisplayName]: &2[votes]'
+  walkspeed:
+    help:
+      info: '&eDéfinir la vitesse de marche de 0 à 10'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&eTu as défini la vitesse à pied à &3[amount]&e pour &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTa vitesse à pied a été définie à &3[amount]&e par &3[senderDisplayName]&e.'
+      max: '&eTa vitesse maximale autorisée est de &6[max]&e.'
+  warn:
+    help:
+      info: '&eAvertir le joueur'
+      args: '[playerName] (category) (reason) (-s)'
+    info:
+      noSelfWarning: '&cTu ne peux pas te Warn'
+      cantBan: '&cImpossible de warn ce joueur'
+      messageToAll: '&6[playerDisplayName] &ca été Warn par &6[senderDisplayName] &cpour:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &ca été Warn par &6[senderDisplayName]
+        &cpour: &6[reason]'
+  warnings:
+    help:
+      info: '&eVérifier les avertissements des joueurs'
+      args: (playerName)
+    info:
+      totalPoints: '&7---- &e[playerDisplayName] &etotal des points d''infraction: &6[totalPoints]
+        &7----'
+      noWarnings: '&eLe noueur n''a aucun avertissement'
+      list: '&7[place]. &e[time] &6par [warnedBy] &cpour: &7[warnedFor]'
+      hover:
+      - '&7Expire dans: &e[time]'
+      - '&7Point d''infraction: &e[points]'
+  warp:
+    help:
+      info: '&eSe téléporter à un warp'
+      args: (warpName) (playerName) (-s)
+    info:
+      list: '&eWarps: &6'
+      click: '&eClique pour t''y téléporter &6[warp]'
+      teleported: '&eTéléporté au warp: &6[warp]'
+      noWarps: '&cAucun warp'
+      autoLoreName: '&7[warpName]'
+      autoLoreFormat:
+      - '&7[worldName]'
+      - '&e[x]:[y]:[z]'
+      - '[creator]'
+      creator: '&eCréateur: &6[creator]'
+      noWarpByName: '&cAucun warp de ce nom'
+      noAccess: '&cPas accès à ce Warp'
+      guiTitle: '&6Warps'
+      pageTitles:
+      - '&2Warps 1'
+      - '&8Warps 2'
+      - '&0Warps 3'
+  weather:
+    help:
+      info: '&eContrôler la météo du serveur'
+      args: (sun/rain/storm) (lock/duration) (worldName/all)
+      explanation:
+      - 'Les formats de temps peuvent être: s/m/h/d/w/M/Y'
+      - 'Exemples:'
+      - /sun
+      - /rain
+      - /storm
+      - /sun lock
+      - /sun 120
+      - /sun Lt_Craft
+      - /sun 1h
+      - /sun 10m
+    info:
+      currentState: '&6[world] &e-> &6[weather] &epour les prochaines &6[time]'
+      sunny: ensoleillé
+      rainy: pluvieux
+      thundering: orageux
+  whowas:
+    help:
+      info: '&eVoir les anciens surnoms d''un joueur'
+      args: '[playerName]'
+    info:
+      list: ' &e[place]. &6[name] - &e[date]'
+      original: '&eNom original'
+  workbench:
+    help:
+      info: '&eOuvrir la table de craft'
+      args: (playerName)
+    info:
+      feedback: '&eTu as ouvert la table de craft pour &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e a ouvert la table de craft pour toi.'
+  world:
+    help:
+      info: '&eSe téléporter à différents mondes'
+      args: (normal/nether/end/1/2/3...) (playerName) (-s)
+      explanation:
+      - Requiert la permission cmi.command.world.[worldName] en plus de la permission de base
+    info:
+      here: '&eDéjà ici'
+  worth:
+    help:
+      info: '&eVérifier la valeur d''un item'
+      args: (all/blocks/hand)
+    info:
+      worthless: '&eSans valeur'
+      basePrice: '&6[itemName]&e(&7[amount]&e) -> &f[price]'
+      fullPrice: '&7[price]'
+      total: '&eValeur totale: &7[total]'
