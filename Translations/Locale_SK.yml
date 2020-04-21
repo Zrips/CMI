@@ -1,0 +1,4278 @@
+# Full color code support and some variables
+# Keep in mind that variables wont work for some lines, when it will for anothers :)
+# Just keep them where there are now and everything will be ok :)
+# Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+# [serverName] to show server name
+# [playerName] to show target player name
+# [playerDisplayName] to show target player display name
+# [lvl] to show target player level
+# [exp] to show target player total exp
+# [hp] to show target player health
+# [maxHp] to show target player max health
+# [hunger] to show target player hunger level
+# [gameMode] to show target player gamemode
+# [prefix] to show target player prefix if possible
+# [suffix] to show target player suffix if possible
+# Sender is console or player who performs command. In example Zrips performs /heal Zhax then Zrips data will be used
+# [senderName] to show Sender player name
+# [senderDisplayName] to show Sender player display name
+# [senderLvl] to show Sender player level
+# [senderExp] to show Sender player total exp
+# [senderHp] to show Sender player health
+# [senderMaxHp] to show Sender player max health
+# [senderHunger] to show Sender player hunger level
+# [senderGameMode] to show Sender player gamemode
+# [senderPrefix] to show Sender player prefix if possible
+# [senderSuffix] to show Sender player suffix if possible
+# Source is player which is being used for extra info. In example Zrips performs /tp Zhax Zrips then Zhax data will be used as its location is being taken for new player location
+# [sourceName] to show source player name
+# [sourceDisplayName] to show source player display name
+# [sourceLvl] to show source player level
+# [sourceExp] to show source player total exp
+# [sourceHp] to show source player health
+# [sourceMaxHp] to show source player max health
+# [sourceHunger] to show source player hunger level
+# [sourceGameMode] to show source player gamemode
+# [sourcePrefix] to show source player prefix if possible
+# [sourceSuffix] to show source player suffix if possible
+# ***********************************************
+# Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
+# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+# If line starts with !actionbar! then player will get action bar message defined after this variable
+# If line starts with !broadcast! then everyone will receive message
+# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+# If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
+# To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
+# <T> and </T> required, other is optional
+# Use /n to break line
+# To have more than one JSON message use <Next>
+# <C> performs command as a player who clicked
+# <CC> performs command from console once
+# <CCI> performs command from console every time player clicks text
+# <URL> includes url
+info:
+  # Use !prefix! in any locale line to automatically include this prefix
+  prefix: '&8&l[&cKC&8&l] '
+  NoPermission: '&8[&cServer&8] &7Na toto nemáš dostatočné práva!'
+  CantHavePermission: '&8[&cServer&8] &7Na toto nemáš dostatočné práva!'
+  NoPlayerPermission: '&c[playerName] nemáš právo na [permission]'
+  Ingame: '&cToto môžeš použiť v hre!'
+  NoInformation: '&cŽiadne informácie!'
+  Console: '&6Server'
+  FromConsole: '&cToto môžeš použiť v hre!'
+  NotOnline: '&cTento hráč nie je online!'
+  NobodyOnline: '&cNikto nie je online!'
+  Same: '&cNemôžeš otvoriť svoj vlastný inventár!'
+  cantLoginWithDifCap: '&cTvoj nick bol zmenený. Starý nick: &e[oldName]&c. Tvoj nick
+    je &e[currentName]&c.'
+  Searching: '&eHľadám dáta uživteľa. Može to zabrať nejakú chvíľu!'
+  NoPlayer: '&cHráč nebol nájdený!'
+  NoCommand: '&cTaký príkaz neexistuje!'
+  cantFindCommand: '&5Príkaz &7[%1]&5 nenájený, nemyslel si príkaz &7[%2]&5?'
+  PurgeNotEnabled: '&cMazanie starých dát nie je povolené v configu!'
+  FeatureNotEnabled: '&cTáto funkcia nie je povolená'
+  TeamManagementDisabled: '&7Táto funkcia je obmedzená pokiaľ &eDisableTeamManagement
+    &7je nastavené na "true"!'
+  ModuleNotEnabled: '&cTento modul nie je povolený!'
+  versionNotSupported: '&cVerzia serveru nepodporuje túto možnosť!'
+  bungeeNoGo: '&ctáto funkcia nefunguje na BuneeCord serveroch!'
+  clickToTeleport: "&7\n&a    Klikni pre teleport    \n&7 "
+  UseMaterial: '&cPouži meno materiálu!'
+  UseInteger: '&cPouži číslo!'
+  UseBoolean: '&7Použi &aTrue &7alebo &cFalse&7!'
+  NoLessThan: '&cČíslo nesmie byť menšie ako &7[amount]&c!'
+  NoMoreThan: '&cČíslo nesmie byť väčšie ako &7[amount]&c!'
+  NoGameMode: '&cPouži &7[&a0&8/&a1&8/&a2&8/&a3&7] &calebo &aSurvival&8/&aCreative&8/&aAdventure&8/&aSpectator
+    &calebo &as&8/&ac&8/&aa&8/&asp&c!'
+  NoWorld: '&cSvet z takým názvom neexistuje!'
+  IncorrectLocation: '&4Lokácia zle definovaná!'
+  NameChange: '&6[playerDisplayName] &esa pripojil s menom &6[namelist]'
+  Cooldowns: '&eOdpočet pre príkaz &6[cmd] &ezačal! Počkaj &6[time]'
+  specializedCooldowns: '&eOdpočet pre tento príkaz začal! Počkaj &6[time]'
+  CooldownOneTime: '&eTento príkaz môžeš použiť iba raz!'
+  WarmUp:
+    canceled: '&eVykonávanie príkazu bolo zrušené z dôvodu pohnutia!'
+    counter: '!actionbar!&8--> &e[time] &8<--'
+    DontMove: '!title!!subtitle!&6Nehýb sa!'
+  Spawner: '&r[type] Spawner'
+  Elevator:
+    created: '&eVýťah vytvorený!'
+  CantPlaceSpawner: '&eNemôžeš položiť spawner v blískosti iného spawnera &8(&e[range]&8)'
+  ChunksLoading: '&eWorld chunk data sa stále načítavajú. Prosím počkaj a skús to
+    znova neskôr.'
+  ShulkerBox: Shulker Box
+  CantuseShulkerBox: '&cNemôžeš použiť Shulker Box počas boja. Počkaj: &e[time]'
+  CantUseNonEncrypted: '!actionbar!&cPríkaz pre tento item nie je zapísaný správne.
+    Nedá sa použiť!'
+  CantDecode: '!actionbar!&cNemožno odkódovať správu/príkaz. Kľúč pre tento krok je
+    chybný. Informuj člena tímu!'
+  Show: '&eZobrziť'
+  Remove: '&cZamzať'
+  Back: '&eNaspäť'
+  Forward: '&eĎalej'
+  Update: '&eNačítať'
+  Save: '&eUložiť'
+  Delete: '&cZmazať'
+  Click: '&cKlikni'
+  PasteOld: '&eVložiť starý'
+  ClickToPaste: '&eKlikni pre vloženie do chatu'
+  CantTeleportWorld: '&eNemôžeš sa teleportovať do tohoto sveta.'
+  CantTeleport: '&eNemôžeš sa teleportovať pretože si presiahol limit itemov. Prejdi
+    na spodok a zisti maximálny počet itemov.'
+  teleported: '&eBol si teleportovaný!'
+  BlackList: '&e[material] [amount] &6Maximálne [max]'
+  PlayerSpliter: '&e----- &6[playerDisplayName] &e-----'
+  Spliter: '&e--------------------------------------------------'
+  ListSpliter: ', '
+  ProgressBarFill: '&2▏'
+  ProgressBarEmpty: '&e▏'
+  nothingInHand: "\n&8[&cPouži&8] &7/recipe &8[&cmeno itemu&8]\n&a  "
+  nothingInHandLeather: '&eMusíš držať kožený item v ruke.'
+  nothingToShow: '&eNič tu nie je!'
+  noItem: '&cPredmet nenájdený!'
+  dontHaveItem: '&cNemáš &6[itemName] x[amount] &cv tvojom inventáry.'
+  wrongWorld: '&cNemôžeš toto použiť v tomto svete!'
+  differentWorld: '&cRozdielne svety'
+  HaveItem: '&cMáš &6[amount]x [itemName] &cv tvojom inventáry.'
+  ItemWillBreak: '!actionbar!&eTvoj predmet (&6[itemName]&e) sa za chvíľu rozbije!
+    &e[current]&6/&e[max]'
+  cantDoForPlayer: '&eNemôžeš použiť pre hráča &6[playerDisplayName]'
+  cantDoForYourSelf: '&eNemôžeš použiť na seba.'
+  cantDetermineMobType: '&cNemôže určiť moba pre druh z &e[type] &cpremeny.'
+  cantRename: '!actionbar!&eNemôžeš tento predmet premenovať na tento názov!'
+  wrongName: '&cZlé meno!'
+  invalidName: '&cNeznáme meno!'
+  alreadyexist: '&cToto meno už je zabraté'
+  dontexist: '&cHráč s týmto menom neexistuje!'
+  worldDontExist: '&cPoždovaný svet nie je dostupný. Teleport je zakázaný!'
+  flyingToHigh: '&cNemôžeš lietať veľmi vysoko. Maximálna výška je &6[max]&c!'
+  specializedItemFail: '&cNemôžeš zvoliť špecifický item potrebný pre &7[value]'
+  sunSpeeding: Spí [count] z [total] [hour] hodín [speed]X rýchlejšie!
+  sleepersRequired: '!actionbar!&f[sleeping] &7z &f[required] &7spí &8(&7viac hráčov
+    = rýchlejší priebeh noci&8)'
+  sunSpeedingTitle: '&7[hour]'
+  sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]X&7)'
+  repairConfirm: '&7\n&eKlikni sem pre potvrdenie opravy predmetu &7[items] &eza &7[cost]&7\n&c'
+  bookDate: '&7Napísané: &f[date]'
+  maintenance: '&7Údržba'
+  notSet: nenastavené
+  mapLimit: '&cNemôže presahovať 30 000 000 blockov'
+  startedEditingPainting: '&eZapol si editor obrazov. Klikni na iný block pre zrušenie.'
+  canceledEditingPainting: '&eZrušil si editor obrazov.'
+  changedPainting: '!actionbar!&eZmenil si obraz &6[name] &ez ID &6[id]'
+  noSpam: '!title!&cNespamuj!'
+  noCmdSpam: '!title!&cNespamuj príkazy!'
+  spamConsoleInform: '&cHráč (&7[playerName]&c) bol označený (&7[rules]&c) za porušenie
+    pravidla:&r [message]'
+  lookAtSign: '&ePozeraj sa na cedulku!'
+  lookAtBlock: '&ePozeraj sa na block!'
+  lookAtEntity: '&ePozeraj sa na entitu!'
+  notOnGround: '&eToto nemôžeš použiť počas letu.'
+  FirstJoin: '&8[&cServer&8] &7Hráč &c[playerDisplayName] &7je poprvé na serveru.
+    Veľa šťastia!'
+  LogoutCustom: '&8[&c-&8] [playerName]'
+  LoginCustom: '&8[&2+&8] [playerName]'
+  deathlocation: '&eZomrel si na &cx:&6[x] &cy:&6[y] &cz:&6[z]&e vo svete &6[world]'
+  bungee:
+    Online: '&6Online'
+    Offline: '&cOffline'
+    not: '&cServer nie je napojený na BungeeCord.'
+    noserver: '&cServer s týmto menom neexistuje!'
+    server: '&eServer: &7[name]'
+  variables:
+    Online: '&aOnline'
+    Offline: '&cOffline'
+    'True': '&aZapnuté'
+    'False': '&cVypnuté'
+    Enabled: '&6Zapnuté'
+    Disabled: '&cVypnuté'
+    survival: '&6Survival'
+    creative: '&6Creative'
+    adventure: '&6Adventure'
+    spectator: '&6Spectator'
+    flying: '&cLieta'
+    notflying: '&cNelieta'
+  noSchedule: '&cPlán s týmto menom nebol nájdený!'
+  totem:
+    cooldown: '&eTotem odpočet: [time]'
+    warmup: '&eTotem effect: [time]'
+    cantConsume: '&ePoužitie Totemu bolo zamietnute z dôvodu nedokončenia odpočtu!'
+  InventorySave:
+    info: '&8Info: &8[playerDisplayName]'
+    saved: '&e[time] &eInventár úložený pod ID &e[id]'
+    NoSavedInv: '&eHráč nemá žiadne uložené inventáre.'
+    NoEntries: '&cSúbor existuje ale žiaden inventár nebol nájdený!'
+    CantFind: '&eInventár s týmto ID nebol nájdený!'
+    TopLine: '&e----------- &6[playerDisplayName] Uložené inventáre &e-----------'
+    List: '&eID: &6[id]&e. &6[time]'
+    KillerSymbol: '&c ☠'
+    Click: '&eKlikni pre zobrazenie ([id]) uloženého inventára.'
+    IdDontExist: '&cToto uložené ID neexistuje!'
+    Deleted: '&eTvoj inventár bol zmazaný!'
+    Restored: '&eObnovil si &e[sourcename] &einventár pre hráča &e[targetname].'
+    GotRestored: '&eTvoj inventár bol obnovený z [sourcename] z uloženého času [time].'
+    LoadForSelf: '&eNčítanie tohoto inventár pre teba.'
+    LoadForOwner: '&eNačítanie tohoto inventára pre majiteľa.'
+    NextInventory: '&eĎalší inventár'
+    PreviousInventory: '&ePredošlí inventár'
+    Editable: '&eEdit mode zapnutý'
+    NonEditable: '&cEdit mode vypnutý'
+  years: '&e[years] &7rokov '
+  oneYear: '&e[years] &7rok '
+  day: '&e[days] &7dní '
+  oneDay: '&e[days] &7deň '
+  hour: '&e[hours] &7hodiny '
+  oneHour: '&e[hours] &7hodina '
+  min: '&e[mins] &7minút '
+  sec: '&e[secs] &7sekúnd '
+  vanishSymbolOn: '&8[&bV&8]'
+  vanishSymbolOff: ''
+  afkSymbolOn: '&8[&cAFK&8]'
+  afkSymbolOff: ''
+  prevPage: "\n&7     <<< &cNaspäť    "
+  prevPageGui: '&6Predchádzajúca strana '
+  prevPageClean: '&6Predchádzajúca '
+  prevPageOff: "\n&7     <<< &cNaspäť "
+  prevPageHover: '&7<<<'
+  firstPageHover: '&7|<'
+  nextPage: '&c Ďalej &7>>>'
+  nextPageGui: '&6Ďalšia strana'
+  nextPageClean: '&6 Ďalej'
+  nextPageOff: '&c Ďalej &2>>----'
+  nextPageHover: '&7>>>'
+  lastPageHover: '&7>|'
+  pageCount: '&2[current]&7/&2[total]'
+  pageCountHover: '&2[totalEntries]'
+  circle: '&3Kruh'
+  square: '&5Štvorec'
+  protectedArea: '&cOchranná zóna. Toto nemôžeš tu použiť.'
+  valueToLong: '&eHodnota je príliš veľká. Maximum: [max]'
+  valueToShort: '&eHodnota je príliš malá. Minimum: [min]'
+  InvEmpty:
+    armor: '&eTvoj Armor sloty by mali byť prázdne!'
+    hand: '&eTvoja ruka by mala byť prázdna!'
+    maininv: '&eTvoj hlavný inventár by mal byť prázdny!'
+    maininvslots: '&eTvoj hlavný inventár by mal mať aspoň &6[count] &epráznych slotov!'
+    inv: '&eTvoj inventár by mal byť prázdny!'
+    offhand: '&eTvoja druhá ruka by mala byť prázdna!'
+    quickbar: '&eTvoj Hotbar by mal byť prázdny!'
+    quickbarslots: '&eTvoj Hotbar by mal mať aspoň &6[count] &epráznych slotov!'
+    subinv: '&eTvoj sub inventár musí byť prázdny.'
+    subinvslots: '&eTvoj sub inventár musí mať aspoň &6[count] &eprázdnych miesto!'
+  DamageCause:
+    block_explosion: Explosion
+    contact: Block Damage
+    cramming: cramming
+    custom: Unknown
+    dragon_breath: Dragon breath
+    drowning: Drowning
+    dryout: dryout
+    entity_attack: Entity attack
+    entity_explosion: Explosion
+    entity_sweep_attack: entity sweep attack
+    fall: Fall
+    falling_block: Falling block
+    fire: Fire
+    fire_tick: Fire
+    fly_into_wall: Fly into wall
+    hot_floor: Magma block
+    lava: Lava
+    lightning: Lightning
+    magic: Magic
+    melting: Melting
+    poison: Poison
+    projectile: Projectile
+    starvation: Starvation
+    suffocation: Suffocation
+    suicide: Suicide
+    thorns: Thorns
+    void: Void
+    wither: Wither
+  Biomes:
+    BADLANDS: Badlands
+    BADLANDS_PLATEAU: Badlands plateau
+    BAMBOO_JUNGLE: Bamboo jungle
+    BAMBOO_JUNGLE_HILLS: Bamboo jungle hills
+    BEACH: Beach
+    BIRCH_FOREST: Birch forest
+    BIRCH_FOREST_HILLS: Birch forest hills
+    COLD_OCEAN: Cold ocean
+    DARK_FOREST: Dark forest
+    DARK_FOREST_HILLS: Dark forest hills
+    DEEP_COLD_OCEAN: Deep cold ocean
+    DEEP_FROZEN_OCEAN: Deep frozen ocean
+    DEEP_LUKEWARM_OCEAN: Deep lukewarm ocean
+    DEEP_OCEAN: Deep ocean
+    DEEP_WARM_OCEAN: Deep warm ocean
+    DESERT: Desert
+    DESERT_HILLS: Desert hills
+    DESERT_LAKES: Desert lakes
+    END_BARRENS: End barrens
+    END_HIGHLANDS: End highlands
+    END_MIDLANDS: End midlands
+    ERODED_BADLANDS: Eroded badlands
+    FLOWER_FOREST: Flower forest
+    FOREST: Forest
+    FROZEN_OCEAN: Frozen ocean
+    FROZEN_RIVER: Frozen river
+    GIANT_SPRUCE_TAIGA: Giant spruce taiga
+    GIANT_SPRUCE_TAIGA_HILLS: Giant spruce taiga hills
+    GIANT_TREE_TAIGA: Giant tree taiga
+    GIANT_TREE_TAIGA_HILLS: Giant tree taiga hills
+    GRAVELLY_MOUNTAINS: Gravelly mountains
+    ICE_SPIKES: Ice spikes
+    JUNGLE: Jungle
+    JUNGLE_EDGE: Jungle edge
+    JUNGLE_HILLS: Jungle hills
+    LUKEWARM_OCEAN: Lukewarm ocean
+    MODIFIED_BADLANDS_PLATEAU: Modified badlands plateau
+    MODIFIED_GRAVELLY_MOUNTAINS: Modified gravelly mountains
+    MODIFIED_JUNGLE: Modified jungle
+    MODIFIED_JUNGLE_EDGE: Modified jungle edge
+    MODIFIED_WOODED_BADLANDS_PLATEAU: Modified wooded badlands plateau
+    MOUNTAINS: Mountains
+    MOUNTAIN_EDGE: Mountain edge
+    MUSHROOM_FIELDS: Mushroom fields
+    MUSHROOM_FIELD_SHORE: Mushroom field shore
+    NETHER: Nether
+    OCEAN: Ocean
+    PLAINS: Plains
+    RIVER: River
+    SAVANNA: Savanna
+    SAVANNA_PLATEAU: Savanna plateau
+    SHATTERED_SAVANNA: Shattered savanna
+    SHATTERED_SAVANNA_PLATEAU: Shattered savanna plateau
+    SMALL_END_ISLANDS: Small end islands
+    SNOWY_BEACH: Snowy beach
+    SNOWY_MOUNTAINS: Snowy mountains
+    SNOWY_TAIGA: Snowy taiga
+    SNOWY_TAIGA_HILLS: Snowy taiga hills
+    SNOWY_TAIGA_MOUNTAINS: Snowy taiga mountains
+    SNOWY_TUNDRA: Snowy tundra
+    STONE_SHORE: Stone shore
+    SUNFLOWER_PLAINS: Sunflower plains
+    SWAMP: Swamp
+    SWAMP_HILLS: Swamp hills
+    TAIGA: Taiga
+    TAIGA_HILLS: Taiga hills
+    TAIGA_MOUNTAINS: Taiga mountains
+    TALL_BIRCH_FOREST: Tall birch forest
+    TALL_BIRCH_HILLS: Tall birch hills
+    THE_END: The end
+    THE_VOID: The void
+    WARM_OCEAN: Warm ocean
+    WOODED_BADLANDS_PLATEAU: Wooded badlands plateau
+    WOODED_HILLS: Wooded hills
+    WOODED_MOUNTAINS: Wooded mountains
+  EntityType:
+    area_effect_cloud: Area effect cloud
+    armor_stand: Armor stand
+    arrow: Arrow
+    bat: Bat
+    bee: Bee
+    blaze: Blaze
+    boat: Boat
+    cat: Cat
+    cave_spider: Cave spider
+    chicken: Chicken
+    cod: Cod
+    cow: Cow
+    creeper: Creeper
+    dolphin: Dolphin
+    donkey: Donkey
+    dragon_fireball: Dragon fireball
+    dropped_item: Dropped item
+    drowned: Drowned
+    egg: Egg
+    elder_guardian: Elder guardian
+    enderman: Enderman
+    endermite: Endermite
+    ender_crystal: Ender crystal
+    ender_dragon: Ender dragon
+    ender_pearl: Ender pearl
+    ender_signal: Ender signal
+    evoker: Evoker
+    evoker_fangs: Evoker fangs
+    experience_orb: Experience orb
+    falling_block: Falling block
+    fireball: Fireball
+    firework: Firework
+    fishing_hook: Fishing hook
+    fox: Fox
+    ghast: Ghast
+    giant: Giant
+    guardian: Guardian
+    horse: Horse
+    husk: Husk
+    illusioner: Illusioner
+    iron_golem: Iron golem
+    item_frame: Item frame
+    leash_hitch: Leash hitch
+    lightning: Lightning
+    llama: Llama
+    llama_spit: Llama spit
+    magma_cube: Magma cube
+    minecart: Minecart
+    minecart_chest: Minecart chest
+    minecart_command: Minecart command
+    minecart_furnace: Minecart furnace
+    minecart_hopper: Minecart hopper
+    minecart_mob_spawner: Minecart mob spawner
+    minecart_tnt: Minecart tnt
+    mule: Mule
+    mushroom_cow: Mushroom cow
+    ocelot: Ocelot
+    painting: Painting
+    panda: Panda
+    parrot: Parrot
+    phantom: Phantom
+    pig: Pig
+    pig_zombie: Pig zombie
+    pillager: Pillager
+    player: Player
+    polar_bear: Polar bear
+    primed_tnt: Primed tnt
+    pufferfish: Pufferfish
+    rabbit: Rabbit
+    ravager: Ravager
+    salmon: Salmon
+    sheep: Sheep
+    shulker: Shulker
+    shulker_bullet: Shulker bullet
+    silverfish: Silverfish
+    skeleton: Skeleton
+    skeleton_horse: Skeleton horse
+    slime: Slime
+    small_fireball: Small fireball
+    snowball: Snowball
+    snowman: Snowman
+    spectral_arrow: Spectral arrow
+    spider: Spider
+    splash_potion: Splash potion
+    squid: Squid
+    stray: Stray
+    thrown_exp_bottle: Thrown exp bottle
+    trader_llama: Trader llama
+    trident: Trident
+    tropical_fish: Tropical fish
+    turtle: Turtle
+    unknown: Unknown
+    vex: Vex
+    villager: Villager
+    vindicator: Vindicator
+    wandering_trader: Wandering trader
+    witch: Witch
+    wither: Wither
+    wither_skeleton: Wither skeleton
+    wither_skull: Wither skull
+    wolf: Wolf
+    zombie: Zombie
+    zombie_horse: Zombie horse
+    zombie_villager: Zombie villager
+  EnchantAliases:
+    protection_fire:
+    - FireProtection
+    damage_all:
+    - Sharpness
+    arrow_fire:
+    - Flame
+    water_worker:
+    - AquaAffinity
+    arrow_knockback:
+    - Punch
+    loyalty:
+    - LOYALTY
+    depth_strider:
+    - DepthStrider
+    vanishing_curse:
+    - VanishingCurse
+    durability:
+    - Unbreaking
+    knockback:
+    - Knockback
+    luck:
+    - Luck
+    binding_curse:
+    - BindingCurse
+    loot_bonus_blocks:
+    - Fortune
+    protection_environmental:
+    - Protection
+    dig_speed:
+    - Efficiency
+    mending:
+    - Mending
+    frost_walker:
+    - FrostWalker
+    lure:
+    - Lure
+    loot_bonus_mobs:
+    - Looting
+    piercing:
+    - PIERCING
+    protection_explosions:
+    - BlastProtection
+    damage_undead:
+    - Smite
+    multishot:
+    - MULTISHOT
+    fire_aspect:
+    - FireAspect
+    channeling:
+    - CHANNELING
+    sweeping_edge:
+    - SweepingEdge
+    thorns:
+    - Thorns
+    damage_arthropods:
+    - BaneOfArthropods
+    oxygen:
+    - Respiration
+    riptide:
+    - RIPTIDE
+    silk_touch:
+    - SilkTouch
+    quick_charge:
+    - QUICKCHARGE
+    protection_projectile:
+    - ProjectileProtection
+    impaling:
+    - IMPALING
+    protection_fall:
+    - FallProtection
+    - FeatherFalling
+    arrow_damage:
+    - Power
+    arrow_infinite:
+    - Infinity
+  PotionEffectAliases:
+    speed:
+    - Speed
+    slow:
+    - Slow
+    fast_digging:
+    - Fast digging
+    slow_digging:
+    - Slow digging
+    increase_damage:
+    - Increase damage
+    heal:
+    - Heal
+    harm:
+    - Harm
+    jump:
+    - Jump
+    confusion:
+    - Confusion
+    regeneration:
+    - Regeneration
+    damage_resistance:
+    - Damage resistance
+    fire_resistance:
+    - Fire resistance
+    water_breathing:
+    - Water breathing
+    invisibility:
+    - Invisibility
+    blindness:
+    - Blindness
+    night_vision:
+    - Night vision
+    hunger:
+    - Hunger
+    weakness:
+    - Weakness
+    poison:
+    - Poison
+    wither:
+    - Wither
+    health_boost:
+    - Health boost
+    absorption:
+    - Absorption
+    saturation:
+    - Saturation
+    glowing:
+    - Glowing
+    levitation:
+    - Levitation
+    luck:
+    - Luck
+    unluck:
+    - Unluck
+    slow_falling:
+    - Slow falling
+    conduit_power:
+    - Conduit power
+    dolphins_grace:
+    - Dolphins grace
+    bad_omen:
+    - Bad omen
+    hero_of_the_village:
+    - Hero of the village
+direction:
+  n: Sever
+  ne: Severo-východ
+  e: Východ
+  se: Juho-východ
+  s: Juh
+  sw: Juho-západ
+  w: Západ
+  nw: Severo-západ
+modify:
+  middlemouse: '&2Klikni kolečom myši pre editovanie!'
+  newItem: '&7Polož sem nový item'
+  newLine: '&2<NewLine>'
+  newLineHover: '&2Pridať nový riadok'
+  newPage: '&2<NewPage>'
+  newPageHover: '&2Vytvoriť novú stranu'
+  removePage: '&c<RemovePage>'
+  removePageHover: '&cZmazať stranu'
+  deleteSymbol: '&cX'
+  deleteSymbolHover: '&cZmazať &e[text]'
+  extraEditSymbol: ' &6!'
+  addSymbol: ' &2+'
+  addSymbolHover: '&2Pridať nový'
+  acceptSymbol: '&8[&a✔&8]'
+  acceptSymbolHover: '&2Prijať'
+  denySymbol: ' &8[&4X&8]'
+  denySymbolHover: '&4Zamietnuť'
+  enabledSymbol: '&2[+]'
+  disabledSymbol: '&c[-]'
+  enabled: '&2Zapnuté'
+  disabled: '&cVypnuté'
+  running: '&2Beží'
+  paused: '&cPozastavené'
+  editSymbol: '&e✎'
+  editSymbolHover: '&eEdit &6[text]'
+  listUpSymbol: '&6⇑'
+  listUpSymbolHover: '&eHore'
+  listDownSymbol: '&6⇓'
+  listDownSymbolHover: '&eDole'
+  ChangeHover: '&eKlikni pre zmenu'
+  commandTitle: ' &e--- &6[name] &e---'
+  commandList: ' &e[command]  '
+  emptyLine: '&7[Empty line]'
+  commandEdit: '&eUpraviť list'
+  lineAddInfo: '&eNapíš nový riadok. Napíš &6cancel &epre zrušenie.'
+  commandAddInfo: '&eNapíš nový príkaz. Napíš &6cancel &epre zrušenie.'
+  commandAddInformationHover: '&e[playerName] môže byť použité pre získanie mena hráča.'
+  commandEditInfo: '&eKlikni pre vloženie starého textu. Napíš &6cancel &epre zrušenie.
+    Napíš &6remove &epre zmazanie listu.'
+  commandEditInfoHover: '&eKlikni pre vloženie starého textu.'
+warp:
+  list: '&e'
+teleportation:
+  relocation: '!actionbar!&cBol si teleportovaný.'
+afk:
+  'on': '&6AFK'
+  'off': '&7Hraje'
+  left: '&6[playerDisplayName] &esa vrátil!'
+  MayNotRespond: '&eJe AFK'
+  MayNotRespondStaff: '&7Tento administrátor je momentálne &c&lAFK&7.'
+BossBar:
+  hpBar: '&f[victim] &e[max]&f/&e[current] &f(&c-[damage]&f)'
+Potion:
+  Effects: '&8Efekty potionu'
+  List: '&e[PotionName] [PotionAmplifier] &eTrvanie: &e[LeftDuration] &esekund'
+  NoPotions: '&ežiadne'
+Information:
+  Title: '&8Informácie o hráčovi'
+  Health: '&eživoty: &6[Health]/[maxHealth]'
+  Hunger: '&eJedlo: &6[Hunger]'
+  Saturation: '&eSýtosť: &6[Saturation]'
+  Exp: '&eXP: &6[Exp]'
+  NotEnoughExp: '&eNedostatok XP: &6[Exp]'
+  NotEnoughExpNeed: '&eNedostatok XP: &6[Exp]/[need]'
+  tooMuchExp: '&ePríliš veľa XP: &6[Exp]/[need]'
+  NotEnoughVotes: '&eNedostatok hlasov: &6[votes]'
+  TooMuchVotes: '&ePríliš veľa hlasov: &6[votes]'
+  BadGameMode: '&cNemôžeš toto robiť v danom hernom mode!'
+  BadArea: '&cNemôžeš vykonať túto akciu v tejto oblasti.'
+  GameMode: '&eHerný mod: &6[GameMode]'
+  GodMode: '&eGod mode: &6[GodMode]'
+  Flying: '&eLietanie: &6[Flying]'
+  CanFly: '&eMôže lietať: &6[CanFly]'
+  Uuid: '&6[uuid]'
+  ip: '&eIP: &6[address]'
+  FirstConnection: '&ePrvé pripojenie: &6[time]'
+  Lastseen: '&ePosledne videný: &6[time]'
+  Onlinesince: '&eOnline čas: &6[time]'
+  Money: '&8[&cPenize&8] &eAktuálny zostatok: &6[money]'
+  Group: '&eRank: &6[group]'
+econ:
+  disabled: '&cNemôžeš použiť tento príkaz počas vypnutej ekonomiky.'
+  noMoney: '&cNemáš dostatok peňazí!'
+  notEnoughMoney: '&cNemáš dostatok peňazí! Potrebuješ (&6[amount]&c)'
+  tooMuchMoney: '&cMáš príliš veľa peňazí!'
+Elytra:
+  Speed: '&eRýchlosť: &6[speed]&ekm/h'
+  SpeedBoost: ' &2+ '
+  SpeedSuperBoost: ' &6+ '
+  CanUse: '&cNemôžeš si nasadiť elytru!'
+  Charging: '&eNabíjanie &f[percentage]&e%'
+Selection:
+  SelectPoints: '&cOznač 2 body s &6[tool]'
+  PrimaryPoint: '&eVybratý prvý bod [point]'
+  SecondaryPoint: '&eVybratý druhý bod [point]'
+  CoordsTop: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
+  CoordsBottom: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
+NetherPortal:
+  ToHigh: '&cPortál je veľmi vysoký. Maximálna výška je &6[max]&c!'
+  ToWide: '&cPortál je veľmi široký. Maimálna šírka je &6[max]&c!'
+  Disabled: '&cVytvorenie portálu sa neporadilo!'
+Location:
+  Title: '&8Poloha hráčov'
+  Killer: '&eVrah: &6[killer]'
+  OneLiner: '&ePoloha: &6[location]'
+  DeathReason: '&eDôvod smrti: &6[reason]'
+  World: '&eSvet: &6[world]'
+  X: '&eX: &6[x]'
+  Y: '&eY: &6[y]'
+  Z: '&eZ: &6[z]'
+  Pitch: '&eSklon: &6[pitch]'
+  Yaw: '&eUhol: &6[yaw]'
+Ender:
+  Title: '&7Otvoriť Ender Chestu'
+Chat:
+  localPrefix: ''
+  shoutPrefix: '&c[S]&r'
+  shoutDeduction: '!actionbar!&cOdpočet pre &e[amount]&c.'
+  # Use \n to add new line
+  publicHover: '&ePoslaný čas: &6%server_time_hh:mm:ss%'
+  privateHover: '&ePoslaný čas: &6%server_time_hh:mm:ss%'
+  staffHover: '&ePoslaný čas: &6%server_time_hh:mm:ss%'
+  helpopHover: '&ePoslaný čas: &6%server_time_hh:mm:ss%'
+  link: '&l&4[&7ODKAZ&4]'
+  item: '&7[%cmi_iteminhand_displayname%[amount]&7]'
+  itemAmount: ' x[amount]'
+  itemEmpty: '&7[Mighty fist]'
+command:
+  help:
+    output:
+      usage: "\n&8[&cPoužitie&8] &7%usage%\n&a "
+      cmdInfoFormat: '&7[command]'
+      cmdFormat: '&6/[command]&f[arguments]'
+      helpPageDescription: ''
+      explanation: '&e * [explanation]'
+      title: '&aDostupné príkazy'
+  nocmd:
+    help:
+      info: '&eUkáže všetky dostupné príkazy'
+      args: ''
+  actionbarmsg:
+    help:
+      info: '&eSends action bar message to player'
+      args: '[playerName/all] [message]'
+    info:
+      message: '&f[messsage]'
+  afk:
+    help:
+      info: '&eToggle afk mode. Reason could be provided'
+      args: (-p:playerName) (reasson)
+  afkcheck:
+    help:
+      info: '&eCheck players afk status'
+      args: '[playerName]'
+    info:
+      feedback: '&e[playerDisplayName]&e: &6[status]'
+      feedbackInactive: '&eNeaktívny: &6[time]'
+      feedbackReason: '&7[reason]'
+  air:
+    help:
+      info: '&eSet players air'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&eYou have set &3[amount]&e air for &3[playerName]&e (&3[offon]&e).'
+      targetFeedback: '&eYour air was set to &3[amount]&e by &3[senderDisplayName]&e.'
+      current: '&eCurrent &3[playerDisplayName] &eair: &3[amount]'
+  alert:
+    help:
+      info: '&eAlerts administration on players login'
+      args: '[playerName] (reason)'
+      explanation:
+      - '&ePermissions:'
+      - '&6command.alert.info.inform &e- to see alerts on player login'
+    info:
+      inform:
+      - '&e!Alert!******** &6[name] &4sa pripojil! &e*******!Alert!'
+      reason: '&eDôvod Alertu: &6[reason]'
+      removed: '&6[playerDisplayName] &ezmazaný z Alert Listu'
+      added: '&eSpráva Alertu bude odoslaná všetkým Administrátorom ak sa hráč &6[playerDisplayName]
+        &epripojí za ďalších 24 Hodín.'
+      online: '&6[playerDisplayName] &epráve online'
+  aliaseditor:
+    help:
+      info: '&eAlias editor'
+      args: (new) (alias-cmd)
+    info:
+      ListNumber: '&e[number].'
+      aliasName: ' &6[alias]   '
+      commandList: ' &e/[command]  '
+      commandListDelay: ' &6[command]  '
+      permReq: '&2Potrebuješ permissiu &6[state]'
+      permReqExplanation: '&7Potrebuješ &6cmi.customalias.[alias] &7pre použitie'
+      newAliasInfo: '&eVlož nový Alias a klikni ENTER'
+      addInfo: '&eVlož nový príkaz. Napíš &6cancel &epre zrušenie.'
+      addInformationHover: "&eGlobálne možnosti pre odosielanie:\n &edelay! 5 &6pre\
+        \ pridanie času do príkazu \n&efromConsole! použije príkaz z Console."
+      editInfo: '&eKlikni pre vloženie starého textu. Napíš &6cancel &epre zrušenie
+        akcie. Napíš &6remove &epre zmazanie riadku.'
+  armorstand:
+    help:
+      info: '&eOtevrit editor drzaku brneni'
+      args: (last)
+    info:
+      cantClick: '&cNiekto už tento ArmorStand edituje!'
+      tooFar: '&cArmorStand je veľmi ďaleko'
+      coordX: '&cX'
+      coordY: '&2Y'
+      coordZ: '&eZ'
+      body: '&7Otáčnie tela: &f[amount]'
+      head: '&7Hlava [coord]&7: &f[amount]'
+      torso: '&7Torso [coord]&7: &f[amount]'
+      leftArm: '&7Ľavá ruka [coord]&7: &f[amount]'
+      rightArm: '&7Prvá ruka [coord]&7: &f[amount]'
+      leftLeg: '&7Ľavá noha [coord]&7: &f[amount]'
+      rightLeg: '&7Pravá noha [coord]&7: &f[amount]'
+      pos: '&7Pozícia [coord]&7: &f[amount]'
+      plate: '&7Podstavec'
+      size: '&7Veľkosť'
+      visible: '&7Viditeľnosť'
+      arms: '&7Viditeľnosť rúk'
+      gravity: '&7Gravitácia'
+      glow: '&7žiarenie'
+      invulnerable: '&7Nezničitelný'
+      name: '&7Viditeľnosť mena'
+      interactable: '&7Interkcia'
+      explanation: '&8Ľavý alebo prvý klik mení hodnotu.'
+      explanation2: '&8Drž shift pre 10 násobné zrýchlenie.'
+      disableGravity: '&eVypni Gravitáciu ak chceš zmeniť túto hodnotu.'
+  attachcommand:
+    help:
+      info: '&eAttaches command to item'
+      args: '[command/-clear]'
+      explanation:
+      - Separate commands with ;;
+      - You can define to run command on left or right mouse click separately with
+      - '!left! to perform command on left mouse click'
+      - '!right! to perform command on right click'
+      - '!limiteduse:[amount]! defines how many times you can use this item'
+      - '!cc! performs command from console, requires cmi.command.attachcommand.cc
+        permission'
+      - '[interactedPlayer] inserts name of player you interacted while holding item'
+      - Global variables working in addition with [itemUses]
+    info:
+      list: ' &e[id]. &6[cmd]'
+      noCmds: ' &eŽiaden príkaz nie je priradený na tento predmet.'
+      uses: '&ePočet použití: &6[amount]'
+      usesLeft: '!actionbar!&eItem môžeš použiť ešte: &6[itemUses]x'
+      cooldown: '&7Musíš počkať [time] aby si item mohol znova použiť.'
+  back:
+    help:
+      info: '&eTeleport na minulou pozici'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&cNemáš sa kam vrátiť!'
+      feedback: '&7Vrátil si sa na svoju minulú pozíciu &8(&c[x]&7, &c[y]&7, &c[z]&7&8)&7!'
+  balance:
+    help:
+      info: '&eZkontrolovat stav uctu'
+      args: (playerName)
+    info:
+      balance: "\n&8[&cUcet&8] &7Tvoje peniaze: &a[money]\n&a "
+      balanceOther: '&7Peniaze hráča &e[playerDisplayName]&7: &a[money]'
+  baltop:
+    help:
+      info: '&eCheck top money list'
+      args: (playerName)
+    info:
+      topLine: |2-
+
+        &7&m-----&r &4NAJBOHADŠÍ HRACI &7&m-----
+        &a
+      topLineHover: '&eCelkové financie serveru: &a[total]'
+      list: '&6&l    [place]. &7[playerDisplayName]: &a[balance]'
+      ownLine: '&2&l    [place]. &2[playerDisplayName]: &a[balance]'
+      recalculating: '&2Celkové peniaze serveru sa prepočítavaju. Počkaj chvíľu a
+        skús to znova.'
+  ban:
+    help:
+      info: '&eZabanovat hrace'
+      args: '[playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.ban.bypass - to bypass ban
+    info:
+      message: '&cByl si zabanovan na tomto serveru!'
+      reason: '&6Duvod: &e[reason]'
+      defaultReason: '&eViolated server rules'
+      messageToAll: '&6[playerDisplayName] &eZabanovan adminem &6[senderDisplayName]
+        &eza: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &eZabanovan adminem &6[senderDisplayName]
+        &efor: &6[reason]'
+      noSelfBan: '&cNemuzes zabanovat sam sebe  '
+      cantBan: '&cTohohle hrace nezabanujes'
+  blockcycling:
+    help:
+      info: '&eCycle block states'
+      args: ''
+  blockinfo:
+    help:
+      info: '&eCheck block information'
+      args: ''
+    info:
+      Info: ' &eId: &6[id][data] &eMaterial: &6[name][ndata]'
+      RealName: ' &eMeno: &6[name]'
+      TempLight: ' &eČas: &6[temp]&e, Svetlo - block: &6[blevel]&e, sky: &6[slevel]&e,
+        Level: &6[level]'
+      Resistance: ' &eResistance - Ťažba: &6[mining]&e, Výbúch: &6[explosion]'
+      noteBlock: ' &eTón: &6[tone] &eOktáva: &6[octave] &6Nástroj: &e[instrument]
+        &6Hlasitosť: &7[pitch]'
+      BlockState: ' &7[state]: &f[value]'
+  blocknbt:
+    help:
+      info: '&eShow block NBT information'
+      args: ''
+    info:
+      noNbt: '&eBlock nemá žiadne NBT data'
+  book:
+    help:
+      info: '&eBook editing'
+      args: '[Author/Title/Unlock] [value]'
+    info:
+      noitem: '&cNedržíš žiaden item v ruke.'
+      notBook: '&cItem nie je kniha do ktorej sa dá písať.'
+      wrongValue: '&cItem nie je zavretá kniha na písanie.'
+      inccorectAction: '&eNesprávne meno.'
+      authorChanged: '&eAutor knihy zmenený na: [author]'
+      titleChanged: '&eNázov knihy zmenený na: [title]'
+      unlocked: '&eKniha bola odomknutá'
+  bossbarmsg:
+    help:
+      info: '&eSends boss bar message to player'
+      args: '[playerName/all] (-sec:[seconds])(-t:[timeToKeepFor]) (-n:nameOfBar)
+        (-p:[maxValue/current]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
+        (-a:[ticks]) [message]'
+      explanation:
+      - PlaceHolderAPI is supported for progression and text it self
+      - Time is defined in regular way, like 1s is one second and 1m is one minute.
+        This will determine for how long to keep bar shown for player before automatically
+        hiding
+      - nameOfBar is option and when defining same one, then current bar will update
+        with new information
+      - 'colors can be: red, green, pink, purple, white, yellow'
+      - max and current values determines bar fillup, PlaceHolderAPI variables can
+        be used for dinamic updates
+      - 'Examples:'
+      - /cmi bossbar Zrips BossBarTitle
+      - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:testbar
+        -c:red &2Title of bar %server_online%/%server_max_players% &e%cmi_user_name%
+      - /cmi bossbarmsg all -p:+1 -n:testbar - will add one percent towards current
+        progresion bar by name
+      - /cmi bossbarmsg all -p:-1 -n:testbar - will take out one percent from current
+        progresion bar by name
+      - /cmi bossbarmsg all -s:10 -n:testbar - will set bossbar style to 10 segments
+        by bar name
+      - /cmi bossbarmsg all -sec:5 - will count for 5 seconds from 0 to 5
+      - /cmi bossbarmsg all -sec:-5 - will count for 5 seconds from 5 to 0
+      - https://www.spigotmc.org/wiki/cmi-bossbar-usage/
+  broadcast:
+    help:
+      info: '&ePosle specialni zpravu vsem'
+      args: '[message]'
+      explanation:
+      - If message starts with ! then clean message will be shown
+    info:
+      format: '&c&l KC &8» &7[message]'
+  burn:
+    help:
+      info: '&eBurn a player'
+      args: (playerName) (time) (-s)
+    info:
+      feedback: '&eZapálil si hráča &3[playerDisplayName]&e na dobu &6[time] &e(&3[offon]&e).'
+      targetfeedback: '&e'
+  charges:
+    help:
+      info: '&eShows left charges'
+      args: '[playerName] [add/set/take/clear/reset] (-f)'
+    info:
+      charges: '&e* Nabíjanie: &6[current]&e/&6[max] [bypass]'
+      cd: '&e* CD: &6[cdtime] &eĎalší za: &6[time]'
+      bypass: '&6(Bypass)'
+      allUsed: '&eVšetky nbitia použité! Ďalšie za [time]'
+      noGroup: '&eNemáš žiadne pridné nabitia.'
+      cantBreak: '&eNemôžeš zničiť ak máš nejakú skupinu nabití.'
+      minusCd: '&e Minus &6[sec]&esekund na nabitie.'
+      add: '&ePridané &6[amount] &enabitia pre for &6[playerDisplayName]'
+      set: '&eNastavené &6[amount] &enabitia pre &6[playerDisplayName]'
+      clear: '&eZmazané všetky nabitia hráča &6[playerDisplayName]'
+      reset: '&eReštartované všetky nabitia pre skupinu hráča &6[playerDisplayName]'
+      take: '&eZobraté &6[amount] &enabitia hráča &6[playerDisplayName]'
+  chat:
+    help:
+      info: '&eChat with target player throw public messages'
+      args: '[playerName/off]'
+    info:
+      toggledOn: '&ePersistent chat have been started with &6[playerDisplayName]&e.
+        You can now write messages in public chat.'
+      toggledOff: '&eToggled off Persistent chat'
+      toggle: '&6[playerDisplayName] &ewants to enable persistent chat with you'
+  checkaccount:
+    help:
+      info: '&eCheck players another accounts'
+      args: (playerName/ip)
+      explanation:
+      - 'Extra permission: cmi.command.checkaccount.showip'
+    info:
+      place: '&e[place]. &6'
+      ip: '&6[ip]&e: '
+      name: '&6[name]&e(&6[times]&e)'
+      nonIpList: '&eAccounts: &6'
+      nonIpName: '&6[name]'
+      click: '&eKlikni pre zobrazenie účtu hráča &6[name]&e.'
+      noData: '&cŽiadne záznamy hráča.'
+  checkban:
+    help:
+      info: '&eBan player'
+      args: (playerName)
+    info:
+      list: '&6[place]&e. &e[playerDisplayName] &6[time]'
+      permanent: '&3Permanent'
+      bannedUntil: '&eBanned for next: &6[time]'
+      reason: '&eReason: &6[reason]'
+      bannedBy: '&eBanned by: &6[sourceDisplayName]'
+      bannedWhen: '&eBanned at: &6[date]'
+  checkcommand:
+    help:
+      info: '&eCheck possible commands by keyword'
+      args: (key word)
+    info:
+      list: '&e[place]. &f[command] &7[args]'
+      hover: '&e[desc]'
+      variableColor: '&f'
+  checkexp:
+    help:
+      info: '&eCheck players exp'
+      args: (playerName)
+    info:
+      current: '&eLevel: &6[currentLevel] &eXP: &6[levelExp] &eCelkové XP: &6[exp]'
+      need: '&ePotrebné XP pre ďalší level: &6[missingExp]'
+  checkperm:
+    help:
+      info: '&eCheck posible permission nodes'
+      args: (key word)
+    info:
+      list: '&e[place]. [permission]'
+      hover: '&e[desc]'
+      permissionColor: '&6'
+      cmdPermissionColor: '&2'
+      variableColor: '&f'
+      noPermissionFound: '&7No permissions found by this keyword'
+  cheque:
+    help:
+      info: '&eConvert money into check'
+      args: (playerName) [amount]
+    info:
+      transfered: '&eOdobratých &6[amount] &ez tvojho účtu. Nový zostatok: &6[balance]'
+      chequeName: '&7Šek na &e[amount] $'
+      chequeLore:
+      - '&7Šek hráča &b[senderDisplayName]'
+      - '&7Klikni prvým pre pridanie na účet.'
+      holdPaper: '&eDrž papier v ruke'
+      cantUse: '&eNemôžeš použiť tento kus papiera.'
+  clear:
+    help:
+      info: '&eClear players inventory'
+      args: (playerName) (-s)
+      explanation:
+      - 'Posible clearTypes: quickbar, inventory, partinventory, weapons, armorslots,
+        tools, armors, mainhand, offhand'
+      - Should start with + sign
+      - Multiple types can be used
+      - cmi clear +armors - will remove armor type items
+      - cmi clear +armorslots - will remove items from armorslots
+    info:
+      feedback: '&eVymazal si inventár hráčovi &3[playerDisplayName] (&3[offon]&e).'
+      targetfeedback: '&eTvoj inventár bol vyzmazaný'
+      confirm: '&cKlikni pre potvrdenie vymazania inventára.'
+  clearchat:
+    help:
+      info: '&eClears chat'
+      args: '[self]'
+      explanation:
+      - 'Permission:'
+      - ' &6cmi.command.clearchat.bypass &e- to ignore chat cleaning'
+    info:
+      information: "&A \n&B \n&C \n&D \n&E \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F\
+        \ \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n\
+        &F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n\
+        &F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n\
+        &F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n\
+        &F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n\
+        &F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n&F \n\
+        &F \n&F \n&F \n&c▉▉▉▉▉▉▉▉\n&c▉▉▉&f▉▉&c▉▉▉\n&c▉▉▉&f▉▉&c▉▉▉\n&c▉▉▉&f▉▉&c▉▉▉\
+        \  \n&c▉▉▉&f▉▉&c▉▉▉ &c&lCHAT BOL VYMAZANY! \n&c▉▉▉▉▉▉▉▉\n&c▉▉▉&f▉▉&c▉▉▉ &6\n\
+        &c▉▉▉▉▉▉▉▉"
+  clearender:
+    help:
+      info: '&eClear players ender chest'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&eVymazal si hráčovi &3[playerDisplayName]&e Ender Chestu (&3[offon]&e).'
+      targetfeedback: '&eTvoja Ender Chesta bola vymazaná.'
+  colorlimits:
+    help:
+      info: '&eShows all posible colors'
+      args: (playerName)
+    info:
+      publicmessage: ' &eVerejné: '
+      privatemessage: ' &eSúkromné: '
+      nickname: ' &eMeno: '
+      signs: ' &eCedulky: '
+      books: ' &eKnihy: '
+      me: ' &eJa: '
+      None: '&e-'
+  colors:
+    help:
+      info: '&eShows all posible colors'
+      args: (playerName)
+    info:
+      List:
+      - '&e***************************************'
+      - '     &0&%0  &1&%1  &2&%2  &3&%3  &4&%4  &5&%5  &6&%6  &7&%7'
+      - '     &8&%8  &9&%9  &a&%a  &b&%b  &c&%c  &d&%d  &e&%e  &f&%f'
+      - '       &%k - &kMagic&r      &%l - &lBold'
+      - '       &%m - &mStrike&r     &%n - &nUline'
+      - '       &%o - &oItalic&r      &%r - &rReset'
+      - '&e***************************************'
+  commandspy:
+    help:
+      info: '&eToggle command spy'
+      args: (playerName)
+      explanation:
+      - cmi.command.commandspy.hide - Hides performed commands from commandspy
+    info:
+      command: '&8[&2CMDSPY&8] &7[&8[senderDisplayName]&7] &f[command]'
+      toggled: '&eVidenie príkazov iných hráčov bolo &6[state]'
+  compass:
+    help:
+      info: '&eSet players compass point to your location'
+      args: '[sourceName] (targetName) (x) (z) (worldname) (-s)'
+      explanation:
+      - 'Example: /cmi compass Zhax'
+      - /cmi compass Zrips Zhax
+      - /cmi compass LT_Craft 0 0 Zrips -s
+      - /cmi compass reset Zrips
+    info:
+      wrongworld: '&cTvoj definovaný svet neexistuje!'
+      feedback: '&eNastavil si kompas hráčovi &3[playerDisplayName] &ena &3[sourceDisplayName]&e.'
+      feedbackCustom: '&eNastavil si kompas hráčovi &3[playerDisplayName] &ena &3[x]
+        [z] [world] &esúradnice.'
+      targetFeedback: '&eTvoj kompas bol nstavený na to &3[sourceDisplayName] &esúradnice.'
+      targetFeedbackCustom: '&eTvoj kompas bol nastavený na &3[x] [z] [world] &esúradnice.'
+      reset: '&eKompas resetovaný.'
+  condense:
+    help:
+      info: '&eCondense items into blocks'
+      args: (itemName)
+    info:
+      converted: '&7[items] &ebol rozobratý na&7[blocks] &eblocky.'
+      nothing: '&cV tvojom inventáry sa nenchádza žiaden item na rozobratie.'
+  counter:
+    help:
+      info: '&eStarts counter for surrounding players'
+      args: '[join/leave/start] (t:time) (r:[range/-1]) (c:[world:x:y:z]) (msg:custom_message)
+        (-f)'
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.command.counter.force &e- to force counter for everyone in range '
+      - '&6cmi.command.counter.time &e- define custom time range '
+      - '&6cmi.command.counter.range &e- to define custom range'
+      - '&6cmi.command.counter.msg &e- to define custom message'
+      - '&6cmi.command.counter.autojoin &e- joins counter automatically'
+      - -f will force counter to all players in range
+      - 'Example: /cmi counter start r:30 t:7 msg:&eCustom_message -f'
+    info:
+      join: '&eJoined counter'
+      leave: '&eLeft counter'
+      go: '&eGO!'
+      tooFast: '&cCant repeat command that fast, wait: &6[sec]&esec'
+      noOne: '&cNo one seeing this counter!'
+  cplaytime:
+    help:
+      info: '&eDetailed playtime'
+      args: (playerName)
+    info:
+      moreDetails: '&7Klikni pre viac informácii.'
+      title: '&8[playerDisplayName] &7herný čas.'
+      date: '&8[date]'
+      time: '&7[hour]:00&f-&7[nextHour]:00'
+      thishour: '&7Terajšia hodina'
+      hourback: '&7Predchádzajúca hodina'
+      today: '&7Dnes'
+      yesterday: '&7Včera'
+      thisweek: '&7Tento týždeň'
+      week: '&77 dní rozsah'
+      thismonth: '&7Tento mesiac'
+      month: '&730 daí rozsah'
+      thisyear: '&7Tento rok'
+      year: '&7365 daí rozsah'
+      total: '&7Celkovo'
+  ctellraw:
+    help:
+      info: '&eSend tellraw type message'
+      args: '[playerName/all] [formattedMessage]'
+      explanation: Usage is same as shown in http://www.zrips.net/cmi/custom-text/
+        aka customtext command
+  ctext:
+    help:
+      info: '&eShows custom text'
+      args: '[cText] (playerName)'
+    info:
+      list: '&eCustom Text: &6'
+      check: '&ePozri: &6[text]'
+  cuff:
+    help:
+      info: '&eSuspends players actions'
+      args: '[playername] (true/false)'
+    info:
+      noChat: '&cAll your actions are suspended. You can''t chat.'
+      noCommand: '&cYou cant use commands while suspended. &eAllowed: &6/msg, /r,
+        /tell'
+      cuffed: '&6[playerDisplayName] &ecuffed'
+      unCuffed: '&6[playerDisplayName] &euncuffed'
+      free: '&eYou are free now'
+      gotCuffed: '&eYou have been cuffed'
+      cuffedInfo: '&eYou are cuffed'
+      cantCuff: '&cYou can''t cuff this player!'
+  customrecipe:
+    help:
+      info: '&eManages item custom recipes'
+      args: ''
+    info:
+      removed: '&eRecept zmazaný: [id]. Reštartuj server!'
+      noRecipe: '&eŽiaden recept s týmto ID nebol nájdený.'
+      edit: '&8Uprviť recept (&6[type]&8)'
+      addNew: '&ePridať nový recept (&6[type]&e)'
+      shapelessRecipe: '&6Vytvor nový recept ktorý pôjde craftiť akokoľvek tie itemy
+        vložíš'
+      shapedRecipe: '&eVytvor nový recept ktorý pôjde craftiť iba tak ako ten item
+        zadáš'
+      furnaceRecipe: '&2Vytvor nový recept do pece'
+      mainTitle: '&8Vlastné recepty (&7[current]&8/&7[total]&8)'
+  dback:
+    help:
+      info: '&eReturns to death location'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&4Žiadna lokácia kam sa dá vrátiť nenájdená!'
+      feedback: '&6Vrátený na poslenú lokáciu úmrtia ([world],[x],[y],[z])!'
+  disableenchant:
+    help:
+      info: '&eDisable enchantment'
+      args: '[enchant/id] (disable/enable)'
+    info:
+      title: Vypnutie enchantov
+      feedback: '&6[enchantName] &ebol [state]'
+  dispose:
+    help:
+      info: '&eDispose of unneeded items'
+      args: (playerName)
+    info:
+      title: '&cOdpad'
+  distance:
+    help:
+      info: '&eCheck distance between 2 points'
+      args: (playerName) (playerName)
+    info:
+      feedback: '&7Vzdialenosť: &e[dist] &7x:&e[x] &7y:&e[y] &7z:&e[z] &7Smer:&e[dir]'
+  donate:
+    help:
+      info: '&eDonate item you are holding'
+      args: '[playerName] (amount)'
+    info:
+      donated: '&eDarovať &6[type]&eX&6[amount] &epredmet hráčovi &6[playerDisplayName]&e.'
+      got: '&eDostal si &6[type]&eX&6[amount] od hráča &6[playerDisplayName]'
+      sentOffer: '&eOdoslanie daru hráčovi &6[playerDisplayName]&e. Počkaj kým to
+        hráč príme.'
+      gotOffer: '&eDostal si &6[type]&eX&6[amount] &eod hráč &6[sourceDisplayName]&e.
+        Klikni pre prijtie.'
+      doesnthave: '&eHráč už nemá viac itemu.'
+  dsign:
+    help:
+      info: '&eManage dynamic signs'
+      args: (new)
+      explanation:
+      - Look at sign and perform /cmi dsign new
+    info:
+      howTo: '&cToto je dynamická cedulka. Vytvor ju príkazom &e/cmi dsign new'
+      gui: '&7---- &f<Otvor menu> &7----'
+      guiHover: '&7Otvor menu v GUI'
+      individual: '&7Samostatne: [state]'
+      individualLore:
+      - '&2True &7- Bude pre každého hráča ináč zobrazovaná'
+      - '&2True &7- Bude menená hráčovym placeholderom'
+      - '&2False &7- Bude physically menená'
+      - '&2False &7- Je viac efektívna ale viac limitovaná v rovnakom čase'
+      interval: '&7Update každých &6[second] &7sekund'
+      intervalLore:
+      - '&7Koľko krát za sekundu sa má cedulka updatovať.'
+      - '&7Môže by definované rýchlosťou scrollovania.'
+      range: '&7Funkčná vzdialenosť: &6[blocks]'
+      rangeLore:
+      - '&7Definovaná area okolo cedulky pre update.'
+  dye:
+    help:
+      info: '&eDye leather armor'
+      args: (playerName) (red,green,blue/hexCode/colorName/random/clear/rainbow/day/biome/health/day)
+        (-s)
+    info:
+      color: '&eMomentálna farba - &c[red],&2[green],&9[blue] &eHex:&6#[hex]'
+      custom: '&eZapnutie vlastnej farby: &6[mode]'
+      bound: '&eSoulBound na: &6'
+      boundName: '[playerName]'
+  editctext:
+    help:
+      info: '&eCustom text editor'
+      args: ''
+    info:
+      noText: '&cNázov custom textu neexistuje.'
+      editInfo: '&eKlikni pre vloženie starého textu. Napíš &6cancel &e pre zrušenie
+        akcie. Napíš &6remove &epre zmazanie riadka.'
+      addInfo: '&eNapíš nový riadok. Napíš &6cancel &epre zrušenie.'
+      addInformationHover: '&ePre zistenie možnosti písania použi CMI návod.'
+      newInfo: '&eNapíš nové meno Custom Textu. Napíš &6cancel &epre zrušenie.'
+      deleteInfo: '&eNapíš &6confirm &epre potvrdenie zmazania alebo &6cancel &epre
+        zrušenie.'
+      deleted: '&eCustom text (&6[ctext]&e) bol odstránený.'
+      createdNew: '&eCustom text (&6[ctext]&e) bol vytvorený.'
+      createNew: '&2 + '
+      createNewHover: '&ePridať nový'
+      autoPage: '&eAutomatická strana: &6[state]'
+      autoAlias: '&eAutomatický alias: &6[state]'
+      permReq: '&ePotrebná permissia: &6[state]'
+      list: '&eCustom Text: &6'
+  editlocale:
+    help:
+      info: '&eEdit your locale file'
+      args: (keyword(-s))
+    info:
+      found: '&7********* &eNájdené: [found] &7*********'
+  editplaytime:
+    help:
+      info: '&eEdit players playtime'
+      args: (playerName) [add/take/set] [amount] (-s)
+    info:
+      cantSet: '&cChyba pri zmene PlayTime.'
+      set: '&eZmenené z &6[old] &ena &6[new]'
+  editwarnings:
+    help:
+      info: '&eCheck player warnings'
+      args: (playerName/clearall) (clear)
+    info:
+      list: '&7[place]. &e[time] &6by [warnedBy] &cpre: &7[warnedFor]'
+      hover: '&7Expires in: [time]'
+      cleared: '&eAll warnings from player got cleared'
+      allCleared: '&eAll warnings from ALL players got cleared'
+  editwarp:
+    help:
+      info: '&eEdit warps'
+      args: (warpName)
+    info:
+      placeItem: '&2Vlož item pre zmenu ikonky'
+      placeOffItem: '&2Vlož item pre nastavenie vlastnej ikonky vypnutia.'
+      autoLore: '&2Automatický generátor loru: [state]'
+      permission: '&2Potrebné permissie pre použitie [state]'
+      reqPermission: '&2Zobrziť bez permisie [state]'
+      location: '&2Nastaviť novú lokáciu'
+      slot: '&2Slot: &6[slot]'
+      page: '&2Strana: &6[page]'
+      overllaps: '&2Presah z'
+      notSet: '&eNenastavené'
+  effect:
+    help:
+      info: '&eAdds potion effect to player. use clear to remove all effects'
+      args: '[playername] [effect/clear] (duration) (multiplier) (-s) (-visual)'
+      explanation:
+      - -visual will add visible bubbles and icon on top right corner
+      - 'Examples:'
+      - /cmi effect zrips nightvision 60 1 - will give 60 sec night vision for Zrips
+      - /cmi effect zrips nightvision +10 - will add 10 sec to current night vision
+        time
+      - /cmi effect zrips nightvision -10 - will take out 10 sec from current night
+        vision time
+    info:
+      feedback: '&eEffect &6[effect] &epridaný hráčovi &3[playerDisplayName]&e. Čas:
+        &6[sec] sekund&e. Level: &6[power] &e(&3[offon]&e).'
+      cleared: '&eVšetky effecty zmazané hráčovi &3[playerDisplayName]&e (&3[offon]&e).'
+  enchant:
+    help:
+      info: '&eEnchant items'
+      args: (playerName) [enchant] [level] (-o) (-onlyvalid) (-inform) (-s) (-i:[itemName(:data)])
+      explanation:
+      - -o will take item from offhand
+    info:
+      feedback: '&eNastavil si enchant &3[enchant]:[level]&e hráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      removed: '&eZmazal si enchant &3[enchant] &ehráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      cleared: '&eVšetky enchanty boli zmazané hráčovi &3[playerDisplayName]&e (&3[offon]&e).'
+      noitem: '&cNemáš žiaden item v ruke.'
+      invalidEnchant: '&cNemáš oprávnenie na enchantovanie.'
+      clearedInvalid: '&eZmazaných &6[amount] &eenchantov.'
+      inccorectId: '&eNesprávny názov alebo ID enchantu.'
+      wrongItem: '&eDržíš zlý item v ruke.'
+      enchantlimit: '&cNemáš oprávnenie na tento enchant.'
+      levellimit: '&cLevel enchantu je veľmi veľký. Najvyšší povolený level je &e[level]&c.'
+      posible: '&eMožné enchanty: '
+      posibleList: '&6[enchant]'
+  ender:
+    help:
+      info: '&eOpens players ender chest'
+      args: (playerName)
+      explanation:
+      - cmi.command.ender.preventmodify - prevents inventory modifications
+      - cmi.enderedit - allows to edit opened inventory
+    info:
+      title: '&8[playerDisplayName] Ender truhla'
+      feedback: '&eEdituješ hráčovi &3[playerDisplayName] &eender truhlu (&3[offon]&e).'
+  endgateway:
+    help:
+      info: '&eToggle end gateway beam'
+      args: ''
+    info:
+      'off': '&7EndGateWay &eOff'
+      'on': '&7EndGateWay &6On'
+  entityinfo:
+    help:
+      info: '&eCheck entity information'
+      args: ''
+    info:
+      type: '&eEntity Type: &6[type]'
+      customName: '&eVlastné meno: &6[name]'
+      health: '&eŽivoty: &6[current]&e/&6[max]'
+      lastDamage: '&ePosledné poškodenie: &6[cause]'
+      tamed: '&eVlastník: &6[state]'
+      owner: '&eMajiteľ: &6[playerDisplayName]'
+  entitynbt:
+    help:
+      info: '&eCheck entity nbt information'
+      args: ''
+  exp:
+    help:
+      info: '&eManage players exp. Use L to set levels'
+      args: '[playerName] [add/set/take/clear] [amount]'
+      explanation:
+      - 'Example:'
+      - /exp 10
+      - /exp add 10
+      - /exp set 10L
+      - /exp take 10
+      - /exp Zrips clear
+      - /exp Zrips add 10
+    info:
+      current: '&eHráč [playerDisplayName] &emá &6[lvl]&elvl. XP: &6[currentExp]&e.
+        Celkovo XP: &6[exp]&eexp.'
+      selfFeedback: '&eXP bolo nastavené na &3[exp] &ehráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetFeedback: '&eTvoje XP boli nastavené na &3[exp]&e.'
+  ext:
+    help:
+      info: '&eExtinguish a player'
+      args: (playerName) (-s)
+    info:
+      feedback: '&eUhasil si hráča &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eBol si uhasený.'
+  feed:
+    help:
+      info: '&eFeed player'
+      args: '[playerName]'
+    info:
+      feedback: '&eDoplnil si si jedlo.'
+      targetfeedback: '&eTvoje jedlo bolo doplnené.'
+  findbiome:
+    help:
+      info: '&eFinds nearest biome by name'
+      args: '&3(biomeName/stop)'
+    info:
+      infoShow: '&6TPS: &3[tps] &6Ostáva &e[left] &6(&e[time]&6) &6Rýchlosť: &e[speed]'
+      stopped: '&eZastavené!'
+      cantFindBiome: '&eNenašlo požadovaný biom. Prezreté: &6[amount] &echunkov.'
+      teleportedTo: '&eTeleportnutý do &6[biome] &ebiomu.'
+  fixchunk:
+    help:
+      info: '&eScans for damaged chunks'
+      args: '&ew &6[worldName]&e r &6[range in chunks]&e c &6[x:z]&e '
+      explanation:
+      - '&6SubCommands:'
+      - '- &6stats &e- show current scanning stats'
+      - '- &6pause &e- pause scaning'
+      - '- &6continue &e- continue scaning'
+      - '- &6stop &e- stop scaning'
+      - '- &6speed [amount] &e- set current scan speed'
+      - '- &6autospeed [true/false] &e- set autospeed turned off or on'
+      - '- &6messages [true/false] &e- set message output to off or on'
+      - 'Example:'
+      - /fixchunk w LT_Craft
+      - /fixchunk w LT_Craft r 50 c 1024:-2048
+      - /fixchunk w LT_Craft r g
+      - /fixchunk fix
+    info:
+      startScanning: '&eNájdených &6[amount] &echunkov pre prehľadanie!'
+      paused: '&eScan pozastavený. Pre pokračovanie napíš &6/cmi fixchunk continue.'
+      continuing: '&eScan spustený.'
+      stoped: '&eScan zastavený. Výsledok zistíš príkazom /cmi fixchunk info'
+      speedChange: '&eRýchlosť zmenená na [amount]'
+      autospeedChange: '&eAutomatická rýchlosť nastavená na [state]'
+      messagesChange: '&eSpráva o stave zmenená na [state]'
+      NoInfo: '&eNenájdené žiadne info.'
+      InfoShow: '&6TPS: &3[tps] &6Ostáva &e[left] &6(&e[min]m:[sec]s&6) &6Rýchlosť:
+        &e[speed] &6Nájdené: &e[found]'
+      scanList: '&2[number]. &7X:&f[x] &7Z:&f[z]'
+      finished: '&eScan dokončený. Použi &6/cmi fixchunk fix &epre opravenie chýb.
+        &cChunky budú regenerované!'
+      fixed: '&2[number] &eospravených chunkov.'
+      total: '&eKontrolujem [current]/[until] z [total]'
+      stats:
+      - '&e************************************************************'
+      - '&e* &6Chunky: &e[checked]/[total]'
+      - '&e* &6Vzdialenosť scanu: &e[range]'
+      - '&e* &6Rýchlosť scanu: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6Reálna rýchlosť: &e[cps] &6CPS (&e[avgcps] avg&6)'
+      - '&e* &6Svet: &e[world]'
+      - '&e* &6Nájdené: &e[found]'
+      - '&e* &6Čas: &e[min]min [sec]sec'
+      - '&e************************************************************'
+  flightcharge:
+    help:
+      info: '&eCheck flight charges'
+      args: (add/take/set/show/expcharge/moneycharge/recharge) (playerName) (amount)
+    info:
+      charge: '&ePočet nabití: &6[charge]&e/&6[max]'
+      changed: '&eTvoje počet nabití zmenený na &6[charge]'
+      newCharge: '&eNový počet nabití: &6[charge]'
+      bossbar: '&2>> &fNabitia [charge][changeAmount]&7/&f[max] &2<<'
+      guiTitle: '&8Nabitie obnovené.'
+      buttonExp: '&6Nabitie z XP.'
+      buttonMoney: '&6Nabitie z peňazí.'
+      max: '&6Máš plné nabitia.'
+      guiLore:
+      - '&eĽavé kliknutie +1'
+      - '&6Shift+ľavé kliknutie +10'
+      - '&ePravé kliknutie +100'
+      - '&6Shift+pravé kliknutie +1000'
+      changeAmount: '&e([amount]&e)'
+  fly:
+    help:
+      info: '&eSet players fly true or false'
+      args: '[playerName] [true/false] (-s)'
+    info:
+      feedback: '&7Lietanie bolo [boolean]&7.'
+      targetFeedback: '&7Lietanie bolo &3[boolean]&7.'
+  flyc:
+    help:
+      info: '&eToggle flight charge mode'
+      args: (playerName) (true/false) (-s)
+    info:
+      feedback: '&eTvoje nabitie lietania bolo &3[boolean]&e hráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetFeedback: '&eTvoje nabitie bolo nastavené na &3[boolean]&e.'
+      targetFeedbackSelf: '&eTvoje nabitie nastavené na &3[boolean]'
+      noCharge: '&eNabitie bolo vyčerpané.'
+  flyspeed:
+    help:
+      info: '&eSet players fly speed from 0 to 10'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&eRýchlosť lietania nastavená na &3[amount]&e.'
+      targetfeedback: '&eTvoja rýchlosť lietania bola nastavená na &3[amount]&e.'
+      max: '&eMaximálna rýchlosť lietania je &6[max]&e.'
+  gamerule:
+    help:
+      info: '&eZmena gamerule'
+      args: ''
+  getbook:
+    help:
+      info: '&eGet book'
+      args: '[cTextName] (playerName)'
+    info:
+      list: '&eKnihy: &6'
+      check: '&6[text]'
+      title: '&7[title]'
+  give:
+    help:
+      info: '&eGive item to player'
+      args: (playerName) [itemname:([dataValue])] (amount)
+      explanation:
+      - Name and lore supports placeholders
+      - 'Example: /give stone'
+      - /give Zrips stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give Zrips sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give Zrips sponge 1 e Knockback:%rand/1-5%
+      - /cmi give Zrips sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+    info:
+      feedback: '&6Dal si &e[amount]x [itemname] &6(&e[customitemname]&6) hráčovi
+        &e[playerDisplayName]'
+      wrongEntityId: '&cZlé ID.'
+      maxLimit: '&cNemôžeš givnúť viac ako &7[max] &citemov naraz.'
+      maxLimitResize: '&cNemôžeš givnúť viac ako &7[max]. &cZmena limitu.'
+  giveall:
+    help:
+      info: '&eGive item to all players'
+      args: '[itemname] (amount) (e|l|n|offline)'
+      explanation:
+      - '&e- give item name or its id with data value'
+      - '&e- optionaly provide amount you want to giv '
+      - '&e- &6n &e- to define itemname '
+      - '&e- &6l &e- todefine item lore '
+      - '&e- &6e &e - to define item enchants '
+      - '&e- &6-s &e - wont show feedback message '
+      - '&e- &6h &e - falowed with player name will give item from its hand '
+      - '&e- &6inv &e - fallowed by player name will give entire inventory for others '
+      - '&e- &6offline &e- to include offline players'
+      - '&ecmi giveall stone 1 n &2Uber_stone l &3Stone_lore offline'
+      - '&ecmi giveall h Zrips'
+      - '&ecmi giveall inv Zrips'
+    info:
+      starting: '&6Givovanie všetkým hráčom bolo spustené. Môže to chvíľu zabrať.'
+      running: '&6[amount] givnutých itemov...'
+      feedback: '&6Dokončené. &e[amount] &6hráčov dostalo item.'
+  glow:
+    help:
+      info: '&eSet players glow mode'
+      args: (playerName) [true/false/color/gui]
+      explanation:
+      - 'Example: /glow Zrips red'
+      - 'Permissions: cmi.command.glow.[color] - allows to set particular glow color'
+    info:
+      feedback: '&7Glow bolo [boolean]'
+      targetfeedback: '&7Glow bolo [boolean]'
+  gm:
+    help:
+      info: '&eSet players game mode'
+      args: '[playerName] [gamemode]'
+    info:
+      feedback: '&eHráčovi &3[playerDisplayName]&e si nastavil &3[gameMode] (&3[offon]&e).'
+      targetfeedback: '&eTvoj herný mod sa zmenil na &3[gameMode]&e.'
+  god:
+    help:
+      info: '&eSet players god mode to true or false'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&7God bolo &3[boolean]&7.'
+      targetfeedback: '&7God bolo &3[boolean]&7.'
+  groundclean:
+    help:
+      info: '&eClears server from unnecessary items'
+      args: (+cb) (+cm) (+ci) (+b)
+      explanation:
+      - +cm will include minecarts into cleaning
+      - +cb will include boats into cleaning
+      - +ci defines if you want to include weapons and armors
+      - +b broadcasts clear message to everyone
+    info:
+      removed: '&a&lINFO &f- &6Itemy na zemi boli zmazané..! Celkom: &e[items]&6..!'
+      items: ' &eItemy: &6[items]'
+      arrows: ' &eŠípy: &6[arrows]'
+      exporbs: ' &eXP: &6[exporbs]'
+      blocks: ' &ePadajúce blocky: &6[blocks]'
+      projectiles: ' &eProjektili: &6[projectiles]'
+      tnt: ' &eTNT: &6[tnt]'
+      boat: ' &eLode: &6[boat]'
+      minecart: ' &eVozíky: &6[minecart]'
+      nothing: '&eNič nebolo zmazané.'
+  haspermission:
+    help:
+      info: '&eCheck if player has particular permission'
+      args: (playerName) [permissionNode]
+    info:
+      title: '&6[playerDisplayName] &e-> &6[permission]'
+      none: '&ePermissia nebola nastavená pre hráča ktorý nemá OP. Výsledky &6[state]'
+      softSet: '&eNastavené plugin.yml pre &6[state]'
+      hardSet: '&eHard set to &6[state] &eby some plugin'
+      notHardSet: '&eNot hard set, can result to &cFalse &ein some cases'
+      ops: '&eResults to &6[state] &ebecause player is OP'
+  hat:
+    help:
+      info: '&ePlace item like hat'
+      args: (playerName)
+    info:
+      feedback: '&7Item úspešne nasadený na hlavu!'
+      targetfeedback: '&6Tvoj item na hlave bol zmenený!'
+      fullinv: '&3[playerDisplayName] &6má plný inventár. Item nemôže byť zmenený.'
+  head:
+    help:
+      info: '&eGet players head'
+      args: '[sourceName] (targetName) (-s)'
+    info:
+      Feedback: '&7Hlava hráča &c[headName] &7bola vygenerovaná!'
+      targetFeedback: '&eDostal si hlavu hráča &3[headName]&e!'
+  heal:
+    help:
+      info: '&eHeal player'
+      args: '[playerName] (healamount/healpercent)'
+    info:
+      feedback: '&eTvoje životy boli doplnené.'
+      feedbackMulti: '&eDoplnil si &3[count] &ehráčom životy.'
+      targetfeedback: '&eTvoje životy boli doplnené.'
+  helpop:
+    help:
+      info: '&ePotrebujes pomoc > /helpop <zprava>'
+      args: '[message]'
+      explanation:
+      - ''
+    info:
+      message: '&a[Pomoc] &7[senderDisplayName] &f»&a [message]'
+  hideflags:
+    help:
+      info: '&eHides item flags'
+      args: (playerName) [flagName/clear]
+    info:
+      feedback: '&ePridal si novú vlajku pre item hráča &3[playerDisplayName]&e (&3[offon]&e).'
+      cleared: '&eVšetky vlajky itemu boli zmazané hráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNemáš v ruke žiaden item.'
+      inccorectId: '&eNesprávne meno vlajky.'
+  hologram:
+    help:
+      info: '&eCreate holograms'
+      args: ''
+    info:
+      howTo: '&cPre vytvorenie hologramu použi príkaz &e/cmi hologram new &6[name]'
+      gui: '&7---- &f<Otvor GUI nastavenie> &7----'
+      guiHover: '&7Otvorenie GUI nastavení'
+      interval: '&7Aktualizovať každých &6[second] &7sekund.'
+      intervalLore:
+      - '&7Ako pravidelne aktualizovať hologram.'
+      - '&7Ak sa text nemení nastav to na -1.'
+      pageInterval: '&7Zmeniť stranu každých &6[second] &7sekund.'
+      pageIntervalLore:
+      - '&7Ako často v sekundách sa budú strany hologramu meniť.'
+      pageIntervalNoPages: '&4Tento hologram nemá žiadne strany.'
+      text: '&7Medzera pre text &6[space]'
+      usync: '&7Text sa bude meniť: &6[state]'
+      reqPermission: '&7Potrebné práva pre videnie: &6[state]'
+      teleport: '&7Teleport na lokáciu hologramu.'
+      icon: '&7Medzera pre ikonku &6[space]'
+      iconLore:
+      - '&7Definuje vzdialenosť medzi objektami.'
+      range: '&7Vzdalenosť načítania: &6[blocks]'
+      rangeLore:
+      - '&7Definuje vzdialenosť oblasti pre zobrazenie hologramu.'
+      updateRange: '&7Vzdialenosť pre aktualizáciu: &6[blocks]'
+      updateRangeLore:
+      - '&7Definuje oblasť okolo hologramu pre aktualizovanie.'
+      relocate: '&7Zmeniť pozíciu'
+      relocateLore:
+      - '&7Zmení pozíciu hologramu.'
+      interact: '&7Interakcia: &6[state]'
+      commands: '&7Príkazy:'
+      particles: '&7Zobrzenie particlov: &6[state]'
+      big: '&7Veľké tlačidlo: &6[state]'
+      bigLore:
+      - '&7Prevencia pred stánim v holograme.'
+      order: '&7Znížené položenie: &6[state]'
+      moveX: '&7X:&e[x]'
+      moveY: '&7Y:&e[y]'
+      moveZ: '&7Z:&e[z]'
+      shift:
+      - '&eZmení o 0.01 alebo drž shift pre zmenu o 0.1'
+      list: '&6[place]&e. [name]'
+      addInfo: '&eVlož nový riadok textu. Napíš &6cancel &epre zrušenie. Prídavné
+        možnosti: &6ICON:&7[Value] &6SICON:&7[Value]&e kde &7Value&e- &7[MaterialName-amount]%enchanted%&e,
+        &7%itemInHand%&e, &7Head:[headOwner]'
+  hologrampages:
+    help:
+      info: '&eZmeniť stranu hologramu.'
+      args: '[holoName] (playerName) (next/prev/[pageNumber])'
+  home:
+    help:
+      info: '&7Teleportuje na svoj domov.'
+      args: (homeName) (playerName) (whoTeleport)
+    info:
+      list: "&A      \n&7&M-----&r &4&lDOMOVI &7&M-----\n&A    "
+      listNonePrivate: '&a'
+      listPrivate: '&2'
+      click: '&7Klikni pre teleport na domov &e[home]'
+      teleported: '&7Teleportujem na domov &8(&c[home]&8)'
+      noHomes: '&7Nemáš žiadne domovi'
+      private: '&cTáto lokácia domu je súkromná!'
+      remove: '&7Shift + pravé tlčídko pre odstránenie domova.'
+      title: '&0[playerDisplayName] &8domovi.'
+  homes:
+    help:
+      info: '&eCheck home list'
+      args: (playerName)
+  hunger:
+    help:
+      info: '&eSet players hunger'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&eNastavil si &3[hunger]&e jedlo hráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTvoje jedlo bolo zmenené na &3[hunger]&e.'
+  ic:
+    help:
+      info: '&eCreate interactive command'
+      args: (new) (name)
+    info:
+      titleC: ' &e--- &6[name] '
+      titleB: '&e[type] &e---'
+      public: ' &2[Public]'
+      notPublic: ' &7[NotPublic]'
+      reqPerm: ' &2[ReqPerm]'
+      noPerm: ' &7[ReqPerm]'
+      permHover: ' &ePotrebná permissia &7[permission] &epre položenie tejto cedulky.'
+      editSign: ' &e[EditSignLines]'
+      publicHover: "&eZmení verejný status. \nPrvý riadok cedulky &e[ic:[name]]"
+      createdPublic: '&eVytvorenie novej interaktivnej cedulky.'
+      list: '&e[place]. &6[name]'
+      listType: ' &e[type]    '
+      editCommands: '&eEdit príkazov'
+      editBlocks: ' &eEdit blockov'
+      addBlock: '&ePridanie blocku na ktorý práve pozeráš.'
+      addEntity: ' &ePridanie entity na ktorú práve pozeráš.'
+      manageCommands: '&ePrepnúť na editor príkazov.'
+      manageBlockEnt: '&ePrepnúť na editor blockov/entít.'
+      locList: '&e[place]. &6[type]   '
+      entList: '&e[place]. &6[type]   '
+      ListHover:
+      - '&eSvet: &6[world]'
+      - '&eX:[x] &6Y:[y] &eZ:[z]'
+      notPublicIc: '&cToto nemôžeš použiť. Není to verejné.'
+      noCommandBlocks: '&eNeexistujú žiadne interaktívne príkazy.'
+      commandList: ' &e[command]  '
+      block: (Block)
+      entity: (Entity)
+      both: (Both)
+      none: (None)
+      addedNew: '&ePridanie nového blocku/entity pre &6[name]'
+      dontExist: '&cŽiaden takýto interaktívny príkaz neexistuje.'
+      exists: '&cTento názov pre interaktívny príkaz existuje.'
+      blockExist: '&cTento block je už použitý pre &e[name]'
+      entityExist: '&cTáto entita už je pridaná pre &e[name]'
+      cantUsePlayer: '&cNemôžeš použiť hráča pre nastavenie príkazu.'
+      addInfo: '&eNapíš nový príkaz. Napíš &6cancel &epre zrušenie.'
+      addInformationHover: |-
+        &eGlobálne možnosti pre odosielatela.
+         &eDelay: delay! 5
+      editInfo: '&eKlikni pre vloženie starého textu. Napíš &6cancel &epre zrušenie
+        alebo &6remove &epre odstránenie riadku.'
+  ifoffline:
+    help:
+      info: '&ePerform command only when player is offline'
+      args: '[playerName] (command)'
+  ifonline:
+    help:
+      info: '&ePerform command only when player is online'
+      args: '[playerName] (command)'
+  ignore:
+    help:
+      info: '&eIgnores player'
+      args: (playerName/uuid/all)
+      explanation:
+      - cmi.command.ignore.bypass - to bypass ignore list
+    info:
+      self: '&7Nemôžeš ignorovať sám seba.'
+      added: '&7Ignoruješ hráča &c[playerDisplayName]&7.'
+      addedAll: '&7Ignoruješ všetkých hráčov.'
+      all: '&eVšetkých'
+      removed: '&7Už neignoruješ hráča &c[playerDisplayName]&7.'
+      removedAll: '&eUž neignoruješ nikoho.'
+      list: '&e[place]. [playerDisplayName]  '
+      ignoringYou: '&c[playerDisplayName] &eťa ignoruje.'
+      empty: '&7Ignore list je prázny.'
+  importfrom:
+    help:
+      info: '&eImport data from other plugins'
+      args: '[essentials] [home/warp/nick/logoutlocation/money/mail]'
+    info:
+      converted: '&eConverted: &6[done]&e/&6[total] &eusers'
+      convertedWarps: '&eConverted &6[amount] &ewarps'
+      noInfo: '&cYou forgot to provide information what you want to import exactly'
+      saving: '&eSaving data into data base'
+      HDfile: '&cCould not find HolographicDisplays plugin database file. Aborting.'
+      HDexist: '&cHologram by &7[name] &cname already exists. Skipping.'
+      HDfailed: '&cCould not load hologram (&7[name]&c)'
+      HDimported: '&eImported &7[amount] &eholograms'
+  importoldusers:
+    help:
+      info: '&eImports users from playerdata folder in main world folder. Server can
+        suffer lag spike during import'
+      args: ''
+    info:
+      starting: '&eStarting import'
+      feedback: '&eImported &6[amount] &enew users'
+  info:
+    help:
+      info: '&eShow players information'
+      args: '[playerName/uuid]'
+    info:
+      feedback:
+        uuid: "&7 \n&7    Vložiť do chatu    \n&7 "
+      Name: '&7Nick: &e[dname] &8(&c[name]&8)'
+      knownAs: '&7Tiež hral za nicky: &e[namelist]'
+      Uuid: '&7UUID: &e[uuid]'
+      OnlineUuid: '&7Premium UUID: &e[OnlineUuid]'
+      Ip: '&7Ip: &e[ip]'
+      Op: '&7OP: &e[op]'
+      God: '&7GodMode: &6[godmode]'
+      Money: '&7Peniaze: &e[money]'
+      Group: '&7Rank: &e[group]'
+      Gm: '&7Gamemode: &e[mode]'
+      Hp: '&7Životy: &e[hp]&f/&e[maxhp]'
+      Air: '&eVzduch: &6[leftair]&e/&6[totalair]'
+      Hunger: '&7Jedlo: &e[food]&f/&e20'
+      Saturation: '&e(saturation +&6[saturation]&e)'
+      Exp: '&7XP: &e[totalexp]xp'
+      Location: '&7Pozícia: &e[world] &8(&7X: &e[x] &7Y: &e[y] &7Z: &e[z]&8)'
+      deathLocation: '&7Pozícia smrti: &e[world] &8(&7X: &e[x] &7Y: &e[y] &7Z: &e[z]&8)'
+      bed: '&ePostel: &6[bworld] (&e[bx]&6:&e[by]&6:&e[bz]&6)'
+      respawn: '&eĎalší respawn: &6[rworld] (&e[rx]&6:&e[ry]&6:&e[rz]&6)'
+      flySpeed: '&7Rýchlosť lietania: &6[flyspeed]'
+      walkSpeed: '&7Rýchlosť chodenia: &6[walkspeed]'
+      Sprint: '&eBehanie: &6[sprinting]'
+      Sneek: '&eShiftovanie: &6[sneaking]'
+      Banned: '&eBAN: &6[banned]'
+      Muted: '&MUTE: &6[muted]'
+      Jailed: '&7JAIL: &e[jailed]'
+      Cuffed: '&eStun: &6[cuffed]'
+      homes: '&7Domovi: &6[homes]'
+      firstLogin: '&7Prvé pripojenie: &e[firstLogin]'
+      canSee: '&7Môže ťa vidieť: &e[canseeyou]'
+      afk: '&7AFK: &6[afk]'
+      Fly: '&7Môže lietať: &6[fly] &8(&6[isflying]&8)'
+      Online: '&7Online: &e[online] &7online pred: &e[logoff]'
+      CountryHoverNew: '&7[country] &f(&2[countryCode]&f)'
+      CityHover: '&7[city]'
+      LocalTimeHover: '&fLocal time: &7[time]'
+      List:
+      - '&a '
+      - '&8&m--------------&r &4&lINFO O HRÁČOVI &8&m--------------'
+      - ' [group] &8&l| [name] &8&l| [afk]'
+      - ' [knownAs]'
+      - ' [uuid]'
+      - ' [OnlineUuid]'
+      - ' [ip]'
+      - ' [gm]'
+      - ' [godmode] &8&l| [fly]'
+      - ' [flySpeed] &8&l| [walkSpeed]'
+      - ' [money] &8&l| [exp]'
+      - ' [hp] &8&l| [hunger]'
+      - ' [location]'
+      - ' [online]'
+      - ' [homes] &8&l| [firstLogin]'
+      - '&8&m------------------------------------------'
+      - '&a '
+  inv:
+    help:
+      info: '&eOpens players inventory'
+      args: '[playerName]'
+      explanation:
+      - cmi.command.inv.preventmodify - prevents inventory editing
+      - cmi.invedit - allows to edit inventory
+    info:
+      feedback: '&eEdituješ inventár hráčovi &3[playerDisplayName] (&3[offon]&e).'
+  invcheck:
+    help:
+      info: '&eOpen saved inventory in preview mode'
+      args: (playerName) [id] (-e)
+  invlist:
+    help:
+      info: '&eShow saved inventories list'
+      args: (playerName)
+  invload:
+    help:
+      info: '&eLoad saved inventory'
+      args: (sourceName) (targetName) [id/last]
+  invremove:
+    help:
+      info: '&eRemove saved inventories for player'
+      args: (playerName) [id/all/last]
+  invremoveall:
+    help:
+      info: '&eRemoves all saved inventories'
+      args: '[confirmed]'
+    info:
+      removed: '&eVšetky uložené inventáre zmazané ([count])'
+  invsave:
+    help:
+      info: '&eSave inventory'
+      args: (playerName) (id) (-s)
+  ipban:
+    help:
+      info: '&eBan ip'
+      args: '[ip/playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - to bypass ban
+    info:
+      message: '&cYou are ip banned from this server!'
+      reason: '&6Reason: &e[reason]'
+      defaultReason: '&eViolated server rules'
+      messageToAll: '&6[playerDisplayName] &egot ip banned by &6[senderDisplayName]
+        &efor: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &egot ip banned by &6[senderDisplayName]
+        &efor: &6[reason]'
+  ipbanlist:
+    help:
+      info: '&eBan ip list'
+      args: ''
+    info:
+      list: '&e[place]. &7[ip] &e- &6[reason]  '
+      bannedBy: '&7Banned by: &f[source]'
+      ends: '&7Ends: &f[time]'
+      related: |-
+        &7Related accounts:
+        &f[list]
+  item:
+    help:
+      info: '&eGive item to yourself'
+      args: '[itemname] (amount)'
+      explanation:
+      - Name and lore supports placeholders
+      - 'Example: /give stone'
+      - /give stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give sponge 1 e Knockback:%rand/1-5%
+      - /cmi give sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+  iteminfo:
+    help:
+      info: '&eShow item information'
+      args: (playerName)
+    info:
+      id: ' &eId: &6[id][data]'
+      realName: ' &eReálne meno: &6[name]'
+      bukkitName: ' &eBukkit meno: &6[name]'
+      mojangName: ' &eMojang meno: &6[name]'
+      entityType: ' &eEntity typ: &6[type]'
+      durability: ' &eVýdrž: &6[current]&e/&6[max]'
+  itemlore:
+    help:
+      info: '&eChange items lore'
+      args: (-p:[playerName]) [linenumber] [remove/insert/ new lore line]
+    info:
+      feedback: '&eZmenil si popis itemu na riadku ''&r&5[loreLine]&e'' hráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNemáš v ruke žiaden item.'
+      removed: '&eZmazal si popis itemu na riadku &6[line] &ehráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      inserted: '&ePopis itemu na riadku &6[line] &ebol vložený hráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      maxLines: '&eExistuje iba &6[lines] &eriadok v popise.'
+      blocked: '&eTento item nemôže mať zmenený popis.'
+  itemname:
+    help:
+      info: '&eRename items'
+      args: (-p:[playerName]) [remove/your new item name]
+    info:
+      feedback: '&eZmenil si meno itemu na [itemname]&e hráčovi &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNemáš v ruke žiaden item.'
+      removed: '&eMeno itemu bolo zmazané hráčovi &3[playerDisplayName]&e (&3[offon]&e).'
+      blocked: '&eTento item nemôže mať zmenený názov.'
+  itemnbt:
+    help:
+      info: '&eShow item NBT information'
+      args: (playerName)
+    info:
+      step: ' &6->: &6[name]'
+      final: '&e[value]'
+      list: '&e- &r[value]'
+      noNbt: '&eItem nemá žiadne NBT dáta.'
+  jail:
+    help:
+      info: '&eJail player for time period'
+      args: '[playerName] (time) (jailName) (cellId) (-s) (r:jail_reasson)'
+    info:
+      jailed: '&eDal si hráča &6[playerDisplayName] &edo vezenia na [time]'
+      jailedPlayer: '&eHráč &6[playerDisplayName] &ebol uveznený na [time]'
+      reason: ' &eDôvod: &c[reason]'
+      leftTime: '!title!&7Čas vo väzbe:!subtitle![time]'
+      jailedTarget: '&eBol si uveznený! [time]'
+      cantTalk: '&cNemôžeš písať do chatu počas toho ako si uveznený.'
+      cantTalkRange: '!actionbar!&fTvoja vzdialenosť chatu je &c[range] &fblokov.'
+      failed: '&cChyba pri pokuse o uveznenie hráča. Skontroluj meno väzby alebo čas.'
+      bossbar: '&7Čas vo vezení: [autoTimeLeft]'
+      noCommand: '&cNemôžeš použiť tento príkaz počas väzby.'
+  jailedit:
+    help:
+      info: '&eEdit jails'
+      args: ''
+    info:
+      notInArea: '&cNestojíš v žiadnej časti kde je vezenie.'
+      noName: '&cMeno väzby neexistuje.'
+      noCell: '&cID väzby neexistuje.'
+      exist: '&cVäzba s týmto menom už existuje.'
+      createdJail: '&eVäzba s názvom &6[jail]&e úspešne vytvorená'
+      createdCell: '&eSuccessfully created new jail cell (&6[jail]&e:&6[cellId]&e)'
+      collides: '&cCollides with &6[jailName] &ejail'
+      jailList: '&e[place]. &6[jail] &eCells:&6[cells] &eJailed: &6[amount]    '
+      editCells: '&eEdit cell list'
+      cellList: '&eCell id:&6[id] &ejailed: &6[amount]    '
+      jailListTp: ' &7[tp] '
+      jailListTpHover: '&eSet outside teleport location'
+      jailListArea: ' &7[area] '
+      jailListAreaHover: '&eRedefine area'
+      jailRemoved: '&eRemoved (&6[jail]&e) jail'
+      jailOutside: '&eSet new outside location'
+      jailArea: '&eRedefined area for &6[jail]'
+      cellRemoved: '&eRemoved (&6[cellId]&e) cell from &6[jail]'
+  jaillist:
+    help:
+      info: '&eList jails'
+      args: (jailName) (cellId)
+    info:
+      jailList: '&6[place]. &e[jailName] &7Cells:&e[cellCount] &7Jailed:&6[count]'
+      cellList: '&6[place]. &7Id:&e[cellId] &7Jailed:&6[count]'
+      cellJailedList: '&6[place]. &e[playerDisplayName] &7release in &e[time]'
+      Release: '&7Click to release'
+  jump:
+    help:
+      info: '&eJump to target block'
+      args: ''
+    info:
+      tooFar: '&cBlock na ktorý mieriš je príliš ďaleko. (maximálne [max] blockov)'
+  kick:
+    help:
+      info: '&eKick player with custom message'
+      args: '[playerName/all] (message) (-s)'
+      explanation:
+      - cmi.command.kick.bypass - prevents from being kicked out
+    info:
+      defaultMessage: '&eKicked from server'
+      cantKick: '&eCan''t kick this player'
+      messageToAll: '&6[playerDisplayName] &egot kicked from server.'
+      kickReason: ' &eReason: &6[reason]'
+      all: '&eKicked &6[amount] &eplayers from server'
+  killall:
+    help:
+      info: '&eKill mobs around you'
+      args: (-monsters/-pets/-npc/-animals/-ambient/-named/-f/-lightning/-list/[mobType])
+        (range) (-s)
+    info:
+      infoList: '&2[category]&e: &7[amount] &e([list]&e)'
+      removedList: '&6[type]&e: &7[amount]'
+      total: '&eCelkovo zmazané: &7[amount] &e([list]&e)'
+      noRemove: '&eNie je čo zmazať.'
+      monsters: Monštrá
+      pets: Peti
+      npc: NPC
+      animals: Zvieratá
+      ambient: Ambient
+      vehicles: Vozidlá
+      named: S vlastným menom
+  kit:
+    help:
+      info: '&eGives predefined kit.'
+      args: '[kitName] (playerName)'
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.kit.[kitName] &e- allows to use particular kit'
+      - '&6cmi.kit.bypass.money &e- bypass money requirement'
+      - '&6cmi.kit.bypass.exp &e- bypass exp requirement'
+      - '&6cmi.kit.bypass.onetimeuse &e- bypass one time use'
+      - '&6/cmi kit [kitName] [playerName] &e- will give kit to another player'
+    info:
+      noMoney: '&eNemáš dostatok peňazí. Potrebujš &6[cost]&e.'
+      noExp: '&eNemáš dostatok XP. Potrebuješ &6[cost]&e.'
+      noCondition: '&eNemáš permissie použiť kit: &6[condition]'
+      oneTime: '&cTento kit šiel použiť iba raz. Už si ho použil!'
+      cantUseNow: '&cPre použitie toho kitu musíš počkať [time]'
+      limitedTimeUseError: '&eTento kit nemôžeš použiť viac ako &6[times] &ekrát.'
+      limitedTimeUse: '&7Môžeš použiť za &c[times]&7.'
+      limitedTimeAllUsed: '&cNemôžeš dostať nový.'
+      canUseIn: '&eMôžeš použiť za: [time]'
+      cooldown: '&eOdpočet: [time]'
+      noKit: '&eTento kit neexistuje.'
+      noKitAccess: '&cNemáš právo použiť tento kit.'
+      noFoundKit: '&eNenájdené žiadne kity.'
+      givenKit: '&eDal si kit &6[kit] &ehráčovi &6[playerDisplayName]'
+      title: '&8Kity'
+      nameCanUse: '&6[kitName]'
+      nameCantUse: '&7[kitName]'
+      group: '&eSkupina: &6[group]'
+      left: '&6Ľavý &eklik pre použitie.'
+      right: '&6Pravý &eklik pre zobrazenie.'
+      take: '&6Zobrať tento kit!'
+  kitcdreset:
+    help:
+      info: '&eReset kit timer'
+      args: (kitName) (playerName)
+    info:
+      notCd: '&eTento kit nemá odpočet.'
+      reset: '&eOdpočet pre kit (&6[kit]&e) bol reštartovaný hráčovi &6[playerDisplayName]'
+      list: '&e[place]. &6[kit] &e[time]'
+      listHover: '&eKlikni pre reštart'
+      noCd: '&eŽiadne kity nemajú zapnutý odpočet.'
+  kiteditor:
+    help:
+      info: '&eKit editor.'
+      args: (seticon)
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.kit.[kitName] &e- allows to use particular kit'
+      - '&6cmi.kit.bypass.money &e- bypass money requirement'
+      - '&6cmi.kit.bypass.exp &e- bypass exp requirement'
+      - '&6/cmi kiteditor &e- shows kit list'
+    info:
+      kits: '&eKity: '
+      noKit: '&eTento kit neexistuje'
+      iconSet: '&eNová ikonka pre kit &6[kitname] &enastavená'
+      kitExists: '&eKit s týmto menom už existuje!'
+      deleteConfirm: '&eKlikni pre zmazanie kitu (&6[kitname]&e)!'
+      deleteConfirmFinal: '&cTáto akcia sa nedá vrátiť!'
+      kitRemoved: '&eKit (&6[kitname]&e) zmazaný.'
+      kitNotRemoved: '&cKit (&6[kitname]&c) nemôže byť zmazaný.'
+      addNewInfo: '&eNapíš meno kitu do chatu a klikni ENTER. Napíš &ccancel &epre
+        zrušenie tejto akcie.'
+      renameCommandInfo: '&eNapíš nový &6príkaz &e pre kit a klikni ENTER. Napíš &ccancel
+        &epre zrušenie.'
+      renameConfigInfo: '&eNapíš nový názov pre &6config &edo chatu a klikni ENTER.
+        Napíš &ccancel &epre zrušenie tejto akcie.'
+      groupInfo: '&eNapíš nový názov skupiny a klikni ENTER. Napíš &ccancel &epre
+        zručenie akcie. Napíš &6none &epre zmazanie skupiny.'
+      commandInfo: '&eNapíš nový príkaz a klikni ENTER. Použi ''&6cancel&e'' pre zrušenie
+        akcie. Použitelné placeholdery: &6{USERNAME} {DISPLAYNAME} {WORLDNAME} {KITNAME}
+        {RANDOMPLAYER}'
+      conditionsInfo: '&eNapíš novú kondíciu do chatu a klikni ENTER. Napíš &6cancel&e
+        pre urušenie akcie.'
+      descInfo: '&eNapíš nový popis do chatu a klikni ENTER. Použi ''&6cancel&e''
+        pre zrušenie akcie.'
+      renamed: '&ePremenovaný &6[kitname] &ena &6[newkitname]&e.'
+      groupSet: '&eNová skupina (&6[groupname]&e) nastavená pre &6[kitname]'
+      commandsListTitle: '&e✎&6Príkazy:'
+      conditionsListTitle: '&e✎&6Kondícia:'
+      descListTitle: '&e✎&6Popis:'
+      ListTitleHover: '&eKlikni pre otvorenie GUI'
+      ListNumber: '&e[number].'
+      ListUp: ' &6⇑'
+      ListDown: ' &6⇓ '
+      ListRemove: '&cX'
+      ListRemoveHover: '&cZmazať riadok'
+      ListRemoveKitHover: '&cZmazať &6[kitname]'
+      ListEditKitHover: '&cUpraviť &6[kitname]'
+      ListAdd: ' &2+'
+      ListAddHover: '&2Pridať nový'
+      guiClickery:
+      - '&eľavý klik pridá a pravý klik odoberie.'
+      - '&eDrž &6Shift &epre 10 krát rýchlejšie pridávanie.'
+      - '&eOpakované rýchle klikanie pridá hodnoty rýchlejšie.'
+      - '&ePrestaň klikať 1 sekundu pre navrátenie základnej hodnoty.'
+      OffHand: '&eSem vlož item druhej ruky.'
+      Helmet: '&eSem vlož helmu'
+      Chest: '&eSem vlož chestplate'
+      Legs: '&eSem vlož kalhoty'
+      Boots: '&eSem vlož topánky'
+      Weight: '&ePriorita: &6[Weight]'
+      WeightExtra:
+      - '&eäčšia hodnota má väčšiu prioritu.'
+      - '&eKity budu v rovnakej skupine.'
+      despiteWeight: '&ePriorita popisu: &6[Weight]'
+      despiteWeightExtra:
+      - '&eHráč nebude mať práva použiť kit. Bude mať iba práva na zobrazenie.'
+      Slot: '&eSlot: &6[slot]'
+      SlotAuto: '&6Auto'
+      Clone: '&eZduplikovať item z inventára'
+      CloneExtra:
+      - '&ePouži pravé kliknutie myši pre pridanie armoru.'
+      - '&eKlikni znova pre vrátenie zmeny.'
+      timeDelay: '&eČasovač: &6[time]'
+      usages: '&eMôže byť použitý za &6[times] &ečas.'
+      usagesUnlimited: '&6Neobmedzené'
+      ignoreWeight: '&eZobraziť popis: &6[state]'
+      timeDelaySeconds: '&eV sekundách: &6[time]'
+      moneyCost: '&ePotrebné peniaze: [cost]'
+      expCost: '&ePotrebný level: [cost]'
+      enabled: '&eZapnuté'
+      disabled: '&6Vypnuté'
+      clickToSwitch: '&eKlikni pre zmenu stavu'
+      clickToEdit: '&eKlikni pre začatie editovania'
+      editConfigName:
+      - '&eKlikni pre zmenu názvu v configu'
+      - '&eToto iba zruší permissiu'
+      editCommandName:
+      - '&eKlikni pre zmenu príkazu'
+      - '&eTu nastavíš príkaz požadovaný pre získanie kitu.'
+      kitGroup: '&eSkupina kitu: &6[group]'
+      dropItems: '&eDrop itemu v prípde plného inventára: &6[state]'
+      commands: '&ePríkazy:'
+      conditions: '&eKondícia:'
+      desc: '&ePopis:'
+      mainMenu: '&eHlavné menu'
+      settings: '&eNastavenia'
+      icon: '&eIkonka použitá keď je kit &2použitelný'
+      iconCd: '&eIkonka použitá keď je kit &cnepoužitelný'
+  kitusagereset:
+    help:
+      info: '&eReset kit usage counter'
+      args: (kitName) (playerName)
+    info:
+      notLimited: '&eKit nemá nastavený limit použití.'
+      reset: '&ePoužitia kitu (&6[kit]&e) boli resetované pre používtela &6[playerDisplayName]'
+      list: '&e[place]. &6[kit] &e[used]/[usages]'
+      listHover: '&eKlikni pre reštart'
+      noCd: '&eNie je tu žiaden dostupný kit ktorý má použitia viac ako 0.'
+  lastonline:
+    help:
+      info: '&eShow played players from last x minutes'
+      args: '[timeRange/list/stop] [page]'
+    info:
+      searching: '&eSearching &6[checked]&e/&6[total] &e(&6[found]&e)'
+      List: ' &6[place]&e. &2[name] &e-> &6[time].'
+  launch:
+    help:
+      info: '&eLaunch at direction you are looking or at angle'
+      args: (playerName) (p:[power]) (a:[angle]) (d:[direction]) (loc:[x]:[y]:[z])
+      explanation:
+      - cmi launch - will launch at direction you are looking
+      - cmi launch p:3.2 - will launch with power of 3.2
+      - cmi launch p:2.5 a:25 - will launch at direction you are looking with angle
+        of 25 dgrees and with power of 2.5
+      - cmi launch Zrips d:east - will launch to east direction same angle you are
+        looking
+      - cmi launch Zrips d:0 - will launch at 0 degrees direction (south) same angle
+        you are looking
+      - cmi launch d:45 a:30 p:2 - will launch south-west at 30 degree angle with
+        power of 2
+      - cmi launch loc:150:120:123 - will launch player to target location
+    info:
+      feedback: ''
+  lfix:
+    help:
+      info: '&eFix light in chunks around you'
+      args: (range) (playerName)
+    info:
+      NoMore: '&eVzdialenosť nemôže presahovať maximálnu vzdialenost chunkov. Zmena
+        na maximálnu vzialenosť.'
+      startFixing: '&eNájdené &6[amount] &echunkov pre opravu. Začiatok!'
+      InfoShow: '&6TPS: &3[tps] &6Ostáva &e[left] &6(&e[min]m:[sec]s&6) &6Rýchlosť:
+        &e[speed]'
+      Finished: '&eOprava svetla dokončená.'
+      Stopped: '&eZastavené.'
+  list:
+    help:
+      info: '&eShows online player list'
+      args: ''
+      explanation:
+      - 'Perm: '
+      - cmi.command.list.admin
+      - cmi.command.list.staff
+      - cmi.command.list.hidden
+      - cmi.command.list.group[number]
+    info:
+      List:
+      - '&a'
+      - '&8&m----------------------------------------&r'
+      - '&a'
+      - '&7Online hráči: &e[amount]&f/&e[maxamount]'
+      - '&c'
+      - '&8&m----------------------------------------'
+      - '&a'
+      staffL: '&7Admin Tím: &f[list]'
+      adminL: '&8Admin: &f[list]'
+      hiddenPref: '&e(&c&lVanish&e) &f'
+      hiddenCount: '&7Vanished &8(&cUkazuje iba AT&8): &e[amount]'
+      groupL: '&6[groupName]: &f[list]'
+      player: '%cmi_user_afk_symbol%&f[playerDisplayName]'
+      # Add as many groups as you wish, by default there is only 10, to create new one, just copy paste one line and add increment into lines name, like group11 or group12 and so on.
+      # Player have to have appropriate permission node to be placed in group cmi.command.list.group.[groupnumber], bigger number have priority
+      groups:
+        group1: '&6&lMajiteľ: &f[list]'
+        group2: '&c&lDEV: &f[list]'
+        group3: '&4&lAdmin: &f[list]'
+        group4: '&c&lHl.Builer: &f[list]'
+        group5: '&c&lHl.Helper: &f[list]'
+        group6: '&b&lE.Builder: &f[list]'
+        group7: '&2&lE.Helper: &f[list]'
+        group8: '&9&lBuilder: &f[list]'
+        group9: '&5&lEventer: &f[list]'
+        group10: '&2&lHelper: &f[list]'
+        group11: '&7&lZk.Builder: &f[list]'
+        group12: '&7&lZk.Helper: &f[list]'
+        group13: '&5&lStreamer: &f[list]'
+        group14: '&7&lYOU&4&lTUBER: &f[list]'
+        group15: '&a&lSponzor: &f[list]'
+        group16: '&3&lPremium: &f[list]'
+        group17: '&e&lVIP: &f[list]'
+        group18: '&7&lHráč: &f[list]'
+      noGroupLine: '&eList'
+  lockip:
+    help:
+      info: '&ePrevents logging into account from different ip'
+      args: '[playername] [add/remove/list/clear] [ip]'
+    info:
+      CantLogin: '&cNemôžeš sa prihlásiť z tejto IP.'
+      add: '&eNová IP (&6[ip]&e) priradená pre hráča &6[playerDisplayName]&e.'
+      remove: '&eIP (&6[ip]&e) odstranené pre hráča &6[playerDisplayName]&e.'
+      clear: '&eVšetky IP boli zmazané z účtu hráča &6[playerDisplayName]'
+      ipNotFound: '&cIP sa nenašla.'
+      empty: '&cList je prázny.'
+      list: '&6[place]&e. &6[ip]'
+  mail:
+    help:
+      info: '&eCheck or send mail'
+      args: '[send/clear/read] [playerName] (message)'
+    info:
+      sentMail: '&eMail odoslany hráčovi &6[playerDisplayName]'
+      gotMail: "\n&7Dostal si Mail od hráča &e[senderDisplayName]\n&a "
+      clearMail: '&eVšetky maily boli odstránené.'
+      removedMail: '&eMail odstránený.'
+      noMailsById: '&eNie je žiaden mail s týmto ID.'
+      noMails: '&7Nemáš žiaden mail.'
+      mailHover: '&e[senderName] /n &e[time]'
+      list: '&6&l[id]. &7[senderDisplayName]: &e[mail]&7 '
+      waitingMail: "\n&7Máš &e&l[amount] &7mail. Klikni pre otvorenie.\n&a "
+  mailall:
+    help:
+      info: '&eCheck or send mail to all players'
+      args: '[send/clear/remove] [message]'
+    info:
+      sentMail: '&eOdoslal si &6[amount] &emailov.'
+      clearMail: '&6[amount] &emailov bolo odstránených.'
+      removedMail: '&eZmazaných &6[amount] &emailov.'
+  maintenance:
+    help:
+      info: '&eSet server into maintenance mode'
+      args: (message)
+      explanation:
+      - cmi.command.maintenance.bypass - to bypass maintenance mode
+    info:
+      feedback: '&e&lNa servery práve prebieha údržba.'
+      set: '&eÚdržba serveru bola &6[state] &eso správou: [message]'
+  maxhp:
+    help:
+      info: '&eSet a splayer''s max hp'
+      args: set/add/take/clear [playerName] [amount] (-s)
+    info:
+      feedback: '&eNastavil si &3[maxHp] &emaximálne života pre hráča &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTvoje maximálne životy boli nastavené na &3[maxHp]&e.'
+  maxplayers:
+    help:
+      info: '&eChanges maximum amount of players who can connect to server'
+      args: '[amount]'
+      explanation:
+      - '&ePermissions: '
+      - '&6cmi.fullserver.bypass &e- join full server'
+    info:
+      changed: '&eMaximum hráčov zmenených z &6[old] &ena &6[new]&e. Online: &6[current]'
+  me:
+    help:
+      info: '&eSends special message to all players'
+      args: '[message]'
+    info:
+      format: '&5* [senderDisplayName] &5[message]'
+  merchant:
+    help:
+      info: '&eOpen merchant trade window'
+      args: '[type] [playerName]'
+    info:
+      incorrect: '&cNesprávna profesia.'
+      feedback: '&eOtvoril si &6[type] &eobchod pre hráča &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTrade &6[type] &ebol otvorený.'
+  migratedatabase:
+    help:
+      info: '&eChanges database system and migrates all data'
+      args: ''
+  mirror:
+    help:
+      info: '&eStarts block place/break mirroring.'
+      args: '[start/stop]'
+    info:
+      started: '&eMirroring spustený.'
+      stopped: '&6Mirroring pozastavený.'
+      tooFar: '&cSi veľmi daleko od prostredného blocku (max &6[blocks] &cblocks).'
+      title: Mirror
+      notSet: '&cStred nie je nastavený.'
+      set: '&2Stred nastavený.'
+      noBlocks: '&cNemáš dostatok blockov.'
+      used: '&7Použité: &7[blocks]'
+      Action:
+        Name:
+          X: X
+          Y: Y
+          Z: Z
+          XY: XY
+          ZY: ZY
+          XZ: XZ
+          ZX: ZX
+          Rotate90V: Rotate90V
+          Rotate90H: Rotate90H
+          Rotate90HC: Rotate90HC
+          Rotate180H: Rotate180H
+          Pause: Pause
+          Location: Location
+        Desc:
+          X: '&eMirrors by &6X &eaxis'
+          Y: '&eMirrors by &6Y &eaxis'
+          Z: '&eMirrors by &6Z &eaxis'
+          XY: '&eMirrors by &6X &eto &6Y &eaxis'
+          ZY: '&eMirrors by &6Z &eto &6Y &eaxis'
+          XZ: '&eMirrors by &6X &eto &6Z &eaxis'
+          ZX: '&eMirrors by &6Z &eto &6Y &eaxis'
+          Rotate90V: '&eRotates up'
+          Rotate90H: '&eRotates &690 &edegrees clock wise'
+          Rotate90HC: '&eRotates &690 &edegrees counter clock wise'
+          Rotate180H: '&eRotates &6180 &edegrees'
+          Pause: '&eMirroring pozastavený.'
+          Location: '&eNastav mirroring strednú lokáciu.'
+  mobhead:
+    help:
+      info: '&eGet mob head'
+      args: '[mobType] (entryNumber) (playerName) (-s)'
+    info:
+      got: '&eDostal si hlavu moba &6[type]&e.'
+  money:
+    help:
+      info: '&eCheck money balance'
+      args: '[pay/give/take/set] [playerName/all/alloffline] [amount]'
+    info:
+      newBalance: '&8[&bPeniaze&8] &7Zostatok na účte hráča &e[playerDisplayName]
+        &7je &a[money]'
+      paid: '&8[&cPeniaze&8] &7Poslal si &a[amount] &7hráčovi &c[playerDisplayName]&7.'
+      gotMoney: '&8[&cPeniaze&8] &7Obdržal si &a[amount] &7od hráča &e[senderDisplayName]&7.
+        Zostatok na účte je &a[money]'
+      gotMoneyGive: '&c&lMoney &f- &7Obdržal si &a[amount]&7. Zostatok na účte je
+        &a[money]'
+      noMoney: '&8[&cPeniaze&8] &7Nemáš dostatok peňazí na účte.'
+      worldGroups: '&cNemôžeš odoslať peniaze cez rozdielne svety.'
+      self: '&8[&cPeniaze&8] &7Nemôžeš poslať peniaze sám sebe.'
+      confirm: '&eKlikni sem pre potvrdenie odoslania &6[money] &epeňazí hráčovi &6[playerDisplayName]'
+      notAccepting: '&eTento užívateľ nepríma žiadne platby.'
+      giveAll: '&eDaroval si &6[totalAmount] &epeňazí všetkým hráčom na servery &7(&6[playerCount]&7)'
+      takeAll: '&eZobral si &6[totalAmount] &epeňzí všetkým hráčom na servery &7(&6[playerCount]&7)'
+  more:
+    help:
+      info: '&eFills item stack to maximum amount'
+      args: (playerName) (-clone/[amount])
+      explanation:
+      - '&ePermissions:'
+      - ' &6cmi.command.more.oversize &e- to get oversized stacks'
+    info:
+      feedback: '&eBolo doplnených &3[amount]&e itemov do staku pre hráča &3[playerDisplayName]&e
+        (&3[offon]&e).'
+  msg:
+    help:
+      info: '&7Posle soukroumou zpravu danemu hraci'
+      args: '&8[&cNazev hrace&8] &8[&cZprava&8]'
+      explanation:
+      - If message starts with ! then clean message without sender name will be shown
+      - Requires cmi.command.msg.clean permission
+      - If message starts with !- then clean message without sender name will be shown
+        and without option to reply
+      - Requires cmi.command.msg.noreply permission
+    info:
+      TargetMsg: '&c&lPM&f: &6[senderDisplayName] &7-> &cja &r&f- [message]'
+      SenderMsg: '&c&lPM&f: &cja &7-> &6[playerDisplayName] &r&f- [message]'
+      consoleMsg: '[[senderDisplayName] -> [playerDisplayName]] [message]'
+      noPM: '&cPlayer is not accepting private messages now'
+      badGroup: '&cCan''t send private messages to this group of players'
+  msgtoggle:
+    help:
+      info: '&eToggle private messages'
+      args: (playerName)
+    info:
+      feedbackOn: '&7Prímaš privátne správy.'
+      feedbackOff: '&7Neprímaš privátne správy.'
+  mute:
+    help:
+      info: '&eMute player'
+      args: '[playerName] (time) (-s) (reason)'
+      explanation:
+      - 'Examples: '
+      - /cmi mute zrips 1m
+      - /cmi mute zrips 1h
+      - /cmi mute zrips 1h For swearing
+    info:
+      mutedFor: '&e[playerDisplayName] muted for &6[time]'
+      muted: '&eYou are muted for &6[time]'
+      reason: '&eReason: &7[reason]'
+  mutechat:
+    help:
+      info: '&ePrevent public messages'
+      args: (time) (-s)
+      explanation:
+      - 'Examples: '
+      - /cmi mutechat 1m
+      - '/cmi mutechat 1h '
+    info:
+      mutedFor: '&eVerejný chat bol umlčaný na &6[time]'
+      isMuted: '!actionbar!&eVerejný chat bol umlčaný na &6[time]'
+  nameplate:
+    help:
+      info: '&eSet players name plate prefix or suffix'
+      args: (playerName) (-pref:[prefix]) (-suf:[suffix])
+    info:
+      feedback: '&eUpravil si prefix hráčovi &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eTvoj prefix bol upravený.'
+  near:
+    help:
+      info: '&eCheck who is near you'
+      args: (distance)
+    info:
+      nope: '&eNikto sa nenadhádza v tvojej blízkosti.'
+      list: '&e[place]. &6[playerDisplayName] &e- &7[distance]m'
+      aproxList: '&e[place]. &6[playerDisplayName] &e- &6[dir] &7~[distance]m'
+  nick:
+    help:
+      info: '&eChanges player name'
+      args: '[newNickName/off] (playerName)'
+      explanation:
+      - 'To change into different nick name: cmi.command.nick.different'
+      - To bypass length protection use cmi.command.nick.bypass.length
+    info:
+      changed: '&eNickName changed to &r[newNickName] &efrom &r[oldNickName]'
+      changedTarget: '&eYour nickName changed to &r[newNickName] &eby &r[senderDisplayName]'
+      reset: '&eNick name set to default one'
+      sameNick: '&cYou dont have permission to change into different nick. You can
+        change only colors'
+      blockedNick: '&cYou can''t use this nick name'
+      blockedNickLength: '&eNick name is to long. Max &6[amount] &esymbols'
+      blockedNickLengthMin: '&eNick name is to short. Min &6[amount] &esymbols'
+      inUse: '&cNick name is already being used by another player'
+  notarget:
+    help:
+      info: '&eToggle no-mob target mode'
+      args: (playerName) (true/false) (-s)
+    info:
+      enabled: '&eMonštrá na teba nebudú naďalej útočiť.'
+      disabled: '&eMonštrá na teba budú útočiť.'
+  note:
+    help:
+      info: '&eManage players notes'
+      args: (playerName) [add/remove/clear/list] (id/note)
+    info:
+      newNote: '&ePridaná nova poznámka pre hráča'
+      clearNote: '&eVšetky poznámky boli vymazané.'
+      removedNote: '&ePoznámka zmazaná pre hráča.'
+      noNotesById: '&eNie sú uložené žiadne poznámky s týmto ID pre tohoto hráča.'
+      noNotes: '&eNie sú uložené žiadne pre tohoto hráča.'
+      list: '&6[id]. &e[note]'
+  openbook:
+    help:
+      info: '&eOpen book gui'
+      args: (cText) (playerName)
+  oplist:
+    help:
+      info: '&eCheck operator player list'
+      args: ''
+    info:
+      feedback: '&e* &6[number]. &e[playerName]'
+  panimation:
+    help:
+      info: '&ePlay custom particle animation'
+      args: ''
+      explanation:
+      - Information on usage can be found at http://www.zrips.net/cmi/extra/particles/
+  patrol:
+    help:
+      info: '&ePatrol'
+      args: ''
+    info:
+      noPatrol: '&eMomentálne tu nie su žiadny hráči ktorých by si mohol pozorovať.'
+      Patroling: '&eMomentálne sleduješ hráča &6[playerDisplayName]'
+      lastPatrol: '&eNaposledy si sledoval &6[time] &edozadu.'
+      notes: '&eMáš &6[amount] &epoznámok.'
+  pay:
+    help:
+      info: '&ePerform money transaction'
+      args: '[playerName] [amount]'
+  paytoggle:
+    help:
+      info: '&eToggle payments from another player'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&eTeraz prímaš platby od iných hráčov.'
+      feedbackEnabled: '&eNaďalej nebudeš prímať platby od iných hráčov.'
+  ping:
+    help:
+      info: '&eShows players ping'
+      args: (playerName)
+    info:
+      feedback: '&ePing: &6[ping]ms'
+      selffeedback: '&eTvoj ping je &6[ping]ms'
+      customMessage: '[message]'
+  placeholders:
+    help:
+      info: '&eList out all placeholders'
+      args: (parse) (placeholder)
+    info:
+      list: '&e[place]. &6[placeholder]'
+      outputResult: '&eVýsleky: &6[result]'
+      parse: '&6[placeholder] &ez [source] &6výsledok &8|&f[result]&8|'
+  playercollision:
+    help:
+      info: '&eSet players collision mode'
+      args: (playerName) [true/false] (-s)
+    info:
+      feedback: '&eNastavil si kolíziu na &3[boolean]&e pre hráča &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTvoja kolízia bola nastavená na &3[boolean]'
+  playtime:
+    help:
+      info: '&eShows player total play time'
+      args: '[playername]'
+    info:
+      total: '&8&l* &eCelkový odohraný čas je&7: &b[time]'
+      joined: '&8&l* &ePrvé pripojenie je z&7: &6[time]'
+  playtimetop:
+    help:
+      info: '&eShows top list of player total play time'
+      args: '[page]'
+    info:
+      topLine: '&e----- TOP PlayTime &e-----'
+      scanning: '&eDáta budu zistené. Prosím počkaj chvíľu a skús to znova.'
+      loading: '&eDáta sa neporadilo načítať. Scan bol spustený a výsledok dostaneš
+        po konci scanovania.'
+      list: '&e[number]. [playerDisplayName] &e- &6[time]'
+      place: '&6[playerDisplayName] &eje na &6[place] &emieste'
+  point:
+    help:
+      info: '&ePoint to block'
+      args: (particleName) (playerName) (-self) (time) (-s:[speed])
+  portals:
+    help:
+      info: '&eSet portals'
+      args: (new/nearest) (portalName)
+    info:
+      collides: '&cPortál &6[portalName] &esa zrazí.'
+      exist: '&cPortál s týmto menom už existuje.'
+      notExist: '&cPortál s týmto menom neexistuje.'
+      locationSet: '&eLokácia portálu je nastvená na portál &6[portalName]'
+      removed: '&ePortál &6[portalName] &evymazaný.'
+      click: '&eKlikni pre nastavenie tp lokácie pre portál &6[portalName] &ena tvoju
+        pozíciu.'
+      bungeeSet: '&eChoď na pozíciu a klikni na túto správu pre nastavenie teleportu.'
+      list: '&e[number]. &6[portalName]'
+      redefine: '&eArea zmenená z pôvodnej lokácie.'
+      particles: '&eParticle: &6[state]'
+      particleType: '&eDruh particle: &6[type]'
+      particleAmount: '&ePočet particle: &6[amount]'
+      particlePercent: '&ePercená pre zobrazenie particlov: &6[amount]%'
+      activationRange: '&eVzdialenosť pre aktiváciu: &6[amount]'
+      bungeeTeleport: '&eTeleport na proxy server: [state]'
+      requiresPermission: '&ePotrebuješ &7[perm] &epermission pre použitie [state]'
+      informPermission: '&eInformácia ohľadom chýbajúcej permissie [state]'
+      teleportToLocation: '&eTeleport na lokáciu portálu.'
+      teleportToTarget: '&eTeleport na lokáciu výstupu portálu.'
+      performCommandsWithoutTp: '&eVykonaj príkaz bez nastavenia lokácie pre teleport.'
+      editCommands: '&eEdit príkazov pre portál.'
+      setTeleportLocation: '&eNastaviť lokáciu pre teleport.'
+      setSafeLocation: '&eNastaviť bezpečnú lokáciu.'
+      save: '&eUložiť nastavenie.'
+      removePortal: '&eZMAZAŤ PORTÁL'
+      cantUsePortal: '&cNemôžeš použiť tento portál.'
+  pos:
+    help:
+      info: '&eShow current position of a player'
+      args: (playerName)
+    info:
+      feedback: '&e[playerDisplayName] &e(&3[offon]&e) ([world]&e,&6[x]&e:&6[y]&e:&6[z]&e)'
+      feedbackRegion: '&eChunk &6[chunkx]&e:&6[chunkz]&e Region &6[regionx]&e:&6[regionz]'
+      feedbackDirection: '&eDirection &6[direction] &e(&6[degrees] &edegrees)'
+      feedbackBiome: '&eBiome &6[biome]'
+      feedbackLight: '&eLevel svetla &6[lightLevel]'
+      netherCoord: '&eNether World coord: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
+      normalCoord: '&eNormal world coord: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
+  preview:
+    help:
+      info: '&eLoad chunk for given range'
+      args: '[range] (innerrange)'
+    info:
+      NoMore: '&eVzdialenosť nesmie presiahnúť 32 chunkov. Zmenené na maximálnu hodnotu.'
+      startSending: '&eNájdených &6[amount] &echunkov pre odoslanie. Začiatok.'
+      InfoShow: '&6TPS: &3[tps] &6Ostáva &e[left] &6(&e[min]m:[sec]s&6) &6Rýchlosť
+        &e[speed]'
+      Finished: '&eDokončené. Môže to ešte chvíľu trvať.'
+  prewards:
+    help:
+      info: '&eCheck playtime rewards'
+      args: (playerName)
+    info:
+      list: '&e[place]. &6[rewardName] &emožné vyzdvihnúť za &6[time]'
+      listNoStack: '&e[place]. &6[rewardName]'
+      listOneTime: '&e[place]. &6[rewardName]'
+      claim: ' &2Vyzdvihnúť!'
+      claimAmount: ' &2Vyzdvihnúť(x[amount])!'
+      claimHover: '&2Klikni pre vyzdvihnutie odmeny!'
+      inform: '!actionbar!&2Máš nevyzdvihnuté odmeny! Použi /prewards'
+  ptime:
+    help:
+      info: '&eControls player personal time'
+      args: ''
+      explanation:
+      - 'Example:'
+      - /ptime 13:00:00
+      - /ptime 1pm
+      - /ptime 13
+      - /ptime 7000ticks
+      - /ptime Zrips 1pm
+      - /ptime freeze
+      - /ptime unfreeze
+      - /ptime realtime
+      - /ptime reset
+    info:
+      check: '&7Tvoj čas: &c[24h]'
+      frozen: ' &c(-)'
+      gotreseted: '&7Tvoj čas bol obnovený.'
+      gotfrozen: '&eHráč &6[playerDisplayName] &emá zamrznutý čas.'
+      gotunfrozen: '&eHráč &6[playerDisplayName] &emá spustený čas.'
+      setto: '&7Čas bol nastavený na &c[24h] &7pre hráča &6[playerDisplayName]&7.'
+  purge:
+    help:
+      info: '&eCleans player data from world folder by inactive days'
+      args: (stop)
+    info:
+      stopped: Mazanie zastavené.
+  pweather:
+    help:
+      info: '&eControls player weather'
+      args: (playerName) [sun/rain/reset] (-s)
+    info:
+      check: '&ePočasie nastavené: &6[weather]'
+      gotreseted: '&eHráč &6[playerDisplayName] &emá reštartované počasie.'
+      setto: '&eVlastné počasie nastavené na &6[weather] &epre hráča &6[playerDisplayName]'
+      gotset: '&eTvoje počasie nastavené na &6[weather]'
+      reset: '&ePočasie reštartované.'
+  rankdown:
+    help:
+      info: '&eDecrease your rank'
+      args: (playerName) (rankName) (confirm)
+      explanation:
+      - -cmd will perform command defined for previous rank rankup
+      - -cost will charge player with money, exp or items if defined for previous
+        rank rankup
+    info:
+      noPrev: '&eCan''t find any previous ranks'
+      list: '&ePick one rank you want to &crankdown &eto: '
+      confirm: '&eClick me to confirm &crankdown &eto &6[rank]'
+      downranked: '&eDownranked to &6[rank]'
+  rankinfo:
+    help:
+      info: '&eYour rank information'
+      args: (playerName) (rankName)
+    info:
+      distanceCM: '[value]cm'
+      distanceM: '[value]m'
+      distanceKm: '[value]km'
+      requiredMoney: ' &eMoney: [color][current]&e/&6[needed]'
+      requiredExp: ' &eExp: [color][current]&e/&6[needed]'
+      requiredVotes: ' &eVotes: [color][current]&e/&6[needed]'
+      requiredPerm: ' &ePerm: '
+      requiredMcmmo: ' &eMcmmo: '
+      requiredMcmmoList: '&e[color][name] '
+      requiredMcmmoListHover: ' &e[color][current]&e/&6[needed]'
+      requiredMcmmoPower: Power
+      requiredJobs: ' &eJobs: '
+      requiredJobsList: ' &e[color][name]'
+      requiredJobsListHover: ' &e[color][current]&e/&6[needed]'
+      requiredJobsTotalLevel: TotalLevel
+      requiredItem: ' &eItems: '
+      requiredItemsList: '&e[color][name]'
+      requiredItemListHover: '&e[color][current]&e/&6[needed]'
+      currentRank: ' &eYour current rank: &6[rankName]'
+      elseCurrentRank: ' &6[playerDisplayName] &ecurrent rank: &6[rankName]'
+      rankNameLine: ' &e------ &6[rankName] &e[rankupState] &e------'
+      canRankup: ' &2Can rankup!'
+      cantRankup: ''
+      requiredStats: ' &e[name][extra]&e: [color][current]&e/&6[needed]'
+      requiredStatsExtra: ' (&6[type]&e)'
+      nextRanks: ' &eNext ranks: '
+      finalRank: ' &eThis is last rank'
+      noRank: ' &eCant find rank'
+      check: '&eCheck &6[rank] &erank'
+      progressBarHover: '&eProgress [percent]%'
+  ranklist:
+    help:
+      info: '&eList of posible ranks'
+      args: ''
+    info:
+      list: '&e[place]. [currentRankMarker]&6[rankName][currentRankMarker]'
+      currentRankMarker: '&6+'
+  rankset:
+    help:
+      info: '&eSet a players rank'
+      args: (playerName) [rankName] (-cmd) (-cost)
+      explanation:
+      - -cmd will perform command defined for that rank rankup
+      - -cost will charge player with money, exp or items if defined for that rank
+        rankup
+      - player will get rank even if he doesnt have enough money, exp or required
+        items
+    info:
+      set: '&eRank changed for &6[playerDisplayName] &eto &6[rankName]'
+  rankup:
+    help:
+      info: '&eIncrease your rank'
+      args: (playerName) (rankName) (confirm)
+    info:
+      noRank: ' &eYou don''t have any rank associated with you'
+      requiresPrevious: ' &eYou cant rankup to this rank. It requires you to have
+        &6[rank] &erank(`s)'
+      list: '&ePick one rank you want to rank up to: '
+      confirm: '&eClick me to confirm rankup to &6[ranks]'
+  realname:
+    help:
+      info: '&eCheck players real name'
+      args: (playerName/nickName)
+    info:
+      feedback: '&r[playerDisplayName] &ereal name &r[playerName]'
+  recipe:
+    help:
+      info: '&eCheck item recipe'
+      args: (itemName)
+    info:
+      title: '&0[itemName]'
+      page: ' &0[current]&7/&0[total]'
+      noRecipes: '&cNenájdený žiaden recept pre tento predmet.'
+  reload:
+    help:
+      info: '&eReloads plugins configure and locale files'
+      args: ''
+    info:
+      feedback: '&6CMI Reloadnuté! Took [ms]ms'
+      failedConfig: '&4Chyba pri načítaní configu!'
+      failedLocale: '&4Chyba pri načítaní súborov!'
+  removehome:
+    help:
+      info: '&eRemove home'
+      args: (homeName) (playerName)
+    info:
+      remove: '&cKlikni pre odstránenie.'
+      removed: "&a\n&eDomov odstránený &8(&c[home]&8)\n&a "
+  removeuser:
+    help:
+      info: '&eRemoves user and its data'
+      args: '[uuid/duplicates]'
+    info:
+      removed: '&eUživateľ (&6[uuid]&e) odstránený.'
+      removedDuplicate: '&6[amount]/[max] &eduplikačných hráčov zmazaných.'
+  removewarp:
+    help:
+      info: '&eRemove warp'
+      args: (warpName)
+    info:
+      remove: '&cKlikni pre zmazanie.'
+      removed: '&eWarp (&6[warp]&e) zmazaný.'
+      notYours: '&cTento warp ti nepatrí!'
+  repair:
+    help:
+      info: '&eRepair items'
+      args: '[hand/armor/all] (playerName)'
+      explanation:
+      - cmi.command.repair.hand - allows to repairs items in hand
+      - cmi.command.repair.armor - allows to repairs items in armor slots
+      - cmi.command.repair.all - allows to repairs items all items
+      - cmi.command.repair.repairshare.bypass - will allow to repair items without
+        adding repair share protection
+    info:
+      feedback: '&8[&cOprava&8] &f- &7Oprvil si &a[amount]&7 itemov.'
+      feedbackMoney: '&eOpravil si &3[amount]&e itemov pre hráča &3[playerDisplayName]&e
+        (&3[offon]&e). Cena: &7[cost]'
+      itemOwner: '&ePosledná oprava: &6[owner]'
+      cantUse: '!title!&cNemôžeš použiť tento item.!subtitle!&eOprav si ho!'
+  repaircost:
+    help:
+      info: '&eSet items repair cost'
+      args: (playerName) [amount]
+      explanation:
+      - 'Example:'
+      - /repaircost 10
+      - /repaircost set 10
+      - /repaircost add 10
+      - /repaircost take 10
+      - /repaircost Zrips clear
+      - /repaircost Zrips add 10
+    info:
+      current: '&eTento item bude oprvený za &6[cost]&e.'
+      noitem: '&cNemáš žiaden iný v ruke.'
+      cantDetermineCost: '&cNezistená cena pre opravu tohoto itemu.'
+      selffeedback: '&eCena opravy nastavená na &3[amount] &epre hráča &3[playerDisplayName]&e
+        a jeho item v ruke (&3[offon]&e).'
+      targetfeedback: '&eTvoj item má nastavenú cenu opravy na &3[amount]&e.'
+  replaceblock:
+    help:
+      info: '&eReplaces blocks in current world arround you'
+      args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range
+        in chunks/g]&e y &6[max height]'
+      explanation:
+      - '&6SubCommands:'
+      - '&e- &6pause &e- pause replacing'
+      - '- &6continue &e- continue replacing'
+      - '- &6stop &e- stop replacing'
+      - '- &6speed [amount] &e- set current replace speed'
+      - '- &6autospeed [true/false] &e- set autospeed turned off or on'
+      - '- &6messages [true/false] &e- set message output to off or on'
+      - 'Example:'
+      - /cmi replaceblock id 52 w stone r 10
+      - /cmi replaceblock id 52,gold_block w stone r 15 y 100
+      - /cmi replaceblock id 52 w air r g y 100
+      - /cmi replaceblock id iron_ore%75 w stone%90,dirt%5 r g
+    info:
+      startScanning: '&eNájdených &6[amount] &echunkov. Proces spustený!'
+      paused: '&eNahradzovanie pozastavené. Pre pokračovanie použi &6/cmi blockreplace
+        continue.'
+      continuing: '&eNahradzovanie znova spustené.'
+      stoped: '&eNahradzovanie zastavené.'
+      speedChange: '&eRýchlosť zmenená na [amount]'
+      autospeedChange: '&eAutomatická rýchlosť zmenená na [state]'
+      messagesChange: '&eSpráva stavu zmenená na [state]'
+      infoShow: '&6TPS: &3[tps] &6Ostáv &e[left] &6(&e[time]&6) &6Rýchlosť &e[speed]
+        &6Nahradených &e[found]'
+      finished: '&eDokončené! Bolo nahradených &6[amount] &eblokov za &6[time]&e.'
+  reply:
+    help:
+      info: '&eReplay to last message sender'
+      args: '[message]'
+    info:
+      noOneToReplay: '&eThere is no one to replay'
+  resetdbfields:
+    help:
+      info: '&eResets particular database collumns to default value'
+      args: '[collumnName] (-w:[worldName]) (-p:[playerName])'
+    info:
+      feedback: '&eAktualizovaných &7[amount] &ehráčov.'
+      nofield: '&cSúbor nenájdený.'
+  ride:
+    help:
+      info: '&eRide target entity'
+      args: ''
+      explanation:
+      - ' cmi.command.ride.[entityType] - to have access in riding entity'
+    info:
+      riding: '&eMomentálne jazdíš na &6[entityName]'
+      cantRide: '&cNemôžeš jazdiť na (&6[entityName]&c).'
+      someOneElse: '&cNiekto už jazdí na tejto entite.'
+      ridingYou: '&eHráč &6[playerDisplayName] &ena tebe jazdí. Použi &6/shakeitoff
+        &epre zhodenie hráča.'
+  rt:
+    help:
+      info: '&eTeleports to random location'
+      args: (playerName) (worldName)
+    info:
+      posible: '&eMožné svety: &6[worlds]'
+      tpLimit: '&eNemôžeš sa teleportovať tak rýchlo. Prosím počkaj &6[time] &ea skús
+        to znova.'
+      IncorrectLocation: '&6Nepodarilo sa nájsť vhodné miesto pre teleport. Prosím
+        počkaj &e[time] &6a skús to znova.'
+      teleported: '!actionbar!&6&lTELEPORTNUTÝ!'
+  sameip:
+    help:
+      info: '&eList players logged in from same ip'
+      args: ''
+    info:
+      list: '&e[place]. &6'
+      nothing: '&eNič na zobrazenie.'
+  saturation:
+    help:
+      info: '&eSet players saturation'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&eNastavil si &3[amount]&e saturation pre hráča &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eTvoja saturácia bola nastvená na &3[amount]&e.'
+  saveall:
+    help:
+      info: '&eSaves every player inventory'
+      args: '&3(daysRange/-online)'
+      explanation:
+      - -online variable can be used to save only online player inventories
+    info:
+      saving: '[simbol] &2nájdené: &e[checked]&2 z &e[total]&2 uložené: &e[saved]
+        &2preskočené: &e[skipped] [simbol]'
+      saved: '&eUkládanie dokončené. Uložené &6[saved] &ePreskočené &6[skipped]'
+  saveditems:
+    help:
+      info: '&eSave or manage saved items'
+      args: '[save/get/remove/list] (savedItemName) (-t:playerName) (-s)'
+    info:
+      info:
+      - '&fĽavý klik pre získanie premetu.'
+      - '&fStrený klik pre zmazanie.'
+      got: '&eMáš &6[name] &eitem'
+      give: '&eDostal si &6[name] &eitem'
+      removed: '&eZmazaný &6[name] &eitem'
+      saved: '&eUložený &6[name] &eitem'
+      title: '&8[current]&7/&8[total]'
+  sc:
+    help:
+      info: '&eStarts sign copy process'
+      args: ''
+    info:
+      punch: '&eKlikni na cedulku pre vloženie textu. Klikni na iný block ako cedulka
+        pre zrušenie akcie.'
+      canceled: '&eKopírovanie textu zrušené.'
+      updated: '&eCedulka uprvená.'
+  scan:
+    help:
+      info: '&eScans for items in current world'
+      args: ''
+      explanation:
+      - '&6SubCommands:'
+      - '&e- &6stats &e- show current scanning stats '
+      - '&e- &6pause &e- pause scanning '
+      - '- &6continue &e- continue scanning '
+      - '- &6stop &e- stop scanning '
+      - '- &6speed [amount] &e- set current scan speed '
+      - '- &6autospeed [true/false] &e- set AutoSpeed turned off or on '
+      - '- &6messages [true/false] &e- set message output to off or on'
+      - 'Variables:'
+      - '&eid &6[id:data]'
+      - '&eq &6[minimum quantity]'
+      - '&er &6[range in chunks] &e- option to use &6g &einstead of number to scan
+        entire map'
+      - '&en &6[item name]'
+      - '&el &6[item lore]'
+      - '&eh &6uses info from item in hand'
+      - '&ee &6[enchantname]'
+      - '&eelvl &6[enchantminlevel]'
+      - '&eoversize'
+      - '&epurge - removed found items, this feature should be enabled in config file'
+      - 'Example:'
+      - /scan id 52 r 30
+      - scan id diamond_block r g q 32
+    info:
+      loadingChunkInfo: '&eNačítam chunky!'
+      startScanning: '&eNájdených &6[amount] &echunkov pre prezrenie. Akcia spustená!'
+      paused: '&eScan pozastavený. Pre pokračovanie použi &6/cmi scan continue.'
+      continuing: '&eScan pokračuje.'
+      holdItem: '&eMusíš mať item v ruke.'
+      stoped: '&eScan zastavený. Výsleky zistíš príkzom /cmi scan info'
+      speedChange: '&eRýchlosť zmenená na [amount]'
+      autospeedChange: '&eAutomatická rýchlosť zmenená na [state]'
+      messagesChange: '&eSpráva stavu zmenená na [state]'
+      NoInfo: '&eNenašlo sa žiadne info.'
+      infoShow: '&6TPS: &3[tps] &6Ostáva &e[left] &6(&e[time]&6) &6Rýchlosť &e[speed]  &6Nájdených
+        &e[found]'
+      Teleport: '&eKlikni pre teleport.'
+      scanList: '&2[number]. &e[place] &6[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
+      scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
+      edit: ' &e(Edit)'
+      total: '&ePrezreté [current]/[until] z [total]'
+      Stats:
+      - '&e************************************************************'
+      - '&e* &6Chunky: &e[checked]/[total]'
+      - '&e* &6Scan rádius: &e[range]'
+      - '&e* &6Scan rýchlosť: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6Svet: &e[world]'
+      - '&e* &6Nájdených: &e[found]'
+      - '&e* &6Čas: &e[time]'
+      - '&e* &6ID: &e[id]'
+      - '&e* &6Qty: &e[qty] and up'
+      - '&e* &6Meno: &e[name]'
+      - '&e* &6Popis: &e[lore]'
+      - '&e************************************************************'
+  scavenge:
+    help:
+      info: '&eRecycle item and its enchantments'
+      args: (playerName)
+    info:
+      enchantWorth: '&eCena enchantu: &7[price]'
+      enchantFailChance: '&4Chyba pri zmene: &7[chance]%'
+      enchantFailed: '&cChyba. &7[enchant]&c level &7[level] &cz &7[chance]% &czmena
+        zlyhala.'
+      enchantLevelChance: '&cNajmenšia šanca na level: &7[chance]%'
+      gotIngredients: '&eObdržal si [itemList]'
+      gotIngredientsFormat: '&6[material]&7-&6[amount]'
+      itemBroke: '&cItem sa zničil z šancou [chance]%'
+      confirm: '&2Potvrdenie prehľadávania. Cena: &c[price]'
+      itemBreakChance: '&cŠanca na zničenie predmetu: [chance]%'
+      itemBreakChanceExtra: '&c[durability]% pridana výdrž premetu zo šancou [chance]%'
+      itemBreak: '&cKliknutím zničíš item!'
+      ingredientReturnChance: '&7Šanca na vrátenie: [chance]%'
+      cantScavenge: '&cNemôže byť zmazané.'
+      insertItem: '&2Vložiť item hore.'
+      scavengeCost: '&8Cena prehľadu: [cost]'
+      title: '&2Prehliadka'
+  schedule:
+    help:
+      info: '&eTrigger schedule'
+      args: '[scheduleName]'
+  se:
+    help:
+      info: '&eChanges sign text line.'
+      args: '[SignLine] [Text]'
+      explanation:
+      - Use / n for additional line
+  search:
+    help:
+      info: '&eSearch items/enchants/fly/maxhp/gm/oversize modes and other stuff from
+        all users'
+      args: ''
+      explanation:
+      - '&eid &6[id:data] '
+      - '&ename &6[some_custom_itemname] '
+      - '&elore &6[some_custom_lore] '
+      - '&eenchant &6[lowest enchant level] '
+      - '&epotion &6[lowest custom potion effect level] '
+      - '&efly &6[true or false] '
+      - '&egm &6[0/1/2/3 or survival/creative/adventure/spectator] '
+      - '&emaxhp &6[lowest hp player have] '
+      - '&egod &6[true/false]'
+      - '&eoversize'
+      - 'Example:'
+      - /search gm 1
+      - /search id 52
+      - /search lore Uber_lore
+    info:
+      started: '&eHľadanie'
+      current: '&eCelkovo našlo &3[amount] &ez &3[files] &eprezretých súborov.'
+      nothingfound: '&eNič sa nenašlo.'
+      totalfound: '&eCelkovo našlo &3[amount] &ez možných &3[files] &eprezeraných
+        uživateľov.'
+      total: '&eHľadanie: [current]/[until] z celkového počtu [total]'
+      location:
+        ender: '&3EnderTruhla'
+        inv: '&eInventár'
+        invS: '&eShulkerBox'
+        PlayerVault: '&ePlayerVault'
+      localsearch: '&e (L search)'
+      localsearchhover: |-
+        &eOtvára inventár zo súboru.
+        &eTáto akcia chvíľu potrvá.
+      reglist: '&e[number]. &e[name]'
+      list: '&2[number]. [location] &6[name]'
+      listhover: '&eKlikni pre otvorenie inventára.'
+  seen:
+    help:
+      info: '&eCheck when player was last seen'
+      args: '[playerName/uuid]'
+    info:
+      feedback: '&eHráč &6[playerDisplayName] &eje &6[offon] &epo dobu &6[time]'
+  sell:
+    help:
+      info: '&eSell items from inventory'
+      args: (all/blocks/hand/same/gui)
+    info:
+      total: '&8[&cVykup&8] &7Získal si &a[total] &7predajom &6[amount] &7itemov.
+        Nový zostatok na účte je &a[balance]'
+      close: '&8Vlož itemy ktoré chceš predať.'
+      sellInfo: '&8Predajom získaš: &2[price]'
+  sendall:
+    help:
+      info: '&eSend all online players to target server'
+      args: '[serverName]'
+  server:
+    help:
+      info: '&eConnect to bungeecord server'
+      args: '[serverName] (playerName)'
+  serverlist:
+    help:
+      info: '&eShow server list'
+      args: ''
+    info:
+      listOnline: '&7[place]. &2[serverName] &6[count]&7/&6[max]'
+      listOffline: '&7[place]. &c[serverName] &60&7/&60'
+  servertime:
+    help:
+      info: '&eShow server time'
+      args: ''
+    info:
+      time: '&eServer time: [time]'
+      format: MM/dd/YYYY HH:mm:ss
+      timeZone: '&eZóna času: &6[name]'
+      timeZoneId: '&eID zóna času: &6[id]'
+      timeZoneOffset: '&ePreradená zóna času: &6[offset]'
+  setenchantworth:
+    help:
+      info: '&eChange enchantment worth'
+      args: ''
+  setfirstspawn:
+    help:
+      info: '&eSets first spawn point'
+      args: (playerName)
+    info:
+      feedback: '&ePrvé spawn hráča nastavený na (&6[world]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
+  sethome:
+    help:
+      info: '&7Nastavit &cdomov'
+      args: (homeName) (playerName)
+      explanation:
+      - cmi.command.sethome.unlimited
+      - -l will define custom location for new home location, this requires cmi.command.sethome.customloc
+        permission node
+    info:
+      set: "&a\n&7Vytvoril si si domov s názvom &6[homeName]&7!\n&a "
+      setBed: '&eVytvorená lokácia respawnu.'
+      private: ' &2(private)'
+      noMore: "&a\n&7Dosiahol si maximálny počet &cdomovou&7!\n&a "
+      noOverwrite: '&cNemáš dostatočné práva na prepísanie už existujúcej lokácie
+        domova. Ostráň starý domov alebo vyber iné meno domova.'
+  setmotd:
+    help:
+      info: Set server motd
+      args: '[newMotd]'
+      explanation:
+      - use \n to make second line
+    info:
+      changed: '&eMOTD serveru zmenený na:'
+  setrt:
+    help:
+      info: '&eSet random teleport bounds'
+      args: (worldName) (center:[x]:[z]) (min:[range]) (max:[range]) (square/circle)
+        (enabled/disabled)
+    info:
+      list: '&6[place]. [world] [enabled] &7[centerX]:[centerZ] &e[maxDist]/[minDist]
+        [type]'
+  setspawn:
+    help:
+      info: '&eSets spawn command teleport point'
+      args: (playerName) (true/false) (-g:[groupName]) (-rng:[range]) (-w:world,world_nether)
+      explanation:
+      - More info on command usage at https://www.spigotmc.org/wiki/cmi-basic-utilities/
+    info:
+      feedback: '&6Spawn hráčov nastavený na ([world],[x],[y],[z])!'
+      group: ' &e([group])'
+      rng: ' &e(Rng: [rng])'
+      respawn: '&7Klikni pre nastavenie spawnu.'
+  setwarp:
+    help:
+      info: '&eSets warp location'
+      args: '[warpName] (reqPermission) (hand) (slot) (autoLore)'
+      explanation:
+      - 'Examples:'
+      - /cmi setwarp spawn - simple warp to spawn
+      - /cmi setwarp spawn true - creates warp and will require cmi.command.warp.[warpname]
+        permission node to use it
+      - /cmi setwarp spawn hand - creates warp will take item from hand to display
+        in gui for this warp
+      - /cmi setwarp spawn 13 - creates warp and sets gui slot to be used in gui (1-54)
+      - /cmi setwarp spawn true hand 13 - creates warp with icon from hand, slot 13
+        and requires permission
+      - /cmi setwarp spawn true hand 13 false - same as previous, but doesn't generate
+        lore
+    info:
+      newSet: '&eNový warp (&6[warp]&e) nastavený.'
+      noSet: '&cWarp s týmto menom už existuje.'
+      noMore: '&cDosiahol si maximum warpou. ([max])'
+  setworth:
+    help:
+      info: '&eChange item worth'
+      args: (itemname)
+    info:
+      setSell: '&eNastavená cena predaja na &7[amount]'
+      setBuy: '&eNastavená cena zakúpenia &7[amount]'
+      notInUse: '&eHlavné použitie pre prípadné bugovanie.'
+      sellPrice: '&fCena predaja: &e[amount]'
+      buyPrice: '&fCena nákupu: &2[amount]'
+      exploit: '&4Možné BUGOVANIE!'
+      ingridient: '&2Materiál'
+      ingridients: '&7[ingridient]&f(&7[amount]&f) = &e[price]'
+      notSet: '&eCena nie je nastavená'
+      result: '&2Informácie ohľadom craftu &7[result]&f(&7[amount]&f)'
+      ingridientsPrice: '&cCena materiálu: &7[price]'
+      resultPrice: '&cMôže byť predaný za &7[price]'
+  shakeitoff:
+    help:
+      info: '&eDismount any entity riding you'
+      args: ''
+    info:
+      shaked: '&eZhodil si &6[entity] &ezo seba.'
+      nothing: '&eNemáš entitu ktorú by si zo seba zhodil.'
+  shoot:
+    help:
+      info: '&eShoot projectile'
+      args: (playerName) (-t:targetPlayer) (type) (speed)
+  signspy:
+    help:
+      info: '&eToggle sign spy'
+      args: (playerName)
+      explanation:
+      - cmi.command.signspy.hide - Hides created signs from signspy
+    info:
+      text: '&8[&5SignSpy&8] [&8[senderDisplayName]&7]&7: &f[text]'
+      toggled: '&eSignSpy bol &6[state]&e.'
+  silence:
+    help:
+      info: '&eBlocks public messages'
+      args: ''
+      explanation:
+      - cmi.command.silence.bypass - to bypass silence
+    info:
+      enabled: "&a\n&7Chat bol &4&ldeaktivovaný\n&a "
+      disabled: "&a\n&7Chat bol &2&laktivovaný\n&a "
+      inMode: '&eHráč je v tichom mode.'
+  silentchest:
+    help:
+      info: '&eToggles silent chest'
+      args: ''
+      explanation:
+      - '&ePlayers arround you wont see chest opening animation when you opening chest'
+      - '&eProtocollib required for this feature to work.'
+    info:
+      feedback: '&eNenápadné otváranie truhál bolo &3[offon].'
+      onOpen: '&eOtváraš chestu nenápadne.'
+  sit:
+    help:
+      info: '&eSit in your position'
+      args: ''
+    info:
+      onSit: '!actionbar!&7Sadol si si.'
+      onStandUp: '!actionbar!&7Postavil si sa.'
+      accupied: '!actionbar!&cNa tomto mieste už niekto sedí.'
+  skin:
+    help:
+      info: '&eChanges players skin'
+      args: '[skinName/off/update] (playerName)'
+    info:
+      changed: '&eSkin zmenený na skin hráča &6[skinOwner]&e.'
+      failed: '&eChyba pri zmene skinu.'
+      resetSteve: '&eSkin odstránený.'
+      reset: '&eNastavený defaultný skin.'
+      update: '&eSkin aktualizovaný.'
+  smite:
+    help:
+      info: '&eStrike ground or player with lightning'
+      args: (playerName) (-s)
+    info:
+      gotSmited: ''
+  socialspy:
+    help:
+      info: '&eToggle social spy'
+      args: (playerName)
+    info:
+      msg: '&bSocSpy &7[&8[senderDisplayName] &7-> &8[playerDisplayName]&7]&f [message]'
+      toggled: '&eSocial spy toggled to &6[state] &estate'
+  solve:
+    help:
+      info: '&eSolve equation'
+      args: '[equation]'
+    info:
+      result: '&7Výsledok &e[res]'
+      incorrect: '&cNesprávny vstup textu &e[input]'
+  sound:
+    help:
+      info: '&ePlay sound at target location'
+      args: '[sound] (-p:[pitch]) (-v:[volume]) (playerName/-all) (world) (x) (y)
+        (z)'
+    info:
+      playing: "&eSong &6[sound] &eSúradnice [world] [x]:[y]:[z] \n&ePitch: &6[pitch]\
+        \  &eHlasitosť: &6[volume]"
+      playingMultiple: "&eSong &6[sound] &epre &6[amount] &ehráčov \n&ePitch:  &6[pitch]\
+        \ &eHlasitosť: &6[volume]"
+  spawn:
+    help:
+      info: '&eTeleports back to spawn location'
+      args: (playerName)
+    info:
+      notset: '&4Spawn nie je nastavený!'
+      feedback: '&7Úspešne teleportovaný na spawn!'
+  spawner:
+    help:
+      info: '&eSets spawner'
+      args: '[EntityType]'
+    info:
+      feedback: '&7Spawner bol nastavený na &c[type]'
+      wrongEntityIdName: '&cChybná entita alebo ID.'
+      cantSet: '&cNemôžeš nastaviť tento druh.'
+      cantDetect: '&c&lSpawner &f- &7Musíš sa pozerať na spawner!'
+      pickOne: '&8Vyber druh spawneru.'
+  spawnereditor:
+    help:
+      info: '&eEdit spawner'
+      args: ''
+  spawnmob:
+    help:
+      info: '&eSpawns entity at your location'
+      args: '[EntityType]'
+      explanation:
+      - ' &e- First argument always is main entities name'
+      - ' &e- You can define entities states: baby, adult, dumb, tamed, n-[name],
+        upwards, glow, skull-[name], helmet-[itemname], chest-[itemname], legs-[itemname],
+        boots-[itemname], mhand-[itemname], ohand-[itemname], effect-levitation/10/1-speed/10/2.
+        /n Example: horse:baby:tamed:n-Horsy, zombie:skull-Zrips:n-AngryZombie:mhand-Diamond_Sword'
+      - ' &e- some entities have special variables: '
+      - '    &6Sheep &e- white, brown, red, rainbow and so on... &6primed_tnt &e-
+        [ticks], incendiary'
+      - '    &6Horse &e- white, chestnut, creamy, darkbrown, gray, black'
+      - '    &6Ocelot &e- red, siamese, wild, black &6experience_orb &e- [number]'
+      - '    &6Skeleton &e- wither, &6Creeper &e- charged &6Wolf &e- angry'
+      - '    &6Zombie &e- villager, blacksmith, butcher, farmer, priest, librarian'
+      - '    &6Villager &e- blacksmith, butcher, farmer, priest, librarian'
+      - '    &6Slime, MagmaCube &e- size by giving number from 1. slime:3'
+      - '    &6ArmorStands &e- nogravity, noplate, arms, noarms, small'
+      - '    &6ShulkerBullet &e- [target], bounce'
+      - ' &e- Extra variables:'
+      - '     &6ps:zombie:priest:baby-1 &e- passanger with amount'
+      - '     &6hp:20 &e- health'
+      - '     &6sp:3 &e- spreads randomly entities in range'
+      - '     &6s:4 &e- entities speed'
+      - '     &6t:[playername] &e- target which one entities will atack'
+      - '     &6q:10 &e- amount you want to spawn'
+      - '     &6[playername] &e- spawns entities at players location'
+      - '     &6loc:123/13.0/-15/World &e- spawn location. World name is optional
+        if used as player'
+      - 'Example: /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Chick_on_Sheep
+        q:10 sp:10 hp:50 s:2'
+    info:
+      wrongEntityName: '&eNesprávne meno entity.'
+      wrongPlayerName: '&eNesprávne meno hráča.'
+      spawnedEntities: '&eSpawnulo sa &6[entities] &eentit.'
+      spawnedPasangers: '&ea &6[passengers] &ecestujúci'
+      nothingSpawned: '&eŽiadna entita sa nespawnula.'
+      cantSpawn: '&eTáto entita nemôže byť spawnutá.'
+  staffmsg:
+    help:
+      info: '&eSends message to staff chanell'
+      args: '[message/toggle/on/off]'
+    info:
+      message: '&c[AdminChat] &7[senderDisplayName] &6»&c [message]'
+      toggledOn: '&ePersistent staff chat have been started. You can now write messages
+        in public chat.'
+      toggledOff: '&eToggled off Persistent staff chat'
+  stats:
+    help:
+      info: '&eCheck players stats'
+      args: (playerName)
+    info:
+      distanceCM: '&e[value]&6cm'
+      distanceM: '&e[value]&6m'
+      distanceKm: '&e[value]&6km'
+      list: '&e[name]:&6[amount]'
+      listCover: '&e([list]&e)'
+      Quit: '&eOdpojení: &6[value]'
+      PlayTime: '&eOdohraný čas: &6[value]'
+      SneakTime: '&eČas v shifte: &6[value]'
+      Sleep: '&eSpaní v posteli: &6[value]'
+      Joined: '&ePripojený: &6[time]'
+      Jumps: '&eVyskočení: &6[value]'
+      SinceDeath: '&ePosledná smrť: &6[value]'
+      Deaths: '&ePočet úmrtí: &6[value]'
+      DeathsByMonsters: '&eKilled by monsters: &6[value]'
+      TotalDistance: '&eCelková precestovaná vzdialenosť: &6[value]'
+      Walk: '&eWalked: &6[value]'
+      Crouch: '&eCrouched: &6[value]'
+      Sprint: '&eSprinted: &6[value]'
+      Swim: '&ePreplávaná vzdialenosť: &6[value]'
+      Fall: '&eČas padania: &6[value]'
+      Climb: '&eClimbed: &6[value]'
+      Fly: '&ePreletené: &6[value]'
+      Dive: '&eDove: &6[value]'
+      Minecart: '&ePrecestované vo vozíku: &6[value]'
+      Boat: '&ePrecestované v lodi: &6[value]'
+      Pig: '&ePrecestované na prasati: &6[value]'
+      Horse: '&ePrecestované na koni: &6[value]'
+      Elytra: '&ePreletené na elytre: &6[value]'
+      Damage: '&ePoškodenie &6[dealt] [taken]'
+      DamageDealt: '&eDealt: &6[value]'
+      DamageTaken: '&eTaken: &6[value]'
+      JUMP: '&eJumps: &6[value]'
+      Kills: '&eKills &6'
+      KillsMob: '&eMob: &6[value]'
+      KillsPlayer: ' &ePlayer: &6[value]'
+      Blocks: '&eBlocks &6'
+      BlocksMined: '&eMined: &6[value]'
+      BlocksPlaced: ' &ePlaced: &6[value]'
+      Items: '&eItems &6'
+      ItemsUsed: '&eUse:&6[value]'
+      ItemsDrop: '&eDrop:&6[value]'
+      ItemsPicked: '&ePick:&6[value]'
+      ItemsBroken: '&eBroke:&6[value]'
+      ItemsCrafted: ' &eCraft:&6[value]'
+      ItemsEnchanted: ' &eEnchant:&6[value]'
+      Opened: '&eOpened &6[list]'
+      OpenChest: '&eChest:&6[value]'
+      OpenEnder: '&eEnderChest:&6[value]'
+      OpenShulker: '&eShulkerBox:&6[value]'
+      Interacted: '&eInteracted &6[list]'
+      InteractBeacon: '&eBeacon:&6[value]'
+      InteractBrewingStand: '&eBrewStand:&6[value]'
+      InteractCraftTable: '&eCraftTable:&6[value]'
+      InteractFurnace: '&eFurnace:&6[value]'
+      Inspected: '&eInspected &6[list]'
+      InspectDispenser: '&eDispenser:&6[value]'
+      InspectDropper: '&eDropper:&6[value]'
+      InspectHopper: '&eHopper:&6[value]'
+      Statistics:
+        LEAVE_GAME: Game quit
+        PLAY_ONE_TICK: Play time
+        TIME_SINCE_DEATH: From last death
+        TIME_SINCE_REST: From last rest
+        SNEAK_TIME: Sneak time
+        ACOUNT_AGE: Account age
+        TRAVEL: Travel
+        WALK_ONE_CM: Walk
+        CROUCH_ONE_CM: Sneak
+        SPRINT_ONE_CM: Sprint
+        SWIM_ONE_CM: Swim
+        FALL_ONE_CM: Fall
+        CLIMB_ONE_CM: Climb
+        FLY_ONE_CM: Fly
+        DIVE_ONE_CM: Dive
+        WALK_UNDER_WATER_ONE_CM: Walk under water
+        WALK_ON_WATER_ONE_CM: Walk on water
+        MINECART_ONE_CM: Minecart travel
+        BOAT_ONE_CM: Boat travel
+        PIG_ONE_CM: Pig travel
+        HORSE_ONE_CM: Horse travel
+        AVIATE_ONE_CM: Elytra travel
+        JUMP: Jump
+        DAMAGE_DEALT: Damage dealt
+        DAMAGE_TAKEN: Damage taken
+        DAMAGE_DEALT_ABSORBED: Damage dealt absorbed
+        DAMAGE_DEALT_RESISTED: Damage dealt resisted
+        DAMAGE_BLOCKED_BY_SHIELD: Damage blocked by shield
+        DAMAGE_ABSORBED: Damage absorbed
+        DAMAGE_RESISTED: Damage resisted
+        DEATHS: Deaths
+        ENTITY_KILLED_BY: Killed by
+        MOB_KILLS: Mob kills
+        PLAYER_KILLS: Player kills
+        ITEM_ENCHANTED: Item enchanted
+        ANIMALS_BRED: Animals bred
+        FISH_CAUGHT: Fish caught
+        TALKED_TO_VILLAGER: Talked to villager
+        TRADED_WITH_VILLAGER: Traded with villager
+        CAKE_SLICES_EATEN: Cake slices eaten
+        CAULDRON_FILLED: Cauldron filled
+        CAULDRON_USED: Couldron used
+        ARMOR_CLEANED: Armor cleaned
+        BANNER_CLEANED: Banner cleaned
+        BREWINGSTAND_INTERACTION: Brewing stand interactions
+        BEACON_INTERACTION: Beacon interactions
+        CRAFTING_TABLE_INTERACTION: Crafting table interactions
+        FURNACE_INTERACTION: Furnace interactions
+        DISPENSER_INSPECTED: Dispenser inspected
+        DROPPER_INSPECTED: Dropper inspected
+        HOPPER_INSPECTED: Hopper inspected
+        CHEST_OPENED: Chest open
+        TRAPPED_CHEST_TRIGGERED: Trapped chest triggered
+        ENDERCHEST_OPENED: Ender chest opened
+        NOTEBLOCK_PLAYED: Noteblock played
+        NOTEBLOCK_TUNED: Noteblock tuned
+        FLOWER_POTTED: Flower potted
+        RECORD_PLAYED: Record played
+        SLEEP_IN_BED: Slept in bed
+        SHULKER_BOX_OPENED: Shulker box opened
+        CLEAN_SHULKER_BOX: Shulker box cleaned
+        DROP: Item dropped
+        MINE_BLOCK: Blocks mined
+        BREAK_ITEM: Item breaks
+        CRAFT_ITEM: Item crafts
+        USE_ITEM: Items used
+        PICKUP: Item pickups
+        KILL_ENTITY: Monster kills
+  statsedit:
+    help:
+      info: '&eEdit players statistics'
+      args: (playerName) [add/take/set] [statistic] (subType) [amount] (-s)
+    info:
+      cantSet: '&cNemôžeš si toto nastaviť.'
+      reqSubType: '&cTáto štatistika potrebuje definovať &6[type] &cpoddruhu.'
+      set: '&eZmenené z &6[old] &ena &6[new] &ehodnotu pre &6[statistic] &e(&6[extra]&e)'
+  status:
+    help:
+      info: '&eShow server status'
+      args: ''
+    info:
+      Platform: ' &ePlatforma: &6[platform] &e(&6[os]&e) &eBežiace záznamy: &6[threads]'
+      Tps: ' &eTPS: &6[tps]'
+      CpuUsage: ' &ePoužité CPU: &6[cpuusage]% &e(&6[cores] cores&e)'
+      Uptime:
+        main: ' &eČas chodu: '
+        weeks: '&e[weeks] &6týždňov '
+        days: '&e[days] &6dní '
+        hours: '&e[hours] &6hodín '
+        mins: '&e[mins] &6minút '
+        secs: '&e[secs] &6sekund '
+      MemoryUsage: ' &ePoužitá pamäť: &6[percent]% &e(&6[current]&e/&6[max] MB&e)'
+      MemoryUsageHover: "&fVolné: &7[free] \n&fPovolené: &7[allocated] \n&fMax: &7[max]\
+        \  \n&fCelkovo: &7[total]"
+      Java: ' &eVerzia javy: &6[mainV].[majorV].[minorV]&e(&6[update]&e) Build: &6[build]'
+      DiskUsage: ' &ePoužitie disku: &6[percent]% &e(&6[current]&e/&6[max] GB&e)'
+      Worlds: '&e [number]. &6[world] &e[chunks] Chunkov &6[entities] Entity &e[tiles]
+        pokrytie &6[players] hráčov'
+  sudo:
+    help:
+      info: '&eForce another player to perform command'
+      args: '[playerName] (command/c:[text])'
+      explanation:
+      - cmi.command.sudo.bypass - protects player from being 'trolled'
+    info:
+      performed: '&eVykonal si príkaz &6[command]&e'' za hráča &6[playerDisplayName]&e.'
+  suicide:
+    help:
+      info: '&eKill your self'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&eAUCH'
+      message: '&f\n&e...Hmmmm\n&f\n&f\n&eHráč &6[playerDisplayName] &esi vzal život.\n&f'
+  switchplayerdata:
+    help:
+      info: '&eSwitch all data from one player to another'
+      args: '[sourcePlayerName/uuid] [targetPlayerName/uuid]'
+      explanation:
+      - Use UUID for more accurate transfers, expecialy when usrnames matching each
+        other
+    info:
+      same: '&eÚčty boli sinchronizované'
+      transferred: '&6[sourceName] &edata boli zamenená za &6[Name]'
+  tablistupdate:
+    help:
+      info: '&eForce tablist update for all or specific player'
+      args: (playerName)
+    info:
+      updated: '&eTablist updated'
+  tagtoggle:
+    help:
+      info: '&eToggle tag sounds'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&eDisabled tag sounds'
+      feedbackEnabled: '&eEnabled tag sounds'
+  tempban:
+    help:
+      info: '&eTempBan player'
+      args: '[playerName] [timeInSec] (reason) (-s)'
+      explanation:
+      - Ban max range depends on cmi.command.tempban.max.[amount]
+      - cmi.command.tempban.max.unlimited - allows to ban for as much as you want
+      - In case player dosen't have any, 60 sec will be max value
+      - 'Example: '
+      - /cmi tempban zrips 5m For swearing
+    info:
+      messageToAll: '&6[playerDisplayName] &egot tempbanned by &6[senderDisplayName]
+        &efor: &6[time] &ereason: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &egot tempbanned by &6[senderDisplayName]
+        &efor: &6[time] &ereason: &6[reason]'
+      time: '&eYou will be unbanned after &6[time]'
+      badTime: '&cTime is defined incorrectly'
+      badTimeRange: '&cYou can''t ban for longer than &6[seconds]'
+  tempipban:
+    help:
+      info: '&eTemp ban ip'
+      args: '[ip/playerName] [time] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - to bypass ban
+    info:
+      message: '&cThe Ban Hammer has spoken!'
+      reason: '&6Reason: &e[reason]'
+      defaultReason: '&eViolated server rules'
+      messageToAll: '&6[playerDisplayName] &7got temp ip banned for &7[time]&7by &6[senderDisplayName]&7:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &7got temp ip banned for &7[time]&7:
+        &6[reason]'
+  tfly:
+    help:
+      info: '&eSet temporary players fly mode until relog or until time ends'
+      args: '[playerName] (timeInSec) (-s)'
+      explanation:
+      - 'Examples:'
+      - tfly Zrips 30 - fly mode for next 30 sec
+      - tfly Zrips +30 - adds fly mode for an additional 30 sec
+      - tfly Zrips 0 - fly mode until relog
+      - tfly Zrips - check if player have tfly mode enabled and until when
+    info:
+      setTimedFly: '&eNastavil si hráčovi &6[playerDisplayName]&e dočasné fly na dobu
+        [time].'
+      addTimedFly: '&ePridal si hráčovi &6[playerDisplayName]&e čas k jeho dočasnému
+        fly. +[addTime] ([time])'
+      setUntilRelogFly: '&eNastavil si hráčovi &6[playerDisplayName]&e dočasné fly
+        kým sa neodpojí.'
+      targetTimedEnabled: '&eTvoje Fly bolo zapnuté na [time]&e.'
+      targetTimedEnabledAdd: '&eDostal si dodatkový čas na pre tvoje dočasné fly.
+        +[addTime] ([time]).'
+      targetUntilRelogEnabled: '&eObdržal si dočasné fly. Toto fly sa ti vypne po
+        odchode zo serveru.'
+      setFor: '&eDočasné fly zapnuté na [time].'
+      setForRelog: '&eDočasné fly zapnuté. Fly sa vypne po odpojení zo serveru.'
+      notSet: '&eDočasné fly pre tohoto hráča nie je dostupné.'
+      willBeDisabled: '&eTvoje fly sa vypne za [time]'
+      disabled: '&cFly vypnuté. Pre zapnutie fly napíš &a/flyon'
+  tgod:
+    help:
+      info: '&eSet players temporarily god mode until relog or time end'
+      args: '[playerName] &3(timeInSec) (-s)'
+      explanation:
+      - 'Examples:'
+      - tgod Zrips 30 - god mode for next 30 sec
+      - tgod Zrips 0 - god mode until relog
+      - tgod Zrips - check if player have tgod mode enabled and until when
+    info:
+      setTimedGod: '&eNastavil si hráčovi &6[playerDisplayName]&e dočasný GodMode
+        po dobu [time].'
+      setUntilRelogGod: '&eNastavil si hráčovi &6[playerDisplayName]&e dočasný GodMode
+        kým sa neodpojí.'
+      targetTimedEnabled: '&eDostal si dočasný GodMode po dobu [time].'
+      targetUntilRelogEnabled: '&eDostal si dočasný GodMode. Tento GodMode sa ti vypne
+        po odpojení zo serveru.'
+      setFor: '&eDočasný GodMode zapnutý na [time].'
+      setForRelog: '&eDočasný GodMode zapnutý po dobu pobytu na servery.'
+      notSet: '&eDočasný GodMode nemôže byť zapnutý pre tohoto hráča.'
+      willBeDisabled: '&eDočasný GodMode sa vypne za [time].'
+      disabled: '&eDočasný GodMode bol vypnutý!'
+  time:
+    help:
+      info: '&eControls server time'
+      args: (-smooth)
+      explanation:
+      - 'Example:'
+      - /day
+      - /night
+      - /time 13:00:00
+      - /time 1pm
+      - /time 13
+      - /time 7000ticks
+      - /time 1pm Lt_Craft
+      - /time 1pm all
+      - /time add 0:30
+      - /time take 0:30
+      - /time freeze
+      - /time unfreeze
+      - /time realtime
+      - /time autorealtime start/stop
+    info:
+      check: '&eČas: &6[24h] &ealebo &6[12h] &ealebo &6[ticks]ticks &evo svete &6[world]'
+      frozen: ' &c(-)'
+      frozenTime: '&eZamrznutý čas'
+      real: ' &6(+)'
+      realTime: '&eAutomatický reálny čas'
+      autorealstart: '&eAutomatický čas spustený pre svet &6[world]&e.'
+      autorealstop: '&eAutomatický čas vypnutý pre svet &6[world]&e.'
+      gotfrozen: '&eČas vo svete &6[world] &ebol zastavený.'
+      gotunfrozen: '&eČas vo svete &6[world] &ebol spustený.'
+      cantset: '&eNesprávny formát času.'
+      setto: '&eČas nastavený na &6[24h] &esvete &6[world]'
+      am: '&eDo obedu'
+      pm: '&ePo obede'
+  titlemsg:
+    help:
+      info: '&eSends title message to player'
+      args: "[playerName/all] [title \n subtitle]"
+    info:
+      message: '&f[messsage]'
+  toast:
+    help:
+      info: '&eSends toast message to player'
+      args: '[playerName/all] (-t:[advType]) (-icon:[material]) [message]'
+    info:
+      message: '&f[messsage]'
+  togglecompass:
+    help:
+      info: '&eShow or hide compass bossbar'
+      args: ''
+    info:
+      ToggleOff: '&eBossBar kompas bol vypnutý.'
+      ToggleOn: '&6BossBar kompas bol zapnutý.'
+  toggleshiftedit:
+    help:
+      info: '&eToggles sign shift editing'
+      args: ''
+    info:
+      feedbackDisabled: '&eVypnuté editovanie cedulky (shift).'
+      feedbackEnabled: '&eZapnuté editovanie cedulky (shift).'
+  toggletotem:
+    help:
+      info: '&eShow or hide totem cooldown bar'
+      args: ''
+    info:
+      notActive: '&eTotem cooldown is not active'
+  top:
+    help:
+      info: '&eTeleport to highest point at your location'
+      args: '[playerName] (-s)'
+  tp:
+    help:
+      info: '&eTeleports to player''s location'
+      args: '[playerName] (playerName)'
+    info:
+      feedback: '&eBol si teleportovaný na hráča &3[sourceDisplayName] &e(&3[offon]&e).'
+      bad:
+        msg: '&cTeleport nie je bezpečný! [reason]'
+        extraMsg: '&ePouži &6/tpbypass &epre teleport. Máš na to [time].'
+        lava: '&cLava'
+        void: '&cVoid'
+        suffocation: '&cSuffocation'
+        unknown: '&cUnknown'
+        plugin: '&cParty Plugin'
+      notAllowed: '&cNemôžeš sa teleportovať na tohoto hráča.'
+      prevented: '&cTeleport bol zrušený iným pluginom.'
+  tpa:
+    help:
+      info: '&7Zaslat zadost o teleport danemu hraci'
+      args: '&8[&cJmeno hrace&8]'
+    info:
+      requestSent: '&8[&cTPA&8] &7Žiadosť odoslana hráčovi &6[playerDisplayName]&7!'
+      gotRequest: |2-
+
+        &8[&cTPA&8] &7Hráč &6[senderDisplayName] &7ti odoslal žiadosť o teleport!
+      time: ''
+      alreadyRequesting: '&c&lTPA &f- &7Už si odoslal žiadosť o teleport hráčovi &6[playerDisplayName]&7!'
+      banned: '&eNemôžeš odoslať hráčovi &6[playerDisplayName] &ežiadosť o teleport
+        na ďalších &6[time]'
+  tpaall:
+    help:
+      info: '&eAsk all online players to teleport to your location'
+      args: ''
+    info:
+      requestSent: '&eŽiadosť odoslaná všetkým hráčom.'
+  tpaccept:
+    help:
+      info: '&c&lTPA &f- &7Prijmout zadost o teleport'
+      args: (playerName)
+    info:
+      noRequest: '&7Nemáš žiadnu žiadosť o teleport.'
+      NotOnline: '&7Hráč není online.'
+      accepted: '&7Hráč &6[playerDisplayName] &7prijal tvoju žiadosť o teleport.'
+      youAccepted: '&7Žiadosť prijatá.'
+  tpahere:
+    help:
+      info: '&eAsks player to accept teleportation to your location'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      gotRequest: '&eHráč &6[senderDisplayName] &echce aby si sa teleportol k nemu.'
+      accept: '&6Klikni pre prijatie teleportu!'
+  tpall:
+    help:
+      info: '&eTeleports all online players to location'
+      args: (playerName)
+    info:
+      feedback: '&eBol si teleportovaný na hráča &3[playerDisplayName]&e.'
+  tpallworld:
+    help:
+      info: '&eTeleports ALL players from specific world'
+      args: '[worldName]'
+      explanation:
+      - -a variable will teleport everyone who are in no longer existing world to
+        target location
+    info:
+      started: '&eTeleportácia spustená!'
+      current: '&ePráve si teleportol &3[amount] &ea &3[files] &eprezretých súborov.'
+      total: '&eCelkovo si teleportol &3[amount] &ez možných &3[files] &eprezretých
+        hráčov.'
+      WorldNotFound: '&eWorld by given &7[name] &ename is not loaded. Make sure its
+        correct one. We will use as it is.'
+  tpbypass:
+    help:
+      info: '&eBypass teleportation to unsafe location'
+      args: (playername)
+    info:
+      noSavedTp: '&cNemáš žiadne uložené lokácie teleportu.'
+      feedback: '&eTeleport na nebezpečnú lokáciu.'
+  tpdeny:
+    help:
+      info: '&7'
+      args: (playerName)
+    info:
+      noRequest: '&7Nemáš žiadnu žiadosť o teleport.'
+      youDenied: '&7Žiadosť o teleport zamietnutá.'
+      denied: '&7Hráč &6[senderDisplayName] &ezamietol tvoj teleport.'
+  tphere:
+    help:
+      info: '&eTeleports player to your location'
+      args: '[playerName] (playerName)'
+    info:
+      feedback:
+        offline: '&eNastavil si hráčovi &3[playerDisplayName]&e (&3[offon]&e) spawn
+          na súradnice ([world],[x],[y],[z]).'
+        online: '&eHráč &6[playerDisplayName] &ebol teleportovaný na tvoju lokáciu.'
+        player: '&eBol si teleportovaný na lokáciu hráča &6[sourceDisplayName]&e.'
+      notAllowed: '&eNemôžeš teleportnuť tohoto hráča.'
+  tpo:
+    help:
+      info: '&eTeleports to player''s location by force'
+      args: '[playerName] (playerName)'
+  tpohere:
+    help:
+      info: '&eTeleports player to your location by force'
+      args: '[playerName] (playerName)'
+  tpopos:
+    help:
+      info: '&eTeleports to location by force'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&eBol si teleportovaný na súradnice ([world],[x],[y],[z]).'
+      feedbackOther: '&eHráč [playerDisplayName] bol teleportovaný na súradnice ([world],[x],[y],[z]).'
+  tppos:
+    help:
+      info: '&eTeleports to location'
+      args: (playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&eBol si teleportovaný na súradnice ([world],[x],[y],[z]).'
+      feedbackOther: '&eHráč [playerDisplayName] bol teleportovaný na súradnice ([world],[x],[y],[z]).'
+  tps:
+    help:
+      info: '&eCheck servers tps status'
+      args: ''
+    info:
+      Tps: '&eTPS: &6[tps]'
+  tptoggle:
+    help:
+      info: '&eToggle teleportation access to player'
+      args: (playerName)
+    info:
+      feedbackNoTp: '&eZakázal si teleport na seba.'
+      feedbackTp: '&ePovolil si teleport na seba.'
+  tree:
+    help:
+      info: '&eSpawn tree where you are looking'
+      args: (TreeType)
+    info:
+      feedback: '&6[tree] &epostavený.'
+      cantSpawn: '&cNemôžeš postaviť (&e[tree]&c) na tento block.'
+  unban:
+    help:
+      info: '&eUnban player or ip'
+      args: '[playerName/ip] (-s)'
+    info:
+      unBaned: '!broadcast!&6[playerDisplayName] &eunbanned'
+      unBanedSilent: '&7[&8Silent&7]&6[playerDisplayName] &eunbanned'
+      notBanned: '&6[playerDisplayName] &enot banned'
+  unbreakable:
+    help:
+      info: '&eMakes item unbreakable'
+      args: (playerName) (true/false)
+    info:
+      feedback: '&eSpravil si [state] &eitem hráčovi &3[playerDisplayName]&e (&3[offon]&e).'
+      breakable: '&6zničitelný'
+      unbreakable: '&6nezničitelný'
+  uncondense:
+    help:
+      info: '&eUncondense items into smaller parts'
+      args: (itemName)
+    info:
+      converted: '&ePremenilo sa &7[blocks] &eblockov na &7[items] &eitem.'
+      nothing: '&cV inventáry sa nenachádza žiaden item na premenu.'
+  unjail:
+    help:
+      info: '&eCreate jail by name'
+      args: '[playerName]'
+    info:
+      notInJail: '&cTarget player is not in jail'
+      unjailed: '&eYou have released &6[playerDisplayName] &efrom jail'
+      unjailedTarget: '&eYou have been released from jail!'
+  unloadchunks:
+    help:
+      info: '&eUnloads chunks from server memory'
+      args: (-f)
+      explanation:
+      - -f variable will force for all chunks to be unloaded in one go.
+    info:
+      removed: '&eZmazaný -[list]'
+      startScanning: '&eNájdených &6[amount] &echunkov pre udnačítanie. Proces spustený!'
+      InfoShow: '&6TPS: &3[tps] &6Ostáva &e[left] &6(&e[min]m:[sec]s&6) &6Rýchlosť:
+        &e[speed] &6Odnačítané: &e[found]'
+      Finished: '&eDokončené! Odnačítalo sa &6[amount] &echunkov za &6[minutes] &eminút
+        a &6[seconds] &esekund.'
+  unmute:
+    help:
+      info: '&eUnmute player'
+      args: '[playerName] (-s)'
+    info:
+      notMuted: '&ePlayer is not muted'
+      unmuted: '&ePlayer can talk now'
+      unmutedTarget: '&eYou can talk now'
+  unmutechat:
+    help:
+      info: '&eUnmute public chat'
+      args: (-s)
+    info:
+      unmuted: '&eUnmuted public chat'
+  usermeta:
+    help:
+      info: '&eManage players meta data'
+      args: '[playerName] [add/remove/clear/list/increment] (key) (value) (-s)'
+      explanation:
+      - Any set meta can be displayed with %cmi_user_meta_[key]% placeholder around
+        plugin
+    info:
+      added: '&ePridana meta hráčovi &6[playerDisplayName] &es kľúčom &6[key] &ea
+        hodnotou &6[value]&e.'
+      cleared: '&eVšetky mety zmayané hráčovi &6[playerDisplayName]&e.'
+      removed: '&eZmazaný kľúč &6[key] &emety pre hráča &6[playerDisplayName]&e.'
+      changed: '&eZmenený kľúč &6[key] &ez hodnoty &6[oldValue] &ena hodnotu &6[newValue]&e.'
+      list: '&e[place]. &6[key]&e: [value]   '
+  util:
+    help:
+      info: '&eAdminstration tools'
+      args: (removeseats)
+    info:
+      removedSits: '&eRemoved &6[count] &eempty sits from all worlds.'
+  vanish:
+    help:
+      info: '&eVanish player'
+      args: (playerName/list) (on/off)
+    info:
+      vanished: '&aZapol si si Vanish.'
+      unvanish: '&cVypol si si Vanish.'
+      targetVanished: '&6[playerDisplayName] &emá vanish.'
+      targetUnvanish: '&6[playerDisplayName] &enemá vanish'
+      list: '&e[place]. &6[playerDisplayName] &e(&6[offon]&e)'
+      noVanished: '&eŽiaden člen Admin Tímu nemá momentálne Vanish.'
+  vanishedit:
+    help:
+      info: '&eEdit vanish mode for player'
+      args: (playerName)
+    info:
+      isVanished: '&aZapnúť Vanish'
+      damageToEntity: '&eMožnosť udeliť damage ostatným'
+      playerDamage: '&eMožnosť obdržať damage'
+      itemPickup: '&eMôže brať itemy zo seme'
+      mobAggro: '&eMobovia ťa vidia'
+      interaction: '&eMôžeš použiť pressureplate'
+      silentChest: '&eNenápadné otváranie truhly'
+      informOnLeave: '&eZobrazí správu odpojenia'
+      informOnJoin: '&eZobrazí správu pripojenia'
+      PrivateMessages: '&ePrivátne správy'
+      nightVision: '&eNočné videnie'
+      bossbar: '&eZobraziť BossBar ak máš vanish'
+      afkcommands: '&eDostať sa do AFK ak máš vanish'
+      bossbarTitle: '&5&k&lABC&r &6&lMáš Vanish &0&l- &eNikto ťa nevidí! &5&k&lABC'
+  version:
+    help:
+      info: '&eShow plugin version'
+      args: ''
+    info:
+      cmiVersion: '&eCMI plugin version: &6[version]'
+      cmiVersionNew: '&e-> [newVersion]'
+      Server: '&eServer version: &6[version]'
+      Vault: '&eVault version: &6[version]'
+      Bungee: ' &eBungeeCord '
+  viewrange:
+    help:
+      info: '&eChange view range'
+      args: '[range] (playerName)'
+    info:
+      changed: '&eVzdialenosť videnia zmenená na &6[range]&e.'
+      NoProtocolLib: '&cTáto funkcia potrebuje plugin ProtocolLib!'
+      NoMore: '&eHodnota nesmie bzť viac ako 32. Hodnota bola nastavená na 32.'
+  voteedit:
+    help:
+      info: '&eManage players votes'
+      args: (playerName) [add/set/take/clear] [amount] (-s)
+      explanation:
+      - 'Example:'
+      - /voteedit Zrips
+      - /voteedit add 10
+      - /voteedit take 10
+      - /voteedit Zrips clear
+      - /voteedit Zrips add 10
+    info:
+      currentVotes: '&e[playerDisplayName] &ehas &6[votes] &evotes'
+      selfFeedback: '&eVotes was set to &3[votes] &efor &3[playerDisplayName]&e (&3[offon]&e).'
+      targetFeedback: '&eYour vote count was set to &3[votes]&e by &3[senderDisplayName]&e.'
+  votes:
+    help:
+      info: '&eCheck players vote count'
+      args: (playerName)
+    info:
+      currentVoteSelf: '&eYou made &6[votes] &evotes'
+      currentVotes: '&e[playerDisplayName] &ehas &6[votes] &evotes'
+      voteCooldown: '&eYou will need to wait &6[time]&eto vote again'
+      voteLimit: '&eYou have reached vote count limit for today. You will need to
+        wait &6[time]&eto vote again'
+  votetop:
+    help:
+      info: '&eCheck top vote list'
+      args: (playerName)
+    info:
+      topLine: '&e----- TopVotes &e-----'
+      list: '&e[place]. &6[playerDisplayName]: &e[votes]'
+      ownLine: '&2[place]. &2[playerDisplayName]: &2[votes]'
+  walkspeed:
+    help:
+      info: '&eSet players walk speed from 0 to 10'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&eNastavil si rýchlosť chodenia na hodnotu &3[amount]&e.'
+      targetfeedback: '&eTvoja rýchlosť chôdze bola nastavená na &3[amount]&e.'
+      max: '&eMaximálna povolená hodnota rýchlosti je &6[max]&e.'
+  warn:
+    help:
+      info: '&eWarn player'
+      args: '[playerName] (category) (reason) (-s)'
+    info:
+      noSelfWarning: '&cYou can''t warn yourself'
+      cantBan: '&cCan''t warn this player'
+      messageToAll: '&6[playerDisplayName] &cgot warned by &6[senderDisplayName] &cfor:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &cgot warned by &6[senderDisplayName]
+        &cfor: &6[reason]'
+  warnings:
+    help:
+      info: '&eCheck player warnings'
+      args: (playerName)
+    info:
+      totalPoints: '&7---- &e[playerDisplayName] &etotal violation points: &6[totalPoints]
+        &7----'
+      noWarnings: '&ePlayer doesn''t have any warnings'
+      list: '&7[place]. &e[time] &6by [warnedBy] &cfor: &7[warnedFor]'
+      hover:
+      - '&7Expires in: &e[time]'
+      - '&7Violation points: &e[points]'
+  warp:
+    help:
+      info: '&eTeleports to warp location'
+      args: (warpName) (playerName) (-s)
+    info:
+      list: '&f❖ &c&lServer &f➔ &9&lWarpy:'
+      click: '&eKlikni pre teleport na &6[warp]'
+      teleported: "\n&8[&cWarp&8] &7Bol si teleportovaný na warp! &8(&c[warp]&8)\n\
+        &a "
+      noWarps: '&cŽiadne warpy neexistujú.'
+      noWarpByName: '&cTento warp neexistuje.'
+      noAccess: '&cNemáš právo na použitie tohoto warpu.'
+      guiTitle: '&8&lWARPY SERVERU'
+      creator: '&eTvorca: &6[creator]'
+  weather:
+    help:
+      info: '&eControls server weather'
+      args: (sun/rain/storm) (lock/duration) (worldName/all)
+      explanation:
+      - 'Extra time formats can have: s/m/h/d/w/M/Y'
+      - 'Example:'
+      - /sun
+      - /rain
+      - /storm
+      - /sun lock
+      - /sun 120
+      - /sun Lt_Craft
+      - /sun 1h
+      - /sun 10m
+    info:
+      currentState: '&6[world] &e-> &6[weather] &ena dalších &6[time]'
+      sunny: slnečný
+      rainy: daždivý
+      thundering: búrka
+  whowas:
+    help:
+      info: '&eShows players previous names'
+      args: '[playerName]'
+    info:
+      list: ' &e[place]. &6[name] - &e[date]'
+      original: '&eOriginálne meno'
+  workbench:
+    help:
+      info: '&eOpen workbench'
+      args: (playerName)
+    info:
+      feedback: ''
+      targetfeedback: '&eCrafting table otvorený.'
+  world:
+    help:
+      info: '&eTeleports to different world'
+      args: (normal/nether/end/1/2/3...) (playerName) (-s)
+      explanation:
+      - Requires cmi.command.world.[worldName] in addition to base permission node
+    info:
+      here: '&ePráve tu.'
+  worth:
+    help:
+      info: '&eCheck item worth'
+      args: (all/blocks/hand)
+    info:
+      worthless: '&eBezcenný'
+      basePrice: '&6[itemName]&e(&7[amount]&e) -> &f[price]'
+      fullPrice: '&7[price]'
+      total: '&eCelková cena: &7[total]'
