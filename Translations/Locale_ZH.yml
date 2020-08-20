@@ -4029,7 +4029,7 @@ command:
       info: '&e傳送至玩家'
       args: '[playerName] (playerName)'
     info:
-      feedback: '&e已傳送至玩家 &3[sourceDisplayName] &e的位置 (&3[offon]&e).'
+      feedback: '&e已傳送至玩家 &3[sourceDisplayName]-(&3[offon]&e) &e的位置.'
       bad:
         msg: '&c將要傳送至的地點不安全，原因： [reason]'
         extraMsg: '&e使用 &6/tpbypass &e來無視危險，你只有 [time] 操作時間'
