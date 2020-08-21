@@ -500,82 +500,82 @@ info:
     zombified_piglin: 殭屍豬人
   EnchantAliases:
     protection_fire:
-    - FireProtection
+    - 火焰保護
     damage_all:
-    - Sharpness
+    - 鋒利
     arrow_fire:
-    - Flame
+    - 火焰
     soul_speed:
-    - SOULSPEED
+    - 靈魂疾走
     water_worker:
-    - AquaAffinity
+    - 親水性
     arrow_knockback:
-    - Punch
+    - 衝擊
     loyalty:
-    - LOYALTY
+    - 忠誠
     depth_strider:
-    - DepthStrider
+    - 深海漫遊
     vanishing_curse:
-    - VanishingCurse
+    - 消失詛咒
     durability:
-    - Unbreaking
+    - 耐久
     knockback:
-    - Knockback
+    - 擊退
     luck:
-    - Luck
+    - 幸運
     binding_curse:
-    - BindingCurse
+    - 綁定詛咒
     loot_bonus_blocks:
     - Fortune
     protection_environmental:
-    - Protection
+    - 保護
     dig_speed:
-    - Efficiency
+    - 效率
     mending:
-    - Mending
+    - 修補
     frost_walker:
-    - FrostWalker
+    - 冰霜行者
     lure:
-    - Lure
+    - 魚餌
     loot_bonus_mobs:
-    - Looting
+    - 掠奪
     piercing:
-    - PIERCING
+    - 貫穿
     protection_explosions:
-    - BlastProtection
+    - 爆炸保護
     damage_undead:
-    - Smite
+    - 不死剋星
     multishot:
-    - MULTISHOT
+    - 分裂箭矢
     fire_aspect:
-    - FireAspect
+    - 燃燒
     channeling:
-    - CHANNELING
+    - 喚雷
     sweeping_edge:
-    - SweepingEdge
+    - 橫掃之刃
     thorns:
-    - Thorns
+    - 尖刺
     damage_arthropods:
-    - BaneOfArthropods
+    - 截肢剋星
     oxygen:
-    - Respiration
+    - 水下呼吸
     riptide:
-    - RIPTIDE
+    - 波濤
     silk_touch:
-    - SilkTouch
+    - 絲綢之觸
     quick_charge:
-    - QUICKCHARGE
+    - 快速上弦
     protection_projectile:
-    - ProjectileProtection
+    - 投射物保護
     impaling:
-    - IMPALING
+    - 魚叉
     protection_fall:
     - FallProtection
-    - FeatherFalling
+    - 輕盈
     arrow_damage:
-    - Power
+    - 強力
     arrow_infinite:
-    - Infinity
+    - 無限
   PotionEffectAliases:
     speed:
     - speed
