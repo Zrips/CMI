@@ -712,7 +712,7 @@ afk:
   MayNotRespondStaff: '&eStaff member is AFK and may not respond. Try contacting us
     through discord'
 BossBar:
-  hpBar: '&f[victim] &e[max]&f/&e[current] &f(&c-[damage]&f)'
+  hpBar: '&f[victim] &e[current]&f/&e[max] &f(&c-[damage]&f)'
 Potion:
   Effects: '&8Potion effects'
   List: '&e[PotionName] [PotionAmplifier] &eDuration: &e[LeftDuration] &esec'
