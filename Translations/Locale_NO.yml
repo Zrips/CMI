@@ -321,10 +321,12 @@ info:
     BADLANDS_PLATEAU: Badlands plateau
     BAMBOO_JUNGLE: Bamboo jungle
     BAMBOO_JUNGLE_HILLS: Bamboo jungle hills
+    BASALT_DELTAS: Basalt deltas
     BEACH: Beach
     BIRCH_FOREST: Birch forest
     BIRCH_FOREST_HILLS: Birch forest hills
     COLD_OCEAN: Cold ocean
+    CRIMSON_FOREST: Crimson forest
     DARK_FOREST: Dark forest
     DARK_FOREST_HILLS: Dark forest hills
     DEEP_COLD_OCEAN: Deep cold ocean
@@ -362,7 +364,7 @@ info:
     MOUNTAIN_EDGE: Mountain edge
     MUSHROOM_FIELDS: Mushroom fields
     MUSHROOM_FIELD_SHORE: Mushroom field shore
-    NETHER: Nether
+    NETHER_WASTES: Nether wastes
     OCEAN: Ocean
     PLAINS: Plains
     RIVER: River
@@ -377,6 +379,7 @@ info:
     SNOWY_TAIGA_HILLS: Snowy taiga hills
     SNOWY_TAIGA_MOUNTAINS: Snowy taiga mountains
     SNOWY_TUNDRA: Snowy tundra
+    SOUL_SAND_VALLEY: Soul sand valley
     STONE_SHORE: Stone shore
     SUNFLOWER_PLAINS: Sunflower plains
     SWAMP: Swamp
@@ -389,6 +392,7 @@ info:
     THE_END: The end
     THE_VOID: The void
     WARM_OCEAN: Warm ocean
+    WARPED_FOREST: Warped forest
     WOODED_BADLANDS_PLATEAU: Wooded badlands plateau
     WOODED_HILLS: Wooded hills
     WOODED_MOUNTAINS: Wooded mountains
@@ -430,6 +434,7 @@ info:
     ghast: Ghast
     giant: Giant
     guardian: Guardian
+    hoglin: Hoglin
     horse: Horse
     husk: Husk
     illusioner: Illusioner
@@ -455,7 +460,7 @@ info:
     parrot: Parrot
     phantom: Phantom
     pig: Pig
-    pig_zombie: Pig zombie
+    piglin: Piglin
     pillager: Pillager
     player: Player
     polar_bear: Polar bear
@@ -479,6 +484,7 @@ info:
     splash_potion: Splash potion
     squid: Squid
     stray: Stray
+    strider: Strider
     thrown_exp_bottle: Thrown exp bottle
     trader_llama: Trader llama
     trident: Trident
@@ -494,9 +500,11 @@ info:
     wither_skeleton: Wither skeleton
     wither_skull: Wither skull
     wolf: Wolf
+    zoglin: Zoglin
     zombie: Zombie
     zombie_horse: Zombie horse
     zombie_villager: Zombie villager
+    zombified_piglin: Zombified piglin
   EnchantAliases:
     protection_fire:
     - FireProtection
@@ -504,6 +512,8 @@ info:
     - Sharpness
     arrow_fire:
     - Flame
+    soul_speed:
+    - SOULSPEED
     water_worker:
     - AquaAffinity
     arrow_knockback:
@@ -513,7 +523,7 @@ info:
     depth_strider:
     - DepthStrider
     vanishing_curse:
-    - vanishing_curse
+    - VanishingCurse
     durability:
     - Unbreaking
     knockback:
@@ -521,7 +531,7 @@ info:
     luck:
     - Luck
     binding_curse:
-    - binding_curse
+    - BindingCurse
     loot_bonus_blocks:
     - Fortune
     protection_environmental:
@@ -529,7 +539,7 @@ info:
     dig_speed:
     - Efficiency
     mending:
-    - mending
+    - Mending
     frost_walker:
     - FrostWalker
     lure:
@@ -549,7 +559,7 @@ info:
     channeling:
     - CHANNELING
     sweeping_edge:
-    - sweeping_edge
+    - SweepingEdge
     thorns:
     - Thorns
     damage_arthropods:
@@ -568,65 +578,66 @@ info:
     - IMPALING
     protection_fall:
     - FallProtection
+    - FeatherFalling
     arrow_damage:
     - Power
     arrow_infinite:
     - Infinity
   PotionEffectAliases:
     speed:
-    - speed
+    - Speed
     slow:
-    - slow
+    - Slow
     fast_digging:
-    - fast_digging
+    - Fast digging
     slow_digging:
-    - slow_digging
+    - Slow digging
     increase_damage:
-    - increase_damage
+    - Increase damage
     heal:
-    - heal
+    - Heal
     harm:
-    - harm
+    - Harm
     jump:
-    - jump
+    - Jump
     confusion:
-    - confusion
+    - Confusion
     regeneration:
-    - regeneration
+    - Regeneration
     damage_resistance:
-    - damage_resistance
+    - Damage resistance
     fire_resistance:
-    - fire_resistance
+    - Fire resistance
     water_breathing:
-    - water_breathing
+    - Water breathing
     invisibility:
-    - invisibility
+    - Invisibility
     blindness:
-    - blindness
+    - Blindness
     night_vision:
-    - night_vision
+    - Night vision
     hunger:
-    - hunger
+    - Hunger
     weakness:
-    - weakness
+    - Weakness
     poison:
-    - poison
+    - Poison
     wither:
-    - wither
+    - Wither
     health_boost:
-    - health_boost
+    - Health boost
     absorption:
-    - absorption
+    - Absorption
     saturation:
-    - saturation
+    - Saturation
     glowing:
-    - glowing
+    - Glowing
     levitation:
-    - levitation
+    - Levitation
     luck:
-    - luck
+    - Luck
     unluck:
-    - unluck
+    - Unluck
     slow_falling:
     - Slow falling
     conduit_power:
@@ -738,6 +749,7 @@ Information:
 econ:
   disabled: '&cDu kan ikke bruke denne kommandoen mens økonomistøtte er deaktivert'
   noMoney: '&cIkke nok penger'
+  charged: '!actionbar!&fBelastet: &6[amount]'
   notEnoughMoney: '&cDu har ikke nok penger. Kreves (&6[amount]&c)'
   tooMuchMoney: '&cDu har for mye penger'
 Elytra:
@@ -1069,20 +1081,20 @@ command:
         &7[chatRoomName]'
       format: '&3|&7[chatRoomName]&3| &6[playerDisplayName]: &r[message]'
       nobody: '&4Ingen er i chatterommet'
-      notOwner: '&4Only chat owner can do this'
-      wrongName: '&4Wrong chat room name'
-      takenName: '&4Chat room name is taken, use different one'
-      notIn: '&4User is not in chat room'
-      cantJoin: '&4Chat room is private and you don''t have invitation'
-      kicked: '&6[playerDisplayName] &ekicked from chat room'
-      gotKicked: '&4You got kicked from &7[chatRoomName] &4chat room'
+      notOwner: '&4Bare eier av chattekanalen kan gjøre dette'
+      wrongName: '&4Feil navn på chatterom'
+      takenName: '&4Navnet på chatterommet er tatt, vennligst velg et annet'
+      notIn: '&4Spilleren er ikke i chatterommet'
+      cantJoin: '&4Chatterommet er privat, og du har ingen invitasjon'
+      kicked: '&6[playerDisplayName] &eble sparket fra chatterommet'
+      gotKicked: '&4Du ble sparket fra chatterommet &7[chatRoomName]'
       list: '&e[chatRoomName]&e: &7[list]'
       globalList: '&7[number]. [joined]&e[chatRoomName][private]&e: &7[count][expires]'
       globalListPrivate: '&2(P)'
       globalListJoined: '&2+'
       globalListHover:
-        Owner: '&7Owner: [playerDisplayName]'
-        Ends: ' &7Expires in: [time]'
+        Owner: '&7Eier: [playerDisplayName]'
+        Ends: ' &7Utgår om: [time]'
         Names: '&7[playerDisplayName]'
   checkaccount:
     help:
@@ -1195,6 +1207,18 @@ command:
       books: ' &eBøker: '
       me: ' &eMeg: '
       None: '&e-'
+  colorpicker:
+    help:
+      info: '&eVelg hex farge'
+      args: ''
+    info:
+      hover:
+      - '[color]⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛'
+      - '&f#[hex]'
+      - '&7Nærmeste samsvar etter fargenavn: '
+      - '[colorName]'
+      - '[closeColor]⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛'
+      - Skift+Klikk
   colors:
     help:
       info: '&eVis alle mulige farger'
@@ -1376,7 +1400,7 @@ command:
       - '&2True &7- Vil oppdatere spillerens plassholder'
       - '&2False &7- Vil føre til at skilt blir fysisk oppdatert'
       - '&2False &7- Er mer effektiv, men mer begrenset'
-      interval: '&7Update every &6[second] &7second'
+      interval: '&7Oppdater hvert &6[second] &7sekund'
       intervalLore:
       - '&7Hvor ofte, i sekunder, skal skiltet oppdatere informasjonen'
       - '&7Dette definerer også rullehastighet på linjen'
@@ -1398,8 +1422,8 @@ command:
       args: ''
     info:
       noText: '&cKan ikke finne egendefinert tekst med dette navnet'
-      editInfo: '&eClick to paste old text. Type &6cancel &eto cancel action. Type
-        &6remove &eto remove line'
+      editInfo: '&eKlikk for å lime inn gammel tekst. Skriv &6cancel &efor å avbryte
+        handlingen. Skriv &6remove &efor å fjerne linjen.'
       addInfo: '&eKlikk for å lime inn gammel tekst. Skriv &6cancel &efor å avbryte
         handlingen'
       addInformationHover: "&eGlobale variabler er støttet fra senderkategorien \n\
@@ -1623,14 +1647,15 @@ command:
       newCharge: '&eNy level: &6[charge]'
       bossbar: '&2>> &fFlypoeng [charge][changeAmount]&7/&f[max] &2<<'
       guiTitle: '&8Flypoeng'
+      lore:            
+      - ''            
+      - '&6Skift venstreklikk +10. Koster: &7[amount10]'            
+      - '&6Skift høyreklikk +1000. Koster: &7[amount1000]'            
+      - '&eVenstreklikk +1. Koster: &7[amount1]'            
+      - '&eHøyreklikk +100. Koster: &7[amount100]'
       buttonExp: '&6Skaff flypoeng med exp'
       buttonMoney: '&6Kjøp flypoeng med penger'
       max: '&6Allerede maks poeng'
-      guiLore:
-      - '&eVenstreklikk +1'
-      - '&6Skift venstreklikk +10'
-      - '&eHøyreklikk +100'
-      - '&6Skift høyreklikk +1000'
       changeAmount: '&e([amount]&e)'
   fly:
     help:
@@ -1676,14 +1701,17 @@ command:
       args: (spillerNavn) [gjenstand] (antall)
       explanation:
       - 'Eksempel: /give stone'
+      - /cmi give Zhax hand Zrips
       - /give Zrips stone 5 n Stonehenge
       - /give stick e knockback:1
+      - /cmi give Zrips sponge l line_one/nline_two
       - /give Zrips sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
       - /cmi give Zrips sponge 1 e Knockback:%rand/1-5%
       - /cmi give Zrips sponge %rand/1-10%
       - /give sponge a maxhealth:5:mainhand
       - /give diamond_sword unbreakable
       - /give mob_spawner:creeper
+      - '/give potion:speed-true-true'
       - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
     info:
       feedback: '&6Gir &e[amount] &6av &e[itemname] &6(&e[customitemname]&6) til &e[playerDisplayName]'
@@ -1748,6 +1776,8 @@ command:
       - +cb vil inkludere båter
       - +ci definerer om våpen og rustning skal inkluderes
       - +b kringkaster en melding til alle om at gjenstander er fjernet
+      - +sh vil inkludere shulkerbokser
+      - +tnt definer om du vil inkludere primed tnt
     info:
       removed: '&eFjernet -[list]'
       items: ' &eGjenstander: &6[items]'
@@ -1780,6 +1810,7 @@ command:
       targetfeedback: '&6Din hatt ble endret av &3[senderDisplayName]&6!'
       fullinv: '&6Inventaret til &3[playerDisplayName] &6er fullt, kan ikke endre
         hatt!'
+      incorrect: '&3Ugyldig gjenstand i hode sporet, kan ikke erstattes med en ny. Fjern den manuelt.'
   head:
     help:
       info: '&eFå hode til spillere'
@@ -2018,10 +2049,12 @@ command:
       - '[group]'
       - '[knownAs]'
       - '[onlineoffline]'
+      - '[playtime]'
       newIp: ' &fIP'
       newIpHover:
       - '[ip][country]'
       - '[firstLogin]'
+      - '[ping]'
       newNameHoverNick: '&7Kallenavn: &f[nick]'
       newNameHoverGroup: '&7Gruppe: &f[group]'
       newNameHoverKnownAs: '&7Også kjent som: &f[nameList]'
@@ -2120,6 +2153,7 @@ command:
       info: '&eÅpne spillerens inventar'
       args: '[spillerNavn]'
       explanation:
+      - cmi.command.inv.location - viser spillerens lokasjon
       - cmi.command.inv.preventmodify - forhindrer redigering av inventar
       - cmi.invedit - tillater redigering av inventar
     info:
@@ -2191,6 +2225,13 @@ command:
       - /give diamond_sword unbreakable
       - /give mob_spawner:creeper
       - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+  itemframe:
+    help:
+      info: '&eBehandle bilderammer'
+      args: (invisible/fixed/invulnerable)
+    info:
+      enabled: Aktivert
+      disabled: Deaktivert
   iteminfo:
     help:
       info: '&eVis gjenstand informasjon'
@@ -2508,6 +2549,7 @@ command:
       explanation:
       - 'Tillatelser: '
       - cmi.command.list.admin
+      - 'cmi.command.list.group.[number]'
       - cmi.command.list.staff
       - cmi.command.list.hidden
     info:
@@ -2701,6 +2743,8 @@ command:
       explanation:
       - Hvis meldingen starter med ! vil meldingen bli sendt uten avsendernavn
       - Krever tillatelsen cmi.command.msg.clean
+      - Hvis meldingen starter med !- vil meldingen bli sendt uten avsendernavn og uten mulighet til å svare
+      - Krever tillatelsen cmi.command.msg.noreply
     info:
       TargetMsg: '&7[&8[senderDisplayName] &7-> &8me&7]&r&f [message]'
       SenderMsg: '&7[&8me &7-> &8[playerDisplayName]&7]&r&f [message]'
@@ -2721,6 +2765,7 @@ command:
       explanation:
       - 'Eksempler: '
       - /cmi mute zrips 1m
+      - /cmi mute zrips 1h For banning
       - '/cmi mute zrips 1h '
     info:
       mutedFor: '&e[playerDisplayName] dempet i &6[time]'
@@ -2759,6 +2804,7 @@ command:
       args: '[nyttKallenavn] (spillerNavn)'
       explanation:
       - 'For å endre til et annet kallenavn: cmi.command.nick.different'
+      - For å omgå lengdebeskyttelsen bruk cmi.command.nick.bypass.length
     info:
       changed: '&eKallenavn endret til &r[newNickName] &efra &r[oldNickName]'
       changedTarget: '&eDitt kallenavn er endret til &r[newNickName] &eav &r[senderDisplayName]'
@@ -2951,6 +2997,7 @@ command:
       - /ptime freeze
       - /ptime unfreeze
       - /ptime realtime
+      - /ptime reset
     info:
       check: '&ePersonlig Tid: &6[24h] &eeller &6[12h] &eeller &6[ticks]ticks'
       frozen: ' &c(-)'
@@ -3270,6 +3317,7 @@ command:
       - '&eh &6bruker informasjon fra gjenstanden i hånden'
       - '&ee &6[forstryllelse]'
       - '&eelvl &6[forstryllelsesnivå]'
+      - '&estor størrelse'
       - '&epurge - fjern gjenstander som er funnet, denne funksjonen må være aktivert
         i konfigurasjonsfilen'
       - 'Eksempel:'
@@ -3358,6 +3406,7 @@ command:
       - '&egm &6[0/1/2/3 eller survival/creative/adventure/spectator] '
       - '&emaxhp &6[laveste hp spiller har] '
       - '&egod &6[true/false]'
+      - '&estor størrelse'
       - 'Eksempel:'
       - /search gm 1
       - /search id 52
@@ -3439,6 +3488,7 @@ command:
       args: (hjemNavn)
       explanation:
       - cmi.command.sethome.unlimited
+      - -l vil definere egendefinert lokasjon for nytt home, dette krever tillatelsen cmi.command.sethome.customloc
     info:
       set: '&eDu opprettet hjem med navn &6[homeName]&e!'
       setBed: '&eOpprettet seng teleport lokasjon'
@@ -3467,7 +3517,7 @@ command:
   setspawn:
     help:
       info: '&eSett gytepunkt'
-      args: (spillerNavn) (true/false)
+      args: (spillerNavn) (true/false) (-g:[gruppeNavn]) (-rng:[rekkevidde]) (-w:world,world_nether) (loc:[world;x;y;z;yaw;pitch])
       explanation:
       - Mer informasjon om bruk av kommandoer se http://www.zrips.net/cmi/commands/spawn/
     info:
@@ -3484,6 +3534,10 @@ command:
       - /cmi setwarp spawn - enkel varp til spawn
       - /cmi setwarp spawn true - oppretter varp og krever tillatelsen cmi.command.warp.[varpnavn]
         for å bruke den
+      - /cmi setwarp spawn hand - oppretter varp og bruker gjenstanden i hånden til å vises i gui
+      - /cmi setwarp spawn 13 - oppretter varp og setter gui spor som skal brukes (1-54)
+      - /cmi setwarp spawn true hand 13 - oppretter varp med ikon fra gjenstanden i hånden, spor 13 og krever tillatelse
+      - /cmi setwarp spawn true hand 13 false - samme som forrige, men genererer ikke beskrivelse
     info:
       newSet: '&eNy varp (&6[warp]&e) ble opprettet'
       noSet: '&cVarp med dette navnet finnes allerede'
@@ -4395,6 +4449,7 @@ command:
       info: '&eKontrollerer serverværet'
       args: (sun/rain/storm) (lock/duration) (verdennavn/all)
       explanation:
+      - 'Tidsformat kan ha: s/m/h/d/w/M/Y'
       - 'Eksempel:'
       - /sun
       - /rain
@@ -4402,6 +4457,8 @@ command:
       - /sun lock
       - /sun 120
       - /sun Lt_Craft
+      - /sun 1h
+      - /sun 10m
     info:
       setTo: '&eSatt været på &6[world] &etil &6[weather] &efor de neste &6[time]'
       currentState: '&6[world] &e-> &6[weather] &efor de neste &6[time]'
