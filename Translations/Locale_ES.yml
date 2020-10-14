@@ -95,6 +95,7 @@ info:
   NameChange: '&6[playerDisplayName] &ea jugado con los siguientes nombres: &6[namelist]'
   Cooldowns: '&eDebes esperar &6[time] &epara volver usar este comando.'
   specializedCooldowns: '&eDebes esperar &6[time] &epara volver a usar este comando.'
+  specializedRunning: '&eLa acción se está procesando, por favor espera &6[time]&e.'
   CooldownOneTime: '&eEl comando es de un solo uso.'
   WarmUp:
     canceled: '!title!!subtitle!&c¡Te has movido!'
@@ -114,8 +115,6 @@ info:
   ChunksLoading: '&eAún se está generando el chunk del mundo. Espera un poco y vuelve
     a intentarlo.'
   ShulkerBox: Caja de Shulker
-  CantuseShulkerBox: '&cNo puedes usar la Caja de Shulker durante el combate. Espera:
-    [time]'
   CantUseNonEncrypted: '!actionbar!&cLos comandos de este objeto no están cifrados.
     ¡No es posible usarlos!'
   CantDecode: '!actionbar!&cNo se puede descifrar el mensaje/comando. El archivo que
@@ -155,9 +154,11 @@ info:
   ItemWillBreak: '!actionbar!&e¡La herramienta (&6[itemName]&e) está a punto de romperse!
     &6[current]&e/&6[max]'
   ArmorWillBreak: '!actionbar!&e¡El [itemName] se romperá pronto! &e[current]&6/&e[max]'
+  cantDoInGamemode: '&eNo puedes hacer esto en este modo de juego.'
   cantDoForPlayer: '&6¡Insensato! &eNo puedes hacer esto con &6[playerDisplayName]&e.'
   cantDoForYourSelf: '&eNo puedes hacerte esto a tí mismo.'
-  cantDetermineMobType: '&cNo se puede determinar el tipo de mob con la variable &e[type]&c.'
+  cantDetermineMobType: '&cNo se puede determinar el tipo de criatura con la variable
+    &e[type]&c.'
   cantRename: '!actionbar!&eNo puedes cambiar el nombre de este objeto por este nombre.'
   wrongName: '&cNombre incorrecto.'
   unknown: '&cdesconocido'
@@ -199,6 +200,11 @@ info:
   LoginCustom: '&8[&2+&8] &aEl [prefix][playerDisplayName] &aha entrado.'
   deathlocation: '&eHas muerto en las coordenadas x:&6[x]&e, y:&6[y]&e, z:&6[z] &edel
     mundo &6[world]&e.'
+  combat:
+    CantUseShulkerBox: '&cNo puedes usar la Caja de Shulker durante el combate con otro jugador. Espera: [time]'
+    CantUseCommand: '!actionbar!&cNo puedes usar este comando durante el combate con otro jugador. Espera: [time]'
+    bossBarPvp: '&cModo Combate [autoTimeLeft]'
+    bossBarPve: '&2Modo Combate [autoTimeLeft]'
   bungee:
     Online: '&6Online'
     Offline: '&cOffline'
@@ -925,6 +931,7 @@ command:
       glow: '&7Mostrar Aura'
       invulnerable: '&7Invulnerable'
       name: '&7Mostrar Nombre'
+      nameEdit: '&7Botón central para modificar el nombre.'
       interactable: '&7Interaccionable'
       explanation: '&8Botón Izquierdo o Derecho para ajustar el valor.'
       explanation2: '&8Mantén Mayús para incrementar el valor x10.'
@@ -981,6 +988,14 @@ command:
       uses: '&eCantidad de usos: &6[amount]'
       usesLeft: '!actionbar!&eUsos restantes: &6[itemUses]'
       cooldown: '&7El objeto está en progreso de reutilización. Espera [time]&e.'
+  autorecharge:
+    help:
+      info: Activa o desactiva la auto recarga de vuelo.
+      args: (nombreJugador) [exp/money/off] (-s)
+    info:
+      disabled: '&eAuto recarga desactivada.'
+      moneyEnabled: '&eActiva la recarga automática de vuelo usando &6dinero&e.'
+      expEnabled: '&eActiva la recarga automática de vuelo usando &2experiencia&e.'
   back:
     help:
       info: Aparece en la última posición.
@@ -1009,11 +1024,11 @@ command:
         por favor, espera unos segundos y vuelve a intentarlo.'
   ban:
     help:
-      info: Banea a un jugador.
+      info: Expulsa de forma permanente a un jugador.
       args: '[nombreJugador] (razón) (-s)'
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.ban.bypass &7► Evita poder ser baneado.'
+      - '&bcmi.command.ban.bypass &7► Evita poder ser expulsado.'
     info:
       # Make sure that OverrideLoginMessage is enabled in config file
       message: '&c¡Has sido baneado en este servidor!'
@@ -1072,7 +1087,7 @@ command:
       wrongValue: '&cEl objeto no se puede firmar.'
       inccorectAction: '&eArgumento incorrecto.'
       authorChanged: '&eSe ha cambiado al autor: [author]'
-      titleChanged: '&eSe ha cambiado al Rango de: [title]'
+      titleChanged: '&eSe ha cambiado al título de: [title]'
       unlocked: '&eEl libro no está firmado.'
   bossbarmsg:
     help:
@@ -1094,7 +1109,7 @@ command:
       - '&3&nEjemplos:'
       - /cmi bossbar C4BR3R4 nombreDeLaBarra
       - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:prueba
-        -c:red &2Estatus de la barra %server_online%/%server_max_players% &e%cmi_user_name%
+        -c:red &2Rango de la barra %server_online%/%server_max_players% &e%cmi_user_name%
       - /cmi bossbarmsg all -p:+1 -n:prueba &7► Añade un uno por ciento a la progresión
         de la barra.
       - /cmi bossbarmsg all -p:-1 -n:prueba &7► Quita un uno por ciento a la progresión
@@ -1110,7 +1125,7 @@ command:
       explanation:
       - '&3&nDescripción extendida:'
       - '&7Si el mensaje empieza con &f! &7se mostrará el mensaje sin el prefijo.'
-      - Si se espeficica el nombre del mundo, el mensaje solo se mostrará en ese mundo.
+      - Si se especifica el nombre del mundo, el mensaje solo se mostrará en ese mundo.
     info:
       format: '&4[&6Difusión&4] &2[message]'
   burn:
@@ -1779,7 +1794,7 @@ command:
       charge: '&eImpulso actual: &6[charge]&e/&6[max]'
       changed: '&eTu nivel de impulso para el vuelo ha sido cambiado a &6[charge]&e.'
       newCharge: '&eNuevo nivel de impulso: &6[charge]'
-      bossbar: '&2>> &fImpulso de vuelo [charge][changeAmount]&7/&f[max] &2<<'
+      bossbar: '&2►► &fImpulso de vuelo [charge][changeAmount]&7/&f[max] &2◄◄'
       guiTitle: '&8Recarga de impulso.'
       buttonExp: '&6Recargar usando Magia.'
       buttonMoney: '&6Recargar usando Dinero.'
@@ -1791,6 +1806,7 @@ command:
       - '&6Mayús + Botón Derecho cuesta +1000: &7[amount1000]'
       - ''
       changeAmount: '&e(&6[amount]&e)'
+      cost: '&eHas abonado &6[amount] &ede &6[charge] &epor recargar el tiempo de vuelo.'
   fly:
     help:
       info: Determinar el modo de vuelo de un jugador.
@@ -2126,7 +2142,6 @@ command:
       - '&eMundo: &6[world]'
       - '&eX:[x] &6Y:[y] &eZ:[z]'
       notPublicIc: '&cNo puedes usar esto, porque no es público.'
-      commandList: ' &e[command]  '
       block: (Bloque)
       entity: (Entidad)
       both: (Ambos)
@@ -2878,7 +2893,7 @@ command:
     info:
       started: '&eProceso de reflejado iniciado.'
       stopped: '&6Proceso de reflejado detenido.'
-      tooFar: '&cEstás demasiado lejos del centro del reflejo (max &6[blocks] &cbloques).
+      tooFar: '&cEstás demasiado lejos del centro del reflejo (máximo &6[blocks] &cbloques).
         ¡Función detenida!'
       title: '&fReflejo'
       notSet: '&cCentro no determinado.'
@@ -2963,7 +2978,7 @@ command:
       - '&7Si el mensaje comienza con &f!- &7se mostrará el mensaje sin el nombre
         del remitente y sin opción de respuesta.'
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.msg.clean &7► Permite enviar mensejes sin remitente.'
+      - '&bcmi.command.msg.clean &7► Permite enviar mensajes sin remitente.'
       - '&bcmi.command.msg.noreply &7► Impide responder a un mensaje.'
     info:
       TargetMsg: '&7[&7[senderDisplayName] &7► &8Yo&7]&3 [message]'
@@ -3137,6 +3152,7 @@ command:
         solicitada.'
       list: '&7[number] &8► &6[playerDisplayName] &e► &6[time]&e.'
       place: '&3[playerDisplayName] &eestá en la posición &6[place]&e.'
+      ownLine: '&2[number]. &2[playerDisplayName] &2- &2[time]'
   point:
     help:
       info: Señala un bloque.
@@ -3156,6 +3172,8 @@ command:
         &een tu posición actual.'
       bungeeSet: '&eDirígete al lugar y clica sobre este mensaje para determinar la
         posición de aparición.'
+      bungeeSetConfirmed: '&eSe ha posicionado el Portal Bungee (&6[portal]&e) en las coordenadas &6[location] &edel servidor &6[sourceServer]&e.'
+      bungeeSetEmpty: '&ePortal enlazado al servidor &6[serverName]&e, pero este no está en línea. Esta acción no se completará hasta que alguien se conecte a el.'
       list: '&7[number] &8► &6[portalName]'
       redefine: '&eRedefine el área de tu selección actual.'
       particles: '&ePartículas: &6[state]'
@@ -3256,23 +3274,23 @@ command:
       reset: '&eSe ha retirado tu tiempo meteorológico personal.'
   rankdown:
     help:
-      info: Vuelve a un Estatus (inferior).
+      info: Vuelve a un Rango (inferior).
       args: (nombreJugador) (Rango) (confirm) (-cmd) (-cost)
       explanation:
       - '&3&nDescripción extendida:'
-      - '&7Usa el argumento &f-cmd &7para ejecutar el comando definido en el Estatus
+      - '&7Usa el argumento &f-cmd &7para ejecutar el comando definido en el Rango
         anterior.'
       - '&7Usa el argumento &f-cost &7para retirar el dinero, la experiencia o los
-        objetos definidos en el Estatus anterior.'
+        objetos definidos en el Rango anterior.'
     info:
-      noPrev: '&eNo se encuentran &6Estatuss &einferiores.'
-      list: '&eClica sobre el Estatus al que quieres &cvolver&e: '
-      confirm: '&eClic aquí para confirmar &cvolver &eal &6Estatus &ede &6[rank]&e.'
-      downranked: '&eHas vuelto al &6Estatus &ede &6[rank]&e.'
+      noPrev: '&eNo se encuentran &6Rangos &einferiores.'
+      list: '&eClica sobre el Rango al que quieres &cvolver&e: '
+      confirm: '&eClic aquí para confirmar &cvolver &eal &6Rango &ede &6[rank]&e.'
+      downranked: '&eHas vuelto al &6Rango &ede &6[rank]&e.'
   rankinfo:
     help:
-      info: Muestra información detallada sobre los Estatus.
-      args: (nombreJugador) (Estatus)
+      info: Muestra información detallada sobre los Rango.
+      args: (nombreJugador) (Rango)
     info:
       distanceCM: '[value] cm'
       distanceM: '[value] m'
@@ -3292,49 +3310,48 @@ command:
       requiredItem: '&eObjetos: '
       requiredItemsList: '&e[color][name]'
       requiredItemListHover: '&e[color][current] &e/ &6[needed]'
-      currentRank: '&eTu Estatus actual es &6[rankName]&e.'
-      elseCurrentRank: '&eEl Estatus actual de &6[playerDisplayName] &ees &6[rankName]&e.'
-      rankNameLine: '&6&m-----------&r &6Estatus de [rankName] &e[rankupState] &6&m-----------'
+      currentRank: '&eTu Rango actual es &6[rankName]&e.'
+      elseCurrentRank: '&eEl Rango actual de &6[playerDisplayName] &ees &6[rankName]&e.'
+      rankNameLine: '&6&m-----------&r &6Rango de [rankName] &e[rankupState] &6&m-----------'
       canRankup: '&a¡Requisitos conseguidos!'
       cantRankup: '&c¡Faltan requisitos!'
       requiredStats: '&e[name][extra]&e: [color][current] &e/ &6[needed]'
       requiredStatsExtra: ' (&6[type]&e)'
-      nextRanks: '&eSiguiente Estatus &6►►► '
-      finalRank: '&eEste es el último Estatus.'
-      noRank: ' &eNo se encuentra el Estatus.'
-      check: '&eClic para ver los requisitos del Estatus &6[rank]&e.'
+      nextRanks: '&eSiguiente Rango &6►►► '
+      finalRank: '&eEste es el último Rango.'
+      noRank: ' &eNo se encuentra el Rango.'
+      check: '&eClic para ver los requisitos del Rango &6[rank]&e.'
       progressBarHover: '&aProgreso &2[percent]%'
   ranklist:
     help:
-      info: Muestra la lista de los posibles Estatus.
+      info: Muestra la lista de los posibles Rango.
       args: ''
     info:
       list: '&2[place]. &6[rankName] [currentRankMarker]'
-      currentRankMarker: '&2◄◄◄ Tu Estatus.'
+      currentRankMarker: '&2◄◄◄ Tu Rango.'
   rankset:
     help:
-      info: Cambia el Estatus de un jugador.
-      args: (nombreJugador) [Estatus] (-cmd) (-cost)
+      info: Cambia el Rango de un jugador.
+      args: (nombreJugador) [Rango] (-cmd) (-cost)
       explanation:
       - '&3&nDescripción extendida:'
       - '&7Usa el argumento &f-cmd &7para ejecutar el comando configurado al obtener
-        el Estatus.'
+        el Rango.'
       - '&7Usa el argumento &f-cost &7para retirar el dinero, la experiencia o los
-        objetos configurados para conseguir el Estatus, y es más, el jugador obtendrá
-        el Estatus aunque no tenga el suficiente dinero, experiencia u objetos.'
+        objetos configurados para conseguir el Rango, y es más, el jugador obtendrá
+        el Rango aunque no tenga el suficiente dinero, experiencia u objetos.'
     info:
-      set: '&6[playerDisplayName] &eobstenta ahora, el &6Estatus &ede &6[rankName]&e.'
+      set: '&6[playerDisplayName] &eobstenta ahora, el &6Rango &ede &6[rankName]&e.'
   rankup:
     help:
-      info: Aumenta el Estatus de un Jugador.
-      args: (nombreJugador) (Estatus) (confirm)
+      info: Aumenta el Rango de un Jugador.
+      args: (nombreJugador) (Rango) (confirm)
     info:
-      noRank: ' &eNo tienes ningún &6Estatus&e.'
-      requiresPrevious: ' &ePara obtener este Estatus es necesario poseer el/los Estatus/s
+      noRank: ' &eNo tienes ningún &6Rango&e.'
+      requiresPrevious: ' &ePara obtener este Rango es necesario poseer el/los Rango/s
         &6[rank]&e.'
-      list: '&eClica sobre el &6Estatus &eque quieres obtener: '
-      confirm: '&4¡&eHas conseguido el &6Estatus &ede &6[rank]&4! &7Clica aquí para
-        obternerlo.'
+      list: '&eClica sobre el &6Rango &eque quieres obtener: '
+      confirm: '&4¡&eHas conseguido el &6Rango &ede &6[rank]&4! &7Clica aquí para obtenerlo.'
   realname:
     help:
       info: Comprueba el nombre real de los jugadores.
@@ -3756,7 +3773,7 @@ command:
         hogar o introduce un nombre diferente para crear otro.'
       slotTaken: '!actionbar!&cLa posición ya está siendo utilizado por el hogar &7[homeName]&c,
         utliliza otra posición.'
-      setIcon: '!actionbar:3!&7Set home icon as &6[material] &7material'
+      setIcon: '!actionbar:3!&7El icono del hogar se a establecido como &6[material]&7.'
   setmotd:
     help:
       info: Especifica el mensaje del día (motd) del servidor.
@@ -3925,7 +3942,7 @@ command:
       playing: "&eReproduciendo &6[sound] &een [world] [x]:[y]:[z] \n&eCabezada: &6[pitch]\
         \ &eVolumen: &6[volume]"
       playingMultiple: "&eReproduciendo &6[sound] &epara &6[amount] &ejugadores \n\
-        &eCabezada: &6[pitch] &eVolúmen: &6[volume]"
+        &eCabezada: &6[pitch] &eVolumen: &6[volume]"
   spawn:
     help:
       info: Aparece en el spawn.
@@ -4306,15 +4323,15 @@ command:
       - /night
       - /time 13:00:00
       - /time 1pm
-      - /time 13
+      - /time 13 &7► Determina las 13h para el mundo donde te encuentras.
       - /time 7000ticks
-      - /time 1pm &4Y&can&4C&cab
-      - /time 1pm all
-      - /time add 0:30
-      - /time take 0:30
-      - /time freeze
-      - /time unfreeze
-      - /time realtime
+      - /time 1pm Creativo &7► Determina la 1 de la tarde del mundo llamado Creativo. 
+      - /time 1pm all &7► Determina la 1 de la tarde en todos los mundos.
+      - /time add 0:30 &7► Añade 30 minutos más a la hora actual.
+      - /time take 0:30 &7► Quita 30 minutos a la hora actual.
+      - /time freeze &7► Congela el tiempo.
+      - /time unfreeze &7► Descongela el tiempo.
+      - /time realtime &7► Sincroniza la hora del mundo con la hora real.
       - /time autorealtime start/stop
     info:
       check: '&eEn &6[world] &eson las &6[24h] H &8(o las &7[12h] &8o &7[ticks] ticks&8)&7.'
@@ -4333,8 +4350,8 @@ command:
       pm: '&7PM'
   titlemsg:
     help:
-      info: Envía un Rango a uno o todos los jugadores.
-      args: '[nombreJugador/all] [Rango \n subRango] (-in:[ticks]) (-keep:[ticks])
+      info: Envía un título a uno o todos los jugadores.
+      args: '[nombreJugador/all] [título \n subtitulo] (-in:[ticks]) (-keep:[ticks])
         (-out:[ticks])'
     info:
       message: '&c[messsage]'
@@ -4349,7 +4366,7 @@ command:
       info: Muestra u oculta la brújula de la barra de información.
       args: ''
     info:
-      ToggleOff: '&eBrújula ocultada.'
+      ToggleOff: '&eBrújula oculta.'
       ToggleOn: '&6Brújula visible.'
   toggleshiftedit:
     help:
@@ -4636,6 +4653,7 @@ command:
       relogDisable: '&eDesactivar invisibilidad al volver a entrar.'
       noMessages: '&eNo puedes enviar mensajes.'
       fakeJoinLeave: '&eMuestra un mensaje falso cuando se cambia el estado de invisibilidad.'
+      mobSpawning: '&eLas criaturas aparecerán cerca.'
       bossbarTitle: '&cEres Invisible.'
   version:
     help:
@@ -4809,10 +4827,17 @@ command:
       here: '&eYa estás aquí.'
   worth:
     help:
-      info: Muestra el valor monetario de un objeto.
+      info: Muestra el valor monetario de un objeto concreto.
       args: (all/bloques/hand/objeto)
     info:
       worthless: '&cSin Precio'
       basePrice: '&6[itemName] &e(&7[amount]&e) &6► &f[price]'
       fullPrice: '&7[price]'
       total: '&ePrecio total: &7[total]'
+  worthlist:
+    help:
+      info: Muestra el valor monetario establecido para cada objeto.
+      args: (nombreJugador)
+    info:
+      type: '&7[type]'
+      worth: '&7Precio: &e[price]'
