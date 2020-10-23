@@ -1,0 +1,4428 @@
+# Full color code support and some variables
+# Keep in mind that variables wont work for some lines, when it will for anothers :)
+# Just keep them where there are now and everything will be ok :)
+# Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+# [serverName] to show server name
+# [playerName] to show target player name
+# [playerDisplayName] to show target player display name
+# [lvl] to show target player level
+# [exp] to show target player total exp
+# [hp] to show target player health
+# [maxHp] to show target player max health
+# [hunger] to show target player hunger level
+# [gameMode] to show target player gamemode
+# [prefix] to show target player prefix if possible
+# [suffix] to show target player suffix if possible
+# Sender is console or player who performs command. In example Zrips performs /heal Zhax then Zrips data will be used
+# [senderName] to show Sender player name
+# [senderDisplayName] to show Sender player display name
+# [senderLvl] to show Sender player level
+# [senderExp] to show Sender player total exp
+# [senderHp] to show Sender player health
+# [senderMaxHp] to show Sender player max health
+# [senderHunger] to show Sender player hunger level
+# [senderGameMode] to show Sender player gamemode
+# [senderPrefix] to show Sender player prefix if possible
+# [senderSuffix] to show Sender player suffix if possible
+# Source is player which is being used for extra info. In example Zrips performs /tp Zhax Zrips then Zhax data will be used as its location is being taken for new player location
+# [sourceName] to show source player name
+# [sourceDisplayName] to show source player display name
+# [sourceLvl] to show source player level
+# [sourceExp] to show source player total exp
+# [sourceHp] to show source player health
+# [sourceMaxHp] to show source player max health
+# [sourceHunger] to show source player hunger level
+# [sourceGameMode] to show source player gamemode
+# [sourcePrefix] to show source player prefix if possible
+# [sourceSuffix] to show source player suffix if possible
+# ***********************************************
+# Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
+# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+# If line starts with !actionbar! then player will get action bar message defined after this variable
+# If line starts with !actionbar:[seconds]! then player will get action bar message for defined amount of time
+# If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, in example !broadcast!!title!
+# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+# If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
+# If line starts with !bosbar:[name]-[timer]! then player will get bossbar message defined after this variable, in addition you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
+# To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
+# <T> and </T> required, other is optional
+# Use /n to break line
+# To have more than one JSON message use <Next>
+# <C> performs command as a player who clicked
+# <CC> performs command from console once
+# <CCI> performs command from console every time player clicks text
+# <URL> includes url
+info:
+  # Use !prefix! in any locale line to automatically include this prefix
+  prefix: '&e[&aCMI&e] '
+  NoPermission: '&cYetkin yok!'
+  CantHavePermission: '&cBu yetkiye sahip olamazsın!'
+  WrongGroup: '&cBunun için yanlış gruptasın!'
+  NoPlayerPermission: '&c[playerName] adlı kullanıcının bu yetkiye izni yok: [permission]'
+  Ingame: '&cBunu sadece oyunda kullanabilirsin!'
+  NoInformation: '&cHiçbir bilgi bulunamadı!'
+  Console: '&6Sunucu'
+  FromConsole: '&cBunu sadece konsolda kullanabilirsin!'
+  NotOnline: '&cOyuncu çevrimiçi değil!'
+  NobodyOnline: '&cÇevrimiçi olan birisi yok!'
+  Same: '&cKendi envanterini düzenlemek için açamazsın!'
+  cantLoginWithDifCap: '&cFarklı isim, büyük isimle giriş yapılamıyor! Eski isim:
+    &e[oldName]&c. Şuanki isim: &e[currentName]'
+  Searching: '&eOyuncunun verisi araştırılıyor, lütfen bekle, bunun bitmesi biraz zaman alıcak!'
+  NoPlayer: '&cBu isimde bir oyuncu bulunamadı!'
+  NoCommand: '&cBu isimle bir komut yok!'
+  NoCommandWhileSleeping: '&cUyurken komut çalıştıramazsın!'
+  cantFindCommand: '&5&7[%1]&5 adlı komut bulunamadı, bunu mu demek istedin: &7[%2]&5?'
+  nolocation: '&4Uygun konum bulunamadı'
+  PurgeNotEnabled: '&cConfig dosyasında temizleme işlevi etkin değil!'
+  FeatureNotEnabled: '&cBu özellik etkin değil!'
+  TeamManagementDisabled: '&7DisableTeamManagement True olarak ayarlandığı zaman bu özellik sınırlı olacak'
+  ModuleNotEnabled: '&cBu modül etkin değil!'
+  versionNotSupported: '&cSunucu versiyonu bu özelliği desteklemiyor'
+  bungeeNoGo: '&cBu özellik bunge ağ tabanlı sunucularda çalışmayacaktır'
+  clickToTeleport: '&eIşınlanmak için tıkla'
+  UseMaterial: '&4Lütfen materyal ismi kullanın!'
+  UseInteger: '&4Lütfen sayı kullanın!'
+  UseBoolean: '&4Lütfen Doğru veya Yanlış komutlarından birini kullanın!'
+  NoLessThan: '&4Numara sayısı belirtilen miktardan az olamaz: [amount]!'
+  NoMoreThan: '&4Değer belirtilen miktardan fazla olamaz: [amount]'
+  NoGameMode: '&cLütfen bunlardan birini kullanın 0/1/2/3 veya Survival/Creative/Adventure/Spectator veya s/c/a/sp!'
+  NoWorld: '&4Bu isimde dünya bulunamadı!'
+  IncorrectLocation: '&4Konum yanlış tanımlandı!'
+  NameChange: '&6[playerDisplayName] &eGriş yaptı, aynı zamanda olarak biliniyor: &6[namelist]'
+  Cooldowns: '&eBu komutu bir daha kullanabilmek için beklemen gereken süre: &6[time]'
+  specializedCooldowns: '&eBu komut için hareket halinde bekleme süresi, lütfen bekleyin &6[time]'
+  specializedRunning: '&eKomut hala çalışıyor, lütfen bekleyin &6[time]'
+  CooldownOneTime: '&eBu komut yalnızca bir kez kullanılabilir!'
+  WarmUp:
+    canceled: '&eHareketinle beraber komut iptal edildi'
+    counter: '!actionbar!&6-->&e[time] &6süre bekleyiniz <--'
+    DontMove: '!title!&6Hareket etme!!subtitle!&7 &c[time] &7süre bekleyiniz'
+    Boss:
+      DontMove: '&4 &7[autoTimeLeft] &4kadar süre hareket etme!'
+      WaitFor: '&4&7[autoTimeLeft] &4kadar süre bekle!'
+  Spawner: '&r[type] Spawner'
+  FailedSpawnerMine: '!actionbar!&cSpawner kazısı başarısız. &7[percent]% &cdüşme şansı'
+  ClickSpawner: '!actionbar!&7[percent]% &eDüşme şansı'
+  Elevator:
+    created: '&eAsansör işareti oluşturuldu'
+  CantPlaceSpawner: '&eSpawnerı başka bir spawnerın yakınına yerleştiremezsiniz (&6[range]&e)'
+  ChunksLoading: '&eDünya chunk verisi hala yükleniyor. Lütfen biraz bekle ve tekrar dene.'
+  ShulkerBox: Shulker Box
+  CantUseNonEncrypted: '!actionbar!&cBu öğeyle ilgili komutlar şifrelenmemiş. Onları kullanamazsın!'
+  CantDecode: '!actionbar!&cMesaj/komut deşifre edemezsin. Bu görev için anahtar dosyası yanlış anahtarı içeriyor.
+    Sunucu yönetimini bu konuda bilgilendirin'
+  Show: '&eGöstermek'
+  Remove: '&cKaldır'
+  Back: '&eGeri'
+  Forward: '&eİleri'
+  Update: '&eYükle'
+  Save: '&eKaydet'
+  Delete: '&cSil'
+  Click: '&eTıkla'
+  Preview: '&eGörüntülemek'
+  PasteOld: '&eEskiyi yapıştır'
+  ClickToPaste: '&eSohbete yapıştırmak için tıklayın'
+  CantTeleportWorld: '&eBu dünyaya ışınlanamazsın'
+  CantTeleportNoWorld: '&cHedef dünya mevcut değil. Işınlanma iptal edildi'
+  CantTeleport: '&eIşınlanamazsın çünkü çok fazla sınırlı eşyan var. İzin verilen maksimum öge miktarını görmek için
+  bu satırı kaydırın.'
+  teleported: '&eIşınlandırıldınız.'
+  BlackList: '&e[material] [amount] &6Max: [max]'
+  PlayerSpliter: '&e----- &6[playerDisplayName] &e-----'
+  Spliter: '&e--------------------------------------------------'
+  ListSpliter: ', '
+  ProgressBarFill: '&2▏'
+  ProgressBarEmpty: '&e▏'
+  nothingInHand: '!actionbar!&eElinde eşya tutmalısın'
+  nothingInHandLeather: '&eDeri eşyayı elinizde tutmanız gerekiyor'
+  nothingToShow: '&eGösterilecek bir şey yok'
+  noItem: '&cİtem bulunamadı'
+  dontHaveItem: '&cEnvanterinde bu itemden belirtilen miktarda&6[amount]x [itemName] &citem yok'
+  wrongWorld: '&cBu dünyada bunu yapamazsın'
+  wrongPortal: '&cYanlış etki alanındasın'
+  differentWorld: '&cFarklı dünyalar'
+  HaveItem: '&cEnvanterinde bu itemden belirtilen miktarda&6[amount]x [itemName] &citem yok'
+  ItemWillBreak: '!actionbar!&e (&6[itemName]&e) adlı item yakında kırılacak! &e[current]&6/&e[max]'
+  ArmorWillBreak: '!actionbar!&e[itemName] adlı zırh yakında kırılacak! &e[current]&6/&e[max]'
+  cantDoInGamemode: '&eBu oyun modunda bunu yapamazsın'
+  cantDoForPlayer: '&e &6[playerDisplayName] adlı oyuncuya bunu yapamazsın'
+  cantDoForYourSelf: '&eBunu kendine yapamazsın'
+  cantDetermineMobType: '&c&e[type] &cDeğişkeninden mob türü belirlenemiyor'
+  cantRename: '!actionbar!&eBu ismi kullanamazsın'
+  wrongName: '&cYanlış isim'
+  unknown: unknown
+  invalidName: '&cGeçersiz isim'
+  alreadyexist: '&4Bu isim alınmış'
+  dontexist: '&4Bu isimde bir şey bulunamadı'
+  worldDontExist: '&cHedef dünyaya artık erişilemez. Seni oraya ışınlayamam!'
+  flyingToHigh: '&cBu kadar yükseğe uçamazsın, maksimum yükseklik: &6[max]&c!'
+  specializedItemFail: '&cÖzel item gereksinimini değer göre belirleyemiyorum:
+    &7[value]'
+  sunSpeeding: Sleeping [count] of [total] [hour] hour [speed]X speed
+  sleepersRequired: '!actionbar!&f[sleeping] &7of &f[required] &7sleeping from required
+    for night time speedup'
+  sunSpeedingTitle: '&7[hour]'
+  skippingNight: '!title!&7Bütün geceleri atlamak'
+  sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]X&7)'
+  repairConfirm: '&eeşyaları onaylamak içn tıkla &7[items] &eEşya tamir maliyeti: &7[cost]'
+  bookDate: '&7&f[date] &7 tarihinde yazıldı'
+  maintenance: '&7Bakım modu'
+  notSet: not set
+  mapLimit: '&c30 000 000 blokun ilerisine gidemezsin'
+  startedEditingPainting: '&eResmi düzenlemeye başladın. İptal etmek için başla bloka tıkla.'
+  canceledEditingPainting: '&eBoyama düzenleme modunu iptal ettiniz'
+  changedPainting: '!actionbar!&e&6[id] bu ID ile boyama ismi &6[name] &eolmak üzere değiştirildi'
+  noSpam: '!title!&cSpam yapmayınız!'
+  noCmdSpam: '!title!&cKomut spamı yapmayınız!'
+  spamConsoleInform: '&cOyuncu (&7[playerName]&c),bu mesajı ile (&7[rules]&c)  adlı kurala uymadı:&r [message]'
+  lookAtSign: '&eİşarete bak'
+  lookAtBlock: '&eBloğa bak'
+  lookAtEntity: '&eVarlığa bak'
+  notOnGround: '&eUçarken bunu uygulayamazsın'
+  # This line can have extra variables: [totalUsers] [onlinePlayers]
+  FirstJoin: '&e&6[playerDisplayName] &eSunucumuza hoşgeldin!'
+  LogoutCustom: ' &6[playerDisplayName] &eSunucudan çıktı'
+  LoginCustom: ' &6[playerDisplayName] &eSunucuya katıldı'
+  deathlocation: '&eÖldüğün yer: x:&6[x]&e, y:&6[y]&e, z:&6[z]&e in &6[world]'
+  combat:
+    CantUseShulkerBox: '&cBir başka oyuncu ile savaştayken shulker kutusunu kullanamazsın.
+      Beklemelisin: [time]'
+    CantUseCommand: '!actionbar!&csavaştayken bu komutu kullanmazsın. Bekle: [time]'
+    bossBarPvp: '&cSavaş modu [autoTimeLeft]'
+    bossBarPve: '&2Savaş modu [autoTimeLeft]'
+  bungee:
+    Online: '&6Çevrimiçi'
+    Offline: '&cÇevrimdışı'
+    not: '&cSunucu bungee ağına ait değil'
+    noserver: '&cBu isimde sunucu bulunamadı!'
+    server: '&eSunucu: &7[name]'
+  variables:
+    Online: '&6Çevrimiçi'
+    Offline: '&cÇevrimdışı'
+    TrueColor: '&2'
+    FalseColor: '&4'
+    'True': '&6Açık'
+    'False': '&cKapalı'
+    Enabled: '&6Etkin'
+    Disabled: '&cDevre dışı'
+    survival: '&6Survival'
+    creative: '&6Yaratıcı'
+    adventure: '&6Macera'
+    spectator: '&6İzleyici'
+    flying: '&6Uçuş'
+    notflying: '&6Uçmuyorsun'
+  noSchedule: '&cBu isme göre program bulunamadı'
+  totem:
+    cooldown: '&eTotem bekleme süresi: [time]'
+    warmup: '&eTotem etkisi: [time]'
+    cantConsume: '&eTotem kullanma bekleme süresine bağlı reddedildi'
+  Inventory:
+    FullDrop: '&5Envanterinize tüm öğeler sığmıyor. Yere düşürüldüler'
+  InventorySave:
+    info: '&8Bilgi: &8[playerDisplayName]'
+    saved: '&e[time] &ebu id ile envanter kaydedildi: &e[id]'
+    NoSavedInv: '&eBu oyuncunun kaydedilmiş envanteri yok'
+    NoEntries: '&4Dosya mevcut, Ama envanterler bulunamadı!'
+    CantFind: '&eBu id ile envanter bulunamadı'
+    TopLine: '&e----------- &6[playerDisplayName] Kayıtlı envanter &e-----------'
+    List: '&eid: &6[id]&e. &6[time]'
+    KillerSymbol: '&c ☠'
+    Click: '&eKayıtlı envanteri ([id]) kontrol etmek için tıkla'
+    IdDontExist: '&4Bu kayıt IDsi mevcut değil!'
+    Deleted: '&eKayıtlı envanter başarılı şekilde silindi!'
+    Restored: '&e[targetname] adlı kullanıcının envanterini &egeri yükledin.&e[sourcename]'
+    GotRestored: '&eEnvanterin &e[sourcename] &etarafından geri yüklendi. &eEnvanter kaydedildi&e[time]'
+    LoadForSelf: '&eBu envanteri kendiniz yükleyiniz'
+    LoadForOwner: '&eSahibi için bu envanteri yükleyiniz'
+    NextInventory: '&eSonraki envanter'
+    PreviousInventory: '&eÖnceki envanter'
+    Editable: '&eDüzenleme modu etkin'
+    NonEditable: '&eDüzenleme modu devre dışı'
+  TimeNotRecorded: '&e-Kayıt yok-'
+  years: '&e[years] &6yıl '
+  oneYear: '&e[years] &6yıl '
+  day: '&e[days] &6gün '
+  oneDay: '&e[days] &6gün '
+  hour: '&e[hours] &6saat '
+  oneHour: '&e[hours] &6saat '
+  min: '&e[mins] &6dakika '
+  sec: '&e[secs] &6saniye '
+  vanishSymbolOn: '&8[&7H&8]&r'
+  vanishSymbolOff: ''
+  afkSymbolOn: '&8[&7Afk&8]&r'
+  afkSymbolOff: ''
+  nextPageConsole: '&fSonraki sayfa için &5[command]'
+  prevPage: '&2----<< &6Prev '
+  prevPageGui: '&6Önceki sayfa'
+  prevPageClean: '&6Önceki '
+  prevPageOff: '&2----<< &7Önceki '
+  prevPageHover: '&7<<<'
+  firstPageHover: '&7|<'
+  nextPage: '&6 Sonraki &2>>----'
+  nextPageGui: '&6Sonraki sayfa'
+  nextPageClean: '&6 Sonraki'
+  nextPageOff: '&7 Sonraki &2>>----'
+  nextPageHover: '&7>>>'
+  lastPageHover: '&7>|'
+  pageCount: '&2[current]&7/&2[total]'
+  pageCountHover: '&e[totalEntries] sayfa'
+  skullOwner: '!actionbar!&7Owner:&r [playerName]'
+  beeinfo: '!actionbar!&7Bal seviyesi: &e[level]&7/&e[maxlevel] &7İçerideki arılar: &e[count]&7/&e[maxcount]'
+  circle: '&3Daire'
+  square: '&5Kare'
+  protectedArea: '&cKorumalı alan. Bunu burada yapamam.'
+  valueToLong: '&eDeğer çok yüksek. Maksimum: [max]'
+  valueToShort: '&eDeğer çok düşük. Minimum: [min]'
+  pvp:
+    noGodDamage: '!actionbar!&cÖlümsüzken oyunculara zarar veremezsin'
+  InvEmpty:
+    armor: '&eZırh slotlarının boş olması lazım!'
+    hand: '&eElin boş olmak zorunda!'
+    maininv: '&eAna envanterişn boş olmak zorunda!'
+    maininvslots: '&eAna envanterinde en az&6[count] &eboş slot olmalıdır!'
+    inv: '&eEnvantein boş olmalı!'
+    offhand: '&eHazırlık boş olmalı!'
+    quickbar: '&equick bar boş olmalı!'
+    quickbarslots: '&eQuick barında en az&6[count] &eboş slot olmalıdır'
+    subinv: '&eAlt envanteriniz boş olmalıdır!'
+    subinvslots: '&eAlt envanterinizde en az&6[count] &eboş slot olmalıdır!'
+  pickIcon: '&8İkon seç'
+  DamageCause:
+    block_explosion: Explosion
+    contact: Block Damage
+    custom: Unknown
+    drowning: Drowning
+    entity_attack: Entity attack
+    entity_explosion: Explosion
+    fall: Fall
+    falling_block: Falling block
+    fire: Fire
+    fire_tick: Fire
+    lava: Lava
+    lightning: Lightning
+    magic: Magic
+    melting: Melting
+    poison: Poison
+    projectile: Projectile
+    starvation: Starvation
+    suffocation: Suffocation
+    suicide: Suicide
+    thorns: Thorns
+    void: Void
+    wither: Wither
+  Biomes:
+    BEACH: Beach
+    BIRCH_FOREST: Birch forest
+    BIRCH_FOREST_HILLS: Birch forest hills
+    BIRCH_FOREST_HILLS_MOUNTAINS: Birch forest hills mountains
+    BIRCH_FOREST_MOUNTAINS: Birch forest mountains
+    COLD_BEACH: Cold beach
+    COLD_TAIGA: Cold taiga
+    COLD_TAIGA_HILLS: Cold taiga hills
+    COLD_TAIGA_MOUNTAINS: Cold taiga mountains
+    DEEP_OCEAN: Deep ocean
+    DESERT: Desert
+    DESERT_HILLS: Desert hills
+    DESERT_MOUNTAINS: Desert mountains
+    EXTREME_HILLS: Extreme hills
+    EXTREME_HILLS_MOUNTAINS: Extreme hills mountains
+    EXTREME_HILLS_PLUS: Extreme hills plus
+    EXTREME_HILLS_PLUS_MOUNTAINS: Extreme hills plus mountains
+    FLOWER_FOREST: Flower forest
+    FOREST: Forest
+    FOREST_HILLS: Forest hills
+    FROZEN_OCEAN: Frozen ocean
+    FROZEN_RIVER: Frozen river
+    HELL: Hell
+    ICE_MOUNTAINS: Ice mountains
+    ICE_PLAINS: Ice plains
+    ICE_PLAINS_SPIKES: Ice plains spikes
+    JUNGLE: Jungle
+    JUNGLE_EDGE: Jungle edge
+    JUNGLE_EDGE_MOUNTAINS: Jungle edge mountains
+    JUNGLE_HILLS: Jungle hills
+    JUNGLE_MOUNTAINS: Jungle mountains
+    MEGA_SPRUCE_TAIGA: Mega spruce taiga
+    MEGA_SPRUCE_TAIGA_HILLS: Mega spruce taiga hills
+    MEGA_TAIGA: Mega taiga
+    MEGA_TAIGA_HILLS: Mega taiga hills
+    MESA: Mesa
+    MESA_BRYCE: Mesa bryce
+    MESA_PLATEAU: Mesa plateau
+    MESA_PLATEAU_FOREST: Mesa plateau forest
+    MESA_PLATEAU_FOREST_MOUNTAINS: Mesa plateau forest mountains
+    MESA_PLATEAU_MOUNTAINS: Mesa plateau mountains
+    MUSHROOM_ISLAND: Mushroom island
+    MUSHROOM_SHORE: Mushroom shore
+    OCEAN: Ocean
+    PLAINS: Plains
+    RIVER: River
+    ROOFED_FOREST: Roofed forest
+    ROOFED_FOREST_MOUNTAINS: Roofed forest mountains
+    SAVANNA: Savanna
+    SAVANNA_MOUNTAINS: Savanna mountains
+    SAVANNA_PLATEAU: Savanna plateau
+    SAVANNA_PLATEAU_MOUNTAINS: Savanna plateau mountains
+    SKY: Sky
+    SMALL_MOUNTAINS: Small mountains
+    STONE_BEACH: Stone beach
+    SUNFLOWER_PLAINS: Sunflower plains
+    SWAMPLAND: Swampland
+    SWAMPLAND_MOUNTAINS: Swampland mountains
+    TAIGA: Taiga
+    TAIGA_HILLS: Taiga hills
+    TAIGA_MOUNTAINS: Taiga mountains
+  EntityType:
+    armor_stand: Armor stand
+    arrow: Arrow
+    bat: Bat
+    blaze: Blaze
+    boat: Boat
+    cave_spider: Cave spider
+    chicken: Chicken
+    complex_part: Complex part
+    cow: Cow
+    creeper: Creeper
+    dropped_item: Dropped item
+    egg: Egg
+    enderman: Enderman
+    endermite: Endermite
+    ender_crystal: Ender crystal
+    ender_dragon: Ender dragon
+    ender_pearl: Ender pearl
+    ender_signal: Ender signal
+    experience_orb: Experience orb
+    falling_block: Falling block
+    fireball: Fireball
+    firework: Firework
+    fishing_hook: Fishing hook
+    ghast: Ghast
+    giant: Giant
+    guardian: Guardian
+    horse: Horse
+    iron_golem: Iron golem
+    item_frame: Item frame
+    leash_hitch: Leash hitch
+    lightning: Lightning
+    magma_cube: Magma cube
+    minecart: Minecart
+    minecart_chest: Minecart chest
+    minecart_command: Minecart command
+    minecart_furnace: Minecart furnace
+    minecart_hopper: Minecart hopper
+    minecart_mob_spawner: Minecart mob spawner
+    minecart_tnt: Minecart tnt
+    mushroom_cow: Mushroom cow
+    ocelot: Ocelot
+    painting: Painting
+    pig: Pig
+    pig_zombie: Pig zombie
+    player: Player
+    primed_tnt: Primed tnt
+    rabbit: Rabbit
+    sheep: Sheep
+    silverfish: Silverfish
+    skeleton: Skeleton
+    slime: Slime
+    small_fireball: Small fireball
+    snowball: Snowball
+    snowman: Snowman
+    spider: Spider
+    splash_potion: Splash potion
+    squid: Squid
+    thrown_exp_bottle: Thrown exp bottle
+    unknown: Unknown
+    villager: Villager
+    weather: Weather
+    witch: Witch
+    wither: Wither
+    wither_skull: Wither skull
+    wolf: Wolf
+    zombie: Zombie
+  EnchantAliases:
+    protection_environmental:
+    - Protection
+    protection_fire:
+    - FireProtection
+    protection_fall:
+    - FallProtection
+    - FeatherFalling
+    protection_explosions:
+    - BlastProtection
+    protection_projectile:
+    - ProjectileProtection
+    oxygen:
+    - Respiration
+    water_worker:
+    - AquaAffinity
+    thorns:
+    - Thorns
+    depth_strider:
+    - DepthStrider
+    damage_all:
+    - Sharpness
+    damage_undead:
+    - Smite
+    damage_arthropods:
+    - BaneOfArthropods
+    knockback:
+    - Knockback
+    fire_aspect:
+    - FireAspect
+    loot_bonus_mobs:
+    - Looting
+    dig_speed:
+    - Efficiency
+    silk_touch:
+    - SilkTouch
+    durability:
+    - Unbreaking
+    loot_bonus_blocks:
+    - Fortune
+    arrow_damage:
+    - Power
+    arrow_knockback:
+    - Punch
+    arrow_fire:
+    - Flame
+    arrow_infinite:
+    - Infinity
+    luck:
+    - Luck
+    lure:
+    - Lure
+  PotionEffectAliases:
+    speed:
+    - Speed
+    slow:
+    - Slow
+    fast_digging:
+    - Fast digging
+    slow_digging:
+    - Slow digging
+    increase_damage:
+    - Increase damage
+    heal:
+    - Heal
+    harm:
+    - Harm
+    jump:
+    - Jump
+    confusion:
+    - Confusion
+    regeneration:
+    - Regeneration
+    damage_resistance:
+    - Damage resistance
+    fire_resistance:
+    - Fire resistance
+    water_breathing:
+    - Water breathing
+    invisibility:
+    - Invisibility
+    blindness:
+    - Blindness
+    night_vision:
+    - Night vision
+    hunger:
+    - Hunger
+    weakness:
+    - Weakness
+    poison:
+    - Poison
+    wither:
+    - Wither
+    health_boost:
+    - Health boost
+    absorption:
+    - Absorption
+    saturation:
+    - Saturation
+direction:
+  n: North
+  ne: North East
+  e: East
+  se: South East
+  s: South
+  sw: South West
+  w: West
+  nw: North West
+modify:
+  middlemouse: '&2Düzenlemek için farenin orta tuşuna tıklayın'
+  newItem: '&7Buraya yeni eşya yerleştirin'
+  newLine: '&2<NewLine>'
+  newLineHover: '&2Yeni hat ekle'
+  newPage: '&2<NewPage>'
+  newPageHover: '&2Yeni sayfa oluştur'
+  removePage: '&c<RemovePage>'
+  removePageHover: '&cSayfayı kaldır'
+  deleteSymbol: ' &c[X]'
+  deleteSymbolHover: '&cSil &e[text]'
+  extraEditSymbol: ' &6!'
+  addSymbol: '&2[+]'
+  addSymbolHover: '&2Yeni ekle'
+  cancelSymbol: ' &7&l[X]'
+  cancelSymbolHover: '&aİptal'
+  acceptSymbol: ' &2&l[✔]'
+  acceptSymbolHover: '&aKabul'
+  denySymbol: ' &4&l[X]'
+  denySymbolHover: '&cReddedildi'
+  enabledSymbol: '&2[+]'
+  disabledSymbol: '&c[-]'
+  enabled: '&2Etkin'
+  disabled: '&cDevre dışı'
+  running: '&2İşleniyor'
+  paused: '&cDurduruldu'
+  editSymbol: '&e✎'
+  editSymbolHover: '&eDüzenle &6[text]'
+  editLineColor: '&f'
+  listUpSymbol: '&6⇑'
+  listUpSymbolHover: '&eYukarı'
+  listDownSymbol: '&6⇓'
+  listDownSymbolHover: '&eAşağı'
+  listNumber: '&e[number].'
+  ChangeHover: '&eDeğiştirmek için tıkla'
+  commandTitle: ' &e--- &6[name] &e---'
+  commandList: ' &e[command]  '
+  emptyLine: '&7[Empty line]'
+  commandEdit: '&eListeyi düzenle'
+  lineAddInfo: '&eYeni hat ekle. %6İptal etmek için iptal yazın'
+  commandAddInfo: '&eYeni komut ekle. &6İptal etmek için cancel yazın'
+  commandAddInformationHover: "&e[playerName] Oyuncu adını almak için kullanılabilir \n&eTo\
+    \ Komutlarda gecikme dahil: \n&edelay! 5 \n&eÖzel komutlar desteklenir.\
+    \ Daha fazla bilgi \n&ehttps://www.zrips.net/cmi/commands/specialized/"
+  commandEditInfo: '&eEski metni yapıştırmak için tıklayın. &6İptal etmek için cancel yazın'
+  commandEditInfoHover: '&eEski metni yapıştırmak için tıkla'
+warp:
+  list: '&e[pos]. &6[warpName] &f- &7[worldName] ([x]:[y]:[z])'
+teleportation:
+  relocation: '!actionbar!&4Işınlanma konumunuz engellendi. Güvenli bir lokasyona ışınlandın.'
+afk:
+  'on': '&6AFK'
+  'off': '&7Oynuyor'
+  left: '&6[playerDisplayName] &eartık AFK değil'
+  MayNotRespond: '&eOyuncu AFK ve yanıt vermeyebilir'
+  MayNotRespondStaff: '&eYetkili üyesi AFK ve yanıt vermeyebilir. Bizim ile discorddan iletişime geçin'
+BossBar:
+  hpBar: '&f[victim] &e[current]&f/&e[max] &f(&c-[damage]&f)'
+Potion:
+  Effects: '&8İksir etkileri'
+  List: '&e[PotionName] [PotionAmplifier] &eSüre: &e[LeftDuration] &esaniye'
+  NoPotions: '&eNone'
+Information:
+  Title: '&8Oyuncuların bilgileri'
+  Health: '&eKalp: &6[Health]/[maxHealth]'
+  Hunger: '&eAçlık: &6[Hunger]'
+  Saturation: '&eDoyma: &6[Saturation]'
+  Exp: '&eTecrübe: &6[Exp]'
+  NotEnoughExp: '&e tecrübe yeterli değil: &6[Exp]'
+  NotEnoughExpNeed: '&e tecrübe yeterli değil: &6[Exp]/[need]'
+  tooMuchExp: '&eÇok fazla xp: &6[Exp]/[need]'
+  NotEnoughVotes: '&eoy yeterli değil: &6[votes]'
+  TooMuchVotes: '&eÇok fazla oy: &6[votes]'
+  BadGameMode: '&cŞuanki oyun modunda bunu yapamazsın'
+  BadArea: '&cBu eylemi bu bölgede yapamazsın'
+  GameMode: '&eOyun modu: &6[GameMode]'
+  GodMode: '&eGodMode: &6[GodMode]'
+  Flying: '&eFlying: &6[Flying]'
+  CanFly: '&eCan Fly: &6[CanFly]'
+  Uuid: '&6[uuid]'
+  ip: '&eIp address: &6[address]'
+  FirstConnection: '&eİlk bağlantı: &6[time]'
+  Lastseen: '&eSon görülme: &6[time]'
+  Onlinesince: '&eZamandan beri çevrimiçi: &6[time]'
+  Money: '&ePara: &6[money]'
+  Group: '&eGrup: &6[group]'
+econ:
+  disabled: '&cEkonomi desteği devre dışı bırakıldığında bu komutu kullanamazsınız'
+  noMoney: '&cParanız yok'
+  charged: '!actionbar!&fYenilendi: &6[amount]'
+  notEnoughMoney: '&cYeterli miktarda paran yok. Gerekli olan: (&6[amount]&c)'
+  tooMuchMoney: '&cÇok fazla paran var'
+  commandCost: '&7Bu komutun bedeli: &6[cost] &7komutu tekrarla veya tıklayarak onayla'
+Elytra:
+  Speed: '&eHız: &6[speed]&ekm/h'
+  SpeedBoost: ' &a+ '
+  SpeedSuperBoost: ' &2+ '
+  CanUse: '&cYetki olmadan elytrayı kullanamazsın!'
+  Charging: '&eYenileniliyor &f[percentage]&e%'
+Selection:
+  SelectPoints: '&cSeçme aleti ile 2 nokta seç! AKA: &6[tool]'
+  PrimaryPoint: '&6İlk seçim noktası yerleştirildi [point]'
+  SecondaryPoint: '&6İkinci seçim noktası yerleştirildi [point]'
+  CoordsTop: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
+  CoordsBottom: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
+NetherPortal:
+  ToHigh: '&cPortal çok büyük, maksimum yükseklik: &6[max]&c!'
+  ToWide: '&cPortal çok geniş, maksimum genişlik &6[max]&c!'
+  Creation: '!actionbar!&7[height]x[width] Boyutunda cehennem portalı oluşturuldu!'
+  Disabled: '&cPortal oluşumu devre dışı bırakıldı!'
+Location:
+  Title: '&8Oyuncu konumu'
+  Killer: '&eKatil: &6[killer]'
+  OneLiner: '&eKonum: &6[location]'
+  DeathReason: '&eÖlüm sebebi: &6[reason]'
+  Full: '&7[world] &f[x]&7:&f[y]&7:&f[z]'
+  World: '&eDünya: &6[world]'
+  X: '&eX: &6[x]'
+  Y: '&eY: &6[y]'
+  Z: '&eZ: &6[z]'
+  Pitch: '&eYer: &6[pitch]'
+  Yaw: '&eYaw: &6[yaw]'
+Ender:
+  Title: '&7Ender sandığı açmak'
+Chat:
+  localPrefix: ''
+  shoutPrefix: '&c[S]&r'
+  shoutDeduction: '!actionbar!&cbağırmak için &e[amount] &cçıkarıldı'
+  # Use \n to add new line
+  publicHover: '&eGönderilme süresi: &6%server_time_hh:mm:ss%'
+  privateHover: '&eGönderilme süresi: &6%server_time_hh:mm:ss%'
+  staffHover: '&eGönderilme süresi: &6%server_time_hh:mm:ss%'
+  helpopHover: '&eGönderilme süresi: &6%server_time_hh:mm:ss%'
+  link: '&l&4[&7LINK&4]'
+  item: '&7[%cmi_iteminhand_displayname%[amount]&7]'
+  itemAmount: ' x[amount]'
+  itemEmpty: '&7[Mighty fist]'
+command:
+  help:
+    output:
+      usage: '&eKullanım: &7%usage%'
+      cmdInfoFormat: '[command] &f- &e[description]'
+      cmdFormat: '&6/[command]&f[arguments]'
+      helpPageDescription: '&e* [description]'
+      explanation: '&e * [explanation]'
+      title: '&e------ ======= &6Yardım&e &e======= ------'
+  nocmd:
+    help:
+      info: '&eBütün ulaşılabilir komutları gösterir'
+      args: ''
+  actionbarmsg:
+    help:
+      info: '&eOyuncuya eylem çubuğu mesajı gönderir'
+      args: '[playerName/all] (-s:[seconds]) [message]'
+    info:
+      message: '&f[messsage]'
+  afk:
+    help:
+      info: '&eAFK modu Aç/kapa. Sebep sağlanılabilir'
+      args: (-p:playerName) (reason)
+  afkcheck:
+    help:
+      info: '&eOyuncunun AFK durumunu gösterir'
+      args: '[playerName/all]'
+    info:
+      feedback: '&e[playerDisplayName]&e: &6[status]'
+      feedbackInactive: '&eGeçmiş için etkin değil &6[time]'
+      feedbackList: '&e[place]. [feedbackInactive]'
+      feedbackReason: '&7[reason]'
+  air:
+    help:
+      info: '&eOyuncuları havalandırın'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&3[playerName]&e adlı oyuncu için hava miktarını&3[amount]&eolmak üzere değiştirdin &e(&3[offon]&e).'
+      targetFeedback: '&eHavan &3[amount]&e miktarda &3[senderDisplayName]&eadlı oyuncu tarafından değiştirildi.'
+      current: '&eCurrent &3[playerDisplayName] &eair: &3[amount]'
+  alert:
+    help:
+      info: '&eOyuncu girişinde uyarı yönetimi'
+      args: '[playerName] (reason)'
+      explanation:
+      - '&ePermissions:'
+      - '&6command.alert.info.inform &e- to see alerts on player login'
+    info:
+      inform:
+      - '&e!Uyarı!******** &6[name] &4Yeni giriş yaptı! &e*******!Uyarı!'
+      reason: '&eUyarı sebebi: &6[reason]'
+      removed: '&6[playerDisplayName] &eUyarı listesinden silindi'
+      added: '&eEğer &6[playerDisplayName] &eadlı oyuncu 24 saat içinde giriş yaparsa,
+      Uyarı mesajı bütün yetkililere gönderilecektir, '
+      online: '&6[playerDisplayName] &ezaten çevrimiçi'
+  aliaseditor:
+    help:
+      info: '&eTakma ad düzenleyicisi'
+      args: (new) (alias-cmd)
+    info:
+      ListNumber: '&e[number].'
+      aliasName: ' &6[alias]   '
+      commandList: ' &e/[command]  '
+      commandListDelay: ' &6[command]  '
+      permReq: '&2Özel izin gerektirir: &6[state]'
+      permReqExplanation: '&7Kullanmak için &6cmi.customalias.[alias] &7gerektirir'
+      newAliasInfo: '&eYeni takma ad komut adını girin ve enter tuşuna basın'
+      addInfo: '&eYeni komut girin. &6İptal etmek için cancel yazın'
+      addInformationHover: "&eGönderen kategorisi itibarıyla desteklenen global değişkenler \n\
+        &edelay! 5 &6to include delay in commands \n&e$1 &6will take provided variable\
+        \ by new command and will place in that place \n&e$1- &6takes all variables\
+        \ from this point and inserts into original commands \n&e? &6makes it valid\
+        \ when using any last variable. For Help page usage\n&efromConsole! will perform\
+        \ command from console"
+      editInfo: '&eEski metni yapıştırmak için tıkla. &6İptal etmek için cancel yazın. &6Kaldırmak için remove yazın'
+  anvil:
+    help:
+      info: '&eÖrs açmak'
+      args: (playerName)
+    info:
+      feedback: '&e &3[playerDisplayName]&eAdlı oyuncu için örs açtın (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e tarafından sana örs açıldı.'
+  armorstand:
+    help:
+      info: '&eZırh standı düzenleyicisini aç'
+      args: (last/near)
+    info:
+      cantClick: '&cBunu yapamazsın. Birisi zaten bu zırh standını düzenliyor'
+      tooFar: '&cZırh standı çok uzakta'
+      title: Editor
+      coordX: '&cX'
+      coordY: '&2Y'
+      coordZ: '&eZ'
+      body: '&7Beden rotation: &f[amount]'
+      head: '&7Kafa [coord]&7: &f[amount]'
+      torso: '&7Torso [coord]&7: &f[amount]'
+      leftArm: '&7Sol kol [coord]&7: &f[amount]'
+      rightArm: '&7Sağ kol[coord]&7: &f[amount]'
+      leftLeg: '&7Solayak [coord]&7: &f[amount]'
+      rightLeg: '&7Sağ ayak[coord]&7: &f[amount]'
+      pos: '&7Pozisyon [coord]&7: &f[amount]'
+      plate: '&7Plate'
+      size: '&7Küçük'
+      visible: '&7Görünür'
+      arms: '&7Görülebilir arms'
+      gravity: '&7Yer çekimi'
+      glow: '&7Glowing'
+      invulnerable: '&7Yenilmez'
+      name: '&7Görünür ad'
+      nameEdit: '&7İsmi düzenlemek için farenin orta tuşunu basın'
+      interactable: '&7Etkileşimli'
+      explanation: '&8Sol veya sağ fare düğmesi ayarlar'
+      explanation2: '&810 kat daha hızlı hale getirmek için shift tuşuna basın'
+      disableGravity: '&eBu değeri değiştirmek istiyorsanız yer çekimini devre dışı bırakın'
+      copyLabel: '&7Klon seçiciyi aç'
+      copyTitle: '&8Klonlamak istediğiniz şeyi seçin'
+      click: '&eZırh standını kopyalamak için tıkla, ya da iptal etmek için herhangi bir bloğa yumruk at'
+      canceled: '&eZırh standını kopyala işlemi iptal edildi'
+      updated: '&eZırh standı yüklendi'
+      action:
+        head: '&7Kafa'
+        body: '&7Beden'
+        torso: '&7Torso'
+        leftArm: '&7Solkol'
+        rightArm: '&7Sağkol'
+        leftLeg: '&7Solayak'
+        rightLeg: '&7Sağayak'
+        pos: '&7Pozisyon'
+        updateitems: '&7Güncellenmişeşya'
+        plate: '&7Plate'
+        size: '&7Boyut'
+        visible: '&7Görülür'
+        arms: '&7Arms'
+        gravity: '&7Yerçekimi'
+        glow: '&7Glow'
+        invulnerable: '&7Invulnerable'
+        name: '&7Name'
+        interactable: '&7Interactable'
+  attachcommand:
+    help:
+      info: '&eAttaches komut to item'
+      args: '[command/-clear]'
+      explanation:
+      - Separate commands with ;;
+      - You can define to run command on left or right mouse click separately with
+      - '!left! Sol fare tıklamasıyla komut gerçekleştirmek için tıklayın'
+      - '!right! sağ tıklamada komutu gerçekleştirmek için'
+      - '!limiteduse:[amount]! Bu öğeyi kaç kez kullanabileceğiniz tanımlar'
+      - '!safelimiteduse:[amount]! tüm kullanımlar kullanıldıktn sonra öğeyi kaldırmayacak'
+      - '!cc! konsoldan komut gerçekleştirir, cmi.command.attachcommand.cc yetkisi gerekli'
+      - '!cooldownn:[amount]! öğe kullanımında bekleme süresi ekler.'
+      - '[interactedPlayer] öğeyi tutarken etkileşimde bulunduğunuz oyuncunun adını ekler'
+      - Global variables working in addition with [itemUses]
+    info:
+      list: ' &e[id]. &6[cmd]'
+      noCmds: ' &eBu öğeye eklenmiş komut yok'
+      uses: '&eEşya kullanımı: &6[amount]'
+      usesLeft: '!actionbar!&eEşya kullanımı kaldı: &6[itemUses]'
+      cooldown: '&7Eşya bekleme süresinde. Bekle [time]'
+  autorecharge:
+    help:
+      info: '&eOtomatik uçuş şarjını aç/kapat'
+      args: (playerName) [exp/money/off] (-s)
+    info:
+      disabled: '&eOtomatik şarj devre dışı bırakıldı'
+      moneyEnabled: '&ePara kullanarak otomatik uçuş ücretini yeniden şarj etme etkinleştirildi'
+      expEnabled: '&eXP kullanarak otomatik uçuş ücretini yeniden şarj etme etkinleştirildi'
+  back:
+    help:
+      info: '&eEn son kaydedilen konuma ışınlar'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&4Dönülecek kayıtlı konum yok!'
+      feedback: '&eSon kaydedilen konuma geri döndü (&6[worldName]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
+  balance:
+    help:
+      info: '&ePara bakiyesini kontrol edin'
+      args: (playerName)
+    info:
+      balance: '&eBakiye: &6[money]'
+      balanceOther: '&6[playerDisplayName] &eBakiye: &6[money]'
+  baltop:
+    help:
+      info: '&eZenginler Listesi'
+      args: (playerName)
+    info:
+      topLine: '&e&m-----&6 En Zenginler &e&m-----'
+      topLineHover: '&6Sunucu toplam: &c[total]'
+      list: '&e[place]. &6[playerDisplayName]: &e[balance]'
+      ownLine: '&2[place]. &2[playerDisplayName]: &2[balance]'
+      recalculating: '&2Baltop tekrardan hesaplandı, biraz bekleyin ve tekrar deneyin'
+  ban:
+    help:
+      info: '&eOyuncu yasaklamak'
+      args: '[playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.ban.bypass - to bypass ban
+    info:
+      # Make sure that OverrideLoginMessage is enabled in config file
+      message: '&cBu sunucudan banlandınız'
+      reason: '&6Sebep: &e[reason]'
+      defaultReason: '&eİhlal edilen sunucu kurallar'
+      messageToAll: '&6[playerDisplayName] &eadlı oyuncu &6[senderDisplayName] tarafından yasaklandı &eSebep:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &eadlı oyuncu &6[senderDisplayName] tarafından yasaklandı
+        &eSebep: &6[reason]'
+      noSelfBan: '&cKendini yasaklayamazsın'
+      cantBan: '&cBu oyuncuyu yasaklayamazsın'
+  banlist:
+    help:
+      info: '&eYasaklananlar listesi'
+      args: ''
+  bbroadcast:
+    help:
+      info: '&eTüm sunuculardaki tüm oyunculara özel mesaj gönderir'
+      args: (!) [message] (-s:[serverName,serverName])
+      explanation:
+      - If message starts with ! then clean message will be shown
+      - Servers can be defined to broadcast messages only in those servers
+    info:
+      format: '&e[&rDuyuru&e] &2[message]'
+  blockcycling:
+    help:
+      info: '&eBlok durumları arasında geçiş yap'
+      args: ''
+  blockinfo:
+    help:
+      info: '&eBlok bilgilerini kontrol edin'
+      args: ''
+    info:
+      Info: ' &eId: &6[id][data] &eMateryal: &6[name][ndata]'
+      RealName: ' &eGerçek isim: &6[name]'
+      TempLight: ' &eSıcaklık: &6[temp]&e, Light - block: &6[blevel]&e, sky: &6[slevel]&e,
+        overral: &6[level]'
+      Resistance: ' &eKazı - Direnç: &6[mining]&e, Patlama: &6[explosion]'
+      noteBlock: ' &eTone: &6[tone] &eOctave: &6[octave] &6Instrument: &e[instrument]
+        &6Pitch: &7[pitch]'
+      BlockState: ' &7[state]: &f[value]'
+  blocknbt:
+    help:
+      info: '&eBlok NBT bilgilerini göster'
+      args: ''
+    info:
+      noNbt: '&eBlok herhangi bir NBT verisi içermiyor'
+  book:
+    help:
+      info: '&eKitap düzenleme'
+      args: '[Author/Title/Unlock] [value]'
+    info:
+      noitem: '&cElinde herhangi bir eşya tutmuyorsun.'
+      notBook: '&cÖğe yazılabilir bir kitap değil.'
+      wrongValue: '&cÖğe kapalı değil yazılı kitap.'
+      inccorectAction: '&eYanlış eğlem ismi.'
+      authorChanged: '&eYazar şu şekilde değiştirildi: [author]'
+      titleChanged: '&eBaşlık olmaz üzere değiştirildi: [title]'
+      unlocked: '&eKitap kilidi açıldı'
+  bossbarmsg:
+    help:
+      info: '&eOyuncuya patron çubuğu mesajı gönderir'
+      args: '[playerName/all] (-sec:[seconds])(-t:[timeToKeepFor]) (-n:nameOfBar)
+        (-p:[maxValue/current]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
+        (-a:[ticks]) [message] (-cancel:nameOfBar)'
+      explanation:
+      - PlaceHolderAPI is supported for progression and text it self
+      - Time is defined in regular way, like 1s is one second and 1m is one minute. This will determine for how long to keep bar shown for player before automatically hiding
+      - nameOfBar is option and when defining same one, then current bar will update with new information
+      - 'colors can be: red, green, pink, purple, white, yellow'
+      - max and current values determines bar fillup, PlaceHolderAPI variables can be used for dynamic updates
+      - 'Examples:'
+      - /cmi bossbar Zrips BossBarTitle
+      - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:testbar -c:red &2Title of bar %server_online%/%server_max_players% &e%cmi_user_name%
+      - /cmi bossbarmsg all -p:+1 -n:testbar - will add one percent towards current progresion bar by name
+      - /cmi bossbarmsg all -p:-1 -n:testbar - will take out one percent from current progresion bar by name
+      - /cmi bossbarmsg all -s:10 -n:testbar - will set bossbar style to 10 segments by bar name
+      - /cmi bossbarmsg all -sec:5 - will count for 5 seconds from 0 to 5
+      - /cmi bossbarmsg all -sec:-5 - will count for 5 seconds from 5 to 0
+      - http://www.zrips.net/cmi/commands/bossbarmsg-handling/
+  broadcast:
+    help:
+      info: '&eTüm oyunculara özel mesaj gönderir'
+      args: (!) [message] (-w:[worldName,worldName]) (-r:[range]) (-c:[world;x;y;z])
+      explanation:
+      - If message starts with ! then clean message will be shown
+      - Worlds can be defined to broadcast messages only in those worlds
+    info:
+      format: '&e[&4Broadcast&e] &2[message]'
+  burn:
+    help:
+      info: '&eBir oyuncu yak'
+      args: (playerName) (time) (-s)
+    info:
+      feedback: '&e&3[playerDisplayName]&e adlı oyuncuyu belirtilen süre boyunca ateşe koydun &6[time] &e(&3[offon]&e).'
+      targetfeedback: '&e&3[senderDisplayName]&e Adlı kişi tarafından belirtilen süre boyunca ateşe konuldun
+        &6[time]&e.'
+  charges:
+    help:
+      info: '&eKalan spawner şarjını gösterir'
+      args: '[playerName] [add/set/take/clear/reset] (-f)'
+    info:
+      charges: '&e* Charges: &6[current]&e/&6[max] [bypass]'
+      cd: '&e* CD: &6[cdtime] &eNext in: &6[time]'
+      bypass: '&6(Bypass)'
+      allUsed: '&eBütün şarjlar kullanıldı! Bir sonraki [time]'
+      noGroup: '&eAtanmış ücret grubu yok'
+      cantBreak: '&eGörev grubu atanana kadar ara veremezsin'
+      minusCd: '&e eksi &6[sec]&esüre boyunca spawner şarjı bekleme süresinde'
+      add: '&6[playerDisplayName] &eİçin &6[amount] &eadet spawner talimatı eklendi.'
+      set: '&6[playerDisplayName] &eiçin &6[amount] &eadetinde spawner talimati verdin.'
+      clear: '&6[playerDisplayName] &eİçin tüm spawner talimat haklarını sildin.'
+      reset: '&6[playerDisplayName] &eİçin spawner grup talimatlarını sıfırladın.'
+      take: '&6[playerDisplayName] &eAdlı arkadaşımızdan &6[amount] &eadetinde spawner talimat ücreti alındı.'
+  chat:
+    help:
+      info: '&eSohbet odası oluşturmak ve katılmak'
+      args: '[create/join/leave/list/invite/kick/listrooms] (chatName/playerName)
+        (-private)'
+    info:
+      joined: '&eSohbet odasına katıldın: &7[chatRoomName]'
+      joinedInfo: '&e[playerDisplayName] &7sohbet odasına katıldı'
+      alreadyIn: '&eZaten bu sohbet grubundasın &7[chatRoomName]'
+      left: '&eLeft &7[chatRoomName] &echat room'
+      leftInfo: '&e[playerDisplayName] &7Sohbet odasından ayrıldı'
+      invite: '&6[playerDisplayName] &eseni sohbet odasına davet etti: &7[chatRoomName]'
+      format: '&3|&7[chatRoomName]&3| &6[playerDisplayName]: &r[message]'
+      nobody: '&4Kimse sohbet odasında değil'
+      notOwner: '&4Sadece sohbet yetkilisi bunu yapabilir'
+      wrongName: '&4Yanlış sohbet odası ismi'
+      takenName: '&4Sohbet odası ismi alındı, farklı bir şey kullan'
+      notIn: '&4Kullanıcı sohbet odasında değil'
+      cantJoin: '&4Sohbet odası özel ve senin bir davetiyen yok'
+      kicked: '&6[playerDisplayName] &esohbet odasından atıldı'
+      gotKicked: '&7[chatRoomName] &4sohbet odasından atıldın'
+      list: '&e[chatRoomName]&e: &7[list]'
+      globalList: '&7[number]. [joined]&e[chatRoomName][private]&e: &7[count][expires]'
+      globalListPrivate: '&2(P)'
+      globalListJoined: '&2+'
+      globalListHover:
+        Owner: '&7Owner: [playerDisplayName]'
+        Ends: ' &7Expires in: [time]'
+        Names: '&7[playerDisplayName]'
+  checkaccount:
+    help:
+      info: '&eBir oyuncunun başka hesaplarını ara'
+      args: (playerName/ip)
+      explanation:
+      - 'Extra permission: cmi.command.checkaccount.showip'
+    info:
+      place: '&e[place]. &6'
+      ip: '&6[ip]&e: '
+      name: '&6[name]&e(&6[times]&e)'
+      nonIpList: '&eAccounts: &6'
+      nonIpName: '&6[name]'
+      click: '&e&6[name] &ehesabını kontrol etmek için tıkla'
+      noData: '&cBu oyuncuya dair bir kayıt yok'
+  checkban:
+    help:
+      info: '&eOyuncu yasaklanma durumunu kontrol etmek'
+      args: (playerName)
+    info:
+      list: '&6[place]&e. &e[playerDisplayName] &6[time]'
+      permanent: '&3Kalıcı'
+      bannedUntil: '&eKadar Yasaklandı: &6[time]'
+      reason: '&eSebep: &6[reason]'
+      bannedBy: '&eTarafından yasaklandı: &6[sourceDisplayName]'
+      bannedWhen: '&eYasaklandığı tarih: &6[date]'
+  checkcommand:
+    help:
+      info: '&eAnahtar kelimeye göre olası komutları arayın'
+      args: (key word)
+    info:
+      list: '&e[place]. &f[command] &7[args]'
+      hover: '&e[desc]'
+      variableColor: '&f'
+      noCommandFound: '&7Bu anahtar kelime ile komut bulunamadı'
+  checkexp:
+    help:
+      info: '&eOyuncu xplerini kontrol et'
+      args: (playerName)
+    info:
+      current: '&eLevel: &6[currentLevel] &eExp: &6[levelExp] &eTotal exp: &6[exp]'
+      need: '&eBir sonraki seviyeye için gerekli exp: &6[missingExp]'
+  checkperm:
+    help:
+      info: '&eOlası izin düğümlerini kontrol edin'
+      args: (key word)
+    info:
+      list: '&e[place]. [permission]'
+      hover: '&e[desc]'
+      others: |-
+        &4
+        ---->When command is used on another player<----
+        &cBase command required
+      permissionColor: '&6'
+      cmdPermissionColor: '&2'
+      variableColor: '&f'
+      noPermissionFound: '&7Bu anahtar kelime ile bir komut bulunamadı'
+  cheque:
+    help:
+      info: '&eParayı çeke dönüştürme'
+      args: (playerName) [amount]
+    info:
+      transfered: '&e&6[amount] &emiktarda para transfer edildi. Yeni Bakiye: &6[balance]'
+      chequeName: '&e &6[amount] Miktar için çek'
+      chequeLore:
+      - '&r&f&7[senderDisplayName] tarafından verildi'
+      - '&r&fYatırmak için tıkla'
+      holdPaper: '&eElinde kağıt tutmalısın'
+      cantUse: '&eBu kağıt parçasını kullanamazsın. Bu zaten bir çek!'
+  clear:
+    help:
+      info: '&eOyuncuların envanterini silmek'
+      args: (playerName) (item(-amount)) (-s) (+clearType)
+      explanation:
+      - 'Posible clearTypes: quickbar, inventory, partinventory, weapons, armorslots,
+        tools, armors, mainhand, offhand'
+      - Should start with + sign
+      - Multiple types can be used
+      - cmi clear +armors - will remove armor type items
+      - cmi clear +armorslots - will remove items from armorslots
+    info:
+      feedback: '&e&3[playerDisplayName]&e envanterini temizledin (&3[offon]&e).'
+      targetfeedback: '&eEnvanterin &3[senderDisplayName]&e tarafından temizledin.'
+      confirm: '&7Envanter temizlemeyi onaylamak için tıklayın. &cBütün eşyalar kaldırılacak!'
+  clearchat:
+    help:
+      info: '&eSohbeti temizler'
+      args: (self)
+      explanation:
+      - 'Permission:'
+      - ' &6cmi.command.clearchat.bypass &e- to ignore chat cleaning'
+    info:
+      information: '&eSohbet &6[senderDisplayName] tarafından temizlendi'
+  clearender:
+    help:
+      info: '&eOyuncuların ender sandığını siler'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&e &3[playerDisplayName]&e oyuncunun ender sandığını temizledin (&3[offon]&e).'
+      targetfeedback: '&eEnder sandığın &3[senderDisplayName]&e tarafından silindi.'
+  colorlimits:
+    help:
+      info: '&eMümkün olan bütün renkleri gösterir'
+      args: (playerName)
+    info:
+      publicmessage: ' &eGenel: '
+      privatemessage: ' &eÖzel: '
+      nickname: ' &eKullanıcı adı: '
+      signs: ' &eİşaretler: '
+      books: ' &eKitaplar: '
+      me: ' &eBen: '
+      None: '&e-'
+  colorpicker:
+    help:
+      info: '&eBüyü rengi seç'
+      args: (hex/colorname)
+    info:
+      hovers:
+      - '[color]⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛'
+      - '&f#[hex]'
+      - '&7En yakın eşleşme: '
+      - '[colorHex] - [colorName]'
+      - '[closeColor]⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛'
+      - Shift+Click
+  colors:
+    help:
+      info: '&eMümkün olan bütün renkleri gösterir'
+      args: (playerName)
+    info:
+      List:
+      - '&e***************************************'
+      - '     &0&%0  &1&%1  &2&%2  &3&%3  &4&%4  &5&%5  &6&%6  &7&%7'
+      - '     &8&%8  &9&%9  &a&%a  &b&%b  &c&%c  &d&%d  &e&%e  &f&%f'
+      - '       &%k - &kMagic&r      &%l - &lBold'
+      - '       &%m - &mStrike&r     &%n - &nUline'
+      - '       &%o - &oItalic&r      &%r - &rReset'
+      - '&e***************************************'
+  commandspy:
+    help:
+      info: '&eCasus komutunu aç/kapat'
+      args: (playerName) (-s)
+      explanation:
+      - cmi.command.commandspy.hide - Hides performed commands from commandspy
+    info:
+      command: '&5C&2Spy&7[&8[senderDisplayName]&7]&7: &f[command]'
+      toggled: '&eCasus komudu &6[state] &eolmak üzere ayarlandı'
+  compass:
+    help:
+      info: '&eOyuncuların pusula noktasını bulunduğunuz yere ayarlayın'
+      args: (targetName) (sourceName) (x) (z) (worldname) (reset) (-s)
+      explanation:
+      - 'Example: /cmi compass Zhax'
+      - /cmi compass Zhax Zrips
+      - /cmi compass Zhax LT_Craft 0 0 -s
+      - /cmi compass reset Zhax
+    info:
+      wrongworld: '&cSenin tanımladığın dünya yok!'
+      feedback: '&3[playerDisplayName] &eoyuncunun pusula noktasını &3[sourceDisplayName]
+        &ekonumuna ayarladın.'
+      feedbackCustom: '&3[playerDisplayName] &eoyuncunun pusula noktasını &3[x]
+        [z] [world] &ekonumuna ayarladın.'
+      targetFeedback: '&ePusula noktan &3[senderName]&e tarafından &3[sourceDisplayName] &ekonumuna ayarlandı.'
+      targetFeedbackCustom: '&ePusula noktan &3[sourceDisplayName]&e tarafından &3[x] [z] [world] &ekonumuna ayarlandı .'
+      reset: '&ePusula noktan sıfırlandı'
+  condense:
+    help:
+      info: '&eÖğeleri bloklar halinde yoğunlaştırın'
+      args: (itemName)
+    info:
+      converted: '&7[items] &eeşya bloğa dönüştürüldü: &7[blocks]'
+      nothing: '&cEnvanterinde dönüştürülebilir türden bir eşya yok.'
+  counter:
+    help:
+      info: '&eÇevreleyen oyuncular için sayacı başlatır'
+      args: '[join/leave/start] (t:time) (r:[range/-1]) (c:[world:x:y:z]) (msg:custom_message)
+        (-f)'
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.command.counter.force &e- to force counter for everyone in range '
+      - '&6cmi.command.counter.time &e- define custom time range '
+      - '&6cmi.command.counter.range &e- to define custom range'
+      - '&6cmi.command.counter.msg &e- to define custom message'
+      - '&6cmi.command.counter.autojoin &e- joins counter automatically'
+      - -f will force counter to all players in range
+      - 'Example: /cmi counter start r:30 t:7 msg:&eCustom_message -f'
+    info:
+      join: '&eKatılan sayaç'
+      leave: '&eAyrılan sayaç'
+      go: '&eGit!'
+      tooFast: '&cBu komudu bu kadar hızlı tekrarlayamazsın, Bekle: &6[sec]&esec'
+      noOne: '&cBu sayacı gören yok!'
+  cplaytime:
+    help:
+      info: '&eAyrıntılı oynama süresi'
+      args: (playerName)
+    info:
+      moreDetails: '&7Daha fazla detay için tıkla'
+      title: '&8[playerDisplayName] &7Oynama süresi'
+      date: '&8[date]'
+      time: '&7[hour]:00&f-&7[nextHour]:00'
+      thishour: '&7Şuanki saat'
+      hourback: '&7Önceki saat'
+      today: '&7Bugün'
+      yesterday: '&7Dün'
+      thisweek: '&7Bu hafta'
+      week: '&7Son 7 gün'
+      thismonth: '&7Bu ay'
+      month: '&7Son 30 gün'
+      thisyear: '&7Bu yıl'
+      year: '&7Son 365 gün'
+      total: '&7Toplam'
+  ctellraw:
+    help:
+      info: '&eTellraw türü mesaj gönder'
+      args: '[playerName/all] [formattedMessage]'
+      explanation:
+      - Usage is same as shown in http://www.zrips.net/cmi/custom-text/ aka customtext command
+  ctext:
+    help:
+      info: '&eÖzel metni gösterir'
+      args: '[cText] (playerName/all) (sourcePlayer)'
+    info:
+      list: '&eÖzel metin: &6'
+      check: '&eKontrol: &6[text]'
+  cuff:
+    help:
+      info: '&eSuspends players actions'
+      args: '[playername] (true/false) (-s)'
+    info:
+      noChat: '&cTüm eylemleriniz askıya alındı. Sohbet edemezsin.'
+      noCommand: '&cAskıya alınmışken bu komutu uygulayamazsın. &eYapabileceklerin: &6/msg, /r,
+        /tell'
+      cuffed: '&6[playerDisplayName] &eAskıda'
+      unCuffed: '&6[playerDisplayName] &eAskıda değil'
+      free: '&eŞuan özgürsün'
+      gotCuffed: '&eAskıya alındın'
+      cuffedInfo: '&eAskıdasın'
+      cantCuff: '&cBu oyuncuyu askıya alamazsın!'
+  customrecipe:
+    help:
+      info: '&eÖğeye özel tarifleri yönetir'
+      args: ''
+    info:
+      removed: '&eTarif kaldırıldı: [id]. Tam etki için sunucuyu yeniden başlatmalısın.'
+      noRecipe: '&eBu id ile özel tarif yok'
+      edit: '&8Tarifi düzenle (&6[type]&8)'
+      addNew: '&eYeni tarif ekle (&6[type]&e)'
+      shapelessRecipe: '&6Yeni şekilsiz tarif yap'
+      shapedRecipe: '&eYeni şekilli tarif yap'
+      furnaceRecipe: '&2Yeni fırın tarifi yap'
+      mainTitle: '&8Özel tarifler (&7[current]&8/&7[total]&8)'
+  dback:
+    help:
+      info: '&eÖlüm konumuna geri'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&4Geri dönülecek kaydedilmiş bir konum yok!'
+      feedback: '&6Son kaydedilen konuma geri dönüldü ([world],[x],[y],[z])!'
+  disableenchant:
+    help:
+      info: '&eBüyü yapmayı devre dışı bırakmak'
+      args: (enchant/id) (disable/enable)
+    info:
+      title: Enchant disabler
+      feedback: '&6[enchantName] [state] olarak ayarlandı'
+  dispose:
+    help:
+      info: '&eGereksiz eşyaları atın'
+      args: (playerName)
+    info:
+      title: '&cİhtiyacın olmayan tüm itemleri koy'
+  distance:
+    help:
+      info: '&e2 nokta arasındaki mesafeyi kontrol edin'
+      args: (playerName) (playerName)
+    info:
+      feedback: '&7Mesafe: &e[dist] &7x:&e[x] &7y:&e[y] &7z:&e[z] &7Direction:&e[dir]'
+  donate:
+    help:
+      info: '&eTuttuğun itemi bağışlamak'
+      args: '[playerName] (amount)'
+    info:
+      donated: '&6[type]&e adlı item X&6[amount] &emiktarda &6[playerDisplayName] tarafından bağışlandı'
+      got: '&e&6[type]&e adlı itemden X&6[amount] &emiktarda &6[playerDisplayName] tarafından sana bağışlandı'
+      sentOffer: '&6[playerDisplayName]&e Adlı oyuncuya bağış gönderildi. Oyuncu kabul edene tek bağış bekliyor'
+      gotOffer: '&6[type]&e item X&6[amount] &emiktarda &6[sourceDisplayName]&e tarafından sana bağışlandı.
+        Kabul etmek için tıkla.'
+      doesnthave: '&eBu oyuncu bu iteme artık sahip değil'
+      'no': '&eBekleyen bağış yok'
+      list: '&7[number]. &e[playerDisplayName] &e- &7[material] &6x &e[amount]'
+  dsign:
+    help:
+      info: '&eDinamik izleri yönet'
+      args: (new)
+      explanation:
+      - Look at sign and perform /cmi dsign new
+    info:
+      howTo: '&cBu bir dinamik iz değil, yeni iz yaratmak için &e/cmi dsign new kodu kullan'
+      gui: '&7---- &f<Open gui> &7----'
+      guiHover: '&7Dinamik iz ayarlarının menüsünü aç'
+      individual: '&7Bireysel: [state]'
+      individualLore:
+      - '&2True &7- Her oyuncu için farklı bir işaret olacak'
+      - '&2True &7- Oyuncu yer tutucularını güncelleyecek'
+      - '&2False &7- Fiziksel olarak güncellenecek imzayla sonuçlanacak'
+      - '&2False &7- Daha verimli ancak aynı zamanda daha sınırlı'
+      interval: '&7Her&6[second] &7saniyede yükler'
+      intervalLore:
+      - '&7Ne sıklıkla, saniyeler içinde, tabeladaki bilgiler güncellendi'
+      - '&7Bu aynı zamanda satır kaydırma hızını da tanımlar'
+      range: '&7Aktivasyon menzili: &6[blocks]'
+      rangeLore:
+      - '&7Güncellemeleri tetiklemek için işaretin etrafındaki alanı tanımlar'
+  dye:
+    help:
+      info: '&eDeri zırhı boyar'
+      args: (playerName) (red,green,blue/hexCode/colorName/random/clear/rainbow/day/biome/health) (-s)
+    info:
+      color: '&eŞuanki renk - &c[red],&2[green],&9[blue] &eHex:&6#[hex]'
+      custom: '&eÖzel renk kodu etkinleştirildi: &6[mode]'
+      bound: '&eSoulBound to: &6'
+      boundName: '[playerName]'
+  editctext:
+    help:
+      info: '&eÖzel metin düzenleyici'
+      args: ''
+    info:
+      noText: '&cBu isimde özel bir metin bulunamadı'
+      editInfo: '&eEski metni yapıştırmak içintıkla. &6İptal etmek için cancel yazın. &6Kaldırmak için remove yazın'
+      addInfo: '&eYeni satır metni ekle. &6İptal etmek için cancel yazın'
+      addInformationHover: "&eGönderen kategorisi itibarıyla desteklenen global değişkenler \n\
+        &eTıklanabilir mesajları dahil etmek için: \n&e<T>&rText&e</T><H>&rHover text&e</H><C>&rcommand&e</C><SC>&rSuggested\
+        \ text&e</SC> \n&6<T> &eand &6</T> &egerekli, diğeri isteğe bağlıdır \n&eSatırı bozmak için \\\
+        u005Cn kullan  \n&eBirden fazla JSON mesajı kullanmak için <Next> \n\
+        &6<SC> &eTıklandığında metin önerir \n&6<SI> &eShift tıklandığında metin önerir\
+        \ sohbette mevcut metni asla yazmayan \n&6<CC> &eKonsol komutunu bir kez\
+        \ gerçekleştirir \n&6<CCI> &eoyuncu her metne tıkladığında konsol komutları gerçekleştirir\
+        \ \n&6<URL> &eoynatıcıyı web sayfasına yönlendirmek için url eklemeye izin verir"
+      newInfo: '&eYeni özel metnin ismini gir. &6İptal etmek için cancel yazın'
+      deleteInfo: '&eOnaylamak için &econfirm iptal etmek için &6cancel eylemini yaz'
+      deleted: '(&6[ctext]&e) adlı özel metin kaldırıldı'
+      createdNew: '(&6[ctext]&e) adlı özel metin oluşturuldu'
+      createNew: '&2 + '
+      createNewHover: '&eYeni ekle'
+      autoPage: '&eOtomatik sayfa: &6[state]'
+      autoAlias: '&eOtomatik takma ad: &6[state]'
+      permReq: '&eİzin gerekli: &6[state]'
+      list: '&eÖzel metinler: &6'
+  editlocale:
+    help:
+      info: '&eYerel dosyanızı düzenleyin'
+      args: (keyword(-s))
+    info:
+      found: '&7********* &eFound: [found] &7*********'
+  editplaytime:
+    help:
+      info: '&eOyuncuların oynama süresini düzenleyin'
+      args: (playerName) [add/take/set] [amount] (-s)
+    info:
+      cantSet: '&cOynama süresi değiştirilemedi'
+      set: '&eOynama süresi&6[old] &edan &6[new]olmak üzere değişti'
+  editwarnings:
+    help:
+      info: '&eOyuncu uyarılarını kontrol etme'
+      args: (playerName/clearall) (clear)
+    info:
+      list: '&7[place]. &e[time] &6by [warnedBy] &cfor: &7[warnedFor]'
+      hover: '&7Sona eriyor: [time]'
+      cleared: '&eOyuncunun tüm uyarıları temizlendi'
+      allCleared: '&eBütün oyuncuların tüm uyarıları temizlendi'
+  editwarp:
+    help:
+      info: '&eWarpları düzenlemek'
+      args: (warpName) (newName)
+    info:
+      exists: '&c(&7[newName]&c) &cBu isimde bir warp zaten mevcut. Başka bir tane seç'
+      updated: '&eİsmin&7[oldName]&e isminden &7[newName] olmak üzere ayarlandı'
+      placeItem: '&2Özel simge ayarlamak için bir eşya yerleştir'
+      placeOffItem: '&2Kişiye özel simgeyi ayarlamak için öğe yerleştir'
+      autoLore: '&2Otomatik görev oluşturma: [state]'
+      group: '&2Grup: &7[group]'
+      newGroup: '&eYeni grup ismi girin'
+      randomizeYaw: '&2Rastgele yön: [state]'
+      permission: '&2Kullanmak için gerekli olan yetki: [state]'
+      reqPermission: '&2Yetki olmadan göster: [state]'
+      hidden: '&2Saklı: [state]'
+      location: '&2Yeni lokasyonu ayarla'
+      slot: '&2Slot: &6[slot]'
+      page: '&2Sayfa: &6[page]'
+      overllaps: '&2İle örtüşüyor:'
+      notSet: '&eAyarlanmamış'
+  effect:
+    help:
+      info: '&eOyuncuya iksir etkisi verir. Tüm efektleri kaldırmak için clear kullanın'
+      args: '[playername/all] [effect/clear] (duration) (multiplier) (-s) (-visual)'
+      explanation:
+      - -visual will add visible bubbles and icon on top right corner
+      - 'Examples:'
+      - /cmi effect zrips nightvision 60 1 - will give 60 sec night vision for Zrips
+      - /cmi effect zrips nightvision +10 - will add 10 sec to current night vision time
+      - /cmi effect zrips nightvision -10 - will take out 10 sec from current night vision time
+      - /cmi effect all health_boost 60 1 - will boost hp by 1 for everyone online
+    info:
+      feedback: '&6[effect] &eiksir etkisi &3[playerDisplayName]&e adlı oyuncuya
+        &6[sec]&6 saniyeliğine ve &6[power] güç etkisi ile eklendi &e(&3[offon]&e).'
+      cleared: '&3[playerDisplayName]&e adlı oyuncunun iksir etkileri temizlendi (&3[offon]&e).'
+  enchant:
+    help:
+      info: '&eEşyaları büyülemek'
+      args: (playerName) [enchant] [level] (-o) (-onlyvalid) (-keeponlyvalid) (-inform) (-s) (-i:[itemName(:data)])
+      explanation:
+      - -o will take item from offhand
+    info:
+      feedback: '&e&3[playerDisplayName]&e adlı oyuncu için eşyayı bunlarla büyüledin&3[enchant]:[level]&e (&3[offon]&e).'
+      removed: '&3[enchant] &ebu büyüyü &3[playerDisplayName]&e adlı oyuncudan kaldırdın
+        (&3[offon]&e).'
+      cleared: '&eCleared &3ALL &eenchantments from item for &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cElinde bir eşya tutmuyorsun.'
+      invalidEnchant: '&cBu eşyayı geçersiz bir büyü ile büyülemeye yetkin yok'
+      clearedInvalid: '&6[amount] &emiktarda geçersiz büyü eşyadan kaldırıldı'
+      inccorectId: "&eYanlış büyü ismi veya ID'si."
+      wrongItem: '&eElinde yanlış eşya var'
+      enchantlimit: '&cBu büyüye erişimin yok'
+      levellimit: '&cSeviye çok yüksek, En yüksek yapabileceğin &e[level].'
+      posible: '&eMümkün büyüler: '
+      posibleList: '&6[enchant]'
+  ender:
+    help:
+      info: '&eOyuncuların ender sandığını açar'
+      args: (playerName)
+      explanation:
+      - cmi.command.ender.preventmodify - prevents inventory modifications
+      - cmi.enderedit - allows to edit opened inventory
+    info:
+      title: '&8[playerDisplayName] Ender sandığı'
+      feedback: '&3[playerDisplayName] &eAdlı oyuncunun ender sandığını düzenliyorsun (&3[offon]&e).'
+  endgateway:
+    help:
+      info: '&eUç ağ geçidi ışınını aç'
+      args: ''
+    info:
+      'off': '&7Işın &ekapandı'
+      'on': '&7Işın &6açıldı'
+  entityinfo:
+    help:
+      info: '&eVarlık bilgilerini kontrol edin'
+      args: ''
+    info:
+      type: '&eVarlık türü: &6[type]'
+      customName: '&eÖzel isim: &6[name]'
+      health: '&eSağlık: &6[current]&e/&6[max]'
+      lastDamage: '&eSon hasar nedeni: &6[cause]'
+      tamed: '&eEvcil: &6[state]'
+      owner: '&eSahip: &6[playerDisplayName]'
+      grows: '&eZaman içinde büyür: &6[time]'
+      horse: '&eAt: Zıplama &6[jump]&eblocks, Hız &6[speed]&eblocks/sec'
+      villager: '&eMeslek: &7[profession] &eSeviye: &7[lvl] &eTür: &7[type]'
+  entitynbt:
+    help:
+      info: '&eVarlık NBT bilgisini kontrol edin'
+      args: (-console)
+  exp:
+    help:
+      info: '&eOyuncuların seviyesini düzenler. Seviyeleri düzenlemek için L tuşuna tıkla'
+      args: '[playerName] [add/set/take/clear] [amount][%rand/10-20%]'
+      explanation:
+      - 'Örnek:'
+      - /exp 10
+      - /exp add 10
+      - /exp set 10L
+      - /exp take 10
+      - /exp Zrips clear
+      - /exp Zrips add 10
+    info:
+      current: '&e[playerDisplayName] &eis at &6[lvl]&elvl with &6[currentExp]&eexp
+        or with &6[exp]&eexp in total.'
+      selfFeedback: '&e&3[playerDisplayName]&eadlı oyuncu için XP seviyesi &3[exp] &eolmak üzere ayarlandı  (&3[offon]&e).'
+      targetFeedback: '&e&3[senderDisplayName]&e tarafından XP seviyen &3[exp]&e olmak üzere ayarlandı.'
+  ext:
+    help:
+      info: '&eBir oyuncuyu söndürür'
+      args: (playerName) (-s)
+    info:
+      feedback: '&3[playerDisplayName]&eadlı oyuncuyu söndürdün (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e tarafından söndürüldün.'
+  feed:
+    help:
+      info: '&eOyuncuları doyurur'
+      args: (playerName/all) (-s)
+    info:
+      feedback: '&e&3[playerDisplayName]&e tarafından doyuruldun(&3[offon]&e).'
+      feedbackMulti: '&3[count] &esayıda oyuncu besledin.'
+      targetfeedback: '&3[senderDisplayName]&eadlı oyuncu tarafından beslendin.'
+  findbiome:
+    help:
+      info: '&eAda göre en yakın biyomu bulur'
+      args: '&3(biomeName/stop/stopall)'
+    info:
+      infoShow: '&6TPS: &3[tps] &6Sol &e[left] &6(&e[time]&6) &6Hız: &e[speed]'
+      stopped: '&eDurduruldu!'
+      cantFindBiome: '&eİstediğin biyom bulunamadı. &6[amount] &emiktarda chunk kontrol ediliyor'
+      teleportedTo: '&6[biome] &eAdlı biyoma ışınlandın'
+  fixchunk:
+    help:
+      info: '&eHasarlı chunklar için tarama yapar'
+      args: '&ew &6[worldName]&e r &6[range in chunks]&e c &6[x:z]&e '
+      explanation:
+      - '&6Alt komutlar:'
+      - '- &6stats &e- Anlık tarama istatistiğini gösterir'
+      - '- &6pause &e- Taramayı durdurur'
+      - '- &6continue &e- Taramayı devam ettirir'
+      - '- &6stop &e- Taramayı durdurur'
+      - '- &6stopall &e- Bütün taramaları durdurur'
+      - '- &6speed [amount] &e- Anlık tarama hızını düzenler'
+      - '- &6autospeed [true/false] &e- Otomatik hızı aç/kapat olarak ayarlar'
+      - '- &6messages [true/false] &e- Mesaj çıkışını aç/kapat olarak ayarlar'
+      - 'Örnek:'
+      - /fixchunk w LT_Craft
+      - /fixchunk w LT_Craft r 50 c 1024:-2048
+      - /fixchunk w LT_Craft r g
+      - /fixchunk fix
+    info:
+      startScanning: '&6[amount] &eMiktarda kontrol edilecek chunk bulundu. Başlıyor!'
+      paused: '&eSTarama durduruldu, devam etmek için &6/cmi fixchunk continue komutu kullan.'
+      continuing: '&eTarama devam ediyor'
+      stoped: '&eTarama durdu. Sonuçları /cmi fixchunk info bu komutla kontrol edebilirsin'
+      speedChange: '&eHız [amount] olmak üzere değişti'
+      autospeedChange: '&eOtomatik hız [state] olmak üzere değişti'
+      messagesChange: '&eMesaj durumu [state] olmak üzere değişti'
+      NoInfo: '&eBilgi yok'
+      InfoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[min]m:[sec]s&6) &6Speed: &e[speed]
+        &6Found: &e[found]'
+      scanList: '&2[number]. &7X:&f[x] &7Z:&f[z]'
+      finished: '&eTarama bitti, Bulunan hataları düzeltmek için &6/cmi fixchunk fix &ebu komutu kullan.
+        &cChunklar yeniden üretilecek!'
+      fixed: '&2[number] &echunklar düzeltildi'
+      total: '&eChecking from [current]/[until] from total of [total]'
+      stats:
+      - '&e************************************************************'
+      - '&e* &6Chunklar: &e[checked]/[total]'
+      - '&e* &6Tarama menzili: &e[range]'
+      - '&e* &6Tarama hızı: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6Gerçek hızı: &e[cps] &6CPS (&e[avgcps] avg&6)'
+      - '&e* &6Dünya: &e[world]'
+      - '&e* &6Bulundu: &e[found]'
+      - '&e* &6Zaman: &e[min]min [sec]sec'
+      - '&e************************************************************'
+  flightcharge:
+    help:
+      info: '&eUçuş şarjını yönetir veya kontrol eder'
+      args: (add/take/set/show/expcharge/moneycharge/recharge) (playerName) (amount) (-s)
+    info:
+      charge: '&eGüncel şarj: &6[charge]&e/&6[max]'
+      changed: '&eUçuş şarj seviyen &6[charge] olmak üzere ayarlandı'
+      newCharge: '&eYeni şarj seviyesi: &6[charge]'
+      bossbar: '&2>> &fUçuş şarjı [charge][changeAmount]&7/&f[max] &2<<'
+      guiTitle: '&8Uçuş şarjı'
+      buttonExp: '&6XP ile şarj etmek'
+      buttonMoney: '&6Para ile şarj etmek'
+      max: '&6Zatem şarjı tamamen dolu'
+      lore:
+      - '&eSol tık +1. Maliyet: &7[amount1]'
+      - '&6Shift + sol tık +10. Maliyet: &7[amount10]'
+      - '&eSağ tık +100. Maliyet: &7[amount100]'
+      - '&6Shift + sağ tık +1000. Maliyet: &7[amount1000]'
+      - ''
+      changeAmount: '&e([amount]&e)'
+      cost: '&6[amount] &emiktarda şarj &6[charge] &euçuş şarjına yüklendi'
+  fly:
+    help:
+      info: '&eOyuncunun uçuş modunu açar/kapatır'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&e&3[playerDisplayName]&e adlı oyuncunun uçuş modunu &3[boolean]&eolmak üzere ayarladın (&3[offon]&e).'
+      targetFeedback: '&e&3[senderDisplayName]&e tarafından, uçuş modun &3[boolean]&e olmak üzere ayarlandı.'
+  flyc:
+    help:
+      info: '&eUçuş şarjı modunu değiştirir'
+      args: (playerName) (true/false) (-s)
+    info:
+      feedback: '&3[playerDisplayName]&e adlı oyuncu için &eUçuş şarjı modunu &3[boolean]&e olmak üzere ayarladınız
+        (&3[offon]&e).'
+      targetFeedback: '&3[senderDisplayName] &eAdlı kişi uçuş modunuzu &3[boolean] &eolarak ayarladı'
+      targetFeedbackSelf: '&eUçuş şarjı modun &3[boolean] olmak üzere ayarlandı'
+      noCharge: '&eUçuş şarjı tükendi'
+  flyspeed:
+    help:
+      info: '&eOyuncunun uçuş hızını 0 ile 10 arasında bir değerde ayarlar'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&3[playerDisplayName]&e &eAdlı oyuncunun hızını &3[amount]&e olmak üzere ayarladın 
+        (&3[offon]&e).'
+      targetfeedback: '&eUçuş hızın &3[amount]&e olmak üzere &3[senderDisplayName]&e tarafından ayarlandı.'
+      max: '&eSenin için izin verilen maksimum uçuş hızı: &6[max]&e.'
+  gamerule:
+    help:
+      info: '&eOyun kurallarını yönetir'
+      args: ''
+  getbook:
+    help:
+      info: '&eKitap al'
+      args: '[cTextName] (playerName)'
+    info:
+      list: '&eKitaplar: &6'
+      check: '&eKontrol et: &6[text]'
+      title: '&7[title]'
+  give:
+    help:
+      info: '&eOyuncuya item verir'
+      args: (playerName) [itemname/hand] (amount/playerName)
+      explanation:
+      - Name and lore supports placeholders
+      - 'Örnek: /give stone'
+      - /give Zrips stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give Zrips sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give Zrips sponge 1 e Knockback:%rand/1-5%
+      - /cmi give Zrips sponge %rand/1-10%
+      - /cmi give Zrips sponge l line_one/nline_two
+      - /cmi give Zhax hand Zrips
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+      - /give potion:speed-true-true
+    info:
+      feedback: '&e[playerDisplayName] &6adlı oyuncuya &e[amount]&e[itemname] &6(&e[customitemname]&6)
+      adlı eşyayı verdin'
+      maxLimit: '&cTek seferde &7[max] &csayıda eşya veremezsin'
+      notItem: '&cSana bunu veremeyiz, bu bir eşya değil'
+      maxLimitResize: '&7[max] miktardan fazla veremezsin. &cSınırlamak için yeniden boyutlandırılıyor.'
+  giveall:
+    help:
+      info: '&eBütün oyunculara eşya verir'
+      args: '[itemname] (amount) (e|l|n|offline)'
+      explanation:
+      - '&e- veri değeri ile öğe adını veya kimliğini verir'
+      - '&e- isteğe bağlı olarak vermek istediğiniz miktarı sağlayın '
+      - '&e- &6n &e- öğe adını tamamlamak için '
+      - '&e- &6l &e- Öğe bilgisini tanımlamak için '
+      - '&e- &6e &e - Öğe büyülerini tanımlamak için '
+      - '&e- &6-s &e - Geri bildirim mesajı göstermeyecek '
+      - '&e- &6h &e - Oyuncu ismini girdikten sonra elindeki eşyayı verir '
+      - '&e- &6inv &e - Belirtilen oyuncunun adı girildikten sonra envanterinin tamamını diğer oyunculara verir '
+      - '&e- &6offline &e- çevrimdışı oyuncuları dahil eder'
+      - '&ecmi giveall stone 1 n &2Uber_stone l &3Stone_lore offline'
+      - '&ecmi giveall h Zrips'
+      - '&ecmi giveall inv Zrips'
+    info:
+      starting: '&6Tüm oyunculara eşya verme işlemi başlıyor, bu biraz zaman alıcak.'
+      running: '&6[amount] oyuncu zaten eşyaya sahip, hala devam ediyor.'
+      feedback: '&6Bitti. &e[amount] &6oyuncu eşyaya sahip.'
+  glow:
+    help:
+      info: '&eOyuncuları glow moda almak'
+      args: (playerName) [true/false/color/gui]
+      explanation:
+      - 'Example: /glow Zrips red'
+      - 'Permissions: cmi.command.glow.[color] - Belirli ışıma renginin aylanmasına izin verir'
+    info:
+      feedback: '&3[playerDisplayName] adlı oyuncunun&e &eGlow modunu [color] &3[boolean]&e olmak üzere ayarladın
+        (&3[offon]&e).'
+      targetfeedback: '&eGlow modun [color]rengi ile&6 &3[boolean]&e olmak üzere &3[senderDisplayName]&e tarafından ayarlandı .'
+      title: Pick glow color
+      incorrect: '&4Yanlış renk ismi'
+  gm:
+    help:
+      info: "&eOyuncuların Gamemode'unu ayarlar"
+      args: (playerName) [gamemode]
+    info:
+      feedback: '&3[playerDisplayName]&eAdlı oyuncunun oyun modunu &3[gameMode]&e olmak üzere ayarladın(&3[offon]&e).'
+      targetfeedback: '&eOyun modun&3[gameMode]&e olmak üzere &3[senderDisplayName]&e tarafından ayarlandı.'
+  god:
+    help:
+      info: '&eOyuncuların god modunu True/False olarak ayarlar'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&3[playerDisplayName]&e adlı oyuncunun oyun modunu &3[boolean]&e olmak üzere ayarladın (&3[offon]&e).'
+      targetfeedback: '&eOyun modun &3[boolean]&e olmak üzere &3[senderDisplayName]&e tarafından ayarlandı.'
+  groundclean:
+    help:
+      info: '&eSunucuyu gereksiz ögelerden temizler'
+      args: (+cb) (+cm) (+ci) (+b) (+sh) (+tnt) (+all) (-w:[worldName])
+      explanation:
+      - +cm will include minecarts into cleaning
+      - +cb will include boats into cleaning
+      - +sh will include shulker box into cleaning
+      - +ci defines if you want to include weapons and armors
+      - +tnt defines if you want to include primed tnt
+      - +b broadcasts clear message to everyone
+    info:
+      removed: '&eKaldırıldı -[list]'
+      items: ' &eEşyalar: &6[items]'
+      arrows: ' &eOklar: &6[arrows]'
+      exporbs: ' &eXP küreleri: &6[exporbs]'
+      blocks: ' &eDüşen bloklar: &6[blocks]'
+      projectiles: ' &eMühimmatlar: &6[projectiles]'
+      tnt: ' &eHazır TNT: &6[tnt]'
+      boat: ' &eBotlar: &6[boat]'
+      minecart: ' &eKazı vagonu: &6[minecart]'
+      nothing: '&eKaldırılacak bir şey yok.'
+  haspermission:
+    help:
+      info: '&eOyuncunun bir izni varmı diye kontrol eder'
+      args: (playerName) [permissionNode]
+    info:
+      title: '&6[playerDisplayName] &e-> &6[permission]'
+      none: '&eOyuncu için izin belirlenmemiş veya OP değil. Sonuçlar &6[state]'
+      softSet: '&eSet by plugin.yml to &6[state]'
+      hardSet: '&eBazı eklentiler tarafından &6[state] &eayarlanması zor'
+      notHardSet: '&eAyarlanması zor değil, Bazılarında &cHata &eile sonuçlanabilir'
+      ops: '&eSonuçlar &6[state] &eçünkü oyuncu OP'
+  hat:
+    help:
+      info: '&eŞapka gibi bir eşya koyar'
+      args: (playerName)
+    info:
+      feedback: '!actionbar!&6Şapkayı başarıyla değiştirdin!'
+      targetfeedback: '&6Şapkan &3[senderDisplayName]&6 tarafından değiştirildi!'
+      fullinv: '&3[playerDisplayName] &6Oyuncunun envanteri dolu, Şapka değiştirilemez!'
+      incorrect: '&3Kafa slotunda yanlış eşya, yenisiyle yerleştirilemez. Lütfen manuel olarak kaldır'
+  head:
+    help:
+      info: '&eOyuncunun başını almak'
+      args: '[sourceName] (targetName) (-s) (amount)'
+    info:
+      Feedback: '&3[headName] &6Kafa oluşturuldu!'
+      targetFeedback: '&3[senderDisplayName]&e &etarafından &3[headName] &ebaşını aldın!'
+  heal:
+    help:
+      info: '&eOyuncu iyileştirir'
+      args: '[playerName/all] (healamount/healpercent) (-nofeed) (-ignoreffects) (-dontextinguish)'
+    info:
+      feedback: '&3[playerDisplayName]&eadlı oyuncuyu iyileştirdin (&3[offon]&e).'
+      feedbackMulti: '&3[count] &eoyuncuyu iyileştirdin.'
+      targetfeedback: '&3[senderDisplayName]&e tarafından iyileştirildin.'
+  helpop:
+    help:
+      info: '&eYetkili üyelere yardım için mesaj yollar'
+      args: '[message]'
+      explanation:
+      - Requires cmi.command.helpop.inform too see messages
+    info:
+      message: '&c[Help]&4[&7[senderDisplayName]&4]&r&c [message]'
+      feedback: '&c[Help]&7 Sorun yetkililere gönderildi'
+      offline: '&c[Help]&7Anlık çevrimiçi yetkili yok, daha sonra tekrar deneyiniz'
+  hideflags:
+    help:
+      info: '&eÖğe işaretlerini gizler'
+      args: (playerName) [flagName/clear] (flagName)
+    info:
+      feedback: '&3[playerDisplayName]&e adlı oyuncu için yeni işaret ekledin (&3[offon]&e).'
+      cleared: '&3[playerDisplayName]&e adlı oyuncunun&ebütün işaretli &3ögeleri kaldırıldı (&3[offon]&e).'
+      noitem: '&cElinde hiçbir item tutmuyorsun.'
+      inccorectId: '&eYanlış işaret adı.'
+  hologram:
+    help:
+      info: '&eHologram oluşturur'
+      args: ''
+    info:
+      howTo: '&cYeni hologram oluşturmak için &e/cmi hologram new &6[name] komutunu uygula'
+      gui: '&7---- &f<Open settings gui> &7----'
+      guiHover: '&7Hologram GUI ayarlarını açar' 
+      interval: '&7Her&6[second] &7saniyede güncellenir'
+      intervalLore:
+      - '&7Ne sıklıkla, saniyeler içinde, Hologramdaki bilgiler güncellenir'
+      - '&7Metin değişmiyorsa, onu -1 olarak ayarla'
+      pageInterval: '&7Sayfayı her &6[second] &7saniyede değiştirir'
+      pageIntervalLore:
+      - '&7Ne sıklıkla, saniyeler içinde, Hologram sayfası otomatik olarak değiştirildi'
+      pageIntervalNoPages: '&4Bu hologramın henüz bir sayfası yok'
+      text: '&7Metin aralığı &6[space]'
+      usync: '&7Senkronizasyondaki metin değişikliği: &6[state]'
+      reqPermission: '&7Görmek için yetki gerekli: &6[state]'
+      teleport: '&7Hologram konumuna ışınlan'
+      icon: '&7Simge aralığı &6[space]'
+      iconLore:
+      - '&7Nesneler arasındaki mesafeyi tanımlar'
+      range: '&7Menzili göster: &6[blocks]'
+      rangeLore:
+      - '&7Göstermek veya gizlemek için hologramın etrafındaki alanı tanımlar'
+      updateRange: '&7Aralığı güncelle: &6[blocks]'
+      updateRangeLore:
+      - '&7Güncellemeyi tetiklemek için hologramın etrafındaki alanı tanımlar'
+      relocate: '&7Yeniden yerleştirmek'
+      relocateLore:
+      - '&7Anlık konumuna hologramı yeniden yerleştirir'
+      los: '&7Görüş hattını düşünün: &6[state]'
+      losLore:
+      - '&7Kontrol aralığı: [interval]'
+      interact: '&7Etkileşimli: &6[state]'
+      commands: '&7Komutlar:'
+      particles: '&7Parçacıkları göster: &6[state]'
+      big: '&7Büyük buton: &6[state]'
+      bigLore:
+      - '&7Şu büyük düğme modunu aklınızda tutun'
+      - '&7Onu geçmeni engelleyecek'
+      order: '&7Aşağı doğru yerleştirme: &6[state]'
+      autoButton: '&7Sayfalandırma düğmelerini otomatik olarak oluşturun'
+      autoButtonLore:
+      - '&eMevcut hologramın oluşturduğu herhangi bir sınır yok'
+      - '&6!nextpage! Sonraki sayfayı yeni bir satır yapmak için kullanın'
+      autoButtonForward: '&2Bu hologramın oluşturulmuş bir ileri butonu zaten var'
+      autoButtonBackward: '&2Bu hologramın oluşturulmuş bir geriye dönüş butonu zaten var'
+      moveX: '&7X:&e[x]'
+      moveY: '&7Y:&e[y]'
+      moveZ: '&7Z:&e[z]'
+      shift:
+      - '0.01 ile değiştir veya shifte basılı tutup 0.1 olarak değiştir'
+      list: '&6[place]&e. [name]'
+      addInfo: '&eYeni satır metnini girin. &6İptal etmek için cancel yazın. Ekstra değişkenler:
+        &6ICON:&7[Value] &6SICON:&7[Value]&e where &7Value&e- &7[MaterialName-amount]%enchanted%&e,
+        &7%itemInHand%&e, &7Head:[headOwner]'
+  hologrampages:
+    help:
+      info: '&eHologram sayfasını değiştirir'
+      args: '[holoName] (playerName) (next/prev/[pageNumber])'
+  home:
+    help:
+      info: '&eEv konumuna ışınlar'
+      args: (homeName) (playerName) (whoTeleport)
+    info:
+      list: '&eEvler: &6'
+      listNonePrivate: '&f'
+      listPrivate: '&2'
+      click: '&6[home] ışınlanmak için tıklayın'
+      teleported: '&eEve ışınlanıldı: &6[home]'
+      noHomes: '&cKayıtlı bir ev yok!'
+      private: '&cBu evin konumu özeldir!'
+      remove: '&cEvi silmek için Shift + Sağ tık yapınız'
+      guiTitle: '&0[playerDisplayName] &8adlı oyuncunun evi [current]/[max]'
+  homes:
+    help:
+      info: '&eIşınlanmak için tıklayabileceğiniz evlerin listesi.'
+      args: (playerName/near:[range])
+    info:
+      nearList: '&7[number]. &e[playerDisplayName] &6[homeName] &7[distance] blocks
+        away &e[direction]'
+  hunger:
+    help:
+      info: '&eOyuncunun açlık seviyesini ayarlar'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&3[playerDisplayName]&e Adlı oyuncunun açlığını &3[hunger]&e olmak üzere ayarladın (&3[offon]&e).'
+      targetfeedback: '&eAçlık seviyen &3[hunger]&e olmak üzere &3[senderDisplayName]&e tarafından ayarlandı.'
+  ic:
+    help:
+      info: '&eEtkileşimli komut oluşturun'
+      args: (new) (name)
+    info:
+      titleC: ' &e--- &6[name] '
+      titleB: '&e[type] &e---'
+      public: ' &2[Public]'
+      notPublic: ' &7[NotPublic]'
+      reqPerm: ' &2[ReqPerm]'
+      noPerm: ' &7[ReqPerm]'
+      permHover: '&eİşareti oluşturmak için &7[permission] &e yetkisine ihtiyacın var'
+      editSign: ' &e[EditSignLines]'
+      publicHover: "&eGenel durumu değiştir. \nİşaretler üst satır&7[ic:[name]]"
+      createdPublic: '&eYeni etkileşimli işaret oluşturuldu'
+      list: '&e[place]. &6[name]'
+      listType: ' &e[type]    '
+      editCommands: '&eKomutları düzenlemek'
+      editBlocks: ' &eBlokları düzenlemek'
+      addBlock: '&eBakmakta olduğunuz bloğu ekleyin'
+      addEntity: ' &eBakmakta olduğunuz varlığı ekleyin'
+      manageCommands: '&eKomut düzenleyiciye geç'
+      manageBlockEnt: '&eblock/entity düzenleyiciye değiş '
+      locList: '&e[place]. &6[type]   '
+      entList: '&e[place]. &6[type]   '
+      ListHover:
+      - '&eWorld: &6[world]'
+      - '&eX:[x] &6Y:[y] &eZ:[z]'
+      notPublicIc: '&cBunu kullanamazsın, halka açık değil'
+      block: (Block)
+      entity: (Entity)
+      both: (Both)
+      none: (None)
+      addedNew: '&e&6[name] &6için yeni block/entity eklendi '
+      dontExist: '&cEtkileşimli komut bu isimde mevcut değil'
+      exists: '&cEtkileşimli komut bu isimde zaten mevcut'
+      blockExist: '&e[name] &ctarafından bu blok zaten kullanılıyor'
+      entityExist: '&e[name] &ctarafından bu varlık zaten kullanılıyor '
+      cantUsePlayer: '&cNormal oyuncuyu komut varlığı olarak kullanamazsın'
+      addInfo: '&eYeni komut ekle. &6İptal etmek için cancel yazın'
+      addInformationHover: "&eGönderen kategorisi itibarıyla desteklenen global değişkenler \n\
+        &eKomutlara gecikme eklemek için: \n&eGecikme! 5 \n&eEk değişkenler\
+        \ değişkenleri yerlerine göre eklemek için kullanılabilir \n&e$1 sağlanan değişkeni alacak\
+        \ yeni bir komutla o yere yerleştirilecek \n&e$1- tüm değişkenleri alır\
+        \ bu noktadan itibaren orijinal komutlara ekler"
+      editInfo: '&eEski metni yapıştırmak için tıklayın. &6İptal etmek için cancel yazın. &6Kaldırmak için remove yazın'
+  ifoffline:
+    help:
+      info: '&eKomudu yalnızca oyuncu çevrimdışıyken gerçekleştir'
+      args: '[playerName] (command)'
+  ifonline:
+    help:
+      info: '&eKomutu yalnızca oyuncu çevrimiçiyken gerçekleşir'
+      args: '[playerName] (command)'
+  ignore:
+    help:
+      info: '&eOyuncuyu görmezden gelirsin'
+      args: (playerName/uuid/all)
+      explanation:
+      - cmi.command.ignore.bypass - to bypass ignore list
+    info:
+      self: '&cAptal olma, Kendini görmezden gelemezsin'
+      added: '&6[playerDisplayName] adlı oyuncuyu görmezden geliyorsun'
+      addedAll: '&eŞuan herkesi görmezden geliyorsun'
+      all: '&eHerkes'
+      removed: '&6[playerDisplayName] &eAdlı oyuncuyu artık görmezden gelmiyorsun'
+      removedAll: '&eArtık herkesi görmezden gelmiyorsun'
+      list: '&e[place]. [playerDisplayName]  '
+      ignoringYou: '&c[playerDisplayName] &eseni görmezden geliyor'
+      empty: '&7Ignore listesi boş'
+  importfrom:
+    help:
+      info: '&eDiğer eklentilerden verileri içeri aktarın'
+      args: '[essentials/hd] [home/warp/nick/logoutlocation/money/mail]'
+    info:
+      converted: '&eDönüştürüldü: &6[done]&e/&6[total] &eKullanıcılar'
+      convertedWarps: ' &6[amount] &ewarp dönüştürüldü'
+      noInfo: '&cTam olarak ne almak istediğiniz bilgisini vermeyi unuttunuz'
+      savingInProgress: '&eÖnümüzdeki birkaç dakika içinde kaç tane giriş olduğunu kayıt edeceğimiz
+        veriler veri tabanına kaydedilecek'
+      HDfile: '&cHolographicDisplays adlı eklentinin veri tabanı dosyası bulunamadı. İptal ediliyor.'
+      HDexist: '&7[name] &cİsimde hologram zaten mevcut. Geçiliyor.'
+      HDfailed: '(&7[name]&c) &cHologramı yüklenemedi'
+      HDimported: '&7[amount] &eMiktarda hologram içe aktarıldı'
+  importoldusers:
+    help:
+      info: '&eKullanıcıları ana dünya klasöründeki playerdata klasöründen içe aktarır. Sunucu, içe aktarma
+      sırasında ani lag artışı yaşayabilir'
+      args: ''
+    info:
+      starting: '&eİçe aktarmaya başlanıyor'
+      feedback: '&6[amount] &esayıda yeni kullanıcı içe aktarılıyor'
+  info:
+    help:
+      info: '&eOyuncu bilgilerini gösterir'
+      args: '[playerName/uuid]'
+    info:
+      feedback:
+        uuid: "&euuid'i sohbet kutusuna yapıştırmak için tıklayın"
+        ouuid: '&eÇevrimiçi sohbet kutusuna yapıştırmak için Shift + sol tuşlarına tıklayınız.'
+      newName: '&6[playerName]'
+      newBalance: '&7(&e[balance]&7) '
+      newDisplayName: '&7Display name: &r[playerDisplayName]'
+      newNameHover:
+      - '[playerDisplayName]'
+      - '[nick]'
+      - '[group]'
+      - '[knownAs]'
+      - '[onlineoffline]'
+      - '[playtime]'
+      newIp: '&fIP '
+      newIpHover:
+      - '[ip][country]'
+      - '[ping]'
+      - '[firstLogin]'
+      newNameHoverNick: '&7İsim: &f[nick]'
+      newNameHoverGroup: '&7Grup: &f[group]'
+      newNameHoverKnownAs: '&7Aynı zamanda olarak biliniyor: &f[nameList]'
+      newNameHoverIp: '&7Ip: &f[ip]'
+      newNameHoverPing: '&7Ping: &f[ping]'
+      newNameHoverCountry: ' &7[country] &f(&2[countryCode]&f)'
+      newFirstLogin: '&7İlk giriş: &6[firstLogin]'
+      newPlaytime: '&7Oynama süresi: &6[time]'
+      newOnline: '[state] için: &6[logoff]'
+      newOnlineStateOn: '&2Çevrimiçi'
+      newOnlineStateOff: '&7Çevrimdışı'
+      newUUID: '&fUUID '
+      newUUIDHover: '&7UUID: &6[UUID]'
+      newOUUIDHover: '&7OnlineUUID: &6[OUUID]'
+      newTurnedOnColor: '&a'
+      newTurnedOffColor: '&7'
+      newOp: 'OP '
+      newGod: 'God '
+      newFly: 'CanFly&6([flying]&6) '
+      newFlying: Flying
+      newFlyHover: '&7Uçuş hızı: &6[flyspeed]'
+      newFlyTemp: '&7Geçici uçuş: &6[time]'
+      newFlyCharge: '&7Uçuş talimatı: &6[charge]'
+      newElytraFlyHover: '&7Elytra ile uçuyorsun'
+      newGodHover: '&7TempGod için: &e[time]'
+      newSneaking: Sneaking
+      newSprint: Sprinting
+      newWalkSpeed: '&7Yürüme hızı: &6[walkspeed]'
+      newGameMode: '&fMod: &6[gameMode] '
+      newGameModeHover:
+      - '[sprint]'
+      - '[sneaking]'
+      - '[walkspeed]'
+      - '[hp]'
+      - '[hunger]'
+      - '[saturation]'
+      - '[exp]'
+      newHp: '&7HP: &6[hp]&e/&6[maxhp]'
+      newAir: '&7Hava: &6[leftAir]&e/&6[totalAir]'
+      newHunger: '&7Açıklık: &6[food]&e/&620'
+      newSaturation: '&7Saturation +&6[saturation]&e'
+      newExp: '&7Exp: &6[totalexp]&7exp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&7lvl&e)'
+      newPos: '&fPos '
+      newPosHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newAfk: 'AFK '
+      newAfkHover: '&6Süredir AFK: [time]'
+      newBed: '&fYatak '
+      newBedHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newDeath: '&fÖlüm '
+      newDeathHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newBack: '&fGeri '
+      newBackHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newRespawn: '&fRespawn '
+      newRespawnHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newSee: '◕‿◕ '
+      newSeeHover: '&6Seni görebilir'
+      newSeeHoverNot: '&2Seni göremez'
+      newBanned: 'Yasaklandı '
+      newBannedHover:
+      - '&7Tarafından yasaklandın: &e[name]'
+      - '&7Ayrıldı: &e[left]'
+      - '&7Sebep: &e[reason]'
+      newMuted: 'Susturulmuş '
+      newMutedHover:
+      - '&7Ayrıldı: &e[left]'
+      - '&7Sebep: &e[reason]'
+      newShadowMutedHover: '&4Shadow mute'
+      newCuffed: 'Cuffed '
+      newJailed: 'Hapsedildi '
+      newJailedHover:
+      - '&7Jail: &e[jail]'
+      - '&7Cell: &e[id]'
+      - '&7Left: &e[time]'
+      - '&7Sebep: &e[reason]'
+      newHomes: '&fEvler: &e[count] '
+      newMail: '&fMail: &e[count] '
+      newWarnings: '&fUyarılar: &e[count] '
+      newAlert: 'Uyarı '
+      newAlertHover:
+      - '&7Ayrıldı: &e[left]'
+      - '&7Sebep: &e[reason]'
+      newChatRoom: 'ChatRoom '
+      newChatRoomHover:
+      - '&7Sohbet odası: &e[name]'
+      - '&7İçerideki kullanıcılar: &e[count]'
+      nList:
+      - '&e------------- [enableColor]Enabled [disableColor]Disabled&e -------------'
+      - '&e| [name][balance][UUID][ip]'
+      - '&e| [OP][god][fly][gameMode][afk][see]'
+      - '&e| [banned][muted][cuffed][jailed][alert][chatroom]'
+      - '&e| [pos][bed][respawn][death][back]'
+      - '&e| [homes][mail][warnings]'
+      - '&e-----------------------------------------'
+  inv:
+    help:
+      info: '&eOpens players inventory'
+      args: '[playerName]'
+      explanation:
+      - cmi.command.inv.preventmodify - prevents inventory editing
+      - cmi.invedit - allows to edit inventory
+      - cmi.command.inv.location - shows players location
+    info:
+      feedback: '&3[playerDisplayName] &eadlı oyuncunun envanterini düzenliyorsun (&3[offon]&e).'
+  invcheck:
+    help:
+      info: '&eKaydedilmiş envanteri preview modunda aç'
+      args: (playerName) [id] (-e) (last)
+  invlist:
+    help:
+      info: '&eKaydedilmiş envanterler listesini gösterir'
+      args: (playerName)
+  invload:
+    help:
+      info: '&eKayıtlı envanteri gösterir'
+      args: (sourceName) (targetName) [id/last]
+  invremove:
+    help:
+      info: '&eOyuncu için kayıtlı envanterleri kaldırır'
+      args: (playerName) [id/all/last]
+  invremoveall:
+    help:
+      info: '&eBütün kayıtlı envanterleri kaldırır'
+      args: '[confirmed]'
+    info:
+      removed: '&eBütün kayıtlı envanterler kaldırıldı ([count])'
+  invsave:
+    help:
+      info: '&eEnvanteri kaydeder'
+      args: (playerName) (id) (-s)
+  ipban:
+    help:
+      info: '&eBan ip'
+      args: '[ip/playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - to bypass ban
+    info:
+      message: '&cSunucudan IP Ban yedin!'
+      reason: '&6Sebep: &e[reason]'
+      defaultReason: '&eİhlal edilen sunucu kuralları'
+      messageToAll: '&6[playerDisplayName] &eadlı oyuncu &6[senderDisplayName] tarafından yasaklandı
+        &eSebep: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &eadlı oyuncu &6[senderDisplayName] tarafından IP yasaklandı
+        &eSebep: &6[reason]'
+  ipbanlist:
+    help:
+      info: '&eYasaklanan IP listesi'
+      args: ''
+    info:
+      list: '&e[place]. &7[ip] &e- &6[reason]  '
+      bannedBy: '&7Tarafından yasaklandı: &f[source]'
+      ends: '&7Bitiş tarihi: &f[time]'
+      related: |-
+        &7İlgili hesaplar:
+        &f[list]
+  item:
+    help:
+      info: '&eKendinize bir eşya verir'
+      args: '[itemname] (amount)'
+      explanation:
+      - Name and lore supports placeholders
+      - 'Örnek: /give stone'
+      - /give stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give sponge 1 e Knockback:%rand/1-5%
+      - /cmi give sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+  itemframe:
+    help:
+      info: '&eEşya çerçevelerini yönetin'
+      args: (invisible/fixed/invulnerable)
+    info:
+      enabled: Enabled
+      disabled: Disabled
+      feedback: '&e[count] &6sayıda item çerçevesi etrafında görünüyor'
+  iteminfo:
+    help:
+      info: '&eEşya bilgisini gösterir'
+      args: (playerName)
+    info:
+      nameMat: ' &eİsim: &7[name] &eMateryal: &7[material]'
+      mojangHover: '&eMojang İsmi: &7[name]'
+      display: ' &eEkran adı: &7[display]'
+      lore: ' &eLore:'
+      loreLine: '   &5[loreLine]'
+      enchants: ' &eBüyüler: &7[enchants]'
+      entityType: ' &eVarlık türü: &6[type]'
+      durability: ' &eDayanıklılık: &6[current]&e/&6[max]'
+  itemlore:
+    help:
+      info: '&eÖgeleri değiştir'
+      args: (-p:[playerName]) [linenumber/*] [remove/insert/ new lore line]
+    info:
+      feedback: '&eYou have changed lore line to ''&r&5[loreLine]&e'' for &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNot holding any item in hand.'
+      removed: '&eItem lore line &6[line] &ewas removed for &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      inserted: '&eItem lore line &6[line] &ewas inserted for &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      maxLines: '&eThere is only &6[lines] &elines of lore.'
+      blocked: '&eBu öğenin yeniden gönderilmesi engellendi.'
+  itemname:
+    help:
+      info: '&eEşyaları yeniden isimlendirmek'
+      args: (-p:[playerName]) [remove/your new item name]
+    info:
+      feedback: '&3[playerDisplayName]&e &eadlı oyuncunun [itemname]&e eşyanın ismini değiştirdin 
+        (&3[offon]&e).'
+      noitem: '&cElinde bir eşya tutmuyorsun.'
+      removed: '&3[playerDisplayName]&e &eadlı oyuncunun eşya ismi kaldırıldı (&3[offon]&e).'
+      blocked: '&eBu öğenin yeniden adlandırılması engellendi'
+  itemnbt:
+    help:
+      info: '&eEşyanın NBT bilgisini gösterir'
+      args: (playerName)
+    info:
+      step: ' &6->: &6[name]'
+      final: '&e[value]'
+      list: '&e- &r[value]'
+      noNbt: '&eEşya herhangi bir NBT verisi içermiyor'
+  jail:
+    help:
+      info: '&eOyuncuyu dönem boyunca hapsetmek'
+      args: '[playerName] (time) (jailName) (cellId) (-s) (r:jail_reason)'
+    info:
+      jailed: '&6[playerDisplayName] &eAdlı oyuncuyu önümüzdeki [time] süre boyunca hapsettin'
+      jailedPlayer: '&6[playerDisplayName] [time] süre boyunca hapsedildin'
+      reason: ' &eFor: &c[reason]'
+      leftTime: '!title!&7Jail time:!subtitle![time]'
+      jailedTarget: '&eHapsedildin! [time]'
+      cantTalk: '&cHapisteyken konuşamazsın'
+      cantTalkRange: '!actionbar!&fSohbet menzilin &c[range] &fblok olmakla sınırlandırıldı'
+      failed: '&cOyuncu hapise atılamadı. Hedefin hapis ismini kontrol edin.'
+      bossbar: '&7Hapis süresi: [autoTimeLeft]'
+      noCommand: '&cHapiste iken bu komudu kullanamazsın!'
+  jailedit:
+    help:
+      info: '&eHapisleri düzenleyin'
+      args: ''
+    info:
+      notInArea: '&cHapis alanında bulunmuyorsun'
+      noName: '&cBu isimde bir hapis yok'
+      noCell: '&cBu ID ile bir hücre yok'
+      exist: '&cBu isimde bir hapis zaten var'
+      createdJail: '&eBaşarılı şekilde yeni hapishane oluşturuldu (&6[jail]&e)'
+      createdCell: '&eBaşarılı şekilde hapis hücresi oluşturuldu (&6[jail]&e:&6[cellId]&e)'
+      collides: '&6[jailName] &eHapishane ismi bu isimle çarpışıyor'
+      jailList: '&e[place]. &6[jail] &eHücreler:&6[cells] &eHapsedilmiş: &6[amount]    '
+      editCells: '&eHücre sayısını düzenler'
+      cellList: '&eHücre IDsi:&6[id] &eHapsedilmiş: &6[amount]    '
+      jailListTp: ' &7[tp] '
+      jailListTpHover: '&eDış ışınlanma konumunu ayarla'
+      jailListArea: ' &7[area] '
+      jailListAreaHover: '&eAlanı yeniden tanımla'
+      jailRemoved: '(&6[jail]&e) adlı hapishane kaldırıldı'
+      jailOutside: '&eDış ışınlanma konumunu ayarla'
+      jailArea: '&6[jail] &e için yeniden tanımlanmış alan'
+      cellRemoved: '&6[jail] &eadlı hapishaneden (&6[cellId]&e) hücre kaldırıldı '
+  jaillist:
+    help:
+      info: '&eHapishanelerin listesi'
+      args: (jailName) (cellId)
+    info:
+      jailList: '&6[place]. &e[jailName] &7Hücreler:&e[cellCount] &7Hapsedilmiş:&6[count]'
+      cellList: '&6[place]. &7Id:&e[cellId] &7Hapsedilmiş:&6[count]'
+      cellJailedList: '&6[place]. &e[playerDisplayName] &7adlı oyuncu &e[time] süre sonra serbest kalıcak'
+      Release: '&7Serbest bırakmak için tıkla'
+  jump:
+    help:
+      info: '&eHedef bloğa atla'
+      args: ''
+    info:
+      tooFar: '&cGörünürde engel yok veya çok uzak (max [max] blocks)'
+  kick:
+    help:
+      info: '&eOyuncuyu özel mesajla at'
+      args: '[playerName/all] (message) (-s)'
+      explanation:
+      - cmi.command.kick.bypass - prevents from being kicked out
+    info:
+      defaultMessage: '&eSunucudan atıldı'
+      cantKick: '&eBu oyuncuyu atamazsın'
+      messageToAll: '&6[playerDisplayName] &esunucudan atıldı.'
+      kickReason: ' &eSebep: &6[reason]'
+      all: '&6[amount] &emiktarda oyuncu sunucudan atıldı'
+  killall:
+    help:
+      info: '&eEtrafındaki mobları öldürür'
+      args: (-monsters/-pets/-npc/-animals/-ambient/-named/-f/-lightning/-list/-m:[mobType]) (-r:range) (-s) (-w:[worldName])
+    info:
+      infoList: '&2[category]&e: &7[amount] &e([list]&e)'
+      removedList: '&6[type]&e: &7[amount]'
+      total: '&eToplam kaldırıldı: &7[amount] &e([list]&e)'
+      noRemove: '&eKaldırılacak bir şey yok'
+      monsters: Monsters
+      pets: Pets
+      npc: NPCs
+      animals: Animals
+      ambient: Ambient
+      vehicles: Vehicles
+      named: With custom name
+  kit:
+    help:
+      info: '&eÖnceden tanımlanmış kit verir.'
+      args: '[kitName] (playerName)'
+      explanation:
+      - '&eYetkiler:'
+      - '&6cmi.kit.[kitName] &e- Belirli kit kullanımına izin verir'
+      - '&6cmi.kit.bypass.money &e- Para gereksinimini atlama'
+      - '&6cmi.kit.bypass.exp &e- xp gereksinimini atlama'
+      - '&6cmi.kit.bypass.onetimeuse &e- tek seferlik atlama'
+      - '&6/cmi kit [kitName] [playerName] &e- Başka bir oyuncuya kit verecek'
+    info:
+      noMoney: '&eYeterli miktarda para yok. Maliyet: &6[cost] &eSahip olduğun &6[balance]'
+      noExp: '&eYeterli XP yok. Maliyet: &6[cost] &eSahip olduğun &6[balance]'
+      noCondition: '&eBu kiti kullanmanız için özel yetkiniz yok:
+        &6[condition]'
+      oneTime: '&cBu kiti tek seferlik alabilirsin ve sen bunu zaten aldın!'
+      cantUseNow: '[time]'
+      limitedTimeUseError: '&6[times] &efazla bu itemi kullanamazsın'
+      limitedTimeUse: '&c[times] &7kez kullanabilirsin'
+      limitedTimeAllUsed: '&cBir daha alamazsın'
+      canUseIn: "&eİçinde tekrar kullanılabilir: \n[time]"
+      cooldown: "&eBekleme süresi: \n[time]"
+      noKit: '&eBu isimde kit bulunamadı'
+      kitDoesntExist: '&eKit bulunamadı ([kitName])'
+      noKitAccess: '&cBu kite erişimin yok'
+      noFoundKit: '&eHerhangi bir kit bulunamadı'
+      givenKit: '&6[playerDisplayName] &eadlı oyuncuya &6[kit] &eadlı kiti verdin'
+      title: '&8Kitler'
+      nameCanUse: '&6[kitName]'
+      nameCantUse: '&7[kitName]'
+      group: '&eGrup: &6[group]'
+      left: '&6Toplamak için sol tık'
+      right: '&6Görüntülemek için sağ tık'
+      take: '&6Bu kiti al!'
+      eye: ' &e☬'
+      use: '&2'
+      cantuse: '&7'
+      list: '&7[number]. &e[kitName] &6- [description]'
+  kitcdreset:
+    help:
+      info: '&eKit bekleme süresini sıfırlar'
+      args: (kitName) (playerName/all)
+    info:
+      notCd: '&eKit, bekleme aşamasında değil'
+      reset: '&6[playerDisplayName] &eadlı oyuncunun (&6[kit]&e) adlı kit için bekleme süresini sıfırladın '
+      resetAll: '(&6[kit]&e) &eadlı kit için bekleme süresi &6[count] &eoyuncu için sıfırlandı'
+      list: '&e[place]. &6[kit] &e[time]'
+      listHover: '&eSıfırlamak için tıkla'
+      noCd: '&eBekleme süresinde kit yok'
+  kiteditor:
+    help:
+      info: '&eKit düzenleyici.'
+      args: ''
+      explanation:
+      - '&eYetkiler:'
+      - '&6cmi.kit.[kitName] &e- Belirli kiti kullanmana izin verir'
+      - '&6cmi.kit.bypass.money &e- Para gereksinimini atlamak'
+      - '&6cmi.kit.bypass.exp &e- xp gereksinimini atlamak'
+      - '&6/cmi kiteditor &e- Kit listesini gösterir'
+    info:
+      kits: '&eKitler: '
+      iconSet: '&6[kitname] &eKiti için yeni simge'
+      kitExists: '&eBu isimde bir kit mevcut!'
+      deleteConfirm: '(&6[kitname]&e) Kitini kaldırmak istiyorsan tıkla!'
+      deleteConfirmFinal: '&cBu eylem geri alınamaz!'
+      kitRemoved: '(&6[kitname]&e) &eKiti Kaldırıldı'
+      kitNotRemoved: '(&6[kitname]&c) &eAdlı kit kaldırılamaz'
+      addNewInfo: "&eKit adını sohbete yazın ve enter tuşuna tıklayın. Bu eylemi iptal etmek istiyorsan
+       sohbete &6cancel&e' yaz."
+      renameCommandInfo: '&eSohbete yeni kitin komutadını yazın ve enterı tuşlayın.
+        Bu eylemi iptal etmek istiyorsan sohbete &6cancel&e yaz.'
+      renameConfigInfo: '&eSohbete yeni kit config adını yazın ve enterı tuşlayın.
+        Bu eylemi iptal etmek istiyorsan sohbete &6cancel&e yaz.'
+      groupInfo: "&eSohbete yeni grup adını yazın ve enterı tuşlayın. Grubu silmek için sohbete 'none' yazın. 
+      Bu eylemi iptal etmek istiyorsan sohbete &6cancel&e yaz."
+      commandInfo: '&eSohbete yeni komut yazın ve enterı tuşlayın. Bu eylemi iptal etmek istiyorsan sohbete &6cancel&e yaz.
+       Mümkün yer tutucular: &6{USERNAME} {DISPLAYNAME} {WORLDNAME}
+        {KITNAME} {RANDOMPLAYER}'
+      conditionsInfo: "&eYeni gerekli izin. Bu eylemi iptal etmek istiyorsan sohbete &6cancel&e yaz"
+      descInfo: "&eSohbete yeni açıklama yazın ve enter tuşuna basın. 
+      Bu eylemi iptal etmek istiyorsan sohbete &6cancel&e yaz"
+      renamed: '&6[kitname] &eadlı kitin ismi &6[newkitname]&e olmak üzere değiştirildi.'
+      groupSet: '&6[kitname] kiti için (&6[groupname]&e) isimli yeni grup ayarlandı '
+      commandsListTitle: '&e✎&6Komutlar:'
+      conditionsListTitle: '&e✎&6Koşullar:'
+      descListTitle: '&e✎&6Açıklama:'
+      ListTitleHover: '&eGUI''yi açmak için tıklayın'
+      ListEditKitHover: '&cEdit &6[kitname]'
+      ListAdd: ' &2+'
+      ListAddHover: '&2Yeni ekle'
+      guiClickery:
+      - '&eArtırmak için sol tıklayın ve azaltmak için sağ tıklayın'
+      - '&eSürecü hızlandırmak için shift tuşuna 10 kez basın'
+      - '&eTekrarlanan hızlı tıklamalar, miktar değişikliğini hızlandırır'
+      - '&eVarsayılan miktara dönmek için 1 saniye boyunca tıklamayı bırakın'
+      OffHand: '&eEl eşyasını buraya yerleştirin'
+      Helmet: '&eKask eşyasını buraya yerleştirin'
+      Chest: '&eSandık eşyasını buraya yerleştirin'
+      Legs: '&ePantolonları buraya yerleştirin'
+      Boots: '&eBotları buraya yerleştirin'
+      Weight: '&eAğırlık: &6[Weight]'
+      WeightExtra:
+      - '&eDaha yüksek değer daha büyük önceliğe sahiptir'
+      - '&eKitler aynı grupta olmalıdır'
+      despiteWeight: '&eAğırlığa rağmen göster: &6[Weight]'
+      despiteWeightExtra:
+      - '&eOyuncu kite erişemedi, ama onu görüntüleyebilir'
+      Slot: '&eSlot: &6[slot]'
+      SlotAuto: '&6Otomatik'
+      Clone: '&eEnvanterden öğeleri klonla'
+      CloneExtra:
+      - '&eZırhları dahil etmek için farenin sağ tıkını kullanın'
+      - '&eDeğişiklikleri eski halinde döndürmek için tekrar tıklayın'
+      timeDelay: '&eGecikme: &6[time]'
+      usages: '&6[times] &ekez kullanılabilir'
+      usagesUnlimited: '&6Sınırsız'
+      ignoreWeight: '&eAğırlığa rağmen göster: &6[state]'
+      timeDelaySeconds: '&eSaniyeler içinde: &6[time]'
+      moneyCost: '&eHarcanacak para: [cost]'
+      expCost: '&eHarcanacak XP: [cost]'
+      enabled: '&eEnabled'
+      disabled: '&6Disabled'
+      delete: '&6Kiti sil'
+      clickToSwitch: '&eDurumu değiştirmek için tıklayın'
+      clickToEdit: '&eDüzenlemeye başlamak için tıklayın'
+      editConfigName:
+      - '&eConfig adını tekrardan adlandırmak için tıklayın'
+      - '&eBu yalnızca izin zincirini belirler'
+      editCommandName:
+      - '&eKomut adını yeniden adlandırmak için tıklayın'
+      - '&eBu, bu kiti almanız için kullanmanız gereken komut'
+      displayName: '&7Görünen isim: &r&f[name]'
+      editDisplayName:
+      - '&eGörünen adı değiştirmek için tıklayın'
+      - '&eBu yalnızca görsel amaçlar için kullanılır'
+      kitGroup: '&eKit grubu: &6[group]'
+      dropItems: '&eDoluysa eşya bırak: &6[state]'
+      commands: '&eKomutlar:'
+      conditions: '&eŞartlar:'
+      desc: '&eAçıklama:'
+      mainMenu: '&eAna menü'
+      settings: '&eAyarlar'
+      icon: '&eKit mevcut olduğunda kullanılan simge'
+      iconCd: '&eKit mevcut olmadığında kullanılan simge'
+  kitusagereset:
+    help:
+      info: '&eKit kullanım sayacını sıfırlayın'
+      args: (kitName) (playerName)
+    info:
+      notLimited: '&eKitin sınırlı miktarda kullanımı yoktur'
+      reset: '&6[playerDisplayName] &eAdlı oyuncunun (&6[kit]&e) isimli kiti alma süresi sıfırlandı'
+      list: '&e[place]. &6[kit] &e[used]/[usages]'
+      listHover: '&eSıfırlamak için tıkla'
+      noCd: '&e0''ın üzerinde kullanımı olan kit yok'
+  lastonline:
+    help:
+      info: '&eEn son oynayan oyuncuları göster x Dakikalar'
+      args: (-p:[page])
+    info:
+      searching: '&eAraştırılıyor &6[checked]&e/&6[total] &e(&6[found]&e)'
+      List: ' &6[place]&e. &2[name] &e-> &6[time].'
+  launch:
+    help:
+      info: '&eBaktığınız yönde veya açıyla fırlatın'
+      args: (playerName) (p:[power]) (a:[angle]) (d:[direction]) (loc:[x]:[y]:[z])
+      explanation:
+      - cmi launch - will launch at direction you are looking
+      - cmi launch p:3.2 - will launch with power of 3.2
+      - cmi launch p:2.5 a:25 - will launch at direction you are looking with angle of 25 dgrees and with power of 2.5
+      - cmi launch Zrips d:east - will launch to east direction same angle you are looking
+      - cmi launch Zrips d:0 - will launch at 0 degrees direction (south) same angle you are looking
+      - cmi launch d:45 a:30 p:2 - will launch south-west at 30 degree angle with power of 2
+      - cmi launch loc:150:120:123 - will launch player to target location
+    info:
+      feedback: '!actionbar!&6[&fWhoosh!&6]'
+  lfix:
+    help:
+      info: '&eIşığı çevrenizdeki parçalar halinde sabitleyin'
+      args: (range) (playerName) (stop/stopall)
+    info:
+      NoMore: '&eMenzil sunucunun görüş açısından büyük olamaz. İzin verilen maksimum değere değiştirildi.'
+      startFixing: '&6[amount] &emiktarda düzeltilecek chunk bulundu. Düzeltilmeye başlanıyor!'
+      InfoShow: '&6TPS: &3[tps] &6Kaldı &e[left] &6(&e[min]m:[sec]s&6) &6Hız: &e[speed]'
+      Finished: '&eIşık düzeltme bitti'
+      Stopped: '&eBitti'
+  list:
+    help:
+      info: '&eÇevrimiçi oyuncu listesi'
+      args: ''
+      explanation:
+      - 'Perm: '
+      - cmi.command.list.admin
+      - cmi.command.list.staff
+      - cmi.command.list.hidden
+      - cmi.command.list.group.[number]
+    info:
+      # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on, you can have as many of those as you want and order them by your own liking
+      List:
+      - '&7========================'
+      - '&eÇevrimiçi oyuncular &6[amount][hidden]&e/&6[maxamount]'
+      - '[adminLine]'
+      - '[staffLine]'
+      - '[groupLine]'
+      - '&7========================'
+      staffL: '&7Yetkili: &f[list]'
+      adminL: '&8Admin: &f[list]'
+      hiddenPref: '&e&7[H]'
+      hiddenCount: '&e&7([amount])'
+      groupL: '&6[groupName]: &f[list]'
+      player: '%cmi_user_afk_symbol%&f[playerDisplayName]'
+      # Add as many groups as you wish, by default there is only 10, to create new one, just copy paste one line and add increment into lines name, like group11 or group12 and so on.
+      # ATTENTION! group names should be in 'group[number]' format, where you have word 'group' followed by number. This is required and you cant have custom names as they are not required, but we are using number provided to determine which group goes after which
+      # Player need to have appropriate permission node to be placed in group cmi.command.list.group.[groupnumber], bigger number have bigger priority
+      groups:
+        group1: '&eGroup1: &f[list]'
+        group2: '&eGroup2: &f[list]'
+        group3: '&eGroup3: &f[list]'
+        group4: '&eGroup4: &f[list]'
+        group5: '&eGroup5: &f[list]'
+        group6: '&eGroup6: &f[list]'
+        group7: '&eGroup7: &f[list]'
+        group8: '&eGroup8: &f[list]'
+        group9: '&eGroup9: &f[list]'
+        group10: '&eGroup10: &f[list]'
+      noGroupLine: '&eList'
+  lockip:
+    help:
+      info: '&eFarklı iplerden hesaba giriş yapılmasını engeller'
+      args: (playername) [add/remove/list/clear] [ip]
+    info:
+      CantLogin: '&cBu IP adresinden giriş yapılamaz'
+      add: '&6[playerDisplayName] &eadlı oyuncu için yeni IP adresi eklendi (&6[ip]&e)'
+      remove: '&6[playerDisplayName] &eadlı oyuncu için IP adresi kaldırıldı (&6[ip]&e)'
+      clear: '&6[playerDisplayName] &eAdlı oyuncunun bütün IPleri kaldırıldı '
+      ipNotFound: '&cIP bulunamadı'
+      empty: '&cListe boş'
+      list: '&6[place]&e. &6[ip]'
+  mail:
+    help:
+      info: '&ePosta gönder ve al'
+      args: '[send/clear/read] [playerName] (message)'
+    info:
+      sentMail: '&6[playerDisplayName] &eAdlı oyuncuya posta gönder'
+      gotMail: '!actionbar!&6[senderDisplayName] &eAdlı oyuncudan posta aldın'
+      clearMail: '&eTüm postalar temizlendi!'
+      removedMail: '&eKaldırılmış posta'
+      noMailsById: "&eBu ID'de bu oyuncuya bir posta yok"
+      noMails: '&eSana gönderilmiş posta yok'
+      mailHover: '&e[senderName] /n &e[time]'
+      list: '&6[id]. &7[senderDisplayName]&e: [mail] '
+      waitingMail: '&6[amount] &ePostan var. Kontrol etmek için tıklayın.'
+  mailall:
+    help:
+      info: '&eTüm oyuncuları posta gönderin veya kontrol edin'
+      args: '[send/clear/remove] [message]'
+    info:
+      sentMail: '6[amount] &etane posta gönderin'
+      clearMail: '&6[amount] &etane posta temizlendi'
+      removedMail: '&6[amount] &etane email kaldırıldı'
+  maintenance:
+    help:
+      info: '&eSunucuyu bakıma al'
+      args: (true/false) (message)
+      explanation:
+      - cmi.command.maintenance.bypass - to bypass maintenance mode
+    info:
+      feedback: '&eSunucu bakımda. Daha sonra geliniz.'
+      set: '&eSunucunun bakım durumu &6[state] olmak üzere ayarlandı. &eGönderilen mesaj: [message]'
+  maxhp:
+    help:
+      info: '&eBir oyuncunun maksimum hp değerini ayarlayın'
+      args: set/add/take/clear [playerName] [amount] (-s)
+    info:
+      feedback: '&3[playerDisplayName]&e &eadlı oyuncunun maksimum hp değerini &3[maxHp] &eolmak üzere ayarladın(&3[offon]&e).'
+      targetfeedback: '&eMaksimum hp değerin &3[maxHp] &eolmak üzere &3[senderDisplayName]&e tarafından ayarlandı .'
+  maxplayers:
+    help:
+      info: '&eSunucuya katılabilecek maksimum oyuncu sayısını değiştirir'
+      args: '[amount]'
+      explanation:
+      - '&eYetkiler: '
+      - '&6cmi.fullserver.bypass &e- Dolu sunucuya katılır'
+    info:
+      changed: '&eChanged max allowed players from &6[old] &eto &6[new]&e. Online:
+        &6[current]'
+  me:
+    help:
+      info: '&eBütün oyunculara özel mesaj gönderir'
+      args: '[message]'
+    info:
+      format: '&5* [senderDisplayName] &5[message]'
+  merchant:
+    help:
+      info: '&eTüccar takas penceresini açar'
+      args: '[type] (playerName)'
+    info:
+      incorrect: '&cYanlış meslek.'
+      feedback: '&3[playerDisplayName]&e &eadlı oyuncuya &etakas açtın &6[type] (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e senin için takas açtı &6[type].'
+  migratedatabase:
+    help:
+      info: '&eVeri tabanı sistemini değiştirir ve tüm verileri taşır'
+      args: ''
+  mirror:
+    help:
+      info: '&eBlok place/break yansıtmaya başlar.'
+      args: (start/stop)
+    info:
+      started: '&eYansıtma başladı'
+      stopped: '&6Yansıtma durdu/bitti'
+      tooFar: '&cYansıtma merkezinden çok uzaksın (max &6[blocks] &cblocks). Özellik durduruldu!'
+      title: Mirror
+      notSet: '&cMerkez kurulmamış'
+      set: '&2Merkez kuruldu'
+      noBlocks: '&cYeterli blok yok'
+      used: '&7Kullanıldı: &7[blocks]'
+      Action:
+        Name:
+          X: X
+          Y: Y
+          Z: Z
+          XY: XY
+          ZY: ZY
+          XZ: XZ
+          ZX: ZX
+          Rotate90V: Rotate90V
+          Rotate90H: Rotate90H
+          Rotate90HC: Rotate90HC
+          Rotate180H: Rotate180H
+          Pause: Pause
+          Location: Location
+        Desc:
+          X: '&eMirrors by &6X &eaxis'
+          Y: '&eMirrors by &6Y &eaxis'
+          Z: '&eMirrors by &6Z &eaxis'
+          XY: '&eMirrors by &6X &eto &6Y &eaxis'
+          ZY: '&eMirrors by &6Z &eto &6Y &eaxis'
+          XZ: '&eMirrors by &6X &eto &6Z &eaxis'
+          ZX: '&eMirrors by &6Z &eto &6Y &eaxis'
+          Rotate90V: '&eYukarı döner'
+          Rotate90H: '&eSaat yönünde &690 &ederece döner'
+          Rotate90HC: '&eSaat yönünün tersine &690 &ederece döner'
+          Rotate180H: '&6180 &eDerece döner'
+          Pause: '&eYansıtma durduruldu'
+          Location: '&eYansıtma merkezini düzenler'
+  mobhead:
+    help:
+      info: '&eMob başını almak'
+      args: '[mobType] (entryNumber) (playerName) (-s)'
+    info:
+      got: '&6[type] &emobunun başını aldın'
+      base: '&7Eşya düşme şansı: &f[chance]%'
+      personal: '&7Senin için düşme şansı: &f[chance]%'
+      headSpecific: '&7Özel baş düşme şansı: &f[chance]%'
+      criteria: '&7Kriterler: &f[criteria]%'
+      title: '&7[current]&8/&7[total]'
+  money:
+    help:
+      info: '&ePara bakiyesini yönetin'
+      args: '[pay/give/take/set] [playerName/all/alloffline] [amount][%rand/1-1000%][1%[min-max]][playerName]]
+        (-s)'
+    info:
+      newBalance: '&6[playerDisplayName] &eYeni bakiye: &6[money]'
+      paid: '&6[playerDisplayName] &eAdlı oyuncuya &6[amount] &emiktarda para gönderdin '
+      gotMoney: '&6[senderDisplayName]&e &eAdlı oyuncudan &6[amount] &emiktarda para alındı . Bakiye: &6[money]'
+      gotMoneyGive: '&6[amount]&e Miktarda para aldınız. Bakiye: &6[money]'
+      noMoney: '&cYeterli paran yok'
+      worldGroups: '&cFarklı dünya grupları arasında para transferi yapamazsınız'
+      self: '&cKendine para gönderemezsin!'
+      confirm: '&6[playerDisplayName] &eadlı oyuncuya &6[money] &emiktarda para göndermeyi onaylamak için tıkla &a&l[✔]'
+      notAccepting: '&eBu kullanıcı diğer oyunculardan ödeme kabul etmiyor'
+      giveAll: '&6[totalAmount] &emiktarda eşya &6[playerCount] &etane oyuncuya verildi'
+      takeAll: '&6[totalAmount] &emiktarda eşya &6[playerCount] &etane oyuncudan alındı'
+  more:
+    help:
+      info: '&eEşyaların stacklerini maksimum şekilde doldurur'
+      args: (playerName) (-clone/[amount])
+      explanation:
+      - '&eYetkiler:'
+      - ' &6cmi.command.more.oversize &e- Büyük boy stackler elde etmek için'
+    info:
+      feedback: '&3[playerDisplayName]&e &eAdlı oyuncu için &3[amount]&e miktarda stack doldu (&3[offon]&e).'
+  msg:
+    help:
+      info: '&eOyuncuya mesaj gönderir'
+      args: '[playerName] [message]'
+      explanation:
+      - If message starts with ! then clean message without sender name will be shown
+      - Requires cmi.command.msg.clean permission
+      - If message starts with !- then clean message without sender name will be shown and without option to reply
+      - Requires cmi.command.msg.noreply permission
+    info:
+      TargetMsg: '&7[&8[senderDisplayName] &7-> &8me&7]&r&f [message]'
+      SenderMsg: '&7[&8me &7-> &8[playerDisplayName]&7]&r&f [message]'
+      consoleMsg: '[[senderDisplayName] -> [playerDisplayName]] [message]'
+      noPM: '&cOyuncu şuan özel mesaj kabul etmiyor'
+      badGroup: '&cBu grubun oyuncularına özel mesaj atamazsın'
+  msgtoggle:
+    help:
+      info: '&eÖzel mesajları açar/kapatır'
+      args: (playerName)
+    info:
+      feedbackOn: '&7Özel mesajları kabul ediyor'
+      feedbackOff: '&7Artık özel mesajları kabul ediyor'
+  mute:
+    help:
+      info: '&eOyuncuyu susturur'
+      args: '[playerName] (time) (-s) (reason)'
+      explanation:
+      - 'Örnek: '
+      - /cmi mute zrips 1m
+      - /cmi mute zrips 1h
+      - /cmi mute zrips 1h For swearing
+    info:
+      mutedFor: '&e[playerDisplayName] adlı oyuncu &6[time] süre boyunca susturuldu'
+      muted: '&6[time] &eSüre boyunca susturuldun'
+      reason: '&eSebep: &7[reason]'
+  mutechat:
+    help:
+      info: '&eSohbeti kapatır'
+      args: (time) (-s) (reason)
+      explanation:
+      - 'Örnek: '
+      - /cmi mutechat 1m
+      - '/cmi mutechat 1h '
+    info:
+      mutedFor: '&eGenel sohbet &6[time] süre boyunca kapatıldı'
+      isMuted: '!actionbar!&eGenel sohbet[time] süre boyunca kapatıldı'
+      muteReason: '&4Susturulma sebebi: &7[reason]'
+  nameplate:
+    help:
+      info: '&eOyuncuların taglarını ayarlama, son ek veya rengini'
+      args: (playerName) (-pref:[some_prefix]) (-suf:[some_suffix]) (-c:[colorCode])
+    info:
+      feedback: '&3[playerDisplayName]&e &eAdlı oyuncu için isim tagını güncelledin (&3[offon]&e).'
+      targetfeedback: '&eİsim tagın güncellendi'
+  near:
+    help:
+      info: '&eYakınında kimin olduğunu kontrol eder'
+      args: (distance)
+    info:
+      nope: '&eYakınında kimse yok'
+      list: '&e[place]. &6[playerDisplayName] &e- &7[distance]m'
+      aproxList: '&e[place]. &6[playerDisplayName] &e- &6[dir] &7~[distance]m'
+  nick:
+    help:
+      info: '&eOyuncu ismini değiştirir'
+      args: '[newNickName/off] (playerName) (-s)'
+      explanation:
+      - 'Farklı isme dönüştürmek için: cmi.command.nick.different'
+      - To bypass length protection use cmi.command.nick.bypass.length
+    info:
+      changed: '&r[newNickName] ,&eEski ismin &r[oldNickName] olmak üzere değiştirildi'
+      changedTarget: '&r[senderDisplayName] &eTarafından kullanıcı adın &r[newNickName] &eolmak üzere değiştirildi'
+      reset: '&eKullanıcı adın varsayılana döndürüldü'
+      sameNick: '&cFarklı bir kullanıcı adına geçiş izniniz yok. Sadece rengini değiştirebilirsiniz.'
+      blockedNick: '&cBu kullanıcı adını kullanamazsın'
+      blockedNickLength: '&eKullanıcı adı çok uzun. Maksimum &6[amount] sembolden oluşmalıdır'
+      blockedNickLengthMin: '&eKullanıcı adı çok kısa. Minimum &6[amount] sembolden oluşmalıdır'
+      inUse: '&cBu kullanıcı adını zaten başka bir oyuncu kullanıyor'
+  notarget:
+    help:
+      info: '&eMob saldırılarını aç/kapat'
+      args: (playerName) (true/false) (-s)
+    info:
+      enabled: '&eCanavarlar artık sana saldırmayacak!'
+      disabled: '&eCanavarlar artık sana saldıracak!'
+  note:
+    help:
+      info: '&eOyuncu notlarını yönetir'
+      args: (playerName) [add/remove/clear/list] (id/note)
+    info:
+      newNote: '&eOyuncu için yeni not eklendi'
+      clearNote: '&eOyuncu için bütün notlar temizlendi'
+      removedNote: '&eOyuncu için not kaldırıldı'
+      noNotesById: "&eOyuncu için bu ID'li kayıtlı bir not yok"
+      noNotes: '&eOyuncu için kayıtlı not yok'
+      list: '&6[id]. &e[note]'
+  openbook:
+    help:
+      info: '&eKitap menüsünü açar'
+      args: (cText) (playerName)
+  oplist:
+    help:
+      info: '&eYetkili oyuncu listesini kontrol eder'
+      args: ''
+    info:
+      feedback: '&e* &6[number]. &e[playerName]'
+  panimation:
+    help:
+      info: '&eÖzel parçacık animasyonunu oynatır'
+      args: (variable/playerName/stopAll) (stop)
+      explanation:
+      - Information on usage can be found at http://www.zrips.net/cmi/extra/particles/
+  patrol:
+    help:
+      info: '&eDevriye gezmek'
+      args: ''
+    info:
+      noPatrol: '&eŞuan kontrol edebileceğin bir oyuncu yok'
+      Patroling: '&eŞuanda kontrol ediliyor: &6[playerDisplayName]'
+      lastPatrol: '&eEn son &6[time]&esüre önce kontrol edildi'
+      notes: '&6[amount] &eSayıda not(ları) var'
+  pay:
+    help:
+      info: '&ePara transferini sürdürür'
+      args: '[playerName] [amount] (-s)'
+  paytoggle:
+    help:
+      info: '&eBaşka bir oyuncudan ödeme almayı açar/kapatır'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&eŞuan başka oyunculardan ödeme almayı kabul ediyorsun'
+      feedbackEnabled: '&Artık başka oyunculardan ödeme almayı kabul etmiyorsun'
+  ping:
+    help:
+      info: '&eOyuncuların pinglerini gösterir'
+      args: (playerName/message)
+    info:
+      feedback: '&eGecikme: &6[ping]ms'
+      selffeedback: '&eSenin pingin &6[ping]ms'
+      customMessage: '[message]'
+  placeholders:
+    help:
+      info: '&eBütün yer tutucuların listesi'
+      args: (parse) (placeholder) (playerName)
+    info:
+      list: '&e[place]. &6[placeholder]'
+      outputResult: ' &esonuç: &6[result]'
+      parse: '&6[placeholder] [source] &6sonuç &8|&f[result]&8|'
+  playercollision:
+    help:
+      info: '&eOyuncuların çatışma modunu ayarla'
+      args: (playerName) [true/false] (-s)
+    info:
+      feedback: '&3[playerDisplayName]&e &eOyuncunun çatışma modunu &3[boolean]&e olmak üzere ayarladın 
+        (&3[offon]&e).'
+      targetfeedback: '&eÇatışm modun &3[boolean] olmak üzere değiştirildi '
+  playtime:
+    help:
+      info: '&eOyuncuya toplam oyun süresini gösterir'
+      args: (playername)
+    info:
+      total: '&e* Toplam oynama süresi: [time]'
+      joined: '&e* Katılma Tarihi: &6[time]'
+  playtimetop:
+    help:
+      info: '&eOyuncu toplam oynama süresinin en çok oynayanlarını gösterir'
+      args: '[page]'
+    info:
+      topLine: '&e----- En çok oynayanlar &e-----'
+      scanning: '&eVeri anlık olarak taranıyor, Lütfen bir dakika bekle ve tekrar dene'
+      loading: '&eVeri henüz yüklenemedi. Bittikten sonra tarama işlemi başlayacak ve sonucu alıcaksınız.'
+      list: '&e[number]. [playerDisplayName] &e- &6[time]'
+      place: '&6[playerDisplayName] &eis in &6[place] &eplace'
+      ownLine: '&2[number]. &2[playerDisplayName] &2- &2[time]'
+  point:
+    help:
+      info: '&eEngellemek için işaretle'
+      args: (particleName) (playerName) (-self) (time) (-s:[speed])
+  portals:
+    help:
+      info: '&ePortalları düzenler'
+      args: (new/nearest/forceupdate) (portalName)
+    info:
+      collides: '&6[portalName] &cportal ismi çakışıyor'
+      exist: '&cBu isimde bir portal var'
+      notExist: '&cBu isimde portal mevcut değil'
+      locationSet: '&6[portalName] &eiçin portal konumu bulunduğun yere ayarlandı '
+      removed: '&6[portalName] &eportal kaldırıldı'
+      click: '&eBulunduğun yere &6[portalName] &eadlı portalı kurmak için tıkla'
+      bungeeSet: '&ePozisyona gidin ve ışınlanma konumunu ayarlamak için bu mesaja tıklayın'
+      bungeeSetConfirmed: '&eBungee portalı (&6[portal]&e) &6[sourceServer]
+        &esunucunun &e[location] konumuna ayarlandı'
+      bungeeSetEmpty: '&ePortal konumu &6[serverName] &esunucusunda başlatıldı,
+        Ama bu sunucuda kimse çevrimiçi değil. Bu eylem birisi katılana kadar başlamayacak'
+      list: '&e[number]. &6[portalName]'
+      redefine: '&eMevcut seçimden alanı yeniden tanımla'
+      particles: '&eParçacıklar: &6[state]'
+      particleType: '&eParçacık türü: &6[type]'
+      particleAmount: '&eParçacık miktarı: &6[amount]'
+      particlePercent: '&ePercentage of sides shrinked particles: &6[amount]%'
+      activationRange: '&eAktivasyon menzili: &6[amount]'
+      particlePermission: '&eYetki olmadan parçacıkları göster: &6[state]'
+      bungeeTeleport: '&eTam olarak bungee konumuna ışınlan: [state]'
+      requiresPermission: '&7[perm] &eİznini gerektirir: [state]'
+      kickBack: '&eİzinsiz girişi engelle: [state]'
+      informPermission: '&eEksik izin hakkında bilgi verin: [state]'
+      teleportToLocation: '&ePortal konumuna ışınlan'
+      teleportToTarget: '&ePortal hedef konumuna ışınlanma'
+      performCommandsWithoutTp: '&eGeçerli ışınlanma konumu olmadan komutları gerçekleştirin'
+      editCommands: '&ePortal komutlarını düzenler'
+      setTeleportLocation: '&eIşınlanma konumunu düzenle'
+      setSafeLocation: '&eDışarıda güvenli bir alan ayarlayın'
+      save: '&eDeğişiklikleri dosyaya kaydedin'
+      removePortal: '&ePORTAL KALDIR'
+      cantUsePortal: '&cBu portalı kaldıramazsın'
+  pos:
+    help:
+      info: '&eBir oyuncunun anlık konumunu gösterir'
+      args: (playerName)
+    info:
+      feedback: '&e[playerDisplayName] &e(&3[offon]&e) ([world]&e,&6[x]&e:&6[y]&e:&6[z]&e)'
+      feedbackRegion: '&eChunk &6[chunkx]&e:&6[chunkz]&e Bölge &6[regionx]&e:&6[regionz]'
+      feedbackDirection: '&eYön &6[direction] &e(&6[degrees] &edegrees)'
+      feedbackBiome: '&eBiyom &6[biome]'
+      feedbackLight: '&eIşık seviyesi &6[lightLevel]'
+      netherCoord: '&eCehennem dünyası koordinatları: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
+      normalCoord: '&eNormal dünya koordinatları: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
+  preview:
+    help:
+      info: '&eVerilen menzil için chunk yükler'
+      args: '[range] (innerrange)'
+    info:
+      NoMore: '&eMenzil 32Chunktan büyük olamaz. İzin verilen maksimum değere değiştirildi.'
+      startSending: '&6[amount] &eMiktarda gönderilecek chunk bulundu. başlanıyor!'
+      InfoShow: '&6TPS: &3[tps] &6Kaldı &e[left] &6(&e[min]m:[sec]s&6) &6Hız: &e[speed]'
+      Finished: '&eBitti. Chunkları yüklemek biraz fazla zaman alıcak.'
+  prewards:
+    help:
+      info: '&eOynama süresi ödüllerini kontrol edin'
+      args: (playerName)
+    info:
+      list: '&e[place]. &6[rewardName] &6[time] içinde ödüllendirilecek'
+      listNoStack: '&e[place]. &6[rewardName]'
+      listOneTime: '&e[place]. &6[rewardName]'
+      claim: ' &2Topla!'
+      claimAmount: ' &2(x[amount]) &2 Topla!'
+      claimHover: '&2Ödülü  almak için tıklayın!'
+      inform: '!actionbar!&2Seni bekleyen hala alınmamış ödüllerin var seni bekleyen! /prewards'
+  ptime:
+    help:
+      info: '&eOyuncunun kişisel zamanını kontrol eder'
+      args: ''
+      explanation:
+      - 'Örnek:'
+      - /ptime 13:00:00
+      - /ptime 1pm
+      - /ptime 13
+      - /ptime 7000ticks
+      - /ptime Zrips 1pm
+      - /ptime freeze
+      - /ptime unfreeze
+      - /ptime realtime
+      - /ptime reset
+    info:
+      check: '&eKişisel zaman: &6[24h] &eya da &6[12h] &eveya &6[ticks]ticks'
+      frozen: ' &c(-)'
+      gotreseted: '&6[playerDisplayName] &eoyuncunun zamanı sıfırlandı'
+      gotfrozen: '&6[playerDisplayName] &eoyuncunun zamanı donduruldu'
+      gotunfrozen: '&6[playerDisplayName] &eoyuncunun zamanı devam ediyor'
+      setto: '&eZaman &6[24h] &eveya &6[12h] &eveya &6[ticks]ticks &6[playerDisplayName] adlı oyuncu için olmak üzere ayarlandı'
+  purge:
+    help:
+      info: '&eOyuncu klasörünü etkin olmayan günlere göre dünya klasöründen siler'
+      args: (stop)
+    info:
+      stopped: Purge stopped.
+  pweather:
+    help:
+      info: '&eOyuncunun hava durumunu kontrol eder'
+      args: (playerName) [sun/rain/reset] (-s)
+    info:
+      check: '&eKişisel hava durumu: &6[weather]'
+      gotreseted: '&6[playerDisplayName] &eweather has been reset'
+      setto: '&6[playerDisplayName] &eoyuncunun hava durumu &6[weather] &eolmak üzere ayarlandı '
+      gotset: '&eHava durumun &6[weather] olmak üzere ayarlandı'
+      reset: '&eHava durumu sıfırlandı'
+  rankdown:
+    help:
+      info: '&eSıralamanızı düşürmek'
+      args: (playerName) (rankName) (confirm) (-cmd) (-cost)
+      explanation:
+      - -cmd will perform command defined for previous rank rankup
+      - -cost will charge player with money, exp or items if defined for previous rank rankup
+    info:
+      noPrev: '&eÖnceki rütbeleri bulamıyorum'
+      list: '&eDüşmek istediğin rütbeyi &seç &e: '
+      confirm: '&6[rank] rütbesine düşmek için tıkla'
+      downranked: '&6[rank] rütbesine düşürüldü'
+  rankinfo:
+    help:
+      info: '&eRütbe bilgin'
+      args: (playerName) (rankName)
+    info:
+      distanceCM: '[value]cm'
+      distanceM: '[value]m'
+      distanceKm: '[value]km'
+      requiredMoney: ' &eGerekli para: [color][current]&e/&6[needed]'
+      requiredExp: ' &eGerekli XP: [color][current]&e/&6[needed]'
+      requiredVotes: ' &eOylar: [color][current]&e/&6[needed]'
+      requiredPerm: ' &eYetkiler: '
+      requiredMcmmo: ' &eMcmmo: '
+      requiredMcmmoList: '&e[color][name] '
+      requiredMcmmoListHover: ' &e[color][current]&e/&6[needed]'
+      requiredMcmmoPower: Power
+      requiredJobs: ' &eMeslekler: '
+      requiredJobsList: ' &e[color][name]'
+      requiredJobsListHover: ' &e[color][current]&e/&6[needed]'
+      requiredJobsTotalLevel: TotalLevel
+      requiredItem: ' &eEşyalar: '
+      requiredItemsList: '&e[color][name]'
+      requiredItemListHover: '&e[color][current]&e/&6[needed]'
+      currentRank: ' &eAnlık rütben: &6[rankName]'
+      elseCurrentRank: ' &6[playerDisplayName] &eAnlık rütbesi: &6[rankName]'
+      rankNameLine: ' &e------ &6[rankName] &e[rankupState] &e------'
+      canRankup: ' &2Rütbe atlayabilirsin!'
+      cantRankup: ''
+      requiredStats: ' &e[name][extra]&e: [color][current]&e/&6[needed]'
+      requiredStatsExtra: ' (&6[type]&e)'
+      nextRanks: ' &eSonraki rütbeler: '
+      finalRank: ' &eBu rütbe sonuncu'
+      noRank: ' &eRütbe bulunamadı'
+      check: '&6[rank] &erütbe kontrol ediliyor'
+      progressBarHover: '&eDevam ediyor [percent]%'
+  ranklist:
+    help:
+      info: '&eMümkün rütbelerin listesi'
+      args: ''
+    info:
+      list: '&e[place]. [currentRankMarker]&6[rankName][currentRankMarker]'
+      currentRankMarker: '&6+'
+  rankset:
+    help:
+      info: '&eOyuncuların rütbesini düzenler'
+      args: (playerName) [rankName] (-cmd) (-cost)
+      explanation:
+      - -cmd will perform command defined for that rank rankup
+      - -cost will charge player with money, exp or items if defined for that rank rankup
+      - player will get rank even if he doesnt have enough money, exp or required items
+    info:
+      set: '&6[playerDisplayName] &eAdlı oyuncunun rütbesi &6[rankName] olmak üzere değişti'
+  rankup:
+    help:
+      info: '&eRütbeni artırmak'
+      args: (playerName) (rankName) (confirm)
+    info:
+      noRank: ' &eSizinle ilişkilendirilmiş herhangi bir rank yok'
+      requiresPrevious: ' &eBu rütbeye yükselemezsin. &6[rank] &erank(`s) rütbesine sahip olmalısın'
+      list: '&eYükselmek istediğin rütbeyi seç: '
+      confirm: '&6[ranks] Rütbesine yükselmeyi onaylamak için tıkla'
+  realname:
+    help:
+      info: '&eOyuncuların gerçek adını gösterir'
+      args: (playerName/nickName)
+    info:
+      feedback: '&r[playerDisplayName] &eAdlı oyuncunun gerçek adı: &r[playerName]'
+  recipe:
+    help:
+      info: '&eEşya tariflerini kontrol eder'
+      args: (itemName)
+    info:
+      type: '&0[type]'
+      page: ' &0[current]&7/&0[total]'
+      noRecipes: '&cBu eşya için herhangi bir tarif bulunamadı'
+  reload:
+    help:
+      info: '&ePluginlerin configini ve yerel dosyaları yeniden yükler'
+      args: ''
+    info:
+      feedback: '&6Yerel ve config dosyalar yenilendi!'
+      failedConfig: '&4Config dosyası yüklenirken hata meydana geldi! Yazım hatalarını kontrol ediniz!'
+      failedLocale: '&4Yerel dosyayı yüklerken hata meydana geldi! Yazım hatalarını kontrol ediniz!'
+  removehome:
+    help:
+      info: '&eEvi kaldır'
+      args: (homeName) (playerName)
+    info:
+      remove: '&cKaldırmak için tıkla'
+      removed: '&eHome (&6[home]&e) removed'
+      list: '&c[home]'
+  removeuser:
+    help:
+      info: '&eKullanıcıyı ve verilerini kaldırır'
+      args: '[uuid/duplicates]'
+    info:
+      removed: "(&6[uuid]&e) ID'li kullanıcı kaldırıldı"
+      removedDuplicate: '&6[amount]/[max] &eMiktarda kopya kaldırıldı'
+  removewarp:
+    help:
+      info: '&eWarp kaldırır'
+      args: (warpName)
+    info:
+      remove: '&cKaldırmak için tıkla'
+      removed: '(&6[warp]&e) Adlı warp kaldırıldı'
+      notYours: '&cBu warp sana ait değil!'
+  repair:
+    help:
+      info: '&eEşyaları tamir eder'
+      args: '[hand/armor/all] (playerName)'
+      explanation:
+      - cmi.command.repair.hand - allows a user to repair items in their hand
+      - cmi.command.repair.armor - allows a user to repair items in armor slots
+      - cmi.command.repair.all - allows a user to repair their whole inventory
+      - cmi.command.repair.repairshare.bypass - allows a user to repair items without adding repair share protection
+    info:
+      feedback: '&3[playerDisplayName]&e &eAdlı oyuncunun &3[amount]&e tane eşyasını tamir ettin
+        (&3[offon]&e).'
+      feedbackMoney: '&3[playerDisplayName]&e&eAdlı oyuncunun &3[amount]&e tane eşyasını tamir ettin
+        (&3[offon]&e). Maliyet: &7[cost]'
+      itemOwner: '&eEn son tamir eden: &6[owner]'
+      cantUse: '!title!&cCan''t use this item!!subtitle!&eRepair it your self!'
+  repaircost:
+    help:
+      info: '&eEşyaların tamir maliyetini ayarlar'
+      args: (playerName) [amount]
+      explanation:
+      - 'Example:'
+      - /repaircost 10
+      - /repaircost set 10
+      - /repaircost add 10
+      - /repaircost take 10
+      - /repaircost Zrips clear
+      - /repaircost Zrips add 10
+    info:
+      current: '&eMevcut öğelerin onarım maliyeti: &6[cost]&e.'
+      noitem: '&cElinde bir eşya tutmuyorsun.'
+      cantDetermineCost: '&cBu öğe için onarım maliyeti belirlenemedi.'
+      selffeedback: '&3[playerDisplayName]&e Adlı oyuncunun elindeki eşya için &eonarım bedeli &3[amount] &eolmak üzere
+        ayarlandı (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayNaame]&e tarafından &eEşya onarım maliyeti &3[amount]&e olmak üzere ayarlandı.'
+  replaceblock:
+    help:
+      info: '&eÇevrenizdeki mevcut dünyadaki blokları değiştirir'
+      args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range
+        in chunks/g]&e y &6[max height]'
+      explanation:
+      - '&6Alt komutlar:'
+      - '&e- &6pause &e- Yerleştirmeyi durdurur'
+      - '- &6continue &e- Yerleştirmeyi devam ettirir'
+      - '- &6stop &e- Yerleştirme durur'
+      - '- &6speed [amount] &e- Anlık yerleştirme hızını ayarlar'
+      - '- &6autospeed [true/false] &e- Otomatik hızı açar/kapatır'
+      - '- &6messages [true/false] &e- Dışa mesaj gönderilmesini Açar/Kapatır'
+      - 'Örnek:'
+      - /cmi replaceblock id 52 w stone r 10
+      - /cmi replaceblock id 52,gold_block w stone r 15 y 100
+      - /cmi replaceblock id 52 w air r g y 100
+      - /cmi replaceblock id iron_ore%75 w stone%90,dirt%5 r g
+    info:
+      startScanning: '&6[amount] &etane kontrol edilecek chunk bulundu. Kontrol etme işlemi başlıyor!'
+      paused: '&eYerleştirme durduruldu, devam etmek için &6/cmi blockreplace komutunu kullan.'
+      continuing: '&eYerleştirme devam ediyor'
+      stoped: '&eYerleştirme durdu.'
+      speedChange: '&eYerleştirme hızı [amount] olmak üzere ayarlandı'
+      autospeedChange: '&eOtomatik hız [state] olarak değiştirildi'
+      messagesChange: '&eMesaj durumu [state] olmak üzere değiştirildi'
+      infoShow: '&6TPS: &3[tps] &6Kaldı: &e[left] &6(&e[time]&6) &6Hız: &e[speed]
+        &6Yerleştirilen blok: &e[found]'
+      finished: '&eBitti!!! Yerleştirilen blok: &6[amount] &eTane blok! &6[time]&e süre içinde.'
+  reply:
+    help:
+      info: '&eSon mesaj gönderene cevap verme'
+      args: '[message]'
+    info:
+      noOneToReplay: '&eCevap verilecek kimse yok'
+  resetdbfields:
+    help:
+      info: '&eBelirli veritabanı sütunlarını varsayılan değere sıfırlar'
+      args: '[collumnName] (-w:[worldName]) (-p:[playerName])'
+    info:
+      feedback: '&7[amount] &etane oyuncu güncellendi'
+      nofield: '&cBu isimde bir alan bulamıyorum'
+  ride:
+    help:
+      info: '&eHedef varlığı sürmek'
+      args: ''
+      explanation:
+      - ' cmi.command.ride.[entityType] - varlığa binme erişimi için'
+    info:
+      riding: '&6[entityName] &6 varlığını sürüyorsun'
+      cantRide: '(&6[entityName]&c) varlığını süremezsin'
+      someOneElse: '&cBirisi zaten bu varlığı sürüyor'
+      ridingYou: '&6[playerDisplayName] &eseni sürüyor, Ondan kurtulmak için &6/shakeitoff 
+      &ekomutunu kullan'
+  rt:
+    help:
+      info: '&eRastgele konuma ışınlar'
+      args: (playerName) (worldName)
+    info:
+      posible: '&eOlası dünyalar: &6[worlds]'
+      tpLimit: '&eBu kadar hızlı ışınlanamazsınız, lütfen bekleyin ve &6[time] süre sonra tekrar deneyin'
+      IncorrectLocation: '&6Doğru ışınlanma konumu bulunamadı, lütfen bekleyin ve &6[time] &6süre sonra tekrar deneyin.'
+      teleported: '!actionbar!&6Whoosh!!!'
+      waiting: '!actionbar!&6 Uygun bir konum için kontrol ediliyor. Lütfen bekle'
+  sameip:
+    help:
+      info: '&eAynı ıp adresinden oturum açan oyuncuları listele'
+      args: ''
+    info:
+      list: '&e[place]. &6'
+      nothing: '&eGösterecek bir şey yok'
+  saturation:
+    help:
+      info: '&eOyuncu doygunluğunu ayarla'
+      args: (playerName) [amount]
+    info:
+      feedback: '&3[playerDisplayName]&e &eAdlı oyuncunun açlığını &3[amount]&e olmak üzere ayarladın
+        (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e &etarafından açlığın &3[amount]&e olmak üzere ayarlandı.'
+  saveall:
+    help:
+      info: '&eHer oyuncu envanterini kaydeder'
+      args: (daysRange/-online)
+      explanation:
+      - -online variable can be used to save only online player inventories
+    info:
+      saving: '[simbol] &2Kontrol edilen: &e[checked]&2  &e[total]&2 kayıt edilen: &e[saved]
+        &2Atlanan: &e[skipped] [simbol]'
+      saved: '&eKayıt bitti. Kaydedilen: &6[saved] &eSkipped: &6[skipped]'
+  saveditems:
+    help:
+      info: '&eKaydedilen öğeleri kaydetme veya yönetme'
+      args: '[save/get/remove/list] (savedItemName) (-t:playerName) (-a:amount) (-s)'
+    info:
+      info:
+      - '&f öğeyi almak için sol tıklayın'
+      - '&f öğeyi silmek için orta fare tıklaması'
+      got: '&6[name] &eAdlı eşya alındı'
+      give: '&6[name] &eAdlı eşya verildi'
+      removed: '&6[name] &e adlı eşya kaldırıldı'
+      saved: '&6[name] &eAdlı eşya kaldırıldı'
+      title: '&8[current]&7/&8[total]'
+  sc:
+    help:
+      info: '&eİmza kopyalama işlemini başlatır'
+      args: (playerName)
+    info:
+      punch: '&eMetni yapıştırmak için bir işarete basın veya işlemi iptal etmek için 
+      herhangi bir bloğa basın'
+      canceled: '&eİmza kopyalama işlemi iptal edildi'
+      updated: '&eKayıt güncellendi'
+  scan:
+    help:
+      info: '&eMevcut dünyadaki öğeleri tarar'
+      args: ''
+      explanation:
+      - '&6Alt komutlar:'
+      - '&e- &6stats &e- mevcut tarama istatistiklerini göster '
+      - '&e- &6pause &e- taramayı Duraklat '
+      - '- &6continue &e- Taramayı devam ettir '
+      - '- &6stop &e- taramayı Durdur '
+      - '- &6stopall &e- Bütün taramaları durdur '
+      - '- &6speed [amount] &e- geçerli tarama hızını ayarla '
+      - "- &6autospeed [true/false] &e- Autospeed'i kapalı veya açık olarak ayarlayın "
+      - '- &6messages [true/false] &e- mesaj çıktısını kapalı veya açık olarak ayarlayın'
+      - 'Değişkenler:'
+      - '&eid &6[id:data]'
+      - '&eq &6[minimum quantity]'
+      - '&er &6[range in chunks] &e-tüm Haritayı taramak için sayı yerine &6g kullanma seçeneği'
+      - '&en &6[item name]'
+      - '&el &6[item lore]'
+      - '&eh &6eldeki öğeden bilgi kullanır'
+      - '&ee &6[enchantname]'
+      - '&eelvl &6[enchantminlevel]'
+      - '&eoversize'
+      - '&epurge - bulunan öğeler kaldırıldı, bu özellik config dosyasında etkinleştirilmelidir'
+      - 'Örnek:'
+      - /scan id 52 r 30
+      - scan id diamond_block r g q 32
+    info:
+      loadingChunkInfo: '&eChunk bilgileri yükleniyor!'
+      startScanning: '&e&6[amount] tane kontrol edileck chunk bulundu. Başlıyor!'
+      paused: '&eTarama durdu, taramayı devam ettirmek için &6/cmi scan komudunu kullan.'
+      continuing: '&eTarama devam ediyor'
+      holdItem: '&eBu öğeyi elinizde tutmanız gerekiyor'
+      stoped: '&eDurdurucular taranıyor. Sonuçları  /cmi scan info komutuyla kontrol edebilirsiniz'
+      speedChange: '&eHız [amount] olarak değiştirildi'
+      autospeedChange: '&eOtomatik hız durumu [state] olarak değiştirildi'
+      messagesChange: '&eMesaj durumu [state] olmak üzere değiştirildi'
+      NoInfo: '&eBurada bir bilgi yok'
+      infoShow: '&6TPS: &3[tps] &6Kaldı &e[left] &6(&e[time]&6) &6Hız: &e[speed]
+        &6Bulunan: &e[found]'
+      Teleport: '&eIşınlanmak için bas'
+      scanList: '&2[number]. &e[place] &6[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
+      scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
+      edit: ' &e(Edit)'
+      total: "&eToplam [total] 'dan [current]/[until]' dan kontrol etme"
+      Stats:
+      - '&e************************************************************'
+      - '&e* &6Chunklar: &e[checked]/[total]'
+      - '&e* &6Tarama menzili: &e[range]'
+      - '&e* &6Tarama hızı: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6Dünya: &e[world]'
+      - '&e* &6Bulundu: &e[found]'
+      - '&e* &6Zaman: &e[time]'
+      - '&e* &6id: &e[id]'
+      - '&e* &6Qty: &e[qty] and up'
+      - '&e* &6İsim: &e[name]'
+      - '&e* &6Görev: &e[lore]'
+      - '&e************************************************************'
+  scavenge:
+    help:
+      info: '&eGeri dönüşüm öğesi ve büyüleri'
+      args: (playerName)
+    info:
+      enchantWorth: '&eBüyü değeri: &7[price]'
+      enchantFailChance: '&4Başarısız olma şansı: &7[chance]%'
+      enchantFailed: '&cBaşarısız. &7[enchant]&c adlı büyünun &7[level]. &cseviye başarısız olma şansı: &7[chance]%'
+      enchantLevelChance: '&cDaha düşük seviye şansı: &7[chance]%'
+      gotIngredients: '[itemList] Aldın'
+      gotIngredientsFormat: '&6[material]&7-&6[amount]'
+      itemBroke: '&cEşya [chance]% kırılma şansı ile kırıldı'
+      confirm: '&2Temizlemeyi Onayla.. Cost: &c[price]'
+      itemBreakChance: '&cEşya kırılma şansı: [chance]%'
+      itemBreakChanceExtra: '&c[durability]% Kırılma şansını [chance]% arttırır'
+      itemBreak: '&cÖğe tıklandığında kırılacak!'
+      ingredientReturnChance: '&7Madde dönüş şansı: [chance]%'
+      cantScavenge: '&cAlamıyorum'
+      insertItem: '&2Öğeyi yukarıdaki yuvaya yerleştirin'
+      scavengeCost: '&8Madde maliyetli: [cost]'
+      moreTitle: 'Yanlış miktar: [input]/[required]'
+      moreLore:
+      - '&bBu öğeden daha fazlasına ihtiyacınız var.'
+      - '&bEn az&e[amount] &bolmalıdır'
+      title: '&2Scavenger'
+  schedule:
+    help:
+      info: '&eTetikleme programı'
+      args: '[scheduleName]'
+  se:
+    help:
+      info: '&eMetin satırını imzala.'
+      args: (SignLine) [Text]
+      explanation:
+      - Use / n for additional line
+  search:
+    help:
+      info: '&eSearch items/enchants/fly/maxhp/gm/oversize modes and other stuff from
+        all users'
+      args: ''
+      explanation:
+      - '&eID &6[id:data] '
+      - '&eİsim &6[some_custom_itemname] '
+      - '&eBilgi &6[some_custom_lore] '
+      - '&eBüyü &6[lowest enchant level] '
+      - '&eİksir &6[lowest custom potion effect level] '
+      - '&eUçuş &6[true or false] '
+      - '&egamemode &6[0/1/2/3 or survival/creative/adventure/spectator] '
+      - '&emaksimum HP &6[lowest hp player have] '
+      - '&egod &6[true/false]'
+      - '&eBüyük boy'
+      - 'Örnek:'
+      - /search gm 1
+      - /search id 52
+      - /search lore Uber_lore
+    info:
+      started: '&Arama '
+      current: '&3[files] &edosyasından geçerli &3[amount] &etane dosya kontrol edildi'
+      nothingfound: '&eKriterlerinize göre hiçbir şey bulunamadı'
+      totalfound: '&eOlası &3[files] kontrol edilen kullanıcılardan tamamen &3[amount] bulundu'
+      location:
+        ender: '&3Ender'
+        inv: '&eEnvanter'
+        invS: '&eShulker Kutusu'
+        PlayerVault: '&eOyuncu kasası'
+      localsearch: '&e (L search)'
+      localsearchhover: |-
+        &eWill open inv from local files
+        &eThis will take longer
+      reglist: '&e[number]. &e[name]'
+      list: '&2[number]. [location] &6[name]'
+      listhover: '&eEnvanteri açmak için tıkla'
+  seen:
+    help:
+      info: '&eOyuncunun son görülmesini kontrol eder'
+      args: '[playerName/uuid]'
+    info:
+      feedback: '&6[playerDisplayName] &eAdlı oyuncu en son &6[time]&e süre önce &6[offon].'
+  select:
+    help:
+      info: '&eSeçilen alanı yönetir'
+      args: (pos1/pos2/shift/expand/contract/clear) (amount)
+  sell:
+    help:
+      info: '&eEnvanterden eşya satar'
+      args: (all/blocks/hand/same/gui)
+    info:
+      total: '&6[amount] &eMiktarda eşya satılarak &6[total] &ekazanıldı. Yeni bakiye: &6[balance]'
+      close: '&8Satmak istediğiniz öğeleri yerleştirin'
+      sellInfo: '&8Satıldığı fiyat: &2[price]'
+  sendall:
+    help:
+      info: '&eTüm çevrimiçi oyuncuları hedef sunucuya gönder'
+      args: '[serverName]'
+  server:
+    help:
+      info: '&eBungeecord sunucusuna bağlanır'
+      args: '[serverName] (playerName) (-f)'
+  serverlist:
+    help:
+      info: '&eSunucu listesini gösterir'
+      args: ''
+    info:
+      listOnline: '&7[place]. &2[serverName] &6[count]&7/&6[max]'
+      listOffline: '&7[place]. &c[serverName] &60&7/&60'
+  servertime:
+    help:
+      info: '&eSunucu saatini gösterir'
+      args: ''
+    info:
+      time: '&eSunucu saati: [time]'
+      format: MM/dd/YYYY HH:mm:ss
+      timeZone: '&eSaat dilimi adı: &6[name]'
+      timeZoneId: '&eSaat dilimi ID''si: &6[id]'
+      timeZoneOffset: '&eTime zone offset: &6[offset]'
+  setenchantworth:
+    help:
+      info: '&eBüyü değerini değiştirir'
+      args: ''
+  setfirstspawn:
+    help:
+      info: '&eİlk spawn noktasını ayarlar'
+      args: (playerName)
+    info:
+      feedback: '&eİlk spawn noktası (&6[world]&e,&6[x]&e,&6[y]&e,&6[z]&e) bölgesine kuruldu!'
+  sethome:
+    help:
+      info: '&eEv konumunu ayarlar'
+      args: (homeName) (playerName) (-p) (-l:worldName;x;y;z) (block/Material) (slotNumber)
+      explanation:
+      - cmi.command.sethome.unlimited
+      - -l yeni ev konumu için özel bir konum belirleyecektir, Bu cmi.command.sethome.customloc yetki düğümünü gerektirecektir
+    info:
+      set: '&eEvi adı &6[homeName]&e olmak üzere başarıyla oluşturdun!'
+      setBed: '&eYatağında yeniden doğma konumu oluşturuldu'
+      private: ' &2(private)'
+      noMore: '&cMaksimum sethome sınırına ulaştınız'
+      noOverwrite: '&cMevcut ev konumunun üzerine yazma izniniz yok. 
+      Eskisini kaldırın veya başka bir ev adı seçin.'
+      slotTaken: '!actionbar!&cEv slotu &7[homeName]&c için kullanılıyor , başka bir tane düşünün'
+      setIcon: '!actionbar:3!&7Ev simgesi &6[material] &7materyali olmak üzere ayarlandı'
+  setmotd:
+    help:
+      info: Set server motd
+      args: '[newMotd] (-s)'
+      explanation:
+      - use \n to make second line
+      - use _ to create space, if you need more than one use _ followed with space
+    info:
+      changed: '&emotd değiştirildi:'
+  setrt:
+    help:
+      info: '&eRastgele ışınlanma sınırlarını ayarla'
+      args: (worldName) (center:[x]:[z]) (min:[range]) (max:[range]) (square/circle) (enabled/disabled)
+    info:
+      list: '&6[place]. [world] [enabled] &7[centerX]:[centerZ] &e[maxDist]/[minDist]
+        [type]'
+  setspawn:
+    help:
+      info: '&eSpawn komut teleport noktasını ayarlar'
+      args: (playerName) (true/false) (-g:[groupName]) (-rng:[range]) (-w:world,world_nether) (loc:[world;x;y;z;yaw;pitch])
+      explanation:
+      - More info on command usage at http://www.zrips.net/cmi/commands/spawn/
+    info:
+      feedback: '&6Spawn noktası ([world],[x],[y],[z]) bölgesine kuruldu!'
+      group: ' &e([group])'
+      rng: ' &e(Rng: [rng])'
+      respawn: '&7Bu spawn noktasını varsayılan olarak respawn konumu olarak ayarlamak için tıklayın'
+  setwarp:
+    help:
+      info: '&eÇözgü konumunu ayarlar'
+      args: '[warpName] (reqPermission) (hand) (slot) (autoLore) (-g:[groupName])'
+      explanation:
+      - 'Örnekler:'
+      - /cmi setwarp spawn - simple warp to spawn
+      - /cmi setwarp spawn true - creates warp and will require cmi.command.warp.[warpname] permission node to use it
+      - /cmi setwarp spawn hand - creates warp will take item from hand to display in gui for this warp
+      - /cmi setwarp spawn 13 - creates warp and sets gui slot to be used in gui (1-54)
+      - /cmi setwarp spawn true hand 13 - creates warp with icon from hand, slot 13 and requires permission
+      - /cmi setwarp spawn true hand 13 false - same as previous, but doesn't generate lore
+    info:
+      newSet: '(&6[warp]&e) &eAdında yeni warp oluşturuldu'
+      noSet: '&cBu isimde bir warp zaten mevcut'
+      noMore: '&cİzin verilen maksimum warp limitine ulaştınız. ([max])'
+  setworth:
+    help:
+      info: '&eÖğenin değerini değiştir'
+      args: (itemname) -s:(sellPrice)
+    info:
+      setSell: '&eEşyanın satış fiyatını ayarla &7[amount]'
+      setBuy: '&eÜrün satın alma fiyatını ayarla &7[amount]'
+      notInUse: '&eEsas olarak olası patlayıcıları tespit etmek için kullanılır'
+      sellPrice: '&fSatış fiyatı: &e[amount]'
+      buyPrice: '&fAlış fiyatı: &2[amount]'
+      exploit: '&4Olası patlayıcı!'
+      ingridient: '&2İçindekiler'
+      ingridients: '&7[ingridient]&f(&7[amount]&f) = &e[price]'
+      notSet: '&eFiyat ayarlanmadı'
+      notSetBuy: '&7Alış fiyatı ayarlanmadı'
+      result: '&2İçine &7[result]&f(&7[amount]&f) miktar oluşturuldu'
+      ingridientsPrice: '&cMadde fiyatı: &7[price]'
+      resultPrice: '&cBu fiyata satılabilir: &7[price]'
+      explanation: '&2Satın alma fiyatı sadece Olası patlamaları tespit etmek için kullanılır'
+  shadowmute:
+    help:
+      info: '&eBir oyuncuyu susturulduğunu söylemeden susturmak'
+      args: '[playerName] (time) (-s) (reason)'
+  shakeitoff:
+    help:
+      info: '&eHerhangi bir varlığı üstünden indirir'
+      args: ''
+    info:
+      shaked: '&eVarlığını üstünden attın: &6[entity]'
+      nothing: '&eÜstünden atılacak bir şey yok'
+  shoot:
+    help:
+      info: '&eShoot projectile'
+      args: (playerName) (-t:targetPlayer) (type) (speed)
+  signspy:
+    help:
+      info: '&eCasus işaretini aç/kapat'
+      args: (playerName)
+      explanation:
+      - cmi.command.signspy.hide - Hides created signs from signspy
+    info:
+      text: '&5Sign&2Spy&7[&8[senderDisplayName]&7]&7: &f[text]'
+      toggled: '&eCasus işareti durumu &6[state] &eolarak ayarlandı'
+  silence:
+    help:
+      info: '&eGenel iletileri engeller'
+      args: ''
+      explanation:
+      - cmi.command.silence.bypass - to bypass silence
+    info:
+      enabled: '&eSessizlik modu &2aktif'
+      disabled: '&eSessizlik modu &cdevre dışı'
+      inMode: '&eOyuncu sessizlik modunda'
+  silentchest:
+    help:
+      info: '&eSessiz sandığı açar/kapatır'
+      args: ''
+      explanation:
+      - '&eEtrafınızdaki oyuncular sandık açarken sandık açma animasyonunu görmeyeceksiniz'
+      - '&eBu özelliğin çalışması için Protocollib gerekli.'
+    info:
+      feedback: '&eSessiz sandık modunu &3[offon] olmak üzere değiştirdiniz.'
+      onOpen: '&eSandık açılıyor, sessizce.'
+  sit:
+    help:
+      info: '&ePozisyonunuza oturun'
+      args: ''
+    info:
+      onSit: '!actionbar!&eŞuan oturuyorsun'
+      onStandUp: '!actionbar!&eArtık oturmuyorsun'
+      accupied: '!actionbar!&cBirisi zaten burada oturuyor!'
+  skin:
+    help:
+      info: '&eOyuncuların kostümünü değiştirir'
+      args: '[skinName/off/update] (playerName) (-s)'
+    info:
+      changed: '&eKostümün &6[skinOwner] &e Kostümüne değişti'
+      failed: '&eKostüm uygulanırken hata'
+      resetSteve: '&eKostüm kaldırıldı'
+      reset: '&eVarsayılan kostüm uygulandı'
+      update: '&eKostüm güncellendi'
+  smite:
+    help:
+      info: '&eYere veya oyuncuya yıldırım ile saldır'
+      args: (playerName) (-s)
+    info:
+      gotSmited: '&eVuruldun!'
+  socialspy:
+    help:
+      info: '&eSocialspy açar/kapatır'
+      args: (playerName)
+    info:
+      msg: '&2Spy&7[&8[senderDisplayName] &7-> &8[playerDisplayName]&7]&f [message]'
+      custom: '&2Spy&8[senderDisplayName] &7-> &4|&8[place]&4|&f [message]'
+      toggled: '&eSocialspy durumu &6[state] &eolmak üzere ayarlandı'
+  solve:
+    help:
+      info: '&eDenklemi çözer'
+      args: '[equation]'
+    info:
+      result: '&7Sonuç: &e[res]'
+      incorrect: '&cYanlış giriş: &e[input]'
+  sound:
+    help:
+      info: '&eHedef konumda ses çalma'
+      args: '[sound] (-p:[pitch]) (-v:[volume]) (playerName/-all) (world) (x) (y)
+        (z) (-s)'
+    info:
+      playing: "[world] [x]:[y]:[z] konumunda &6[sound] &esesi çalıyor \n&eAlan: &6[pitch]\
+        \ &eSes: &6[volume]"
+      playingMultiple: "&6[amount] &etane oyuncu için &6[sound] &esesi çalınıyor  \n&eAlan:\
+        \ &6[pitch] &eSes: &6[volume]"
+  spawn:
+    help:
+      info: '&eSpawn konumuna geri ışınlar'
+      args: (playerName)
+    info:
+      notset: '&4Spawn noktası kurulmamış!'
+      feedback: '&6Spawna ışınlandın!'
+  spawner:
+    help:
+      info: '&eSpawner kurar'
+      args: '[EntityType]'
+    info:
+      feedback: '&eSpawner &6[type] &eolarak ayarlandı'
+      wrongEntityIdName: '&cYanlış varlık ismi veya ID''si'
+      cantSet: '&cBu tür spawner kuramazsın'
+      cantDetect: '&cSpawner bloğunu tespit edemezsin'
+      pickOne: '&8Spawner türü seç'
+  spawnereditor:
+    help:
+      info: '&eSpawner düzenle'
+      args: ''
+  spawnmob:
+    help:
+      info: '&eKonumuna bir varlık spawnlar'
+      args: '[EntityType]'
+      explanation:
+      - ' &e- İlk argüman her zaman ana varlıkların adıdır'
+      - ' &e- Varlık durumlarını tanımlayabilirsiniz: baby, adult, dumb, tamed, n-[name],
+        upwards, glow, skull-[name], helmet-[itemname], chest-[itemname], legs-[itemname],
+        boots-[itemname], mhand-[itemname], ohand-[itemname], effect-levitation/10/1-speed/10/2.
+        /n Örnek: horse:baby:tamed:n-Horsy, zombie:skull-Zrips:n-AngryZombie:mhand-Diamond_Sword'
+      - ' &e- Bazı varlıkların özel değişkenleri vardır: '
+      - '    &6Sheep &e- white, brown, red, rainbow and so on... &6primed_tnt &e-
+        [ticks], incendiary'
+      - '    &6Horse &e- white, chestnut, creamy, darkbrown, gray, black'
+      - '    &6Ocelot &e- red, siamese, wild, black &6experience_orb &e- [number]'
+      - '    &6Skeleton &e- wither, &6Creeper &e- charged &6Wolf &e- angry'
+      - '    &6Zombie &e- villager, blacksmith, butcher, farmer, priest, librarian'
+      - '    &6Villager &e- blacksmith, butcher, farmer, priest, librarian'
+      - '    &6Slime, MagmaCube &e- size by giving number from 1. slime:3'
+      - '    &6ArmorStands &e- nogravity, noplate, arms, noarms, small'
+      - '    &6ShulkerBullet &e- [target], bounce'
+      - ' &e- Ekstra değişkenler:'
+      - '     &6ps:zombie:priest:baby-1 &e- passanger with amount'
+      - '     &6hp:20 &e- health'
+      - '     &6sp:3 &e- spreads randomly entities in range'
+      - '     &6s:4 &e- entities speed'
+      - '     &6t:[playername] &e- target which one entities will atack'
+      - '     &6q:10 &e- amount you want to spawn'
+      - '     &6[playername] &e- spawns entities at players location'
+      - '     &6loc:123/13.0/-15/World &e- spawn location. World name is optional
+        if used as player'
+      - 'Example: /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Chick_on_Sheep
+        q:10 sp:10 hp:50 s:2'
+    info:
+      wrongEntityName: '&eYanlış varlık adı'
+      wrongPlayerName: '&eYanlış oyuncu adı'
+      spawnedEntities: '&6[entities] &evarlığını spawnladın '
+      spawnedPasangers: '&eand &6[passengers] &epassengers'
+      nothingSpawned: '&eHiçbir varlık spawnlanmadı'
+      cantSpawn: '&eBu varlık türünden spawnlayamazsın'
+  staffmsg:
+    help:
+      info: '&eYetkili kanalına mesaj gönderir'
+      args: '[message/toggle/on/off]'
+    info:
+      message: '&2[Staff]&4[&7[senderDisplayName]&4]&r&c [message]'
+      toggledOn: '&eKalıcı bir yetkili sohbeti başlatıldı. Artık genel sohbette mesaj yazabilirsiniz.'
+      toggledOff: '&eKalıcı personel sohbetini kapattı'
+  stats:
+    help:
+      info: '&eOyuncu istatistiklerini kontrol edin'
+      args: (playerName)
+    info:
+      distanceCM: '&e[value]&6cm'
+      distanceM: '&e[value]&6m'
+      distanceKm: '&e[value]&6km'
+      list: '&e[name]:&6[amount]'
+      listCover: '&e([list]&e)'
+      Quit: '&eOyundan Çıktı: &6[value]'
+      PlayTime: '&eSüre oynadı: &6[value]'
+      SneakTime: '&eSneak time: &6[value]'
+      Sleep: '&eYatakta uyudu: &6[value]'
+      Joined: '&eKatıldığı tarih: &6[time]'
+      Jumps: '&eZıplama sayısı: &6[value]'
+      SinceDeath: '&eSon ölümden beri: &6[value]'
+      Deaths: '&eÖlüm sayısı: &6[value]'
+      DeathsByMonsters: '&eCanavarlar tarafından öldürüldü: &6[value]'
+      TotalDistance: '&eToplam gezdiği mesafe: &6[value]'
+      Walk: '&eYürüdü: &6[value]'
+      Crouch: '&eToplam eğilme sayısı: &6[value]'
+      Sprint: '&eToplam koşu: &6[value]'
+      Swim: '&eToplam yüzme: &6[value]'
+      Fall: '&eDüşüş sayısı: &6[value]'
+      Climb: '&eTırmanma sayısı: &6[value]'
+      Fly: '&eUçuş: &6[value]'
+      Dive: '&eDalış: &6[value]'
+      Minecart: '&eVagon: &6[value]'
+      Boat: '&eBot: &6[value]'
+      Pig: '&eDomuz: &6[value]'
+      Horse: '&eAt: &6[value]'
+      Elytra: '&eElytra: &6[value]'
+      Damage: '&eVerilen hasar, Alınan hasar &6[dealt] [taken]'
+      DamageDealt: '&eAnlaşmalar: &6[value]'
+      DamageTaken: '&eAlındı: &6[value]'
+      JUMP: '&eZıplamalar: &6[value]'
+      Kills: '&eÖldürmeler &6'
+      KillsMob: '&eÖldürdüğü mob sayısı: &6[value]'
+      KillsPlayer: ' &eÖldürdüğü oyuncu sayısı: &6[value]'
+      Blocks: '&eBlocklar &6'
+      BlocksMined: '&eKazdığı blok sayısı: &6[value]'
+      BlocksPlaced: ' &eKoyduğu blok sayısı: &6[value]'
+      Items: '&eEşyalar &6'
+      ItemsUsed: '&eKullandığı eşyalar:&6[value]'
+      ItemsDrop: '&eAttığı eşyalar:&6[value]'
+      ItemsPicked: '&eAldığı eşyalar:&6[value]'
+      ItemsBroken: '&eKırdığı eşyalar:&6[value]'
+      ItemsCrafted: ' &eYaptığı eşyalar:&6[value]'
+      ItemsEnchanted: ' &eBüyülediği eşyalar:&6[value]'
+      Opened: '&eAçtığı &6[list]'
+      OpenChest: '&eAçtığı sandık sayısı:&6[value]'
+      OpenEnder: '&eAçtığı Ender sandık sayısı:&6[value]'
+      OpenShulker: '&eAçtığı ShulkerBox sayısı:&6[value]'
+      Interacted: '&eEtkileşimli &6[list]'
+      InteractBeacon: '&eFener ile etkileşim sayısı:&6[value]'
+      InteractBrewingStand: '&eİksir standı ile etkileşim sayısı:&6[value]'
+      InteractCraftTable: '&eÇalışma masası ile etkileşim sayısı:&6[value]'
+      InteractFurnace: '&eFırın ile etkileşim sayısı:&6[value]'
+      Inspected: '&eİncelemeler &6[list]'
+      InspectDispenser: '&eFırlatıcı incelemesi:&6[value]'
+      InspectDropper: '&eBırakıcı incelemesi:&6[value]'
+      InspectHopper: '&eHuni incelemesi:&6[value]'
+      Statistics:
+        LEAVE_GAME: Game quit
+        PLAY_ONE_TICK: Play time
+        TIME_SINCE_DEATH: From last death
+        TIME_SINCE_REST: From last rest
+        SNEAK_TIME: Sneak time
+        ACOUNT_AGE: Account age
+        TRAVEL: Travel
+        WALK_ONE_CM: Walk
+        CROUCH_ONE_CM: Sneak
+        SPRINT_ONE_CM: Sprint
+        SWIM_ONE_CM: Swim
+        FALL_ONE_CM: Fall
+        CLIMB_ONE_CM: Climb
+        FLY_ONE_CM: Fly
+        DIVE_ONE_CM: Dive
+        WALK_UNDER_WATER_ONE_CM: Walk under water
+        WALK_ON_WATER_ONE_CM: Walk on water
+        MINECART_ONE_CM: Minecart travel
+        BOAT_ONE_CM: Boat travel
+        PIG_ONE_CM: Pig travel
+        HORSE_ONE_CM: Horse travel
+        AVIATE_ONE_CM: Elytra travel
+        JUMP: Jump
+        DAMAGE_DEALT: Damage dealt
+        DAMAGE_TAKEN: Damage taken
+        DAMAGE_DEALT_ABSORBED: Damage dealt absorbed
+        DAMAGE_DEALT_RESISTED: Damage dealt resisted
+        DAMAGE_BLOCKED_BY_SHIELD: Damage blocked by shield
+        DAMAGE_ABSORBED: Damage absorbed
+        DAMAGE_RESISTED: Damage resisted
+        DEATHS: Deaths
+        ENTITY_KILLED_BY: Killed by
+        MOB_KILLS: Mob kills
+        PLAYER_KILLS: Player kills
+        ITEM_ENCHANTED: Item enchanted
+        ANIMALS_BRED: Animals bred
+        FISH_CAUGHT: Fish caught
+        TALKED_TO_VILLAGER: Talked to villager
+        TRADED_WITH_VILLAGER: Traded with villager
+        CAKE_SLICES_EATEN: Cake slices eaten
+        CAULDRON_FILLED: Cauldron filled
+        CAULDRON_USED: Couldron used
+        ARMOR_CLEANED: Armor cleaned
+        BANNER_CLEANED: Banner cleaned
+        BREWINGSTAND_INTERACTION: Brewing stand interactions
+        BEACON_INTERACTION: Beacon interactions
+        CRAFTING_TABLE_INTERACTION: Crafting table interactions
+        FURNACE_INTERACTION: Furnace interactions
+        DISPENSER_INSPECTED: Dispenser inspected
+        DROPPER_INSPECTED: Dropper inspected
+        HOPPER_INSPECTED: Hopper inspected
+        CHEST_OPENED: Chest open
+        TRAPPED_CHEST_TRIGGERED: Trapped chest triggered
+        ENDERCHEST_OPENED: Ender chest opened
+        NOTEBLOCK_PLAYED: Noteblock played
+        NOTEBLOCK_TUNED: Noteblock tuned
+        FLOWER_POTTED: Flower potted
+        RECORD_PLAYED: Record played
+        SLEEP_IN_BED: Slept in bed
+        SHULKER_BOX_OPENED: Shulker box opened
+        CLEAN_SHULKER_BOX: Shulker box cleaned
+        DROP: Item dropped
+        MINE_BLOCK: Blocks mined
+        PLACE_BLOCK: Blocks placed
+        BREAK_ITEM: Item breaks
+        CRAFT_ITEM: Item crafts
+        USE_ITEM: Items used
+        PICKUP: Item pickups
+        KILL_ENTITY: Monster kills
+  statsedit:
+    help:
+      info: '&eOyuncu istatistiklerini Düzenle'
+      args: (playerName) [add/take/set] [statistic] (subType) [amount] (-s)
+    info:
+      cantSet: '&cBu tür istatistikler ayarlanamaz'
+      reqSubType: '&cBu istatistik alt türü olan&6[type] &ctürünü gerektirir'
+      set: '&6[statistic] belirtilen istatisik &6[old] &eDeğerinden &6[new] &edeğerine değiştirildi  &e(&6[extra]&e)'
+  status:
+    help:
+      info: '&eSunucu istatistiğini gösterir'
+      args: ''
+    info:
+      Platform: ' &ePlatform: &6[platform] &e(&6[os]&e) &eÇalışan iş parçacıkları: &6[threads]'
+      Tps: ' &eTPS: &6[tps]'
+      CpuUsage: ' &eCpu Kullanımı: &6[cpuusage]% &e(&6[cores] cores&e)'
+      Uptime:
+        main: ' &eÇalışma süresi: '
+        weeks: '&e[weeks] &6hafta '
+        days: '&e[days] &6gün '
+        hours: '&e[hours] &6saat '
+        mins: '&e[mins] &6dakika '
+        secs: '&e[secs] &6saniye '
+      MemoryUsage: ' &eHafıza kullanımı: &6[percent]% &e(&6[current]&e/&6[max] MB&e)'
+      MemoryUsageHover: "&fBedava: &7[free] \n&fAyrılan: &7[allocated] \n&fMaksimum: &7[max]\
+        \ \n&fTotal: &7[total]"
+      Java: ' &eJava versiyonu: &6[mainV].[majorV].[minorV]&e(&6[update]&e) İnşa edilen: &6[build]'
+      DiskUsage: ' &eDisk Kullanımı: &6[percent]% &e(&6[current]&e/&6[max] GB&e)'
+      Worlds: '&e [number]. &6[world] &e[chunks] Chunklar &6[entities] Varlıklar &e[tiles]
+        bloklar &6[players] Oyuncular'
+  sudo:
+    help:
+      info: '&eBaşka bir oyuncuyu komutu yerine getirmeye zorlayın'
+      args: '[playerName] (command/c:[text])'
+      explanation:
+      - cmi.command.sudo.bypass - protects player from being 'trolled'
+    info:
+      performed: '&6[command]&e komutu &6[playerDisplayName] &eadlı oyuncu tarafından kullanıldı'
+  suicide:
+    help:
+      info: '&eKendini öldürür'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&eGörüşürüz acımasız dünya...'
+      message: '&6[playerDisplayName] &eAdlı oyuncu onların canını aldı'
+  switchplayerdata:
+    help:
+      info: '&eTüm verileri bir oyuncudan diğerine geçirir'
+      args: '[sourcePlayerName/uuid] [targetPlayerName/uuid]'
+      explanation:
+      - Use UUID for more accurate transfers, especially when usernames matching each other
+    info:
+      same: '&eSağlanan hedef ve kaynaklar zaten aynı'
+      transferred: '&6[sourceName] &everisi &6[Name] ile değişti'
+      failed: '&cOyuncunun verisi değişirken hata meydana geldi'
+  tablistupdate:
+    help:
+      info: '&eTüm veya belirli bir oyuncu için tablist güncellemesini zorla'
+      args: (playerName)
+    info:
+      updated: '&eTablist güncellendi'
+  tagtoggle:
+    help:
+      info: '&eTag komutlarını aç/kapat'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&eTag komutları devre dışı'
+      feedbackEnabled: '&eTag komutları etkin'
+  tempban:
+    help:
+      info: '&eOyuncuyu sürekli yasaklar'
+      args: '[playerName] [timeValue] (reason) (-s)'
+      explanation:
+      - Ban max range depends on cmi.command.tempban.max.[amount]
+      - cmi.command.tempban.max.unlimited - allows to ban for as much as you want
+      - In case player doesn't have any, 60 sec will be max value
+      - 'Örnek: '
+      - /cmi tempban zrips 5m For swearing
+    info:
+      messageToAll: '&6[playerDisplayName] &eAdlı oyuncu &6[senderDisplayName] tarafından süreli yasaklandı
+        &esüre: &6[time] &eSebep: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &eAdlı oyuncu &6[senderDisplayName] tarafından süreli yasaklandı
+        &esüre: &6[time] &eSebep: &6[reason]'
+      time: '&eYasaklanman &6[time] süre sonra kaldırılacak'
+      badTime: '&cZaman yanlış tanımlandı'
+      badTimeRanges: '&cBirini [time] &6([seconds]) süreden uzun yasaklayamazsın'
+  tempipban:
+    help:
+      info: '&eSüreli IP yasaklaması'
+      args: '[ip/playerName] [time] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - to bypass ban
+    info:
+      message: '&cYasak çekici konuştu!'
+      reason: '&6Sebep: &e[reason]'
+      defaultReason: '&eSunucu kurallarını ihlal etme'
+      messageToAll: '&6[playerDisplayName] &7Adlı oyuncu &7[time]&7süre boyunca &6[senderDisplayName]&7 tarafından IP yasaklandı:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &7Adlı oyuncu &7[time]&7 süresi boyunca IP yasaklandı:
+        &6[reason]'
+  tfly:
+    help:
+      info: '&eRelog veya zaman bitene kadar geçici oyuncular fly modunu ayarlayın'
+      args: (playerName) (timeInSec) (-s)
+      explanation:
+      - 'Examples:'
+      - tfly Zrips 30 - fly mode for next 30 sec
+      - tfly Zrips +30 - adds fly mode for an additional 30 sec
+      - tfly Zrips 0 - fly mode until relog
+      - tfly Zrips - check if player have tfly mode enabled and until when
+    info:
+      setTimedFly: '&6[playerDisplayName]&e önümüzdeki [time] süre boyunca geçici uçma hakkı verildi'
+      addTimedFly: '&6[playerDisplayName]&e oyuncular için &e([time]) süre boyunca İlave uçuş hakkı eklediniz [addTime] '
+      setUntilRelogFly: '&6[playerDisplayName]&e Oyunculara tekrardan giriş yapana kadar uçma hakkı verdiniz.'
+      targetTimedEnabled: '&eUçuş hakkın önümüzdeki [time] süre boyunca &3[senderDisplayName]&e tarafından eklendi.'
+      targetTimedEnabledAdd: '&eUçuş süreniz şu şekilde artırıldı [addTime] ([time]).'
+      targetUntilRelogEnabled: '&etekrardan giriş yapana kadar uçuş süreniz &3[senderDisplayName]&e tarafından etkin '
+      setFor: '&eBir sonraki için geçici Uçuş modu etkinleştirildi [time]'
+      setForRelog: '&eTekrar giriş yapana kadar geçici Uçuş modu etkinleştirildi'
+      notSet: '&eGeçici Uçuş modu oyuncu için etkin değil'
+      willBeDisabled: '&eUçuş modu [time] süre sonra devre dışı bırakılacaktır'
+      disabled: '&eGeçici uçuş modu devre dışı bırakıldı!'
+  tgod:
+    help:
+      info: '&eTekrardan giriş veya zaman bitene kadar oyuncuları geçici olarak God modunu ayarlayın'
+      args: '[playerName] &3(timeInSec) (-s)'
+      explanation:
+      - 'Examples:'
+      - tgod Zrips 30 - god mode for next 30 sec
+      - tgod Zrips 0 - god mode until relog
+      - tgod Zrips - check how long a player has tgod for, if at all.
+    info:
+      setTimedGod: '&eAyarladığın &6[playerDisplayName]&e bir sonraki için geçici tanrı:[time] bekleyin'
+      setUntilRelogGod: '&eAyarladığın: &6[playerDisplayName]&e yeniden yüklenene kadar geçici tanrı.'
+      targetTimedEnabled: '&eGeçici tanrı modunu etkinleştirdiniz &3[gönderenin EkranAdı]&e
+        bir sonraki için [time] zaman geçicek.'
+      targetUntilRelogEnabled: '&eGeçici tanrı modunu etkinleştirdiniz&3[gönderenin EkranAdı]&e
+        yeniden kayıt yapana kadar'
+      setFor: '&eBir dahaki sefere geçici tanrı modu etkinleştirildi [time] zamanı içinde'
+      setForRelog: '&eYeniden loglara gelene kadar geçici tanrı modu etkin'
+      notSet: '&eOyuncu için geçici tanrı modu etkinleştirilmedi'
+      willBeDisabled: '&eTanrı modu devre dışı bırakılacak [time] zaman içinde'
+      disabled: '&eGeçici tanrı modu devre dışı bırakıldı!'
+  time:
+    help:
+      info: '&eSunucu süresini kontrol eder'
+      args: (time) (world) (alter [value]) (-smooth)
+      explanation:
+      - 'Example:'
+      - /day
+      - /night
+      - /time 13:00:00
+      - /time 1pm
+      - /time 13
+      - /time 7000ticks
+      - /time 1pm Lt_Craft
+      - /time 1pm all
+      - /time add 0:30
+      - /time take 0:30
+      - /time freeze
+      - /time unfreeze
+      - /time realtime
+      - /time autorealtime start/stop
+    info:
+      check: '&eZaman: &6[24h] &eveya &6[12h] &eveya &6[ticks]tik &edünyası için ayarladı: &6[world]'
+      frozen: ' &c(-)'
+      frozenTime: '&eDurdurulmuş zaman'
+      real: ' &6(+)'
+      realTime: '&eOtomatik gerçek zamanlı'
+      autorealstart: '&eOtomatik zaman ayarı adlı dünya için: &6[world] &ebaşlatıldı'
+      autorealstop: '&eOtomatik zaman ayarı adlı dünya için: &6[world] &edurduruldu'
+      gotfrozen: '&6[world] &eadlı dünyanın zamanı durduruldu'
+      gotunfrozen: '&6[world] &eadlı dünyada zaman durdurulamadı'
+      cantset: '&eBu değere zaman ayarlanamaz'
+      setto: '&eZaman: &6[24h] &eveya &6[12h] &eveya &6[ticks]tik &edünyası için ayarladı: &6[world]'
+      am: '&eAM'
+      pm: '&ePM'
+  titlemsg:
+    help:
+      info: '&eOyuncuya başlık mesajını gönder'
+      args: '[playerName/all] [title \n subtitle] (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])'
+    info:
+      message: '&f[mesajın]'
+  toast:
+    help:
+      info: '&eOyunculara başlık mesajı gönder'
+      args: '[playerName/all] (-t:[advType]) (-icon:[material]) [message]'
+    info:
+      message: '&f[mesajın]'
+  togglecompass:
+    help:
+      info: '&ePusula baş çubuğunu göster veya gizle'
+      args: ''
+    info:
+      ToggleOff: '&eBoss çubuğu pusulası devre dışı bırakıldı'
+      ToggleOn: '&6Boss çubuğu pusulası aktifleştirildi'
+  toggleshiftedit:
+    help:
+      info: '&eİşaret kaydırma düzenlemesini açar / kapatır'
+      args: ''
+    info:
+      feedbackDisabled: '&eDevre dışı bırakılan vardiya işareti düzenleme'
+      feedbackEnabled: '&eVardiya işareti düzenleme etkinleştirildi'
+  toggletotem:
+    help:
+      info: '&eTotem soğuma çubuğunu göster veya gizle'
+      args: ''
+    info:
+      toggle: '&eTotem soğuma çubuğu geçiş durumu: ([state]&e)'
+  top:
+    help:
+      info: '&eBulunduğunuz yerdeki en yüksek noktaya ışınlanın'
+      args: '[playerName] (-s)'
+  tp:
+    help:
+      info: '&eOyuncuların bulunduğu yere ışınlanır'
+      args: '[playerName] (playerName)'
+    info:
+      feedback: '&eIşınlandığın alan: &3[sourceDisplayName] &ekonum kapalı: (&3[offon]&e).'
+      bad:
+        msg: '&cIşınlanma konumu güvenli değil. [reason]'
+        extraMsg: '&eKomut: &6/tpbypass &ebunu atlatmak için. Zamanın var: [time]'
+        lava: '&cLavlı Alan'
+        void: '&cGeçersiz Alan'
+        suffocation: '&cBoğulabilme Tehlikesi'
+        unknown: '&cBilinmeyen'
+        plugin: '&c3. taraf yazılım algılandı'
+      notAllowed: '&cBu oyuncuya ışınlanamazsın'
+      prevented: '&cIşınlanma başka bir eklenti tarafından engellendi'
+  tpa:
+    help:
+      info: '&eOyuncuya onlara ışınlanıp ışınlanamayacağınızı sorun'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      requestSent: '&eİstek gönderildi &6[playerDisplayName]'
+      gotRequest: '&6[senderDisplayName] &esana ışınlanma istiyor!'
+      time: '&eBu isteği kabul etmek için &6[time]&ezamanın var'
+      canceled: '&eIşınlanma isteği iptal edildi'
+      # This line cant contain anything else then default variables ([message][cancelButton]), you can switch them around to your liking tho
+      senderFeedbackMessageFormat: '[message][cancelButton]'
+      alreadyRequesting: '&eZaten bunu istiyorsun &6[playerDisplayName]
+        &eışınlanma isteğinizi kabul ediyor'
+      banned: '&eIşınlanmak istediğin yere ışınlanamazsın &6[playerDisplayName]
+        &eışınlanmak için &6[time] süre boyunca bekleyiniz.'
+  tpaall:
+    help:
+      info: '&eTüm çevrimiçi oyunculardan bulunduğunuz yere ışınlanmalarını isteyin'
+      args: ''
+    info:
+      requestSent: '&eTüm oyunculara istek gönderildi'
+  tpaccept:
+    help:
+      info: '&eIşınlanma isteğini kabul edin'
+      args: (playerName)
+    info:
+      noRequest: '&eIşınlanma isteği yok'
+      NotOnline: '&eOyuncu artık çevrimiçi değil'
+      accepted: '&6[playerDisplayName] &ekabul edilen istek'
+      youAccepted: '&eIşınlanma kabul edildi'
+  tpahere:
+    help:
+      info: '&eOyuncudan bulunduğunuz yere ışınlanmayı kabul etmesini ister'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      gotRequest: '&6[senderDisplayName] &eonlara ışınlanma istiyor!'
+      accept: '&6Işınlanma talebini kabul etmek için tıklayın!'
+  tpall:
+    help:
+      info: '&eTüm çevrimiçi oyuncuları konuma ışınlar'
+      args: (playerName)
+    info:
+      feedback: '&eIşınlandığın dünya ve kordinatlar: ([world],[x],[y],[z]) to &3[playerDisplayName]
+        &elocation.'
+  tpallworld:
+    help:
+      info: '&eBelirli bir dünyadan TÜM oyuncuları ışınlayın'
+      args: '[worldName] (worldName;x;y;z(;yaw;pitch)) (-a)'
+      explanation:
+      - -a variable will teleport everyone who are in no longer existing world to target location
+    info:
+      started: '&eIşınlamalar başladı!'
+      current: '&eToplam ışınlanan miktar: &7[amount] &eve &7[files] &ekontrol edilmiş dosyalar'
+      total: '&eToplam ışınlanan miktar: &7[amount] &edışında &7[files] &ekullanıcıların dosyaları kontrol edildi'
+      WorldNotFound: '&eVerilen dünya adı: &7[name] &eisim yüklenmedi. Verilen ismin doğru olduğundan emin olun.
+        Olduğu gibi kullanacağız.'
+  tpbypass:
+    help:
+      info: '&eGüvenli olmayan yere ışınlanmayı atlayın'
+      args: (playername)
+    info:
+      noSavedTp: '&cKaydedilmiş kötü ışınlanma konumu yok'
+      feedback: '&eGüvenli olmayan bir yere ışınlandı'
+  tpdeny:
+    help:
+      info: '&eIşınlanma isteğini reddet'
+      args: (playerName)
+    info:
+      noRequest: '&eEtkin ışınlanma isteğiniz yok!'
+      youDenied: '&eIşınlanma talebiniz reddedildi!'
+      denied: '&e[senderDisplayName] &eisteğinizi reddetti.'
+  tphere:
+    help:
+      info: '&eOynatıcıyı konumunuza ışınlar'
+      args: '[playerName] (playerName)'
+    info:
+      feedback:
+        offline: '&eAyarladığın: ([world],[x],[y],[z]) spawnlanma yeri &3[playerDisplayName]&e
+          (&3[offon]&e).'
+        online: '&eIşınladın &6[playerDisplayName] &ebulunduğunuz yere'
+        player: '&eIşınlandın &6[sourceDisplayName] &ealanına'
+      notAllowed: '&eBu oyuncuyu ışınlayamıyorum'
+  tpo:
+    help:
+      info: '&eOyuncuların bulunduğu yere zorla ışınla'
+      args: '[playerName] (playerName)'
+  tpohere:
+    help:
+      info: '&eOyuncuyu zorla bulunduğunuz yere ışınlayın'
+      args: '[playerName] (playerName)'
+  tpopos:
+    help:
+      info: '&eKuvvetle konuma ışınla'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&eIşınlandığın kordinatlar: ([world],[x],[y],[z]).'
+      feedbackOther: '&e[playerDisplayName] ışınlandı ([world],[x],[y],[z]).'
+  tppos:
+    help:
+      info: '&eKonuma ışınla'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&eIşınlandın ([world],[x],[y],[z]).'
+      feedbackOther: '&e[playerDisplayName] ışınlandı ([world],[x],[y],[z]).'
+  tps:
+    help:
+      info: '&eSunucuların tps durumunu kontrol edin'
+      args: (-spikes)
+    info:
+      tps: '&eTPS: '
+      # Custom tps range can be defined and you can have as many of them as you want
+      tpsList: '&e[3] [10] [30] [60] [600]'
+      explanation: '&7Bir blok &e60 &7saniye. Max &e600 &7saniye'
+      minMax: '&7Max: [max] &7Min: [min]'
+      hover:
+      - '[tpscolor][tps]'
+      - '&7[time]'
+  tptoggle:
+    help:
+      info: '&eOyuncuya ışınlanma erişimini aç / kapat'
+      args: (playerName)
+    info:
+      feedbackNoTp: '&eIşınlanmayı engelledi'
+      feedbackTp: '&eİzin verilen ışınlanma'
+  tree:
+    help:
+      info: '&eBaktığınız yere ağaç dikin'
+      args: (TreeType) (-p:[playerName])
+    info:
+      feedback: '&6[tree] &eoluşturuldu.'
+      cantSpawn: '&cOluşturulmuyor (&e[tree]&c) bu blokta.'
+  unban:
+    help:
+      info: '&eOyuncunun yasaklanmasını veya IP yasaklanmasını kaldır'
+      args: '[playerName/ip] (-s)'
+    info:
+      unBaned: '!Duyuru!&6[playerDisplayName] &eYasaklanması kaldırıldı'
+      unBanedSilent: '&7[&8Silent&7]&6[playerDisplayName] &eYasaklanması kaldırıldı'
+      notBanned: '&6[playerDisplayName] &eYasaklanmadı'
+  unbreakable:
+    help:
+      info: '&eEşyayı kırılmaz yapar'
+      args: (playerName) (true/false)
+    info:
+      feedback: '&3[playerDisplayName]&e &eadlı oyuncu için [state] &e Eşya yaptın (&3[offon]&e).'
+      breakable: '&6Kırılabilir'
+      unbreakable: '&6Kırılamaz'
+  uncondense:
+    help:
+      info: '&eEşyaları küçük parçaya ayırmak'
+      args: (itemName)
+    info:
+      converted: '&e&7[blocks] Blokları &7[items] eşyaya dönüştürür'
+      nothing: '&cEnvanterinizde yoğuşmasız olabilecek hiçbir şey yoktur.'
+  unjail:
+    help:
+      info: '&eOyuncuyu hapisten serbest bırakma'
+      args: '[playerName]'
+    info:
+      notInJail: '&cHedef oyuncu hapishanede değil'
+      unjailed: '&6[playerDisplayName] &eTarafından hapishaneden serbest bırakıldın'
+      unjailedTarget: '&eHapishaneden serbest bırakıldın!'
+  unloadchunks:
+    help:
+      info: '&eSunucu belleğinden chunkları kaldırır'
+      args: (-f)
+      explanation:
+      - -f variable will force for all chunks to be unloaded in one go.
+    info:
+      removed: '&eKaldırıldı -[list]'
+      startScanning: '&eYüklenecek &6[amount] &esayıda chunk bulundu. Yüklenmeye Başlanıyor!'
+      InfoShow: '&6TPS: &3[tps] &6Kaldı: &e[left] &6(&e[min]m:[sec]s&6) &6Hız: &e[speed]
+        &6Yüklenmemiş: &e[found]'
+      Finished: '&eBitti!!! Yüklenmemiş: &6[amount] &esayıda chunklar! &6[minutes] &edakikalar
+        &6[seconds] &eSaniyeler.'
+  unmute:
+    help:
+      info: '&eOyuncunun susturmasını aç'
+      args: '[playerName] (-s)'
+    info:
+      notMuted: '&eOyuncu susturulmamış'
+      unmuted: '&eOyuncu şuan konuşabilir'
+      unmutedTarget: '&eŞuan konuşabilirsin'
+  unmutechat:
+    help:
+      info: '&eGenel sohbetin susturulmasını aç'
+      args: (-s)
+    info:
+      unmuted: '&eGenel sohbetin susturulmasını açar'
+  usermeta:
+    help:
+      info: '&eOyuncu meta verilerini yönetme'
+      args: '[playerName] [add/remove/clear/list/increment] (key) (value) (-s)'
+      explanation:
+      - Any set meta can be displayed with %cmi_user_meta_[key]% placeholder around plugin
+    info:
+      added: '&e&6[playerDisplayName] Adlı oyuncu için &6[value] &edeğerli meta &6[key] anahtarı ile eklendi '
+      cleared: '&6[playerDisplayName] &eOyuncudan meta temizlendi '
+      removed: '&6[playerDisplayName] &eOyuncudan meta kaldırıldı &6[key]'
+      changed: ' &6[oldValue] &emeta değeri  &6[newValue] &eolmak üzere değişti &6[key]'
+      list: '&e[place]. &6[key]&e: [value]   '
+  util:
+    help:
+      info: Administration tools
+      args: (removeseats/testtarget)
+    info:
+      removedSits: '&6[count] &eSayıda boş oturaklar bütün dünyalardan kaldırıldı.'
+  vanish:
+    help:
+      info: '&eOyuncuyu gizler'
+      args: (playerName/list) (on/off)
+    info:
+      vanished: '&eGörünmez oldun'
+      unvanish: '&eGörünür oldun'
+      targetVanished: '&6[playerDisplayName] &egörünmez oldu'
+      targetUnvanish: '&6[playerDisplayName] &egörünür oldu'
+      list: '&e[place]. &6[playerDisplayName] &e(&6[offon]&e)'
+      noVanished: '&eBurada gizli oyuncu yok'
+      noMsg: "&cGörünmezken mesaj gönderemezsin. Bunu görünmez edit'te güncelleyin"
+  vanishedit:
+    help:
+      info: '&eGörünmez modu oyuncu için düzenle'
+      args: (playerName)
+    info:
+      isVanished: '&eGörünmez oldu'
+      damageToEntity: '&eBaşkalarına zarar verebilir'
+      playerDamage: '&eBaşkalarından zarar alabilir'
+      itemPickup: '&eEşya alabilir'
+      mobAggro: '&eMoblar saldırabilir'
+      interaction: '&eFiziksel etkileşime girebilir'
+      noisyChest: '&eSesli sandıklar'
+      informOnLeave: '&eAyrıldı mesajı gösterir'
+      informOnJoin: '&eKatıldı mesajı gösterir'
+      nightVision: '&eGece görüşü uygular'
+      bossbar: '&eGörünmeze geçtiğinde BossBar görünür'
+      afkcommands: '&eGörünmez olduğunda AFK görünür'
+      PrivateMessages: '&eÖzel mesajları kabul eder'
+      relogDisable: '&eGiriş yaparken devre dışı kalır'
+      noMessages: '&eGenel sohbet edemez'
+      fakeJoinLeave: '&eSahte katılma/ayrılma mesajı duruma göre görünür'
+      mobSpawning: '&eYakınında mob doğabilr'
+      bossbarTitle: '&fGörünmez oldu'
+  version:
+    help:
+      info: '&ePlugin versiyonunu göster'
+      args: ''
+    info:
+      cmiVersion: '&eCMI: &6[version]'
+      cmiVersionNew: '&e-> [newVersion]'
+      dbType: ' &7[db]'
+      newServer: '&eSunucu: &6[version]'
+      Economy: '&eCMI ekonomisi: &6[state] '
+      Chat: '&eCMI sohbeti: &6[state] '
+      CMIB: '&7CMIB '
+      newVault: '&eKasa: &6[version] '
+      Modules: '&eModüller -> &a[enabled] Etkin &7[disabled] Devre dışı&e: &c[list]'
+      Bungee: ' &eBungeeCord '
+  viewrange:
+    help:
+      info: '&eGörüş açısını değiştir'
+      args: '[range] (playerName)'
+    info:
+      changed: '&eGörüş açısı &6[range] olmak üzere değişti'
+      NoProtocolLib: '&cBu fonksiyon protocollib gerektirir!'
+      NoMore: '&eMenzil 32 chunktan fazla olamaz. 32 olarak değiştirildi.'
+  voteedit:
+    help:
+      info: '&eOyuncuların oylarını yönetir'
+      args: (playerName) [add/set/take/clear] [amount] (-s)
+      explanation:
+      - 'Example:'
+      - /voteedit Zrips
+      - /voteedit add 10
+      - /voteedit take 10
+      - /voteedit Zrips clear
+      - /voteedit Zrips add 10
+    info:
+      currentVotes: '&e[playerDisplayName] &eAdlı oyuncunun &6[votes] &eoyu var'
+      selfFeedback: '&3[playerDisplayName]&e &eAdlı oyuncunun oyları &3[votes] &eOlmak üzer değişti (&3[offon]&e).'
+      targetFeedback: '&eOy sayacın &3[votes]&e olarak &3[senderDisplayName]&e tarafından değişti.'
+  votes:
+    help:
+      info: '&eOyuncuların oy sayacını kontrol eder'
+      args: (playerName)
+    info:
+      currentVoteSelf: '&6[votes] &eOy attın'
+      currentVotes: '&e[playerDisplayName] &eAdlı oyuncunun &6[votes] &eoyu var'
+      voteCooldown: '&eTekrar oy atman için &6[time]&esüre beklemen gerek'
+      voteLimit: '&eGünlük oy limitine ulaştın. Tekrar kullanmak için &6[time]&e süre beklemen gerek'
+  votetop:
+    help:
+      info: '&eEn çok oy atanlar listesi'
+      args: (playerName)
+    info:
+      topLine: '&e----- En çok oy atanlar &e-----'
+      list: '&e[place]. &6[playerDisplayName]: &e[votes]'
+      ownLine: '&2[place]. &2[playerDisplayName]: &2[votes]'
+  walkspeed:
+    help:
+      info: '&eOyuncuların yürüme hızını 0 - 10 arasında bir değer verir'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&3[playerDisplayName]&e &eAdlı oyuncunun yürüme hızını &3[amount]&e olarak değiştirdi
+        (&3[offon]&e).'
+      targetfeedback: '&eYürüme hızın &3[amount]&e olarak &3[senderDisplayName]&e tarafından ayarlandı.'
+      max: '&eSenin için maksimum izin verilen yürüme hızı: &6[max]&e.'
+  warn:
+    help:
+      info: '&eOyuncuyu uyar'
+      args: '[playerName] (category) (reason) (-s)'
+    info:
+      noSelfWarning: '&cKendini uyaramazsın'
+      cantBan: '&cBu oyuncuyu uyaramazsın'
+      messageToAll: '&6[playerDisplayName] &cAdlı oyuncu &6[senderDisplayName] tarafından uyarıldı &cSebep:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &cAdlı oyuncu &6[senderDisplayName] tarafından uyarıldı
+        &cSebep: &6[reason]'
+  warnings:
+    help:
+      info: '&eOyuncuların uyarılarını kontrol eder'
+      args: (playerName)
+    info:
+      totalPoints: '&7---- &e[playerDisplayName] &eToplam kural ihlalleri: &6[totalPoints]
+        &7----'
+      noWarnings: '&eOyuncunun hiç uyarısı yok'
+      list: '&7[place]. &e[time] &6by [warnedBy] &cSebep: &7[warnedFor]'
+      hover:
+      - '&7İçinde bitiyor: &e[time]'
+      - '&7İhlal noktaları: &e[points]'
+  warp:
+    help:
+      info: '&eWarp konumuna ışınlanır'
+      args: (warpName) (playerName) (-s)
+    info:
+      list: '&eWarplar: &6'
+      click: '&6[warp] bölgesine ışınlanmak için tıkla'
+      teleported: '&eIşınlanılan warp: &6[warp]'
+      noWarps: '&cBurada kayıtlı warp yok'
+      autoLoreName: '&7[warpName]'
+      autoLoreFormat:
+      - '&7[worldName]'
+      - '&e[x]:[y]:[z]'
+      - '[creator]'
+      creator: '&eOluşturucu: &6[creator]'
+      noWarpByName: '&cBurada bu isimde bir warp yok'
+      noAccess: '&cBu warpa erişim yok'
+      guiTitle: '&6Warplar'
+      pageTitles:
+      - '&2Warplar 1'
+      - '&8Warplar 2'
+      - '&0Warplar 3'
+  warpgroups:
+    help:
+      info: '&eWarp gruplarının listesi'
+      args: ''
+    info:
+      list: '&e[number]. &7[group] &6(&e[amount]&6)'
+  weather:
+    help:
+      info: '&eSunucunun hava durumunu kontrol eder'
+      args: (sun/rain/storm) (lock/duration) (worldName/all)
+      explanation:
+      - 'Ekstra zaman biçimleri olabilir: s/m/h/d/w/M/Y'
+      - 'Örnek:'
+      - /sun
+      - /rain
+      - /storm
+      - /sun lock
+      - /sun 120
+      - /sun Lt_Craft
+      - /sun 1h
+      - /sun 10m
+    info:
+      setTo: '&eHava durumu [world] adlı dünyada önümüzdeki &6[time] süre boyunca &6[weather] olucak'
+      currentState: '&6[world] &e-> &6[weather] &efor next &6[time]'
+      sunny: sunny
+      rainy: rainy
+      thundering: thundering
+  whowas:
+    help:
+      info: '&eOyuncuların önceki isimlerini gösterir'
+      args: '[playerName]'
+    info:
+      list: ' &e[place]. &6[name] - &e[date]'
+      info: ' &e[playerName] &6[uuid]'
+      original: '&eOrijinal isim'
+  workbench:
+    help:
+      info: '&eÇalışma masasını açar'
+      args: (playerName)
+    info:
+      feedback: '&3[playerDisplayName]&e &eAdlı oyuncu için çalışma masasını açtın (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e senin için çalışma masası açtı.'
+  world:
+    help:
+      info: '&eFarklı dünyaya ışınlar'
+      args: (normal/nether/end/1/2/3...) (playerName) (-s)
+      explanation:
+      - Requires cmi.command.world.[worldName] in addition to base permission node
+    info:
+      here: '&eZaten burada'
+  worth:
+    help:
+      info: '&eEşya değerini kontrol eder'
+      args: (all/blocks/hand/material)
+    info:
+      worthless: '&eDeğersiz'
+      basePrice: '&6[itemName]&e(&7[amount]&e) -> &f[price]'
+      fullPrice: '&7[price]'
+      total: '&eToplam değer: &7[total]'
+  worthlist:
+    help:
+      info: '&esatış fiyatları ile öğelerin listesinin ayarlarını kontrol edin'
+      args: (playerName)
+    info:
+      type: '&7[type]'
+      worth: '&7Değer: &e[price]'
