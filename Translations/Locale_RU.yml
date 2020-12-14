@@ -1,8 +1,3 @@
-# --------------------------------- #
-# RUS by DarkFort :3                #
-# vk.com/darkfortmc | t.me/darkfort #
-# --------------------------------- #
-#
 # Full color code support and some variables
 # Keep in mind that variables wont work for some lines, when it will for anothers :)
 # Just keep them where there are now and everything will be ok :)
@@ -407,12 +402,12 @@ info:
     drowned: Утопленник
     egg: Яйцо
     elder_guardian: Древний страж
-    enderman: Эндермен
-    endermite: Эндермит
     ender_crystal: Кристалл края
     ender_dragon: Дракон края
     ender_pearl: Жемчуг эндера
     ender_signal: Сигнал эндера
+    enderman: Эндермен
+    endermite: Эндермит
     evoker: Пробудитель
     evoker_fangs: Шипы пробудителя
     experience_orb: Шар опыта
@@ -424,6 +419,7 @@ info:
     ghast: Гаст
     giant: Гигант
     guardian: Страж
+    hoglin: Хоглин
     horse: Лошадь
     husk: Кадавр
     illusioner: Иллюзионист
@@ -449,7 +445,8 @@ info:
     parrot: Попугай
     phantom: Фантом
     pig: Свинья
-    pig_zombie: Свинозомби
+    piglin: Пиглин
+    piglin_brute: Брутальный пиглин
     pillager: Разбойник
     player: Игрок
     polar_bear: Белый медведь
@@ -473,6 +470,7 @@ info:
     splash_potion: Взрывное зелье
     squid: Спрут
     stray: Зимогор
+    strider: Страйдер
     thrown_exp_bottle: Брошенная бутылка с опытом
     trader_llama: Лама торговца
     trident: Трезубец
@@ -488,9 +486,11 @@ info:
     wither_skeleton: Скелет-иссушитель
     wither_skull: Голова иссушителя
     wolf: Волк
+    zoglin: Зоглин
     zombie: Зомби
     zombie_horse: Лошадь-зомби
     zombie_villager: Зомби-житель
+    zombified_piglin: Зомбифицированный пиглин
   EnchantAliases:
     protection_fire:
     - Огнеупорность
@@ -513,7 +513,7 @@ info:
     knockback:
     - Отдача
     luck:
-    - Везучий рыбак
+    - Везучий_рыбак
     binding_curse:
     - Проклятие_несъёмности
     loot_bonus_blocks:
@@ -537,7 +537,7 @@ info:
     damage_undead:
     - Небесная_кара
     multishot:
-    - MULTISHOT
+    - Тройной_выстрел
     fire_aspect:
     - Заговор_огня
     channeling:
@@ -557,7 +557,7 @@ info:
     quick_charge:
     - Быстрая_перезарядка
     protection_projectile:
-    - Защита_от_снарядов
+    - Защита_от_нарядов
     impaling:
     - Пронзатель
     protection_fall:
@@ -572,65 +572,65 @@ info:
     slow:
     - Замедление
     fast_digging:
-    - Fast digging
+    - Спешка
     slow_digging:
-    - Slow digging
+    - Усталость
     increase_damage:
-    - Increase damage
+    - Увеличение урона
     heal:
-    - Heal
+    - Исцеление
     harm:
-    - Harm
+    - Моментальный урон 
     jump:
-    - Jump
+    - Прыгучесть
     confusion:
-    - Confusion
+    - Тошнота
     regeneration:
-    - Regeneration
+    - Регенерация
     damage_resistance:
-    - Damage resistance
+    - Сопротивление
     fire_resistance:
-    - Fire resistance
+    - Огнестойкость
     water_breathing:
-    - Water breathing
+    - Подводное дыхание
     invisibility:
-    - Invisibility
+    - Невидимость
     blindness:
-    - Blindness
+    - Слепота
     night_vision:
-    - Night vision
+    - Ночное зрение
     hunger:
-    - Hunger
+    - Голод
     weakness:
-    - Weakness
+    - Слабость
     poison:
-    - Poison
+    - Отравление
     wither:
-    - Wither
+    - Иссушение
     health_boost:
-    - Health boost
+    - Прилив здоровья
     absorption:
-    - Absorption
+    - Поглощение
     saturation:
-    - Saturation
+    - Насыщение
     glowing:
-    - Glowing
+    - Свечение
     levitation:
-    - Levitation
+    - Левитация
     luck:
-    - Luck
+    - Удача
     unluck:
-    - Unluck
+    - Невезение
     slow_falling:
-    - Slow falling
+    - Плавное падение
     conduit_power:
-    - Conduit power
+    - Морская сила
     dolphins_grace:
-    - Dolphins grace
+    - Грация дельфина
     bad_omen:
-    - Bad omen
+    - Дурное знамение
     hero_of_the_village:
-    - Hero of the village
+    - Герой дервени
 direction:
   n: Север
   ne: Северо-Восток
@@ -699,7 +699,7 @@ afk:
   MayNotRespondStaff: '&7Сотрудник сервера AFK и может не отвечать. Попробуйте связаться
     с нами в группе VK или Discord'
 BossBar:
-  hpBar: '&f[victim] &7[max]&f/&7[current] &f(&c-[damage]&f)'
+  hpBar: '&f[victim] &e[current]&f/&e[max] &f(&c-[damage]&f)'
 Potion:
   Effects: '&8Эффекты зелья'
   List: '&7[PotionName] [PotionAmplifier] &7Продолжительность: &7[LeftDuration] &7сек'
@@ -4440,3 +4440,11 @@ command:
       basePrice: '&c[itemName]&7(&7[amount]&c) -> &f[price]'
       fullPrice: '&7[price]'
       total: '&7Общая стоимость: &c[total]'
+  worthlist:
+    help:
+      info: '&eПроверить список цен на товары'
+      args: (playerName)
+    info:
+      type: '&7[type]'
+      worth: '&7Цена: &e[price]'
+      title: '&8Список цен'
