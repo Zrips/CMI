@@ -74,7 +74,7 @@ info:
   NoCommand: '&cКоманды с этим названием не существует!'
   NoCommandWhileSleeping: '&cНельзя выполнять команды во время сна!'
   cantFindCommand: '&7Команда &c[%1]&7 не была найдена, возможно вы имели в виду &c[%2]&7?'
-  nolocation: '&4Can''t find suitable location'
+  nolocation: '&4Не удалось найти подходящее место'
   PurgeNotEnabled: '&cФункция очистки не включена в конфигурации!'
   FeatureNotEnabled: '&cЭта функция не включена!'
   TeamManagementDisabled: '&7Эта функция будет иметь ограниченный функционал, в то
@@ -97,7 +97,7 @@ info:
   Cooldowns: '&7Эта команда перезаряжается, подождите &c[time]'
   specializedCooldowns: '&7Для этой команды действуют ограничения на использование,
     пожалуйста, подождите &c[time]'
-  specializedRunning: '&eCommand still running, please wait &6[time]'
+  specializedRunning: '&eКоманда все ещё работает, пожалуйста, подождите &6[time]'
   CooldownOneTime: '&cЭту команду можно использовать только один раз!'
   WarmUp:
     canceled: '&cКоманда была отменена из-за вашего движения'
