@@ -2527,7 +2527,7 @@ command:
       InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]'
       Finished: '&e光照修覆已完成'
       Stopped: '&e光照修覆已停止'
-  lis
+  list:
     help:
       info: '&e顯示在線玩家列表'
       args: ''
