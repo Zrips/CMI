@@ -2,19 +2,19 @@
 # Keep in mind that variables wont work for some lines, when it will for anothers :)
 # Just keep them where there are now and everything will be ok :)
 # Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
-# [serverName] to show server name
-# [playerName] to show target player name
-# [playerDisplayName] to show target player display name
-# [lvl] to show target player level
-# [exp] to show target player total exp
-# [hp] to show target player health
-# [maxHp] to show target player max health
+# [serverName] 顯示伺服器名稱
+# [playerName] 顯示玩家ID
+# [playerDisplayName] 顯示玩家的暱稱
+# [lvl] 顯示玩家等級
+# [exp] 顯示玩家全部經驗
+# [hp] 顯示玩家生命
+# [maxHp] 顯示玩家最大生命
 # [hunger] to show target player hunger level
-# [gameMode] to show target player gamemode
+# [gameMode] 顯示玩家遊戲模式
 # [prefix] to show target player prefix if possible
 # [suffix] to show target player suffix if possible
 # Sender is console or player who performs command. In example Zrips performs /heal Zhax then Zrips data will be used
-# [senderName] to show Sender player name
+# [senderName] 顯示發送者玩家ID
 # [senderDisplayName] to show Sender player display name
 # [senderLvl] to show Sender player level
 # [senderExp] to show Sender player total exp
@@ -2052,7 +2052,7 @@ command:
       newNameHoverNick: '&7暱稱: &f[nick]'
       newNameHoverGroup: '&7群組: &f[group]'
       newNameHoverKnownAs: '&7也稱為: &f[nameList]'
-      newNameHoverIp: '&7Ip: &f[ip]'
+      newNameHoverIp: '&7IP: &f[ip]'
       newNameHoverPing: '&7Ping: &f[ping]'
       newNameHoverCountry: ' &7[country] &f(&2[countryCode]&f)'
       newFirstLogin: '&7第一次登入: &6[firstLogin]'
@@ -2111,7 +2111,7 @@ command:
       - '&7Banned by: &e[name]'
       - '&7Left: &e[left]'
       - '&7For: &e[reason]'
-      newMuted: '靜言 '
+      newMuted: '靜言'
       newMutedHover:
       - '&7Left: &e[left]'
       - '&7For: &e[reason]'
@@ -2541,13 +2541,13 @@ command:
       # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on, you can have as many of those as you want and order them by your own liking
       List:
       - '&7========================'
-      - '&e玩家在線 &6[amount][hidden]&e/&6[maxamount]'
+      - '&e線上玩家人數 &6[amount][hidden]&e/&6[maxamount]'
       - '[adminLine]'
       - '[staffLine]'
       - '[groupLine]'
       - '&7========================'
       staffL: '&e管理員在線: &f[list]'
-      adminL: '&e服主在線: &f[list]'
+      adminL: '&e在線玩家: &f[list]'
       hiddenPref: '&e&7[H]'
       hiddenCount: '&e&7([amount])'
       groupL: '&e[groupName]: &f[list]'
