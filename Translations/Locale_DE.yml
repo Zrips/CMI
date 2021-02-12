@@ -3313,7 +3313,7 @@ command:
       - '&eProtocollib wird benötigt für dieses Feature.'
     info:
       feedback: '&eDu hast den SilentChest Modus geändert &3[offon].'
-      onOpen: '&Kiste wurde leise geöffnet.'
+      onOpen: '&eKiste wurde leise geöffnet.'
   sit:
     help:
       info: '&eSetze dich auf deiner Position hin'
