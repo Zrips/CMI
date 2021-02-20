@@ -3962,13 +3962,13 @@ command:
       info: '&eOyuncuya başlık mesajını gönder'
       args: '[playerName/all] [title \n subtitle] (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])'
     info:
-      message: '&f[mesajın]'
+      message: '&f[message]'
   toast:
     help:
       info: '&eOyunculara başlık mesajı gönder'
       args: '[playerName/all] (-t:[advType]) (-icon:[material]) [message]'
     info:
-      message: '&f[mesajın]'
+      message: '&f[message]'
   togglecompass:
     help:
       info: '&ePusula baş çubuğunu göster veya gizle'
