@@ -1,0 +1,4617 @@
+# Full color code support and some variables
+# Keep in mind that variables wont work for some lines, when it will for anothers :)
+# Just keep them where there are now and everything will be ok :)
+# Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+# [serverName] to show server name
+# [playerName] to show target player name
+# [playerDisplayName] to show target player display name
+# [lvl] to show target player level
+# [exp] to show target player total exp
+# [hp] to show target player health
+# [maxHp] to show target player max health
+# [hunger] to show target player hunger level
+# [gameMode] to show target player gamemode
+# [prefix] to show target player prefix if possible
+# [suffix] to show target player suffix if possible
+# Sender is console or player who performs command. In example Zrips performs /heal Zhax then Zrips data will be used
+# [senderName] to show Sender player name
+# [senderDisplayName] to show Sender player display name
+# [senderLvl] to show Sender player level
+# [senderExp] to show Sender player total exp
+# [senderHp] to show Sender player health
+# [senderMaxHp] to show Sender player max health
+# [senderHunger] to show Sender player hunger level
+# [senderGameMode] to show Sender player gamemode
+# [senderPrefix] to show Sender player prefix if possible
+# [senderSuffix] to show Sender player suffix if possible
+# Source is player which is being used for extra info. In example Zrips performs /tp Zhax Zrips then Zhax data will be used as its location is being taken for new player location
+# [sourceName] to show source player name
+# [sourceDisplayName] to show source player display name
+# [sourceLvl] to show source player level
+# [sourceExp] to show source player total exp
+# [sourceHp] to show source player health
+# [sourceMaxHp] to show source player max health
+# [sourceHunger] to show source player hunger level
+# [sourceGameMode] to show source player gamemode
+# [sourcePrefix] to show source player prefix if possible
+# [sourceSuffix] to show source player suffix if possible
+# ***********************************************
+# Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
+# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+# If line starts with !actionbar! then player will get action bar message defined after this variable
+# If line starts with !actionbar:[seconds]! then player will get action bar message for defined amount of time
+# If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, in example !broadcast!!title!
+# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+# If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
+# If line starts with !bosbar:[name]-[timer]! then player will get bossbar message defined after this variable, in addition you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
+# To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
+# <T> and </T> required, other is optional
+# Use /n to break line
+# To have more than one JSON message use <Next>
+# <C> performs command as a player who clicked
+# <CC> performs command from console once
+# <CCI> performs command from console every time player clicks text
+# <URL> includes url
+info:
+  # Use !prefix! in any locale line to automatically include this prefix
+  prefix: '&e[&aCMI&e] '
+  NoPermission: '&cNimaš dovoljenja!'
+  CantHavePermission: '&cNe moreš imeti tega dovoljenja!'
+  WrongGroup: '&cSi v napačni skupini za to!'
+  NoPlayerPermission: '&c[playerName] Nima dovoljenja za: [permission]'
+  Ingame: '&cTo lahko uporabiš samo v igri!'
+  NoInformation: '&cNi informacije!'
+  Console: '&6Konzola'
+  FromConsole: '&cTo lahko uporabiš samo v konzoli!'
+  NotOnline: '&cIgralec ni aktiven!'
+  NobodyOnline: '&cNihče ni aktiven!'
+  Same: '&cNemoreš odpreti svojega inventarja za urejanje!'
+  cantLoginWithDifCap: '&cNe moreš se prijaviti z uporabo velikih začetnic! Staro ime:
+    &e[oldName]&c. Trenutno: &e[currentName]'
+  Searching: '&eČe iščete podatke o igralcih, počakajte, ker lahko traja nekaj časa!'
+  NoPlayer: '&cNe najdem igralca z tem imenom!'
+  NoCommand: '&cTa ukaz ne obstaja!'
+  NoCommandWhileSleeping: '&cKo spiš nemoreš pisati!'
+  cantFindCommand: '&5Nisem našel &7[%1]&5 ukaza, ali si mislil &7[%2]&5?'
+  nolocation: '&4Ne najdem primerne lokacije'
+  PurgeNotEnabled: '&cV konfiguracijski datoteki funkcija čiščenja ni omogočena!'
+  FeatureNotEnabled: '&cTa funkcija ni omogočena!'
+  TeamManagementDisabled: '&7Ta funkcija bo imela omejene funkcije, medtem ko je možnost onemogoči upravljanje ekipe nastavljena na True!'
+  ModuleNotEnabled: '&cTa modul ni omogočen!'
+  versionNotSupported: '&cRazličica strežnika za to funkcijo ni podprta'
+  bungeeNoGo: '&cTa funkcija ne bo delovala na strežnikih, ki temeljijo na bungee omrežju'
+  clickToTeleport: '&eKliknite za teleport'
+  UseMaterial: '&4Uporabite imena materialov!'
+  UseInteger: '&4Uporabite številke!'
+  UseBoolean: '&4Prosim uporabite True ali False!'
+  NoLessThan: '&4Številka nesme biti manjša od [amount]!'
+  NoMoreThan: '&4Vrednost nesme biti večja od [amount]'
+  NoGameMode: '&cProsim uporabi 0/1/2/3 ali Survival/Creative/Adventure/Spectator ali s/c/a/sp!'
+  NoWorld: '&4Ne najdem sveta z tem imenom!'
+  IncorrectLocation: '&4Lokacija je bila napačno določena!'
+  NameChange: '&6[playerDisplayName] &ese je prijavil, poznan tudi kot: &6[namelist]'
+  Cooldowns: '&eProsim počakaj! &6[time]'
+  specializedCooldowns: '&eProsim počakaj! &6[time]'
+  specializedRunning: '&eUkaz v teku, prosim počakaj &6[time]'
+  CooldownOneTime: '&eTa ukaz lahko uporabiš samo enkrat!'
+  WarmUp:
+    canceled: '&eUkaz prekinjen, zaradi premika!'
+    counter: '!actionbar!&6--> Počakaj &e[time] &6sekund <--'
+    DontMove: '!title!&6Ne premikaj se!!subtitle!&7Počakaj &c[time] &7sekund'
+    Boss:
+      DontMove: '&4Ne premikaj se za &7[autoTimeLeft] &4sekund!'
+      WaitFor: '&4Počakaj &7[autoTimeLeft] &4sekund!'
+  Spawner: '&r[type] Spawner'
+  FailedSpawnerMine: '!actionbar!&cNeuspešno uničevanje Spawnerja. &7[percent]% &cmožnost dobitka'
+  ClickSpawner: '!actionbar!&7[percent]% &eMožnost dobitka'
+  Elevator:
+    created: '&eUstvarjen znak za dvigalo'
+  CantPlaceSpawner: '&eNe moreš postaviti Spawnerja preblizu drugega Spawnerja (&6[range]&e)'
+  ChunksLoading: '&ePodatki o svetu se še vedno nalagajo. Prosim počakaj malo.'
+  ShulkerBox: Shulker Box
+  CantUseNonEncrypted: '!actionbar!&cUkazi niso šifrirani. Nemoreš jih uporabiti!'
+  CantDecode: '!actionbar!&cSporočila ali ukaza ni mogoče dekodirati. Datoteka ključa vsebuje napačen ključ za to nalogo. O tem obvestite nadrejenega!'
+  Show: '&ePokaži'
+  Remove: '&cOdstrani'
+  Back: '&eNazaj'
+  Forward: '&eNaprej'
+  Update: '&ePosodobi'
+  Save: '&eShrani'
+  Delete: '&cOdstrani'
+  Click: '&eKlikni'
+  Preview: '&ePoglej'
+  PasteOld: '&ePrilepi staro'
+  ClickToPaste: '&eKlikni, da prilepiš v pogovor'
+  CantTeleportWorld: '&eTeleportacija v ta svet ni mogoča.'
+  CantTeleportNoWorld: '&cDoločeni svet ne obstaja. Teleportacija prekinjena'
+  CantTeleport: '&eNe morem se teleportirati, ker imaš preveč omejenih predmetov. Pomaknite se po tej vrstici, da vidite največjo dovoljeno količino elementov.'
+  teleported: '&eBil si teleportiran.'
+  BlackList: '&e[material] [amount] &6Največ: [max]'
+  PlayerSpliter: '&e----- &6[playerDisplayName] &e-----'
+  Spliter: '&e--------------------------------------------------'
+  SpliterValue: '&e------------------ &6[value] &e------------------'
+  ListSpliter: ', '
+  ProgressBarFill: '&2▏'
+  ProgressBarEmpty: '&e▏'
+  nothingInHand: '!actionbar!&eV roki moram držati stvar'
+  nothingInHandLeather: '&eV roki moram držati usnje.'
+  nothingToShow: '&eNičesar za pokazati'
+  noItem: '&cNe najdem stvari'
+  dontHaveItem: '&cNimaš dovolj &6[amount]x [itemName] &cv inventarju.'
+  wrongWorld: '&cTega na tem svetu ne morem storiti'
+  wrongPortal: '&cNahajate se na napačnem področju portala'
+  differentWorld: '&cRazlični svetovi'
+  HaveItem: '&cImaš  &6[amount]x [itemName] &cv inventarju.'
+  ItemWillBreak: '!actionbar!&eVaša stvar (&6[itemName]&e) se bo kmalu polomila! &e[current]&6/&e[max]'
+  ArmorWillBreak: '!actionbar!&eVaš [itemName] se bo kmalu polomil! &e[current]&6/&e[max]'
+  cantDoInGamemode: '&eTega v tem načinu igre ne morete storiti'
+  cantDoForPlayer: '&eTega ne moreš storiti &6[playerDisplayName]'
+  cantDoForYourSelf: '&eTega si ne moreš storiti'
+  cantDetermineMobType: '&cNe morem določiti vrste nezemljana &e[type] &cspremenljivka'
+  cantRename: '!actionbar!&eTega imena nemoreš uporabljati'
+  cantEdit: '&eTega nemoreš urejati'
+  wrongName: '&cNarobno ime'
+  unknown: Neznano
+  invalidName: '&cNeznano ime'
+  alreadyexist: '&4To ime je zasedeno'
+  dontexist: '&4S tem imenom ni bilo mogoče najti ničesar'
+  worldDontExist: '&cCiljni svet ni več dostopen. Ne morem te teleportirati!'
+  flyingToHigh: '&cNe morete leteti tako visoko, največja višina je &6[max]&c!'
+  specializedItemFail: '&cPo ceni ne morem določiti zahteve po specializiranih artiklih:&7[value]'
+  sunSpeeding: Spanje [count] od [total] [hour] ur [speed]X hitrost
+  sleepersRequired: '!actionbar!&f[sleeping] &7od &f[required] &7spanje igralcev za nočno pospešitev'
+  sunSpeedingTitle: '&7[hour]'
+  skippingNight: '!title!&7Noč je bila preskočena'
+  sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]X&7)'
+  repairConfirm: '&eKlikni da potrdiš &7[items] &epopravi stvar za &7[cost]'
+  bookDate: '&7Napisano je bilo &f[date]'
+  maintenance: '&7Vzdrževalni način'
+  notSet: Ni nastavljeno
+  mapLimit: '&cNe morem preseči 30 000 000 blokov'
+  startedEditingPainting: '&eZačeli ste urejati sliko. Kliknite na drugo kocko, da prekličete.'
+  canceledEditingPainting: '&ePreklicali ste način urejanja slik'
+  changedPainting: '!actionbar!&eSpremenjena slika v &6[name] &ez ID od &6[id]'
+  noSpam: '!title!&cNe ponavljaj besed!'
+  noCmdSpam: '!title!&cNe ponavljaj ukazov!'
+  spamConsoleInform: '&cIgralec (&7[playerName]&c) je sprožil (&7[rules]&c) pogovornega filtra z:&r [message]'
+  lookAtSign: '&ePoglej v znak'
+  lookAtBlock: '&ePoglej v kocko'
+  lookAtEntity: '&ePoglej v entiteto'
+  notOnGround: '&eTo ni mogoče med letenjem'
+  # This line can have extra variables: [totalUsers] [onlinePlayers]
+  FirstJoin: '&eDobrodošel &6[playerDisplayName] &ena našem strežniku!'
+  LogoutCustom: ' &6[playerDisplayName] &ese je odjavil'
+  LoginCustom: ' &6[playerDisplayName] &ese je pridružil'
+  deathlocation: '&eUmrl si na x:&6[x]&e, y:&6[y]&e, z:&6[z]&e v svetu &6[world]'
+  combat:
+    CantUseShulkerBox: '&cNe morem uporabljati shulker box-a, medtem ko se borim z igralcem.
+      Wait: [time]'
+    CantUseCommand: '!actionbar!&cNe morem uporabljati ukaza, medtem ko sem v boju. Počakaj: [time]'
+    bossBarPvp: '&cBojni način [autoTimeLeft]'
+    bossBarPve: '&2Bojni način [autoTimeLeft]'
+  bungee:
+    Online: '&6Online'
+    Offline: '&cOffline'
+    not: '&cServer ne pripada nobenemu bungee network-u'
+    noserver: '&cNe najdem strežnika z tem imenom!'
+    server: '&eStrežnik: &7[name]'
+  variables:
+    Online: '&6Online'
+    Offline: '&cOffline'
+    TrueColor: '&2'
+    FalseColor: '&4'
+    'True': '&6Drži'
+    'False': '&cNe Drži'
+    Enabled: '&6Omogočeno'
+    Disabled: '&cOnemogočeno'
+    survival: '&6Preživetje'
+    creative: '&6Ustvarjalno'
+    adventure: '&6Pustolovščina'
+    spectator: '&6Gledalec'
+    flying: '&6Letenje'
+    notflying: '&6Ne leti'
+  noSchedule: '&cUrnika s tem imenom ni mogoče najti'
+  totem:
+    cooldown: '&eTotem se regenerira: [time]'
+    warmup: '&eTotem efekt: [time]'
+    cantConsume: '&eUporaba totema ni mogoča, prosim počakaj.'
+  Inventory:
+    FullDrop: '&5Nekatere stvari ne sodijo v tvoj inventar fit. Bile so odvržene.'
+  InventorySave:
+    info: '&8Informacije: &8[playerDisplayName]'
+    saved: '&e[time] &eInventar shranjen z ID: &e[id]'
+    NoSavedInv: '&eTa igralec nima nobenega shranjenega inventarja'
+    NoEntries: '&4Datoteka obstaja, temveč inventarja ne najdem!'
+    CantFind: '&eNe najdem inventarja z tem id-jem'
+    TopLine: '&e----------- &6[playerDisplayName] shranjen inventar &e-----------'
+    List: '&eid: &6[id]&e. &6[time]'
+    KillerSymbol: '&c ☠'
+    Click: '&eKlikni, da preveriš ([id]) shranjeni inventar'
+    IdDontExist: '&4This save Id doesn''t exist!'
+    Deleted: '&eUspešno izbrisan shranjen inventar!'
+    Restored: '&eObnovil si &e[sourcename] &einventar od &e[targetname] &eosebe.'
+    GotRestored: '&eVaš inventar je bil obnovljen &e[sourcename] &esharnjen inventar v &e[time]'
+    LoadForSelf: '&eTa inventar naložite sami'
+    LoadForOwner: '&eNaloži ta inventar za lastnika'
+    NextInventory: '&eNaslednji popis'
+    PreviousInventory: '&ePrejšnji popis'
+    Editable: '&eNačin urejanja je omogočen'
+    NonEditable: '&eNačin urejanja je onemogočen'
+  TimeNotRecorded: '&e-Ni zapisa-'
+  years: '&e[years] &6leta '
+  oneYear: '&e[years] &6leto '
+  day: '&e[days] &6dnevi '
+  oneDay: '&e[days] &6dan '
+  hour: '&e[hours] &6ure '
+  oneHour: '&e[hours] &6ura '
+  min: '&e[mins] &6minuta '
+  sec: '&e[secs] &6sekunda '
+  vanishSymbolOn: '&8[&7H&8]&r'
+  vanishSymbolOff: ''
+  afkSymbolOn: '&8[&7Afk&8]&r'
+  afkSymbolOff: ''
+  nextPageConsole: '&fZa naslednjo stran izvedite &5[command]'
+  prevPage: '&2----<< &Prejšnja '
+  prevPageGui: '&6Prejšnja stran '
+  prevPageClean: '&6Prejšnja '
+  prevPageOff: '&2----<< &7Prejšnja '
+  prevPageHover: '&7<<<'
+  firstPageHover: '&7|<'
+  nextPage: '&6 Naslednja &2>>----'
+  nextPageGui: '&6Naslednja stran'
+  nextPageClean: '&6 Naslednja'
+  nextPageOff: '&7 Naslednja &2>>----'
+  nextPageHover: '&7>>>'
+  lastPageHover: '&7>|'
+  pageCount: '&2[current]&7/&2[total]'
+  pageCountHover: '&e[totalEntries] vnosi'
+  skullOwner: '!actionbar!&7Lastnik:&r [playerName]'
+  beeinfo: '!actionbar!&7Med stopnja: &e[level]&7/&e[maxlevel] &7Čebele znotraj: &e[count]&7/&e[maxcount]'
+  circle: '&3Krog'
+  square: '&5Kvadrat'
+  clear: '&7Jasno'
+  protectedArea: '&cZaščiteno območje. Tega tukaj ne morem storiti.'
+  valueToLong: '&eVrednost je previsoka. Max: [max]'
+  valueToShort: '&eVrednost je prenizka. Min: [min]'
+  pvp:
+    noGodDamage: '!actionbar!&cIgralcev ne morete poškodovati, medtem ko ste nesmrtni'
+  InvEmpty:
+    armor: '&eReže za oklep naj bodo prazne!'
+    hand: '&eVaša roka mora biti prazna!'
+    maininv: '&eVaš glavni inventar naj bo prazen!'
+    maininvslots: '&eVaš glavni inventar bi moral imeti vsaj &6[count] &epraznih rež!'
+    inv: '&eVaš inventar naj bo prazen!'
+    offhand: '&eVaš druga roka bi moral biti prazna!'
+    quickbar: '&eVaša hitra vrstica naj bo prazna!'
+    quickbarslots: '&eVaša hitra vrstica bi morala imeti vsaj &6[count] &epraznih rež!'
+    subinv: '&eVaš podpopis naj bo prazen!'
+    subinvslots: '&eVaš podpopis bi moral imeti vsaj &6[count] &epraznih rež!'
+  pickIcon: '&8Izberite ikono'
+  DamageCause:
+    block_explosion: Eksplozija
+    contact: Škoda kocke
+    cramming: Krčenje
+    custom: Neznano
+    dragon_breath: Zmajev dih
+    drowning: Utapljanje
+    dryout: Izsušijo
+    entity_attack: Napad entitete
+    entity_explosion: Eksplozija
+    entity_sweep_attack: Napad na entiteto
+    fall: Padec
+    falling_block: Padajoča kocka
+    fire: Ogenj
+    fire_tick: Ogenj
+    fly_into_wall: Letenje v steno
+    hot_floor: Kocka magme
+    lava: Lava
+    lightning: Strela
+    magic: Čarovnija
+    melting: Taljenje
+    poison: Strup
+    projectile: Izstrelek
+    starvation: Lakota
+    suffocation: Zadušitev
+    suicide: Samomor
+    thorns: Trnje
+    void: Prazno
+    wither: Wither
+  Biomes:
+    BADLANDS: Badlands
+    BADLANDS_PLATEAU: Badlandska planota
+    BAMBOO_JUNGLE: Bambusova džungla
+    BAMBOO_JUNGLE_HILLS: Hribi iz bambusove džungle
+    BASALT_DELTAS: Bazaltne delte
+    BEACH: Plaža
+    BIRCH_FOREST: Brezov gozd
+    BIRCH_FOREST_HILLS: Breze gozdni griči
+    COLD_OCEAN: Hladen ocean
+    CRIMSON_FOREST: Škrlatni gozd
+    DARK_FOREST: Temni gozd
+    DARK_FOREST_HILLS: Temni gozdni griči
+    DEEP_COLD_OCEAN: Globoko hladen ocean
+    DEEP_FROZEN_OCEAN: Globoko zamrznjen ocean
+    DEEP_LUKEWARM_OCEAN: Globok mlačen ocean
+    DEEP_OCEAN: Globoki ocean
+    DEEP_WARM_OCEAN: Globoko topel ocean
+    DESERT: Puščava
+    DESERT_HILLS: Puščavski hribi
+    DESERT_LAKES: Puščavska jezera
+    END_BARRENS: Končne jalove
+    END_HIGHLANDS: Konec visokogorja
+    END_MIDLANDS: Končna sredina
+    ERODED_BADLANDS: Erodirane badlands
+    FLOWER_FOREST: Cvetlični gozd
+    FOREST: Gozd
+    FROZEN_OCEAN: Zamrznjeni ocean
+    FROZEN_RIVER: Zamrznjena reka
+    GIANT_SPRUCE_TAIGA: Ogromna smrekova tajga
+    GIANT_SPRUCE_TAIGA_HILLS: Ogromni smrekovi hribi tajge
+    GIANT_TREE_TAIGA: Velikanska drevesna tajga
+    GIANT_TREE_TAIGA_HILLS: Ogromni drevesni hribi tajge
+    GRAVELLY_MOUNTAINS: Prodnate gore
+    ICE_SPIKES: Ledeni konici
+    JUNGLE: Džungla
+    JUNGLE_EDGE: Rob džungle
+    JUNGLE_HILLS: Hribi v džungli
+    LUKEWARM_OCEAN: Mlak ocean
+    MODIFIED_BADLANDS_PLATEAU: Spremenjena planota Badlands
+    MODIFIED_GRAVELLY_MOUNTAINS: Spremenjene prodnate gore
+    MODIFIED_JUNGLE: Spremenjena džungla
+    MODIFIED_JUNGLE_EDGE: Spremenjen rob džungle
+    MODIFIED_WOODED_BADLANDS_PLATEAU: Spremenjena gozdnata planota
+    MOUNTAINS: Gorovje
+    MOUNTAIN_EDGE: Gorski rob
+    MUSHROOM_FIELDS: Gobja polja
+    MUSHROOM_FIELD_SHORE: Gobova poljska obala
+    NETHER_WASTES: Netherni odpadki
+    OCEAN: Ocean
+    PLAINS: Ravnice
+    RIVER: Reka
+    SAVANNA: Savanna
+    SAVANNA_PLATEAU: Savanna planota
+    SHATTERED_SAVANNA: Razbita savana
+    SHATTERED_SAVANNA_PLATEAU: Razbita planota savane
+    SMALL_END_ISLANDS: Majhni končni otoki
+    SNOWY_BEACH: Snežna plaža
+    SNOWY_MOUNTAINS: Snežne gore
+    SNOWY_TAIGA: Snežna tajga
+    SNOWY_TAIGA_HILLS: Snežni hribi tajge
+    SNOWY_TAIGA_MOUNTAINS: Snežne gore tajge
+    SNOWY_TUNDRA: Snežna tundra
+    SOUL_SAND_VALLEY: Dušna peščena dolina
+    STONE_SHORE: Kamnita obala
+    SUNFLOWER_PLAINS: Sončnična planjava
+    SWAMP: Močvirje
+    SWAMP_HILLS: Močvirnati griči
+    TAIGA: Tajga
+    TAIGA_HILLS: Hribi Taiga
+    TAIGA_MOUNTAINS: Gore Taiga
+    TALL_BIRCH_FOREST: Visok brezek
+    TALL_BIRCH_HILLS: Visoki brezovi griči
+    THE_END: Konec
+    THE_VOID: Praznina
+    WARM_OCEAN: Topel ocean
+    WARPED_FOREST: Ukrivljen gozd
+    WOODED_BADLANDS_PLATEAU: Gozdnata planota
+    WOODED_HILLS: Gozdnati griči
+    WOODED_MOUNTAINS: Gozdnate gore
+  EntityType:
+    area_effect_cloud: Območni učinek oblaka
+    armor_stand: Stojalo za oklep
+    arrow: Puščica
+    bat: Netopir
+    bee: Čebela
+    blaze: Velik požar
+    boat: Čoln
+    cat: Mačka
+    cave_spider: Jamski pajek¸
+    chicken: Piščanec
+    cod: Trska
+    cow: Krava
+    creeper: Lezenje
+    dolphin: Delfin
+    donkey: Osel
+    dragon_fireball: Zmajeva ognjena krogla
+    dropped_item: Spuščen element
+    drowned: Utopljen
+    egg: Jajce
+    elder_guardian: Starejši skrbnik¸
+    enderman: Enderčlovek
+    endermite: Endermit
+    ender_crystal: Ender kristal
+    ender_dragon: Ender zmaj
+    ender_pearl: Ender biser
+    ender_signal: Ender signal
+    evoker: Evoker
+    evoker_fangs: Okvirji Evoker
+    experience_orb: Orb Izkušnenj
+    falling_block: Padajoča kocka
+    fireball: Ognjena krogla
+    firework: Ognjemet
+    fishing_hook: Ribiški kavelj
+    fox: Lisica
+    ghast: Grozno
+    giant: Velikan
+    guardian: Skrbnik
+    hoglin: Hoglin
+    horse: Konj
+    husk: Husk
+    illusioner: Prividnik
+    iron_golem: Železni golem
+    item_frame: Element okvirja
+    leash_hitch: Povodec
+    lightning: Strela
+    llama: Lama
+    llama_spit: Pljunek lame
+    magma_cube: Kocka Magme
+    minecart: Minecart
+    minecart_chest: Minecart voziček
+    minecart_command: Ukaz Minecart
+    minecart_furnace: Peč za mine
+    minecart_hopper: Minecart lijak
+    minecart_mob_spawner: Minecart mob spawner
+    minecart_tnt: Minecart tnt
+    mule: Osel
+    mushroom_cow: Gobova krava
+    ocelot: Ocelot
+    painting: Slika
+    panda: Panda
+    parrot: Papiga
+    phantom: Fantom
+    pig: Prašič
+    piglin: Piglin
+    piglin_brute: Piglin surovi
+    pillager: Razbojnik
+    player: Igralec
+    polar_bear: Polarni medved
+    primed_tnt: Grundiran tnt
+    pufferfish: Pufferfish
+    rabbit: Zajec
+    ravager: Ravager
+    salmon: Losos
+    sheep: Ovce
+    shulker: Shulker
+    shulker_bullet: Shulker krogla
+    silverfish: Srebrna ribica
+    skeleton: Okostje
+    skeleton_horse: Konjski okostnjak
+    slime: Sluz
+    small_fireball: Majhna ognjena krogla
+    snowball: Snežna kepa
+    snowman: Sneženi mož
+    spectral_arrow: Spektralna puščica
+    spider: Pajek
+    splash_potion: Splash napoj
+    squid: Lignji
+    stray: Potepuh
+    strider: Strider
+    thrown_exp_bottle: Vržena steklenica
+    trader_llama: Trgovec z lamo
+    trident: Trident
+    tropical_fish: Tropske ribe
+    turtle: Želva
+    unknown: Neznano
+    vex: Vex
+    villager: Vaščan
+    vindicator: Vindicator
+    wandering_trader: Potujoči trgovec
+    witch: Čarovnica
+    wither: Usuši
+    wither_skeleton: Okostje vihra
+    wither_skull: Lobanja vene
+    wolf: Volk
+    zoglin: Zoglin
+    zombie: Zombi
+    zombie_horse: Zombi konj
+    zombie_villager: Zombi vaščan
+    zombified_piglin: Zombi piglin
+  EnchantAliases:
+    protection_fire:
+    - Protipožarna zaščita
+    damage_all:
+    - Ostrina
+    arrow_fire:
+    - Plamen
+    soul_speed:
+    - Hitrost duše
+    water_worker:
+    - AquaAffinity
+    arrow_knockback:
+    - Punch
+    loyalty:
+    - Zvestoba
+    depth_strider:
+    - Globinski pas
+    vanishing_curse:
+    - Izginjajoče prekletstvo
+    durability:
+    - Nezlomljivo
+    knockback:
+    - Odrinitev
+    luck:
+    - Sreča
+    binding_curse:
+    - Zavezujoče prekletstvo
+    loot_bonus_blocks:
+    - Sreča
+    protection_environmental:
+    - Zaščita
+    dig_speed:
+    - Učinkovitost
+    mending:
+    - Popravljanje
+    lure:
+    - Lure
+    loot_bonus_mobs:
+    - Ropanje
+    piercing:
+    - Piercing
+    damage_undead:
+    - Smite
+    multishot:
+    - Multishot
+    fire_aspect:
+    - Požarni vidik
+    channeling:
+    - Usmerjanje
+    sweeping_edge:
+    - Pometalni rob
+    thorns:
+    - Trnji
+    damage_arthropods:
+    - BaneOfArthropods
+    oxygen:
+    - Dihanje
+    riptide:
+    - Riptide
+    silk_touch:
+    - Dotik_svile
+    quick_charge:
+    - Hitri reaload
+    protection_projectile:
+    - Zaščita izstrelkov
+    impaling:
+    - Impaling
+    protection_fall:
+    - Zaščita pred padcem
+    - Perje proti padcu
+    arrow_damage:
+    - Moč
+    arrow_infinite:
+    - Neskončnost
+  PotionEffectAliases:
+    speed:
+    - Hitrost
+    slow:
+    - Počastnost
+    fast_digging:
+    - Fast digging
+    slow_digging:
+    - Slow digging
+    increase_damage:
+    - Powecana Moč
+    heal:
+    - zdravi
+    harm:
+    - Škoda
+    jump:
+    - Skočiti
+    confusion:
+    - Zmedenost
+    regeneration:
+    - Regeneracija
+    damage_resistance:
+    - Odpornost na škodo
+    fire_resistance:
+    - Požarna odpornost
+    water_breathing:
+    - Vodno Dihanje
+    invisibility:
+    - Nevidnost
+    blindness:
+    - Slepota
+    night_vision:
+    - Nočni vid
+    hunger:
+    - Lakota
+    weakness:
+    - Slabost
+    poison:
+    - Strup
+    wither:
+    - Wither
+    health_boost:
+    - Okrepitev Zdravja
+    absorption:
+    - Absorpcija
+    saturation:
+    - nasičenost
+    glowing:
+    - Svetleč
+    levitation:
+    - Levitacija
+    luck:
+    - Srečca
+    unluck:
+    - Nesreča
+    slow_falling:
+    - Počasno Padanje
+    conduit_power:
+    - Moč vodovoda
+    dolphins_grace:
+    - Milost delfinov
+    bad_omen:
+    - Slab znak
+    hero_of_the_village:
+    - Junak vasi
+direction:
+  n: Sever
+  ne: Severovzhod
+  e: Vzhod
+  se: Jugovzhod
+  s: Jug
+  sw: Jugozahod
+  w: Zahod
+  nw: Severozahod
+modify:
+  middlemouse: '&2Sredni kliknite miško za urejanje'
+  newItem: '&7postavi nov izdelek tukaj'
+  newLine: '&2<NewLine>'
+  newLineHover: '&2dodaj Nova linja'
+  newPage: '&2<NewPage>'
+  newPageHover: '&2Create Nova stran'
+  removePage: '&c<RemovePage>'
+  removePageHover: '&czbrisi stran'
+  deleteSymbol: ' &c[X]'
+  deleteSymbolHover: '&codstrani &e[text]'
+  extraEditSymbol: ' &6!'
+  addSymbol: '&2[+]'
+  addSymbolHover: '&2dodaj novo'
+  cancelSymbol: ' &7&l[X]'
+  cancelSymbolHover: '&aPrekliči'
+  acceptSymbol: ' &2&l[✔]'
+  acceptSymbolHover: '&aPotrdi'
+  denySymbol: ' &4&l[X]'
+  denySymbolHover: '&cPreklici'
+  enabledSymbol: '&2[+]'
+  disabledSymbol: '&c[-]'
+  enabled: '&2Vklopi'
+  disabled: '&cIzklopi'
+  running: '&2Zagon'
+  paused: '&cPavza'
+  editSymbol: '&e✎'
+  editSymbolHover: '&eUredi &6[text]'
+  editLineColor: '&f'
+  listUpSymbol: '&6⇑'
+  listUpSymbolHover: '&eGor'
+  listDownSymbol: '&6⇓'
+  listDownSymbolHover: '&eDol'
+  listNumber: '&e[number].'
+  ChangeHover: '&eClick to change'
+  commandTitle: ' &e--- &6[name] &e---'
+  commandList: ' &e[command]  '
+  emptyLine: '&7[Empty line]'
+  commandEdit: '&eUrejanje lista'
+  lineAddInfo: '&eVpiši novo linijo. Napiši &6cancel &eza preklic'
+  commandAddInfo: '&eNapiši nov ukaz. Napiši &6cancel &eza preklic'
+  commandAddInformationHover: "&e[playerName] izpis imena igralca \n&eTo\
+    \ include delay in commands: \n&edelay! 5 \n&eSpecialized commands are supported.\
+    \ More info at \n&ehttps://www.zrips.net/cmi/commands/specialized/"
+  commandEditInfo: '&eClick to paste old text. Type &6cancel &eto cancel action'
+  commandEditInfoHover: '&eClick to paste old text'
+warp:
+  list: '&e[pos]. &6[warpName] &f- &7[worldName] ([x]:[y]:[z])'
+teleportation:
+  relocation: '!actionbar!&4Your teleport location was obstructed. You have been teleported
+    to a safe location.'
+afk:
+  'on': '&6AFK'
+  'off': '&7Playing'
+  left: '&6[playerDisplayName] &eni več AFk'
+  MayNotRespond: '&eIgralec je AFK in se morda ne bo odzval'
+  MayNotRespondStaff: '&eAdministrator je AFK in se morda ne bo odzval. Poskusite nas kontaktirati
+    skozi discord!'
+BossBar:
+  hpBar: '&f[victim] &e[current]&f/&e[max] &f(&c-[damage]&f)'
+Potion:
+  Effects: '&8Potion effects'
+  List: '&e[PotionName] [PotionAmplifier] &eDuration: &e[LeftDuration] &esec'
+  NoPotions: '&eNone'
+Information:
+  Title: '&8Igralcev Information'
+  Health: '&eZdravje: &6[Health]/[maxHealth]'
+  Hunger: '&eLakota: &6[Hunger]'
+  Saturation: '&eNasičenost: &6[Saturation]'
+  Exp: '&eExp: &6[Exp]'
+  NotEnoughExp: '&eNi dovol exp: &6[Exp]'
+  NotEnoughExpNeed: '&eNi dovol exp: &6[Exp]/[need]'
+  tooMuchExp: '&ePreveč exp: &6[Exp]/[need]'
+  NotEnoughVotes: '&eNi dovol votes: &6[votes]'
+  TooMuchVotes: '&ePreveč votes: &6[votes]'
+  BadGameMode: '&cTega ne morete storiti v trenutnem načinu igre'
+  BadArea: '&cNa tem območju ne morete izvesti tega dejanja'
+  GameMode: '&eIgraalni način: &6[GameMode]'
+  GodMode: '&eGodMode: &6[GodMode]'
+  Flying: '&eletenje: &6[Flying]'
+  CanFly: '&eLahko letiš: &6[CanFly]'
+  Uuid: '&6[uuid]'
+  ip: '&eIp address: &6[address]'
+  FirstConnection: '&ePrva povezava: &6[time]'
+  Lastseen: '&eNazadnje viden: &6[time]'
+  Onlinesince: '&eAktiven od: &6[time]'
+  Money: '&eStanje računa: &6[money]'
+  Group: '&eSkupina: &6[group]'
+econ:
+  disabled: '&cTega ukaza ni mogoče uporabiti, medtem ko je ekonomična podpora onemogočena'
+  noMoney: '&cNimas denarja'
+  charged: '!actionbar!&fNapolnjeno: &6[amount]'
+  notEnoughMoney: '&cNImas dovol denarja. POtrebujes (&6[amount]&c)'
+  tooMuchMoney: '&cPrevec denarja mas :D'
+  commandCost: '&7Ta strošek ukaza znaša &6[cost] &7ponovite ali kliknite tukaj za potrditev'
+Elytra:
+  Speed: '&eHitrost: &6[speed]&ekm/h'
+  SpeedBoost: ' &a+ '
+  SpeedSuperBoost: ' &2+ '
+  CanUse: '&cBrez dovoljenja ne morem opremiti elitre!'
+  CantGlide: '&cTu ne morem uporabiti elitre!'
+  Charging: '&ePolnjenje &f[percentage]&e%'
+Selection:
+  SelectPoints: '&cZ orodjem za izbiro izberite 2 točki! AKA: &6[tool]'
+  PrimaryPoint: '&ePostavljeno & 6Primarno & eIzbirna točka [point]'
+  SecondaryPoint: '&ePlaced &6Postavljeno & 6Sekundarno & eIzbirna točka [point]'
+  CoordsTop: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
+  CoordsBottom: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
+NetherPortal:
+  ToHigh: '&cPortal je velik, največja višina je &6[max]&c!'
+  ToWide: '&cPortal je širok, največja širina je &6[max]&c!'
+  Creation: '!actionbar!&7Narejen [height]x[width] nether portal!'
+  Disabled: '&cIzdelava portala onemogočena!'
+Location:
+  Title: '&8Lokacija igralca'
+  Killer: '&eMorilec: &6[killer]'
+  OneLiner: '&eLokacija: &6[location]'
+  DeathReason: '&eRazlog smrti: &6[reason]'
+  Full: '&7[world] &f[x]&7:&f[y]&7:&f[z]'
+  World: '&eSvet: &6[world]'
+  X: '&eX: &6[x]'
+  Y: '&eY: &6[y]'
+  Z: '&eZ: &6[z]'
+  Pitch: '&eVišina tona: &6[pitch]'
+  Yaw: '&eYaw: &6[yaw]'
+Ender:
+  Title: '&7Odprti ender chest'
+Chat:
+  localPrefix: ''
+  shoutPrefix: '&c[S]&r'
+  LocalNoOne: '!actionbar!&cNihče te ne sliši, piši! pred sporočilom za globalni klepet'
+  shoutDeduction: '!actionbar!&cOdšteto &e[amount] &cfor shout'
+  # Use \n to add new line
+  publicHover: '&ePoslano ob: &6%server_time_hh:mm:ss%'
+  privateHover: '&ePoslano ob: &6%server_time_hh:mm:ss%'
+  staffHover: '&ePoslano ob: &6%server_time_hh:mm:ss%'
+  helpopHover: '&ePoslano ob: &6%server_time_hh:mm:ss%'
+  link: '&l&4[&7LINK&4]'
+  item: '&7[%cmi_iteminhand_displayname%[amount]&7]'
+  itemAmount: ' x[amount]'
+  itemEmpty: '&7[Mighty fist]'
+command:
+  help:
+    output:
+      usage: '&eUporabi: &7%usage%'
+      cmdInfoFormat: '[command] &f- &e[description]'
+      cmdFormat: '&6/[command]&f[arguments]'
+      helpPageDescription: '&e* [description]'
+      explanation: '&e * [explanation]'
+      title: '&e------ ======= &6Pomoč&e &e======= ------'
+  nocmd:
+    help:
+      info: '&ePrikazi vse idklenjene komande'
+      args: ''
+  actionbarmsg:
+    help:
+      info: '&ePredvajalniku pošlje sporočilo v vrstici z dejanji'
+      args: '[playerName/all] (-s:[seconds]) [message]'
+    info:
+      message: '&f[messsage]'
+  afk:
+    help:
+      info: '&ePreklopi način afk. Lahko je naveden razlog'
+      args: (-p:playerName) (reason) (-s)
+  afkcheck:
+    help:
+      info: '&ePreverite stanje igralcev afk'
+      args: '[playerName/all]'
+    info:
+      feedback: '&e[playerDisplayName]&e: &6[status]'
+      feedbackInactive: '&eNeaktiven v preteklosti &6[time]'
+      feedbackAll: '&e[place]. &e[playerDisplayName]&e: &6[status]'
+      feedbackReason: '&7[reason]'
+  air:
+    help:
+      info: '&eNastavite igralce v zraku'
+      args: '[playerName] [amount]'
+    info:
+      feedback: '&eNastavili ste &3[amount]&e air for &3[playerName]&e (&3[offon]&e).'
+      targetFeedback: '&eVaš zrak je bil nastavljen na &3[amount]&e by &3[senderDisplayName]&e.'
+      current: '&eTrenutno &3[playerDisplayName] &ezrak: &3[amount]'
+  alert:
+    help:
+      info: '&eOpozori administratorje ob prijavi igralcev'
+      args: '[playerName] (reason)'
+      explanation:
+      - '&eDovoljenja:'
+      - '&6command.alert.info.inform &e- če si želite ogledati gesla ob prijavi igralca'
+    info:
+      inform:
+      - '&e!Alert!******** &6[name] &4se je prijavil! &e*******!Alert!'
+      reason: '&eRazlog opozorila: &6[reason]'
+      removed: '&6[playerDisplayName] &eodstranjen iz opozorilne liste'
+      added: '&eOpozorilo bo poslano vsem administratorjem, če &6[playerDisplayName] &ese igralec pridruži v naslednjih 24H'
+      online: '&6[playerDisplayName] &eje že aktiven'
+  aliaseditor:
+    help:
+      info: '&eUrejevalnik vzdevkov'
+      args: (new) (alias-cmd)
+    info:
+      ListNumber: '&e[number].'
+      aliasName: ' &6[alias]   '
+      commandList: ' &e/[command]  '
+      commandListDelay: ' &6[command]  '
+      permRequirement: '&2Dovoljenja: &6[state]'
+      permReqExplanation: '&7Potrebuje &6cmi.customalias.[alias] &7za uporabo'
+      tabComplete: ' &2TabComplete: &6[state]'
+      tabCompleteExplanation: '&7Če je onemogočen, TabComplete za dokončanje ne bo deloval'
+      tabCompletes: '&2TabCompletes: '
+      customTab: ' &7Zavihek po meri'
+      newAliasInfo: '&eVnesite novo ime ukaza vzdevek in pritisnite enter'
+      addInfo: '&eVnesite nov ukaz. Vnesite &6cancel &e za preklic'
+      addInformationHover: "&eGlobalne spremenljivke, podprte od kategorije pošiljatelja \n\
+        &edelay! 5 &6to include delay in commands \n&e$1 &6will take provided variable\
+        \ by new command and will place in that place \n&e$1- &6takes all variables\
+        \ from this point and inserts into original commands \n&e? &6makes it valid\
+        \ when using any last variable. For Help page usage\n&efromConsole! will perform\
+        \ command from console"
+      editInfo: '&eKlikni, da prilepiš stari tekst. Napiši &6cancel &eza preklic. Napiši
+        &6remove &eza izbris linije'
+  anvil:
+    help:
+      info: '&eUporabi nakovalo'
+      args: (playerName)
+    info:
+      feedback: '&eOdprli ste nakovalo za &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e odprl nakovalo za vas.'
+  armorstand:
+    help:
+      info: '&eOdprite urejevalnik stojala za oklep'
+      args: (last/near)
+    info:
+      cantClick: '&cNe morem storiti tega. Nekdo že ureja to oklepno stojalo'
+      tooFar: '&cStojalo za oklep je predaleč'
+      title: Urednik
+      coordX: '&cX'
+      coordY: '&2Y'
+      coordZ: '&eZ'
+      body: '&7Vrtenje telesa: &f[amount]'
+      head: '&7Glava [coord]&7: &f[amount]'
+      torso: '&7Torso [coord]&7: &f[amount]'
+      leftArm: '&7Leva roka [coord]&7: &f[amount]'
+      rightArm: '&7Desna roka [coord]&7: &f[amount]'
+      leftLeg: '&7Leva noga [coord]&7: &f[amount]'
+      rightLeg: '&7Desna noga [coord]&7: &f[amount]'
+      pos: '&7Pozicija [coord]&7: &f[amount]'
+      plate: '&7Plošča'
+      size: '&7Majhna'
+      visible: '&7Vidno'
+      arms: '&7Vidne roke'
+      gravity: '&7Gravitacija'
+      glow: '&7Svetleč'
+      invulnerable: '&7Neranljiv'
+      name: '&7Vidno ime'
+      nameEdit: '&7Srednji klik miške za urejanje imena'
+      interactable: '&7Interaktivno'
+      explanation: '&8Levi ali desni gumb miške prilagodi vrednost'
+      explanation2: '&8Pridržite shift, da bo 10-krat hitrejši'
+      disableGravity: '&eOnemogočite gravitacijo, če želite spremeniti to vrednost'
+      copyLabel: '&7Odpri izbirnik klonov'
+      copyTitle: '&8Izberite, kaj želite klonirati'
+      click: '&eKliknite oklepno stojalo, da ga podvojite, ali pa kliknite katero koli kocko, da prekličete postopek'
+      canceled: '&ePostopek kopiranja stojala za oklep je preklican'
+      updated: '&eStojala za oklep posodobljena'
+      action:
+        head: '&7Glava'
+        body: '&7Telo'
+        torso: '&7Torso'
+        leftArm: '&7Levaroka'
+        rightArm: '&7Desnaroka'
+        leftLeg: '&7Levanoga'
+        rightLeg: '&7Desnanoga'
+        pos: '&7Pos'
+        updateitems: '&7Posodobljeniitemi'
+        plate: '&7Plate'
+        size: '&7Velikost'
+        visible: '&7Vidno'
+        arms: '&7Roke'
+        gravity: '&7Gravitacija'
+        glow: '&7Svetleč'
+        invulnerable: '&7Neranljiv'
+        name: '&7Ime'
+        interactable: '&7Interaktivno'
+  attachcommand:
+    help:
+      info: '&eElementu priloži ukaz'
+      args: '[command/-clear]'
+      explanation:
+      - Ločite ukaze z ;;
+      - Določite lahko zagon ukaza z levim ali desnim klikom miške z
+      - '!left! za izvajanje ukaza ob levem kliku miške'
+      - '!right! za izvedbo ukaza z desnim klikom'
+      - '!limiteduse:[amount]! določa, kolikokrat lahko uporabite ta element'
+      - '!safelimiteduse:[amount]! izdelka ne bo odstranil po uporabi vseh načinov uporabe'
+      - '!cc! izvaja ukaz s konzole, zahteva cmi.command.attachcommand.cc dovoljenje'
+      - '!cooldownn:[amount]! doda zamudo ob uporabi predmeta.'
+      - '[interactedPlayer] vstavi ime igralca, s katerim ste sodelovali med držanjem predmeta'
+      - Globalne spremenljivke, ki delujejo skupaj z [itemUses]
+    info:
+      list: ' &e[id]. &6[cmd]'
+      noCmds: ' &eTemu elementu niso priloženi ukazi'
+      uses: '&eNačini uporabe: &6[amount]'
+      usesLeft: '!actionbar!&eElement uporablja levo: &6[itemUses]'
+      cooldown: '&7Element se obnavlja. Počakaj[time]'
+  autorecharge:
+    help:
+      info: '&ePreklopi samodejno polnjenje leta'
+      args: (playerName) [exp/money/off] (-s)
+    info:
+      disabled: '&eSamodejno polnjenje je onemogočeno'
+      moneyEnabled: '&eOmogočeno samodejno polnjenje leta z uporabo &6money'
+      expEnabled: '&eOmogočeno samodejno polnjenje leta z uporabo &2exp'
+  back:
+    help:
+      info: '&eTeleportira nazaj na nazadnje shranjeno lokacijo'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&4Ni shranjene lokacije, kamor bi se lahko vrnili!'
+      feedback: '&eVrnjeno na nazadnje shranjeno lokacijo (&6[worldName]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
+  balance:
+    help:
+      info: '&ePreverite stanje denarja'
+      args: (playerName)
+    info:
+      balance: '&eRavnovesje: &6[money]'
+      balanceOther: '&6[playerDisplayName] &eravnovesje: &6[money]'
+  baltop:
+    help:
+      info: '&ePreverite seznam denarja'
+      args: (playerName)
+    info:
+      topLine: '&e&m-----&6 Seznam &e&m-----'
+      topLineHover: '&6Skupno: &c[total]'
+      list: '&e[place]. &6[playerDisplayName]: &e[balance]'
+      ownLine: '&2[place]. &2[playerDisplayName]: &2[balance]'
+      recalculating: '&2Računam! Prosim poskusi kasneje.'
+  ban:
+    help:
+      info: '&eIzključi igralca'
+      args: '[playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.ban.bypass - to bypass ban
+    info:
+      # Make sure that OverrideLoginMessage is enabled in config file
+      message: '&cBili ste odstranjeni iz strežnika!'
+      reason: '&6Razlog: &e[reason]'
+      defaultReason: '&eKršena pravila strežnika'
+      messageToAll: '&6[playerDisplayName] &eje odstranil &6[senderDisplayName] &ezaradi:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &eje bil odstranjen od &6[senderDisplayName]
+        &efor: &6[reason]'
+      noSelfBan: '&cNe moreš se odstraniti'
+      cantBan: '&cTega igralca ne morete odstraniti'
+  banlist:
+    help:
+      info: '&eSeznam odstranjenih ljudi'
+      args: ''
+  bbroadcast:
+    help:
+      info: '&ePošlje posebno sporočilo vsem igralcem na vseh strežnikih'
+      args: (!) [message] (-s:[serverName,serverName])
+      explanation:
+      - Če se sporočilo začne z! potem bo prikazano čisto sporočilo
+      - Strežnike lahko določite za oddajanje sporočil samo v teh strežnikih
+    info:
+      format: '&e[&4Sporočilo&e] &2[message]'
+  blockcycling:
+    help:
+      info: '&eStanja cikličnih blokov'
+      args: ''
+  blockinfo:
+    help:
+      info: '&ePreverite podatke o bloku'
+      args: ''
+    info:
+      Info: ' &eId: &6[id][data] &eMaterial: &6[name][ndata]'
+      RealName: ' &ePravo ime: &6[name]'
+      TempLight: ' &eTemperatura: &6[temp]&e, Svetloba - kocka: &6[blevel]&e, nebo: &6[slevel]&e,
+        skupno: &6[level]'
+      Resistance: ' &eOdpornost - Rudarjenje: &6[mining]&e, Eksplozija: &6[explosion]'
+      noteBlock: ' &eTon: &6[tone] &eOktava: &6[octave] &6Instrument: &e[instrument]
+        &6Pitch: &7[pitch]'
+      BlockState: ' &7[state]: &f[value]'
+  blocknbt:
+    help:
+      info: '&ePokaži informacije o bloku NBT'
+      args: ''
+    info:
+      noNbt: '&eBlok ne vsebuje nobenih podatkov NBT'
+  book:
+    help:
+      info: '&eUrejanje knjig'
+      args: '[Author/Title/Unlock] [value]'
+    info:
+      noitem: '&cV roki ne drži nobenega predmeta.'
+      notBook: '&cArtikel ni napisana knjiga.'
+      wrongValue: '&cArtikel ni zaprta napisana knjiga.'
+      inccorectAction: '&eNapačno ime dejanja.'
+      authorChanged: '&eAvtor spremenjen v: [author]'
+      titleChanged: '&eNaslov spremenjen v: [title]'
+      unlocked: '&eKnjiga je bila odklenjena'
+  bossbarmsg:
+    help:
+      info: '&eIgralcu pošlje sporočilo v vrstici'
+      args: '[playerName/all] (-sec:[seconds])(-t:[timeToKeepFor]) (-n:nameOfBar)
+        (-p:[maxValue/current]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
+        (-a:[ticks]) [message] (-cancel:nameOfBar)'
+      explanation:
+      - PlaceHolderAPI je podprt za napredovanje in ga pošljite sami
+      - Čas je določen na pravilen način, na primer 1s je ena sekunda, 1m pa ena minuta.
+        To bo določilo, kako dolgo naj bo trak prikazan za igralca, preden se samodejno skrije
+      - Ime vrstice je možnost in pri določanju iste, bo trenutna vrstica posodobljena z novimi informacijami
+      - 'barve so lahko: red, green, pink, purple, white, yellow'
+      - maks. in trenutne vrednosti določa vrvico, spremenljivke PlaceHolderAPI lahko
+        se uporablja za dinamične posodobitve
+      - 'Primeri:'
+      - /cmi bossbar Zrips BossBarTitle
+      - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:testbar
+        -c:red &2Title of bar %server_online%/%server_max_players% &e%cmi_user_name%
+      - /cmi bossbarmsg all -p:+1 -n:testbar - bo dodal en odstotek trenutni vrstici napredka po imenu
+      - /cmi bossbarmsg all -p:-1 -n:testbar - bo iz trenutne vrstice napredka poimenoval en odstotek
+      - /cmi bossbarmsg all -s:10 -n:testbar - bo slog bossbar postavil na 10 segmentov po imenu vrstice
+      - /cmi bossbarmsg all -sec:5 - bo štela 5 sekund od 0 do 5
+      - /cmi bossbarmsg all -sec:-5 - bo štela 5 sekund od 5 do 0
+      - http://www.zrips.net/cmi/commands/bossbarmsg-handling/
+  broadcast:
+    help:
+      info: '&ePošlje posebno sporočilo vsem igralcem'
+      args: (!) [message] (-w:[worldName,worldName]) (-r:[range]) (-c:[world;x;y;z])
+      explanation:
+      - Če se sporočilo začne, potem bo prikazano čisto sporočilo
+      - Svetove lahko določimo za oddajanje sporočil samo v teh svetovih
+    info:
+      format: '&e[&4Sporočilo&e] &2[message]'
+  burn:
+    help:
+      info: '&eZažgite igralca'
+      args: (playerName) (time) (-s)
+    info:
+      feedback: '&eZažgali ste &3[playerDisplayName]&e za &6[time] &e(&3[offon]&e).'
+      targetfeedback: '&eVas je zažgal &3[senderDisplayName]&e za
+        &6[time]&e.'
+  charges:
+    help:
+      info: '&ePrikaže leve naboje drstitve'
+      args: '[playerName] [add/set/take/clear/reset] (-f)'
+    info:
+      charges: '&e* Stroški: &6[current]&e/&6[max] [bypass]'
+      cd: '&e* CD: &6[cdtime] &eNaslednji v: &6[time]'
+      bypass: '&6(Bypass)'
+      allUsed: '&eVsi stroški porabljeni! Naslednji v [time]'
+      noGroup: '&eNe določite skupine za polnjenje'
+      cantBreak: '&eNe morete prekiniti, dokler vam ne dodelijo skupine za zaračunavanje'
+      minusCd: '&e Minus &6[sec]&esec na spawnerju stroški čakanja'
+      add: '&eDodano &6[amount] &espawner stroški ali &6[playerDisplayName]'
+      set: '&eNastavljeni &6[amount] &espawner stroški za &6[playerDisplayName]'
+      clear: '&ePočistil je vse stroške drsti za &6[playerDisplayName]'
+      reset: '&ePonastavite skupino polnilnih naprav za &6[playerDisplayName]'
+      take: '&eVzel &6[amount] &emicelij zaračuna od &6[playerDisplayName]'
+  chat:
+    help:
+      info: '&eUstvarite in se pridružite klepetalnicam'
+      args: '[create/join/leave/list/invite/kick/listrooms] (chatName/playerName)
+        (-private) (-locked) (-persistent)'
+    info:
+      joined: '&ePridružen klepetalnici: &7[chatRoomName]'
+      joinedInfo: '&e[playerDisplayName] &7pridružil klepetalnici'
+      alreadyIn: '&eSi že v &7[chatRoomName] klepetalnici'
+      left: '&eZapustil &7[chatRoomName] &eklepetalnico'
+      leftInfo: '&e[playerDisplayName] &7zapustil klepetalnico'
+      invite: '&6[playerDisplayName] &evas vabi, da se pridružite klepetalnici: &7[chatRoomName]'
+      sentInvite: '&ePovabljen &6[playerDisplayName] &ev klepetalnico: &7[chatRoomName]'
+      format: '&3|&7[chatRoomName]&3| &6[playerDisplayName]: &r[message]'
+      nobody: '&4Nikogar ni v klepetalnici'
+      notOwner: '&4To lahko stori samo lastnik klepeta'
+      wrongName: '&4Napačno ime klepetalnice'
+      takenName: '&4Ime klepetalnice je zasedeno, uporabite drugo'
+      notIn: '&4Uporabnik ni v klepetalnici'
+      cantJoin: '&4Klepetalnica je zasebna in nimate povabila'
+      kicked: '&6[playerDisplayName] &eodstranjen iz klepetalnice'
+      cantleave: '&6Ne morem zapustiti zaklenjene sobe'
+      gotKicked: '&4Odstranili so te iz &7[chatRoomName] &4klepetalnice'
+      list: '&e[chatRoomName]&e: &7[list]'
+      globalList: '&7[number]. [joined]&e[chatRoomName][private]&e: &7[count][expires]'
+      globalListPrivate: '&2(P)'
+      globalListJoined: '&2+'
+      globalListHover:
+        Owner: '&7Lastnik: [playerDisplayName]'
+        Ends: ' &7Poteče v: [time]'
+        Names: '&7[playerDisplayName]'
+  checkaccount:
+    help:
+      info: '&ePoiščite druge račune igralcev'
+      args: (playerName/ip)
+      explanation:
+      - 'Dodatno dovoljenje: cmi.command.checkaccount.showip'
+    info:
+      place: '&e[place]. &6'
+      ip: '&6[ip]&e: '
+      name: '&6[name]&e(&6[times]&e)'
+      nonIpList: '&eAccounts: &6'
+      nonIpName: '&6[name]'
+      click: '&eKliknite za preverjanje &6[name] &eaccount'
+      noData: '&cZa tega uporabnika ni zapisov'
+  checkban:
+    help:
+      info: '&ePreverite stanje prepovedi igralcev'
+      args: (playerName)
+    info:
+      list: '&6[place]&e. &e[playerDisplayName] &6[time]'
+      permanent: '&3Stalno'
+      bannedUntil: '&eOdstranjen za: &6[time]'
+      reason: '&eRazlog: &6[reason]'
+      bannedBy: '&eOdstranjen od: &6[sourceDisplayName]'
+      bannedWhen: '&eOdstranjen ob: &6[date]'
+  checkcommand:
+    help:
+      info: '&ePoiščite možne ukaze po ključnih besedah'
+      args: (key word)
+    info:
+      list: '&e[place]. &f[command] &7[args]'
+      hover: '&e[desc]'
+      variableColor: '&f'
+      noCommandFound: '&7Ta ključna beseda ne najde nobenega ukaza'
+  checkexp:
+    help:
+      info: '&ePreverite igralce exp'
+      args: (playerName)
+    info:
+      current: '&eLevel: &6[currentLevel] &eExp: &6[levelExp] &eSkupna izkušnja: &6[exp]'
+      need: '&ePotrebujete exp do naslednje stopnje: &6[missingExp]'
+  checkperm:
+    help:
+      info: '&ePreverite možna vozlišča dovoljenj'
+      args: (key word)
+    info:
+      list: '&e[place]. [permission]'
+      hover: '&e[desc]'
+      others: |-
+        &4
+        ---->When command is used on another player<----
+        &cBase command required
+      permissionColor: '&6'
+      cmdPermissionColor: '&2'
+      variableColor: '&f'
+      noPermissionFound: '&7Ta ključna beseda ni našla nobenega dovoljenja'
+  cheque:
+    help:
+      info: '&ePretvorite denar v ček'
+      args: (playerName) [amount]
+    info:
+      transfered: '&ePreneseno &6[amount] &ena vaš račun. Novo stanje: &6[balance]'
+      chequeName: '&eČek za &6[amount]'
+      chequeLore:
+      - '&r&fIzdal &7[senderDisplayName]'
+      - '&r&fDesni klik za uporabo'
+      holdPaper: '&eDržite papir v roki'
+      cantUse: '&eTega papirja ne morem uporabiti. To je že preverjanje!'
+  clear:
+    help:
+      info: '&ePočistite seznam igralcev'
+      args: (playerName) (item(-amount)) (-s) (+clearType)
+      explanation:
+      - 'Posible clearTypes: quickbar, inventory, partinventory, weapons, armorslots,
+        tools, armors, mainhand, offhand'
+      - Should start with + sign
+      - Multiple types can be used
+      - cmi clear +armors - will remove armor type items
+      - cmi clear +armorslots - will remove items from armorslots
+    info:
+      feedback: '&ePočistili ste &3[playerDisplayName]&e inventar (&3[offon]&e).'
+      targetfeedback: '&eVaš inventar je počistil uporabnik &3[senderDisplayName]&e.'
+      confirm: '&7Kliknite, da potrdite, da se inventar počisti. &cVsi elementi bodo odstranjeni!'
+  clearchat:
+    help:
+      info: '&ePočisti klepet'
+      args: (self)
+      explanation:
+      - 'Permission:'
+      - ' &6cmi.command.clearchat.bypass &e- to ignore chat cleaning'
+    info:
+      information: '&eKlepet je počistil uporabnik &6[senderDisplayName]'
+  clearender:
+    help:
+      info: '&eČisti igralci spuščajo skrinjo'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&ePočistili ste &3[playerDisplayName]&e ender chest (&3[offon]&e).'
+      targetfeedback: '&eVaš ender skrinjo je očistil &3[senderDisplayName]&e.'
+  colorlimits:
+    help:
+      info: '&ePrikaže vse možne barve'
+      args: (playerName)
+    info:
+      publicmessage: ' &eJavno: '
+      privatemessage: ' &ePrivatno: '
+      nickname: ' &eVzdevek: '
+      signs: ' &eZnak: '
+      books: ' &eKnjige: '
+      me: ' &eJaz: '
+      None: '&e-'
+  colorpicker:
+    help:
+      info: '&eIzberite barvo'
+      args: (hex/colorname)
+    info:
+      hovers:
+      - '[color]⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛'
+      - '&f#[hex]'
+      - '&7Closest match: '
+      - '[colorHex] - [colorName]'
+      - '[closeColor]⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛'
+      - Shift+Click
+  colors:
+    help:
+      info: '&ePrikaže vse možne barve'
+      args: (playerName)
+    info:
+      List:
+      - '&e***************************************'
+      - '     &0&%0  &1&%1  &2&%2  &3&%3  &4&%4  &5&%5  &6&%6  &7&%7'
+      - '     &8&%8  &9&%9  &a&%a  &b&%b  &c&%c  &d&%d  &e&%e  &f&%f'
+      - '       &%k - &kMagic&r      &%l - &lBold'
+      - '       &%m - &mStrike&r     &%n - &nUline'
+      - '       &%o - &oItalic&r      &%r - &rReset'
+      - '&e***************************************'
+  commandspy:
+    help:
+      info: '&ePreklop ukaznega vohuna'
+      args: (playerName) (-s)
+      explanation:
+      - cmi.command.commandspy.hide - Skriva izvedene ukaze iz Commandspy
+    info:
+      command: '&5C&2Spy&7[&8[senderDisplayName]&7]&7: &f[command]'
+      toggled: '&eUkazni vohun je preklopil na &6[state] &estanje'
+  compass:
+    help:
+      info: '&eNastavite točko kompasa igralcev na vašo lokacijo'
+      args: (targetName) (sourceName) (x) (z) (worldname) (reset) (-s)
+      explanation:
+      - 'Example: /cmi compass Zhax'
+      - /cmi compass Zhax Zrips
+      - /cmi compass Zhax LT_Craft 0 0 -s
+      - /cmi compass reset Zhax
+    info:
+      wrongworld: '&cVaš definirani svet ne obstaja!'
+      feedback: '&eNastavili ste &3[playerDisplayName] &epuščico kompasa do &3[sourceDisplayName]
+        &elokacije.'
+      feedbackCustom: '&eNastavili ste &3[playerDisplayName] &epuščico kompasa do &3[x]
+        [z] [world] &elocation.'
+      targetFeedback: '&eVaša puščica kompasa nastavljena do &3[sourceDisplayName] &elokacije
+        od &3[senderName]&e.'
+      targetFeedbackCustom: '&eCilj vašega kompasa je bil nastavljen na &3[x] [z] [world] &elokacija
+        od &3[sourceDisplayName]&e.'
+      reset: '&eCilj kompasa je bil ponastavljen'
+  condense:
+    help:
+      info: '&eZgosti predmete v bloke'
+      args: (itemName)
+    info:
+      converted: '&ePretvorjeno &7[items] &estvari v &7[blocks] &ekocke'
+      nothing: '&cV vašem inventarju ni ničesar, kar bi bilo mogoče strniti.'
+  counter:
+    help:
+      info: '&eZačne števec za okoliške igralce'
+      args: '[join/leave/start] (t:time) (r:[range/-1]) (c:[world:x:y:z]) (msg:custom_message)
+        (-f)'
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.command.counter.force &e- to force counter for everyone in range '
+      - '&6cmi.command.counter.time &e- define custom time range '
+      - '&6cmi.command.counter.range &e- to define custom range'
+      - '&6cmi.command.counter.msg &e- to define custom message'
+      - '&6cmi.command.counter.autojoin &e- joins counter automatically'
+      - -f will force counter to all players in range
+      - 'Example: /cmi counter start r:30 t:7 msg:&eCustom_message -f'
+    info:
+      join: '&ePridružen števec'
+      leave: '&eLevi števec'
+      go: '&ePOJDI!'
+      tooFast: '&cNe morem hitro ponoviti ukaza, počakajte: &6[sec]&esec'
+      noOne: '&cNihče ne vidi tega števca!'
+  cplaytime:
+    help:
+      info: '&ePodroben čas igranja'
+      args: (playerName)
+    info:
+      moreDetails: '&7Kliknite za več podrobnosti'
+      title: '&8[playerDisplayName] &7čaš igranja'
+      date: '&8[date]'
+      time: '&7[hour]:00&f-&7[nextHour]:00'
+      thishour: '&7Trenutna ura'
+      hourback: '&7Prejšnja ura'
+      today: '&7Danes'
+      yesterday: '&7Včeraj'
+      thisweek: '&7Trenutni teden'
+      week: '&77 dnevno obdobje'
+      thismonth: '&7Trenutni mesec'
+      month: '&730-dnevno obdobje'
+      thisyear: '&7Trenutno leto'
+      year: '&7365-dnevno obdobje'
+      total: '&7Skupaj'
+  ctellraw:
+    help:
+      info: '&ePošlji sporočilo vrste Tell'
+      args: '[playerName/all] [formattedMessage]'
+      explanation:
+      - Usage is same as shown in http://www.zrips.net/cmi/custom-text/ aka customtext
+        command
+  ctext:
+    help:
+      info: '&ePrikaže besedilo po meri'
+      args: '[cText] (playerName/all) (sourcePlayer)'
+    info:
+      list: '&eBesedilo po meri: &6'
+      check: '&ePreveri: &6[text]'
+  cuff:
+    help:
+      info: '&eZačasno ustavi dejanja igralcev'
+      args: '[playername] (true/false) (-s)'
+    info:
+      noChat: '&cVsa vaša dejanja so začasno ustavljena. Ne morete klepetati.'
+      noCommand: '&cMed ukinitvijo ne morete uporabljati ukazov. &eDovoljeno: &6/msg, /r,
+        /tell'
+      cuffed: '&6[playerDisplayName] &epriklenjen'
+      unCuffed: '&6[playerDisplayName] &eodklenjen'
+      free: '&eZdaj ste svobodni'
+      gotCuffed: '&ePriklenjen si'
+      cuffedInfo: '&ePriklenjen si'
+      cantCuff: '&cNemoreš prikleniti tega igralca!'
+  customrecipe:
+    help:
+      info: '&eUpravlja recepte po meri'
+      args: ''
+    info:
+      removed: '&eRecept odstranjen: [id]. For FULL effect you will need server restart.'
+      noRecipe: '&ePo tem ID-ju ni recepta po meri'
+      edit: '&8Uredi recept (&6[type]&8)'
+      addNew: '&eDodajte nov recept (&6[type]&e)'
+      shapelessRecipe: '&6Naredite nov brezoblični recept'
+      shapedRecipe: '&eNaredite nove oblike recepta'
+      furnaceRecipe: '&2Naredite nov recept za peč'
+      mainTitle: '&8Recepti po meri (&7[current]&8/&7[total]&8)'
+  dback:
+    help:
+      info: '&eVrne se na mesto smrti'
+      args: (playerName) (-s)
+    info:
+      noinfo: '&4Ni shranjene lokacije, kamor bi se lahko vrnili!'
+      feedback: '&6Vrnjen na nazadnje shranjeno lokacijo ([world],[x],[y],[z])!'
+  disableenchant:
+    help:
+      info: '&eOnemogoči očarljivost'
+      args: (enchant/id) (disable/enable)
+    info:
+      title: Očarajte onemogočevalnik
+      feedback: '&6[enchantName] &eje bil [state]'
+  dispose:
+    help:
+      info: '&eOdvrzite nepotrebne predmete'
+      args: (playerName)
+    info:
+      title: '&cPostavite vse predmete, ki jih ne potrebujete'
+  distance:
+    help:
+      info: '&ePreverite razdaljo med 2 točkama'
+      args: (playerName) (playerName)
+    info:
+      feedback: '&7Razdalja: &e[dist] &7x:&e[x] &7y:&e[y] &7z:&e[z] &7Smer:&e[dir]'
+  donate:
+    help:
+      info: '&ePodarite predmet, ki ga imate'
+      args: '[playerName] (amount)'
+    info:
+      donated: '&ePodaril &6[type]&eX&6[amount] &estvari igralcu &6[playerDisplayName]'
+      got: '&eImaš &6[type]&eX&6[amount] &edonacij od &6[playerDisplayName]'
+      sentOffer: '&ePoslana donacija &6[playerDisplayName]&e. Čakanje, dokler ga igralec ne sprejme'
+      gotOffer: '&eDobil &6[type]&eX&6[amount] &edonacij od &6[sourceDisplayName]&e.
+        Klikni za sprejem donacij.'
+      doesnthave: '&eIgralec teh stvari nima več'
+      'no': '&eNi čakajočih donacij'
+      list: '&7[number]. &e[playerDisplayName] &e- &7[material] &6x &e[amount]'
+  dsign:
+    help:
+      info: '&eUpravljanje dinamičnih znakov'
+      args: (new)
+      explanation:
+      - Poglejte znak in izvedite /cmi dsign new
+    info:
+      howTo: '&cTo ni dinamičen znak za ustvarjanje novih izvedb &e/cmi dsign new'
+      gui: '&7---- &f<Odpri menu> &7----'
+      guiHover: '&7Odprite GUI za nastavitve dinamičnih znakov'
+      individual: '&7Posameznik: [state]'
+      individualLore:
+      - '&2True &7- Znak rezultata bo drugačen za vsakega igralca'
+      - '&2True &7- Posodobil bo nadomestni znak za predvajalnike'
+      - '&2False &7- Rezultat bo znak, da bo fizično posodobljen'
+      - '&2False &7- Je bolj učinkovit, a hkrati bolj omejen'
+      interval: '&7Posodobi vsako &6[second] &7second'
+      intervalLore:
+      - '&7Kako pogosto se v nekaj sekundah posodabljajo informacije na znaku'
+      - '&7To tudi določa hitrost drsenja črte'
+      range: '&7Območje aktiviranja: &6[blocks]'
+      rangeLore:
+      - '&7Določa območje okoli znaka za sprožitev posodobitev'
+  dye:
+    help:
+      info: '&eBarvni usnjeni oklep'
+      args: (playerName) (red,green,blue/hexCode/colorName/random/clear/rainbow/day/biome/health)
+        (-s)
+    info:
+      color: '&eTrenutna barva - &c[red],&2[green],&9[blue] &eHex:&6#[hex]'
+      custom: '&eOmogočen barvni način po meri: &6[mode]'
+      bound: '&ePisano na dušo od: &6'
+      boundName: '[playerName]'
+  editctext:
+    help:
+      info: '&eUrejevalnik besedila po meri'
+      args: ''
+    info:
+      noText: '&cBesedila po meri s tem imenom ni mogoče najti'
+      editInfo: '&eKliknite, da prilepite staro besedilo. Vnesite &6prekliči, da prekličete dejanje. Vnesite &6remove&e, da odstranite linijo'
+      addInfo: '&eVnesite novo besedilo vrstice. Napiši &6cancel &eza preklic'
+      addInformationHover: "&eGlobalne spremenljivke, podprte od kategorije pošiljatelja \n\
+        &eTo include clickable messages: \n&e<T>&rText&e</T><H>&rHover text&e</H><C>&rcommand&e</C><SC>&rSuggested\
+        \ text&e</SC> \n&6<T> &eand &6</T> &erequired, other is optional \n&eUse \\\
+        u005Cn to break line \n&eTo have more than one JSON message use <Next> \n\
+        &6<SC> &eSuggests text when clicked \n&6<SI> &eSuggests text when shift clicked\
+        \ which doesnt everrite current text in chat \n&6<CC> &eperforms console command\
+        \ once \n&6<CCI> &eperforms console commands every time player clicks text\
+        \ \n&6<URL> &eallows to add url to redirect player into web page"
+      newInfo: '&eVnesite ime novega besedila po meri. Napiši &6cancel &eza preklic'
+      deleteInfo: '&eVtipkaj &6confirm &eza potrditev ali izbris z &6cancel &eza preklic'
+      deleted: '&eBesedilo po meri (&6[ctext]&e) izbrisano'
+      createdNew: '&eBesedilo po meri (&6[ctext]&e) ustvarjeno'
+      createNew: '&2 + '
+      createNewHover: '&eDodano novo'
+      autoPage: '&eSamodejna stran: &6[state]'
+      autoAlias: '&eSamodejni vzdevek: &6[state]'
+      permReq: '&eZahteva dovoljenje: &6[state]'
+      list: '&eBesedila po meri: &6'
+  editlocale:
+    help:
+      info: '&eUredite svojo lokalno datoteko'
+      args: (keyword(-s))
+    info:
+      found: '&7********* &eNajdeno: [found] &7*********'
+  editplaytime:
+    help:
+      info: '&eUrejanje časa igranja igralcev'
+      args: (playerName) [add/take/set] [amount] (-s)
+    info:
+      cantSet: '&cČasa predvajanja ni bilo mogoče spremeniti'
+      set: '&eSpremenjeno iz &6[old] &ev &6[new]'
+  editwarnings:
+    help:
+      info: '&ePreverite opozorila igralcev'
+      args: (playerName/clearall) (clear)
+    info:
+      list: '&7[place]. &e[time] &6od [warnedBy] &cza: &7[warnedFor]'
+      hover: '&7Poteče v: [time]'
+      cleared: '&eVsa opozorila igralca so bila izbrisana'
+      allCleared: '&eVsa opozorila VSEH igralcev so bila izbrisana'
+  editwarp:
+    help:
+      info: '&eUredi osnove'
+      args: (warpName) (newName)
+    info:
+      exists: '&cOsnova s ​​tem imenom (&7[newName]&c) že obstaja. Izberi drugo!'
+      updated: '&ePosodobljeno ime iz &7[oldName]&e v &7[newName]'
+      placeItem: '&2Postavite element, da nastavite ikono po meri'
+      placeOffItem: '&2Postavite element, da nastavite ikono za izklop po meri'
+      autoLore: '&2Ustvarjanje samodejnih izdaj: [state]'
+      group: '&2Skupina: &7[group]'
+      newGroup: '&eVnesite novo ime skupine'
+      randomizeYaw: '&2Naključno smeri: [state]'
+      permission: '&2Za uporabo potrebuje dovoljenje: [state]'
+      reqPermission: '&2Pokaži brez dovoljenja: [state]'
+      hidden: '&2Skrito: [state]'
+      location: '&2Nastavite novo lokacijo'
+      slot: '&2Vrstica: &6[slot]'
+      page: '&2Stran: &6[page]'
+      overllaps: '&2Prekriva s:'
+      notSet: '&eNi nastavljeno'
+  effect:
+    help:
+      info: '&eIgralcu doda učinek napitka. uporabite jasno, da odstranite vse učinke'
+      args: '[playername/all] [effect/clear] (duration) (multiplier) (-s) (-visual)'
+      explanation:
+      - -visual bo dodan vidne mehurčke in okono v zgornjem desnem koto
+      - 'Examples:'
+      - /cmi učinek zrips nightvision 60 1 - bp dav 60 sec nočni vid za Zrips
+      - /cmi učinek zrips nightvision +10 - bo dodan 10 sec to do trenutnega nočnega vida
+        Čas
+      - /cmi učinek zrips nightvision -10 - will Odvzemi 10 sec od trenutne noči
+        čas vida
+      - /cmi učinek vse health_boost 60 1 - bo povečal hp za 1 za vse odzivne igralce
+    info:
+      feedback: '&eUčinek napoja &6[effect] &edodan na &3[playerDisplayName]&e za
+        &6[sec]sec&e z močjo &6[power] &e(&3[offon]&e).'
+      cleared: '&eUčinki napojev so odstranjeni &3[playerDisplayName]&e (&3[offon]&e).'
+  enchant:
+    help:
+      info: '&eOčarajte predmete'
+      args: (playerName) [enchant] [level] (-o) (-onlyvalid) (-keeponlyvalid) (-inform)
+        (-s) (-i:[itemName(:data)])
+      explanation:
+      - -o bo prevzel element iz naključja
+    info:
+      feedback: '&eElement ste očarali z &3[enchant]:[level]&e očaranost
+        for &3[playerDisplayName]&e (&3[offon]&e).'
+      removed: '&eOdstranil si &3[enchant] &eočaran iz predmeta za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      cleared: '&ePočiščeno &3ALL &ečarovnije iz predmeta za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cNot V roki ne drži nobenega predmeta.'
+      invalidEnchant: '&cNimate dovoljenja za očaranje predmeta z neveljavnim očaranjem'
+      clearedInvalid: '&eOdstranjen &eneveljavne očarljivosti iz predmeta'
+      inccorectId: '&eNapačno ime ali ID čaranja.'
+      wrongItem: '&eNapačno ime ali ID čaranja'
+      enchantlimit: '&cNimate dostopa do tega čaranja'
+      levellimit: '&cRaven je previsoka, največja dovoljena vrednost je &e[level].'
+      posible: '&eMožni čarovniki: '
+      posibleList: '&6[enchant]'
+  ender:
+    help:
+      info: '&eOdpre igralce v skrinji'
+      args: (playerName)
+      explanation:
+      - cmi.command.ender.preventmodify - preprečuje spremembe inventarja
+      - cmi.enderedit - omogoča urejanje odprtega inventarja
+    info:
+      title: '&8[playerDisplayName] Ender skrinja'
+      feedback: '&eUrejate &3[playerDisplayName] &eenderchest (&3[offon]&e).'
+  endgateway:
+    help:
+      info: '&ePreklopi žarek končnega prehoda'
+      args: ''
+    info:
+      'off': '&7Žarek je bil preklopljen &eOff'
+      'on': '&7Žarek je bil preklopljen &6On'
+  entityinfo:
+    help:
+      info: '&ePreverite podatke o entiteti'
+      args: ''
+    info:
+      type: '&eVrsta entitete: &6[type]'
+      customName: '&eIme po meri: &6[name]'
+      health: '&eZdravje: &6[current]&e/&6[max]'
+      lastDamage: '&eZadnji vzrok škode: &6[cause]'
+      tamed: '&eUkročena: &6[state]'
+      owner: '&eLastnik: &6[playerDisplayName]'
+      grows: '&eOdrašča v: &6[time]'
+      horse: '&eKonj: skok &6[jump]&ebloki, hitrost &6[speed]&ebloki/sec'
+      villager: '&ePoklic: &7[profession] &eLvl: &7[lvl] &episati: &7[type]'
+      subTypes: '&esub piše: &6[list]'
+  entitynbt:
+    help:
+      info: '&ePreverite podatke o entiteti nbt'
+      args: (-console)
+  exp:
+    help:
+      info: '&eNastavite igralce exp. Z L nastavite ravni'
+      args: '[playerName] [add/set/take/clear] [amount][%rand/10-20%]'
+      explanation:
+      - 'Example:'
+      - /exp 10
+      - /exp dodaj 10
+      - /exp nastavite 10L
+      - /exp vzemite 10
+      - /exp Zrips počišten
+      - /exp Zrips dodajte 10
+    info:
+      current: '&e[playerDisplayName] &eis at &6[lvl]&elvl with &6[currentExp]&eexp
+        ali s &6[exp]&eexp in total.'
+      selfFeedback: '&eExp je bil nastavljen na &3[exp] &efor &3[playerDisplayName]&e (&3[offon]&e).'
+      targetFeedback: '&eVaš exp je bil nastavljen na &3[exp]&e by &3[senderDisplayName]&e.'
+  ext:
+    help:
+      info: '&ePogasite igralca'
+      args: (playerName) (-s)
+    info:
+      feedback: '&ePogasili ste &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eVas je ugasnil by &3[senderDisplayName]&e.'
+  feed:
+    help:
+      info: '&eFeed player'
+      args: (playerName/all) (-s)
+    info:
+      feedback: '&eNahranili ste &3[playerDisplayName]&e (&3[offon]&e).'
+      feedbackMulti: '&eNahranili ste &3[count] &eplayers.'
+      targetfeedback: '&eNahranil te je &3[senderDisplayName]&e.'
+  findbiome:
+    help:
+      info: '&eNajde najbližji biom po imenu'
+      args: '&3(biomeName/stop/stopall)'
+    info:
+      infoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[time]&6) &6Hitrost: &e[speed]'
+      stopped: '&eUstavljeno!'
+      cantFindBiome: '&eNisem mogel najti želenega bioma. Preverjeno &6[amount] &echunks'
+      teleportedTo: '&eTeleportirano v &6[biome] &ebiome'
+  fixchunk:
+    help:
+      info: '&eSkenira za poškodovane kose'
+      args: '&ew &6[worldName]&e r &6[range in chunks]&e c &6[x:z]&e '
+      explanation:
+      - '&6Podkomande:'
+      - '- &6statistika &e- prikaži trenutno statistiko skeniranja'
+      - '- &6ustavi &e- začasno ustavi skeniranje'
+      - '- &6nadaljujte &e- nadaljujte s skeniranjem'
+      - '- &6ustavi se &e- ustavi se skenirati'
+      - '- &6stopall &e- ustavi vsa skeniranja'
+      - '- &6hitrost [amount] &e- nastavite trenutno hitrost skeniranja'
+      - '- &6samodejnohitrost [true/false] &e- nastavite izklopljeno ali vklopljeno samodejno hitrost'
+      - '- &6sporočila [true/false] &e- nastavite izhod sporočila na izklop ali vklop'
+      - 'Example:'
+      - /fixchunk w LT_Craft
+      - /fixchunk w LT_Craft r 50 c 1024:-2048
+      - /fixchunk w LT_Craft r g
+      - /fixchunk popraviti
+    info:
+      startScanning: '&eNajdeno &6[amount] &ekosev za pogledati. začenjane!'
+      paused: '&eSkeniranje začasno ustavljeno, za nadaljevanje uporabite &6/cmi fixchunk continue.'
+      continuing: '&eScanning continuing'
+      stoped: '&eskeniranje ustavljeno. poglej rezultate z /cmi fixchunk info'
+      speedChange: '&ehitrost spremenjena na [amount]'
+      autospeedChange: '&eautomatska hitrost spremenjena na [state]'
+      messagesChange: '&esporočilo spremenjeno na [state]'
+      NoInfo: '&eni informacije'
+      InfoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[min]m:[sec]s&6) &6hitrost: &e[speed]
+        &6najdena: &e[found]'
+      scanList: '&2[number]. &7X:&f[x] &7Z:&f[z]'
+      finished: '&eskeniranje končano, uporabi &6/cmi fixchunk fix &eda popraviš napake.
+        &ckosi se bodo regenerirali!'
+      fixed: '&2[number] &ekosi popravljeni'
+      total: '&epreverjanje od[current]/[until] od celote[total]'
+      stats:
+      - '&e************************************************************'
+      - '&e* &6kosi: &e[checked]/[total]'
+      - '&e* &6obseg skeniranja: &e[range]'
+      - '&e* &6hitrost skeniranja: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6resnična hitrost: &e[cps] &6CPS (&e[avgcps] avg&6)'
+      - '&e* &6svet: &e[world]'
+      - '&e* &6najdeno: &e[found]'
+      - '&e* &6čas: &e[min]min [sec]sec'
+      - '&e************************************************************'
+  flightcharge:
+    help:
+      info: '&eUpravljanje in preverjanje stroškov leta'
+      args: (add/take/set/show/expcharge/moneycharge/recharge) (playerName) (amount)
+        (-s)
+    info:
+      charge: '&etrenuten stošek: &6[charge]&e/&6[max]'
+      changed: '&eVaša raven napolnjenosti letenja se je spremenila v &6[charge]'
+      newCharge: '&eNew charge level: &6[charge]'
+      bossbar: '&2>> &letalni stošek [charge][changeAmount]&7/&f[max] &2<<'
+      guiTitle: '&8Polnjenje leta'
+      buttonExp: '&6Napolnite z xp'
+      buttonMoney: '&6napolnite z denarjem'
+      max: '&6že napoljeno'
+      amounts:
+      - '&elevi klik +1. Cost: &7[amount1]'
+      - '&6shift+ levi klik +10. Cost: &7[amount10]'
+      - '&edesni klik +100. Cost: &7[amount100]'
+      - '&6shif + desni klik +1000. Cost: &7[amount1000]'
+      - '&esrednji gumb miške +10000. Cost: &7[amount10000]'
+      - ''
+      changeAmount: '&e([amount]&e)'
+      cost: '&enapoljeno &6[amount] &efor &6[charge] &eflight charges'
+  fly:
+    help:
+      info: '&eNastavite igralce, da letijo da ali ne'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&enastafiti moraš fly na&3[boolean]&e for &3[playerDisplayName]&e (&3[offon]&e).'
+      targetFeedback: '&eVaš način letenja je nastavljen na &3[boolean]&e by &3[senderDisplayName]&e.'
+  flyc:
+    help:
+      info: '&eVaš način letenja je nastavljen na'
+      args: (playerName) (true/false) (-s)
+    info:
+      feedback: '&eNačin polnjenja letenja ste nastavili na&3[boolean]&e for &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetFeedback: '&eVaš način polnjenja z letalom je nastavljen na &3[boolean]&e by &3[senderDisplayName]&e.'
+      targetFeedbackSelf: '&eVaš način polnjenja z letalom je nastavljen nao &3[boolean]'
+      noCharge: '&eNapolnjenost leta je prazna'
+  flyspeed:
+    help:
+      info: '&eNastavite hitrost letenja od 0 do 10'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&enastavil si &3[amount]&e hitrost letena na &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eVaša hitrost letenja je bila nastavljena na &3[amount]&e by &3[senderDisplayName]&e.'
+      max: '&eNajvečja dovoljena hitrost letenja za vas je &6[max]&e.'
+  gamerule:
+    help:
+      info: '&eUpravljanje gamerulov'
+      args: ''
+  getbook:
+    help:
+      info: '&dobiš knigo'
+      args: '[cTextName] (playerName)'
+    info:
+      list: '&ekjega: &6'
+      check: '&epoglej: &6[text]'
+      title: '&7[title]'
+  give:
+    help:
+      info: '&edaj igralcu'
+      args: (playerName) [itemname/hand] (amount/playerName) (-slot:[number])
+      explanation:
+      - Name and lore supports placeholders
+      - 'primer: /give stone'
+      - /give Zrips stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give Zrips sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give Zrips sponge 1 e Knockback:%rand/1-5%
+      - /cmi give Zrips sponge %rand/1-10%
+      - /cmi give Zrips sponge l line_one/nline_two
+      - /cmi give Zhax hand Zrips
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+      - /give potion:speed-true-true
+    info:
+      feedback: '&6daj &e[amount] &6of &e[itemname] &6(&e[customitemname]&6) to
+        &e[playerDisplayName]'
+      maxLimit: '&cnemoreš dati več kot &7[max] &citems in one go'
+      notItem: '&cnemore dati tega to ni item'
+      maxLimitResize: '&cnemoreš dati več kot &7[max]. &cspemenitev limita.'
+  giveall:
+    help:
+      info: '&eDaj stvar vsem igralcem'
+      args: '[itemname] (amount) (e|l|n|offline)'
+      explanation:
+      - '&e- give item name or its id with data value'
+      - '&e- optionaly provide amount you want to give '
+      - '&e- &6n &e- to define itemname '
+      - '&e- &6l &e- to define item lore '
+      - '&e- &6e &e - to define item enchants '
+      - '&e- &6-s &e - wont show feedback message '
+      - '&e- &6h &e - followed with player name will give item from its hand '
+      - '&e- &6inv &e - followed by player name will give entire inventory for others '
+      - '&e- &6offline &e- to include offline players'
+      - '&ecmi giveall stone 1 n &2Uber_stone l &3Stone_lore offline'
+      - '&ecmi giveall h Zrips'
+      - '&ecmi giveall inv Zrips'
+    info:
+      starting: '&6To lahko traja nekaj časa, ko začnete dajati predmete za vse igralce.'
+      running: '&6[amount] že ima izdelek, še vedno teče.'
+      feedback: '&6Končano. &e[amount] &6igralci so dobili stvar.'
+  glow:
+    help:
+      info: '&eNastavite način sijanja igralcev'
+      args: (playerName) [true/false/color/gui]
+      explanation:
+      - 'Example: /glow Zrips red'
+      - 'Permissions: cmi.command.glow.[color] - allows to set particular glow color'
+    info:
+      feedback: '&eNastavili ste [color]svetenje &edo &3[boolean]&e za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eVaš [color]svetenje &enačin nastavljen na &3[boolean]&e od &3[senderDisplayName]&e.'
+      title: Izberite sijočo barvo
+      incorrect: '&4Napačno ime barve'
+  gm:
+    help:
+      info: '&eNastavite igralni način igralcev'
+      args: (playerName) [gamemode]
+    info:
+      feedback: '&eNastavili ste &3[playerDisplayName]&e (&3[offon]&e) na igralni način
+        &3[gameMode]&e.'
+      targetfeedback: '&eVaš način igre je bil nastavljen na &3[gameMode]&e od &3[senderDisplayName]&e.'
+  god:
+    help:
+      info: '&eNastavite božji način igralcev na true ali false'
+      args: '[playerName] (true/false) (-s)'
+    info:
+      feedback: '&ePrižgali ste način god mode &3[boolean]&e za &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eVaš način god mode je bil nastavljen na &3[boolean]&e od &3[senderDisplayName]&e.'
+  groundclean:
+    help:
+      info: '&ePočisti strežnik od nepotrebnih elementov'
+      args: (+cb) (+cm) (+ci) (+b) (+sh) (+tnt) (+all) (-w:[worldName])
+      explanation:
+      - +cm will include minecarts into cleaning
+      - +cb will include boats into cleaning
+      - +sh will include shulker box into cleaning
+      - +ci defines if you want to include weapons and armors
+      - +tnt defines if you want to include primed tnt
+      - +b broadcasts clear message to everyone
+    info:
+      removed: '&eOdstranjeno -[list]'
+      items: ' &eStvari: &6[items]'
+      arrows: ' &ePuščice: &6[arrows]'
+      exporbs: ' &eExpOrbs: &6[exporbs]'
+      blocks: ' &eKocke: &6[blocks]'
+      projectiles: ' &eIzstrelki: &6[projectiles]'
+      tnt: ' &eTNT: &6[tnt]'
+      boat: ' &eČolni: &6[boat]'
+      minecart: ' &eVagoni: &6[minecart]'
+      nothing: '&eNičesar ni treba odstraniti.'
+  haspermission:
+    help:
+      info: '&ePreverite, ali ima igralec posebno dovoljenje'
+      args: (playerName) [permissionNode]
+    info:
+      title: '&6[playerDisplayName] &e-> &6[permission]'
+      none: '&eDovoljenje ni določeno za igralca in ni OP. Rezultati do &6[state]'
+      softSet: '&eNastavljen iz plugin.yml na &6[state]'
+      hardSet: '&eTežko nastavljen na &6[state] &eod nekaterih pluginov'
+      notHardSet: '&eNi težko nastavljen, lahko povzroči &cFalse &eV nekaterih primerih'
+      ops: '&eRezultati do &6[state] &eker je igralec OP'
+  hat:
+    help:
+      info: '&ePostavite stvar, kot je klobuk'
+      args: (playerName)
+    info:
+      feedback: '!actionbar!&6Uspešno ste zamenjali klobuk!'
+      targetfeedback: '&6Vaš klobuk je spremenil &3[senderDisplayName]&6!'
+      fullinv: '&3[playerDisplayName] &6inventar je poln, klobuka ne morem spremeniti!'
+      incorrect: '&3Napačen element v reži za glavo, ne morem ga zamenjati z novim. Odstrani
+        ročno'
+      cantUse: '&3Tega izdelka ni mogoče uporabiti kot klobuk'
+  head:
+    help:
+      info: '&eSpusti igralce v glavo'
+      args: '[sourceName] (targetName) (-s) (amount)'
+    info:
+      Feedback: '&3[headName] &6glava ustvarjena!'
+      targetFeedback: '&eTi imaš &3[headName] &eglavo od &3[senderDisplayName]&e!'
+  heal:
+    help:
+      info: '&eZdravi igralec'
+      args: '[playerName/all] (healamount/healpercent) (-nofeed) (-ignoreffects) (-dontextinguish)'
+    info:
+      feedback: '&eZdravili ste &3[playerDisplayName]&e (&3[offon]&e).'
+      feedbackMulti: '&eZdravili ste &3[count] &eigralcev.'
+      targetfeedback: '&eZdravil si &3[senderDisplayName]&e.'
+  helpop:
+    help:
+      info: '&ePošlje sporočilo za pomoč uslužbencem'
+      args: '[message]'
+      explanation:
+      - Requires cmi.command.helpop.inform too see messages
+    info:
+      message: '&c[Help]&4[&7[senderDisplayName]&4]&r&c [message]'
+      feedback: '&c[Help]&7Your question was submitted to online staff'
+      offline: '&c[Help]&7There are no staff members currently online, try later'
+  hideflags:
+    help:
+      info: '&eSkriva zastavice elementov'
+      args: (playerName) [flagName/clear] (flagName)
+    info:
+      feedback: '&eStvari ste dodali novo zastavico &3[playerDisplayName]&e (&3[offon]&e).'
+      cleared: '&eOdstranjene &3VSE &ezastavice iz stvari za &3[playerDisplayName]&e (&3[offon]&e).'
+      noitem: '&cV roki ne drži nobenega predmeta.'
+      inccorectId: '&eNapačno ime zastavice.'
+  hologram:
+    help:
+      info: '&eUpravljanje s hologrami'
+      args: ''
+    info:
+      howTo: '&Če želite ustvariti nov hologram, izvedite &e/cmi hologram new &6[name]'
+      gui: '&7---- &f<Open settings gui> &7----'
+      guiHover: '&7Odprite GUI za nastavitve holograma'
+      interval: '&7Posodobi vsakih &6[second] &7sekund'
+      intervalLore:
+      - '&7Kako pogosto se v nekaj sekundah posodabljajo podatki o hologramu'
+      - '&7Če se besedilo ne spreminja, ga nastavite na -1'
+      pageInterval: '&7Vsako stran spreminjaj &6[second] &7sekundo'
+      pageIntervalLore:
+      - '&7Kako pogosto se v nekaj sekundah stran holograma samodejno spremeni'
+      pageIntervalNoPages: '&4Ta hologram še nima nobene strani'
+      text: '&7Razmik za besedilo &6[space]'
+      usync: '&7Sprememba besedila v sinhronizaciji: &6[state]'
+      reqPermission: '&7Za ogled potrebuje dovoljenje: &6[state]'
+      teleport: '&7Teleportiraj se do lokacije holograma'
+      icon: '&7Razmik za ikone &6[space]'
+      iconLore:
+      - '&7Določa razdaljo med predmeti'
+      range: '&7Pokaži razdaljo: &6[blocks]'
+      rangeLore:
+      - '&7Določa območje okoli holograma, ki ga prikaže ali skrije'
+      updateRange: '&7Posodobi razdaljo: &6[blocks]'
+      updateRangeLore:
+      - '&7Določa območje okoli holograma za sprožitev posodobitve'
+      relocate: '&7Prestavite'
+      relocateLore:
+      - '&7Hologram premakne na vašo trenutno lokacijo'
+      los: '&7Razmislite o vidnem polju: &6[state]'
+      losLore:
+      - '&7Čas preverjanja: [interval]'
+      interact: '&7Interaktivno: &6[state]'
+      commands: '&7Ukazi:'
+      particles: '&7Pokažite delce: &6[state]'
+      big: '&7Velik gumb: &6[state]'
+      bigLore:
+      - '&7Upoštevajte ta način velikega gumba'
+      - '&7Vam bo preprečil, da bi se premaknili mimo njega'
+      order: '&7Postavitev navzdol: &6[state]'
+      autoButton: '&7Samodejno ustvari gumbe za paginacijo'
+      autoButtonLore:
+      - '&eV trenutnem hologramu ni nobene strani'
+      - '&eUporabi &6!nextpage! &ekot novo vrstico za naslednjo stran'
+      autoButtonForward: '&2Ta hologram že ima ustvarjen gumb za naprej'
+      autoButtonBackward: '&2Ta hologram že ima ustvarjen gumb za nazaj'
+      moveX: '&7X:&e[x]'
+      moveY: '&7Y:&e[y]'
+      moveZ: '&7Z:&e[z]'
+      shift:
+      - '&eSpremenite za 0,01 ali zadržite premik, da se spremenite za 0,1'
+      list: '&6[place]&e. [name]'
+      addInfo: '&eVnesite novo besedilo vrstice. Napiši &6cancel &eza preklic. Dodatki:
+        &6ICON:&7[Value] &6SICON:&7[Value]&e where &7Value&e- &7[MaterialName-amount]%enchanted%&e,
+        &7%itemInHand%&e, &7Head:[headOwner]'
+  hologrampages:
+    help:
+      info: '&eSpremeni stran s hologramom'
+      args: '[holoName] (playerName) (next/prev/[pageNumber])'
+  home:
+    help:
+      info: '&eTeleport na domačo lokacijo'
+      args: (homeName) (playerName) (whoTeleport)
+    info:
+      list: '&eDomovi: &6'
+      listNonePrivate: '&f'
+      listPrivate: '&2'
+      click: '&eKliknite, da se teleportirate do &6[home]'
+      teleported: '&eTeleportirano do doma: &6[home]'
+      noHomes: '&cNi rešenih domov'
+      private: '&cTa domača lokacija je zasebna!'
+      remove: '&cShift+Desno klik z miškino tipko odstranite dom'
+      notAccessible: '&cDomači lokacijski svet (&7[worldName]&c) ne obstaja!'
+      guiTitle: '&0[playerDisplayName] &8domovi [current]/[max]'
+  homes:
+    help:
+      info: '&eSeznam domov, do katerih lahko kliknete in se teleportirate.'
+      args: (playerName/near:[range])
+    info:
+      nearList: '&7[number]. &e[playerDisplayName] &6[homeName] &7[distance] kock
+        stran &e[direction]'
+  hunger:
+    help:
+      info: '&eNastavite lakoto igralcev'
+      args: '[playerName] [amount] (-s)'
+    info:
+      feedback: '&eNastavili ste &3[hunger]&e lakoto za &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eVaša lakota je bila nastavljena &3[hunger]&e od &3[senderDisplayName]&e.'
+  ic:
+    help:
+      info: '&eUstvari interaktivni ukaz'
+      args: (new) (name)
+    info:
+      titleC: ' &e--- &6[name] '
+      titleB: '&e[type] &e---'
+      public: ' &2[Public]'
+      notPublic: ' &7[NotPublic]'
+      reqPerm: ' &2[ReqPerm]'
+      noPerm: ' &7[ReqPerm]'
+      permHover: ' &eZahteva &7[permission] &edovoljenje za postavitev tega znaka'
+      editSign: ' &e[EditSignLines]'
+      publicHover: "&eSpremenite javni status. \nOznačuje zgornjo vrstico &7[ic:[name]]"
+      createdPublic: '&eUstvaril nov interaktivni znak'
+      list: '&e[place]. &6[name]'
+      listType: ' &e[type]    '
+      editCommands: '&eUredi ukaze'
+      editBlocks: ' &eUredi kocke'
+      addBlock: '&eDodajte blok, ki ga gledate'
+      addEntity: ' &eDodajte entiteto, ki jo gledate'
+      manageCommands: '&ePreklopite na urejevalnik ukazov'
+      manageBlockEnt: '&ePreklopite na urejevalnik blokov / entitet'
+      locList: '&e[place]. &6[type]   '
+      entList: '&e[place]. &6[type]   '
+      ListHover:
+      - '&eSvet: &6[world]'
+      - '&eX:[x] &6Y:[y] &eZ:[z]'
+      notPublicIc: '&cTega nemoreš uporabljati, ni javno.'
+      block: (Block)
+      entity: (Entity)
+      both: (Both)
+      none: (None)
+      addedNew: '&eDodan nova kocka / entiteta za &6[name]'
+      dontExist: '&cInteraktivni ukaz s tem imenom ne obstaja'
+      exists: '&cInteraktivni ukaz s tem imenom že obstaja'
+      blockExist: '&cTa blok že uporablja &e[name]'
+      entityExist: '&cTo entiteto že uporablja &e[name]'
+      cantUsePlayer: '&cNavadnega predvajalnika ne morete uporabiti kot entiteto ukaza'
+      addInfo: '&eVnesite nov ukaz. Napiši &6cancel &eza preklic'
+      addInformationHover: "&eGlobalne spremenljivke, podprte od kategorije pošiljatelja \n\
+        &eTo include delay in commands: \n&edelay! 5 \n&eDodatne spremenljivke lahko\
+        \ uporabljate za vstavljanje spremenljivk glede na njihovo mesto \n&e$1 ,ki bo vzelo določeno spremenljivko\
+        \ z novim ukazom in bo na tem mestu \n&e$1- vzame vse spremenljivke\
+        \ od te točke in vstavi v izvirne ukaze"
+      editInfo: '&eKliknite, da prilepite staro besedilo. Napiši &6cancel &eza preklic ukrepanja. Napiši
+        &6remove &eza izbris linije'
+  ifoffline:
+    help:
+      info: '&eUkaz izvajajte samo, ko je igralec brez povezave'
+      args: '[playerName] (command)'
+  ifonline:
+    help:
+      info: '&eUkaz izvajajte samo, ko je igralec povezan'
+      args: '[playerName] (command)'
+  ignore:
+    help:
+      info: '&ePrezre igralca'
+      args: (playerName/uuid/all)
+      explanation:
+      - cmi.command.ignore.bypass - to bypass ignore list
+    info:
+      self: '&cNe bodite neumni, ne morete se prezreti'
+      added: '&eZdaj ignoriraš &6[playerDisplayName]'
+      addedAll: '&eZdaj vse ignoriraš'
+      all: '&eVsi'
+      removed: '&eNe ignoriraš več &6[playerDisplayName]'
+      removedAll: '&eNe ignorirate več vseh'
+      list: '&e[place]. [playerDisplayName]  '
+      ignoringYou: '&c[playerDisplayName] &evas ignorira'
+      empty: '&7Seznam prezrtih je prazen'
+  importfrom:
+    help:
+      info: '&eUvozite podatke iz drugih vtičnikov'
+      args: '[essentials/hd] [home/warp/nick/logoutlocation/money/mail]'
+    info:
+      converted: '&ePretvorjeno: &6[done]&e/&6[total] &euporabniki'
+      convertedWarps: '&ePretvorjeno &6[amount] &ewarpov'
+      noInfo: '&cPozabili ste navesti podatke, kaj želite natančno uvoziti'
+      savingInProgress: '&ePodatki bodo shranjeni v bazo podatkov v naslednjih nekaj minutah
+        odvisno od tega, koliko vnosov moramo shraniti'
+      HDfile: '&cDatoteke baze podatkov vtičnika HolographicDisplays ni bilo mogoče najti. Prekinitev.'
+      HDexist: '&cAvtor holograma &7[name] &cime že obstaja. Preskoči.'
+      HDfailed: '&cHolograma ni bilo mogoče naložiti (&7[name]&c)'
+      HDimported: '&eUvoženo &7[amount] &eholograms'
+  importoldusers:
+    help:
+      info: '&eUvozi uporabnike iz mape s podatki igralca v glavni mapi sveta. Strežnik lahko
+        trpijo zaostanek med uvozom'
+      args: ''
+    info:
+      starting: '&eZagon uvoza'
+      feedback: '&eUvoženo &6[amount] &enovih uporabnikov'
+  info:
+    help:
+      info: '&ePokažite informacije o igralcih'
+      args: '[playerName/uuid]'
+    info:
+      feedback:
+        uuid: '&eZ levim klikom prilepite uuid v polje za klepet'
+        ouuid: '&eShift + levi klik za lepljenje spletnega uuida v polje za klepet'
+      newName: '&6[playerName]'
+      newBalance: '&7(&e[balance]&7) '
+      newDisplayName: '&7Display name: &r[playerDisplayName]'
+      newNameHover:
+      - '[playerDisplayName]'
+      - '[nick]'
+      - '[group]'
+      - '[knownAs]'
+      - '[onlineoffline]'
+      - '[playtime]'
+      newIp: '&fIP '
+      newIpHover:
+      - '[ip][country]'
+      - '[ping]'
+      - '[firstLogin]'
+      newNameHoverNick: '&7Ime: &f[nick]'
+      newNameHoverGroup: '&7Skupina: &f[group]'
+      newNameHoverKnownAs: '&7Poznan tudi kot: &f[nameList]'
+      newNameHoverIp: '&7Ip: &f[ip]'
+      newNameHoverPing: '&7Oznaci: &f[ping]'
+      newNameHoverCountry: ' &7[country] &f(&2[countryCode]&f)'
+      newFirstLogin: '&7First login: &6[firstLogin]'
+      newPlaytime: '&7PlayTime: &6[time]'
+      newOnline: '[state] for: &6[logoff]'
+      newOnlineStateOn: '&2Online'
+      newOnlineStateOff: '&7Offline'
+      newUUID: '&fUUID '
+      newUUIDHover: '&7UUID: &6[UUID]'
+      newOUUIDHover: '&7OnlineUUID: &6[OUUID]'
+      newTurnedOnColor: '&a'
+      newTurnedOffColor: '&7'
+      newOp: 'OP '
+      newGod: 'God '
+      newFly: 'Lahkoleti&6([flying]&6) '
+      newFlying: Letenje
+      newFlyHover: '&7Hitrost letenja: &6[flyspeed]'
+      newFlyTemp: '&7Začasno letenje: &6[time]'
+      newFlyCharge: '&7Polnjenje leta: &6[charge]'
+      newElytraFlyHover: '&7Letenje z elytro'
+      newGodHover: '&7TempGod for: &e[time]'
+      newSneaking: Sneaking
+      newSprint: Teče
+      newWalkSpeed: '&7Walk speed: &6[walkspeed]'
+      newGameMode: '&fMode: &6[gameMode] '
+      newGameModeHover:
+      - '[sprint]'
+      - '[sneaking]'
+      - '[walkspeed]'
+      - '[hp]'
+      - '[hunger]'
+      - '[saturation]'
+      - '[exp]'
+      newHp: '&7HP: &6[hp]&e/&6[maxhp]'
+      newAir: '&7Air: &6[leftAir]&e/&6[totalAir]'
+      newHunger: '&7Hunger: &6[food]&e/&620'
+      newSaturation: '&7Saturation +&6[saturation]&e'
+      newExp: '&7Exp: &6[totalexp]&7exp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&7lvl&e)'
+      newPos: '&fPos '
+      newPosHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newAfk: 'AFK '
+      newAfkHover: '&6Afk v zadnjih: [time]'
+      newBed: '&fPostelja '
+      newBedHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newDeath: '&fSmrt '
+      newDeathHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newBack: '&fNazaj '
+      newBackHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newRespawn: '&fRespawn '
+      newRespawnHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
+      newSee: '◕‿◕ '
+      newSeeHover: '&6Lahko te vidi'
+      newSeeHoverNot: '&2Ne vidi te'
+      newBanned: 'Banned '
+      newBannedHover:
+      - '&7Banned by: &e[name]'
+      - '&7Left: &e[left]'
+      - '&7For: &e[reason]'
+      newMuted: 'Muted '
+      newMutedHover:
+      - '&7Left: &e[left]'
+      - '&7For: &e[reason]'
+      newShadowMutedHover: '&4Shadow mute'
+      newCuffed: 'Cuffed '
+      newJailed: 'Jailed '
+      newJailedHover:
+      - '&7Zapor: &e[jail]'
+      - '&7Celica: &e[id]'
+      - '&7Ostanek časa: &e[time]'
+      - '&7Razlog: &e[reason]'
+      newHomes: '&fDomovi: &e[count] '
+      newMail: '&fPošta: &e[count] '
+      newWarnings: '&fOpozorila: &e[count] '
+      newAlert: 'Alert '
+      newAlertHover:
+      - '&7Zapustiv: &e[left]'
+      - '&7za: &e[reason]'
+      newChatRoom: 'ChatRoom '
+      newChatRoomHover:
+      - '&7ChatRoom: &e[name]'
+      - '&7Users in: &e[count]'
+      nList:
+      - '&e------------- [enableColor]Enabled [disableColor]Disabled&e -------------'
+      - '&e| [name][balance][UUID][ip]'
+      - '&e| [OP][god][fly][gameMode][afk][see]'
+      - '&e| [banned][muted][cuffed][jailed][alert][chatroom]'
+      - '&e| [pos][bed][respawn][death][back]'
+      - '&e| [homes][mail][warnings]'
+      - '&e-----------------------------------------'
+  inv:
+    help:
+      info: '&eOdpre inventar igralcev'
+      args: '[playerName]'
+      explanation:
+      - cmi.command.inv.preventmodify - prevents inventory editing
+      - cmi.invedit - allows to edit inventory
+      - cmi.command.inv.location - shows players location
+    info:
+      feedback: '&eUrejate &3[playerDisplayName] &einventory (&3[offon]&e).'
+  invcheck:
+    help:
+      info: '&eOdpri shranjeno inventory v predogledu'
+      args: (playerName) [id] (-e) (last)
+  invlist:
+    help:
+      info: '&eShow saved inventories list'
+      args: (playerName)
+  invload:
+    help:
+      info: '&eNaloži shranjeni inventar'
+      args: (sourceName) (targetName) [id/last]
+  invremove:
+    help:
+      info: '&eodstrani saved inventories for player'
+      args: (playerName) [id/all/last]
+  invremoveall:
+    help:
+      info: '&eOdstrani vse shranjene zaloge'
+      args: '[confirmed]'
+    info:
+      removed: '&eAll saved inventories removed ([count])'
+  invsave:
+    help:
+      info: '&eShranite zaloge'
+      args: (playerName) (id) (-s)
+  ipban:
+    help:
+      info: '&eBan ip'
+      args: '[ip/playerName] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - to bypass ban
+    info:
+      message: '&cPrepovedani ste s tega strežnika!'
+      reason: '&6Razlog: &e[reason]'
+      defaultReason: '&eKršena pravila strežnika'
+      messageToAll: '&6[playerDisplayName] &egot ip banned by &6[senderDisplayName]
+        &efor: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &egot ip banned by &6[senderDisplayName]
+        &efor: &6[reason]'
+  ipbanlist:
+    help:
+      info: '&eBan ip list'
+      args: ''
+    info:
+      list: '&e[place]. &7[ip] &e- &6[reason]  '
+      bannedBy: '&7Banned by: &f[source]'
+      ends: '&7Ends: &f[time]'
+      related: |-
+        &7Related accounts:
+        &f[list]
+  item:
+    help:
+      info: '&eGive item to yourself'
+      args: '[itemname] (amount)'
+      explanation:
+      - Name and lore supports placeholders
+      - 'Example: /give stone'
+      - /give stone 5 n Stonehenge
+      - /give stick e knockback:1
+      - /give sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
+      - /cmi give sponge 1 e Knockback:%rand/1-5%
+      - /cmi give sponge %rand/1-10%
+      - /give sponge a maxhealth:5:mainhand
+      - /give diamond_sword unbreakable
+      - /give mob_spawner:creeper
+      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+  itemframe:
+    help:
+      info: '&eUpravljanje okvirjev elementov'
+      args: (invisible/fixed/invulnerable)
+    info:
+      enabled: Enabled
+      disabled: Disabled
+      feedback: '&e[count] &6elementi okvirjev so okrog vas nevidni'
+  iteminfo:
+    help:
+      info: '&ePokaži informacije o artiklu'
+      args: (playerName)
+    info:
+      nameMat: ' &eIme: &7[name] &eMaterial: &7[material]'
+      mojangHover: '&eIme Mojang: &7[name]'
+      display: ' &ePrikazno ime: &7[display]'
+      lore: ' &eLore:'
+      loreLine: '   &5[loreLine]'
+      enchants: ' &eZačaranja: &7[enchants]'
+      entityType: ' &eVrsta entitete: &6[type]'
+      customModel: ' &eCustom Model Data: &6[data]'
+      durability: ' &eVzdržljivost: &6[current]&e/&6[max]'
+  itemlore:
+    help:
+      info: '&eSpremeni predmete'
+      args: (-p:[playerName]) [linenumber/*] [remove/insert/ new lore line]
+    info:
+      feedback: '&eSpremenili ste črto znanja v ''&r&5[loreLine]&e'' for &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cV roki ne drži nobenega predmeta.'
+      removed: '&eVrstica postavk predmeta &6[line] &eje bil odstranjen za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      inserted: '&eVrstica postavk predmeta &6[line] &eje bil vstavljen za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      maxLines: '&eObstaja samo &6[lines] &elines of lore.'
+      blocked: '&eTemu elementu je onemogočeno, da bi ga ponovno posredovali.'
+  itemname:
+    help:
+      info: '&ePreimenuj elemente'
+      args: (-p:[playerName]) [remove/your new item name]
+    info:
+      feedback: '&eElement ste preimenovali v [itemname]&e for &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      noitem: '&cV roki ne drži nobenega predmeta.'
+      removed: '&eIme elementa je bilo odstranjeno za &3[playerDisplayName]&e (&3[offon]&e).'
+      blocked: '&eTemu elementu je preprečeno preimenovanjeg'
+  itemnbt:
+    help:
+      info: '&ePokaži informacije o NBT elementa'
+      args: (playerName)
+    info:
+      step: ' &6->: &6[name]'
+      final: '&e[value]'
+      list: '&e- &r[value]'
+      noNbt: '&eElement ne vsebuje nobenih podatkov NBT'
+  jail:
+    help:
+      info: '&eZapornik za časovno obdobje'
+      args: '[playerName] (time) (jailName) (cellId) (-s) (r:jail_reason)'
+    info:
+      jailed: '&eYou put &6[playerDisplayName] &einto jail for the next [time]'
+      jailedPlayer: '&6[playerDisplayName] &ejailed for the next [time]'
+      reason: ' &eFor: &c[reason]'
+      leftTime: '!title!&7Jail time:!subtitle![time]'
+      jailedTarget: '&eYou have been jailed/uklenjen! [time]'
+      cantTalk: '&cYou cant talk while you are jailed'
+      cantTalkRange: '!actionbar!&fYour chat range is limited to &c[range] &fblocks'
+      failed: '&cFailed to jail player. Check target jail name, cell id or time format'
+      bossbar: '&7Jail time: [autoTimeLeft]'
+      noCommand: '&cYou can''t use this command while jailed!'
+  jailedit:
+    help:
+      info: '&eEdit jails'
+      args: ''
+    info:
+      notInArea: '&cNe stojiš v zaporu'
+      noName: '&cNobenega zapora s tem imenom'
+      noCell: '&cBrez celice id'
+      exist: '&cZapor s tem imenom že obstaja'
+      createdJail: '&eSuccessfully created new jail (&6[jail]&e)'
+      createdCell: '&eSuccessfully created new jail cell (&6[jail]&e:&6[cellId]&e)'
+      collides: '&cCollides with &6[jailName] &ejail'
+      jailList: '&e[place]. &6[jail] &ecelice:&6[cells] &eJailed: &6[amount]    '
+      editCells: '&eUredi seznam celic'
+      cellList: '&eCell id:&6[id] &ejailed: &6[amount]    '
+      jailListTp: ' &7[tp] '
+      jailListTpHover: '&eNastavite zunaj lokacije teleporta'
+      jailListArea: ' &7[area] '
+      jailListAreaHover: '&eRedefine area'
+      jailRemoved: '&eOdstranjen (&6[jail]&e) jail'
+      jailOutside: '&eNastavite novo zunanjo lokacijo'
+      jailArea: '&eRedefined area for &6[jail]'
+      cellRemoved: '&eOdstranjen (&6[cellId]&e) cell from &6[jail]'
+  jaillist:
+    help:
+      info: '&eList jails'
+      args: (jailName) (cellId)
+    info:
+      jailList: '&6[place]. &e[jailName] &7Cells:&e[cellCount] &7Jailed:&6[count]'
+      cellList: '&6[place]. &7Id:&e[cellId] &7Jailed:&6[count]'
+      cellJailedList: '&6[place]. &e[playerDisplayName] &7release in &e[time]'
+      Release: '&7Click to release'
+  jump:
+    help:
+      info: '&eSkok na ciljni blok'
+      args: ''
+    info:
+      tooFar: '&cNobenega bloka ni na vidiku ali pa je predaleč (max [max] blocks)'
+  kick:
+    help:
+      info: '&eKick predvajalnik s sporočilom po meri'
+      args: '[playerName/all] (message) (-s)'
+      explanation:
+      - cmi.command.kick.bypass - prevents from being kicked out
+    info:
+      defaultMessage: '&eKicked from server'
+      cantKick: '&eCan''t kick this player'
+      messageToAll: '&6[playerDisplayName] &egot kicked from server.'
+      kickReason: ' &eReason: &6[reason]'
+      all: '&eKicked &6[amount] &eplayers from server'
+  kill:
+    help:
+      info: '&eUbiti player'
+      args: '[playerName] (-force) (damageCause) (-s) (-lightning)'
+    info:
+      cantKill: '&6Ne morem ubiti, zaščiten z drugim vtičnikom, načinom igre / boga. Uporaba prisilna
+        spremenljivka'
+      lackOfAccess: '&6Brez dovoljenja ne morem uporabiti prisilnega ubijanja.'
+      killed: '&6ubit [playerDisplayName]'
+  killall:
+    help:
+      info: '&eubij monsterje okoli sebe'
+      args: (-monsters/-pets/-npc/-animals/-ambient/-named/-f/-lightning/-list/-m:[mobType])
+        (-r:range) (-s) (-w:[worldName])
+    info:
+      infoList: '&2[category]&e: &7[amount] &e([list]&e)'
+      removedList: '&6[type]&e: &7[amount]'
+      total: '&eOdstranili skupno: &7[amount] &e([list]&e)'
+      noRemove: '&eNothing to remove'
+      monsters: Monsters
+      pets: Pets
+      npc: NPCs
+      animals: Animals
+      ambient: Ambient
+      vehicles: Vehicles
+      named: Z imenom po meri
+  kit:
+    help:
+      info: '&eGives predefined kit.'
+      args: '[kitName] (playerName)'
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.kit.[kitName] &e- omogoča uporabo določenega komple'
+      - '&6cmi.kit.bypass.money &e- obiti denarno zahte'
+      - '&6cmi.kit.bypass.exp &e- obiti exp zahtevo'
+      - '&6cmi.kit.bypass.onetimeuse &e- obiti enkratno uporabo'
+      - '&6/cmi kit [kitName] [playerName] &e- bo dal komplet drugemu igralcu'
+    info:
+      noMoney: '&eNi dovol denarja. Cost: &6[cost] &eti imas &6[balance]'
+      noExp: '&enimas dovol exp. Cost: &6[cost] &eti imas &6[balance]'
+      noCondition: '&eNimate dovoljenja za posebne pogoje za uporabo tega kita:
+        &6[condition]'
+      oneTime: '&cTo je enkratni komplet za uporabo, ki ste ga že uporabili!'
+      cantUseNow: '&cNemores uporabiti kit for the next [time]'
+      limitedTimeUseError: '&eNe morem uporabiti več kot &6[times] &etimes'
+      limitedTimeUse: '&7Lahko uporabite za &c[times] &7times'
+      limitedTimeAllUsed: '&cNe moreš dobiti drugega'
+      canUseIn: "&eLahko znova uporabite v: \n[time]"
+      cooldown: "&eCooldown: \n[time]"
+      noKit: '&eNe najdem kompleta s tem imenom'
+      kitDoesntExist: '&eNemoremo najdit kit ([kitName])'
+      noKitAccess: '&cNimate dostopa do tega kompleta'
+      noFoundKit: '&eNe najdejo se /kits'
+      givenKit: '&eDali ste &6[kit] &eto &6[playerDisplayName]'
+      title: '&8Kits'
+      nameCanUse: '&6[kitName]'
+      nameCantUse: '&7[kitName]'
+      group: '&eGroup: &6[group]'
+      left: '&6Left &eclick to claim'
+      right: '&6Right &eclick to preview'
+      take: '&6Take this kit!'
+      eye: ' &e☬'
+      use: '&2'
+      cantuse: '&7'
+      list: '&7[number]. &e[kitName] &6- [description]'
+  kitcdreset:
+    help:
+      info: '&eReset kit timer'
+      args: (kitName) (playerName/all)
+    info:
+      notCd: '&eKit ni v fazi ohlajevanja'
+      reset: '&eKit (&6[kit]&e) cohlajevanje je bilo ponastavljeno za &6[playerDisplayName]'
+      resetAll: '&eKit (&6[kit]&e) ohlajevanje je bilo ponastavljeno za &6[count] &eplayers'
+      list: '&e[place]. &6[kit] &e[time]'
+      listHover: '&eClick to reset'
+      noCd: '&eThere are no kit''s on cooldown'
+  kiteditor:
+    help:
+      info: '&eKit editor.'
+      args: ''
+      explanation:
+      - '&ePermissions:'
+      - '&6cmi.kit.[kitName] &e- omogoča uporabo določenega kit'
+      - '&6cmi.kit.bypass.money &e- obiti denarno zahtevo'
+      - '&6cmi.kit.bypass.exp &e- obiti exp zahtevo'
+      - '&6/cmi kiteditor &e- shows kit list'
+    info:
+      kits: '&eKits: '
+      iconSet: '&eNova ikona za &6[kitname] &ekit'
+      kitExists: '&eKit z tem imenom že obstaja!'
+      deleteConfirm: '&eKliknite me, če ga res želite odstraniti (&6[kitname]&e) kit!'
+      deleteConfirmFinal: '&cTa ukrep ni reverzibilen!'
+      kitRemoved: '&eKit (&6[kitname]&e) removed'
+      kitNotRemoved: '&cKit (&6[kitname]&c) ni bilo mogoče odstraniti'
+      addNewInfo: '&eNapisi kit spremenite v klepet in pritisnite enter. Type ''&6prekini&e''
+        za preklic tega dejanja.'
+      renameCommandInfo: '&eNapisi novi kit &6command &eime v klepet in pritisnite enter.
+        Type ''&6Da prekine&e'' za preklic tega dejanja.'
+      renameConfigInfo: '&eNapisi novi kit &6config &eime v klepet in pritisnite enter.
+        Type ''&6prekini&e'' za preklic tega dejanja.'
+      groupInfo: '&eV klepet vnesite novo ime skupine in pritisnite enter. Type ''&6none&e''
+        da zbrises groupo. Type ''&6cancel&e'' to cancel this action.'
+      commandInfo: '&eType new command into chat and press enter. Type ''&6cancel&e''
+        to cancel this action. Possible placeholders: &6{USERNAME} {DISPLAYNAME} {WORLDNAME}
+        {KITNAME} {RANDOMPLAYER}'
+      conditionsInfo: '&eV klepet vnesite novo zahtevano vozlišče dovoljenja in pritisnite enter.
+        Type ''&6cancel&e'' da prekines akcijo'
+      descInfo: '&eV klepet vnesite nov opis in pritisnite enter. Type ''&6cancel&e''
+        za preklic tega dejanja'
+      renamed: '&ePreimenuj &6[kitname] &eto &6[newkitname]&e.'
+      groupSet: '&enova groupa (&6[groupname]&e) set for &6[kitname]'
+      commandsListTitle: '&e✎&6Commands:'
+      conditionsListTitle: '&e✎&6Conditions:'
+      descListTitle: '&e✎&6Description:'
+      ListTitleHover: '&eClick to open GUI'
+      ListEditKitHover: '&cEdit &6[kitname]'
+      ListAdd: ' &2+'
+      ListAddHover: '&2Add new'
+      guiClickery:
+      - '&eLevi klik za povečavo in desni klik za zmanjšanje'
+      - '&eHold &6Shift & eto hitrost postopek za 10-krat'
+      - '&ePonavljanje hitrih klikov bo hitrost spremenilo'
+      - '&eZa vrnitev na privzeti znesek nehajte klikniti za eno sekundo'
+      OffHand: '&ePostavite offHand element sem'
+      Helmet: '&ePostavite čelado sem'
+      Chest: '&ePostavite prsni predmet sem'
+      Legs: '&ePostavite gamaše sem'
+      Boots: '&ePostavite čevlje sem'
+      Weight: '&eWeight: &6[Weight]'
+      WeightExtra:
+      - '&eVečja vrednost ima večjo prednost'
+      - '&eKompleti naj bodo v isti skupini'
+      despiteWeight: '&ePrikaži kljub teži: &6[Weight]'
+      despiteWeightExtra:
+      - '&ePLayer ne dobi dostopa do kitalahko pa si ga ogleda'
+      Slot: '&eSlot: &6[slot]'
+      SlotAuto: '&6Auto'
+      Clone: '&eKlonirajte predmete iz inventarja'
+      CloneExtra:
+      - '&eZ desnim gumbom miške vključite oklepe'
+      - '&eKliknite znova, če želite razveljaviti spremembe'
+      timeDelay: '&eZamuda: &6[time]'
+      usages: '&eSe lahko uporablja za &6[times] &ečas'
+      withoutUsage: '&eOddaj brez običajnih navad: &6[state]'
+      usagesUnlimited: '&6Neomejeno'
+      ignoreWeight: '&ePrikaži kljub teži: &6[state]'
+      timeDelaySeconds: '&eV nekaj sekundah: &6[time]'
+      moneyCost: '&eDenarni stroškit: [cost]'
+      expCost: '&eExp stroškov: [cost]'
+      enabled: '&eOmogočeno'
+      disabled: '&6Onemogočeno'
+      delete: '&6Odstrani kit'
+      clickToSwitch: '&eKliknite za preklop stanja'
+      clickToEdit: '&eKliknite, da začnete urejati'
+      editConfigName:
+      - '&eKliknite, če želite preimenovati ime konfiguracije'
+      - '&eTo določa samo vozlišče dovoljenj'
+      editCommandName:
+      - '&eKliknite, če želite preimenovati ime ukaza'
+      - '&eTo nastavi ukaz, ki ga morate uporabiti za pridobitev tega kompleta'
+      displayName: '&7DisplayName: &r&f[name]'
+      editDisplayName:
+      - '&eKliknite, če želite spremeniti prikazno ime'
+      - '&eTo se uporablja samo za vizualne namene'
+      kitGroup: '&eSkupina kompleta: &6[group]'
+      dropItems: '&eSpustite element, če je poln: &6[state]'
+      commands: '&eCommands:'
+      conditions: '&eConditions:'
+      desc: '&eDescription:'
+      mainMenu: '&eMainMenu'
+      settings: '&eSettings'
+      icon: '&eIcon used when kit is &2available'
+      iconCd: '&eIcon used when kit is &cunavailable'
+  kitusagereset:
+    help:
+      info: '&eReset kit usage counter'
+      args: (kitName) (playerName)
+    info:
+      notLimited: '&eKit nima omejene količine uporabe'
+      reset: '&eKit (&6[kit]&e) znesek uporabe je bil ponastavljen za &6[playerDisplayName]'
+      list: '&e[place]. &6[kit] &e[used]/[usages]'
+      listHover: '&eClick to reset'
+      noCd: '&eThere are no kit''s with usage above 0'
+  lastonline:
+    help:
+      info: '&ePrikaži predvajane igralce iz zadnjih x minut'
+      args: (-p:[page])
+    info:
+      searching: '&eSearching &6[checked]&e/&6[total] &e(&6[found]&e)'
+      List: ' &6[place]&e. &2[name] &e-> &6[time].'
+  launch:
+    help:
+      info: '&eZaženite v smeri, v katero gledate, ali pod kotom'
+      args: (playerName) (p:[power]) (a:[angle]) (d:[direction]) (loc:[x]:[y]:[z])
+      explanation:
+      - cmi launch - bo izstrelil v smeri, ki jo iščete
+      - cmi launch p:3.2 - bo izstrelil z močjo 3.2
+      - cmi launch p:2.5 a:25 - bo izstrelil v smeri, ki jo gledate pod kotom
+        25 stopinj in z močjo 2,5
+      - cmi launch Zrips d:east - bo izstrelil v vzhodno smer isti kot, kot ste vi
+        videti
+      - cmi launch Zrips d:0 - bo izstrelil v smeri 0 stopinj (južno) pod enakim kotom
+        iščete
+      - cmi launch d:45 a:30 p:2 - bo izstrelil jugozahod pod kotom 30 stopinj z
+        moč 2
+      - cmi launch loc:150:120:123 - bo zagnal predvajalnik na ciljno lokacijo
+    info:
+      feedback: '!actionbar!&6[&fWhoosh!&6]'
+  lfix:
+    help:
+      info: '&ePopravite svetlobo v koščkih okoli sebe'
+      args: (range) (playerName) (stop/stopall)
+    info:
+      NoMore: '&eRazpon ne sme biti večji od obsega pogleda strežnika. Spremenjeno na največje dovoljeno.'
+      startFixing: '&eFound &6[amount] &echunks to fix. Starting!'
+      InfoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[min]m:[sec]s&6) &6Speed: &e[speed]'
+      Finished: '&eLahka pritrditev je končana'
+      Stopped: '&eStopped'
+  list:
+    help:
+      info: '&ePrikaže seznam spletnih igralcev'
+      args: ''
+      explanation:
+      - 'Perm: '
+      - cmi.command.list.admin
+      - cmi.command.list.staff
+      - cmi.command.list.hidden
+      - cmi.command.list.group.[number]
+    info:
+      # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on, you can have as many of those as you want and order them by your own liking
+      List:
+      - '&7========================'
+      - '&eIgralci na strežniku &6[amount][hidden]&e/&6[maxamount]'
+      - '[adminLine]'
+      - '[staffLine]'
+      - '[groupLine]'
+      - '&7========================'
+      staffL: '&7Staff: &f[list]'
+      adminL: '&8Admin: &f[list]'
+      hiddenPref: '&e&7[H]'
+      hiddenCount: '&e&7([amount])'
+      groupL: '&6[groupName]: &f[list]'
+      player: '%cmi_user_afk_symbol%&f[playerDisplayName]'
+      # Add as many groups as you wish, by default there is only 10, to create new one, just copy paste one line and add increment into lines name, like group11 or group12 and so on.
+      # ATTENTION! group names should be in 'group[number]' format, where you have word 'group' followed by number. This is required and you cant have custom names as they are not required, but we are using number provided to determine which group goes after which
+      # Player need to have appropriate permission node to be placed in group cmi.command.list.group.[groupnumber], bigger number have bigger priority
+      groups:
+        group1: '&eSkupina1: &f[list]'
+        group2: '&eSkupina2: &f[list]'
+        group3: '&eSkupina3: &f[list]'
+        group4: '&eSkupina4: &f[list]'
+        group5: '&eSkupina5: &f[list]'
+        group6: '&eSkupina6: &f[list]'
+        group7: '&eSkupina7: &f[list]'
+        group8: '&eSkupina8: &f[list]'
+        group9: '&eSkupina9: &f[list]'
+        group10: '&eSkupina10: &f[list]'
+      noGroupLine: '&eList'
+  lockip:
+    help:
+      info: '&ePreprečuje prijavo v račun z različnih ip'
+      args: (playername) [add/remove/list/clear] [ip]
+    info:
+      CantLogin: '&cS tega IP-naslova se ne morete prijaviti'
+      add: '&eNov ip (&6[ip]&e) dodan za &6[playerDisplayName]'
+      remove: '&eIp (&6[ip]&e) odstranjen iz &6[playerDisplayName]'
+      clear: '&eVsi ip''s odstranjeni iz &6[playerDisplayName]'
+      ipNotFound: '&cIp ne obstaja'
+      empty: '&cSeznam je prazen'
+      list: '&6[place]&e. &6[ip]'
+  mail:
+    help:
+      info: '&ePošiljanje in prejemanje pošte'
+      args: '[send/clear/read] [playerName] (message)'
+    info:
+      sentMail: '&ePošta poslana na &6[playerDisplayName]'
+      gotMail: '!actionbar!&ePrejeli ste pošto od &6[senderDisplayName]'
+      clearMail: '&eVsa pošta je bila očiščena!'
+      removedMail: '&eRemoved mail'
+      noMailsById: '&eZa ta predvajalnik ni e-pošte s tem ID-jem'
+      noMails: '&eNimate pošte'
+      mailHover: '&e[senderName] /n &e[time]'
+      list: '&6[id]. &7[senderDisplayName]&e: [mail] '
+      waitingMail: '&eImaš &6[amount] &emails. Kliknite, da jih preverite.'
+  mailall:
+    help:
+      info: '&ePreverite ali pošljite pošto vsem igralcem'
+      args: '[send/clear/remove] [message]'
+    info:
+      sentMail: '&eSent &6[amount] &email(s)'
+      clearMail: '&6[amount] &email(s) have been removed'
+      removedMail: '&eRemoved &6[amount] &email(s)'
+  maintenance:
+    help:
+      info: '&eStrežnik nastavitev način vzdrževanja'
+      args: (true/false) (message)
+      explanation:
+      - cmi.command.maintenance.bypass - to bypass maintenance mode
+    info:
+      feedback: '&eStrežnik je v načinu vzdrževanja. Vrni se kasneje.'
+      set: '&eNačin vzdrževanja strežnika je nastavljen na &6[state] &es sporočilom: [message]'
+  maxhp:
+    help:
+      info: '&eNastavite igralčevo življenje'
+      args: set/add/take/clear [playerName] [amount] (-s)
+    info:
+      feedback: '&eNastavili ste &3[maxHp] &emax hp za &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&eVaš največji HP je bil nastavljen na &3[maxHp] &eod &3[senderDisplayName]&e.'
+  maxplayers:
+    help:
+      info: '&eSpremeni največje število igralcev, ki se lahko povežejo s strežnikom'
+      args: '[amount]'
+      explanation:
+      - '&ePermissions: '
+      - '&6cmi.fullserver.bypass &e- join full server'
+    info:
+      changed: '&eSpremenjen največ dovoljeni igralec iz &6[old] &ena &6[new]&e. Aktivno:
+        &6[current]'
+  me:
+    help:
+      info: '&ePošlje posebno sporočilo vsem igralcem'
+      args: '[message]'
+    info:
+      format: '&5* [senderDisplayName] &5[message]'
+  merchant:
+    help:
+      info: '&eOdprite trgovsko okno'
+      args: '[type] (playerName)'
+    info:
+      incorrect: '&cNepravilen poklic¸.'
+      feedback: '&eOdprl si &6[type] &etrade for &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e odprl &6[type] &etrade for you.'
+  migratedatabase:
+    help:
+      info: '&eSpremeni sistem zbirke podatkov in preseli vse podatke'
+      args: ''
+  mirror:
+    help:
+      info: '&eZačne zrcaljenje blokov / prelomov.'
+      args: (start/stop)
+    info:
+      started: '&eZrcaljenje se je ustavilo'
+      stopped: '&6Zrcaljenje se je ustavilo'
+      tooFar: '&cPredaleč ste od središča ogledala (max &6[blocks] &cblocks). Značilnost
+        je zaustavljena!'
+      title: Ogledalo
+      notSet: '&cCenter ni nastavljen'
+      set: '&2Sredinski set'
+      noBlocks: '&cNi dovolj blokov'
+      used: '&7Uporabljeno: &7[blocks]'
+      Action:
+        Name:
+          X: X
+          Y: Y
+          Z: Z
+          XY: XY
+          ZY: ZY
+          XZ: XZ
+          ZX: ZX
+          Rotate90V: Rotate90V
+          Rotate90H: Rotate90H
+          Rotate90HC: Rotate90HC
+          Rotate180H: Rotate180H
+          Pause: Pause
+          Location: Location
+        Desc:
+          X: '&eKopira za &6X &eaxis'
+          Y: '&eKopira za &6Y &eaxis'
+          Z: '&eKopira za &6Z &eaxis'
+          XY: '&eKopira &6X &eto &6Y &eaxis'
+          ZY: '&eKopira &6Z &eto &6Y &eaxis'
+          XZ: '&eKopira &6X &eto &6Z &eaxis'
+          ZX: '&eKopira &6Z &eto &6Y &eaxis'
+          Rotate90V: '&eVrti gor'
+          Rotate90H: '&eObrne se &690 &estopinj ure'
+          Rotate90HC: '&eObrne se &690 &estopinj v nasprotni smeri ure'
+          Rotate180H: '&eObrne se &6180 &estopinj'
+          Pause: '&eZačasno ustavi zrcaljenje'
+          Location: '&eNastavi zrcaljenje lokacije središča'
+  mobhead:
+    help:
+      info: '&eVzemi glavo moba'
+      args: '[mobType] (entryNumber) (playerName) (-s)'
+    info:
+      got: '&eDobil &6[type] &emob glavo'
+      base: '&7Osnovna možnost padca: &f[chance]%'
+      personal: '&7Izpustite priložnost za vas: &f[chance]%'
+      headSpecific: '&7Možnost padca za glavo: &f[chance]%'
+      criteria: '&7Merila: &f[criteria]'
+      title: '&7[current]&8/&7[total]'
+  money:
+    help:
+      info: '&eUpravljanje denarnega stanja'
+      args: '[pay/give/take/set] [playerName/all/alloffline] [amount][%rand/1-1000%][1%[min-max]][playerName]]
+        (-s)'
+    info:
+      newBalance: '&6[playerDisplayName] &eNovo stanje: &6[money]'
+      paid: '&ePoslal si &6[amount] &edo &6[playerDisplayName]'
+      gotMoney: '&eImaš &6[amount] &eod &6[senderDisplayName]&e. Stanje: &6[money]'
+      gotMoneyGive: '&ePrejeli ste &6[amount]&e. Stanje: &6[money]'
+      noMoney: '&cNimaš dovolj denarja'
+      worldGroups: '&cMed različnimi svetovnimi skupinami ne morete pošiljati denarja'
+      self: '&cNe morete si poslati denarja!'
+      confirm: '&eKliknite, da potrdite &6[money] &eprenos na &6[playerDisplayName]
+        &a&l[✔]'
+      notAccepting: '&eTa uporabnik ne sprejema plačil drugih igralcev'
+      giveAll: '&eDati ven &6[totalAmount] &eza &6[playerCount] &eigralcev'
+      takeAll: '&eVzel &6[totalAmount] &eod &6[playerCount] &eigralcev'
+      overLimit: '&e[playerDisplayName] &ene morem prejeti vašega denarja zaradi omejitev
+        v koliko jih lahko sprejme naenkrat'
+  more:
+    help:
+      info: '&eNapolni sklad elementov do največje količine'
+      args: (playerName) (-clone/[amount])
+      explanation:
+      - '&ePermissions:'
+      - ' &6cmi.command.more.oversize &e- to get oversized stacks'
+    info:
+      feedback: '&eNapolnjen kup do &3[amount]&e za &3[playerDisplayName]&e (&3[offon]&e).'
+  msg:
+    help:
+      info: '&ePošlje sporočilo igralcu'
+      args: '[playerName] [message]'
+      explanation:
+      - If message starts with ! then clean message without sender name will be shown
+      - Requires cmi.command.msg.clean permission
+      - If message starts with !- then clean message without sender name will be shown
+        and without option to reply
+      - Requires cmi.command.msg.noreply permission
+    info:
+      TargetMsg: '&7[&8[senderDisplayName] &7-> &8me&7]&r&f [message]'
+      SenderMsg: '&7[&8me &7-> &8[playerDisplayName]&7]&r&f [message]'
+      consoleMsg: '[[senderDisplayName] -> [playerDisplayName]] [message]'
+      noPM: '&cPredvajalnik zdaj ne sprejema zasebnih sporočil'
+      badGroup: '&cTej skupini igralcev ni mogoče poslati zasebnih sporočil'
+  msgtoggle:
+    help:
+      info: '&ePreklopi zasebna sporočila'
+      args: (playerName)
+    info:
+      feedbackOn: '&7Sprejemanje zasebnih sporočil'
+      feedbackOff: '&7Ne sprejemam več zasebnih sporočil'
+  mute:
+    help:
+      info: '&eUtišaj igralca'
+      args: '[playerName] (time) (-s) (reason)'
+      explanation:
+      - 'Examples: '
+      - /cmi mute zrips 1m
+      - /cmi mute zrips 1h
+      - /cmi mute zrips 1h For swearing
+    info:
+      mutedFor: '&e[playerDisplayName] utišan za &6[time]'
+      muted: '&eZa vas je utišan zvok &6[time]'
+      reason: '&eRazlog: &7[reason]'
+      badTimeRanges: '&cNe morete utišati dlje kot [time] &6([seconds])'
+  mutechat:
+    help:
+      info: '&ePreprečite javna sporočila'
+      args: (time) (-s) (reason)
+      explanation:
+      - 'Examples: '
+      - /cmi mutechat 1m
+      - '/cmi mutechat 1h '
+    info:
+      mutedFor: '&eJavni klepet je izklopljen za &6[time]'
+      isMuted: '!actionbar!&eJavni klepet je izklopljen za &6[time]'
+      muteReason: '&4Razlog: &7[reason]'
+  nameplate:
+    help:
+      info: '&eNastavite predpono, pripono ali barvo imenske tablice igralcev'
+      args: (playerName) (-pref:[some_prefix]) (-suf:[some_suffix]) (-c:[colorCode])
+    info:
+      feedback: '&ePosodobili ste imensko tablico za &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&ePosodobljena je bila vaša imenska tablica'
+  near:
+    help:
+      info: '&ePreverite, kdo je v vaši bližini'
+      args: (distance)
+    info:
+      nope: '&eNihče ti ni blizu'
+      list: '&e[place]. &6[playerDisplayName] &e- &7[distance]m'
+      aproxList: '&e[place]. &6[playerDisplayName] &e- &6[dir] &7~[distance]m'
+  nick:
+    help:
+      info: '&eSpremeni ime igralca'
+      args: '[newNickName/off] (playerName) (-s)'
+      explanation:
+      - 'To change into different nick name: cmi.command.nick.different'
+      - To bypass length protection use cmi.command.nick.bypass.length
+    info:
+      changed: '&eIme spremenjeno v &r[newNickName] &eod &r[oldNickName]'
+      changedTarget: '&eVaš vzdevek se je spremenil v &r[newNickName] &eod &r[senderDisplayName]'
+      reset: '&eVzdevek je nastavljen na privzeto'
+      sameNick: '&cNimate dovoljenja za preobleko v drugega vzdevka. Spreminjate lahko samo barve'
+      blockedNick: '&cTega vzdevka ne morete uporabiti'
+      blockedNickLength: '&eVzdevek je predolg. Max &6[amount] &esimbolov'
+      blockedNickLengthMin: '&eVzdevek je kratek. Min &6[amount] &esimbolov'
+      inUse: '&cVzdevek že uporablja drug igralec'
+  notarget:
+    help:
+      info: '&ePreklopi ciljni način brez moba'
+      args: (playerName) (true/false) (-s)
+    info:
+      enabled: '&ePošasti vas ne bodo več napadale!'
+      disabled: '&ePošasti vas bodo zdaj napadle!'
+  note:
+    help:
+      info: '&eUpravljanje opomb igralcev'
+      args: (playerName) [add/remove/clear/list] (id/note)
+    info:
+      newNote: '&eDodana nova opomba za predvajalnik'
+      clearNote: '&eVse opombe so odstranjene za igralca'
+      removedNote: '&eOdstranjena opomba za predvajalnik'
+      noNotesById: '&eTa ID za uporabnika nima shranjenih zapiskov'
+      noNotes: '&eZa predvajalnik ni shranjenih zapiskov'
+      list: '&6[id]. &e[note]'
+  openbook:
+    help:
+      info: '&eOdpri knjigo'
+      args: (cText) (playerName)
+  oplist:
+    help:
+      info: '&ePreverite seznam operaterjev'
+      args: ''
+    info:
+      feedback: '&e* &6[number]. &e[playerName]'
+  panimation:
+    help:
+      info: '&ePredvajajte animacijo delcev po meri'
+      args: (variable/playerName/stopAll) (stop)
+      explanation:
+      - Information on usage can be found at http://www.zrips.net/cmi/extra/particles/
+  patrol:
+    help:
+      info: '&ePatrulja'
+      args: ''
+    info:
+      noPatrol: '&eTrenutno ni igralcev, ki bi jih lahko patruljirali'
+      Patroling: '&eTrenutno patruljira: &6[playerDisplayName]'
+      lastPatrol: '&eZadnjič patruljiran &6[time]&enazaj'
+      notes: '&eJe &6[amount] &eopombe'
+  pay:
+    help:
+      info: '&eIzvedite denarno transakcijo'
+      args: '[playerName] [amount] (-s)'
+  paytoggle:
+    help:
+      info: '&ePreklopite plačila drugega igralca'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&eZdaj sprejemate plačila drugih igralcev'
+      feedbackEnabled: '&eNe sprejemate več plačil drugih igralcev'
+  ping:
+    help:
+      info: '&ePrikazuje ping igralcev'
+      args: (playerName/message)
+    info:
+      feedback: '&eOznaci: &6[ping]ms'
+      selffeedback: '&eOznaciv si &6[ping]ms'
+      customMessage: '[message]'
+  placeholders:
+    help:
+      info: '&eNavedite vse ograde'
+      args: (parse) (placeholder) (playerName)
+    info:
+      list: '&e[place]. &6[placeholder]'
+      outputResult: ' &erezultat: &6[result]'
+      parse: '&6[placeholder] &eod [source] &6rezultat &8|&f[result]&8|'
+  playercollision:
+    help:
+      info: '&eNastavite način trčenja igralcev'
+      args: (playerName) [true/false] (-s)
+    info:
+      feedback: '&eTrčenje ste nastavili na &3[boolean]&e za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eVaš način trka se je spremenil v &3[boolean]'
+  playtime:
+    help:
+      info: '&ePrikaže skupni čas igranja igralca'
+      args: (playername)
+    info:
+      total: '&e* Skupni čas igranja: [time]'
+      joined: '&e* Se je pridružil: &6[time]'
+  playtimetop:
+    help:
+      info: '&ePrikaže zgornji seznam skupnega časa predvajanja igralca'
+      args: '[page]'
+    info:
+      topLine: '&e----- Lista časa igranja &e-----'
+      scanning: '&eTrenutno se skenirajo podatki. Počakajte minuto in poskusite znova'
+      loading: '&ePodatki še niso naloženi. Postopek skeniranja se bo začel, rezultat pa boste dobili po končanem'
+      list: '&e[number]. [playerDisplayName] &e- &6[time]'
+      place: '&6[playerDisplayName] &eje v &6[place] &ekraj'
+      ownLine: '&2[number]. &2[playerDisplayName] &2- &2[time]'
+  point:
+    help:
+      info: '&eKažite na blok'
+      args: (particleName) (playerName) (-self) (time) (-s:[speed])
+  portals:
+    help:
+      info: '&eNastavite portale'
+      args: (new/nearest/forceupdate) (portalName)
+    info:
+      collides: '&cTrči z &6[portalName] &cportalom'
+      exist: '&cPortal s tem imenom že obstaja'
+      notExist: '&cPortal s tem imenom ne obstaja'
+      locationSet: '&eLokacija portala nastavljena na vaš položaj za &6[portalName]'
+      removed: '&ePortal &6[portalName] &eodstranjen'
+      click: '&eKliknite, da nastavite lokacijo tp za &6[portalName] &ena vaš trenutni položaj'
+      bungeeSet: '&ePomaknite se do položaja in kliknite to sporočilo, da nastavite lokacijo teleporta'
+      bungeeSetConfirmed: '&eBungee portal (&6[portal]&e) lokacija nastavljena iz &6[sourceServer]
+        &estrežnik do &e[location]'
+      bungeeSetEmpty: '&eZačetna lokacija portala nastavljena na &6[serverName] &estrežnik,
+        na tem strežniku pa ni nikogar. Ta akcija se ne bo dokončala, dokler se ji ne pridruži nekdo'
+      list: '&e[number]. &6[portalName]'
+      redefine: '&ePonovno določite območje iz trenutnega izbora'
+      particles: '&eDelci: &6[state]'
+      particleType: '&eVrsta delcev: &6[type]'
+      particleAmount: '&eKoličina delcev: &6[amount]'
+      particlePercent: '&eOdstotek stransko skrčenih delcev: &6[amount]%'
+      activationRange: '&eObmočje aktiviranja: &6[amount]'
+      particlePermission: '&ePokažite delce brez dovoljenja: &6[state]'
+      bungeeTeleport: '&eTeleport do natančne lokacije bungeeja: [state]'
+      requiresPermission: '&eZahteva &7[perm] &edovoljenje za uporabo: [state]'
+      kickBack: '&ePreprečite vstop brez dovoljenja: [state]'
+      informPermission: '&eObvestite o manjkajočem dovoljenju: [state]'
+      teleportToLocation: '&eTeleport na lokacijo portala'
+      teleportToTarget: '&eTeleportiraj na ciljno lokacijo portala'
+      performCommandsWithoutTp: '&eIzvajajte ukaze brez veljavne lokacije za teleport'
+      editCommands: '&eUrejanje ukazov portala'
+      setTeleportLocation: '&eNastavite lokacijo za teleport'
+      setSafeLocation: '&ePostavite na varno zunanjo lokacijo'
+      save: '&eShranite spremembe v datoteko'
+      removePortal: '&eODSTRANI PORTAL'
+      cantUsePortal: '&cTega portala ne morete uporabljati'
+  pos:
+    help:
+      info: '&ePrikaži trenutni položaj igralca'
+      args: (playerName)
+    info:
+      feedback: '&e[playerDisplayName] &e(&3[offon]&e) ([world]&e,&6[x]&e:&6[y]&e:&6[z]&e)'
+      feedbackRegion: '&eKos &6[chunkx]&e:&6[chunkz]&e Regija &6[regionx]&e:&6[regionz]'
+      feedbackDirection: '&eSmer &6[direction] &e(&6[degrees] &edegrees)'
+      feedbackBiome: '&eBiome &6[biome]'
+      feedbackLight: '&eRaven svetlobe &6[lightLevel]'
+      netherCoord: '&eNizozemski koord: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
+      normalCoord: '&eNormalna svetovna koordinacija: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
+  preview:
+    help:
+      info: '&eNaloži kos za dani obseg'
+      args: '[range] (innerrange)'
+    info:
+      NoMore: '&eRazpon ne sme biti večji od 32 kosov. Spremenjeno na največje dovoljeno.'
+      startSending: '&eNajdeno &6[amount] &ekosov za pošiljanje. Začetek!'
+      InfoShow: '&6TPS: &3[tps] &6Levo &e[left] &6(&e[min]m:[sec]s&6) &6Hitrost: &e[speed]'
+      Finished: '&eKončano. Nalaganje vseh kosov na vaši strani lahko traja nekaj več časa.'
+  prewards:
+    help:
+      info: '&ePreverite nagrade za čas predvajanja'
+      args: (playerName)
+    info:
+      list: '&e[place]. &6[rewardName] &enagrada v &6[time]'
+      listNoStack: '&e[place]. &6[rewardName]'
+      listOneTime: '&e[place]. &6[rewardName]'
+      claim: ' &2Zahtevek!'
+      claimAmount: ' &2Zahtevek(x[amount])!'
+      claimHover: '&2Kliknite, da zahtevate nagrado!'
+      inform: '!actionbar!&2Čakajo vas neprevzete nagrade! /prewards'
+  ptime:
+    help:
+      info: '&eNadzira osebni čas igralca'
+      args: ''
+      explanation:
+      - 'Example:'
+      - /ptime 13:00:00
+      - /ptime 13:00
+      - /ptime 13
+      - /ptime 7000tikov
+      - /ptime Zips 13:00
+      - /ptime Zamrzni
+      - /ptime Odmrzni
+      - /ptime V realnem času
+      - /ptime resetiranje
+    info:
+      check: '&eOsebni čas: &6[24h] &eali &6[12h] &eali &6[ticks]ticks'
+      frozen: ' &c(-)'
+      gotreseted: '&6[playerDisplayName] &ečas je ponastavljen'
+      gotfrozen: '&6[playerDisplayName] &ečas je bil zamrznjen'
+      gotunfrozen: '&6[playerDisplayName] &ečas je bil zamrznjen'
+      setto: '&eČas nastavljen na &6[24h] &eali &6[12h] &eali &6[ticks]ticks &eza &6[playerDisplayName]'
+  purge:
+    help:
+      info: '&eOčisti podatke igralca iz svetovne mape po neaktivnih dneh'
+      args: (stop)
+    info:
+      stopped: Čiščenje se je ustavilo.
+  pweather:
+    help:
+      info: '&eNadzira vreme igralca'
+      args: (playerName) [sun/rain/reset] (-s)
+    info:
+      check: '&eOsebno vreme: &6[weather]'
+      gotreseted: '&6[playerDisplayName] &evreme je ponastavljeno'
+      setto: '&eOsebno vreme nastavljeno na &6[weather] &eza &6[playerDisplayName]'
+      gotset: '&eVaše osebno vreme je nastavljeno na &6[weather]'
+      reset: '&ePonastavitev vremena'
+  rankdown:
+    help:
+      info: '&eZmanjšajte svoj rank'
+      args: (playerName) (rankName) (confirm) (-cmd) (-cost)
+      explanation:
+      - -cmd bo izvedel ukaz, določen za prejšnji uvrstitev ranga
+      - -cost bo igralcu zaračunal denar, izkušnje ali predmete, če so opredeljeni za prejšnji rang
+    info:
+      noPrev: '&eNe najdem nobene prejšnje uvrstitve'
+      list: '&eIzberite en rang, ki ga želite &crankdown &eza: '
+      confirm: '&eKliknite me za potrditev &crankdown &eza &6[rank]'
+      downranked: '&eUvrščeno do &6[rank]'
+  rankinfo:
+    help:
+      info: '&ePodatki o vašem rangu'
+      args: (playerName) (rankName)
+    info:
+      distanceCM: '[value]cm'
+      distanceM: '[value]m'
+      distanceKm: '[value]km'
+      requiredMoney: ' &eDenar: [color][current]&e/&6[needed]'
+      requiredExp: ' &eIzkušnje: [color][current]&e/&6[needed]'
+      requiredVotes: ' &eGlasovanja: [color][current]&e/&6[needed]'
+      requiredPerm: ' &eDovoljenja: '
+      requiredMcmmo: ' &eMcmmo: '
+      requiredMcmmoList: '&e[color][name] '
+      requiredMcmmoListHover: ' &e[color][current]&e/&6[needed]'
+      requiredMcmmoPower: Moč
+      requiredJobs: ' &eSlužba: '
+      requiredJobsList: ' &e[color][name]'
+      requiredJobsListHover: ' &e[color][current]&e/&6[needed]'
+      requiredJobsTotalLevel: TotalLevel
+      requiredItem: ' &eStvari: '
+      requiredItemsList: '&e[color][name]'
+      requiredItemListHover: '&e[color][current]&e/&6[needed]'
+      currentRank: ' &eVaš trenutni rang: &6[rankName]'
+      elseCurrentRank: ' &6[playerDisplayName] &etrenutni rang: &6[rankName]'
+      rankNameLine: ' &e------ &6[rankName] &e[rankupState] &e------'
+      canRankup: ' &2Lahko rankup!'
+      cantRankup: ''
+      requiredStats: ' &e[name][extra]&e: [color][current]&e/&6[needed]'
+      requiredStatsExtra: ' (&6[type]&e)'
+      nextRanks: ' &eNaslednje uvrstitve: &6'
+      finalRank: ' &eTo je zadnji rang'
+      noRank: ' &eNe najdem ranga'
+      check: '&ePreveri &6[rank] &erang'
+      progressBarHover: '&eNapredek [percent]%'
+  ranklist:
+    help:
+      info: '&eSeznam možnih uvrstitev'
+      args: ''
+    info:
+      list: '&e[place]. [currentRankMarker]&6[rankName][currentRankMarker]'
+      currentRankMarker: '&6+'
+  rankset:
+    help:
+      info: '&eNastavite uvrstitev igralcev'
+      args: (playerName) [rankName] (-cmd) (-cost)
+      explanation:
+      - -cmd bo izvedel ukaz, določen za ta rang
+      - -cost bo igralcu zaračunal denar, izkušnje ali predmete, če so določeni za ta rang
+      - player bo dobil uvrstitev, tudi če nima dovolj denarja, izkušenj ali potrebnih predmetov
+    info:
+      set: '&eUvrstitev spremenjena za &6[playerDisplayName] &edo &6[rankName]'
+  rankup:
+    help:
+      info: '&ePovečajte svoj čin'
+      args: (playerName) (rankName) (confirm)
+    info:
+      noRank: ' &eZ vami ni nobenega ranga'
+      requiresPrevious: ' &eNe morete se uvrstiti do tega ranga. Zahteva, da imate¸
+        &6[rank] &erank(`s)'
+      list: '&eIzberite eno stopnjo, do katere želite uvrstiti: '
+      confirm: '&eKliknite me, da potrdite razvrščanje &6[ranks]'
+  realname:
+    help:
+      info: '&ePreverite pravo ime igralcev'
+      args: (playerName/nickName)
+    info:
+      feedback: '&r[playerDisplayName] &epravo ime &r[playerName]'
+  recipe:
+    help:
+      info: '&ePreverite recept izdelka'
+      args: (itemName)
+    info:
+      type: '&0[type]'
+      page: ' &0[current]&7/&0[total]'
+      noRecipes: '&cNe morem najti nobenega recepta za ta izdelek'
+  reload:
+    help:
+      info: '&eZnova naloži konfiguracijske in področne datoteke vtičnikov'
+      args: ''
+    info:
+      feedback: '&6Ponovno naložene datoteke za nastavitve in področne nastavitve!'
+      failedConfig: '&4Konfiguracijske datoteke ni bilo mogoče naložiti! Preveri črkovanje!'
+      failedLocale: '&4Datoteke jezika ni bilo mogoče naložiti! Preveri črkovanje!'
+  removehome:
+    help:
+      info: '&eOdstranite domov'
+      args: (homeName) (playerName)
+    info:
+      remove: '&cKliknite za odstranitev'
+      removed: '&eDom (&6[home]&e) odstranjen'
+      list: '&c[home]'
+  removeuser:
+    help:
+      info: '&eOdstrani uporabnika in njegove podatke'
+      args: '[uuid/duplicates]'
+    info:
+      removed: '&eUporabnik (&6[uuid]&e) odstranjen'
+      removedDuplicate: '&6[amount]/[max] &edvojniki odstranjeni'
+  removewarp:
+    help:
+      info: '&eOdstranite osnovo'
+      args: (warpName)
+    info:
+      remove: '&cKliknite za odstranitev'
+      removed: '&eWarp (&6[warp]&e) odstranjen'
+      notYours: '&cTa osnova vam ne pripada!'
+  repair:
+    help:
+      info: '&ePopravite predmete'
+      args: '[hand/armor/all] (playerName)'
+      explanation:
+      - cmi.command.repair.hand - omogoča uporabniku, da popravi predmete v roki
+      - cmi.command.repair.armor - uporabniku omogoča popravilo predmetov v oklepnih režah
+      - cmi.command.repair.all - uporabniku omogoča popravilo celotnega inventarja
+      - cmi.command.repair.repairshare.bypass - uporabniku omogoča popravilo predmetov brez dodajanja zaščite za skupno rabo
+    info:
+      feedback: '&ePopravili ste &3[amount]&e predmeti za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      feedbackMoney: '&ePopravili ste &3[amount]&e predmeti za &3[playerDisplayName]&e
+        (&3[offon]&e). Cost: &7[cost]'
+      itemOwner: '&eNazadnje popravil: &6[owner]'
+      cantUse: '!title!&cTega predmeta ne morem uporabiti !! podnapisi!&ePopravi si sam!'
+  repaircost:
+    help:
+      info: '&eNastavite stroške popravila predmetov'
+      args: (playerName) [amount]
+      explanation:
+      - 'Example:'
+      - /repaircost 10
+      - /repaircost set 10
+      - /repaircost add 10
+      - /repaircost take 10
+      - /repaircost Zrips clear
+      - /repaircost Zrips add 10
+    info:
+      current: '&eTrenutni stroški osnovni stroški popravila: &6[cost]&e.'
+      noitem: '&cV roki ne drži nobenega predmeta.'
+      cantDetermineCost: '&cZa ta izdelek ni mogoče določiti osnovnih stroškov popravila.'
+      selffeedback: '&eOsnovni stroški popravila so bili nastavljeni na &3[amount] &eza &3[playerDisplayName]&e
+        predmet v roki (&3[offon]&e).'
+      targetfeedback: '&eStroški popravila izdelka so bili nastavljeni na &3[amount]&e od &3[senderDisplayName]&e.'
+  replaceblock:
+    help:
+      info: '&eNadomešča bloke v trenutnem svetu okoli vas'
+      args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range
+        in chunks/g]&e y &6[max height]'
+      explanation:
+      - '&6SubCommands:'
+      - '&e- &6pause &e- pause replacing'
+      - '- &6continue &e- continue replacing'
+      - '- &6stop &e- stop replacing'
+      - '- &6speed [amount] &e- set current replace speed'
+      - '- &6autospeed [true/false] &e- set autospeed turned off or on'
+      - '- &6messages [true/false] &e- set message output to off or on'
+      - 'Example:'
+      - /cmi replaceblock id 52 w stone r 10
+      - /cmi replaceblock id 52,gold_block w stone r 15 y 100
+      - /cmi replaceblock id 52 w air r g y 100
+      - /cmi replaceblock id iron_ore%75 w stone%90,dirt%5 r g
+    info:
+      startScanning: '&eNajdeno &6[amount] &ekosov za preverjanje. Začetek!'
+      paused: '&eZamenjava zaustavljene za nadaljevanje uporabe &6/cmi blockreplace continue.'
+      continuing: '&eZamenjava nadaljevanja'
+      stoped: '&eZamenjava se je ustavila.'
+      speedChange: '&eHitrost spremenjena v [amount]'
+      autospeedChange: '&eSamodejna hitrost spremenjena v [state]'
+      messagesChange: '&eStanje sporočila spremenjeno v [state]'
+      infoShow: '&6TPS: &3[tps] &6Levo &e[left] &6(&e[time]&6) &6Hitrost: &e[speed]
+        &6Replaced: &e[found]'
+      finished: '&eKončano!!! Zamenjano: &6[amount] &ekock! V &6[time]&e.'
+  reply:
+    help:
+      info: '&ePonovno predvajanje pošiljatelju zadnjega sporočila'
+      args: '[message]'
+    info:
+      noOneToReplay: '&eNikogar ni treba ponoviti'
+  resetdbfields:
+    help:
+      info: '&ePonastavi določene stolpce baze podatkov na privzeto vrednost'
+      args: '[collumnName] (-w:[worldName]) (-p:[playerName])'
+    info:
+      feedback: '&ePosodobljeno &7[amount] &eigralci'
+      nofield: '&cNe morem najti polja s tem imenom'
+  ride:
+    help:
+      info: '&eVozite ciljno entiteto'
+      args: ''
+      explanation:
+      - ' cmi.command.ride.[entityType] - imeti dostop v jahalni entitet'
+    info:
+      riding: '&eJahaš &6[entityName]'
+      cantRide: '&cNe moreš se voziti (&6[entityName]&c) entiteta'
+      someOneElse: '&cNekdo že vozi to entiteto'
+      ridingYou: '&6[playerDisplayName] &ete jaha, napiši &6/shakeitoff &eda jih odstraniš'
+  rt:
+    help:
+      info: '&eTeleportira na naključno lokacijo'
+      args: (playerName) (worldName) (-s)
+    info:
+      posible: '&eMožni svetovi: &6[worlds]'
+      tpLimit: '&eNe morete se teleportirati tako hitro, počakajte &6[time] &ein poskusite znova'
+      IncorrectLocation: '&6Nisem mogel najti pravilne lokacije za teleport, počakajte
+        &e[time] &6in poskusite znova.'
+      teleported: '!actionbar!&6Whoosh!!!'
+      waiting: '!actionbar!&6Iščem primerno lokacijo. Prosim počakaj'
+  sameip:
+    help:
+      info: '&eSeznam igralcev, prijavljenih iz istega ip'
+      args: ''
+    info:
+      list: '&e[place]. &6'
+      nothing: '&eNičesar za pokazati'
+  saturation:
+    help:
+      info: '&eNastavite nasičenost igralcev'
+      args: (playerName) [amount]
+    info:
+      feedback: '&eNastavili ste &3[amount]&e nasičenost za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eVaša nasičenost je bila nastavljena na &3[amount]&e od &3[senderDisplayName]&e.'
+  saveall:
+    help:
+      info: '&eShrani vsak inventar igralca'
+      args: (daysRange/-online)
+      explanation:
+      - -online spremenljivko lahko uporabite za shranjevanje samo spletnih zalog igralcev
+    info:
+      saving: '[simbol] &2preverjeno: &e[checked]&2 iz &e[total]&2 shranjeno: &e[saved]
+        &2skipped: &e[skipped] [simbol]'
+      saved: '&eShranjevanje je končano. Shranjeno: &6[saved] &ePreskočeno: &6[skipped]'
+  saveditems:
+    help:
+      info: '&eShranite ali upravljajte shranjene predmete'
+      args: '[save/get/remove/list] (savedItemName) (-t:playerName) (-a:amount) (-s)'
+    info:
+      info:
+      - '&fLevi klik za pridobitev predmeta'
+      - '&fSrednji klik miške za zaznavanje'
+      got: '&eDobiš &6[name] &eitem'
+      give: '&eDaš &6[name] &eitem'
+      removed: '&eOdstranjen &6[name] &eitem'
+      saved: '&eShranjeno &6[name] &eitem'
+      title: '&8[current]&7/&8[total]'
+  sc:
+    help:
+      info: '&eZačne postopek kopiranja znakov'
+      args: (playerName)
+    info:
+      punch: '&eZnak za prebijanje, da vanj prilepite besedilo, ali prekličite kateri koli blok, ki ni znak, da prekličete postopek'
+      canceled: '&ePostopek kopiranja podpisa preklican'
+      updated: '&eZnak posodobljen'
+  scan:
+    help:
+      info: '&eIskanje predmetov v trenutnem svetu'
+      args: ''
+      explanation:
+      - '&6SubCommands:'
+      - '&e- &6stats &e- show current scanning stats '
+      - '&e- &6pause &e- pause scanning '
+      - '- &6continue &e- continue scanning '
+      - '- &6stop &e- stop scanning '
+      - '- &6stopall &e- stops all scannings '
+      - '- &6speed [amount] &e- set current scan speed '
+      - '- &6autospeed [true/false] &e- set AutoSpeed turned off or on '
+      - '- &6messages [true/false] &e- set message output to off or on'
+      - 'Variables:'
+      - '&eid &6[id:data]'
+      - '&eq &6[minimum quantity]'
+      - '&er &6[range in chunks] &e- option to use &6g &einstead of number to scan
+        entire map'
+      - '&en &6[item name]'
+      - '&el &6[item lore]'
+      - '&eh &6uses info from item in hand'
+      - '&ee &6[enchantname]'
+      - '&eelvl &6[enchantminlevel]'
+      - '&eoversize'
+      - '&epurge - removed found items, this feature should be enabled in config file'
+      - 'Example:'
+      - /scan id 52 r 30
+      - scan id diamond_block r g q 32
+    info:
+      loadingChunkInfo: '&eNalaganje podatkov o kosih!'
+      startScanning: '&eNajdeno &6[amount] &ekosov za preverjanje. Začetek!'
+      paused: '&eOptično branje je zaustavljeno, če želite nadaljevati uporabo &6/cmi scan continue.'
+      continuing: '&eOptično branje se nadaljuje'
+      holdItem: '&ePredmet morate držati v roki'
+      stoped: '&eOptično branje se ustavi. Rezultate lahko preverite pri /cmi scan info'
+      speedChange: '&eHitrost spremenjena v [amount]'
+      autospeedChange: '&eSamodejna hitrost spremenjena v [state]'
+      messagesChange: '&eStanje sporočila spremenjeno v [state]'
+      NoInfo: '&eNi informacij'
+      infoShow: '&6TPS: &3[tps] &6Levo &e[left] &6(&e[time]&6) &6Hitrost: &e[speed]
+        &6Found: &e[found]'
+      Teleport: '&ePritisnite za teleportiranje'
+      scanList: '&2[number]. &e[place] &6[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
+      scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
+      edit: ' &e(Edit)'
+      total: '&ePreverjanje od [current]/[until] od skupaj [total]'
+      Stats:
+      - '&e************************************************************'
+      - '&e* &6Kosi: &e[checked]/[total]'
+      - '&e* &6Obseg skeniranja: &e[range]'
+      - '&e* &6Hitrost skeniranja: &e[scanspeed] &6(&e[autospeed]&6)'
+      - '&e* &6Svet: &e[world]'
+      - '&e* &6Najdeno: &e[found]'
+      - '&e* &6Čas: &e[time]'
+      - '&e* &6id: &e[id]'
+      - '&e* &6Količina: &e[qty] and up'
+      - '&e* &6Ime: &e[name]'
+      - '&e* &6Lore: &e[lore]'
+      - '&e************************************************************'
+  scavenge:
+    help:
+      info: '&eReciklirajte predmet in njegove čare'
+      args: (playerName)
+    info:
+      enchantWorth: '&eOčaranost vredna: &7[price]'
+      enchantFailChance: '&4Neuspešna priložnost: &7[chance]%'
+      enchantFailed: '&cNi uspelo. &7[enchant]&c raven &7[level] &cZ &7[chance]% &cneuspešna priložnost'
+      enchantLevelChance: '&cNivo možnosti nižji: &7[chance]%'
+      gotIngredients: '&eTi imaš [itemList]'
+      gotIngredientsFormat: '&6[material]&7-&6[amount]'
+      itemBreakChance: '&cMožnost preloma predmeta: [chance]%'
+      itemBreakChanceExtra: '&c[durability]% durability adds [chance]% break chance'
+      itemBreak: '&cElement se bo ob kliku pokvaril!'
+      ingredientReturnChance: '&7Možnost vrnitve sestavine: [chance]%'
+      cantScavenge: '&cNe morem čistiti'
+      insertItem: '&2vstavite element v režo zgoraj'
+      scavengeCost: '&8Stroški odstranjevanja: [cost]'
+      moreTitle: 'Nepravilen znesek: [input]/[required]'
+      moreLore:
+      - '&bPotrebujete več tega predmeta.'
+      - '&bZahteva vsaj &e[amount]'
+      title: '&2Smetar'
+  schedule:
+    help:
+      info: '&eSprožilec'
+      args: '[scheduleName]'
+  se:
+    help:
+      info: '&eSpremeni vrstico besedila znaka.'
+      args: (SignLine) [Text]
+      explanation:
+      - Use / n for additional line
+  search:
+    help:
+      info: '&eIščite predmete / očara / fly / maxhp / gm / oversize načine in druge stvari iz
+        vsi uporabniki'
+      args: ''
+      explanation:
+      - '&eid &6[id:data] '
+      - '&ename &6[some_custom_itemname] '
+      - '&elore &6[some_custom_lore] '
+      - '&eenchant &6[lowest enchant level] '
+      - '&epotion &6[lowest custom potion effect level] '
+      - '&efly &6[true or false] '
+      - '&egm &6[0/1/2/3 or survival/creative/adventure/spectator] '
+      - '&emaxhp &6[lowest hp player have] '
+      - '&egod &6[true/false]'
+      - '&eoversize'
+      - 'Example:'
+      - /search gm 1
+      - /search id 52
+      - /search lore Uber_lore
+    info:
+      started: '&eIskanje '
+      current: '&eTrenutno najdeno &3[amount] &eiz &3[files] &epreverjene datoteke'
+      nothingfound: '&ePo vaših kriterijih ni bilo mogoče najti ničesar'
+      totalfound: '&ePopolnoma najdeno & 3 [količina] in od možnih & 3 [datoteke] & preverjeno
+        uporabnikov'
+      location:
+        ender: '&3Ender'
+        inv: '&eInv'
+        invS: '&eShulkerSkrinja'
+        PlayerVault: '&ePlayerVault'
+      localsearch: '&e (L search)'
+      localsearchhover: |-
+        &eOdprl bo povabilo iz lokalnih datotek
+        &eTo bo trajalo dlje
+      reglist: '&e[number]. &e[name]'
+      list: '&2[number]. [location] &6[name]'
+      listhover: '&eKliknite, da odprete povabilo'
+  seen:
+    help:
+      info: '&ePreverite, kdaj je bil igralec nazadnje viden'
+      args: '[playerName/uuid]'
+    info:
+      feedback: '&6[playerDisplayName] &eje bilo &6[offon] &eod &6[time]&eago!'
+  select:
+    help:
+      info: '&eUpravljanje izbirnega območja'
+      args: (pos1/pos2/shift/expand/contract/clear) (amount)
+  sell:
+    help:
+      info: '&eProdajajte predmete iz inventarja'
+      args: (all/blocks/hand/same/gui)
+    info:
+      total: '&eZasluženo &6[total] &eby prodaja &6[amount] &eitems. Novo ravnotežje &6[balance]'
+      close: '&8Place items you want to sell'
+      sellInfo: '&8Sell for: &2[price]'
+  sendall:
+    help:
+      info: '&ePošljite vse spletne igralce na ciljni strežnik'
+      args: '[serverName]'
+  server:
+    help:
+      info: '&ePovežite se s strežnikom bungeecord'
+      args: '[serverName] (playerName) (-f)'
+  serverlist:
+    help:
+      info: '&ePokaži seznam strežnikov'
+      args: ''
+    info:
+      listOnline: '&7[place]. &2[serverName] &6[count]&7/&6[max]'
+      listOffline: '&7[place]. &c[serverName] &60&7/&60'
+  servertime:
+    help:
+      info: '&ePrikaži čas strežnika'
+      args: ''
+    info:
+      time: '&eČas strežnika: [time]'
+      format: MM/dd/YYYY HH:mm:ss
+      timeZone: '&eIme časovnega pasu: &6[name]'
+      timeZoneId: '&eID časovnega pasu: &6[id]'
+      timeZoneOffset: '&eOdmik časovnega pasu: &6[offset]'
+  setenchantworth:
+    help:
+      info: '&eSpreminjanje čaranja vredno'
+      args: ''
+  setfirstspawn:
+    help:
+      info: '&eNastavi prvo drstišče'
+      args: (playerName)
+    info:
+      feedback: '&eNastavitev prve točke drstišča (&6[world]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
+  sethome:
+    help:
+      info: '&eNastavi domačo lokacijo'
+      args: (homeName) (playerName) (-p) (-l:worldName;x;y;z) (block/Material) (slotNumber)
+      explanation:
+      - cmi.command.sethome.unlimited
+      - -l will define custom location for new home location, this requires cmi.command.sethome.customloc
+        permission node
+    info:
+      set: '&eDoma ste pravilno ustvarili z imenom &6[homeName]&e!'
+      setBed: '&eUstvarjena lokacija oživitve postelje'
+      private: ' &2(private)'
+      noMore: '&cDosegli ste največjo omejitev za sethome'
+      noOverwrite: '&cNimate dovoljenja za prepisovanje obstoječe domače lokacije.
+        Odstranite starega ali izberite drugo domače ime.'
+      slotTaken: '!actionbar!&cDomačo režo že uporablja &7[homeName]&c, consider
+        another one'
+      setIcon: '!actionbar:3!&7Nastavi ikono doma kot &6[material] &7material'
+  setmotd:
+    help:
+      info: Nastavite server motd
+      args: '[newMotd] (-s)'
+      explanation:
+      - z \ n naredite drugo vrstico
+      - uporabite _ za ustvarjanje prostora, če potrebujete več kot eno uporabo _, ki ji sledi presledek
+    info:
+      changed: '&eSpremenjen motd v:'
+  setrt:
+    help:
+      info: '&eNastavite naključne meje za teleport'
+      args: (worldName) (center:[x]:[z]) (min:[range]) (max:[range]) (square/circle)
+        (enabled/disabled)
+    info:
+      list: '&6[place]. [world] [enabled] &7[centerX]:[centerZ] &e[maxDist]/[minDist]
+        [type]'
+  setspawn:
+    help:
+      info: '&eNastavi ukaz teleport point'
+      args: (playerName) (true/false) (-g:[groupName]) (-rng:[range]) (-w:world,world_nether)
+        (loc:[world;x;y;z;yaw;pitch])
+      explanation:
+      - More info on command usage at http://www.zrips.net/cmi/commands/spawn/
+    info:
+      feedback: '&6Spawn lokacija nastavljena ([world],[x],[y],[z])!'
+      group: ' &e([group])'
+      rng: ' &e(Rng: [rng])'
+      respawn: '&7Kliknite, če želite to točko drstišča nastaviti kot možno mesto ponovnega vzrejanja'
+  setwarp:
+    help:
+      info: '&eNastavi lokacijo osnove'
+      args: '[warpName] (reqPermission) (hand) (slot) (autoLore) (-g:[groupName])'
+      explanation:
+      - 'Examples:'
+      - /cmi setwarp spawn - poenostavlen warp to spawn
+      - /cmi setwarp spawn true - ustvari warp in bo zahteval cmi.command.warp. [warpname]
+        vozlišče dovoljenja za njegovo uporabo
+      - /cmi setwarp spawn hand - ustvarja osnova bo vzel element iz roke za prikaz
+        v gui za to warp
+      - /cmi setwarp spawn 13 - ustvari deformacijo in nastavi režo gui, ki se uporablja v gui (1-54)
+      - /cmi setwarp spawn true hand 13 - ustvari osnovo z ikono iz roke, reža 13
+        in zahteva dovoljenje
+      - /cmi setwarp spawn true hand 13 false - enako kot prejšnji, vendar ne ustvarja
+        znanost
+    info:
+      newSet: '&eNovi warp (&6[warp]&e) nastavi'
+      noSet: '&cWarp s ​​tem imenom že obstaja'
+      noMore: '&cDosegli ste največjo dovoljeno mejo osnove. ([max])'
+  setworth:
+    help:
+      info: '&eSpremenite vrednost izdelka'
+      args: (itemname) -s:(sellPrice)
+    info:
+      setSell: '&eNastavite prodajo izdelka Cena &7[število]'
+      setBuy: '&ePostavite izdelek za nakup Cena &7[število]'
+      notInUse: '&eV glavnem se uporablja za morebitno zaznavanje izkoriščanja'
+      sellPrice: '&fProdat Cena: &e[število]'
+      buyPrice: '&fKupit Cena: &2[število]'
+      exploit: '&4Omogočeno EXPLOIT!'
+      ingridient: '&2Sestavine'
+      ingridients: '&7[ingridient]&f(&7[število]&f) = &e[Cena]'
+      notSet: '&ecena ni določena'
+      notSetBuy: '&7Nakup Cena ni nastavljena'
+      result: '&2zdruši v &7[result]&f(&7[število]&f)'
+      ingridientsPrice: '&cCena sestavine: &7[Cena]'
+      resultPrice: '&cSe lahko proda za: &7[Cena]'
+      explanation: '&2Nakupna cena se uporablja samo za odkrivanje možnih izkoriščanj'
+  shadowmute:
+    help:
+      info: '&eUtišaj igralca, ne da bi mu povedal, da je utišan'
+      args: '[playerName] (time) (-s) (reason)'
+  shakeitoff:
+    help:
+      info: '&eSnemite katero koli entiteto, ki vas vozi'
+      args: ''
+    info:
+      shaked: '&eOtresel si se: &6[entity]'
+      nothing: '&eNičesar, kar bi se otresel'
+  shoot:
+    help:
+      info: '&eStreljaj izstrelek'
+      args: (playerName) (-t:targetPlayer) (type) (speed)
+  signspy:
+    help:
+      info: '&ePreklopi vohuna znakov'
+      args: (playerName)
+      explanation:
+      - cmi.command.signspy.hide - Skriva ustvarjene znake iz znakov
+    info:
+      text: '&5Sign&2Spy&7[&8[senderDisplayName]&7]&7: &f[text]'
+      toggled: '&eZnak vohun preklopljen na &6[state] &estate'
+  silence:
+    help:
+      info: '&eBlokira javna sporočila'
+      args: ''
+      explanation:
+      - cmi.command.silence.bypass - to bypass silence
+    info:
+      enabled: '&eNačin tišine &2Vklopljen'
+      disabled: '&eNačin tišine &cIzklopljen'
+      inMode: '&ePredvajalnik je v tihem načinu'
+  silentchest:
+    help:
+      info: '&ePreklopi tiho skrinjo'
+      args: ''
+      explanation:
+      - '&eIgralci okoli vas ne bodo videli animacije odpiranja skrinje, ko odprete skrinjo'
+      - '&eZa delovanje te funkcije je potreben Protocollib.'
+    info:
+      feedback: '&eNačin tihega skrinje ste preklopili na &3[offon].'
+      onOpen: '&eOdpiranje skrinje, tiho.'
+  sit:
+    help:
+      info: '&eSedite v svojem položaju'
+      args: ''
+    info:
+      onSit: '!actionbar!&eSediš zdaj'
+      onStandUp: '!actionbar!&eNe sediš več'
+      accupied: '!actionbar!&cTu nekdo že sedi!'
+  skin:
+    help:
+      info: '&eSpremenjen avatarjev skin'
+      args: '[skinName/off/update] (playerName) (-s)'
+    info:
+      changed: '&eSpremenjen avatar na &6[skinOwner] &elook'
+      failed: '&eNi uspeli upload avatarja'
+      resetSteve: '&eOdstranjen avatar'
+      reset: '&eUporabljena privzeta avatarja'
+      update: '&ePosodobitev avatarja'
+  smite:
+    help:
+      info: '&eUdarite v tla ali igralca s strelo'
+      args: (playerName) (-s)
+    info:
+      gotSmited: '&eDobil si se!'
+  socialspy:
+    help:
+      info: '&ePreklopi socialnega vohuna'
+      args: (playerName)
+    info:
+      msg: '&2Spy&7[&8[senderDisplayName] &7-> &8[playerDisplayName]&7]&f [message]'
+      custom: '&2Spy&8[senderDisplayName] &7-> &4|&8[place]&4|&f [message]'
+      toggled: '&eSocial spy toggled to &6[state] &estate'
+  solve:
+    help:
+      info: '&eSolve equation'
+      args: '[equation]'
+    info:
+      result: '&7Result: &e[res]'
+      incorrect: '&cNapačen vnos: &e[input]'
+  sound:
+    help:
+      info: '&ePredvajaj zvok na ciljni lokaciji'
+      args: '[sound] (-p:[pitch]) (-v:[volume]) (playerName/-all) (world) (x) (y)
+        (z) (-s)'
+    info:
+      playing: "&ePlaying &6[sound] &eat [world] [x]:[y]:[z] \n&ePitch: &6[pitch]\
+        \ &eVolume: &6[volume]"
+      playingMultiple: "&ePlaying &6[sound] &efor &6[amount] &eplayers \n&ePitch:\
+        \ &6[pitch] &eVolume: &6[volume]"
+  spawn:
+    help:
+      info: '&eTeleportira nazaj na mesto drsti'
+      args: (playerName) (-s)
+    info:
+      notset: '&4Točka drstišča ni nastavljena!'
+      feedback: '&6Teleported to drst!'
+  spawner:
+    help:
+      info: '&eNastavi spawner'
+      args: '[EntityType]'
+    info:
+      feedback: '&eSpawner je nastavljen na &6[type] &etype'
+      wrongEntityIdName: '&cNapačen ID ali ime entitete'
+      cantSet: '&cTe vrste drstitve ni mogoče nastaviti'
+      cantDetect: '&cNe morem zaznati bloka drstitve'
+      pickOne: '&8Izberite tip drsti'
+  spawnereditor:
+    help:
+      info: '&eUredi drsnik'
+      args: ''
+    info:
+      type: '&7Spremeni vrsto: &e[type]'
+      nextIn: '&7Nasleden spawn v: &e[time]'
+      nearby: '&7MaxNearBy entitete: &e[count]'
+      maxdelay: '&7Max Spawn Zamuda: &e[count]'
+      mindelay: '&7Najmanjša zakasnitev: &e[count]'
+      prange: '&7Zahtevan obseg igralcev: &e[range]'
+      spawncount: '&7Spawn Štetje: &e[count]'
+      spawnrange: '&7Spawn Doseg: &e[range]'
+  spawnmob:
+    help:
+      info: '&eDrsti entiteto na vaši lokaciji'
+      args: '[EntityType]'
+      explanation:
+      - ' &e- Prvi argument je vedno ime glavnih entitet'
+      - ' &e- Določite lahko stanje entitete: otroško, odraslo, neumno, ukročeno, n-[Ime],
+        navzgor, sijaj, lobanja-[Ime], čelada-[itemname], skrinja-[itemname], noge-[itemname],
+        škorne-[itemname], mhand-[itemname], ohand-[itemname], effect-levitation/10/1-speed/10/2.
+        /n Example: konj: dojenček: ukročeni: n-Horsy, zombi: lobanja-Zrips: n-AngryZombie: mhand-Diamond_Sword '
+      - ' &e- nekatere entitete imajo posebne spremenljivke: '
+      - '    &6Sheep &e- bela, rjava, rdeča, mavrica in tako naprej ... &6primed_tnt &e-
+        [ticks], zažigalna'
+      - '    &6Horse &e- bela, kostanjeva, kremasta, temno rjava, siva, črna'
+      - '    &6Ocelot &e- rdeča, siamska, divja, črna &6experience_orb &e- [number]'
+      - '    &6Skeleton &e- wither, &6Creeper &e- zaračunano &6Wolf &e- jezen'
+      - '    &6Zombie &e- vaščan, kovač, mesar, kmet, duhovnik, knjižničar '
+      - '    &6Villager &e- kovač, mesar, kmet, duhovnik, knjižničar '
+      - '    &6Slime, MagmaCube &e- velikost tako, da navedete številko od 1. slime:3'
+      - '    &6ArmorStands &e- nogravitacija, noplate, arms, noarms, small'
+      - '    &6ShulkerBullet &e- [target], odbijanje'
+      - ' &e- Dodatne spremenljivke:'
+      - '     &6ps:zombie:priest:baby-1 &e- pasaža z zneskom'
+      - '     &6hp:20 &e- zdravje'
+      - '     &6sp:3 &e- naključno razširi entitete v dosegu'
+      - '     &6s:4 &e- entitete hitrost'
+      - '     &6t:[playername] &e- cilja, katere enote se bodo lotile'
+      - '     &6q:10 &e- znesek, ki ga želite drsteti'
+      - '     &6[playername] &e- ustvari entitete na lokaciji igralcev'
+      - '     &6loc:123/13.0/-15/World &e- spawn location. World name is optional
+        if used as player'
+      - 'Example: /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Chick_on_Sheep
+        q:10 sp:10 hp:50 s:2'
+    info:
+      wrongEntityName: '&eNapačno ime igralca'
+      wrongPlayerName: '&eNapačno ime igralca'
+      spawnedEntities: '&eSpawned &6[entities] &eentities '
+      spawnedPasangers: '&eand &6[passengers] &epassengers'
+      nothingSpawned: '&eNobena entiteta se ni pojavila'
+      cantSpawn: '&eTe vrste entitete ni mogoče ustvariti'
+  staffmsg:
+    help:
+      info: '&ePošlje sporočilo kanalu osebja'
+      args: '[message/toggle/on/off]'
+    info:
+      message: '&2[Staff]&4[&7[senderDisplayName]&4]&r&c [message]'
+      toggledOn: '&eZačel se je vztrajni klepet osebja. Zdaj lahko pišete sporočila
+        v javnem klepetu.'
+      toggledOff: '&eOdklopil stalen klepet osebja'
+  stats:
+    help:
+      info: '&ePreverite statistiko igralcev'
+      args: (playerName)
+    info:
+      distanceCM: '&e[value]&6cm'
+      distanceM: '&e[value]&6m'
+      distanceKm: '&e[value]&6km'
+      list: '&e[name]:&6[amount]'
+      listCover: '&e([list]&e)'
+      Quit: '&eGames Quit: &6[value]'
+      PlayTime: '&eČas predvajanja: &6[value]'
+      SneakTime: '&eČas prikradbe: &6[value]'
+      Sleep: '&eSpite v postelji: &6[value]'
+      Joined: '&ePridružil se: &6[time]'
+      Jumps: '&eSkoki: &6[value]'
+      SinceDeath: '&eOd zadnje smrti: &6[value]'
+      Deaths: '&eŠtevilo smrtnih žrtev: &6[value]'
+      DeathsByMonsters: '&eUbili pošasti: &6[value]'
+      TotalDistance: '&eSkupna prevožena razdalja: &6[value]'
+      Walk: '&eHodil: &6[value]'
+      Crouch: '&eZgrbljen: &6[value]'
+      Sprint: '&eSprinted: &6[value]'
+      Swim: '&ePlavaj: &6[value]'
+      Fall: '&ePadel: &6[value]'
+      Climb: '&ePlezal: &6[value]'
+      Fly: '&eLetela: &6[value]'
+      Dive: '&eDove: &6[value]'
+      Minecart: '&eMinecart: &6[value]'
+      Boat: '&Ladja: &6[value]'
+      Pig: '&ePrašič: &6[value]'
+      Horse: '&eKonji: &6[value]'
+      Elytra: '&eElytra: &6[value]'
+      Damage: '&eŠkoda &6[dealt] [taken]'
+      DamageDealt: '&eDealt: &6[value]'
+      DamageTaken: '&eVzeti: &6[value]'
+      JUMP: '&eSkočiti: &6[value]'
+      Kills: '&eUbija &6'
+      KillsMob: '&eMonsterji: &6[value]'
+      KillsPlayer: ' &eIgralec: &6[value]'
+      Blocks: '&eBloki &6'
+      BlocksMined: '&eMinirano: &6[value]'
+      BlocksPlaced: ' &ePostavljeno: &6[value]'
+      Items: '&ePredmeti &6'
+      ItemsUsed: '&eUporaba:&6[value]'
+      ItemsDrop: '&eSpusti:&6[value]'
+      ItemsPicked: '&eIzberi:&6[value]'
+      ItemsBroken: '&eZlomljeno:&6[value]'
+      ItemsCrafted: ' &enarediti:&6[value]'
+      ItemsEnchanted: ' &ezačarati:&6[value]'
+      Opened: '&eOdprto &6[list]'
+      OpenChest: '&eSkrinja:&6[value]'
+      OpenEnder: '&eEnderskrinja:&6[value]'
+      OpenShulker: '&eShulkerBox:&6[value]'
+      Interacted: '&eInterakcija &6[list]'
+      InteractBeacon: '&eSvetilnik:&6[value]'
+      InteractBrewingStand: '&eBrewStand:&6[value]'
+      InteractCraftTable: '&eObrtna miza:&6[value]'
+      InteractFurnace: '&ePeč:&6[value]'
+      Inspected: '&ePreverjeno &6[list]'
+      InspectDispenser: '&eRazdeljevalec:&6[value]'
+      InspectDropper: '&eKapalka:&6[value]'
+      InspectHopper: '&eHopper:&6[value]'
+      Statistics:
+        LEAVE_GAME: Zapustiv igro
+        PLAY_ONE_TICK: Čas igranja
+        TIME_SINCE_DEATH: Od zadnje smrti
+        TIME_SINCE_REST: Od zadnjega počitka
+        SNEAK_TIME: Čas prikradbe
+        ACOUNT_AGE: Starost računa
+        TRAVEL: Potovanje
+        WALK_ONE_CM: Hodi
+        CROUCH_ONE_CM: V počep
+        SPRINT_ONE_CM: Šprintati
+        SWIM_ONE_CM: Plavat
+        FALL_ONE_CM: Padit
+        CLIMB_ONE_CM: Plezati
+        FLY_ONE_CM: Leteti
+        DIVE_ONE_CM: Potapljanje
+        WALK_UNDER_WATER_ONE_CM: Hoja pod vodo
+        WALK_ON_WATER_ONE_CM: Hoja na vodi
+        MINECART_ONE_CM: Minecart Potovanje
+        BOAT_ONE_CM: Potovanje z ladjo
+        PIG_ONE_CM: Potovanje z prašičom
+        HORSE_ONE_CM: Konjska potovanja
+        AVIATE_ONE_CM: Elytra potovanja
+        JUMP: Skočiti
+        DAMAGE_DEALT: Nanešena škoda
+        DAMAGE_TAKEN: Škoda prevzeta
+        DAMAGE_DEALT_ABSORBED: Škoda je bila prevzeta
+        DAMAGE_DEALT_RESISTED: Odpravljena škoda se je uprla
+        DAMAGE_BLOCKED_BY_SHIELD: Škoda blokirana s ščitom
+        DAMAGE_ABSORBED: Škoda absorbirana
+        DAMAGE_RESISTED: Škoda se je uprla
+        DEATHS: Smrti
+        ENTITY_KILLED_BY: Ubil ga je
+        MOB_KILLS: MOster ga je ubil
+        PLAYER_KILLS: Player kills
+        ITEM_ENCHANTED: Igralec ubija
+        ANIMALS_BRED: Vzrejene živali
+        FISH_CAUGHT: Riba ujeta
+        TALKED_TO_VILLAGER: Pogovoril se z vaščanom
+        TRADED_WITH_VILLAGER: Trgoval z vaščanom
+        CAKE_SLICES_EATEN: Pojedene rezine torte
+        CAULDRON_FILLED: Kotel napolnjen
+        CAULDRON_USED: Couldron used
+        ARMOR_CLEANED: Oklep očiščen
+        BANNER_CLEANED: Pasica očiščena
+        BREWINGSTAND_INTERACTION: Interakcije pivovarne
+        BEACON_INTERACTION: Interakcije svetilnikov
+        CRAFTING_TABLE_INTERACTION: Oblikovanje interakcij v tabeli
+        FURNACE_INTERACTION: Interakcije peči
+        DISPENSER_INSPECTED: Dozirnik pregledan
+        DROPPER_INSPECTED: Kapalka pregledana
+        HOPPER_INSPECTED: Hopper pregledan
+        CHEST_OPENED: Skrinja odprta
+        TRAPPED_CHEST_TRIGGERED: Sprožena ujeta skrinja
+        ENDERCHEST_OPENED: Odprta skrinja
+        NOTEBLOCK_PLAYED: Noteblock je predvajan
+        NOTEBLOCK_TUNED: Noteblock uglašen
+        FLOWER_POTTED: Cvetlični lonček
+        RECORD_PLAYED: Posneta plošča
+        SLEEP_IN_BED: Spal v postelji
+        SHULKER_BOX_OPENED: Shulker box se odpre
+        CLEAN_SHULKER_BOX: Shulker box se zapre
+        DROP: Element je padel
+        MINE_BLOCK: Kocka podrta
+        PLACE_BLOCK: Kocka postavlena
+        BREAK_ITEM: Predmeti se zlomijo
+        CRAFT_ITEM: Predmeti obrti
+        USE_ITEM: Uporabljeni predmeti
+        PICKUP: Prevzem artiklov
+        KILL_ENTITY: Pošast ubija
+  statsedit:
+    help:
+      info: '&eEdit players statistics'
+      args: (playerName) [add/take/set] [statistic] (subType) [amount] (-s)
+    info:
+      cantSet: '&cTe vrste statistik ni mogoče nastaviti'
+      reqSubType: '&cTa statistika zahteva določitev &6[type] &csubtype'
+      set: '&eChanged from &6[old] &eto &6[new] &evalue for &6[statistic] &e(&6[extra]&e)'
+  status:
+    help:
+      info: '&eShow server status'
+      args: ''
+    info:
+      Platform: ' &ePlatform: &6[platform] &e(&6[os]&e) &eRunning threads: &6[threads]'
+      Tps: ' &eTPS: &6[tps]'
+      CpuUsage: ' &eCpu usage: &6[cpuusage]% &e(&6[cores] cores&e)'
+      Uptime:
+        main: ' &eUptime: '
+        weeks: '&e[tednov] &6weeks '
+        days: '&e[dni] &6days '
+        hours: '&e[ura] &6hours '
+        mins: '&e[minut] &6mins '
+        secs: '&e[sekund] &6secs '
+      MemoryUsage: ' &eMemory usage: &6[percent]% &e(&6[current]&e/&6[max] MB&e)'
+      MemoryUsageHover: "&fFree: &7[free] \n&fAllocated: &7[allocated] \n&fMax: &7[max]\
+        \ \n&fTotal: &7[total]"
+      Java: ' &eJava version: &6[mainV].[majorV].[minorV]&e(&6[update]&e) Build: &6[build]'
+      DiskUsage: ' &eDisk usage: &6[percent]% &e(&6[current]&e/&6[max] GB&e)'
+      Worlds: '&e [number]. &6[world] &e[chunks] Chunks &6[entities] Entities &e[tiles]
+        tiles &6[players] players'
+  sudo:
+    help:
+      info: '&ePrisili drugega igralca, da izvede ukaz'
+      args: '[playerName] (command/c:[text])'
+      explanation:
+      - cmi.command.sudo.bypass - ščiti igralca pred bitjem 'trolled'
+    info:
+      performed: '&eIzvedeno ''&6[command]&e'' command as &6[playerDisplayName] &eplayer'
+  suicide:
+    help:
+      info: '&eUbij se'
+      args: '[playerName] (-s)'
+    info:
+      feedback: '&eAdijo kruti svet...'
+      message: '&6[playerDisplayName] &etook their own life'
+  switchplayerdata:
+    help:
+      info: '&ePreklopite vse podatke z enega predvajalnika na drugega'
+      args: '[sourcePlayerName/uuid] [targetPlayerName/uuid]'
+      explanation:
+      - Use UUID for more accurate transfers, especially when usernames matching each
+        other
+    info:
+      same: '&eNavedeni ciljni in izvorni uporabniki so že enaki'
+      transferred: '&6[sourceName] &epodatki so zamenjani z &6[Name]'
+      failed: '&cPrenos podatkov predvajalnika ni uspel'
+  tablistupdate:
+    help:
+      info: '&ePrisilno posodabljanje seznama zavihkov za vse ali določene predvajalnike'
+      args: (playerName)
+    info:
+      updated: '&eSeznam zavihkov posodobljen'
+  tagtoggle:
+    help:
+      info: '&ePreklopi ukaze oznak'
+      args: (playerName)
+    info:
+      feedbackDisabled: '&eOnemogočeni ukazi oznak'
+      feedbackEnabled: '&eOmogočeni ukazi za oznake'
+  tempban:
+    help:
+      info: '&eTempBan player'
+      args: '[playerName] [timeValue] (reason) (-s)'
+      explanation:
+      - Največji obseg prepovedi je odvisen od cmi.command.tempban.max.[amount]
+      - cmi.command.tempban.max.unlimited - omogoča prepoved, kolikor želite
+      - V primeru, da jih igralec nima, bo največ 60 sekund
+      - 'Example: '
+      - /cmi tempban zrips 5m For swearing
+    info:
+      messageToAll: '&6[playerDisplayName] &edobil začasno &6[senderDisplayName]
+        &efor: &6[time] &ereason: &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &edobil začasno &6[senderDisplayName]
+        &efor: &6[time] &ereason: &6[reason]'
+      time: '&ePo tem boste prepovedani &6[time]'
+      badTime: '&cČas je napačno določen'
+      badTimeRanges: '&cNe morete prepovedati dlje kot [time] &6([seconds])'
+  tempipban:
+    help:
+      info: '&eTemp ban ip'
+      args: '[ip/playerName] [time] (reason) (-s)'
+      explanation:
+      - cmi.command.banip.bypass - to bypass ban
+    info:
+      message: '&cThe Ban Hammer je spregovoriv!'
+      reason: '&6Reason: &e[reason]'
+      defaultReason: '&eViolated server rules'
+      messageToAll: '&6[playerDisplayName] &7got temp ip banned for &7[time]&7by &6[senderDisplayName]&7:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &7je prepovedan začasni ip za &7[time]&7:
+        &6[reason]'
+  tfly:
+    help:
+      info: '&eNastavite način letenja začasnih igralcev, dokler se ne relogira ali dokler se čas ne konča'
+      args: (playerName) (timeInSec) (-s)
+      explanation:
+      - 'Examples:'
+      - tfly Zrips 30 - način letenja naslednjih 30 sek
+      - tfly Zrips +30 - doda način letenja za dodatnih 30 sekund
+      - tfly Zrips 0 - leteti način do ponovnega zamaha
+      - tfly Zrips - preverite, ali ima igralec omogočen način tfly in do kdaj
+    info:
+      setTimedFly: '&eNastavili ste &6[playerDisplayName]&e začasna muha za naslednjo
+        [time]'
+      addTimedFly: '&eDodali ste še enega [addTime] ([time]) for &6[playerDisplayName]&e'
+      setUntilRelogFly: '&eNastavili ste &6[playerDisplayName]&e začasno leteti do
+        ponoviti.'
+      targetTimedEnabled: '&eVaš let je bil omogočen by &3[senderDisplayName]&e za
+        naslednji [time].'
+      targetTimedEnabledAdd: '&eYour flight time was increased by [addTime] ([time]).'
+      targetUntilRelogEnabled: '&eVaš let je omogočil &3[senderDisplayName]&e
+        dokler se ne znebite.'
+      setFor: '&eZačasni način letenja je omogočen za naslednji [time]'
+      setForRelog: '&eOmogočen začasni način letenja do ponovnega zlaganja'
+      notSet: '&eZačasni način letenja za igralca ni omogočen'
+      willBeDisabled: '&eNačin letenja bo v načinu onemogočen [time]'
+      disabled: '&eNačin začasnega letenja je onemogočen!'
+  tgod:
+    help:
+      info: '&eNastavite igralce začasno božji način do ponovnega zaznamka ali konca časa'
+      args: '[playerName] &3(timeInSec) (-s)'
+      explanation:
+      - 'Examples:'
+      - tgod Zrips 30 - božji način za naslednjih 30 sek
+      - tgod Zrips 0 - božji način do ponovnega zapisa
+      - tgod Zrips - preverite, koliko časa ima igralec tgod, če sploh.
+    info:
+      setTimedGod: '&eSpremenil si &6[playerDisplayName]&e začasni bog za naslednjega
+        [time]'
+      setUntilRelogGod: '&eNastavili ste &6[playerDisplayName]&e začasni bog do
+        ponoviti.'
+      targetTimedEnabled: '&eNačin začasnega boga je omogočil &3[senderDisplayName]&e
+        za naslednjo [time].'
+      targetUntilRelogEnabled: '&eNačin začasnega boga je omogočil &3[senderDisplayName]&e
+        dokler se ne znebite'
+      setFor: '&eZačasni božji način omogočen za zunaj [time]'
+      setForRelog: '&eOmogočen začasni božji način do ponovnega odjavljanja'
+      notSet: '&eZačasni božji način za igralca ni omogočen'
+      willBeDisabled: '&eBožji način bo onemogočen v [time]'
+      disabled: '&eZačasni božji način je onemogočen!'
+  time:
+    help:
+      info: '&eNadzira čas strežnika'
+      args: (time) (world) (alter [value]) (-smooth)
+      explanation:
+      - 'Example:'
+      - /day
+      - /night
+      - /time 13:00:00
+      - /time 13:00
+      - /time 13
+      - /time 7000tikov
+      - /time 13:00 Lt_Craft
+      - /time 13:00 vse
+      - /time dodaj 0:30
+      - /time vzemite 0:30
+      - /time Zamrzniti
+      - /time Odmrzniti
+      - /time v realnem času
+      - /time samodejni začetek / zaustavitev v realnem času
+    info:
+      check: '&eČas: &6[24h] &eali &6[12h] &eali &6[ticks]ticks &eše &6[world]'
+      frozen: ' &c(-)'
+      frozenTime: '&eZamrzjen čas'
+      real: ' &6(+)'
+      realTime: '&eSamodejni realni čas'
+      autorealstart: '&eSamodejna nastavitev časa za &6[world] &estarted'
+      autorealstop: '&eSamodejna nastavitev časa za &6[world] &estopped'
+      gotfrozen: '&6[world] &ečas je zamrznjen'
+      gotunfrozen: '&6[world] &ečas je bil zamrznjen'
+      cantset: '&eČasa ni mogoče nastaviti na to vrednost'
+      setto: '&eČas nastavljen na &6[24h] &eali &6[12h] &eali &6[ticks]ticks &eza &6[world]'
+      am: '&eAM'
+      pm: '&ePM'
+  titlemsg:
+    help:
+      info: '&ePošlje naslovno sporočilo igralcu'
+      args: '[playerName/all] [title \n subtitle] (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])'
+    info:
+      message: '&f[messsage]'
+  toast:
+    help:
+      info: '&eSends toast message to player'
+      args: '[playerName/all] (-t:[advType]) (-icon:[material]) [message]'
+    info:
+      message: '&f[messsage]'
+  togglecompass:
+    help:
+      info: '&ePokažite ali skrijte bossbar kompasa'
+      args: ''
+    info:
+      ToggleOff: '&eKompas Boss bar je onemogočen'
+      ToggleOn: '&6Kompas Boss bar je omogočen'
+  toggleshiftedit:
+    help:
+      info: '&ePreklopi urejanje premika znakov'
+      args: ''
+    info:
+      feedbackDisabled: '&eOnemogočeno urejanje znakov premika'
+      feedbackEnabled: '&eOmogočeno urejanje znakov premika'
+  toggletotem:
+    help:
+      info: '&ePokaži ali skrije vrstico za ohlajevanje totema'
+      args: ''
+    info:
+      toggle: '&eTotem cooldown bar toggled ([state]&e)'
+  top:
+    help:
+      info: '&eTeleportirajte se do najvišje točke na vaši lokaciji'
+      args: '[playerName] (-s)'
+  tp:
+    help:
+      info: '&eTeleportira na predvajalnik''s lokacijo'
+      args: '[playerName] (playerName)'
+    info:
+      feedback: '&eTeleportirani ste bili v &3[sourceDisplayName] &elocation (&3[offon]&e).'
+      bad:
+        msg: '&cLokacija teleporta ni varna. [reason]'
+        extraMsg: '&eUporabi &6/tpbypass &eto to zaobiti. Imaš [time]'
+        lava: '&cLava'
+        void: '&cPrazno'
+        suffocation: '&cZadušitev'
+        unknown: '&cNeznano'
+        plugin: '&cVtičnik tretje osebe'
+      notAllowed: '&cNe morem se teleportirati do tega predvajalnika'
+      prevented: '&cTeleportacijo je preprečil drug vtičnik'
+  tpa:
+    help:
+      info: '&eVprašajte predvajalnika, če se lahko teleportirate do njega'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      requestSent: '&eZahteva poslana na &6[playerDisplayName]'
+      gotRequest: '&6[senderDisplayName] &ezahteva teleportacijo!'
+      time: '&eImaš &6[time]&eda sprejmejo to zahtevo'
+      canceled: '&eZahteva za teleportacijo je bila preklicana'
+      # This line cant contain anything else then default variables ([message][cancelButton]), you can switch them around to your liking tho
+      senderFeedbackMessageFormat: '[message][cancelButton]'
+      alreadyRequesting: '&eTo že zahtevate &6[playerDisplayName]
+        &esprejme vašo zahtevo za teleportacijo'
+      banned: '&eZahteve za teleportacijo ne morete poslati na &6[playerDisplayName]
+        &eza naslednjo &6[time]'
+  tpaall:
+    help:
+      info: '&eProsite vse spletne igralce, naj se teleportirajo na vašo lokacijo'
+      args: ''
+    info:
+      requestSent: '&eZahteva poslana vsem igralcem'
+  tpaccept:
+    help:
+      info: '&eSprejmi zahtevo za teleport'
+      args: (playerName)
+    info:
+      noRequest: '&eZahtev za teleport ni'
+      NotOnline: '&ePredvajalnik ni več povezan'
+      accepted: '&6[playerDisplayName] &esprejeta zahteva'
+      youAccepted: '&eTeleportacija sprejeta'
+  tpahere:
+    help:
+      info: '&eProsi igralca, naj sprejme teleportacijo na vašo lokacijo'
+      args: '[playerName] (playerName) (-c)'
+    info:
+      requestSent: '&eZahteva poslana na &6[playerDisplayName]'
+      gotRequest: '&6[senderDisplayName] &ezahteva teleportacijo zanje!'
+      accept: '&6Kliknite, da sprejmete zahtevo za teleportacijo!'
+  tpall:
+    help:
+      info: '&eVse spletne igralce teleportira na lokacijo'
+      args: (playerName)
+    info:
+      feedback: '&eTeleportirani ste bili ([world],[x],[y],[z]) to &3[playerDisplayName]
+        &elokacija.'
+  tpallworld:
+    help:
+      info: '&eTeleportira VSE igralce iz določenega sveta'
+      args: '[worldName] (worldName;x;y;z(;yaw;pitch)) (-a)'
+      explanation:
+      - -spremenljivka bo teleportirala vse, ki niso v neobstoječem svetu
+        ciljna lokacija
+    info:
+      started: '&eZačele so se teleportacije!'
+      current: '&eTrenutno se teleportira &7[amount] &eand &7[files] &epregledane datoteke'
+      total: '&eSkupno teleportirano &7[amount] &even iz tam &7[files] &euporabniki pregledani'
+      WorldNotFound: '&eSvet dano &7[name] &eime ni naloženo. Prepričajte se
+        pravilno. Uporabili bomo tako, kot je.'
+  tpbypass:
+    help:
+      info: '&eObvoz teleportacije na nevarno lokacijo'
+      args: (playername)
+    info:
+      noSavedTp: '&cNi shranjenih slabih lokacij za teleport'
+      feedback: '&eTeleportirano na nevarno lokacijo'
+  tpdeny:
+    help:
+      info: '&eZavrni zahtevo za teleport'
+      args: (playerName)
+    info:
+      noRequest: '&eNimate aktivnih zahtev za teleportacijo!'
+      youDenied: '&eVaša zahteva za teleportacijo je bila zavrnjena!'
+      denied: '&e[senderDisplayName] &ezavrnili vašo prošnjo.'
+  tphere:
+    help:
+      info: '&eTeleportira predvajalnik na vašo lokacijo'
+      args: '[playerName] (playerName)'
+    info:
+      feedback:
+        offline: '&eNastavili ste ([world],[x],[y],[z]) drstišče za &3[playerDisplayName]&e
+          (&3[offon]&e).'
+        online: '&eTeleportirali ste se &6[playerDisplayName] &ena vašo lokacijo'
+        player: '&eTeleportirali ste se v &6[sourceDisplayName] &elokacija'
+      notAllowed: '&ePredvajalnika ni mogoče teleportirati'
+  tpo:
+    help:
+      info: '&eTeleportira na predvajalnik''s silo'
+      args: '[playerName] (playerName)'
+  tpohere:
+    help:
+      info: '&eS silo teleportira predvajalnik na vašo lokacijo'
+      args: '[playerName] (playerName)'
+  tpopos:
+    help:
+      info: '&eS silo se teleportira na lokacijo'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&eTeleportirani ste bili ([world],[x],[y],[z]).'
+      feedbackOther: '&e[playerDisplayName] so bili teleportirani ([world],[x],[y],[z]).'
+  tppos:
+    help:
+      info: '&eTeleportiraj se na lokacijo'
+      args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
+    info:
+      feedback: '&eTeleportirani ste bili ([world],[x],[y],[z]).'
+      feedbackOther: '&e[playerDisplayName] so bili teleportirani ([world],[x],[y],[z]).'
+  tps:
+    help:
+      info: '&ePreverite stanje strežnikov'
+      args: (-spikes)
+    info:
+      tps: '&eTPS: '
+      # Custom tps range can be defined and you can have as many of them as you want
+      tpsList: '&e[3] [10] [30] [60] [600]'
+      explanation: '&7One block &e60 &7seconds. Max &e600 &7seconds'
+      minMax: '&7Max: [max] &7Min: [min]'
+      hover:
+      - '[tpscolor][tps]'
+      - '&7[time]'
+  tptoggle:
+    help:
+      info: '&ePreklopi dostop do teleportacije do predvajalnika'
+      args: (playerName) (on/off/status) (-s)
+    info:
+      feedback: '&ePreprečevanje teleportacije: &6[state]'
+      feedbackOther: '&ePreprečevanje teleportacije &6[playerDisplayName]&e: &6[state]'
+  tree:
+    help:
+      info: '&ePostavi drevo, kamor iščete'
+      args: (TreeType) (-p:[playerName])
+    info:
+      feedback: '&6[tree] &espawned.'
+      cantSpawn: '&cCant spawn (&e[tree]&c) on this block.'
+  unban:
+    help:
+      info: '&eUnban player or ip'
+      args: '[playerName/ip] (-s)'
+    info:
+      unBaned: '!broadcast!&6[playerDisplayName] &eunbanned'
+      unBanedSilent: '&7[&8Silent&7]&6[playerDisplayName] &eunbanned'
+      notBanned: '&6[playerDisplayName] &enot banned'
+  unbreakable:
+    help:
+      info: '&eNaredi element nezlomljiv'
+      args: (playerName) (true/false)
+    info:
+      feedback: '&eIzdelali ste izdelek [state] &efor &3[playerDisplayName]&e (&3[offon]&e).'
+      breakable: '&6breakable'
+      unbreakable: '&6unbreakable'
+  uncondense:
+    help:
+      info: '&ePredmeti brez zgoščevanja na manjše dele'
+      args: (itemName)
+    info:
+      converted: '&ePretvorjeno &7[blocks] &eblocks into &7[items] &eitems'
+      nothing: '&cV vašem inventarju ni ničesar, česar ne bi bilo mogoče strniti.'
+  unjail:
+    help:
+      info: '&eIzpustite igralca iz zapora'
+      args: '[playerName]'
+    info:
+      notInJail: '&cCiljni igralec ni v zaporu'
+      unjailed: '&eIzpustili ste &6[playerDisplayName] &efrom jail'
+      unjailedTarget: '&eYou have been released from jail!'
+  unloadchunks:
+    help:
+      info: '&eOdstrani koščke iz pomnilnika strežnika'
+      args: (-f)
+      explanation:
+      - -f spremenljivka bo prisilno razložila vse kose v enem zamahu.
+    info:
+      removed: '&eRemoved -[list]'
+      startScanning: '&eFound &6[amount] &echunks raztovoriti. Starting!'
+      InfoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[min]m:[sec]s&6) &6Speed: &e[speed]
+        &6Unloaded: &e[found]'
+      Finished: '&eFinished!!! Neobremenjeno: &6[amount] &echunks! In &6[minutes] &emin
+        &6[seconds] &esec.'
+  unmute:
+    help:
+      info: '&eVključi predvajalnik'
+      args: '[playerName] (-s)'
+    info:
+      notMuted: '&ePredvajalnik ni utišan'
+      unmuted: '&eIgralec lahko govori zdaj'
+      unmutedTarget: '&eZdaj lahko govoriš'
+  unmutechat:
+    help:
+      info: '&eVključen javni klepet'
+      args: (-s)
+    info:
+      unmuted: '&eVključen javni klepet'
+  usermeta:
+    help:
+      info: '&eUpravljajte metapodatke igralcev'
+      args: '[playerName] [add/remove/clear/list/increment] (key) (value) (-s)'
+      explanation:
+      - Vsako nastavljeno meta je mogoče prikazati z %cmi_user_meta_[key]% rezervirano mesto okoli
+        vključiti
+    info:
+      added: '&eDodana meta za &6[playerDisplayName] &es tipko kot &6[key] &ein vrednost
+        kot &6[value]'
+      cleared: '&eIzbrisana meta iz &6[playerDisplayName]'
+      removed: '&eOdstranjeno &6[key] &emeta iz &6[playerDisplayName]'
+      changed: '&eSpremenjeno &6[key] &emeta iz &6[oldValue] &ena novo vrednost &6[newValue]'
+      list: '&e[place]. &6[key]&e: [value]   '
+  util:
+    help:
+      info: Skrbniška orodja
+      args: (odstrani sedeže / testni cilj)
+    info:
+      removedSits: '&eOdstranjen &6[count] &eprazni sedeži iz vseh svetov.'
+  vanish:
+    help:
+      info: '&eIzginili ste'
+      args: (playerName/list) (on/off)
+    info:
+      vanished: '&Izginili ste'
+      unvanish: '&ePostali ste vidni'
+      targetVanished: '&6[playerDisplayName] &eso izginili'
+      targetUnvanish: '&6[playerDisplayName] &epostala vidna'
+      list: '&e[place]. &6[playerDisplayName] &e(&6[offon]&e)'
+      noVanished: '&eIzginilih igralcev ni'
+      noMsg: '&cNe morem pošiljati sporočil, medtem ko je izginilo. Posodobite to v vanishedit'
+  vanishedit:
+    help:
+      info: '&eUredi način izginotja za predvajalnik'
+      args: (playerName)
+    info:
+      isVanished: '&eIzginila'
+      damageToEntity: '&eLahko škoduje drugim'
+      playerDamage: '&eLahko povzroči škodo'
+      itemPickup: '&eLahko prevzame predmete'
+      mobAggro: '&eMonsterji lahko ciljajo'
+      interaction: '&eLahko fizično komunicira'
+      noisyChest: '&eHrupna skrinjat''s'
+      informOnLeave: '&ePrikazuje pusti sporočilo'
+      informOnJoin: '&ePrikaže sporočilo o pridružitvi'
+      nightVision: '&eUporabite nočni vid'
+      bossbar: '&ePokaži šefa Bar, ko izgine'
+      afkcommands: '&eSproži afk, ko izgine'
+      PrivateMessages: '&eSprejmi zasebna sporočila'
+      relogDisable: '&eOnemogoči izginotje ob ponovnem zapisu'
+      noMessages: '&eNi javnih sporočil'
+      fakeJoinLeave: '&ePokaži ponarejena sporočila o pridružitvi / pusti ob izginotju spremembe stanja'
+      mobSpawning: '&eMonsterji se bodo drstile v bližini'
+      bossbarTitle: '&fIzginila'
+  version:
+    help:
+      info: '&ePokaži različico vtičnika'
+      args: ''
+    info:
+      cmiVersion: '&eCMI: &6[version]'
+      cmiVersionNew: '&e-> [newVersion]'
+      dbType: ' &7[db]'
+      newServer: '&eServer: &6[version]'
+      Economy: '&eCMI economija: &6[state] '
+      Chat: '&eCMI Chat: &6[state] '
+      CMIB: '&7CMIB '
+      newVault: '&eSef: &6[version] '
+      Modules: '&eModuli -> &a[enabled] omogočeno &7[onemogočeno] onemogočeno&e: &c[list]'
+      Bungee: ' &eBungeeCord '
+  viewrange:
+    help:
+      info: '&eSpremenite obseg pogleda'
+      args: '[range] (playerName)'
+    info:
+      changed: '&eObseg pogleda spremenjen v &6[range]'
+      NoProtocolLib: '&cTa funkcija zahteva ProtocolLib!'
+      NoMore: '&eRazpon ne sme biti večji od 32 kosov. Spremenjeno v 32.'
+  voteedit:
+    help:
+      info: '&eUpravljanje glasov igralcev'
+      args: (playerName) [Dodaj/nastavi/odvzemi/odvzemi vse] [število] (-s)
+      explanation:
+      - 'Naprimer:'
+      - /voteedit Zrips
+      - /voteedit dodaj 10
+      - /voteedit odvzemi 10
+      - /voteedit Zrips odvzemi vse
+      - /voteedit Zrips dodaj 10
+    info:
+      currentVotes: '&e[playerDisplayName] &eima &6[votes] &evotes'
+      selfFeedback: '&eVotes was set to &3[votes] &eza &3[playerDisplayName]&e (&3[offon]&e).'
+      targetFeedback: '&eŠtevilo glasov je bilo nastavljeno na &3[votes]&e by &3[senderDisplayName]&e.'
+  votes:
+    help:
+      info: '&ePreverite štetje glasov igralcev'
+      args: (playerName)
+    info:
+      currentVoteSelf: '&eavtor &6[votes] &evotes'
+      currentVotes: '&e[playerDisplayName] &eima &6[votes] &evotes'
+      voteCooldown: '&eMorali boste počakati &6[time]&eponovno glasovati'
+      voteLimit: '&eZa danes ste dosegli omejitev števila glasov. Boste morali
+        počakaj &6[time]&eto vote again'
+  votetop:
+    help:
+      info: '&ePreverite zgornji seznam glasov'
+      args: (playerName)
+    info:
+      topLine: '&e----- TopVotes &e-----'
+      list: '&e[plac]. &6[playerDisplayName]: &e[votes]'
+      ownLine: '&2[plac]. &2[playerDisplayName]: &2[votes]'
+  walkspeed:
+    help:
+      info: '&eNastavite hitrost hoje igralcev 0 to 10'
+      args: '[playerName] [količina]'
+    info:
+      feedback: '&eNastavili ste &3[količina]&e hitrost hoje za &3[playerDisplayName]&e
+        (&3[offon]&e).'
+      targetfeedback: '&eVaša hitrost je nastavljena na &3[količina]&e avtor &3[senderDisplayName]&e.'
+      max: '&eNajvečja dovoljena hitrost hoje za vas je &6[max]&e.'
+  warn:
+    help:
+      info: '&eIgralec opozorjen'
+      args: '[playerName] (kategoriji) (razlog) (-s)'
+    info:
+      noSelfWarning: '&cNe moreš se opozoriti'
+      cantBan: '&cTega igralca ne morem opozoriti'
+      messageToAll: '&6[playerDisplayName] &cme je opozoril &6[senderDisplayName] &cza:
+        &6[reason]'
+      banedSilent: '&7[&8Tihi&7]&6[playerDisplayName] &cme je opozoril &6[senderDisplayName]
+        &cfor: &6[razlog]'
+  warnings:
+    help:
+      info: '&ePreverite opozorila igralcev'
+      args: (playerName)
+    info:
+      totalPoints: '&7---- &e[playerDisplayName] &eskupno število kršitev: &6[skupnosttočk]
+        &7----'
+      noWarnings: '&eIgralec nima nobenih opozoril'
+      list: '&7[plac]. &e[čas] &6by [Opozorjenod] &cfor: &7[opozorjenza]'
+      hover:
+      - '&7Poteče v: &e[Čas]'
+      - '&7Točke kršitve: &e[Točke]'
+  warp:
+    help:
+      info: '&eTeleportira se na warp lokacijo'
+      args: (warpName) (playerName) (-s)
+    info:
+      list: '&eWarps: &6'
+      click: '&eKlikni da se teleportiras &6[warp]'
+      teleported: '&eTleportiraj se warp: &6[warp]'
+      noWarps: '&cNi shranjenih warpov'
+      autoLoreName: '&7[warpime]'
+      autoLoreFormat:
+      - '&7[Ime sveta]'
+      - '&e[x]:[y]:[z]'
+      - '[Ustvarjalec]'
+      creator: '&eUstvarjalec: &6[creator]'
+      noWarpByName: '&cS tem imenom ni osnove'
+      noAccess: '&cNi dostopa do tega Warpa '
+      guiTitle: '&6Warps'
+      pageTitles:
+      - '&2Warps 1'
+      - '&8Warps 2'
+      - '&0Warps 3'
+  warpgroups:
+    help:
+      info: '&eNašteva osnove skupin'
+      args: ''
+    info:
+      list: '&e[številka]. &7[grupa] &6(&e[število]&6)'
+  weather:
+    help:
+      info: '&eNadzira vreme strežnika'
+      args: (sonce / dež / nevihta) (zaklepanje / trajanje) (worldName / all)
+      explanation:
+      - 'Oblike podaljška lahko: s/m/h/d/w/M/Y'
+      - 'Naprimer :'
+      - /Sonce
+      - /Dezevno
+      - /Oblačno
+      - /Sonce zamrzne
+      - /Sonce 120
+      - /Sonce Lt_Craft
+      - /Sonce 1h
+      - /Sonce 10m
+    info:
+      setTo: '&eNastavi &6[world] &evreme to &6[weather] &eza naslednje &6[time]'
+      currentState: '&6[world] &e-> &6[weather] &eza naslednje &6[time]'
+      sunny: sončno
+      rainy: dezevno
+      thundering: grmenje
+  whowas:
+    help:
+      info: '&ePrikaže prejšnja imena igralcev'
+      args: '[playerName]'
+    info:
+      list: ' &e[place]. &6[name] - &e[date]'
+      info: ' &e[playerName] &6[uuid]'
+      original: '&eIzvirno ime'
+  workbench:
+    help:
+      info: '&eOdprite delovno mizo'
+      args: (playerName)
+    info:
+      feedback: '&eOdprli ste delovno mizo za &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e odprl delovno mizo za vas.'
+  world:
+    help:
+      info: '&eTeleportira v drug svet'
+      args: (normal/nether/end/1/2/3...) (playerName) (-s)
+      explanation:
+      - Zahteva cmi.command.world.[worldName] poleg vozlišča osnovnega dovoljenja
+    info:
+      here: '&eŽe tukaj'
+  worth:
+    help:
+      info: '&ePreverite vrednost izdelka'
+      args: (all/blocks/hand/material)
+    info:
+      worthless: '&eBrezvredno'
+      basePrice: '&6[itemName]&e(&7[amount]&e) -> &f[price]'
+      fullPrice: '&7[price]'
+      total: '&eSkupna vrednost: &7[total]'
+  worthlist:
+    help:
+      info: '&ePreverite seznam izdelkov z nastavljenimi prodajnimi cenami'
+      args: (playerName)
+    info:
+      type: '&7[type]'
+      worth: '&7Vredno: &e[price]'
+      title: '&8Seznam vreden'
