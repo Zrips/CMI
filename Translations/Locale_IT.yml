@@ -2426,6 +2426,7 @@ command:
       paid: '&eHai inviato &6[amount] &ea &6[playerDisplayName]'
       gotMoney: '&eHai ottenuto &6[amount] &eda &6[senderDisplayName]&e. Bilancio: &6[money]'
       gotMoneyGive: '&eHai ricevuto &6[amount]&e. Bilancio: &6[money]'
+      lostMoney: '&6[amount] &esono stati rimossi dal tuo bilancio. Rimangono: &6[money]'
       noMoney: '&cNon hai abbastanza soldi'
       worldGroups: '&cNon puoi inviare soldi se state in due mondi differenti'
       self: '&cNon puoi inviare soldi a te stesso!'
