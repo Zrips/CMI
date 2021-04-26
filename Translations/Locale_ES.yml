@@ -54,7 +54,7 @@
 # <URL> includes url
 info:
   # Use !prefix! in any locale line to automatically include this prefix
-  prefix: '&e[&6CMI&e] '
+  prefix: '&e【&6CMI&e】 '
   NoPermission: '&c¡No tienes permiso para hacer esto!\n&7Prueba aumentando tu Rango.'
   CantHavePermission: '&c¡No puedes tener este permiso!'
   WrongGroup: '&c¡No puedes hacer esto en este grupo!'
@@ -176,8 +176,7 @@ info:
   sleepersRequired: '&7[&4!&7] Hay &f[sleeping] &7jugador acostado. Se necesitan &f[required]
     &7más para pasar la noche rápidamente.'
   sunSpeedingTitle: '&7[hour]H'
-  skippingNight: '!title!&bEn unos momentos...!subtitle!&bTe despiertas, después de
-    dormir toda la noche.'
+  skippingNight: '!title!&7Despertarás!subtitle!&7En pocos segundos.'
   sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]x&7)'
   repairConfirm: '&eClic para confirmar si quieres reparar &7[items] &epor valor de
     &7[cost]&e.'
@@ -197,6 +196,7 @@ info:
   lookAtSign: '&eMira un Cartel.'
   lookAtBlock: '&eMira un Bloque.'
   lookAtEntity: '&eMira una Entidad.'
+  noSpace: '&eNo hay suficiente espacio libre.'
   notOnGround: '&eNo puedes realizar esto mientras vuelas.'
   # This line can have extra variables: [totalUsers] [onlinePlayers]
   FirstJoin: '&6¡[playerDisplayName]&e, este servidor te da la bienvenida!'
@@ -424,7 +424,7 @@ info:
     WOODED_MOUNTAINS: Montaña Boscosa
   EntityType:
     area_effect_cloud: Nube de Efecto de Área
-    armor_stand: Soporte de Armadura
+    armor_stand: Porta-Armadura
     arrow: Flecha
     bat: '&6Murciélago'
     bee: '&4Abeja'
@@ -909,10 +909,10 @@ command:
       commandListDelay: '&6[command]'
       permRequirement: '&2Permiso: &6[state]'
       permReqExplanation: \n&8Para usar el alias es necesario el permiso:\n&8cmi.customalias.[alias]
-      tabComplete: ' &2Ficha Completa: &6[state]'
-      tabCompleteExplanation: '&7Con la Ficha Completa desactivada, no funcionará.'
-      tabCompletes: '&2Fichas Completas: '
-      customTab: ' &7Ficha Personalizada'
+      tabComplete: ' &2Predecir: &6[state]'
+      tabCompleteExplanation: '&7Con la predicción desactivada, no funcionará.'
+      tabCompletes: '&2Predecir: '
+      customTab: ' &7Personalizar Predicción'
       newAliasInfo: '&7Introduce el comando del nuevo alias y pulsa Entrar.'
       addInfo: '&7Introduce el comando.\n&8► Introduce &7cancel &8para anular la acción.'
       addInformationHover: |-
@@ -1009,7 +1009,7 @@ command:
       - '&b!cc! &7► Ejecuta el comando desde la consola, solo si tiene el permiso
         &fcmi.command.attachcommand.cc'
       - '&b!cooldownn:[cantidad]! &7► Añade un tiempo de uso.'
-      - '&b[interactedPlayer] &7► Inserta el nombre del jugador con el que se interactúa
+      - '&b[interactedPlayer] &7► Inserta el nombre del jugador con el que se interactua
         mientras se mantiene el objeto.'
       - '&b[itemUses] &7► Define variables globales adicionales.'
     info:
@@ -1314,7 +1314,7 @@ command:
   clearchat:
     help:
       info: Vaciar el chat.
-      args: (self)
+      args: (self) (-s)
       explanation:
       - '&3&nPermisos asociados:'
       - '&bcmi.command.clearchat.bypass &7► Impide que el chat pueda ser vaciado.'
@@ -1629,6 +1629,8 @@ command:
       autoLore: '&2Generación automática de la descripción: [state]'
       group: '&2Grupo: &7[group]'
       newGroup: '&eIntroduce el nombre del nuevo grupo.'
+      displayName: '&2DisplayName: &7[displayName]'
+      newDisplayName: '&eIntroduce el nombre a mostrar.'
       randomizeYaw: '&2Aleatorizar la dirección: [state]'
       permission: '&2Permiso necesario para su uso: [state]'
       reqPermission: '&2Mostrar sin permiso: [state]'
@@ -1758,7 +1760,8 @@ command:
       info: Establece la distancia de caída de un jugador.
       args: (nombreJugador) (número) (-s)
     info:
-      feedback: '&eHas determinado que la distancia de caída de &3[playerDisplayName] &esea de &3[amount] &8(estando &7[offon]&8)&e.'
+      feedback: '&eHas determinado que la distancia de caída de &3[playerDisplayName]
+        &esea de &3[amount] &8(estando &7[offon]&8)&e.'
   feed:
     help:
       info: Alimentar a un jugador.
@@ -1840,11 +1843,11 @@ command:
       buttonMoney: '&aRecarga la habilidad de vuelo usando Dinero.'
       max: '&eHas alcanzado la habilidad de vuelo máxima.'
       amounts:
-      - '&eLeft click +1. Cost: &7[amount1]'
-      - '&6Shift left +10. Cost: &7[amount10]'
-      - '&eRight click +100. Cost: &7[amount100]'
-      - '&6Shift right +1000. Cost: &7[amount1000]'
-      - '&eMiddle Mouse +10000. Cost: &7[amount10000]'
+      - '&eBotón Izquierdo +1 ► Coste: &7[amount1]'
+      - '&6Mayús Izquierdo +10 ► Coste: &7[amount10]'
+      - '&eBotón Derecho +100 ► Coste: &7[amount100]'
+      - '&6Mayús Derecho +1000 ► Coste: &7[amount1000]'
+      - '&eBotón Central +10000 ► Coste: &7[amount10000]'
       - ''
       changeAmount: '&7[amount]'
       cost: '&eHas cambiado &6[amount] &eunidades de &6[charge] &epara recargar el
@@ -2011,6 +2014,7 @@ command:
       hardSet: '&eDificil de determinar el estado &6[state] &edebido a algún plugin.'
       notHardSet: '&eEl resultado puede ser &cNo &een algunos casos.'
       ops: '&eEl resultado es &6[state] &eporque el jugador es OP.'
+      minMax: '&eMin: &6[min] &eMax: &6[max]'
   hat:
     help:
       info: Coloca un objeto como sombrero.
@@ -2143,7 +2147,8 @@ command:
       noHomes: '&cNo has establecido ningún hogar.'
       private: '&c¡Este hogar es privado!'
       remove: '&8Mayús + Botón Derecho ► Elimina el hogar.'
-      notAccessible: '&c¡No existe el mundo &7[worldName] &cdonde se estableció el hogar!'
+      notAccessible: '&c¡No existe el mundo &7[worldName] &cdonde se estableció el
+        hogar!'
       guiTitle: '&eHogares de &6[playerDisplayName] &8(&7[current]/[max]&8)'
   homes:
     help:
@@ -2433,8 +2438,6 @@ command:
       - '&bcmi.command.banip.bypass &7► Impide ser bloqueado por IP.'
     info:
       message: '&c¡Tu ip ha sido bloqueada en este servidor!'
-      reason: '&eRazón: &6[reason]'
-      defaultReason: '&6Infringir las normas del servidor.'
       messageToAll: '&6[senderDisplayName] &eha baneado a &6[playerDisplayName] &epor:
         &6[reason]&e.'
       banedSilent: '&7[&8Modo Oculto&7] &6[senderDisplayName] &eha baneado a &6[playerDisplayName]
@@ -2468,6 +2471,15 @@ command:
       - /give diamond_sword unbreakable
       - /give mob_spawner:creeper
       - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+  itemcmdata:
+    help:
+      info: '&eCheck or modify items custom model data'
+      args: '[set/delete] (playerName) (id) (-s)'
+    info:
+      nothing: '&eDoesn''t contain any model data'
+      set: '&eSet new model data to: &6[value]'
+      current: '&eCurrent model data: &6[value]'
+      deleted: '&eRemoved model data: &6[value]'
   itemframe:
     help:
       info: Gestiona los marcos.
@@ -2519,8 +2531,9 @@ command:
       info: Muestra información NBT del objeto.
       args: (nombreJugador)
     info:
-      step: ' &6► &6[name]'
-      final: '&e[value]'
+      jump: '&6[key][type]'
+      type: ' &6(&e[type]&6)'
+      value: ': &e[value]'
       list: '&e- &r[value]'
       noNbt: '&eEl objeto no contiene ninguna información NBT.'
   jail:
@@ -3087,7 +3100,8 @@ command:
       args: (nombreJugador) (-pref:[prefijo]) (-suf:[sufijo]) (-c:[códigoColor])
       explanation:
       - '&3&nDetalles:'
-      - 'Usa _ para añadir un espacio y __ para añadir variables bajo el nombre, como por ejemplo placeholders y similares.'
+      - Usa _ para añadir un espacio y __ para añadir variables bajo el nombre, como
+        por ejemplo placeholders y similares.
     info:
       feedback: '&eHas cambiado la etiqueta de &3[playerDisplayName] &8(estando &7[offon]&8)&e.'
       targetfeedback: '&7[&4!&7] Tu etiqueta de jugador se ha actualizado.'
@@ -3484,6 +3498,8 @@ command:
     info:
       feedback: '&eHas reparado &3[amount] &eobjetos de &3[playerDisplayName] &8(estando
         &7[offon]&8)&e.'
+      nothing: '&eNo hay nada que reparar.'
+      cant: '&eNo se puede reparar este objeto.'
       feedbackMoney: '&eHas reparado &3[amount] &eobjetos de &3[playerDisplayName]
         &8(estando &7[offon]&8)&e, al coste de &7[cost]&e.'
       itemOwner: '&eLa última vez fue reparado por: &6[owner]'
@@ -4020,11 +4036,12 @@ command:
         &eCabezada: &6[pitch] &eVolumen: &6[volume]"
   spawn:
     help:
-      info: Aparece en el spawn.
+      info: Aparece en el inicio.
       args: (nombreJugador)
     info:
-      notset: '&4¡No se ha determinado el punto de aparición del spawn!'
-      feedback: '&6¡Has aparecido en el spawn!'
+      notset: '&4¡No se ha determinado el punto de aparición del inicio!'
+      feedback: '&6¡Has aparecido en el inicio!'
+      feedbackother: '&e[playerDisplayName] &6ha sido forzado a aparecer en el inicio.'
   spawner:
     help:
       info: Determina el tipo de Generador (spawner).
@@ -4322,6 +4339,7 @@ command:
       - /cmi tempban C4BR3R4 5m Por decir groserías &7► Expulsa del servidor a C4BR3R4
         durante 5 minutos por...
     info:
+      message: '&4¡&cBaneado temporalmente&4!'
       messageToAll: '&6[senderDisplayName] &eha expulsado &6[time] &ea &6[playerDisplayName]
         &epor: &6[reason]'
       banedSilent: '&7[&8Modo Oculto&7] &6[senderDisplayName] &eha expulsado &6[time]
@@ -4338,8 +4356,6 @@ command:
       - '&bcmi.command.banip.bypass &7► Impide ser bloqueado por IP.'
     info:
       message: '&c¡Has sido baneado por el administrador!'
-      reason: '&eRazón: &6[reason]'
-      defaultReason: '&6Infringir las normas del servidor.'
       messageToAll: '&6[senderDisplayName] &eha baneado temporalmente a &6[playerDisplayName]
         &7durante &7[time] &7por: &6[reason]&e.'
       banedSilent: '&7[&8Modo Oculto&7] &6[senderDisplayName] &eha baneado temporalmente
@@ -4754,7 +4770,7 @@ command:
       CMIB: '&7CMIB '
       newVault: '&eVault: &6[version] &7| '
       Modules: '&eMódulos: &a[enabled] activados &ey &c[disabled] desactivados &7([list])\n&7Archivo
-        de Idioma: &8v21.01.25\n&7Traducido por: &8C4BR3R4 (c4br3r4.es)'
+        de Idioma: &8v21.04.03\n&7Traducido por: &8C4BR3R4 (c4br3r4.es)'
       Bungee: ' &eBungeeCord '
       CMILib: '&eVersión de CMILib: &6[version] '
       cmilVersionNew: '&e► [newVersion]'
