@@ -222,8 +222,8 @@ info:
     Offline: desconectado
     TrueColor: '&2'
     FalseColor: '&4'
-    'True': '&aSi'
-    'False': '&cNo'
+    'True': '&aHabilitado'
+    'False': '&cDeshabilitado'
     Enabled: '&aActivado'
     Disabled: '&cDesactivado'
     survival: '&6Supervivencia'
