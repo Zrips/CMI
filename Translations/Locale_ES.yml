@@ -140,7 +140,7 @@ info:
   teleported: '&eHas aparecido.'
   BlackList: '&e[material] [amount] &6Máximo: [max]'
   PlayerSpliter: '&6&m------------&r&6[ &e[playerDisplayName] &6]&6&m------------'
-  Spliter: '&6&m------------------------------------------------------------------'
+  Spliter: '&6&m-----------------------------------------------------'
   SpliterValue: '&a&m------------------&r&a[ &2[value] &a]&a&m------------------'
   singleSpliter: '&e-'
   SpliterMiddle: ' &6[value] '
