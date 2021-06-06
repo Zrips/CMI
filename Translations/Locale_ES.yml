@@ -2693,7 +2693,7 @@ command:
       args: (equipamiento) (nombreJugador/all)
     info:
       notCd: '&eEste equipamiento no está en fase de reutilización.'
-      reset: '&eSe ha reiniciado el tiempo de reutilización del equipamiento &6[kit]&ede
+      reset: '&eSe ha reiniciado el tiempo de reutilización del equipamiento &6[kit] &ede
         &6[playerDisplayName]&e.'
       resetAll: '&eSe ha reiniciado el tiempo de reutilización del equipamiento &6[kit]
         &ede &6[count] &ejugadores.'
