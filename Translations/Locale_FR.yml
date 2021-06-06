@@ -99,7 +99,7 @@ info:
   Spawner: '&r[type] Spawner'
   Elevator:
     created: '&ePancarte d''ascenseur créé'
-  CantPlaceSpawner: '&eImpossible de placer un spaner si proche d''un autre spawner (&6[range]&e)'
+  CantPlaceSpawner: '&eImpossible de placer un spawner si proche d''un autre spawner (&6[range]&e)'
   ChunksLoading: '&eLes données des chunks se chargent encore. Attends encore un peu...'
   ShulkerBox: Shulker Box
   CantuseShulkerBox: '&cTu ne peux pas utiliser une shulker box en combat.
@@ -119,7 +119,7 @@ info:
   CantTeleportWorld: '&eTu ne peux pas te téléporter dans ce monde'
   CantTeleportNoWorld: '&cCe monde n''existe pas. Téléportation annulée'
   CantTeleport: '&eVous ne pouvez pas vous téléporter car vous avez trop d''articles limités. Passe sur ce message pour voir le maximum autorisé.'
-  teleported: '&eTu as été télporté.'
+  teleported: '&eTu as été téléporté.'
   BlackList: '&e[material] [amount] &6Max: [max]'
   PlayerSpliter: '&e----- &6[playerDisplayName] &e-----'
   Spliter: '&e--------------------------------------------------'
@@ -252,12 +252,12 @@ info:
   valueToLong: '&eValeur trop haute. Max: [max]'
   valueToShort: '&eValeur trop faible. Min: [min]'
   InvEmpty:
-    armor: '&eTon slot d''armur doit être vide!'
+    armor: '&eTon slot d''armure doit être vide!'
     hand: '&eTa main doit être vide!'
     maininv: '&eTon inventaire principal doit être vide!'
     maininvslots: '&eTon inventaire principal doit avoir au moins &6[count] &eplaces libres!'
     inv: '&eTon inventaire doit être libre!'
-    offhand: '&eYour offhand should be empty!'
+    offhand: '&eTa main secondaire doit être vide!'
     quickbar: '&eTa quick bar doit être vide!'
     quickbarslots: '&eTa quick bar doit avoir au moins &6[count] &eplaces libres!'
     subinv: '&eTon inventaire secondaire doit être libre!'
@@ -349,7 +349,7 @@ info:
     SNOWY_BEACH: Plage enneigée
     SNOWY_MOUNTAINS: Montagnes enneigées
     SNOWY_TAIGA: Taïga enneigée
-    SNOWY_TAIGA_HILLS: Collin de taïga enneigée
+    SNOWY_TAIGA_HILLS: Collines de taïga enneigée
     SNOWY_TAIGA_MOUNTAINS: Montagnes de taïga enneigée
     SNOWY_TUNDRA: Toundra enneigée
     STONE_SHORE: Côte rocheuse
@@ -615,13 +615,13 @@ info:
     - Héros du village
 direction:
   n: Nord
-  ne: Nord Est
+  ne: Nord-Est
   e: Est
-  se: Sud Est
+  se: Sud-Est
   s: Sud
-  sw: Sud Ouest
+  sw: Sud-Ouest
   w: Ouest
-  nw: Nord Ouest
+  nw: Nord-Ouest
 modify:
   middlemouse: '&2Clic du milieu de la souris pour éditer'
   newItem: '&7Placer un nouvel item ici'
@@ -671,7 +671,7 @@ modify:
 warp:
   list: '&e[pos]. &6[warpName] &f- &7[worldName] ([x]:[y]:[z])'
 teleportation:
-  relocation: '!actionbar!&4Votre emplacement de téléportation a été obstrué. Vous avez été télporté vers un endroit sûr.'
+  relocation: '!actionbar!&4Votre emplacement de téléportation a été obstrué. Vous avez été téléporté vers un endroit sûr.'
 afk:
   'on': '&6AFK'
   'off': '&7Joue'
@@ -826,8 +826,8 @@ command:
         &edelay! 5 &6pour inclure un délai dans la commande \n&e$1 &6prendra la variable fournie\
         \ par une nouvelle commande et se placera à cet endroit \n&e$1- &6prend toutes les variables\
         \ à partir de ce point et insère dans les commandes originales \n&e? &6le rend valide\
-        \ lors de l'utilisation d'une dernière variable. For Help page usage\n&efromConsole! will perform\
-        \ command from console"
+        \ lors de l'utilisation d'une dernière variable. Pour l'utilisation de la page d'Aide,\n&efromConsole! la commande\
+        \ sera exécuter à partir de la console."
       editInfo: '&eCliquez pour coller l''ancien texte. Tape &6cancel &epour annuler l''action. Tape
         &6remove &epour retirer une ligne'
   anvil:
