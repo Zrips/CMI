@@ -84,6 +84,7 @@ info:
   bungeeNoGo: '&cEsta característica no funciona en servidores de la red bungee.'
   clickToTeleport: '&7Clic para aparecer en la posición.'
   UseMaterial: '&c¡Por favor usa los nombres de los objetos!'
+  IncorrectMaterial: '&4¡El nombre del material no es correcto!'
   UseInteger: '&c¡Por favor, usa números!'
   UseBoolean: '&c¡Por favor, usa &4True &co &4False&c!'
   NoLessThan: '&c¡El número no puede ser menor de &4[amount]&c!'
@@ -139,8 +140,10 @@ info:
   teleported: '&eHas aparecido.'
   BlackList: '&e[material] [amount] &6Máximo: [max]'
   PlayerSpliter: '&6&m------------&r&6[ &e[playerDisplayName] &6]&6&m------------'
-  Spliter: '&6&m------------------------------------------------------------------'
+  Spliter: '&6&m-----------------------------------------------------'
   SpliterValue: '&a&m------------------&r&a[ &2[value] &a]&a&m------------------'
+  singleSpliter: '&e-'
+  SpliterMiddle: ' &6[value] '
   ListSpliter: ' &8|&r '
   ProgressBarFill: '&2▏'
   ProgressBarEmpty: '&e▏'
@@ -162,7 +165,8 @@ info:
   cantDetermineMobType: '&cNo se puede determinar el tipo de criatura con la variable
     &e[type]&c.'
   cantRename: '!actionbar!&eNo puedes cambiar el nombre de este objeto por este nombre.'
-  cantEdit: '&eTu no puedes modificar esto.'
+  confirmRedefine: '&eClic para confirmar la modificación.'
+  cantEdit: '&eNo puedes modificar esto.'
   wrongName: '&cNombre incorrecto.'
   unknown: '&cdesconocido'
   invalidName: '&cNombre no válido.'
@@ -204,6 +208,8 @@ info:
   LoginCustom: '&8[&2+&8] &aEl [prefix][playerDisplayName] &aha entrado.'
   deathlocation: '&eHas muerto en las coordenadas x:&6[x]&e, y:&6[y]&e, z:&6[z] &edel
     mundo &6[world]&e.'
+  book:
+    exploit: '&cNo puedes crear un libro que contenga más de [amount] páginas.'
   combat:
     CantUseShulkerBox: '&cNo puedes usar la Caja de Shulker durante el combate contra
       otro jugador. Espera: [time]'
@@ -222,8 +228,8 @@ info:
     Offline: desconectado
     TrueColor: '&2'
     FalseColor: '&4'
-    'True': '&aSi'
-    'False': '&cNo'
+    'True': '&aHabilitado'
+    'False': '&cDeshabilitado'
     Enabled: '&aActivado'
     Disabled: '&cDesactivado'
     survival: '&6Supervivencia'
@@ -353,6 +359,7 @@ info:
     BIRCH_FOREST_HILLS: Colinas de Bosque de Abedul
     COLD_OCEAN: Océano Frío
     CRIMSON_FOREST: Bosque Carmesí
+    CUSTOM: Personalizado
     DARK_FOREST: Selva Espesa
     DARK_FOREST_HILLS: Colinas de Selva Espesa
     DEEP_COLD_OCEAN: Océano Frío Profundo
@@ -423,8 +430,8 @@ info:
     WOODED_HILLS: Colina Boscosa
     WOODED_MOUNTAINS: Montaña Boscosa
   EntityType:
-    area_effect_cloud: Nube de Efecto de Área
-    armor_stand: Porta-Armadura
+    area_effect_cloud: Nube de Efecto Área
+    armor_stand: Soporte de Armadura
     arrow: Flecha
     bat: '&6Murciélago'
     bee: '&4Abeja'
@@ -693,10 +700,10 @@ modify:
   removePage: '&c&n[Eliminar Página]&r'
   removePageHover: '&cEliminar esta página.'
   deleteSymbol: ' &7[&cX&7]'
-  deleteSymbolHover: '&cEliminar &4[text]'
+  deleteSymbolHover: '&cEliminar entrada nº: &4[text]'
   extraEditSymbol: ' &6!'
-  addSymbol: ' &2+'
-  addSymbolHover: '&7Añadir una línea nueva.'
+  addSymbol: '&7[&2+&7]'
+  addSymbolHover: '&7Añadir una entrada nueva.'
   cancelSymbol: ' &7&l[X]'
   cancelSymbolHover: '&cCancelar'
   acceptSymbol: ' &2&l[✔]'
@@ -716,8 +723,10 @@ modify:
   listUpSymbolHover: '&7Subir la línea.'
   listDownSymbol: '&2▼ &r'
   listDownSymbolHover: '&7Bajar la línea.'
-  listNumber: '&8[number]. &r'
+  listNumbering: '&e[number]. '
+  listAlign: '&80'
   ChangeHover: '&7Clic para cambiar.'
+  ChangeCommands: '&eComandos'
   enabledColor: '&6'
   disabledColor: '&7'
   commandTitle: ' &e►►► &6[name] &e◄◄◄'
@@ -735,6 +744,7 @@ modify:
     &8www.spigotmc.org/wiki/cmi-specialized-commands
   commandEditInfo: '&e[Pegar]\n&8► Introduce &7cancel &8para anular la acción.\n&8►
     Introduce &7remove &8para eliminar la línea.'
+  listLimit: '&eLa lista no puede contener más de &6[amount] &eentradas.'
   commandEditInfoHover: '&8Clic para pegar el texto de la línea que estás modificando.'
 warp:
   list: '&e[pos]. &6[warpName] &7► [worldName] ([x]:[y]:[z])'
@@ -817,6 +827,7 @@ Location:
   Z: '&eZ: &6[z]'
   Pitch: '&eCabeceo: &6[pitch]'
   Yaw: '&eGuiñada: &6[yaw]'
+Locations: '&7Locations: '
 Ender:
   Title: '&7Abrir Cofre de Ender.'
 Chat:
@@ -858,6 +869,13 @@ command:
     help:
       info: Cambia a modo ausente (afk).
       args: (-p:nombreJugador) (razón)
+    info:
+      afkTitle: '&cEstás AUSENTE'
+      afkSubTitle:
+      - '&2¡No comas muchas chuches!'
+      - '&2Bonito día para pescar'
+      - '&2¿Otra vez ausente?'
+      - '&2¿Donde estás?'
   afkcheck:
     help:
       info: Comprueba el estado del jugador.
@@ -904,7 +922,7 @@ command:
       args: (new) (alias)
     info:
       ListNumber: '&8[number]. &r'
-      aliasName: '&6[alias]'
+      alias: '&6[alias]'
       commandList: '&e/[command]'
       commandListDelay: '&6[command]'
       permRequirement: '&2Permiso: &6[state]'
@@ -952,6 +970,8 @@ command:
       leftLeg: '&7Pierna izquierda [coord]&7: &f[amount]'
       rightLeg: '&7Pierna derecha [coord]&7: &f[amount]'
       pos: '&7Posición [coord]&7: &f[amount]'
+      list: '&7[place]. &6[distance] [items]'
+      items: '&3[displayName]&e[type]'
       plate: '&7Mostrar Base'
       size: '&7Tamaño Pequeño'
       visible: '&7Mostrar Soporte'
@@ -1306,9 +1326,9 @@ command:
       - cmi clear +armorslots &7► Elimina los objetos existentes de los huecos de
         la armadura.
     info:
-      feedback: '&eHas eliminado el contenido del inventario de &3[playerDisplayName]
-        &8(estando &7[offon]&8)&e.'
-      targetfeedback: '&3[senderDisplayName] &eha eliminado el contenido de tu inventario.'
+      clearFeedback: '&eHas eliminado &6[amount] &eobjetos del inventario de &3[playerDisplayName]
+        &8(estando &7[offon]&8).'
+      target: '&3[senderDisplayName] &eha eliminado &6[amount] &eobjetos de tu inventario.'
       confirm: '&7Clic para confirmar la eliminación del inventario. &c¡Todos los
         objetos serán eliminados!'
   clearchat:
@@ -1588,12 +1608,11 @@ command:
         &8para anular la acción.'
       deleted: '&eEl texto personalizado (&6[ctext]&e) ha sido eliminado.'
       createdNew: '&eEl texto personalizado (&6[ctext]&e) ha sido creado.'
-      createNew: '&2+'
-      createNewHover: '&8Clic para añadir un nuevo Texto Personalizado.'
       autoPage: '&ePágina auto.: &6[state]'
       autoAlias: '&eAlias auto.: &6[state]'
       permReq: '&eNecesita el permiso: &6[state]'
-      list: '&eTextos Personalizados: &6'
+      listTitle: '&eCText''s'
+      listFormat: '&6[name]&7: &r[extra]'
   editlocale:
     help:
       info: Modifica el archivo de idioma.
@@ -1626,16 +1645,18 @@ command:
       placeItem: '&2Coloca el objeto para determinar el icono del warp.'
       placeOffItem: '&2Coloca el objeto para determinar el icono del warp, cuando
         este no esté disponible.'
-      autoLore: '&2Generación automática de la descripción: [state]'
+      autoLore: '&2Descripción automática: [state]'
       group: '&2Grupo: &7[group]'
       newGroup: '&eIntroduce el nombre del nuevo grupo.'
-      displayName: '&2DisplayName: &7[displayName]'
+      displayName: '&2Nombre a Mostrar: &7[displayName]'
       newDisplayName: '&eIntroduce el nombre a mostrar.'
-      randomizeYaw: '&2Aleatorizar la dirección: [state]'
+      randomizeYaw: '&2Aleatorizar la localización: [state]'
       permission: '&2Permiso necesario para su uso: [state]'
       reqPermission: '&2Mostrar sin permiso: [state]'
       hidden: '&2Oculto: [state]'
-      location: '&2Establecer la nueva ubicación.'
+      primaryLocation: '&2Localización principal.'
+      secondaryLocation: '&2Localización alternativa.'
+      uniqueLocation: '&2Repetición de localizaciones: [state]&2.'
       slot: '&2Hueco: &6[slot]'
       page: '&2Página: &6[page]'
       overllaps: '&2Superpuesto con:'
@@ -2106,13 +2127,13 @@ command:
       losLore:
       - '&7Intervalo de comprobación: [interval]'
       interact: '&7Interacción: &6[state]'
-      commands: '&7Comandos:'
       particles: '&7Mostrar partículas: &6[state]'
       big: '&7Ocupación grande: &6[state]'
       bigLore:
       - '&7Ten en cuenta que el modo de Ocupación grande'
       - '&7evita que puedas moverte cerca del holograma.'
       order: '&7Base inferior: &6[state]'
+      commands: '&7Comandos:'
       autoButton: '&7Generar automáticamente los botones de paginación.'
       autoButtonLore:
       - '&eEste holograma no tiene ninguna página creada.'
@@ -2125,7 +2146,7 @@ command:
       shift:
       - '&7Los ajustes se realizan con una precisión de &f0.01&7.'
       - '&7Mantén la tecla Mayús para realizar ajustes de &f0.1&7.'
-      list: '&6[place]&e. [name]'
+      listFormat: '&6[name]&7: &r[extra]'
       addInfo: '&8Introduce el texto de la nueva línea.\n&8► Introduce &7cancel &8para
         anular la acción.\n&8► Variables adicionales:\n &7ICON:[Valor]\n &7SICON:[Valor]\n&8(El
         &7Valor &8ha de ser: &7[NombreObjeto-cantidad]%enchanted%&8)\n &6%itemInHand%\n
@@ -2171,8 +2192,6 @@ command:
       info: Crea comandos interactivos.
       args: (new) (nombre)
     info:
-      titleC: '&5►►► &6[name] '
-      titleB: '&e[type] &5◄◄◄'
       public: ' &2[Público]'
       notPublic: ' &4[Privado]'
       reqPerm: ' &2[Permiso Necesario]'
@@ -2193,11 +2212,8 @@ command:
       addEntity: '&7Asociar a la entidad que estás mirando.'
       manageCommands: '&7Cambiar al modo edición de comandos.'
       manageBlockEnt: '&7Cambiar al modo edición de bloques y criaturas.'
-      locList: '&8[place]. &6[type] '
-      entList: '&8[place]. &6[type] '
-      ListHover:
-      - '&7Mundo: &f[world]'
-      - '&7X:&f[x] &7Y:&f[y] &7Z:&f[z]'
+      locationList: '&6[type]'
+      entityList: '&2[type]'
       notPublicIc: '&cNo puedes usar esto, porque es privado.'
       block: '&a► Bloque'
       entity: '&a► Entidad'
@@ -2447,7 +2463,7 @@ command:
       info: Muestra las IPs bloqueadas.
       args: ''
     info:
-      list: '&e[place]. &7[ip] &e- &6[reason]  '
+      banList: '&7[ip] &e- &6[reason]  '
       bannedBy: '&7Por: &f[source]'
       ends: '&7Finaliza: &f[time]'
       related: |-
@@ -2677,7 +2693,7 @@ command:
       args: (equipamiento) (nombreJugador/all)
     info:
       notCd: '&eEste equipamiento no está en fase de reutilización.'
-      reset: '&eSe ha reiniciado el tiempo de reutilización del equipamiento &6[kit]&ede
+      reset: '&eSe ha reiniciado el tiempo de reutilización del equipamiento &6[kit] &ede
         &6[playerDisplayName]&e.'
       resetAll: '&eSe ha reiniciado el tiempo de reutilización del equipamiento &6[kit]
         &ede &6[count] &ejugadores.'
@@ -2899,7 +2915,7 @@ command:
       noMailsById: '&eNo hay correo de este ID de jugador.'
       noMails: '&aNo tienes ningún correo nuevo.'
       mailHover: '&7Enviado por: [senderName]\n&7El día: [time]\n\n&8&oClic para responder.'
-      list: '&6[id] ► &b[mail]'
+      mailList: ' &7[senderDisplayName]&e: [mail] '
       waitingMail: '&7[&4!&7] Tienes [amount] mensaje de correo sin leer. &7[&cLEER&7]'
   mailall:
     help:
@@ -3023,6 +3039,7 @@ command:
       paid: '&eHas pagado &6[amount] &ea &6[playerDisplayName]&e.'
       gotMoney: '&6[senderDisplayName] &ete ha pagado &6[amount]. &eAhora tienes &6[money]&e.'
       gotMoneyGive: '&eHas obtenido &6[amount]&e. Ahora tienes &6[money]&e.'
+      lostMoney: '&6[amount]&e has been removed from your balance. Remaining: &6[money]'
       noMoney: '&cNo tienes suficiente dinero.'
       worldGroups: '&cNo puedes enviar dinero a través de diferentes mundos.'
       self: '&cNo te puedes enviar dinero a tí mismo.'
@@ -3150,7 +3167,7 @@ command:
       removedNote: '&eLa nota del jugador ha sido eliminada.'
       noNotesById: '&eEste jugador no tiene notas guardadas con esta ID.'
       noNotes: '&eEste jugador no tiene notas guardadas.'
-      list: '&8[id]. &e[note]'
+      listNotes: '&7[note]'
   openbook:
     help:
       info: Abre un libro usando un texto personalizado (CustomText).
@@ -3257,7 +3274,7 @@ command:
       bungeeSetEmpty: '&ePortal enlazado al servidor &6[serverName]&e, pero este no
         está en línea. Esta acción no se completará hasta que alguien se conecte a
         el.'
-      portalList: '&e[number]. [color][portalName]'
+      List: '&e[color][portalName]'
       redefine: '&eRedefine el área de tu selección actual.'
       particles: '&ePartículas: &6[state]'
       particleType: '&eTipo de partículas: &6[type]'
@@ -3562,6 +3579,12 @@ command:
       args: '[mensaje]'
     info:
       noOneToReplay: '&eNo hay nada que repetir.'
+  resetback:
+    help:
+      info: Restablece la última ubicación de los jugadores.
+      args: (nombreJugador) (razón) (-death) (-s)
+    info:
+      feedback: '&e¡Se ha restablecido tu última ubicación!'
   resetdbfields:
     help:
       info: Restablece columnas determinadas de la base de datos a su valor inicial.
@@ -4298,6 +4321,7 @@ command:
     info:
       feedback: '&eAdiós mundo cruel...'
       message: '&6[playerDisplayName] &eha terminado con su propia existencia.'
+      totem: '&6No puedes abandonar esta vida si mantienes un talismán.'
   switchplayerdata:
     help:
       info: Trasfiere la información de un jugador a otro.
@@ -4770,7 +4794,7 @@ command:
       CMIB: '&7CMIB '
       newVault: '&eVault: &6[version] &7| '
       Modules: '&eMódulos: &a[enabled] activados &ey &c[disabled] desactivados &7([list])\n&7Archivo
-        de Idioma: &8v21.04.03\n&7Traducido por: &8C4BR3R4 (c4br3r4.es)'
+        de Idioma: &8v21.05.08\n&7Traducido por: &8C4BR3R4 (c4br3r4.es)'
       Bungee: ' &eBungeeCord '
       CMILib: '&eVersión de CMILib: &6[version] '
       cmilVersionNew: '&e► [newVersion]'
