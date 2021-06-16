@@ -1,7 +1,7 @@
 # Full color code support and some variables
-# Keep in mind that variables wont work for some lines, when it will for anothers :)
-# Just keep them where there are now and everything will be ok :)
-# Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+# Keep in mind that variables won't work for some lines, when it will for others :)
+# Just keep them where they are now and everything will be ok :)
+# Some lines can have global variables set for player who will be effected. In example /heal Zrips then Zrips data will be used
 # [serverName] to show server name
 # [playerName] to show target player name
 # [playerDisplayName] to show target player display name
@@ -36,14 +36,14 @@
 # [sourcePrefix] to show source player prefix if possible
 # [sourceSuffix] to show source player suffix if possible
 # ***********************************************
-# Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
-# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+# Some lines support the option to send them to custom places like action bar, title, sub title or even create JSON/clickable messages
+# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. Example: !toast! -t:goal -icon:paper Hello world!
 # If line starts with !actionbar! then player will get action bar message defined after this variable
 # If line starts with !actionbar:[seconds]! then player will get action bar message for defined amount of time
-# If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, in example !broadcast!!title!
-# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+# If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, for example !broadcast!!title!
+# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown to player. In case it's used after !broadcast! then everyone who is online will get this custom text message
 # If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
-# If line starts with !bosbar:[name]-[timer]! then player will get bossbar message defined after this variable, in addition you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
+# If line starts with !bosbar:[name]-[timer]! then player will get bossbar message defined after this variable. In addition, you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
 # To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
 # <T> and </T> required, other is optional
 # Use /n to break line
@@ -57,12 +57,12 @@ info:
   prefix: '&e[&aCMI&e] '
   NoPermission: '&cYou don''t have permission!'
   CantHavePermission: '&cYou can''t have this permission!'
-  WrongGroup: '&cYou are in wrong group for this!'
+  WrongGroup: '&cYou are in the wrong group for this!'
   NoPlayerPermission: '&c[playerName] doesn''t have permission for: [permission]'
-  Ingame: '&cYou can only use this in game!'
+  Ingame: '&cYou can only use that in game!'
   NoInformation: '&cNo information found!'
   Console: '&6Server'
-  FromConsole: '&cYou can only use this in the console!'
+  FromConsole: '&cYou can only use that in the console!'
   NotOnline: '&cThe player is not online!'
   NobodyOnline: '&cThere is no one online!'
   Same: '&cCan''t open your own inventory for editing!'
@@ -77,7 +77,7 @@ info:
   nolocation: '&4Can''t find suitable location'
   PurgeNotEnabled: '&cPurge function is not enabled in config file!'
   FeatureNotEnabled: '&cThis feature is not enabled!'
-  TeamManagementDisabled: '&7This feature will have limited functionalaty while DisableTeamManagement
+  TeamManagementDisabled: '&7This feature will have limited functionality while DisableTeamManagement
     is set to true!'
   ModuleNotEnabled: '&cThis module is not enabled!'
   versionNotSupported: '&cServer version is not supported for this feature'
@@ -109,7 +109,7 @@ info:
   ChunksLoading: '&eWorld chunk data is still being loaded. Please wait a bit and
     try again.'
   ShulkerBox: Shulker Box
-  CantuseShulkerBox: '&cCan''t use shulker box while you are in combat with player.
+  CantuseShulkerBox: '&cCan''t use shulker box while you are in combat with a player.
     Wait: [time]'
   CantUseNonEncrypted: '!actionbar!&cCommands on this item are not encrypted. Can''t
     use them!'
@@ -141,7 +141,7 @@ info:
   nothingToShow: '&eNothing to show'
   noItem: '&cCan''t find item'
   dontHaveItem: '&cYou don''t have &6[amount]x [itemName] &cin your inventory'
-  wrongWorld: '&cCan''t do this in this world'
+  wrongWorld: '&cCan''t do that in this world'
   differentWorld: '&cDifferent worlds'
   HaveItem: '&cYou have &6[amount]x [itemName] &cin your inventory'
   ItemWillBreak: '!actionbar!&eYour item (&6[itemName]&e) will break soon! &e[current]&6/&e[max]'
@@ -171,7 +171,7 @@ info:
   maintenance: '&7Maintenance mode'
   notSet: not set
   mapLimit: '&cCant go beyond 30 000 000 blocks'
-  startedEditingPainting: '&eYou started editing painting. Click any other block to
+  startedEditingPainting: '&eYou started editing a painting. Click any other block to
     cancel.'
   canceledEditingPainting: '&eYou canceled painting editing mode'
   changedPainting: '!actionbar!&eChanged painting to &6[name] &ewith id of &6[id]'
@@ -207,7 +207,7 @@ info:
     spectator: '&6Spectator'
     flying: '&6Flying'
     notflying: '&6Not flying'
-  noSchedule: '&cSchedule by this name is not found'
+  noSchedule: '&cSchedule by this name was not found'
   totem:
     cooldown: '&eTotem cooldown: [time]'
     warmup: '&eTotem effect: [time]'
@@ -267,7 +267,7 @@ info:
   beeinfo: '!actionbar!&7Honey level: &e[level]&7/&e[maxlevel] &7Bees inside: &e[count]&7/&e[maxcount]'
   circle: '&3Circle'
   square: '&5Square'
-  protectedArea: '&cProtected area. Can''t do this here.'
+  protectedArea: '&cProtected area. Can''t do that here.'
   valueToLong: '&eValue is too high. Max: [max]'
   valueToShort: '&eValue is too low. Min: [min]'
   pvp:
@@ -276,13 +276,13 @@ info:
     armor: '&eYour armor slots should be empty!'
     hand: '&eYour hand should be empty!'
     maininv: '&eYour main inventory should be empty!'
-    maininvslots: '&eYour main inventory should have atleast &6[count] &eempty slots!'
+    maininvslots: '&eYour main inventory should have at least &6[count] &eempty slots!'
     inv: '&eYour inventory should be empty!'
     offhand: '&eYour offhand should be empty!'
     quickbar: '&eYour quick bar should be empty!'
-    quickbarslots: '&eYour quick bar should have atleast &6[count] &eempty slots!'
+    quickbarslots: '&eYour quick bar should have at least &6[count] &eempty slots!'
     subinv: '&eYour sub inventory should be empty!'
-    subinvslots: '&eYour  sub inventory should have atleast &6[count] &eempty slots!'
+    subinvslots: '&eYour  sub inventory should have at least &6[count] &eempty slots!'
   DamageCause:
     block_explosion: Explosion
     contact: Block Damage
@@ -718,7 +718,7 @@ Potion:
   List: '&e[PotionName] [PotionAmplifier] &eDuration: &e[LeftDuration] &esec'
   NoPotions: '&eNone'
 Information:
-  Title: '&8Players information'
+  Title: '&8Player''s information'
   Health: '&eHealth: &6[Health]/[maxHealth]'
   Hunger: '&eHunger: &6[Hunger]'
   Saturation: '&eSaturation: &6[Saturation]'
@@ -728,8 +728,8 @@ Information:
   tooMuchExp: '&eToo much exp: &6[Exp]/[need]'
   NotEnoughVotes: '&eNot enough votes: &6[votes]'
   TooMuchVotes: '&eToo many votes: &6[votes]'
-  BadGameMode: '&cYou can''t do this in your current game mode'
-  BadArea: '&cYou can''t perform this action in this area'
+  BadGameMode: '&cYou can''t do that in your current game mode'
+  BadArea: '&cYou can''t perform that action in this area'
   GameMode: '&eGameMode: &6[GameMode]'
   GodMode: '&eGodMode: &6[GodMode]'
   Flying: '&eFlying: &6[Flying]'
@@ -742,7 +742,7 @@ Information:
   Money: '&eBalance: &6[money]'
   Group: '&eGroup: &6[group]'
 econ:
-  disabled: '&cCan''t use this command while economy support is disabled'
+  disabled: '&cCan''t use that command while economy support is disabled'
   noMoney: '&cYou have no money'
   charged: '!actionbar!&fCharged: &6[amount]'
   notEnoughMoney: '&cYou dont have enough money. Required (&6[amount]&c)'
@@ -760,11 +760,11 @@ Selection:
   CoordsTop: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
   CoordsBottom: '&eX:&6[x] &eY:&6[y] &eZ:&6[z]'
 NetherPortal:
-  ToHigh: '&cPortal is to big, max height is &6[max]&c!'
-  ToWide: '&cPortal is to wide, max width is &6[max]&c!'
+  ToHigh: '&cPortal is too big, max height is &6[max]&c!'
+  ToWide: '&cPortal is too wide, max width is &6[max]&c!'
   Disabled: '&cPortal creation disabled!'
 Location:
-  Title: '&8Players location'
+  Title: '&8Player''s location'
   Killer: '&eKiller: &6[killer]'
   OneLiner: '&eLocation: &6[location]'
   DeathReason: '&eDeath Reason: &6[reason]'
@@ -805,17 +805,17 @@ command:
       args: ''
   actionbarmsg:
     help:
-      info: '&eSends action bar message to player'
+      info: '&eSend action bar message to a player'
       args: '[playerName/all] (-s:[seconds]) [message]'
     info:
-      message: '&f[messsage]'
+      message: '&f[message]'
   afk:
     help:
       info: '&eToggle afk mode. Reason could be provided'
       args: (-p:playerName) (reason)
   afkcheck:
     help:
-      info: '&eCheck players afk status'
+      info: '&eCheck a player''s afk status'
       args: '[playerName]'
     info:
       feedback: '&e[playerDisplayName]&e: &6[status]'
@@ -823,7 +823,7 @@ command:
       feedbackReason: '&7[reason]'
   air:
     help:
-      info: '&eSet players air'
+      info: '&eSet a player''s air'
       args: '[playerName] [amount]'
     info:
       feedback: '&eYou have set &3[amount]&e air for &3[playerName]&e (&3[offon]&e).'
@@ -831,7 +831,7 @@ command:
       current: '&eCurrent &3[playerDisplayName] &eair: &3[amount]'
   alert:
     help:
-      info: '&eAlerts administration on players login'
+      info: '&eAlert administration on player login'
       args: '[playerName] (reason)'
       explanation:
       - '&ePermissions:'
@@ -842,7 +842,7 @@ command:
       reason: '&eAlert reason: &6[reason]'
       removed: '&6[playerDisplayName] &eremoved from alert list'
       added: '&eAlert message will be sent to all administrators, if &6[playerDisplayName]
-        &ejoin''s in next 24Hours'
+        &ejoins in next 24Hours'
       online: '&6[playerDisplayName] &ealready online'
   aliaseditor:
     help:
@@ -870,14 +870,14 @@ command:
       info: '&eOpen anvil'
       args: (playerName)
     info:
-      feedback: '&eYou have opened anvil for &3[playerDisplayName]&e (&3[offon]&e).'
-      targetfeedback: '&3[senderDisplayName]&e opened anvil for you.'
+      feedback: '&eYou have opened an anvil for &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e opened an anvil for you.'
   armorstand:
     help:
       info: '&eOpen armor stand editor'
       args: (last/near)
     info:
-      cantClick: '&cCant do this. Someone is already editing this armor stand'
+      cantClick: '&cCan''t do that. Someone is already editing this armor stand'
       tooFar: '&cArmor stand is too far'
       title: Editor
       coordX: '&cX'
@@ -900,17 +900,17 @@ command:
       invulnerable: '&7Invulnerable'
       name: '&7Visible name'
       interactable: '&7Interactable'
-      explanation: '&8Left or right mouse button adjusts value'
+      explanation: '&8Left and right mouse button adjusts value'
       explanation2: '&8Hold shift to make it 10x faster'
       disableGravity: '&eDisable gravity if you want to change this value'
       copyLabel: '&7Open clone picker'
       copyTitle: '&8Pick what you want to clone'
       click: '&eClick armor stand to duplicate it, or punch any block to cancel process'
-      canceled: '&eArmorStand copy process cancelled'
+      canceled: '&eArmorStand copy process canceled'
       updated: '&eArmorStand updated'
   attachcommand:
     help:
-      info: '&eAttaches command to item'
+      info: '&eAttache command to item'
       args: '[command/-clear]'
       explanation:
       - Separate commands with ;;
@@ -922,7 +922,7 @@ command:
       - '!cc! performs command from console, requires cmi.command.attachcommand.cc
         permission'
       - '!cooldownn:[amount]! adds cooldown on item usage.'
-      - '[interactedPlayer] inserts name of player you interacted while holding item'
+      - '[interactedPlayer] inserts name of player you interact with while holding item'
       - Global variables working in addition with [itemUses]
     info:
       list: ' &e[id]. &6[cmd]'
@@ -932,7 +932,7 @@ command:
       cooldown: '&7Item is on cooldown. Wait [time]'
   back:
     help:
-      info: '&eTeleports back to last saved location'
+      info: '&eTeleport back to last saved location'
       args: (playerName) (-s)
     info:
       noinfo: '&4There is no saved location to return to!'
@@ -953,11 +953,11 @@ command:
       topLineHover: '&6Server Total: &c[total]'
       list: '&e[place]. &6[playerDisplayName]: &e[balance]'
       ownLine: '&2[place]. &2[playerDisplayName]: &2[balance]'
-      recalculating: '&2Baltop is being recalculated, please wait couple seconds and
+      recalculating: '&2Baltop is being recalculated, please wait a couple seconds and
         try again'
   ban:
     help:
-      info: '&eBan player'
+      info: '&eBan a player'
       args: '[playerName] (reason) (-s)'
       explanation:
       - cmi.command.ban.bypass - to bypass ban
@@ -966,19 +966,19 @@ command:
       message: '&cYou are banned from this server!'
       reason: '&6Reason: &e[reason]'
       defaultReason: '&eViolated server rules'
-      messageToAll: '&6[playerDisplayName] &egot banned by &6[senderDisplayName] &efor:
+      messageToAll: '&6[playerDisplayName] &ewas banned by &6[senderDisplayName] &efor:
         &6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &egot banned by &6[senderDisplayName]
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &ewas banned by &6[senderDisplayName]
         &efor: &6[reason]'
       noSelfBan: '&cYou can''t ban yourself'
-      cantBan: '&cYou can''t ban this player'
+      cantBan: '&cYou can''t ban that player'
   banlist:
     help:
       info: '&eBan list'
       args: ''
   bbroadcast:
     help:
-      info: '&eSends special message to all players on all servers'
+      info: '&eSend special message to all players on all servers'
       args: (!) [message] (-s:[serverName,serverName])
       explanation:
       - If message starts with ! then clean message will be shown
@@ -1022,7 +1022,7 @@ command:
       unlocked: '&eBook was unlocked'
   bossbarmsg:
     help:
-      info: '&eSends boss bar message to player'
+      info: '&eSend boss bar message to a player'
       args: '[playerName/all] (-sec:[seconds])(-t:[timeToKeepFor]) (-n:nameOfBar)
         (-p:[maxValue/current]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
         (-a:[ticks]) [message] (-cancel:nameOfBar)'
@@ -1034,7 +1034,7 @@ command:
       - nameOfBar is option and when defining same one, then current bar will update
         with new information
       - 'colors can be: red, green, pink, purple, white, yellow'
-      - max and current values determines bar fillup, PlaceHolderAPI variables can
+      - max and current values determines bar fill up, PlaceHolderAPI variables can
         be used for dynamic updates
       - 'Examples:'
       - /cmi bossbar Zrips BossBarTitle
@@ -1051,7 +1051,7 @@ command:
       - http://www.zrips.net/cmi/commands/bossbarmsg-handling/
   broadcast:
     help:
-      info: '&eSends special message to all players'
+      info: '&eSend special message to all players'
       args: (!) [message] (-w:[worldName,worldName])
       explanation:
       - If message starts with ! then clean message will be shown
@@ -1063,20 +1063,20 @@ command:
       info: '&eBurn a player'
       args: (playerName) (time) (-s)
     info:
-      feedback: '&eYou have put on fire &3[playerDisplayName]&e for &6[time] &e(&3[offon]&e).'
-      targetfeedback: '&eYou have been put on fire by &3[senderDisplayName]&e for
+      feedback: '&eYou have set &3[playerDisplayName]&e on fire for &6[time] &e(&3[offon]&e).'
+      targetfeedback: '&eYou have been set on fire by &3[senderDisplayName]&e for
         &6[time]&e.'
   charges:
     help:
-      info: '&eShows left spawner charges'
+      info: '&eShow spawner charges left'
       args: '[playerName] [add/set/take/clear/reset] (-f)'
     info:
       charges: '&e* Charges: &6[current]&e/&6[max] [bypass]'
       cd: '&e* CD: &6[cdtime] &eNext in: &6[time]'
       bypass: '&6(Bypass)'
       allUsed: '&eAll charges used! Next in [time]'
-      noGroup: '&eDon''t have assigned charge group'
-      cantBreak: '&eYou can''t break until you will have assigned charge group'
+      noGroup: '&eYou don''t have an assigned charge group'
+      cantBreak: '&eYou can''t break that until you have an assigned charge group'
       minusCd: '&e Minus &6[sec]&esec on spawner charge cooldown'
       add: '&eAdded &6[amount] &espawner charges for &6[playerDisplayName]'
       set: '&eSet &6[amount] &espawner charges for &6[playerDisplayName]'
@@ -1095,14 +1095,14 @@ command:
       leftInfo: '&e[playerDisplayName] &7left chat room'
       invite: '&6[playerDisplayName] &einvites you to join chat room: &7[chatRoomName]'
       format: '&3|&7[chatRoomName]&3| &6[playerDisplayName]: &r[message]'
-      nobody: '&4Nobody is in chat room'
+      nobody: '&4Nobody is in the chat room'
       notOwner: '&4Only chat owner can do this'
       wrongName: '&4Wrong chat room name'
       takenName: '&4Chat room name is taken, use different one'
       notIn: '&4User is not in chat room'
-      cantJoin: '&4Chat room is private and you don''t have invitation'
+      cantJoin: '&4Chat room is private and you don''t have an invitation'
       kicked: '&6[playerDisplayName] &ekicked from chat room'
-      gotKicked: '&4You got kicked from &7[chatRoomName] &4chat room'
+      gotKicked: '&4You were kicked from &7[chatRoomName] &4chat room'
       list: '&e[chatRoomName]&e: &7[list]'
       globalList: '&7[number]. [joined]&e[chatRoomName][private]&e: &7[count][expires]'
       globalListPrivate: '&2(P)'
@@ -1113,7 +1113,7 @@ command:
         Names: '&7[playerDisplayName]'
   checkaccount:
     help:
-      info: '&eSearch for a players other accounts'
+      info: '&eSearch for a player''s other accounts'
       args: (playerName/ip)
       explanation:
       - 'Extra permission: cmi.command.checkaccount.showip'
@@ -1124,10 +1124,10 @@ command:
       nonIpList: '&eAccounts: &6'
       nonIpName: '&6[name]'
       click: '&eClick to check &6[name] &eaccount'
-      noData: '&cThere is no records for this user'
+      noData: '&cThere are no records for this user'
   checkban:
     help:
-      info: '&eCheck players ban status'
+      info: '&eCheck a player''s ban status'
       args: (playerName)
     info:
       list: '&6[place]&e. &e[playerDisplayName] &6[time]'
@@ -1146,11 +1146,11 @@ command:
       variableColor: '&f'
   checkexp:
     help:
-      info: '&eCheck players exp'
+      info: '&eCheck a player''s exp'
       args: (playerName)
     info:
       current: '&eLevel: &6[currentLevel] &eExp: &6[levelExp] &eTotal exp: &6[exp]'
-      need: '&eNeed exp until next level: &6[missingExp]'
+      need: '&eNeeded exp until next level: &6[missingExp]'
   checkperm:
     help:
       info: '&eCheck possible permission nodes'
@@ -1180,22 +1180,22 @@ command:
       cantUse: '&eCan''t use this piece of paper. It is a cheque already!'
   clear:
     help:
-      info: '&eClear players inventory'
+      info: '&eClear a player''s inventory'
       args: (playerName) (item(-amount)) (-s) (+clearType)
       explanation:
-      - 'Posible clearTypes: quickbar, inventory, partinventory, weapons, armorslots,
+      - 'Possible clearTypes: quickbar, inventory, partinventory, weapons, armorslots,
         tools, armors, mainhand, offhand'
       - Should start with + sign
       - Multiple types can be used
       - cmi clear +armors - will remove armor type items
       - cmi clear +armorslots - will remove items from armorslots
     info:
-      feedback: '&eYou have cleared &3[playerDisplayName]&e inventory (&3[offon]&e).'
+      feedback: '&eYou have cleared &3[playerDisplayName]''s&e inventory (&3[offon]&e).'
       targetfeedback: '&eYour inventory was cleared by &3[senderDisplayName]&e.'
       confirm: '&7Click to confirm inventory clear up. &cAll items will be removed!'
   clearchat:
     help:
-      info: '&eClears chat'
+      info: '&eClear chat'
       args: (self)
       explanation:
       - 'Permission:'
@@ -1204,14 +1204,14 @@ command:
       information: '&eChat was cleared by &6[senderDisplayName]'
   clearender:
     help:
-      info: '&eClear players ender chest'
+      info: '&eClear a player''s ender chest'
       args: '[playerName] (-s)'
     info:
-      feedback: '&eYou have cleared &3[playerDisplayName]&e ender chest (&3[offon]&e).'
+      feedback: '&eYou have cleared &3[playerDisplayName]''s&e ender chest (&3[offon]&e).'
       targetfeedback: '&eYour ender chest was cleared by &3[senderDisplayName]&e.'
   colorlimits:
     help:
-      info: '&eShows all possible colors'
+      info: '&eShow all possible colors'
       args: (playerName)
     info:
       publicmessage: ' &ePublic: '
@@ -1235,7 +1235,7 @@ command:
       - Shift+Click
   colors:
     help:
-      info: '&eShows all possible colors'
+      info: '&eShow all possible colors'
       args: (playerName)
     info:
       List:
@@ -1257,7 +1257,7 @@ command:
       toggled: '&eCommand spy toggled to &6[state] &estate'
   compass:
     help:
-      info: '&eSet players compass point to your location'
+      info: '&eSet a player''s compass point to your location'
       args: (targetName) (sourceName) (x) (z) (worldname) (reset) (-s)
       explanation:
       - 'Example: /cmi compass Zhax'
@@ -1265,16 +1265,16 @@ command:
       - /cmi compass Zhax LT_Craft 0 0 -s
       - /cmi compass reset Zhax
     info:
-      wrongworld: '&cYour defined world dont exist!'
-      feedback: '&eYou have set &3[playerDisplayName] &ecompass arrow to &3[sourceDisplayName]
+      wrongworld: '&cYour defined world doesn''t exist!'
+      feedback: '&eYou have set &3[playerDisplayName]''s &ecompass arrow to &3[sourceDisplayName]''s
         &elocation.'
-      feedbackCustom: '&eYou have set &3[playerDisplayName] &ecompass arrow to &3[x]
+      feedbackCustom: '&eYou have set &3[playerDisplayName]''s &ecompass arrow to &3[x]
         [z] [world] &elocation.'
-      targetFeedback: '&eYour compass target was set to &3[sourceDisplayName] &elocation
+      targetFeedback: '&eYour compass target was set to &3[sourceDisplayName]''s &elocation
         by &3[senderName]&e.'
       targetFeedbackCustom: '&eYour compass target was set to &3[x] [z] [world] &elocation
         by &3[sourceDisplayName]&e.'
-      reset: '&eCompass target got reseted'
+      reset: '&eCompass target got reset'
   condense:
     help:
       info: '&eCondense items into blocks'
@@ -1300,8 +1300,8 @@ command:
       join: '&eJoined counter'
       leave: '&eLeft counter'
       go: '&eGO!'
-      tooFast: '&cCant repeat command that fast, wait: &6[sec]&esec'
-      noOne: '&cNo one seeing this counter!'
+      tooFast: '&cCan''t repeat the command that fast, wait: &6[sec]&esec'
+      noOne: '&cNo one can see this counter!'
   cplaytime:
     help:
       info: '&eDetailed playtime'
@@ -1331,18 +1331,18 @@ command:
         command
   ctext:
     help:
-      info: '&eShows custom text'
+      info: '&eShow custom text'
       args: '[cText] (playerName/all) (sourcePlayer)'
     info:
-      list: '&eCustom Text''s: &6'
+      list: '&eCustom Texts: &6'
       check: '&eCheck: &6[text]'
   cuff:
     help:
-      info: '&eSuspends players actions'
+      info: '&eSuspend a player''s actions'
       args: '[playername] (true/false)'
     info:
-      noChat: '&cAll your actions are suspended. You can''t chat.'
-      noCommand: '&cYou cant use commands while suspended. &eAllowed: &6/msg, /r,
+      noChat: '&cAll of your actions are suspended. You can''t chat.'
+      noCommand: '&cYou can''t use commands while suspended. &eAllowed: &6/msg, /r,
         /tell'
       cuffed: '&6[playerDisplayName] &ecuffed'
       unCuffed: '&6[playerDisplayName] &euncuffed'
@@ -1352,7 +1352,7 @@ command:
       cantCuff: '&cYou can''t cuff this player!'
   customrecipe:
     help:
-      info: '&eManages item custom recipes'
+      info: '&eManage item custom recipes'
       args: ''
     info:
       removed: '&eRecipe removed: [id]. For FULL effect you will need server restart.'
@@ -1395,10 +1395,10 @@ command:
       args: '[playerName] (amount)'
     info:
       donated: '&eDonated &6[type]&eX&6[amount] &eitems to &6[playerDisplayName]'
-      got: '&eGot &6[type]&eX&6[amount] &edonation from &6[playerDisplayName]'
+      got: '&eReceived &6[type]&eX&6[amount] &edonation from &6[playerDisplayName]'
       sentOffer: '&eSent donation to &6[playerDisplayName]&e. Waiting until player
         accepts it'
-      gotOffer: '&eGot &6[type]&eX&6[amount] &edonation from &6[sourceDisplayName]&e.
+      gotOffer: '&eReceived &6[type]&eX&6[amount] &edonation from &6[sourceDisplayName]&e.
         Click to accept it.'
       doesnthave: '&ePlayer doesn''t have this item anymore'
       'no': '&eNo pending donations'
@@ -1410,15 +1410,15 @@ command:
       explanation:
       - Look at sign and perform /cmi dsign new
     info:
-      howTo: '&cThis is not dynamic sign, to create new perform &e/cmi dsign new'
+      howTo: '&cThis is not a dynamic sign, to create new perform &e/cmi dsign new'
       gui: '&7---- &f<Open gui> &7----'
       guiHover: '&7Open dynamic sign settings GUI'
       individual: '&7Individual: [state]'
       individualLore:
-      - '&2True &7- Will result sign to be different for each player'
+      - '&2True &7- Will result in sign that will be different for each player'
       - '&2True &7- Will update player placeholders'
-      - '&2False &7- Will result in sign to be physically updated'
-      - '&2False &7- Is more efficient but more limited at same time'
+      - '&2False &7- Will result in sign that will be physically updated'
+      - '&2False &7- Is more efficient but more limited at the same time'
       interval: '&7Update every &6[second] &7second'
       intervalLore:
       - '&7How often, in seconds, information on the sign is updated'
@@ -1441,7 +1441,7 @@ command:
       info: '&eCustom text editor'
       args: ''
     info:
-      noText: '&cCant find custom text by this name'
+      noText: '&cCan''t find custom text by this name'
       editInfo: '&eClick to paste old text. Type &6cancel &eto cancel action. Type
         &6remove &eto remove line'
       addInfo: '&eEnter new line text. Type &6cancel &eto cancel'
@@ -1453,7 +1453,7 @@ command:
         \ every time player clicks text \n&6<URL> &eallows to add url to redirect\
         \ player into web page"
       newInfo: '&eEnter name of new custom text. Type &6cancel &eto cancel'
-      deleteInfo: '&eType in &6confirm &eto confirm removal or type &6cancel &eto
+      deleteInfo: '&eType &6confirm &eto confirm removal or type &6cancel &eto
         cancel this action'
       deleted: '&eCustom text (&6[ctext]&e) was removed'
       createdNew: '&eCustom text (&6[ctext]&e) was created'
@@ -1471,28 +1471,28 @@ command:
       found: '&7********* &eFound: [found] &7*********'
   editplaytime:
     help:
-      info: '&eEdit players playtime'
+      info: '&eEdit a player''s playtime'
       args: (playerName) [add/take/set] [amount] (-s)
     info:
       cantSet: '&cFailed to change playtime'
       set: '&eChanged from &6[old] &eto &6[new]'
   editwarnings:
     help:
-      info: '&eCheck player warnings'
+      info: '&eCheck a player''s warnings'
       args: (playerName/clearall) (clear)
     info:
       list: '&7[place]. &e[time] &6by [warnedBy] &cfor: &7[warnedFor]'
       hover: '&7Expires in: [time]'
-      cleared: '&eAll warnings from player got cleared'
-      allCleared: '&eAll warnings from ALL players got cleared'
+      cleared: '&eAll warnings for player were cleared'
+      allCleared: '&eAll warnings for ALL players were cleared'
   editwarp:
     help:
       info: '&eEdit warps'
       args: (warpName) (newName)
     info:
-      exists: '&cWarp by this name (&7[newName]&c) already exists. Pick different
+      exists: '&cWarp by this name (&7[newName]&c) already exists. Pick a different
         one'
-      updated: '&eUpdated name from &7[oldName]&e into &7[newName]'
+      updated: '&eUpdated name from &7[oldName]&e to &7[newName]'
       placeItem: '&2Place item to set custom icon'
       placeOffItem: '&2Place item to set custom off icon'
       autoLore: '&2Auto lore generation: [state]'
@@ -1502,11 +1502,11 @@ command:
       location: '&2Set new location'
       slot: '&2Slot: &6[slot]'
       page: '&2Page: &6[page]'
-      overllaps: '&2Overllaps with:'
+      overllaps: '&2Overlaps with:'
       notSet: '&eNot set'
   effect:
     help:
-      info: '&eAdds potion effect to player. use clear to remove all effects'
+      info: '&eAdd potion effect to a player. Use clear to remove all effects'
       args: '[playername/all] [effect/clear] (duration) (multiplier) (-s) (-visual)'
       explanation:
       - -visual will add visible bubbles and icon on top right corner
@@ -1536,24 +1536,24 @@ command:
       cleared: '&eCleared &3ALL &eenchantments from item for &3[playerDisplayName]&e
         (&3[offon]&e).'
       noitem: '&cNot holding any item in hand.'
-      invalidEnchant: '&cYou dont have permission to enchant item with invalid enchantment'
+      invalidEnchant: '&cYou don''t have permission to enchant item with invalid enchantment'
       clearedInvalid: '&eRemoved &6[amount] &einvalid enchantments from item'
       inccorectId: '&eIncorrect enchant name or id.'
       wrongItem: '&eWrong item in your hand'
-      enchantlimit: '&cYou dont have access to this enchantment'
+      enchantlimit: '&cYou don''t have access to this enchantment'
       levellimit: '&cLevel is too high, max allowed is &e[level].'
       posible: '&ePossible enchants: '
       posibleList: '&6[enchant]'
   ender:
     help:
-      info: '&eOpens players ender chest'
+      info: '&eOpen a player''s ender chest'
       args: (playerName)
       explanation:
       - cmi.command.ender.preventmodify - prevents inventory modifications
       - cmi.enderedit - allows to edit opened inventory
     info:
-      title: '&8[playerDisplayName] Ender Chest'
-      feedback: '&eYou are editing &3[playerDisplayName] &eenderchest (&3[offon]&e).'
+      title: '&8[playerDisplayName]''s Ender Chest'
+      feedback: '&eYou are editing &3[playerDisplayName]''s &eender chest (&3[offon]&e).'
   endgateway:
     help:
       info: '&eToggle end gateway beam'
@@ -1578,7 +1578,7 @@ command:
       args: ''
   exp:
     help:
-      info: '&eSet players exp. Use L to set levels'
+      info: '&eSet a player''s exp. Use L to set levels'
       args: '[playerName] [add/set/take/clear] [amount]'
       explanation:
       - 'Example:'
@@ -1602,23 +1602,23 @@ command:
       targetfeedback: '&eYou have been extinguished by &3[senderDisplayName]&e.'
   feed:
     help:
-      info: '&eFeed player'
+      info: '&eFeed a player'
       args: (playerName/all) (-s)
     info:
       feedback: '&eYou have fed &3[playerDisplayName]&e (&3[offon]&e).'
       targetfeedback: '&eYou have been fed by &3[senderDisplayName]&e.'
   findbiome:
     help:
-      info: '&eFinds nearest biome by name'
+      info: '&eFind nearest biome by name'
       args: '&3(biomeName/stop/stopall)'
     info:
       infoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[time]&6) &6Speed: &e[speed]'
       stopped: '&eStopped!'
-      cantFindBiome: '&eCould not find biome you wanted. Checked &6[amount] &echunks'
+      cantFindBiome: '&eCould not find the biome you wanted. Checked &6[amount] &echunks'
       teleportedTo: '&eTeleported to &6[biome] &ebiome'
   fixchunk:
     help:
-      info: '&eScans for damaged chunks'
+      info: '&eScan for damaged chunks'
       args: '&ew &6[worldName]&e r &6[range in chunks]&e c &6[x:z]&e '
       explanation:
       - '&6SubCommands:'
@@ -1683,7 +1683,7 @@ command:
       changeAmount: '&e([amount]&e)'
   fly:
     help:
-      info: '&eSet players fly true or false'
+      info: '&eSet a player''s fly true or false'
       args: '[playerName] (true/false) (-s)'
     info:
       feedback: '&eYou have set fly to &3[boolean]&e for &3[playerDisplayName]&e (&3[offon]&e).'
@@ -1700,12 +1700,12 @@ command:
       noCharge: '&eFlight charge is depleted'
   flyspeed:
     help:
-      info: '&eSet players fly speed from 0 to 10'
+      info: '&eSet a player''s fly speed from 0 to 10'
       args: '[playerName] [amount] (-s)'
     info:
       feedback: '&eYou have set &3[amount]&e fly speed for &3[playerDisplayName]&e
         (&3[offon]&e).'
-      targetfeedback: '&eYour flyspeed was set to &3[amount]&e by &3[senderDisplayName]&e.'
+      targetfeedback: '&eYour fly speed was set to &3[amount]&e by &3[senderDisplayName]&e.'
       max: '&eMax allowed fly speed for you is &6[max]&e.'
   gamerule:
     help:
@@ -1721,7 +1721,7 @@ command:
       title: '&7[title]'
   give:
     help:
-      info: '&eGive item to player'
+      info: '&eGive item to a player'
       args: (playerName) [itemname/hand] (amount/playerName)
       explanation:
       - Name and lore supports placeholders
@@ -1742,19 +1742,19 @@ command:
       feedback: '&6Giving &e[amount] &6of &e[itemname] &6(&e[customitemname]&6) to
         &e[playerDisplayName]'
       maxLimit: '&cYou can''t give more than &7[max] &citems in one go'
-      notItem: '&cWe can''t give you this, its not an item'
-      maxLimitResize: '&cYou can''t give more than &7[max]. &cResizing to limit.'
+      notItem: '&cWe can''t give you that, its not an item'
+      maxLimitResize: '&cYou can''t give more than &7[max]. &cTruncating to limit.'
   giveall:
     help:
-      info: '&eGive item for all players'
+      info: '&eGive item to all players'
       args: '[itemname] (amount) (e|l|n|offline)'
       explanation:
       - '&e- give item name or its id with data value'
-      - '&e- optionaly provide amount you want to give '
+      - '&e- optionally provide amount you want to give '
       - '&e- &6n &e- to define itemname '
       - '&e- &6l &e- to define item lore '
       - '&e- &6e &e - to define item enchants '
-      - '&e- &6-s &e - wont show feedback message '
+      - '&e- &6-s &e - won''t show feedback message '
       - '&e- &6h &e - followed with player name will give item from its hand '
       - '&e- &6inv &e - followed by player name will give entire inventory for others '
       - '&e- &6offline &e- to include offline players'
@@ -1762,12 +1762,12 @@ command:
       - '&ecmi giveall h Zrips'
       - '&ecmi giveall inv Zrips'
     info:
-      starting: '&6Starting to give items for all players, this can take some time.'
-      running: '&6[amount] already got item, still running.'
-      feedback: '&6Finished. &e[amount] &6players got item.'
+      starting: '&6Starting to give items for all players, this may take some time.'
+      running: '&6[amount] already received item, still running.'
+      feedback: '&6Finished. &e[amount] &6players received item.'
   glow:
     help:
-      info: '&eSet players glow mode'
+      info: '&eSet a player''s glow mode'
       args: (playerName) [true/false/color/gui]
       explanation:
       - 'Example: /glow Zrips red'
@@ -1779,7 +1779,7 @@ command:
       title: Pick glow color
   gm:
     help:
-      info: '&eSet players game mode'
+      info: '&eSet a player''s game mode'
       args: (playerName) [gamemode]
     info:
       feedback: '&eYou have set &3[playerDisplayName]&e (&3[offon]&e) to gamemode
@@ -1787,7 +1787,7 @@ command:
       targetfeedback: '&eYour game mode was set to &3[gameMode]&e by &3[senderDisplayName]&e.'
   god:
     help:
-      info: '&eSet players god mode to true or false'
+      info: '&eSet a player''s god mode to true or false'
       args: '[playerName] (true/false) (-s)'
     info:
       feedback: '&eYou have set god to &3[boolean]&e for &3[playerDisplayName]&e (&3[offon]&e).'
@@ -1816,35 +1816,35 @@ command:
       nothing: '&eNothing to remove.'
   haspermission:
     help:
-      info: '&eCheck if player has particular permission'
+      info: '&eCheck if a player has a particular permission'
       args: (playerName) [permissionNode]
     info:
       title: '&6[playerDisplayName] &e-> &6[permission]'
-      none: '&ePermission is not set for player and he is not OP. Results to &6[state]'
+      none: '&ePermission is not set for player and they are not OP. Results to &6[state]'
       softSet: '&eSet by plugin.yml to &6[state]'
       hardSet: '&eHard set to &6[state] &eby some plugin'
       notHardSet: '&eNot hard set, can result to &cFalse &ein some cases'
       ops: '&eResults to &6[state] &ebecause player is OP'
   hat:
     help:
-      info: '&ePlace item like hat'
+      info: '&ePut on item like a hat'
       args: (playerName)
     info:
       feedback: '!actionbar!&6You have successfully changed hat!'
       targetfeedback: '&6Your hat was changed by &3[senderDisplayName]&6!'
-      fullinv: '&3[playerDisplayName] &6inventory is full, can''t change hat!'
-      incorrect: '&3Incorrect item in head slot, cant replace with new one. Remove
+      fullinv: '&3[playerDisplayName]''s &6inventory is full, can''t change hat!'
+      incorrect: '&3Incorrect item in head slot, can''t replace with new one. Remove
         it manually'
   head:
     help:
-      info: '&eGet players head'
+      info: '&eGet a player''s head'
       args: '[sourceName] (targetName) (-s) (amount)'
     info:
       Feedback: '&3[headName] &6head created!'
-      targetFeedback: '&eYou got &3[headName] &ehead from &3[senderDisplayName]&e!'
+      targetFeedback: '&eYou received &3[headName]''s &ehead from &3[senderDisplayName]&e!'
   heal:
     help:
-      info: '&eHeal player'
+      info: '&eHeal a player'
       args: '[playerName/all] (healamount/healpercent)'
     info:
       feedback: '&eYou have healed &3[playerDisplayName]&e (&3[offon]&e).'
@@ -1852,7 +1852,7 @@ command:
       targetfeedback: '&eYou have been healed by &3[senderDisplayName]&e.'
   helpop:
     help:
-      info: '&eSends message for help to staff members'
+      info: '&eSends message to staff members for help'
       args: '[message]'
       explanation:
       - Requires cmi.command.helpop.inform too see messages
@@ -1914,7 +1914,7 @@ command:
       order: '&7Downwards placement: &6[state]'
       autoButton: '&7Automatically generate pagination buttons'
       autoButtonLore:
-      - '&eCurrent hologram doesnt have any pages create'
+      - '&eCurrent hologram doesn''t have any pages create'
       - '&eUse &6!nextpage! &eas a new line to make next page'
       autoButtonForward: '&2This hologram already has forwards button created'
       autoButtonBackward: '&2This hologram already has backwards button created'
@@ -1944,7 +1944,7 @@ command:
       noHomes: '&cThere is no saved homes'
       private: '&cThis home location is private!'
       remove: '&cShift+Right click to remove home'
-      guiTitle: '&0[playerDisplayName] &8homes [current]/[max]'
+      guiTitle: '&0[playerDisplayName]''s &8homes [current]/[max]'
   homes:
     help:
       info: '&eA list of homes that you can click to teleport to.'
@@ -1954,7 +1954,7 @@ command:
         away &e[direction]'
   hunger:
     help:
-      info: '&eSet players hunger'
+      info: '&eSet a player''s hunger'
       args: '[playerName] [amount] (-s)'
     info:
       feedback: '&eYou have set &3[hunger]&e hunger for &3[playerDisplayName]&e (&3[offon]&e).'
@@ -1970,7 +1970,7 @@ command:
       notPublic: ' &7[NotPublic]'
       reqPerm: ' &2[ReqPerm]'
       noPerm: ' &7[ReqPerm]'
-      permHover: ' &eRequires &7[permission] &epermission to place this sign'
+      permHover: ' &eRequires &7[permission] &epermission to place that sign'
       editSign: ' &e[EditSignLines]'
       publicHover: "&eChange public status. \nSigns top line &7[ic:[name]]"
       createdPublic: '&eCreated new interactive sign'
@@ -1987,7 +1987,7 @@ command:
       ListHover:
       - '&eWorld: &6[world]'
       - '&eX:[x] &6Y:[y] &eZ:[z]'
-      notPublicIc: '&cYou cant use this, its not public'
+      notPublicIc: '&cYou can''t use that, its not public'
       noCommandBlocks: '&eThere are no interactive commands'
       commandList: ' &e[command]  '
       block: (Block)
@@ -1995,11 +1995,11 @@ command:
       both: (Both)
       none: (None)
       addedNew: '&eAdded new block/entity for &6[name]'
-      dontExist: '&cInteractive command dont exist by this name'
+      dontExist: '&cInteractive command doesn''t exist by this name'
       exists: '&cInteractive command with this name already exists'
       blockExist: '&cThis block is already being used by &e[name]'
       entityExist: '&cThis entity is already being used by &e[name]'
-      cantUsePlayer: '&cYou cant use regular player as command entity'
+      cantUsePlayer: '&cYou can''t use regular player as command entity'
       addInfo: '&eEnter new command. Type &6cancel &eto cancel'
       addInformationHover: "&eGlobal variables supported as of sender category \n\
         &eTo include delay in commands: \n&edelay! 5 \n&eAdditional variables can\
@@ -2018,7 +2018,7 @@ command:
       args: '[playerName] (command)'
   ignore:
     help:
-      info: '&eIgnores player'
+      info: '&eIgnore a player'
       args: (playerName/uuid/all)
       explanation:
       - cmi.command.ignore.bypass - to bypass ignore list
@@ -2056,7 +2056,7 @@ command:
       feedback: '&eImported &6[amount] &enew users'
   info:
     help:
-      info: '&eShow players information'
+      info: '&eShow a player''s information'
       args: '[playerName/uuid]'
     info:
       feedback:
@@ -2172,7 +2172,7 @@ command:
       - '&e-----------------------------------------'
   inv:
     help:
-      info: '&eOpens players inventory'
+      info: '&eOpen a player''s inventory'
       args: '[playerName]'
       explanation:
       - cmi.command.inv.preventmodify - prevents inventory editing
@@ -2198,7 +2198,7 @@ command:
       args: (playerName) [id/all/last]
   invremoveall:
     help:
-      info: '&eRemoves all saved inventories'
+      info: '&eRemove all saved inventories'
       args: '[confirmed]'
     info:
       removed: '&eAll saved inventories removed ([count])'
@@ -2216,9 +2216,9 @@ command:
       message: '&cYou are ip banned from this server!'
       reason: '&6Reason: &e[reason]'
       defaultReason: '&eViolated server rules'
-      messageToAll: '&6[playerDisplayName] &egot ip banned by &6[senderDisplayName]
+      messageToAll: '&6[playerDisplayName] &ewas ip banned by &6[senderDisplayName]
         &efor: &6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &egot ip banned by &6[senderDisplayName]
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &ewas ip banned by &6[senderDisplayName]
         &efor: &6[reason]'
   ipbanlist:
     help:
@@ -2267,7 +2267,7 @@ command:
       durability: ' &eDurability: &6[current]&e/&6[max]'
   itemlore:
     help:
-      info: '&eChange items lore'
+      info: '&eChange item lore'
       args: (-p:[playerName]) [linenumber/*] [remove/insert/ new lore line]
     info:
       feedback: '&eYou have changed lore line to ''&r&5[loreLine]&e'' for &3[playerDisplayName]&e
@@ -2281,7 +2281,7 @@ command:
       blocked: '&eThis item is blocked from re-loring.'
   itemname:
     help:
-      info: '&eRename items'
+      info: '&eRename item'
       args: (-p:[playerName]) [remove/your new item name]
     info:
       feedback: '&eYou have renamed item to [itemname]&e for &3[playerDisplayName]&e
@@ -2300,22 +2300,22 @@ command:
       noNbt: '&eItem does not contain any NBT data'
   jail:
     help:
-      info: '&eJail player for time period'
+      info: '&eJail a player for time period'
       args: '[playerName] (time) (jailName) (cellId) (-s) (r:jail_reason)'
     info:
-      jailed: '&eYou put &6[playerDisplayName] &einto jail for the next [time]'
+      jailed: '&eYou put &6[playerDisplayName] &ein jail for the next [time]'
       jailedPlayer: '&6[playerDisplayName] &ejailed for the next [time]'
       reason: ' &eFor: &c[reason]'
       leftTime: '!title!&7Jail time:!subtitle![time]'
       jailedTarget: '&eYou have been jailed! [time]'
-      cantTalk: '&cYou cant talk while you are jailed'
+      cantTalk: '&cYou can''t talk while you are jailed'
       cantTalkRange: '!actionbar!&fYour chat range is limited to &c[range] &fblocks'
       failed: '&cFailed to jail player. Check target jail name, cell id or time format'
       bossbar: '&7Jail time: [autoTimeLeft]'
       noCommand: '&cYou can''t use this command while jailed!'
   jailedit:
     help:
-      info: '&eEdit jails'
+      info: '&eEdit jail'
       args: ''
     info:
       notInArea: '&cYou are not standing in jail area'
@@ -2353,14 +2353,14 @@ command:
       tooFar: '&cNo block in sight or it''s too far (max [max] blocks)'
   kick:
     help:
-      info: '&eKick player with custom message'
+      info: '&eKick a player with custom message'
       args: '[playerName/all] (message) (-s)'
       explanation:
       - cmi.command.kick.bypass - prevents from being kicked out
     info:
       defaultMessage: '&eKicked from server'
       cantKick: '&eCan''t kick this player'
-      messageToAll: '&6[playerDisplayName] &egot kicked from server.'
+      messageToAll: '&6[playerDisplayName] &ewas kicked from server.'
       kickReason: ' &eReason: &6[reason]'
       all: '&eKicked &6[amount] &eplayers from server'
   killall:
@@ -2382,7 +2382,7 @@ command:
       named: With custom name
   kit:
     help:
-      info: '&eGives predefined kit.'
+      info: '&eGive predefined kit.'
       args: '[kitName] (playerName)'
       explanation:
       - '&ePermissions:'
@@ -2394,7 +2394,7 @@ command:
     info:
       noMoney: '&eNot enough money. Cost: &6[cost] &eyou have &6[balance]'
       noExp: '&eNot enough exp. Cost: &6[cost] &eyou have &6[balance]'
-      noCondition: '&eYou dont have special condition permission to use this kit:
+      noCondition: '&eYou don''t have special condition permission to use this kit:
         &6[condition]'
       oneTime: '&cThis is a one time use kit and you have already used it!'
       cantUseNow: '&cYou can''t use this kit for the next [time]'
@@ -2425,7 +2425,7 @@ command:
       resetAll: '&eKit (&6[kit]&e) cooldown got reset for &6[count] &eplayers'
       list: '&e[place]. &6[kit] &e[time]'
       listHover: '&eClick to reset'
-      noCd: '&eThere are no kit''s on cooldown'
+      noCd: '&eThere are no kits on cooldown'
   kiteditor:
     help:
       info: '&eKit editor.'
@@ -2484,7 +2484,7 @@ command:
       - '&eKits should be in same group'
       despiteWeight: '&eShow despite weight: &6[Weight]'
       despiteWeightExtra:
-      - '&ePLayer is not getting access to kit, but can preview it'
+      - '&ePLayer does not have access to kit, but can preview it'
       Slot: '&eSlot: &6[slot]'
       SlotAuto: '&6Auto'
       Clone: '&eClone items from inventory'
@@ -2523,24 +2523,24 @@ command:
       info: '&eReset kit usage counter'
       args: (kitName) (playerName)
     info:
-      notLimited: '&eKit has no limited amount of usage'
-      reset: '&eKit (&6[kit]&e) usage amount got reset for &6[playerDisplayName]'
+      notLimited: '&eKit usage is not limited'
+      reset: '&eKit (&6[kit]&e) usage amount was reset for &6[playerDisplayName]'
       list: '&e[place]. &6[kit] &e[used]/[usages]'
       listHover: '&eClick to reset'
-      noCd: '&eThere are no kit''s with usage above 0'
+      noCd: '&eThere are no kits with usage above 0'
   lastonline:
     help:
-      info: '&eShow played players from last x minutes'
+      info: '&eShow recent players from last x minutes'
       args: (-p:[page])
     info:
       searching: '&eSearching &6[checked]&e/&6[total] &e(&6[found]&e)'
       List: ' &6[place]&e. &2[name] &e-> &6[time].'
   launch:
     help:
-      info: '&eLaunch at direction you are looking or at angle'
+      info: '&eLaunch in the direction you are looking or at angle'
       args: (playerName) (p:[power]) (a:[angle]) (d:[direction]) (loc:[x]:[y]:[z])
       explanation:
-      - cmi launch - will launch at direction you are looking
+      - cmi launch - will launch in the direction you are looking
       - cmi launch p:3.2 - will launch with power of 3.2
       - cmi launch p:2.5 a:25 - will launch at direction you are looking with angle
         of 25 dgrees and with power of 2.5
@@ -2555,7 +2555,7 @@ command:
       feedback: '!actionbar!&6[&fWhoosh!&6]'
   lfix:
     help:
-      info: '&eFix light in chunks around you'
+      info: '&eFix lighting in chunks around you'
       args: (range) (playerName) (stop/stopall)
     info:
       NoMore: '&eRange can''t be more than server view range. Changed to maximum allowed.'
@@ -2565,7 +2565,7 @@ command:
       Stopped: '&eStopped'
   list:
     help:
-      info: '&eShows online player list'
+      info: '&eShow online player list'
       args: ''
       explanation:
       - 'Perm: '
@@ -2574,7 +2574,7 @@ command:
       - cmi.command.list.hidden
       - cmi.command.list.group.[number]
     info:
-      # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on, you can have as many of those as you want and order them by your own liking
+      # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on. You can have as many of those as you want and order them by your own liking
       List:
       - '&7========================'
       - '&ePlayers online &6[amount][hidden]&e/&6[maxamount]'
@@ -2588,8 +2588,8 @@ command:
       hiddenCount: '&e&7([amount])'
       groupL: '&6[groupName]: &f[list]'
       player: '%cmi_user_afk_symbol%&f[playerDisplayName]'
-      # Add as many groups as you wish, by default there is only 10, to create new one, just copy paste one line and add increment into lines name, like group11 or group12 and so on.
-      # Player need to have appropriate permission node to be placed in group cmi.command.list.group.[groupnumber], bigger number have bigger priority
+      # Add as many groups as you wish. By default there are only 10. To create a new one, copy and paste one line and add increment into lines name. (group11, group12, etc)
+      # Player need to have appropriate permission node to be placed in group cmi.command.list.group.[groupnumber]. Bigger numbers have higher priority
       groups:
         group1: '&eGroup1: &f[list]'
         group2: '&eGroup2: &f[list]'
@@ -2604,13 +2604,13 @@ command:
       noGroupLine: '&eList'
   lockip:
     help:
-      info: '&ePrevents logging into account from different ip'
+      info: '&ePrevent logging into account from different ip'
       args: (playername) [add/remove/list/clear] [ip]
     info:
       CantLogin: '&cYou can''t login from this ip address'
       add: '&eNew ip (&6[ip]&e) added for &6[playerDisplayName]'
       remove: '&eIp (&6[ip]&e) removed from &6[playerDisplayName]'
-      clear: '&eAll ip''s removed from &6[playerDisplayName]'
+      clear: '&eAll ips removed from &6[playerDisplayName]'
       ipNotFound: '&cIp not found'
       empty: '&cList is empty'
       list: '&6[place]&e. &6[ip]'
@@ -2638,7 +2638,7 @@ command:
       removedMail: '&eRemoved &6[amount] &email(s)'
   maintenance:
     help:
-      info: '&eSet server into maintenance mode'
+      info: '&eSet server to maintenance mode'
       args: (true/false) (message)
       explanation:
       - cmi.command.maintenance.bypass - to bypass maintenance mode
@@ -2654,7 +2654,7 @@ command:
       targetfeedback: '&eYour max HP was set to &3[maxHp] &eby &3[senderDisplayName]&e.'
   maxplayers:
     help:
-      info: '&eChanges maximum amount of players who can connect to server'
+      info: '&eChange maximum amount of players who can connect to server'
       args: '[amount]'
       explanation:
       - '&ePermissions: '
@@ -2664,7 +2664,7 @@ command:
         &6[current]'
   me:
     help:
-      info: '&eSends special message to all players'
+      info: '&eSend special message to all players'
       args: '[message]'
     info:
       format: '&5* [senderDisplayName] &5[message]'
@@ -2682,7 +2682,7 @@ command:
       args: ''
   mirror:
     help:
-      info: '&eStarts block place/break mirroring.'
+      info: '&eStart block place/break mirroring.'
       args: (start/stop)
     info:
       started: '&eMirroring started'
@@ -2728,7 +2728,7 @@ command:
       info: '&eGet mob head'
       args: '[mobType] (entryNumber) (playerName) (-s)'
     info:
-      got: '&eGot &6[type] &emob head'
+      got: '&eReceived  &6[type] &emob head'
       base: '&7Base drop chance: &f[chance]%'
       personal: '&7Drop chance for you: &f[chance]%'
       headSpecific: '&7Head specific drop chance: &f[chance]%'
@@ -2741,7 +2741,7 @@ command:
     info:
       newBalance: '&6[playerDisplayName] &enew balance: &6[money]'
       paid: '&eYou have sent &6[amount] &eto &6[playerDisplayName]'
-      gotMoney: '&eYou got &6[amount] &efrom &6[senderDisplayName]&e. Balance: &6[money]'
+      gotMoney: '&eYou received &6[amount] &efrom &6[senderDisplayName]&e. Balance: &6[money]'
       gotMoneyGive: '&eYou received &6[amount]&e. Balance: &6[money]'
       noMoney: '&cYou don''t have enough money'
       worldGroups: '&cYou can''t send money between different world groups'
@@ -2749,20 +2749,20 @@ command:
       confirm: '&eClick to confirm the &6[money] &etransfer to &6[playerDisplayName]
         &a&l[✔]'
       notAccepting: '&eThis user is not accepting payments from other players'
-      giveAll: '&eGive out &6[totalAmount] &efor &6[playerCount] &eplayers'
+      giveAll: '&eGive out &6[totalAmount] &eto &6[playerCount] &eplayers'
       takeAll: '&eTook &6[totalAmount] &efrom &6[playerCount] &eplayers'
   more:
     help:
-      info: '&eFills item stack to maximum amount'
+      info: '&eFill item stack to maximum amount'
       args: (playerName) (-clone/[amount])
       explanation:
       - '&ePermissions:'
-      - ' &6cmi.command.more.oversize &e- to get oversized stacks'
+      - ' &6cmi.command.more.oversize &e- to get over sized stacks'
     info:
       feedback: '&eFilled stack to &3[amount]&e for &3[playerDisplayName]&e (&3[offon]&e).'
   msg:
     help:
-      info: '&eSends message to player'
+      info: '&eSend message to player'
       args: '[playerName] [message]'
       explanation:
       - If message starts with ! then clean message without sender name will be shown
@@ -2810,11 +2810,11 @@ command:
       muteReason: '&4Mute reason: &7[reason]'
   nameplate:
     help:
-      info: '&eSet players name plate prefix, suffix or its color'
+      info: '&eSet a player''s name plate prefix, suffix or color'
       args: (playerName) (-pref:[prefix]) (-suf:[suffix]) (-c:[colorCode])
     info:
       feedback: '&eYou have updated nameplate for &3[playerDisplayName]&e (&3[offon]&e).'
-      targetfeedback: '&eYour nameplate got updated'
+      targetfeedback: '&eYour nameplate was updated'
   near:
     help:
       info: '&eCheck who is near you'
@@ -2825,21 +2825,21 @@ command:
       aproxList: '&e[place]. &6[playerDisplayName] &e- &6[dir] &7~[distance]m'
   nick:
     help:
-      info: '&eChanges player name'
+      info: '&eChange player name'
       args: '[newNickName/off] (playerName) (-s)'
       explanation:
-      - 'To change into different nick name: cmi.command.nick.different'
+      - 'To change nickname text: cmi.command.nick.different'
       - To bypass length protection use cmi.command.nick.bypass.length
     info:
-      changed: '&eNickName changed to &r[newNickName] &efrom &r[oldNickName]'
-      changedTarget: '&eYour nickName changed to &r[newNickName] &eby &r[senderDisplayName]'
-      reset: '&eNick name set to default one'
-      sameNick: '&cYou dont have permission to change into different nick. You can
+      changed: '&eNickname changed to &r[newNickName] &efrom &r[oldNickName]'
+      changedTarget: '&eYour nickname changed to &r[newNickName] &eby &r[senderDisplayName]'
+      reset: '&eNickname set to default one'
+      sameNick: '&cYou don''t have permission to change into different nick. You can
         change only colors'
-      blockedNick: '&cYou can''t use this nick name'
-      blockedNickLength: '&eNick name is to long. Max &6[amount] &esymbols'
-      blockedNickLengthMin: '&eNick name is to short. Min &6[amount] &esymbols'
-      inUse: '&cNick name is already being used by another player'
+      blockedNick: '&cYou can''t use this nickname'
+      blockedNickLength: '&eNickname is too long. Max &6[amount] &esymbols'
+      blockedNickLengthMin: '&eNickname is too short. Min &6[amount] &esymbols'
+      inUse: '&cNickname is already being used by another player'
   notarget:
     help:
       info: '&eToggle no-mob target mode'
@@ -2849,14 +2849,14 @@ command:
       disabled: '&eMonsters will now attack you!'
   note:
     help:
-      info: '&eManage players notes'
+      info: '&eManage a player''s notes'
       args: (playerName) [add/remove/clear/list] (id/note)
     info:
       newNote: '&eAdded new note for player'
       clearNote: '&eAll notes cleared for player'
       removedNote: '&eRemoved note for player'
-      noNotesById: '&eThere is no saved notes by this id for player'
-      noNotes: '&eThere is no saved notes for player'
+      noNotesById: '&eThere are no saved notes with this id for player'
+      noNotes: '&eThere are no saved notes for player'
       list: '&6[id]. &e[note]'
   openbook:
     help:
@@ -2879,9 +2879,9 @@ command:
       info: '&ePatrol'
       args: ''
     info:
-      noPatrol: '&eCurrently there is no players you can patrol'
-      Patroling: '&eCurrently patroling: &6[playerDisplayName]'
-      lastPatrol: '&eLast time patroled &6[time]&eago'
+      noPatrol: '&eCurrently there are no players you can patrol'
+      Patroling: '&eCurrently patrolling: &6[playerDisplayName]'
+      lastPatrol: '&eLast time patrolled &6[time]&eago'
       notes: '&eHas &6[amount] &enotes'
   pay:
     help:
@@ -2889,14 +2889,14 @@ command:
       args: '[playerName] [amount] (-s)'
   paytoggle:
     help:
-      info: '&eToggle payments from another player'
+      info: '&eToggle payment from other players'
       args: (playerName)
     info:
       feedbackDisabled: '&eYou are now accepting payments from other players'
       feedbackEnabled: '&eYou no longer accepting payments from other players'
   ping:
     help:
-      info: '&eShows players ping'
+      info: '&eShow a player''s ping'
       args: (playerName/message)
     info:
       feedback: '&ePing: &6[ping]ms'
@@ -2904,7 +2904,7 @@ command:
       customMessage: '[message]'
   placeholders:
     help:
-      info: '&eList out all placeholders'
+      info: '&eList all placeholders'
       args: (parse) (placeholder) (playerName)
     info:
       list: '&e[place]. &6[placeholder]'
@@ -2912,22 +2912,22 @@ command:
       parse: '&6[placeholder] &eby [source] &6result &8|&f[result]&8|'
   playercollision:
     help:
-      info: '&eSet players collision mode'
+      info: '&eSet a player''s collision mode'
       args: (playerName) [true/false] (-s)
     info:
       feedback: '&eYou have set collision to &3[boolean]&e for &3[playerDisplayName]&e
         (&3[offon]&e).'
-      targetfeedback: '&eYour collision mode changed to &3[boolean]'
+      targetfeedback: '&eYour collision mode was changed to &3[boolean]'
   playtime:
     help:
-      info: '&eShows player total play time'
+      info: '&eShow a player''s total play time'
       args: (playername)
     info:
       total: '&e* Total play time: [time]'
       joined: '&e* Joined on: &6[time]'
   playtimetop:
     help:
-      info: '&eShows top list of player total play time'
+      info: '&eShow top list of player total play time'
       args: '[page]'
     info:
       topLine: '&e----- TopPlaytime &e-----'
@@ -2957,7 +2957,7 @@ command:
       particles: '&eParticles: &6[state]'
       particleType: '&eParticle type: &6[type]'
       particleAmount: '&eParticle amount: &6[amount]'
-      particlePercent: '&ePercentage of sides shrinked particles: &6[amount]%'
+      particlePercent: '&ePercentage of sides to shrink particles: &6[amount]%'
       activationRange: '&eActivation range: &6[amount]'
       bungeeTeleport: '&eTeleport to exact bungee location: [state]'
       requiresPermission: '&eRequires &7[perm] &epermission to use: [state]'
@@ -2973,7 +2973,7 @@ command:
       cantUsePortal: '&cYou can''t use this portal'
   pos:
     help:
-      info: '&eShow current position of a player'
+      info: '&eShow a player''s current position'
       args: (playerName)
     info:
       feedback: '&e[playerDisplayName] &e(&3[offon]&e) ([world]&e,&6[x]&e:&6[y]&e:&6[z]&e)'
@@ -2991,7 +2991,7 @@ command:
       NoMore: '&eRange can''t be more than 32 chunks. Changed to maximum allowed.'
       startSending: '&eFound &6[amount] &echunks to send. Starting!'
       InfoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[min]m:[sec]s&6) &6Speed: &e[speed]'
-      Finished: '&eFinished. It can take some extra time to load all chunks on your
+      Finished: '&eFinished. It may take some time to load all chunks client
         side.'
   prewards:
     help:
@@ -3007,7 +3007,7 @@ command:
       inform: '!actionbar!&2You have unclaimed rewards waiting for you! /prewards'
   ptime:
     help:
-      info: '&eControls player personal time'
+      info: '&eControl a player''s personal time'
       args: ''
       explanation:
       - 'Example:'
@@ -3029,19 +3029,19 @@ command:
       setto: '&eTime set to &6[24h] &eor &6[12h] &eor &6[ticks]ticks &efor &6[playerDisplayName]'
   purge:
     help:
-      info: '&eCleans player data from world folder by inactive days'
+      info: '&eClean player data from world folder by inactive days'
       args: (stop)
     info:
       stopped: Purge stopped.
   pweather:
     help:
-      info: '&eControls player weather'
+      info: '&eControl a player''s weather'
       args: (playerName) [sun/rain/reset] (-s)
     info:
       check: '&ePersonal weather: &6[weather]'
       gotreseted: '&6[playerDisplayName] &eweather has been reset'
       setto: '&ePersonal weather set to &6[weather] &efor &6[playerDisplayName]'
-      gotset: '&eYour personal weather set to &6[weather]'
+      gotset: '&eYour personal weather was set to &6[weather]'
       reset: '&eWeather reset'
   rankdown:
     help:
@@ -3087,45 +3087,45 @@ command:
       requiredStats: ' &e[name][extra]&e: [color][current]&e/&6[needed]'
       requiredStatsExtra: ' (&6[type]&e)'
       nextRanks: ' &eNext ranks: '
-      finalRank: ' &eThis is last rank'
-      noRank: ' &eCant find rank'
+      finalRank: ' &eThis is the last rank'
+      noRank: ' &eCan''t find rank'
       check: '&eCheck &6[rank] &erank'
       progressBarHover: '&eProgress [percent]%'
   ranklist:
     help:
-      info: '&eList of possible ranks'
+      info: '&eList possible ranks'
       args: ''
     info:
       list: '&e[place]. [currentRankMarker]&6[rankName][currentRankMarker]'
       currentRankMarker: '&6+'
   rankset:
     help:
-      info: '&eSet a players rank'
+      info: '&eSet a player''s rank'
       args: (playerName) [rankName] (-cmd) (-cost)
       explanation:
       - -cmd will perform command defined for that rank rankup
       - -cost will charge player with money, exp or items if defined for that rank
         rankup
-      - player will get rank even if he doesnt have enough money, exp or required
+      - player will get rank even if they doesnt have enough money, exp or required
         items
     info:
       set: '&eRank changed for &6[playerDisplayName] &eto &6[rankName]'
   rankup:
     help:
-      info: '&eIncrease your rank'
+      info: '&eIncrease a player''s rank'
       args: (playerName) (rankName) (confirm)
     info:
       noRank: ' &eYou don''t have any rank associated with you'
-      requiresPrevious: ' &eYou cant rankup to this rank. It requires you to have
+      requiresPrevious: ' &eYou can''t rankup to this rank. It requires you to have
         &6[rank] &erank(`s)'
       list: '&ePick one rank you want to rank up to: '
       confirm: '&eClick me to confirm rankup to &6[ranks]'
   realname:
     help:
-      info: '&eCheck players real name'
+      info: '&eCheck a player''s real name'
       args: (playerName/nickName)
     info:
-      feedback: '&r[playerDisplayName] &ereal name &r[playerName]'
+      feedback: '&r[playerDisplayName]''s &ereal name is &r[playerName]'
   recipe:
     help:
       info: '&eCheck item recipe'
@@ -3133,10 +3133,10 @@ command:
     info:
       type: '&0[type]'
       page: ' &0[current]&7/&0[total]'
-      noRecipes: '&cCant find any recipes for this item'
+      noRecipes: '&cCan''t find any recipes for this item'
   reload:
     help:
-      info: '&eReloads plugins config and locale files'
+      info: '&eReload plugin config and locale files'
       args: ''
     info:
       feedback: '&6Configs and locale files reloaded!'
@@ -3151,7 +3151,7 @@ command:
       removed: '&eHome (&6[home]&e) removed'
   removeuser:
     help:
-      info: '&eRemoves user and its data'
+      info: '&eRemove a user and their data'
       args: '[uuid/duplicates]'
     info:
       removed: '&eUser (&6[uuid]&e) removed'
@@ -3183,7 +3183,7 @@ command:
       cantUse: '!title!&cCan''t use this item!!subtitle!&eRepair it your self!'
   repaircost:
     help:
-      info: '&eSet items repair cost'
+      info: '&eSet an item''s repair cost'
       args: (playerName) [amount]
       explanation:
       - 'Example:'
@@ -3194,15 +3194,15 @@ command:
       - /repaircost Zrips clear
       - /repaircost Zrips add 10
     info:
-      current: '&eCurrent items base repair cost: &6[cost]&e.'
+      current: '&eCurrent item''s base repair cost: &6[cost]&e.'
       noitem: '&cNot holding any item in hand.'
       cantDetermineCost: '&cCan''t determine base repair cost for this item.'
       selffeedback: '&eBase repair cost was set to &3[amount] &efor &3[playerDisplayName]&e
         item in hand (&3[offon]&e).'
-      targetfeedback: '&eYour item repair cost was set to &3[amount]&e by &3[senderDisplayNaame]&e.'
+      targetfeedback: '&eYour item''s repair cost was set to &3[amount]&e by &3[senderDisplayNaame]&e.'
   replaceblock:
     help:
-      info: '&eReplaces blocks in current world around you'
+      info: '&eReplace blocks in current world around you'
       args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range
         in chunks/g]&e y &6[max height]'
       explanation:
@@ -3231,17 +3231,17 @@ command:
       finished: '&eFinished!!! Replaced: &6[amount] &eblocks! In &6[time]&e.'
   reply:
     help:
-      info: '&eReplay to last message sender'
+      info: '&eReply to last message sender'
       args: '[message]'
     info:
-      noOneToReplay: '&eThere is no one to replay'
+      noOneToReplay: '&eThere is no one to reply to'
   resetdbfields:
     help:
-      info: '&eResets particular database columns to default value'
+      info: '&eReset particular database column to default value'
       args: '[collumnName] (-w:[worldName]) (-p:[playerName])'
     info:
       feedback: '&eUpdated &7[amount] &eplayers'
-      nofield: '&cCant find field by this name'
+      nofield: '&cCan''t find field by this name'
   ride:
     help:
       info: '&eRide target entity'
@@ -3250,13 +3250,13 @@ command:
       - ' cmi.command.ride.[entityType] - to have access in riding entity'
     info:
       riding: '&eYou are riding &6[entityName]'
-      cantRide: '&cYou cant ride (&6[entityName]&c) entity'
-      someOneElse: '&cSome one is already riding this entity'
+      cantRide: '&cYou can''t ride (&6[entityName]&c) entity'
+      someOneElse: '&cSomeone is already riding this entity'
       ridingYou: '&6[playerDisplayName] &eis riding you, do &6/shakeitoff &eto get
         them off'
   rt:
     help:
-      info: '&eTeleports to random location'
+      info: '&eTeleport to random location'
       args: (playerName) (worldName)
     info:
       posible: '&ePossible worlds: &6[worlds]'
@@ -3273,7 +3273,7 @@ command:
       nothing: '&eNothing to show'
   saturation:
     help:
-      info: '&eSet players saturation'
+      info: '&eSet a player''s saturation'
       args: (playerName) [amount]
     info:
       feedback: '&eYou have set &3[amount]&e saturation for &3[playerDisplayName]&e
@@ -3281,10 +3281,10 @@ command:
       targetfeedback: '&eYour saturation was set to &3[amount]&e by &3[senderDisplayName]&e.'
   saveall:
     help:
-      info: '&eSaves every player inventory'
+      info: '&eSave every player''s inventory'
       args: (daysRange/-online)
       explanation:
-      - -online variable can be used to save only online player inventories
+      - -online variable can be used to save only online player''s inventories
     info:
       saving: '[simbol] &2checked: &e[checked]&2 from &e[total]&2 saved: &e[saved]
         &2skipped: &e[skipped] [simbol]'
@@ -3296,24 +3296,24 @@ command:
     info:
       info:
       - '&fLeft click to get item'
-      - '&fMiddle mouse click to detele'
-      got: '&eGot &6[name] &eitem'
+      - '&fMiddle mouse click to delete'
+      got: '&eReceived &6[name] &eitem'
       give: '&eGive &6[name] &eitem'
       removed: '&eRemoved &6[name] &eitem'
       saved: '&eSaved &6[name] &eitem'
       title: '&8[current]&7/&8[total]'
   sc:
     help:
-      info: '&eStarts sign copy process'
+      info: '&eStart sign copy process'
       args: (playerName)
     info:
       punch: '&ePunch sign to paste text into it, or punch any non-sign block to cancel
         process'
-      canceled: '&eSign copy process cancelled'
+      canceled: '&eSign copy process canceled'
       updated: '&eSign updated'
   scan:
     help:
-      info: '&eScans for items in current world'
+      info: '&eScan for items in current world'
       args: ''
       explanation:
       - '&6SubCommands:'
@@ -3346,7 +3346,7 @@ command:
       paused: '&eScanning paused, to continue use &6/cmi scan continue.'
       continuing: '&eScanning continuing'
       holdItem: '&eYou need to hold the item in hand'
-      stoped: '&eScanning stoppeds. You can check the results with /cmi scan info'
+      stoped: '&eScanning stopped. You can check the results with /cmi scan info'
       speedChange: '&eSpeed changed to [amount]'
       autospeedChange: '&eAutoSpeed changed to [state]'
       messagesChange: '&eMessage state changed to [state]'
@@ -3395,7 +3395,7 @@ command:
       moreTitle: 'Incorrect amount: [input]/[required]'
       moreLore:
       - '&bYou need more of this item.'
-      - '&bRequires atleast &e[amount]'
+      - '&bRequires at least &e[amount]'
       title: '&2Scavenger'
   schedule:
     help:
@@ -3447,7 +3447,7 @@ command:
       listhover: '&eClick to open inv'
   seen:
     help:
-      info: '&eCheck when player was last seen'
+      info: '&eCheck when a player was last seen'
       args: '[playerName/uuid]'
     info:
       feedback: '&6[playerDisplayName] &ehas been &6[offon] &esince &6[time]&eago!'
@@ -3494,13 +3494,13 @@ command:
       args: ''
   setfirstspawn:
     help:
-      info: '&eSets first spawn point'
+      info: '&eSet first spawn point'
       args: (playerName)
     info:
       feedback: '&eFirst spawn point set (&6[world]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
   sethome:
     help:
-      info: '&eSets home location'
+      info: '&eSet home location'
       args: (homeName) (playerName) (-p) (-l:worldName;x;y;z) (block/Material) (slotNumber)
       explanation:
       - cmi.command.sethome.unlimited
@@ -3533,7 +3533,7 @@ command:
         [type]'
   setspawn:
     help:
-      info: '&eSets spawn command teleport point'
+      info: '&eSet spawn command teleport point'
       args: (playerName) (true/false) (-g:[groupName]) (-rng:[range]) (-w:world,world_nether)
         (loc:[world;x;y;z;yaw;pitch])
       explanation:
@@ -3545,7 +3545,7 @@ command:
       respawn: '&7Click to set this spawn point as possible respawn location'
   setwarp:
     help:
-      info: '&eSets warp location'
+      info: '&eSet warp location'
       args: '[warpName] (reqPermission) (hand) (slot) (autoLore)'
       explanation:
       - 'Examples:'
@@ -3582,7 +3582,7 @@ command:
       resultPrice: '&cCan be sold for: &7[price]'
   shadowmute:
     help:
-      info: '&eMute player without telling him that he is muted'
+      info: '&eMute player without telling them that they are muted'
       args: '[playerName] (time) (-s) (reason)'
   shakeitoff:
     help:
@@ -3606,7 +3606,7 @@ command:
       toggled: '&eSign spy toggled to &6[state] &estate'
   silence:
     help:
-      info: '&eBlocks public messages'
+      info: '&eBlock public messages'
       args: ''
       explanation:
       - cmi.command.silence.bypass - to bypass silence
@@ -3619,7 +3619,7 @@ command:
       info: '&eToggles silent chest'
       args: ''
       explanation:
-      - '&ePlayers arround you wont see chest opening animation when you opening chest'
+      - '&ePlayers around you won''t see chest opening animation when you opening chest'
       - '&eProtocollib required for this feature to work.'
     info:
       feedback: '&eYou toggled silent chest mode to &3[offon].'
@@ -3647,7 +3647,7 @@ command:
       info: '&eStrike ground or player with lightning'
       args: (playerName) (-s)
     info:
-      gotSmited: '&eYou got smited!'
+      gotSmited: '&eYou were smited!'
   socialspy:
     help:
       info: '&eToggle social spy'
@@ -3675,19 +3675,19 @@ command:
         \ &6[pitch] &eVolume: &6[volume]"
   spawn:
     help:
-      info: '&eTeleports back to spawn location'
+      info: '&eTeleport back to spawn location'
       args: (playerName)
     info:
       notset: '&4Spawn point is not set!'
       feedback: '&6Teleported to spawn!'
   spawner:
     help:
-      info: '&eSets spawner'
+      info: '&eSet spawner type'
       args: '[EntityType]'
     info:
       feedback: '&eSpawner is set to &6[type] &etype'
       wrongEntityIdName: '&cWrong entity id or name'
-      cantSet: '&cCan''t set this type spawner'
+      cantSet: '&cCan''t set this spawner type'
       cantDetect: '&cCan''t detect spawner block'
       pickOne: '&8Pick spawner type'
   spawnereditor:
@@ -3696,7 +3696,7 @@ command:
       args: ''
   spawnmob:
     help:
-      info: '&eSpawns entity at your location'
+      info: '&eSpawn entity at your location'
       args: '[EntityType]'
       explanation:
       - ' &e- First argument always is main entities name'
@@ -3716,11 +3716,11 @@ command:
       - '    &6ArmorStands &e- nogravity, noplate, arms, noarms, small'
       - '    &6ShulkerBullet &e- [target], bounce'
       - ' &e- Extra variables:'
-      - '     &6ps:zombie:priest:baby-1 &e- passanger with amount'
+      - '     &6ps:zombie:priest:baby-1 &e- passenger with amount'
       - '     &6hp:20 &e- health'
       - '     &6sp:3 &e- spreads randomly entities in range'
       - '     &6s:4 &e- entities speed'
-      - '     &6t:[playername] &e- target which one entities will atack'
+      - '     &6t:[playername] &e- target which one entities will attack'
       - '     &6q:10 &e- amount you want to spawn'
       - '     &6[playername] &e- spawns entities at players location'
       - '     &6loc:123/13.0/-15/World &e- spawn location. World name is optional
@@ -3745,7 +3745,7 @@ command:
       toggledOff: '&eToggled off Persistent staff chat'
   stats:
     help:
-      info: '&eCheck players stats'
+      info: '&eCheck a player''s stats'
       args: (playerName)
     info:
       distanceCM: '&e[value]&6cm'
@@ -3848,7 +3848,7 @@ command:
         TRADED_WITH_VILLAGER: Traded with villager
         CAKE_SLICES_EATEN: Cake slices eaten
         CAULDRON_FILLED: Cauldron filled
-        CAULDRON_USED: Couldron used
+        CAULDRON_USED: Cauldron used
         ARMOR_CLEANED: Armor cleaned
         BANNER_CLEANED: Banner cleaned
         BREWINGSTAND_INTERACTION: Brewing stand interactions
@@ -3878,7 +3878,7 @@ command:
         KILL_ENTITY: Monster kills
   statsedit:
     help:
-      info: '&eEdit players statistics'
+      info: '&eEdit a player''s statistics'
       args: (playerName) [add/take/set] [statistic] (subType) [amount] (-s)
     info:
       cantSet: '&cCan''t set this type of statistics'
@@ -3908,7 +3908,7 @@ command:
         tiles &6[players] players'
   sudo:
     help:
-      info: '&eForce another player to perform command'
+      info: '&eForce another player to perform a command'
       args: '[playerName] (command/c:[text])'
       explanation:
       - cmi.command.sudo.bypass - protects player from being 'trolled'
@@ -3916,7 +3916,7 @@ command:
       performed: '&ePerformed ''&6[command]&e'' command as &6[playerDisplayName] &eplayer'
   suicide:
     help:
-      info: '&eKill your self'
+      info: '&eKill yourself'
       args: '[playerName] (-s)'
     info:
       feedback: '&eGoodbye cruel world...'
@@ -3926,11 +3926,11 @@ command:
       info: '&eSwitch all data from one player to another'
       args: '[sourcePlayerName/uuid] [targetPlayerName/uuid]'
       explanation:
-      - Use UUID for more accurate transfers, especially when usernames matching each
+      - Use UUID for more accurate transfers, especially when usernames match each
         other
     info:
       same: '&eProvided target and source users are same already'
-      transferred: '&6[sourceName] &edata got switched with &6[Name]'
+      transferred: '&6[sourceName] &edata was switched with &6[Name]'
       failed: '&cFailed to switch player data'
   tablistupdate:
     help:
@@ -3947,7 +3947,7 @@ command:
       feedbackEnabled: '&eEnabled tag commands'
   tempban:
     help:
-      info: '&eTempBan player'
+      info: '&eTempBan a player'
       args: '[playerName] [timeValue] (reason) (-s)'
       explanation:
       - Ban max range depends on cmi.command.tempban.max.[amount]
@@ -3956,16 +3956,16 @@ command:
       - 'Example: '
       - /cmi tempban zrips 5m For swearing
     info:
-      messageToAll: '&6[playerDisplayName] &egot tempbanned by &6[senderDisplayName]
+      messageToAll: '&6[playerDisplayName] &ewas tempbanned by &6[senderDisplayName]
         &efor: &6[time] &ereason: &6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &egot tempbanned by &6[senderDisplayName]
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &ewas tempbanned by &6[senderDisplayName]
         &efor: &6[time] &ereason: &6[reason]'
       time: '&eYou will be unbanned after &6[time]'
       badTime: '&cTime is defined incorrectly'
       badTimeRanges: '&cYou can''t ban for longer than [time] &6([seconds])'
   tempipban:
     help:
-      info: '&eTemp ban ip'
+      info: '&eTemp ban an ip'
       args: '[ip/playerName] [time] (reason) (-s)'
       explanation:
       - cmi.command.banip.bypass - to bypass ban
@@ -3973,25 +3973,25 @@ command:
       message: '&cThe Ban Hammer has spoken!'
       reason: '&6Reason: &e[reason]'
       defaultReason: '&eViolated server rules'
-      messageToAll: '&6[playerDisplayName] &7got temp ip banned for &7[time]&7by &6[senderDisplayName]&7:
+      messageToAll: '&6[playerDisplayName] &7was temp ip banned for &7[time]&7by &6[senderDisplayName]&7:
         &6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &7got temp ip banned for &7[time]&7:
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &7was temp ip banned for &7[time]&7:
         &6[reason]'
   tfly:
     help:
-      info: '&eSet temporary players fly mode until relog or until time ends'
+      info: '&ePut a player into fly mode temporarily until relog or until time ends'
       args: '[playerName] (timeInSec) (-s)'
       explanation:
       - 'Examples:'
       - tfly Zrips 30 - fly mode for next 30 sec
       - tfly Zrips +30 - adds fly mode for an additional 30 sec
       - tfly Zrips 0 - fly mode until relog
-      - tfly Zrips - check if player have tfly mode enabled and until when
+      - tfly Zrips - check if player has tfly mode enabled and until when
     info:
-      setTimedFly: '&eYou have set &6[playerDisplayName]&e temporary fly for the next
+      setTimedFly: '&eYou have set &6[playerDisplayName]''s&e temporary fly for the next
         [time]'
-      addTimedFly: '&eYou have added  an additional [addTime] ([time]) for &6[playerDisplayName]&e'
-      setUntilRelogFly: '&eYou have set &6[playerDisplayName]&e temporary fly until
+      addTimedFly: '&eYou have added an additional [addTime] ([time]) for &6[playerDisplayName]&e'
+      setUntilRelogFly: '&eYou have set &6[playerDisplayName]''s&e temporary fly until
         relog.'
       targetTimedEnabled: '&eYour flight was enabled by &3[senderDisplayName]&e for
         the next [time].'
@@ -4005,7 +4005,7 @@ command:
       disabled: '&eTemporarly fly mode is disabled!'
   tgod:
     help:
-      info: '&eSet players temporarily god mode until relog or time end'
+      info: '&ePut a player into god mode temporarily until relog or time end'
       args: '[playerName] &3(timeInSec) (-s)'
       explanation:
       - 'Examples:'
@@ -4013,13 +4013,13 @@ command:
       - tgod Zrips 0 - god mode until relog
       - tgod Zrips - check how long a player has tgod for, if at all.
     info:
-      setTimedGod: '&eYou have set &6[playerDisplayName]&e temporary god for the next
+      setTimedGod: '&eYou have set &6[playerDisplayName]''s&e temporary god for the next
         [time]'
-      setUntilRelogGod: '&eYou have set &6[playerDisplayName]&e temporary god until
+      setUntilRelogGod: '&eYou have set &6[playerDisplayName''s]&e temporary god until
         relog.'
-      targetTimedEnabled: '&eYou got temporary god mode enabled by &3[senderDisplayName]&e
+      targetTimedEnabled: '&eYou received temporary god mode enabled by &3[senderDisplayName]&e
         for the next [time].'
-      targetUntilRelogEnabled: '&eYou got temporary god mode enabled by &3[senderDisplayName]&e
+      targetUntilRelogEnabled: '&eYou received temporary god mode enabled by &3[senderDisplayName]&e
         until you relog'
       setFor: '&eTemporary god mode enabled for the ext [time]'
       setForRelog: '&eTemporary god mode enabled until relog'
@@ -4028,7 +4028,7 @@ command:
       disabled: '&eTemporary god mode is disabled!'
   time:
     help:
-      info: '&eControls server time'
+      info: '&eControl server time'
       args: (time) (world) (alter [value]) (-smooth)
       explanation:
       - 'Example:'
@@ -4062,13 +4062,13 @@ command:
       pm: '&ePM'
   titlemsg:
     help:
-      info: '&eSends title message to player'
+      info: '&eSend title message to a player'
       args: '[playerName/all] [title \n subtitle] (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])'
     info:
       message: '&f[messsage]'
   toast:
     help:
-      info: '&eSends toast message to player'
+      info: '&eSend toast message to a player'
       args: '[playerName/all] (-t:[advType]) (-icon:[material]) [message]'
     info:
       message: '&f[messsage]'
@@ -4081,7 +4081,7 @@ command:
       ToggleOn: '&6Boss bar compass got enabled'
   toggleshiftedit:
     help:
-      info: '&eToggles sign shift editing'
+      info: '&eToggle sign shift editing'
       args: ''
     info:
       feedbackDisabled: '&eDisabled shift sign editing'
@@ -4098,10 +4098,10 @@ command:
       args: '[playerName] (-s)'
   tp:
     help:
-      info: '&eTeleports to player''s location'
+      info: '&eTeleport to a player''s location'
       args: '[playerName] (playerName)'
     info:
-      feedback: '&eYou have been teleported to &3[sourceDisplayName] &elocation (&3[offon]&e).'
+      feedback: '&eYou have been teleported to &3[sourceDisplayName]''s &elocation (&3[offon]&e).'
       bad:
         msg: '&cTeleport location is unsafe. [reason]'
         extraMsg: '&eUse &6/tpbypass &eto bypass this. You have [time]'
@@ -4114,14 +4114,14 @@ command:
       prevented: '&cTeleportation has been prevented by another plugin'
   tpa:
     help:
-      info: '&eAsk the player if you can teleport to them'
+      info: '&eAsk a player if you can teleport to them'
       args: '[playerName] (playerName) (-c)'
     info:
       requestSent: '&eRequest sent to &6[playerDisplayName]'
       gotRequest: '&6[senderDisplayName] &erequests teleportation to you!'
       time: '&eYou have &6[time]&eto accept this request'
       canceled: '&eTeleportation request has been cancelled'
-      # This line cant contain anything else then default variables ([message][cancelButton]), you can switch them around to your liking tho
+      # This line can't contain anything other than default variables ([message][cancelButton]), you can switch them around to your liking though
       senderFeedbackMessageFormat: '[message][cancelButton]'
       alreadyRequesting: '&eYou are already requesting that &6[playerDisplayName]
         &eaccepts your teleportation request'
@@ -4144,21 +4144,21 @@ command:
       youAccepted: '&eTeleportation accepted'
   tpahere:
     help:
-      info: '&eAsks player to accept teleportation to your location'
+      info: '&eAsk a player to accept teleportation to your location'
       args: '[playerName] (playerName) (-c)'
     info:
       gotRequest: '&6[senderDisplayName] &erequests teleportation to them!'
       accept: '&6Click to accept teleportation request!'
   tpall:
     help:
-      info: '&eTeleports all online players to location'
+      info: '&eTeleport all online players to location'
       args: (playerName)
     info:
       feedback: '&eYou have been teleported ([world],[x],[y],[z]) to &3[playerDisplayName]
         &elocation.'
   tpallworld:
     help:
-      info: '&eTeleports ALL players from specific world'
+      info: '&eTeleport ALL players from specific world'
       args: '[worldName] (worldName;x;y;z(;yaw;pitch)) (-a)'
       explanation:
       - -a variable will teleport everyone who are in no longer existing world to
@@ -4174,7 +4174,7 @@ command:
       info: '&eBypass teleportation to unsafe location'
       args: (playername)
     info:
-      noSavedTp: '&cThere is no saved bad teleport locations'
+      noSavedTp: '&cThere are no saved bad teleport locations'
       feedback: '&eTeleported to unsafe location'
   tpdeny:
     help:
@@ -4197,15 +4197,15 @@ command:
       notAllowed: '&eCan''t teleport this player'
   tpo:
     help:
-      info: '&eTeleports to player''s location by force'
+      info: '&eTeleport to player''s location by force'
       args: '[playerName] (playerName)'
   tpohere:
     help:
-      info: '&eTeleports player to your location by force'
+      info: '&eTeleport a player to your location by force'
       args: '[playerName] (playerName)'
   tpopos:
     help:
-      info: '&eTeleports to location by force'
+      info: '&eTeleport to location by force'
       args: (-p:playerName) [x] [y] [z] (world) (pitch) (yaw) (-rng:[range])
     info:
       feedback: '&eYou have been teleported ([world],[x],[y],[z]).'
@@ -4219,7 +4219,7 @@ command:
       feedbackOther: '&e[playerDisplayName] have been teleported ([world],[x],[y],[z]).'
   tps:
     help:
-      info: '&eCheck servers tps status'
+      info: '&eCheck server''s tps status'
       args: (-spikes)
     info:
       tps: '&eTPS: '
@@ -4240,10 +4240,10 @@ command:
       args: (TreeType) (-p:[playerName])
     info:
       feedback: '&6[tree] &espawned.'
-      cantSpawn: '&cCant spawn (&e[tree]&c) on this block.'
+      cantSpawn: '&cCan''t spawn (&e[tree]&c) on this block.'
   unban:
     help:
-      info: '&eUnban player or ip'
+      info: '&eUnban a player or ip'
       args: '[playerName/ip] (-s)'
     info:
       unBaned: '!broadcast!&6[playerDisplayName] &eunbanned'
@@ -4251,7 +4251,7 @@ command:
       notBanned: '&6[playerDisplayName] &enot banned'
   unbreakable:
     help:
-      info: '&eMakes item unbreakable'
+      info: '&eMake item unbreakable'
       args: (playerName) (true/false)
     info:
       feedback: '&eYou made item [state] &efor &3[playerDisplayName]&e (&3[offon]&e).'
@@ -4274,7 +4274,7 @@ command:
       unjailedTarget: '&eYou have been released from jail!'
   unloadchunks:
     help:
-      info: '&eUnloads chunks from server memory'
+      info: '&eUnload chunks from server memory'
       args: (-f)
       explanation:
       - -f variable will force for all chunks to be unloaded in one go.
@@ -4318,7 +4318,7 @@ command:
       info: Administration tools
       args: (removeseats/testtarget)
     info:
-      removedSits: '&eRemoved &6[count] &eempty sits from all worlds.'
+      removedSits: '&eRemoved &6[count] &eempty seats from all worlds.'
   vanish:
     help:
       info: '&eVanish player'
@@ -4330,7 +4330,7 @@ command:
       targetUnvanish: '&6[playerDisplayName] &ebecame visible'
       list: '&e[place]. &6[playerDisplayName] &e(&6[offon]&e)'
       noVanished: '&eThere are no vanished players'
-      noMsg: '&cCant send messages while vanished. Update this in vanishedit'
+      noMsg: '&cCan''t send messages while vanished. Update this in vanishedit'
   vanishedit:
     help:
       info: '&eEdit vanish mode for player'
@@ -4387,11 +4387,11 @@ command:
       - /voteedit Zrips add 10
     info:
       currentVotes: '&e[playerDisplayName] &ehas &6[votes] &evotes'
-      selfFeedback: '&eVotes was set to &3[votes] &efor &3[playerDisplayName]&e (&3[offon]&e).'
+      selfFeedback: '&eVote count was set to &3[votes] &efor &3[playerDisplayName]&e (&3[offon]&e).'
       targetFeedback: '&eYour vote count was set to &3[votes]&e by &3[senderDisplayName]&e.'
   votes:
     help:
-      info: '&eCheck players vote count'
+      info: '&eCheck a player''s vote count'
       args: (playerName)
     info:
       currentVoteSelf: '&eYou made &6[votes] &evotes'
@@ -4409,27 +4409,27 @@ command:
       ownLine: '&2[place]. &2[playerDisplayName]: &2[votes]'
   walkspeed:
     help:
-      info: '&eSet players walk speed from 0 to 10'
+      info: '&eSet a player''s walk speed from 0 to 10'
       args: '[playerName] [amount]'
     info:
       feedback: '&eYou have set &3[amount]&e walk speed for &3[playerDisplayName]&e
         (&3[offon]&e).'
-      targetfeedback: '&eYour walkspeed set to &3[amount]&e by &3[senderDisplayName]&e.'
+      targetfeedback: '&eYour walk speed set to &3[amount]&e by &3[senderDisplayName]&e.'
       max: '&eMax allowed walk speed for you is &6[max]&e.'
   warn:
     help:
-      info: '&eWarn player'
+      info: '&eWarn a player'
       args: '[playerName] (category) (reason) (-s)'
     info:
       noSelfWarning: '&cYou can''t warn yourself'
       cantBan: '&cCan''t warn this player'
-      messageToAll: '&6[playerDisplayName] &cgot warned by &6[senderDisplayName] &cfor:
+      messageToAll: '&6[playerDisplayName] &cwere warned by &6[senderDisplayName] &cfor:
         &6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &cgot warned by &6[senderDisplayName]
+      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &cwere warned by &6[senderDisplayName]
         &cfor: &6[reason]'
   warnings:
     help:
-      info: '&eCheck player warnings'
+      info: '&eCheck a player''s warnings'
       args: (playerName)
     info:
       totalPoints: '&7---- &e[playerDisplayName] &etotal violation points: &6[totalPoints]
@@ -4441,20 +4441,20 @@ command:
       - '&7Violation points: &e[points]'
   warp:
     help:
-      info: '&eTeleports to warp location'
+      info: '&eTeleport to warp location'
       args: (warpName) (playerName) (-s)
     info:
       list: '&eWarps: &6'
       click: '&eClick to teleport to &6[warp]'
       teleported: '&eTeleported to warp: &6[warp]'
-      noWarps: '&cThere is no saved warps'
+      noWarps: '&cThere are no saved warps'
       autoLoreName: '&7[warpName]'
       autoLoreFormat:
       - '&7[worldName]'
       - '&e[x]:[y]:[z]'
       - '[creator]'
       creator: '&eCreator: &6[creator]'
-      noWarpByName: '&cThere is no warps by this name'
+      noWarpByName: '&cThere are no warps by this name'
       noAccess: '&cNo access to this warp'
       guiTitle: '&6Warps'
       pageTitles:
@@ -4463,7 +4463,7 @@ command:
       - '&0Warps 3'
   weather:
     help:
-      info: '&eControls server weather'
+      info: '&eControl server weather'
       args: (sun/rain/storm) (lock/duration) (worldName/all)
       explanation:
       - 'Extra time formats can have: s/m/h/d/w/M/Y'
@@ -4484,7 +4484,7 @@ command:
       thundering: thundering
   whowas:
     help:
-      info: '&eShows players previous names'
+      info: '&eShow a player''s previous names'
       args: '[playerName]'
     info:
       list: ' &e[place]. &6[name] - &e[date]'
@@ -4499,7 +4499,7 @@ command:
       targetfeedback: '&3[senderDisplayName]&e opened workbench for you.'
   world:
     help:
-      info: '&eTeleports to different world'
+      info: '&eTeleport to different world'
       args: (normal/nether/end/1/2/3...) (playerName) (-s)
       explanation:
       - Requires cmi.command.world.[worldName] in addition to base permission node
