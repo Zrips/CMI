@@ -2461,7 +2461,7 @@ command:
       info: '&e重新加载插件的配置和定位文件'
       args: ''
     info:
-      feedback: '&6重载配置和语言文件成功! 耗时:&2[ms] ms &6参照原汉化者&3>&e>&d>&6秋风残叶 汉化文件修改而来'
+      feedback: '&6重载配置和语言文件成功! 耗时:&2[ms] ms \n&e语言文件版本:&dCMI9.0.0.3 \n&e原汉化者:&6秋风残叶 '
       failedConfig: '&4加载配置文件失败! 请检查拼写错误!'
       failedLocale: '&4加载语言文件失败! 请检查拼写错误!'
   removehome:
