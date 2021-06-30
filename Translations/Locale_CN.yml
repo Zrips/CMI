@@ -96,7 +96,7 @@ command:
       info: '&e设置玩家空气值'
       args: '[玩家名称] [空气值] (-s)'
     info:
-      feedback: '&e已为玩家 &3[playerName] 设置空气值:&3[amount]&e (&3[offon]&e).'
+      feedback: '&e已为玩家 &3[playerName] 设置空气值:&3[amount]&e (&2[offon]&e).'
       targetFeedback: '&3[senderDisplayName]&e将你的空气值已被设置为:&3[amount]'
       current: '&3[playerDisplayName]&e当前空气值为:&3[amount]'
   alert:
@@ -110,15 +110,15 @@ command:
       inform:
       - '&e!Alert!******** &6[name] &4登录服务器了! &e*******!Alert!'
       reason: '&e提醒原因: &6[reason]'
-      removed: '&6[playerDisplayName] &e已从提醒列表中移除'
-      added: '&6[playerDisplayName] &e在24小时内上线的话，提示消息将发送给每个管理员'
-      online: '&6[playerDisplayName] &e已经在线'
+      removed: '&3[playerDisplayName] &e已从提醒列表中移除'
+      added: '&3[playerDisplayName] &e在24小时内上线的话，提示消息将发送给每个管理员'
+      online: '&3[playerDisplayName] &e已经在线'
   alertlist:
     help:
       info: '&e列出所有记录的提醒'
       args: ''
     info:
-      list: ' &e[place]. &6[playerDisplayName] &e[time] &7原因: [reason]'
+      list: ' &e[place]. &3[playerDisplayName] &e[time] &7原因: [reason]'
   aliaseditor:
     help:
       info: '&e指令简写编辑'
@@ -136,19 +136,20 @@ command:
       customTab: ' &7自定义标签'
       newAliasInfo: '&e输入新的命令简写并按回车键'
       addInfo: '&e输入新的命令,输入 &6cancel &e取消操作'
-      addInformationHover: "&e支持全局变量\n
-        &edelay! 5 &6在命令中添加延迟5秒\n
-        &e$1 &6将通过新的命令获取所提供的变量，并将其放置在该位置\n
-        &e$1- &6从这一点上获取所有的变量并插入到原始命令中\n
-        &e? &6使其在使用任何最后一个变量时有效。对于帮助页面的使用\n
-        &efromConsole!将从控制台执行命令。"
+      addInformationHover: |-
+        &e支持全局变量
+         &edelay! 5 &6在命令中添加延迟5秒
+         &e$1 &6将通过新的命令获取所提供的变量，并将其放置在该位置
+         &e$1- &6从这一点上获取所有的变量并插入到原始命令中
+         &e? &6使其在使用任何最后一个变量时有效。对于帮助页面的使用
+         &efromConsole!将从控制台执行命令。
       editInfo: '&e点击粘贴旧文本,输入 &6cancel &e取消操作,输入 &6remove &e移除一行'
   anvil:
     help:
       info: '&e打开铁砧'
       args: (玩家名称)
     info:
-      feedback: '&e已为玩家:&3[playerDisplayName]&e 打开铁砧 (&3[offon]&e).'
+      feedback: '&e已为玩家:&3[playerDisplayName]&e 打开铁砧 (&2[offon]&e).'
       targetfeedback: '&3[senderDisplayName]&e 为你打开了铁砧.'
   anvilrepaircost:
     help:
@@ -166,7 +167,7 @@ command:
       current: '&e当前物品的基本维修费用: &6[cost]&e.'
       noitem: '&c手中没有拿任何物品.'
       cantDetermineCost: '&c无法确定该物品的基本维修费用.'
-      selffeedback: '&3[playerDisplayName]&e已将手中的物品基本维修费用设定为&3[amount]&e (&3[offon]&e).'
+      selffeedback: '&3[playerDisplayName]&e已将手中的物品基本维修费用设定为&3[amount]&e (&2[offon]&e).'
       targetfeedback: '&3[senderDisplayName]&e将你的物品维修费用设定为&3[amount]'
   armorstand:
     help:
@@ -268,7 +269,7 @@ command:
       args: (玩家名称)
     info:
       balance: '&e金币: &6[money]'
-      balanceOther: '&6[playerDisplayName] &e的金币:&6[money]'
+      balanceOther: '&3[playerDisplayName] &e的金币:&6[money]'
   baltop:
     help:
       info: '&e查询金币排行榜'
@@ -276,7 +277,7 @@ command:
     info:
       topLine: '&e&m-----&6 金币排行榜 &e&m-----'
       topLineHover: '&6服务器总量: &c[total]'
-      list: '&e[place]. &6[playerDisplayName]: &e[balance]'
+      list: '&e[place]. &3[playerDisplayName]: &e[balance]'
       ownLine: '&2[place]. &2[playerDisplayName]: &2[balance]'
       recalculating: '&2正在重新计算，请等待几秒钟后再试'
   ban:
@@ -290,8 +291,9 @@ command:
       message: '&c你已被服务器封禁!'
       reason: '&6原因: &e[reason]'
       defaultReason: '&e违反服务器规则'
-      messageToAll: '&6[playerDisplayName] &e被管理员:&6[senderDisplayName] &e封禁,原因:&6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &e被管理员:&6[senderDisplayName]&e封禁,原因: &6[reason]'
+      messageToAll: '&3[playerDisplayName] &e被管理员:&3[senderDisplayName] &e封禁,原因:&6[reason]'
+      banedSilent: '&7[&8Silent&7]&3[playerDisplayName] &e被管理员:&3[senderDisplayName]&e封禁,原因:
+        &6[reason]'
       noSelfBan: '&c你怎么能封禁自己？'
       cantBan: '&c你无法封禁这个玩家'
   banlist:
@@ -320,7 +322,8 @@ command:
       RealName: ' &e真实名称: &6[name]'
       TempLight: ' &e温度: &6[temp]&e, 发光方块: &6[blevel]&e, 填空: &6[slevel]&e,过度估价: &6[level]'
       Resistance: ' &e抵抗-采矿: &6[mining]&e, 爆炸: &6[explosion]'
-      noteBlock: ' &e音调: &6[tone] &eOctave: &6[octave] &6仪器: &e[instrument] &6音高: &7[pitch]'
+      noteBlock: ' &e音调: &6[tone] &eOctave: &6[octave] &6仪器: &e[instrument] &6音高:
+        &7[pitch]'
       BlockState: ' &7[state]: &f[value]'
   blocknbt:
     help:
@@ -343,9 +346,9 @@ command:
   bossbarmsg:
     help:
       info: '&e给玩家发送bossbar消息'
-      args: '[玩家名称/all] (-sec:[秒])(-t:[计时]) (-n:nameOfBar)
-        (-p:[maxValue/current]) (-c:[颜色]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
-        (-a:[ticks]) [message] (-cancel:nameOfBar)'
+      args: '[玩家名称/all] (-sec:[秒])(-t:[计时]) (-n:nameOfBar) (-p:[maxValue/current])
+        (-c:[颜色]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2") (-a:[ticks]) [message]
+        (-cancel:nameOfBar)'
       explanation:
       - PlaceHolderAPI支持进度和文本本身。
       - 时间需按照格式来写, 比如 1s 代表一秒， 1m 代表一分钟.这将决定在自动隐藏之前为玩家保留多长时间的条形图。
@@ -376,11 +379,11 @@ command:
       info: '&e使一个玩家燃烧'
       args: (玩家名称) (时间) (-s)
     info:
-      feedback: '&e你使玩家 &3[playerDisplayName]&e 着火 &6[time] &e(&3[offon]&e).'
+      feedback: '&e你使玩家 &3[playerDisplayName]&e 着火 &6[time] &e(&2[offon]&e).'
       targetfeedback: '&e你被玩家 &3[senderDisplayName]&e 点燃 &6[time]&e.'
   charges:
     help:
-      info: '&e显示左侧 spawner 收费(需实测,暂时机翻)'
+      info: '&e显示左侧 spawner 收费'
       args: '[玩家名称] [add/set/take/clear/reset] (-f)'
     info:
       charges: '&e* 收费: &6[current]&e/&6[max] [bypass]'
@@ -390,11 +393,11 @@ command:
       noGroup: '&e没有指定充电组'
       cantBreak: '&e你不能打破，直到你将有指定的充电组'
       minusCd: '&e 负数 &6[sec]&e在产卵器充电的冷却时间为秒'
-      add: '&e添加 &6[amount] &e的产卵器收费。 &6[playerDisplayName]'
-      set: '&e设置 &6[amount] &e的产卵器收费。 &6[playerDisplayName]'
-      clear: '&e清除了所有产卵器的费用 &6[playerDisplayName]'
-      reset: '&e重置产卵器充电组为 &6[playerDisplayName]'
-      take: '&e摄取了 &6[amount] &e产卵器收费从 &6[playerDisplayName]'
+      add: '&e添加 &6[amount] &e的产卵器收费。 &3[playerDisplayName]'
+      set: '&e设置 &6[amount] &e的产卵器收费。 &3[playerDisplayName]'
+      clear: '&e清除了所有产卵器的费用 &3[playerDisplayName]'
+      reset: '&e重置产卵器充电组为 &3[playerDisplayName]'
+      take: '&e摄取了 &6[amount] &e产卵器收费从 &3[playerDisplayName]'
   chat:
     help:
       info: '&e创建和加入聊天室'
@@ -406,16 +409,16 @@ command:
       alreadyIn: '&e你已经在 &7[chatRoomName] 聊天室'
       left: '&e左边 &7[chatRoomName] &e聊天室'
       leftInfo: '&e[playerDisplayName] &7左边聊天室'
-      invite: '&6[playerDisplayName] &e邀请您加入聊天室: &7[chatRoomName]'
-      sentInvite: '&e受邀参加 &6[playerDisplayName] &e加入聊天室: &7[chatRoomName]'
-      format: '&3|&7[chatRoomName]&3| &6[playerDisplayName]: &r[message]'
+      invite: '&3[playerDisplayName] &e邀请您加入聊天室: &7[chatRoomName]'
+      sentInvite: '&e受邀参加 &3[playerDisplayName] &e加入聊天室: &7[chatRoomName]'
+      format: '&3|&7[chatRoomName]&3| &3[playerDisplayName]: &r[message]'
       nobody: '&4聊天室里没有人'
       notOwner: '&4只有聊天室所有者可以这样做'
       wrongName: '&4错误的聊天室名称'
       takenName: '&4聊天室名称已被占用，请使用不同的名称'
       notIn: '&4用户不在聊天室'
       cantJoin: '&4聊天室是私人的，你不需要邀请。'
-      kicked: '&6[playerDisplayName] &e被踢出聊天室'
+      kicked: '&3[playerDisplayName] &e被踢出聊天室'
       cantleave: '&6不能离开上锁的聊天室'
       gotKicked: '&4你被踢出了 &7[chatRoomName] &4聊天室'
       list: '&e[chatRoomName]&e: &7[list]'
@@ -490,7 +493,7 @@ command:
       transfered: '&e转让了 &6[amount] &e到你的账户,新余额: &6[balance]'
       chequeName: '&e检查是否有 &6[amount]'
       chequeLore:
-      - '&r&f签发人 &7[senderDisplayName]'
+      - '&r&f签发人 &3[senderDisplayName]'
       - '&r&f右键点击存入余额'
       holdPaper: '&e手里拿着纸'
       cantUse: '&e不能用这张纸,它已经是一张支票了!'
@@ -499,13 +502,14 @@ command:
       info: '&e清除玩家的背包'
       args: (玩家名称) (item(-amount)) (-s) (+clearType)
       explanation:
-      - '可用的清除类型: quickbar, inventory, partinventory, weapons, armorslots,tools, armors, mainhand, offhand'
+      - '可用的清除类型: quickbar, inventory, partinventory, weapons, armorslots,tools, armors,
+        mainhand, offhand'
       - 应以+号开始
       - 可以使用多种类型
       - cmi clear +armors - 将删除盔甲类型的物品
       - cmi clear +armorslots - 将从盔甲槽中移除物品
     info:
-      clearFeedback: '&e你已经移除了&3[playerDisplayName]&e的背包&6[amount] 个物品&e (&3[offon]&e).'
+      clearFeedback: '&e你已经移除了&3[playerDisplayName]&e的背包&6[amount] 个物品&e (&2[offon]&e).'
       target: '&3[senderDisplayName]&你的背包被移除了&6[amount] &e个物品.'
       confirm: '&7点击确认清理背包. &c所有物品将被移除!'
   clearchat:
@@ -516,13 +520,13 @@ command:
       - '权限:'
       - ' &6cmi.command.clearchat.bypass &e- 忽略聊天清理'
     info:
-      information: '&e聊天被清理了 &6[senderDisplayName]'
+      information: '&e聊天被清理了 &3[senderDisplayName]'
   clearender:
     help:
       info: '&e清理玩家的末影箱'
       args: '[玩家名称] (-s)'
     info:
-      feedback: '&e你已经清理了 &3[playerDisplayName]&e 的末影箱 (&3[offon]&e).'
+      feedback: '&e你已经清理了 &3[playerDisplayName]&e 的末影箱 (&2[offon]&e).'
       targetfeedback: '&e你的末影箱被 &3[senderDisplayName] &e清空了.'
   colorlimits:
     help:
@@ -582,7 +586,8 @@ command:
     info:
       wrongworld: '&c你定义的世界不存在!'
       feedback: '&e你已经设置了 &3[playerDisplayName] &e指南针箭头指向 &3[sourceDisplayName]&e所在位置.'
-      feedbackCustom: '&e你已经设置了 &3[playerDisplayName] &e指南针箭头指向 &3[x] [z] [world] &e位置.'
+      feedbackCustom: '&e你已经设置了 &3[playerDisplayName] &e指南针箭头指向 &3[x] [z] [world]
+        &e位置.'
       targetFeedback: '&e你的罗盘目标被设置为 &3[sourceDisplayName] &e地点由 &3[senderName]&e.'
       targetFeedbackCustom: '&e你的罗盘目标被设置为 &3[x] [z] [world] &e地点由 &3[sourceDisplayName]&e.'
       reset: '&e罗盘目标被重置了'
@@ -653,8 +658,8 @@ command:
     info:
       noChat: '&c你的动作被管理员限制，你现在不能聊天.'
       noCommand: '&c你现在不能使用任何命令. &e除了: &6/msg, /r,/tell'
-      cuffed: '&6[playerDisplayName] &e进入限制状态'
-      unCuffed: '&6[playerDisplayName] &e解除限制状态'
+      cuffed: '&3[playerDisplayName] &e进入限制状态'
+      unCuffed: '&3[playerDisplayName] &e解除限制状态'
       free: '&e你自由了，不再受任何限制'
       gotCuffed: '&e你现在受到了管理员的限制'
       cuffedInfo: '&e你被铐住了'
@@ -703,9 +708,9 @@ command:
       info: '&e捐献您手中的物品'
       args: '[玩家名称] (数量)'
     info:
-      donated: '&e捐赠 &6[type]&eX&6[amount] &e给 &6[playerDisplayName]'
-      got: '&e从&6[playerDisplayName]&e获得:&6[type]&eX&6[amount]'
-      sentOffer: '&e捐赠给 &6[playerDisplayName]&e. 等待玩家接受'
+      donated: '&e捐赠 &6[type]&eX&6[amount] &e给 &3[playerDisplayName]'
+      got: '&e从&3[playerDisplayName]&e获得:&6[type]&eX&6[amount]'
+      sentOffer: '&e捐赠给 &3[playerDisplayName]&e. 等待玩家接受'
       gotOffer: '&e从&6[sourceDisplayName]&e获得 &6[type]&eX&6[amount] &e点击接受.'
       doesnthave: '&e玩家不再拥有此物品'
       'no': '&e没有待定的捐款'
@@ -751,16 +756,11 @@ command:
       noText: '&c无法找到此名称的自定义文本'
       editInfo: '&e点击粘贴旧文本. 输入 &6cancel &e取消操作. 输入 &6remove &e移除一行'
       addInfo: '&e输入新的一行文字. 输入 &6cancel &e取消操作'
-      addInformationHover: "&e支持变量 \n\
-        &e要包括可点击的信息: \n&e<T>&r文本&e</T><H>&r悬停文本&e</H><C>&r命令&e</C><SC>&r建议的文本&e</SC> \n
-        &6<T> &e和 &6</T> &e必须的，其他是可选的 \n
-        &e使用 u005Cn 切换下一行 \n
-        &e要有一个以上的JSON消息，请使用 <Next> \n\
-        &6<SC> &e点击时提示文本 \n
-        &6<SI> &e点击移位时提示文本,它不会在聊天中写下当前文本 \n
-        &6<CC> &e执行一次控制台命令 \n
-        &6<CCI> &e每当玩家点击文本时执行控制台命令 \n
-        &6<URL> &e允许添加网址，将播放器重定向到网页上。"
+      addInformationHover: "&e支持变量 \n&e要包括可点击的信息: \n&e<T>&r文本&e</T><H>&r悬停文本&e</H><C>&r命\
+        令&e</C><SC>&r建议的文本&e</SC> \n &6<T> &e和 &6</T> &e必须的，其他是可选的 \n &e使用 u005Cn\
+        \ 切换下一行 \n &e要有一个以上的JSON消息，请使用 <Next> \n&6<SC> &e点击时提示文本 \n &6<SI> &e点击移位时\
+        提示文本,它不会在聊天中写下当前文本 \n &6<CC> &e执行一次控制台命令 \n &6<CCI> &e每当玩家点击文本时执行控制台命令 \n\
+        \ &6<URL> &e允许添加网址，将播放器重定向到网页上。"
       newInfo: '&e输入新的自定义文本的名称. 输入 &6cancel &e取消操作'
       deleteInfo: '&e输入 &6confirm &e确认删除，或输入 &6cancel &e取消操作'
       deleted: '&e自定义文本 (&6[ctext]&e) 被删除'
@@ -829,8 +829,9 @@ command:
       - /cmi effect zrips nightvision -10 - 将给玩家 Zrips 当前的夜视效果减去10秒
       - /cmi effect all health_boost 60 1 - 将给所有 在线玩家 60 秒 health_boost效果
     info:
-      feedback: '&e药水效果 &6[effect] &e已添加至:&3[playerDisplayName]&e 持续:&6[sec]秒&e 药水等级:&6[power] &e(&3[offon]&e).'
-      cleared: '&e玩家 &3[playerDisplayName]&e的药水效果已清除 (&3[offon]&e).'
+      feedback: '&e药水效果 &6[effect] &e已添加至:&3[playerDisplayName]&e 持续:&6[sec]秒&e 药水等级:&6[power]
+        &e(&2[offon]&e).'
+      cleared: '&e玩家 &3[playerDisplayName]&e的药水效果已清除 (&2[offon]&e).'
   enchant:
     help:
       info: '&e附魔物品'
@@ -839,9 +840,9 @@ command:
       explanation:
       - -o 将会从手边的物品中获取
     info:
-      feedback: '&e你给物品附魔了 &3[enchant]:[level]&e 被执行玩家 &3[playerDisplayName]&e (&3[offon]&e).'
-      removed: '&e你从物品上移除了 &3[enchant] &e附魔，被执行玩家 &3[playerDisplayName]&e (&3[offon]&e).'
-      cleared: '&e清除了物品上所有的附魔，被执行玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你给物品附魔了 &3[enchant]:[level]&e 被执行玩家 &3[playerDisplayName]&e (&2[offon]&e).'
+      removed: '&e你从物品上移除了 &3[enchant] &e附魔，被执行玩家 &3[playerDisplayName]&e (&2[offon]&e).'
+      cleared: '&e清除了物品上所有的附魔，被执行玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       noitem: '&c玩家手上必须拿着物品.'
       invalidEnchant: '&c你不能附魔上面有非法附魔的物品'
       clearedInvalid: '&e已删除 &6[amount] &e饰品中无效的魔法'
@@ -860,7 +861,7 @@ command:
       - cmi.enderedit - 允许编辑已打开的末影箱
     info:
       title: '&8[playerDisplayName] 的末影箱'
-      feedback: '&e你正在编辑 &3[playerDisplayName] &e的末影箱 (&3[offon]&e).'
+      feedback: '&e你正在编辑 &3[playerDisplayName] &e的末影箱 (&2[offon]&e).'
   endgateway:
     help:
       info: '&e切换末端网关束'
@@ -878,7 +879,7 @@ command:
       health: '&e血量: &6[current]&e/&6[max]'
       lastDamage: '&e上一击伤害: &6[cause]'
       tamed: '&e已驯化: &6[state]'
-      owner: '&e主人: &6[playerDisplayName]'
+      owner: '&e主人: &3[playerDisplayName]'
       grows: '&e成长于: &6[time]'
       horse: '&e马: 跳跃 &6[jump]&e块，速度 &6[speed]&e块/秒'
       villager: '&e职业: &7[profession] &eLvl: &7[lvl] &e类型: &7[type]'
@@ -901,27 +902,27 @@ command:
       - /exp Zrips add 10
     info:
       current: '&e[playerDisplayName] &e是在 &6[lvl]&e级别与 &6[currentExp]&e支出或与 &6[exp]&e总支出.'
-      selfFeedback: '&e经验被设置为 &3[exp] &e被执行玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      selfFeedback: '&e经验被设置为 &3[exp] &e被执行玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       targetFeedback: '&e你的经验值已被设置为 &3[exp]&e 执行玩家 &3[senderDisplayName]&e.'
   ext:
     help:
       info: '&e扑灭玩家身上的火焰'
       args: (玩家名称) (-s)
     info:
-      feedback: '&e你已经熄灭了 &3[playerDisplayName]&e身上的火 (&3[offon]&e).'
+      feedback: '&e你已经熄灭了 &3[playerDisplayName]&e身上的火 (&2[offon]&e).'
       targetfeedback: '&e你被玩家 &3[senderDisplayName]&e熄灭了身上的火.'
   falldistance:
     help:
       info: '&e设置玩家的坠落距离'
       args: (玩家名称) (number) (-s)
     info:
-      feedback: '&e你已经将坠落距离设置为 &3[amount]&e 为 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你已经将坠落距离设置为 &3[amount]&e 为 &3[playerDisplayName]&e (&2[offon]&e).'
   feed:
     help:
       info: '&e恢复饥饿值'
       args: (玩家名称/all) (-s)
     info:
-      feedback: '&e你喂饱了玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你喂饱了玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       feedbackMulti: '&e你喂饱了 &3[count] &e玩家.'
       targetfeedback: '&e你被玩家 &3[senderDisplayName]&e喂饱了.'
   findbiome:
@@ -961,7 +962,8 @@ command:
       autospeedChange: '&e自动速度设置为 [state]'
       messagesChange: '&e信息输出设置为 [state]'
       NoInfo: '&e无信息，请先开始扫描'
-      InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed] &6已找到: &e[found]'
+      InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]
+        &6已找到: &e[found]'
       scanList: '&2[number]. &7X:&f[x] &7Z:&f[z]'
       finished: '&e扫描完成后, 请使用 &6/cmi fixchunk fix &e以修复发现的问题. &c区块会重新生成!'
       fixed: '&2[number] &e个区块已修复'
@@ -1003,14 +1005,14 @@ command:
       info: '&e设置玩家的飞行开/关'
       args: '[玩家名称] (true/false) (-s)'
     info:
-      feedback: '&e已设置飞行模式 &3[boolean]&e 操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e已设置飞行模式 &3[boolean]&e 操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       targetFeedback: '&e你的飞行模式已设置为 &3[boolean]&e 操作玩家 &3[senderDisplayName]&e.'
   flyc:
     help:
       info: '&e切换飞行充能开/关'
       args: (玩家名称) (true/false) (-s)
     info:
-      feedback: '&e您已将飞行充能模式设置为 &3[boolean]&e 操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e您已将飞行充能模式设置为 &3[boolean]&e 操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       targetFeedback: '&e你的飞行充能模式设置为 &3[boolean]&e 操作玩家 &3[senderDisplayName]&e.'
       targetFeedbackSelf: '&e你的飞行充能模式设置为 &3[boolean]'
       noCharge: '&e飞行能量已耗尽'
@@ -1019,7 +1021,7 @@ command:
       info: '&e设置玩家的飞行速度从0到10'
       args: '[playerName] [amount] (-s)'
     info:
-      feedback: '&e你已经设置了 &3[amount]&e 被操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你已经设置了 &3[amount]&e 被操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       targetfeedback: '&e你的飞行速度被设置为 &3[amount]&e 操作玩家 &3[senderDisplayName]&e.'
       max: '&e你的最大允许飞行速度是 &6[max]&e.'
   gamerule:
@@ -1087,7 +1089,8 @@ command:
       - '例子: /glow Zrips red'
       - '权限: cmi.command.glow.[color] - 允许设置特定的发光颜色'
     info:
-      feedback: '&e你设置了 [color]颜色的发光 &e状态为 &3[boolean]&e 操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你设置了 [color]颜色的发光 &e状态为 &3[boolean]&e 操作玩家 &3[playerDisplayName]&e
+        (&2[offon]&e).'
       targetfeedback: '&e你的 [color]颜色的发光 &e已被设置为 &3[boolean]&e 操作玩家 &3[senderDisplayName]&e.'
       title: 选择发光的颜色
       incorrect: '&4颜色名称不正确'
@@ -1098,14 +1101,14 @@ command:
       info: '&e设置玩家的游戏模式'
       args: (玩家名称) [gamemode]
     info:
-      feedback: '&e你将游戏模式设置为 &3[gameMode]&e (&3[offon]&e)'
+      feedback: '&3[playerDisplayName]&e的游戏模式被设置为 &3[gameMode]&e (&2[offon]&e)'
       targetfeedback: '&3[senderDisplayName]&e将你的游戏模式设置为 &3[gameMode]'
   god:
     help:
       info: '&e设置玩家的上帝模式'
       args: '[玩家名称] (true/false) (-s)'
     info:
-      feedback: '&e你将上帝模式设置为 &3[boolean]&e (&3[offon]&e)'
+      feedback: '&e你将上帝模式设置为 &3[boolean]&e (&2[offon]&e)'
       targetfeedback: '&3[senderDisplayName]&e将你的上帝模式设置为 &3[boolean]'
   groundclean:
     help:
@@ -1134,7 +1137,7 @@ command:
       info: '&e检查玩家是否有特定权限'
       args: (玩家名称) [permissionNode]
     info:
-      title: '&6[playerDisplayName] &e-> &6[permission]'
+      title: '&3[playerDisplayName] &e-> &6[permission]'
       none: '&e没有为玩家设置权限,他也不是OP,结果为 &6[state]'
       softSet: '&e由plugin.yml设置为 &6[state]'
       hardSet: '&e硬设定为 &6[state] &e通过一些插件'
@@ -1163,7 +1166,7 @@ command:
       info: '&e治愈玩家'
       args: '[玩家名称/all] (healamount/healpercent) (-nofeed) (-ignoreffects) (-dontextinguish)'
     info:
-      feedback: '&e你已经治愈了 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你已经治愈了 &3[playerDisplayName]&e (&2[offon]&e).'
       feedbackMulti: '&e你已经治愈了 &3[count] &e玩家.'
       targetfeedback: '&e你被 &3[senderDisplayName]&e治愈了.'
   helpop:
@@ -1173,7 +1176,7 @@ command:
       explanation:
       - 需要 cmi.command.helpop.inform 权限才能看到求助信息
     info:
-      message: '&c[Help]&4[&7[senderDisplayName]&4]&r&c [message]'
+      message: '&c[Help]&4[&3[senderDisplayName]&4]&r&c [message]'
       feedback: '&c[Help]&7您的问题已提交给在线管理人员'
       offline: '&c[Help]&7目前没有管理人员在线，请稍后再试。'
   hideflags:
@@ -1181,8 +1184,8 @@ command:
       info: '&e隐藏物品NBT标签'
       args: (玩家名称) [flagName/clear] (flagName)
     info:
-      feedback: '&e你给物品添加了新的NBT标签，操作者 &3[playerDisplayName]&e (&3[offon]&e).'
-      cleared: '&e你清除了物品上所有的NBT标签，操作者 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你给物品添加了新的NBT标签，操作者 &3[playerDisplayName]&e (&2[offon]&e).'
+      cleared: '&e你清除了物品上所有的NBT标签，操作者 &3[playerDisplayName]&e (&2[offon]&e).'
       noitem: '&c必须把物品拿在手上.'
       inccorectId: '&e无效的NBT标签名称.'
   hologram:
@@ -1240,9 +1243,8 @@ command:
       shift:
       - '&e改变0.01或按住shift改变0.1'
       listFormat: '&6[name]&7: &r[extra]'
-      addInfo: '&e输入新的一行文字. 输入 &6cancel &e取消操作. 额外变量:
-        &6ICON:&7[Value] &6SICON:&7[Value]&e where &7Value&e- &7[MaterialName-amount]%enchanted%&e,
-        &7%itemInHand%&e, &7Head:[headOwner]'
+      addInfo: '&e输入新的一行文字. 输入 &6cancel &e取消操作. 额外变量: &6ICON:&7[Value] &6SICON:&7[Value]&e
+        where &7Value&e- &7[MaterialName-amount]%enchanted%&e, &7%itemInHand%&e, &7Head:[headOwner]'
   hologrampages:
     help:
       info: '&e更改全息图页面'
@@ -1267,13 +1269,14 @@ command:
       info: '&e查询家的列表.'
       args: (玩家名称/near:[range])
     info:
-      nearList: '&7[number]. &e[playerDisplayName] &6[homeName] &7[distance] blocks away &e[direction]'
+      nearList: '&7[number]. &e[playerDisplayName] &6[homeName] &7[distance] blocks
+        away &e[direction]'
   hunger:
     help:
       info: '&e设置玩家饥饿值'
       args: '[玩家名称] [饥饿值] (-s)'
     info:
-      feedback: '&e你将饥饿值设置为 &3[hunger]&e 被操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你将饥饿值设置为 &3[hunger]&e 被操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       targetfeedback: '&e你的饥饿值已被设置为 &3[hunger]&e 操作玩家 &3[senderDisplayName]&e.'
   ic:
     help:
@@ -1310,12 +1313,8 @@ command:
       entityExist: '&c实体已被 &e[name] &c使用'
       cantUsePlayer: '&c你不能把玩家作为命令实体编辑'
       addInfo: '&e输入新的命令,输入 &6cancel &e取消操作'
-      addInformationHover: "&e支持变量 \n
-        &e给命令添加延迟: \n
-        &edelay! 5 \n
-        &e额外的变量可用于按其位置插入变量 \n
-        &e$1 将通过新的命令获取所提供的变量，并将其放置在该位置。 \n
-        &e$1- 从这一点上获取所有的变量并插入到原始命令中。"
+      addInformationHover: "&e支持变量 \n &e给命令添加延迟: \n &edelay! 5 \n &e额外的变量可用于按其位置插入\
+        变量 \n &e$1 将通过新的命令获取所提供的变量，并将其放置在该位置。 \n &e$1- 从这一点上获取所有的变量并插入到原始命令中。"
       editInfo: '&e点击粘贴旧文本. 输入 &6cancel &e取消操作. 输入 &6remove &e移除一行'
   ifoffline:
     help:
@@ -1333,10 +1332,10 @@ command:
       - cmi.command.ignore.bypass - 绕过无视列表
     info:
       self: '&c别傻了，你不能无视自己'
-      added: '&e你现在无视 &6[playerDisplayName]'
+      added: '&e你现在无视 &3[playerDisplayName]'
       addedAll: '&e你现在无视所有人'
       all: '&e每个人'
-      removed: '&e你不再无视 &6[playerDisplayName]'
+      removed: '&e你不再无视 &3[playerDisplayName]'
       removedAll: '&e你不再无视所有人'
       list: '&e[place]. [playerDisplayName]  '
       ignoringYou: '&c[playerDisplayName] &e无视你的存在'
@@ -1486,7 +1485,7 @@ command:
       - cmi.invedit - 允许编辑背包
       - cmi.command.inv.location - 显示玩家位置
     info:
-      feedback: '&e你正在编辑 &3[playerDisplayName] &e的背包 (&3[offon]&e).'
+      feedback: '&e你正在编辑 &3[playerDisplayName] &e的背包 (&2[offon]&e).'
   invcheck:
     help:
       info: '&e在预览模式下打开保存的背包'
@@ -1521,8 +1520,10 @@ command:
       - cmi.command.banip.bypass - 绕过封禁
     info:
       message: '&c你被封禁IP了!'
-      messageToAll: '&6[playerDisplayName] &e被管理员 &6[senderDisplayName] &e封禁了IP，原因: &6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &e被管理员 &6[senderDisplayName] &e静默封禁了IP，原因: &6[reason]'
+      messageToAll: '&3[playerDisplayName] &e被管理员 &3[senderDisplayName] &e封禁了IP，原因:
+        &6[reason]'
+      banedSilent: '&7[&8Silent&7]&3[playerDisplayName] &e被管理员 &3[senderDisplayName]
+        &e静默封禁了IP，原因: &6[reason]'
       replacer: '*'
   ipbanlist:
     help:
@@ -1587,10 +1588,10 @@ command:
       info: '&e更改物品 lore'
       args: (-p:[玩家名称]) [linenumber/*] [remove=移除/insert=插入/ 新的lore]
     info:
-      feedback: '&你将一行lore改为了 &r&5[loreLine]&e 操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&你将一行lore改为了 &r&5[loreLine]&e 操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       noitem: '&c必须把物品拿在手上.'
-      removed: '&e物品的lore行 &6[line] &e被移除，被操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
-      inserted: '&e物品的lore行 &6[line] &e被插入，被操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      removed: '&e物品的lore行 &6[line] &e被移除，被操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
+      inserted: '&e物品的lore行 &6[line] &e被插入，被操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       maxLines: '&e物品上只有 &6[lines] &e行 lore.'
       blocked: '&e这个物品不可编辑lore.'
   itemname:
@@ -1598,9 +1599,9 @@ command:
       info: '&e修改物品名称'
       args: (-p:[玩家名称]) [remove=移除/新的物品名称]
     info:
-      feedback: '&e您已将物品重命名为 [itemname]&e 操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e您已将物品重命名为 [itemname]&e 操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       noitem: '&c必须把物品拿在手上.'
-      removed: '&e物品名称已被删除，操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      removed: '&e物品名称已被删除，操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       blocked: '&e这个物品不可改名'
   itemnbt:
     help:
@@ -1617,8 +1618,8 @@ command:
       info: '&e将玩家关进监狱一段时间'
       args: '[玩家名称] (时间) (监狱名称) (cellId=牢房) (-s) (r:原因)'
     info:
-      jailed: '&e你将玩家 &6[playerDisplayName] &e关进了监狱，持续 [time]'
-      jailedPlayer: '&6[playerDisplayName] &e被关进了监狱，持续 [time]'
+      jailed: '&e你将玩家 &3[playerDisplayName] &e关进了监狱，持续 [time]'
+      jailedPlayer: '&3[playerDisplayName] &e被关进了监狱，持续 [time]'
       reason: ' &eFor: &c[reason]'
       leftTime: '!title!&7服刑时间:!subtitle![time]'
       jailedTarget: '&e你被关进监狱了! [time]'
@@ -1674,7 +1675,7 @@ command:
     info:
       defaultMessage: '&e被踢出服务器'
       cantKick: '&e你不能踢这名玩家'
-      messageToAll: '&6[playerDisplayName] &e被踢出服务器.'
+      messageToAll: '&3[playerDisplayName] &e被踢出服务器.'
       kickReason: ' &e原因: &6[reason]'
       all: '&e踢了 &6[amount] &e服务器上的玩家'
   kill:
@@ -1728,7 +1729,7 @@ command:
       kitDoesntExist: '&e找不到礼包 ([kitName])'
       noKitAccess: '&c你没有权限领取这个礼包'
       noFoundKit: '&e没有可用的礼包，请先创建一个'
-      givenKit: '&e你将礼包：&6[kit] &e给予：&6[playerDisplayName]'
+      givenKit: '&e你将礼包：&6[kit] &e给予：&3[playerDisplayName]'
       title: '&8礼包'
       nameCanUse: '&6[kitName]'
       nameCantUse: '&7[kitName]'
@@ -1746,8 +1747,8 @@ command:
       args: (礼包名称) (玩家名称/all)
     info:
       notCd: '&e礼包未在冷却中'
-      reset: '&6[playerDisplayName]&e已将(&6[kit]&e) 的冷却时间重置 '
-      resetAll: '(&6[kit]&e) 的冷却时间被重置为 &6[count]'
+      reset: '&3[playerDisplayName]&e已将(&6[kit]&e) 的冷却时间重置 '
+      resetAll: (&6[kit]&e) 的冷却时间被重置为 &6[count]
       list: '&e[place]. &6[kit] &e[time]'
       listHover: '&e点击重置'
       noCd: '&e没有冷却中的礼包'
@@ -1767,14 +1768,14 @@ command:
       kitExists: '&e无此礼包!'
       deleteConfirm: '&e如果你真的想移除 (&6[kitname]&e) 礼包，请点我!'
       deleteConfirmFinal: '&c注意：该操作不可逆!'
-      kitRemoved: '(&6[kitname]&e) 移除成功'
-      kitNotRemoved: '(&6[kitname]&c) 不能被移除'
+      kitRemoved: (&6[kitname]&e) 移除成功
+      kitNotRemoved: (&6[kitname]&c) 不能被移除
       addNewInfo: '&e请输入礼包的名称并按回车. 输入 ''&6cancel&e'' 取消操作.'
       renameCommandInfo: '&e请输入新礼包&6命令&名称. 输入 ''&6cancel&e'' 取消操作.'
       renameConfigInfo: '&e请输入新的礼包&6config &e名称. 输入 ''&6cancel&e'' 取消操作.'
       groupInfo: '&e请输入新的权限组名称. 输入 ''&6none&e''移除权限组. 输入 ''&6cancel&e'' 取消操作.'
-      commandInfo: '&e请输入新的命令. 输入 ''&6cancel&e'' 取消操作. 可用的变量: &6{USERNAME} {DISPLAYNAME} {WORLDNAME}
-        {KITNAME} {RANDOMPLAYER}'
+      commandInfo: '&e请输入新的命令. 输入 ''&6cancel&e'' 取消操作. 可用的变量: &6{USERNAME} {DISPLAYNAME}
+        {WORLDNAME} {KITNAME} {RANDOMPLAYER}'
       conditionsInfo: '&e请输入新的权限节点. 输入 ''&6cancel&e'' 取消操作'
       descInfo: '&e请输入新的描述. 输入 ''&6cancel&e'' 取消操作'
       renamed: '&e已将礼包：&6[kitname] &e重命名为：&6[newkitname]&e.'
@@ -1847,7 +1848,7 @@ command:
       args: (礼包名称) (玩家名称)
     info:
       notLimited: '&e礼包没有使用限制'
-      reset: '&6[playerDisplayName]&e重置了(&6[kit]&e)的使用次数'
+      reset: '&3[playerDisplayName]&e重置了(&6[kit]&e)的使用次数'
       list: '&e[place]. &6[kit] &e[used]/[usages]'
       listHover: '&e点击重置'
       noCd: '&e没有使用量超过0的礼包'
@@ -1909,9 +1910,9 @@ command:
       hiddenCount: '&e&7([amount])'
       groupL: '&6[groupName]: &f[list]'
       player: '%cmi_user_afk_symbol%&f[playerDisplayName]'
-      # 尽可能多地添加你想要的组，默认情况下只有10个，要创建新的组，只需复制粘贴一行并在行名中添加增量，如group11或group12等等。
-      # 注意！组的名称应该是'group[number]'的格式，即在'group'一词后面加上数字。这是必须的，你不能有自定义的名字，因为它们不是必须的，但我们使用提供的数字来确定哪个组在哪个组之后。
-      # 玩家需要有适当的权限节点才能被放在组中 cmi.command.list.group.[groupnumber]，数字越大，优先级越高
+      # Add as many groups as you wish, by default there is only 10, to create new one, just copy paste one line and add increment into lines name, like group11 or group12 and so on.
+      # ATTENTION! group names should be in 'group[number]' format, where you have word 'group' followed by number. This is required and you cant have custom names as they are not required, but we are using number provided to determine which group goes after which
+      # Player need to have appropriate permission node to be placed in group cmi.command.list.group.[groupnumber], bigger number have bigger priority
       groups:
         group1: '&eGroup1: &f[list]'
         group2: '&eGroup2: &f[list]'
@@ -1930,9 +1931,9 @@ command:
       args: (玩家名称) [add/remove/list/clear] [ip]
     info:
       CantLogin: '&c你不能从这个ip地址登录'
-      add: '&e新的IP地址 (&6[ip]&e) 已添加至玩家 &6[playerDisplayName]'
-      remove: '&eIp (&6[ip]&e) 已从玩家 &6[playerDisplayName] &e的IP列表中移除'
-      clear: '&e所有的IP地址已从玩家 &6[playerDisplayName] &e的列表中移除'
+      add: '&e新的IP地址 (&6[ip]&e) 已添加至玩家 &3[playerDisplayName]'
+      remove: '&eIp (&6[ip]&e) 已从玩家 &3[playerDisplayName] &e的IP列表中移除'
+      clear: '&e所有的IP地址已从玩家 &3[playerDisplayName] &e的列表中移除'
       ipNotFound: '&cIp 未找到'
       empty: '&c列表为空'
       list: '&6[place]&e. &6[ip]'
@@ -1941,14 +1942,14 @@ command:
       info: '&e查看邮箱或者发送邮件'
       args: '[send/clear/read] [玩家名称] (message)'
     info:
-      sentMail: '&e邮件发送至 &6[playerDisplayName]'
-      gotMail: '!actionbar!&e你收到来自 &6[senderDisplayName] &e的邮件'
+      sentMail: '&e邮件发送至 &3[playerDisplayName]'
+      gotMail: '!actionbar!&e你收到来自 &3[senderDisplayName] &e的邮件'
       clearMail: '&e所有邮件都已清空!'
       removedMail: '&e已删除的邮件'
       noMailsById: '&e该玩家的这个ID没有邮件'
       noMails: '&e你没有邮件'
       mailHover: '&e[senderName] /n &e[time]'
-      mailList: ' &7[senderDisplayName]&e: [mail] '
+      mailList: ' &3[senderDisplayName]&e: [mail] '
       waitingMail: '&e你有 &6[amount] &e封新邮件，点击查看.'
   mailall:
     help:
@@ -1972,7 +1973,7 @@ command:
       info: '&e设置玩家的最大血量'
       args: set=设置/add=增加/take/clear [玩家名称] [数量] (-s)
     info:
-      feedback: '&e已你的将最大血量设置为 &3[maxHp]&e (&3[offon]&e).'
+      feedback: '&e已你的将最大血量设置为 &3[maxHp]&e (&2[offon]&e).'
       targetfeedback: '&3[senderDisplayName]&e将你的最大血量设置为 &3[maxHp]'
   maxplayers:
     help:
@@ -1995,7 +1996,7 @@ command:
       args: '[村民类型] (玩家名称)'
     info:
       incorrect: '&c不正确的村民类型.'
-      feedback: '&3[playerDisplayName]&e正在与 &6[type] &e交易 (&3[offon]&e).'
+      feedback: '&3[playerDisplayName]&e正在与 &6[type] &e交易 (&2[offon]&e).'
       targetfeedback: '&3[senderDisplayName]&e 为你打开与 &6[type] &e的交易窗口.'
   migratedatabase:
     help:
@@ -2060,15 +2061,15 @@ command:
       args: '[pay=支付/give=给予/take/set=设置] [玩家名称/all/alloffline] [数量][%rand/1-1000%][1%[min-max]][玩家名称]]
         (-s)'
     info:
-      newBalance: '&6[playerDisplayName] &e现有金币: &6[money]'
-      paid: '&e你将 &6[amount] &e金币发送给了 &6[playerDisplayName]'
-      gotMoney: '&e你收到了从&6[senderDisplayName]&e 转来的 &6[amount] &e金币，你现在有: &6[money]'
+      newBalance: '&3[playerDisplayName] &e现有金币: &6[money]'
+      paid: '&e你将 &6[amount] &e金币发送给了 &3[playerDisplayName]'
+      gotMoney: '&e你收到了从&3[senderDisplayName]&e 转来的 &6[amount] &e金币，你现在有: &6[money]'
       gotMoneyGive: '&e你收到了 &6[amount]&e. 现有金币: &6[money]'
       lostMoney: '&6[amount]&e 已从你的余额中删除. 金币还剩: &6[money]'
       noMoney: '&c你没有足够的金币'
       worldGroups: '&c你不能在不同的世界之间汇款'
       self: '&c你不能给自己寄钱!'
-      confirm: '&e点击确认 &6[money] &e金币发送给 &6[playerDisplayName] &a&l[✔]'
+      confirm: '&e点击确认 &6[money] &e金币发送给 &3[playerDisplayName] &a&l[✔]'
       notAccepting: '&e该用户不接受其他玩家的付款'
       giveAll: '&e发出了 &6[totalAmount] &e金币给 &6[playerCount] &e名玩家'
       takeAll: '&e从 &6[playerCount] &e玩家取走了 &6[totalAmount] '
@@ -2081,7 +2082,7 @@ command:
       - '&e权限:'
       - ' &6cmi.command.more.oversize &e- 获得超量的堆叠'
     info:
-      feedback: '&e将玩家&3[playerDisplayName]&e的最大堆叠设置为 &3[amount]&e (&3[offon]&e).'
+      feedback: '&e将玩家&3[playerDisplayName]&e的最大堆叠设置为 &3[amount]&e (&2[offon]&e).'
   msg:
     help:
       info: '&e给玩家发送私聊'
@@ -2137,7 +2138,7 @@ command:
       explanation:
       - 使用 _ 以增加空间和 __ 为占位符和类似物添加下划线
     info:
-      feedback: '&e已更新玩家名 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e已更新玩家名 &3[playerDisplayName]&e (&2[offon]&e).'
       targetfeedback: '&e你的玩家显示名已更新'
   near:
     help:
@@ -2145,8 +2146,8 @@ command:
       args: (distance)
     info:
       nope: '&e没有人在你身边'
-      list: '&e[place]. &6[playerDisplayName] &e- &7[distance]m'
-      aproxList: '&e[place]. &6[playerDisplayName] &e- &6[dir] &7~[distance]m'
+      list: '&e[place]. &3[playerDisplayName] &e- &7[distance]m'
+      aproxList: '&e[place]. &3[playerDisplayName] &e- &6[dir] &7~[distance]m'
   nick:
     help:
       info: '&e改变玩家昵称'
@@ -2203,7 +2204,7 @@ command:
       args: ''
     info:
       noPatrol: '&e没有可巡视的玩家'
-      Patroling: '&e当前巡视: &6[playerDisplayName]'
+      Patroling: '&e当前巡视: &3[playerDisplayName]'
       lastPatrol: '&e上一次巡视是在 &6[time]&e以前'
       notes: '&e有 &6[amount] &e条便签'
   pay:
@@ -2238,7 +2239,7 @@ command:
       info: '&e设置玩家的碰撞模式'
       args: (玩家名称) [true/false] (-s)
     info:
-      feedback: '&3[playerDisplayName]&e的碰撞模式设置为 &3[boolean]&e (&3[offon]&e).'
+      feedback: '&3[playerDisplayName]&e的碰撞模式设置为 &3[boolean]&e (&2[offon]&e).'
       targetfeedback: '&e你的碰撞模式设置为 &3[boolean]'
   playtime:
     help:
@@ -2256,7 +2257,7 @@ command:
       scanning: '&e当前正在扫描数据, 请稍后再试'
       loading: '&e数据未加载完成. 待加载完成后扫描会自动开始'
       list: '&e[number]. [playerDisplayName] &e- &6[time]'
-      place: '&6[playerDisplayName] &e的名次是第 &6[place] &e名'
+      place: '&3[playerDisplayName] &e的名次是第 &6[place] &e名'
       ownLine: '&2[number]. &2[playerDisplayName] &2- &2[time]'
   point:
     help:
@@ -2302,7 +2303,7 @@ command:
       info: '&e显示玩家的当前位置'
       args: (玩家名称)
     info:
-      feedback: '&e[playerDisplayName] &e(&3[offon]&e) ([world]&e,&6[x]&e:&6[y]&e:&6[z]&e)'
+      feedback: '&e[playerDisplayName] &e(&2[offon]&e) ([world]&e,&6[x]&e:&6[y]&e:&6[z]&e)'
       feedbackRegion: '&e区块 &6[chunkx]&e:&6[chunkz]&e 区域 &6[regionx]&e:&6[regionz]'
       feedbackDirection: '&e位置 &6[direction] &e(&6[degrees] &e角)'
       feedbackBiome: '&e生物群系 &6[biome]'
@@ -2348,10 +2349,10 @@ command:
     info:
       check: '&e个人时间: &6[24h] &eor &6[12h] &eor &6[ticks]ticks'
       frozen: ' &c(-)'
-      gotreseted: '&6[playerDisplayName] &e的个人时间已恢复为默认'
-      gotfrozen: '&6[playerDisplayName] &e的个人时间已停止'
-      gotunfrozen: '&6[playerDisplayName] &e的个人时间已继续'
-      setto: '&e时间已被设置为 &6[24h] &eor &6[12h] &eor &6[ticks]ticks &e操作玩家 &6[playerDisplayName]'
+      gotreseted: '&3[playerDisplayName] &e的个人时间已恢复为默认'
+      gotfrozen: '&3[playerDisplayName] &e的个人时间已停止'
+      gotunfrozen: '&3[playerDisplayName] &e的个人时间已继续'
+      setto: '&e时间已被设置为 &6[24h] &eor &6[12h] &eor &6[ticks]ticks &e操作玩家 &3[playerDisplayName]'
   purge:
     help:
       info: '&e按非活动天数清除世界文件夹中的玩家数据'
@@ -2364,8 +2365,8 @@ command:
       args: (玩家名称) [sun/rain/reset] (-s)
     info:
       check: '&e个人天气: &6[weather]'
-      gotreseted: '&6[playerDisplayName] &e的个人天气已恢复为默认'
-      setto: '&e个人天气已被设置为 &6[weather] &e操作玩家 &6[playerDisplayName]'
+      gotreseted: '&3[playerDisplayName] &e的个人天气已恢复为默认'
+      setto: '&e个人天气已被设置为 &6[weather] &e操作玩家 &3[playerDisplayName]'
       gotset: '&e你的个人天气已被设置为 &6[weather]'
       reset: '&e个人天气已重置'
   rankdown:
@@ -2404,7 +2405,7 @@ command:
       requiredItemsList: '&e[color][name]'
       requiredItemListHover: '&e[color][current]&e/&6[needed]'
       currentRank: ' &e您目前的排名: &6[rankName]'
-      elseCurrentRank: ' &6[playerDisplayName] &e的当前排名: &6[rankName]'
+      elseCurrentRank: ' &3[playerDisplayName] &e的当前排名: &6[rankName]'
       rankNameLine: ' &e------ &6[rankName] &e[rankupState] &e------'
       canRankup: ' &2可以升级!'
       cantRankup: ''
@@ -2431,7 +2432,7 @@ command:
       - -cost 将取走玩家的金钱经验或者物品来让玩家升级
       - player 将无视玩家的金钱经验或所需物品来让玩家升级
     info:
-      set: '&e已将玩家 &6[playerDisplayName] &e的排名设置为 &6[rankName]'
+      set: '&e已将玩家 &3[playerDisplayName] &e的排名设置为 &6[rankName]'
   rankup:
     help:
       info: '&e提升你的排名'
@@ -2460,16 +2461,16 @@ command:
       info: '&e重新加载插件的配置和定位文件'
       args: ''
     info:
-      feedback: '&6重新加载的配置和地域文件! 耗时 [ms]ms'
+      feedback: '&6重载配置和语言文件成功! 耗时:&2[ms] ms &6参照原汉化者&3>&e>&d>&6秋风残叶 汉化文件修改而来'
       failedConfig: '&4加载配置文件失败! 请检查拼写错误!'
-      failedLocale: '&4加载locale文件失败! 请检查拼写错误!'
+      failedLocale: '&4加载语言文件失败! 请检查拼写错误!'
   removehome:
     help:
       info: '&e移除家'
       args: (家名称) (玩家名称)
     info:
       remove: '&c点击删除'
-      removed: '(&6[home]&e) 已移除'
+      removed: (&6[home]&e) 已移除
       list: '&c[home]'
   removeuser:
     help:
@@ -2484,7 +2485,7 @@ command:
       args: (地标名称)
     info:
       remove: '&c点击移除'
-      removed: '(&6[warp]&e) 已移除'
+      removed: (&6[warp]&e) 已移除
       notYours: '&c这个地标不属于你!'
   repair:
     help:
@@ -2496,10 +2497,11 @@ command:
       - cmi.command.repair.all - 允许修理所有物品
       - cmi.command.repair.repairshare.bypass - 允许用户在不添加修复共享保护的情况下修复项目
     info:
-      feedback: '&e成功修理了 &3[amount]&e 件物品，操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e成功修理了 &3[amount]&e 件物品，操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       nothing: '&e没有什么可修复的'
       cant: '&e不能维修这个物品'
-      feedbackMoney: '&e你已经修复了 &3[amount]&e 的物品 &3[playerDisplayName]&e (&3[offon]&e). Cost: &7[cost]'
+      feedbackMoney: '&e你已经修复了 &3[amount]&e 的物品 &3[playerDisplayName]&e (&2[offon]&e).
+        Cost: &7[cost]'
       itemOwner: '&e最后修复的是: &6[owner]'
       cantUse: '!title!&c不能使用此物品!!subtitle!&e自行维修!'
   repaircost:
@@ -2535,7 +2537,8 @@ command:
       speedChange: '&e替换速度设置为 [amount]'
       autospeedChange: '&e自动调速设置为 [state]'
       messagesChange: '&e信息输出设置为 [state]'
-      infoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6替: &e[found]'
+      infoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6替:
+        &e[found]'
       finished: '&e替换已完成!!! 替换了: &6[amount] &e个方块! 耗时 &6[time]&e.'
   reply:
     help:
@@ -2566,7 +2569,7 @@ command:
       riding: '&e你正在骑 &6[entityName]'
       cantRide: '&c你不能骑上 (&6[entityName]&c)'
       someOneElse: '&c已经有人在骑这个实体了'
-      ridingYou: '&6[playerDisplayName] &e正在骑着你, 输入 &6/shakeitoff &e将其摇下'
+      ridingYou: '&3[playerDisplayName] &e正在骑着你, 输入 &6/shakeitoff &e将其摇下'
   rt:
     help:
       info: '&e随机传送'
@@ -2588,7 +2591,7 @@ command:
       info: '&e设置玩家的饱和度'
       args: (玩家名称) [数量]
     info:
-      feedback: '&e已将饱和度设置为 &3[amount]&e 操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e已将饱和度设置为 &3[amount]&e 操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       targetfeedback: '&e你的饱和度已被设置为 &3[amount]&e 操作玩家 &3[senderDisplayName]&e.'
   saveall:
     help:
@@ -2597,8 +2600,8 @@ command:
       explanation:
       - -online 参数可用于只保存在线玩家的背包
     info:
-      saving: '[simbol] &2已检查: &e[checked]&2 总人数：&e[total]&2 已保存: &e[saved]
-        &2已跳过: &e[skipped] [simbol]'
+      saving: '[simbol] &2已检查: &e[checked]&2 总人数：&e[total]&2 已保存: &e[saved] &2已跳过:
+        &e[skipped] [simbol]'
       saved: '&e保存背包已完成，已保存: &6[saved] &e已跳过: &6[skipped]'
   saveditems:
     help:
@@ -2663,7 +2666,8 @@ command:
       autospeedChange: '&e自动调速设置为 [state]'
       messagesChange: '&e信息输出设置为 [state]'
       NoInfo: '&e没有任何信息'
-      infoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6已找到: &e[found]'
+      infoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6已找到:
+        &e[found]'
       Teleport: '&e点击传送'
       scanList: '&2[number]. &e[place] &6[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
       scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
@@ -2758,7 +2762,7 @@ command:
       info: '&e查看玩家上一次下线时间'
       args: '[玩家名称/uuid]'
     info:
-      feedback: '&6[playerDisplayName] &e上一次 &6[offon] &e是在 &6[time]'
+      feedback: '&3[playerDisplayName] &e上一次 &6[offon] &e是在 &6[time]'
   select:
     help:
       info: '&e管理选择区域'
@@ -2805,7 +2809,7 @@ command:
       info: '&e设置第一次进服出生点'
       args: (玩家名称)
     info:
-      feedback: '&e第一次进服出生点设置在：(&6[world]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
+      feedback: '&6首次进服出生点设置在 &e(&2[world]&e,&2[x]&e,&2[y]&e,&2[z]&e)'
   sethome:
     help:
       info: '&e设置家'
@@ -2833,28 +2837,25 @@ command:
   setrt:
     help:
       info: '&e设置随机传送的边界'
-      args: (世界名称) (中心:[x]:[z]) (min:[范围]) (max:[范围]) (square=正方形/circle=圆)
-        (enabled=启用/disabled=禁用)
+      args: (世界名称) (中心:[x]:[z]) (min:[范围]) (max:[范围]) (square=正方形/circle=圆) (enabled=启用/disabled=禁用)
     info:
       list: '&6[place]. [world] [enabled] &7[centerX]:[centerZ] &e[maxDist]/[minDist]
         [type]'
   setspawn:
     help:
       info: '&e设置重生传送点'
-      args: (玩家名称) (true/false) (-g:[权限组]) (-rng:[范围]) (-w:世界,world_nether)
-        (loc:[世界;x;y;z;yaw;pitch])
+      args: (玩家名称) (true/false) (-g:[权限组]) (-rng:[范围]) (-w:世界,world_nether) (loc:[世界;x;y;z;yaw;pitch])
       explanation:
       - 关于命令使用的更多信息，见 https://www.zrips.net/cmi/commands/spawn/
     info:
-      feedback: '&6出生点设置在：([world],[x],[y],[z])!'
+      feedback: '&6设置重生点在 &e(&2[world]&e,&2[x]&e,&2[y]&e,&2[z]&e)'
       group: ' &e([group])'
       rng: ' &e(Rng: [rng])'
       respawn: '&7单击以将此重生点设置为可能的重生位置'
   setwarp:
     help:
       info: '&e设置地标位置'
-      args: '[地标名称] (reqPermission) (hand) (slot) (autoLore=自动识别) (-g:[权限组])
-        (世界;x;y;z;yaw;pitch)'
+      args: '[地标名称] (reqPermission) (hand) (slot) (autoLore=自动识别) (-g:[权限组]) (世界;x;y;z;yaw;pitch)'
       explanation:
       - '例子:'
       - /cmi setwarp spawn - 设置名叫 spawn 的地标
@@ -2864,7 +2865,7 @@ command:
       - /cmi setwarp spawn true hand 13 - 用手中的图标创建经络，格子 13，需要权限
       - /cmi setwarp spawn true hand 13 false - 与上一个相同，但不生成 lore
     info:
-      newSet: '(&6[warp]&e) 设置成功'
+      newSet: (&6[warp]&e) 设置成功
       noSet: '&c该地标已存在'
       noMore: '&c你已达到地标拥有上限. ([max])'
   setworth:
@@ -2973,13 +2974,12 @@ command:
   sound:
     help:
       info: '&e在目标位置上播放声音'
-      args: '[sound] (-p:[pitch]) (-v:[volume]) (玩家名称/-all) (world) (x) (y)
-        (z) (-s)'
+      args: '[sound] (-p:[pitch]) (-v:[volume]) (玩家名称/-all) (world) (x) (y) (z) (-s)'
     info:
-      playing: "&e播放音效 &6[sound] &e于坐标 [world] [x]:[y]:[z] \n&e音调: &6[pitch]\
-        \ &e音量: &6[volume]"
-      playingMultiple: "&e播放音效 &6[sound] &e朝向 &6[amount] &e个玩家 \n&e音调:\
-        \ &6[pitch] &e音量: &6[volume]"
+      playing: "&e播放音效 &6[sound] &e于坐标 [world] [x]:[y]:[z] \n&e音调: &6[pitch] &e音量\
+        : &6[volume]"
+      playingMultiple: "&e播放音效 &6[sound] &e朝向 &6[amount] &e个玩家 \n&e音调: &6[pitch] &e音\
+        量: &6[volume]"
   spawn:
     help:
       info: '&e返回出生点'
@@ -3017,13 +3017,13 @@ command:
       args: '[EntityType]'
       explanation:
       - ' &e- 第一个参数通常为怪物的名称'
-      - ' &e- 你可以指定一个怪物的状态: baby, adult, dumb, immortal, tamed,
-        n-[name], upwards, glow, skull-[name], helmet-[itemname], chest-[itemname],
-        legs-[itemname], boots-[itemname], mhand-[itemname], ohand-[itemname], effect-levitation/10/1-speed/10/2.
+      - ' &e- 你可以指定一个怪物的状态: baby, adult, dumb, immortal, tamed, n-[name], upwards,
+        glow, skull-[name], helmet-[itemname], chest-[itemname], legs-[itemname],
+        boots-[itemname], mhand-[itemname], ohand-[itemname], effect-levitation/10/1-speed/10/2.
         /n Example: horse:baby:tamed:n-Horsy, zombie:skull-Zrips:n-AngryZombie:mhand-Diamond_Sword'
       - ' &e- 一些实体有特殊的变量: '
-      - '    &6Sheep &e- white, brown, red, rainbow 以此类推... &6primed_tnt &e-
-        [ticks], incendiary'
+      - '    &6Sheep &e- white, brown, red, rainbow 以此类推... &6primed_tnt &e- [ticks],
+        incendiary'
       - '    &6马 &e- white, chestnut, creamy, darkbrown, gray, black'
       - '    &6豹猫 &e- red, siamese, wild, black &6experience_orb &e- [number]'
       - '    &6骷髅 &e- wither, &6Creeper &e- charged &6Wolf &e- angry'
@@ -3041,8 +3041,8 @@ command:
       - '     &6q:10 &e- 生成数量'
       - '     &6[playername] &e- 在该玩家附近生成'
       - '     &6loc:123/13.0/-15/World &e- 生成坐标，世界名可以不写'
-      - '例子: /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Chick_on_Sheep
-        q:10 sp:10 hp:50 s:2'
+      - '例子: /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Chick_on_Sheep q:10
+        sp:10 hp:50 s:2'
     info:
       wrongEntityName: '&e实体名称不正确'
       wrongPlayerName: '&e玩家名字不正确'
@@ -3055,7 +3055,7 @@ command:
       info: '&e在管理员聊天频道聊天'
       args: '[message/toggle/on/off]'
     info:
-      message: '&2[管理员频道]&4[&7[senderDisplayName]&4]&r&c [message]'
+      message: '&2[管理员频道]&4[&3[senderDisplayName]&4]&r&c [message]'
       toggledOn: '&e已开启一个永久的管理员聊天频道. 你现在可以在公告聊天中发表消息.'
       toggledOff: '&e关闭管理员聊天频道'
   stats:
@@ -3215,11 +3215,12 @@ command:
         mins: '&e[mins] &6分 '
         secs: '&e[secs] &6秒 '
       MemoryUsage: ' &e内存使用: &6[percent]% &e(&6[current]&e/&6[max] MB&e)'
-      MemoryUsageHover: "&f空闲: &7[free] \n&f可用: &7[allocated] \n&f最大: &7[max]\
-        \ \n&f总计: &7[total]"
+      MemoryUsageHover: "&f空闲: &7[free] \n&f可用: &7[allocated] \n&f最大: &7[max] \n&f总\
+        计: &7[total]"
       Java: ' &eJava 版本: &6[mainV].[majorV].[minorV]&e(&6[update]&e) Build: &6[build]'
       DiskUsage: ' &e磁盘占用: &6[percent]% &e(&6[current]&e/&6[max] GB&e)'
-      Worlds: '&e [number]. &6[world] &e[chunks] 个区块 &6[entities] 个实体 &e[tiles] tiles &6[players] 玩家'
+      Worlds: '&e [number]. &6[world] &e[chunks] 个区块 &6[entities] 个实体 &e[tiles] tiles
+        &6[players] 玩家'
   sudo:
     help:
       info: '&e强制玩家执行命令'
@@ -3227,14 +3228,14 @@ command:
       explanation:
       - cmi.command.sudo.bypass - 避免自己被强制执行指令
     info:
-      performed: '&e强制玩家执行指令 ''&6[command]&e'' 被操作玩家 &6[playerDisplayName]'
+      performed: '&e强制玩家执行指令 ''&6[command]&e'' 被操作玩家 &3[playerDisplayName]'
   suicide:
     help:
       info: '&e杀死你自己'
       args: '[玩家名称] (-s)'
     info:
       feedback: '&e永别了...残酷的世界...'
-      message: '&6[playerDisplayName] &e刚刚结束了他自己的生命'
+      message: '&3[playerDisplayName] &e刚刚结束了他自己的生命'
       totem: '&6持有不死图腾时不能使用'
   switchplayerdata:
     help:
@@ -3271,8 +3272,10 @@ command:
       - /cmi tempban zrips 5m 因为说脏话
     info:
       message: '&c暂时被禁!'
-      messageToAll: '&6[playerDisplayName] &e被 &6[senderDisplayName] &e暂时封禁:&6[time] &e原因: &6[reason]'
-      banedSilent: '&7[&8静默模式&7]&6[playerDisplayName] &e被 &6[senderDisplayName] &e暂时封禁:&6[time] &e原因: &6[reason]'
+      messageToAll: '&3[playerDisplayName] &e被 &3[senderDisplayName] &e暂时封禁:&6[time]
+        &e原因: &6[reason]'
+      banedSilent: '&7[&8静默模式&7]&3[playerDisplayName] &e被 &3[senderDisplayName] &e暂时封禁:&6[time]
+        &e原因: &6[reason]'
       time: '&e你将在 &6[time] &e后解封'
       badTime: '&c时间的定义是不正确的'
       badTimeRanges: '&c你封禁的时间不能超过 [time] &6([seconds])'
@@ -3284,8 +3287,9 @@ command:
       - cmi.command.banip.bypass - 绕过封禁
     info:
       message: '&cIP被临时禁止!'
-      messageToAll: '&6[playerDisplayName] &7被临时封禁 &7[time]&7封禁者 &6[senderDisplayName]&7 原因:&6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &7被临时静默封禁 &7[time]&7 原因:&6[reason]'
+      messageToAll: '&3[playerDisplayName] &7被临时封禁 &7[time]&7封禁者 &3[senderDisplayName]&7
+        原因:&6[reason]'
+      banedSilent: '&7[&8Silent&7]&3[playerDisplayName] &7被临时静默封禁 &7[time]&7 原因:&6[reason]'
   tfly:
     help:
       info: '&e设置玩家临时飞行模式，直到重新登录或时间结束为止'
@@ -3297,9 +3301,9 @@ command:
       - tfly Zrips 0 - 可以一直飞行，直到下线重登
       - tfly Zrips - 查询玩家的暂时飞行状态和限时
     info:
-      setTimedFly: '&e已设置 &6[playerDisplayName]&e 可暂时飞行 [time]'
-      addTimedFly: '&e已为玩家&6[playerDisplayName] &e添加暂时飞行时间&6 [addTime] ([time])'
-      setUntilRelogFly: '&e已设置 &6[playerDisplayName]&e 暂时飞行，直到下一次下线重登.'
+      setTimedFly: '&e已设置 &3[playerDisplayName]&e 可暂时飞行 [time]'
+      addTimedFly: '&e已为玩家&3[playerDisplayName] &e添加暂时飞行时间&6 [addTime] ([time])'
+      setUntilRelogFly: '&e已设置 &3[playerDisplayName]&e 暂时飞行，直到下一次下线重登.'
       targetTimedEnabled: '&e玩家 &3[senderDisplayName]&e 已为你设置了暂时飞行 [time].'
       targetTimedEnabledAdd: '&e你的暂时飞行时间增加了 [addTime] ([time]).'
       targetUntilRelogEnabled: '&e玩家 &3[senderDisplayName]&e 已为你设置了暂时飞行直到下一次下线重登.'
@@ -3318,8 +3322,8 @@ command:
       - tgod Zrips 0 - 给玩家打开上帝模式直至下一次下线重登
       - tgod Zrips - 查询玩家的暂时上帝模式状态和限时
     info:
-      setTimedGod: '&e已设置 &6[playerDisplayName]&e 开启上帝模式 [time]'
-      setUntilRelogGod: '&e已设置 &6[playerDisplayName]&e 暂时上帝模式直至下一次下线重登.'
+      setTimedGod: '&e已设置 &3[playerDisplayName]&e 开启上帝模式 [time]'
+      setUntilRelogGod: '&e已设置 &3[playerDisplayName]&e 暂时上帝模式直至下一次下线重登.'
       targetTimedEnabled: '&e玩家 &3[senderDisplayName]&e 已为你设置了暂时上帝模式 [time].'
       targetUntilRelogEnabled: '&e玩家 &3[senderDisplayName]&e 已为你设置了暂时上帝模式直到下一次下线重登'
       setFor: '&e暂时上帝模式 [time] 已启用'
@@ -3359,8 +3363,6 @@ command:
       gotunfrozen: '&6[world] &e的时间已被解冻'
       cantset: '&e不能设置为此时间'
       setto: '&6[world]&e的时间已设置为 &6[24h] &eor &6[12h] &eor &6[ticks]ticks'
-      am: '&eAM'
-      pm: '&ePM'
   titlemsg:
     help:
       info: '&e向玩家发送标题信息'
@@ -3402,7 +3404,7 @@ command:
       info: '&e传送至玩家'
       args: '[玩家名称] (玩家名称)'
     info:
-      feedback: '&e已传送至玩家 &3[sourceDisplayName] &e的位置 (&3[offon]&e).'
+      feedback: '&e已传送至玩家 &3[sourceDisplayName] &e的位置 (&2[offon]&e).'
       bad:
         msg: '&c将要传送至的地点不安全，原因. [reason]'
         extraMsg: '&e使用 &6/tpbypass &e来无视危险，你只有 [time]'
@@ -3418,14 +3420,14 @@ command:
       info: '&e请求传送至玩家身边'
       args: '[玩家名称] (玩家名称) (-c)'
     info:
-      requestSent: '&e传送请求已发送至 &6[playerDisplayName]'
-      gotRequest: '&6[senderDisplayName] &e请求传送至你身边!'
+      requestSent: '&e传送请求已发送至 &3[playerDisplayName]'
+      gotRequest: '&3[senderDisplayName] &e请求传送至你身边!'
       time: '&e你只有 &6[time] &e时间接受请求'
       canceled: '&e传送请求已被取消'
       # This line cant contain anything else then default variables ([message][cancelButton]), you can switch them around to your liking tho
       senderFeedbackMessageFormat: '[message][cancelButton]'
-      alreadyRequesting: '&e你已经给 &6[playerDisplayName] &e发送了传送请求，请等待对方接受'
-      banned: '&e你现在不能给玩家 &6[playerDisplayName] &e发送传送请求，冷却时间 &6[time]'
+      alreadyRequesting: '&e你已经给 &3[playerDisplayName] &e发送了传送请求，请等待对方接受'
+      banned: '&e你现在不能给玩家 &3[playerDisplayName] &e发送传送请求，冷却时间 &6[time]'
   tpaall:
     help:
       info: '&e请求所有玩家传送至你所在位置'
@@ -3439,15 +3441,15 @@ command:
     info:
       noRequest: '&e没有待处理的传送消息'
       NotOnline: '&e玩家不在线'
-      accepted: '&6[playerDisplayName] &e接受了你的传送请求'
+      accepted: '&3[playerDisplayName] &e接受了你的传送请求'
       youAccepted: '&e传送请求已接受'
   tpahere:
     help:
       info: '&e请求玩家传送到自己所站位置'
       args: '[玩家名称] (玩家名称) (-c)'
     info:
-      requestSent: '&e请求发送至 &6[playerDisplayName]'
-      gotRequest: '&6[senderDisplayName] &e请求传送给他们!'
+      requestSent: '&e请求发送至 &3[playerDisplayName]'
+      gotRequest: '&3[senderDisplayName] &e请求传送给他们!'
       accept: '&6点击接受传送请求!'
   tpall:
     help:
@@ -3487,8 +3489,9 @@ command:
       args: '[玩家名称] (玩家名称)'
     info:
       feedback:
-        offline: '&e你设置了 ([world],[x],[y],[z]) 作为出生点，被操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
-        online: '&e你已将 &6[playerDisplayName] &e传送至你所在位置'
+        offline: '&e你设置了 ([world],[x],[y],[z]) 作为出生点，被操作玩家 &3[playerDisplayName]&e
+          (&2[offon]&e).'
+        online: '&e你已将 &3[playerDisplayName] &e传送至你所在位置'
         player: '&e你被传送至玩家 &6[sourceDisplayName] &e所在位置'
       notAllowed: '&e不可以传送至该玩家'
   tpo:
@@ -3532,7 +3535,7 @@ command:
       args: (玩家名称) (on/off/status) (-s)
     info:
       feedback: '&e防止远距离传送: &6[state]'
-      feedbackOther: '&e防止远距离传送的 &6[playerDisplayName]&e: &6[state]'
+      feedbackOther: '&e防止远距离传送的 &3[playerDisplayName]&e: &6[state]'
   tree:
     help:
       info: '&e在你目视位置生成树'
@@ -3545,15 +3548,15 @@ command:
       info: '&e解除玩家或IP的封禁'
       args: '[玩家名称/ip] (-s)'
     info:
-      unBaned: '!broadcast!&6[playerDisplayName] &e已解封'
-      unBanedSilent: '&7[&8静默模式&7]&6[playerDisplayName] &e已解封'
-      notBanned: '&6[playerDisplayName] &e未被封禁'
+      unBaned: '!broadcast!&3[playerDisplayName] &e已解封'
+      unBanedSilent: '&7[&8静默模式&7]&3[playerDisplayName] &e已解封'
+      notBanned: '&3[playerDisplayName] &e未被封禁'
   unbreakable:
     help:
       info: '&e设置物品无法破坏'
       args: (玩家名称) (true/false)
     info:
-      feedback: '&e将物品设置为 [state] &e操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e将物品设置为 [state] &e操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       breakable: '&6可破坏'
       unbreakable: '&6无法破坏'
   uncondense:
@@ -3569,7 +3572,7 @@ command:
       args: '[玩家名称]'
     info:
       notInJail: '&c该玩家不在监狱'
-      unjailed: '&e你从监狱中释放了玩家 &6[playerDisplayName]'
+      unjailed: '&e你从监狱中释放了玩家 &3[playerDisplayName]'
       unjailedTarget: '&e你被从监狱中释放出来了!'
   unloadchunks:
     help:
@@ -3582,8 +3585,7 @@ command:
       startScanning: '&e已找到 &6[amount] &e个区块可卸载，正在开始...'
       InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]
         &6卸载区块: &e[found]'
-      Finished: '&e完成!!! 卸载了: &6[amount] &e个区块! 耗时 &6[minutes] &e分
-        &6[seconds] &e秒.'
+      Finished: '&e完成!!! 卸载了: &6[amount] &e个区块! 耗时 &6[minutes] &e分 &6[seconds] &e秒.'
   unmute:
     help:
       info: '&e将玩家解除禁言'
@@ -3605,9 +3607,9 @@ command:
       explanation:
       - 任何设定的元数据都可以用 %cmi_user_meta_[key]% 插件周围的占位符
     info:
-      added: '&e为玩家 &6[playerDisplayName] &e添加meta key是 &6[key] &e数值是 &6[value]'
-      cleared: '&e从玩家 &6[playerDisplayName] 处清除meta'
-      removed: '&e移除了 &6[key] &e操作玩家 &6[playerDisplayName]'
+      added: '&e为玩家 &3[playerDisplayName] &e添加meta key是 &6[key] &e数值是 &6[value]'
+      cleared: '&e从玩家 &3[playerDisplayName] 处清除meta'
+      removed: '&e移除了 &6[key] &e操作玩家 &3[playerDisplayName]'
       changed: '&e改变了 &6[key] &e元从 &6[oldValue] &e的新值 &6[newValue]'
       ls: '&6[key]&e: [value]'
   util:
@@ -3623,9 +3625,9 @@ command:
     info:
       vanished: '&e进入隐身状态'
       unvanish: '&e退出隐身状态'
-      targetVanished: '&6[playerDisplayName] &e是隐身状态'
-      targetUnvanish: '&6[playerDisplayName] &e不是隐身状态'
-      list: '&e[place]. &6[playerDisplayName] &e(&6[offon]&e)'
+      targetVanished: '&3[playerDisplayName] &e是隐身状态'
+      targetUnvanish: '&3[playerDisplayName] &e不是隐身状态'
+      list: '&e[place]. &3[playerDisplayName] &e(&6[offon]&e)'
       noVanished: '&e没有隐身的玩家'
       noMsg: '&c隐身时无法发送消息. 在vanishedit中更新这个'
   vanishedit:
@@ -3690,7 +3692,7 @@ command:
       - /voteedit Zrips add 10
     info:
       currentVotes: '&e[playerDisplayName] &e拥有 &6[votes] &e票'
-      selfFeedback: '&e票数已被编辑为 &3[votes] &e操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      selfFeedback: '&e票数已被编辑为 &3[votes] &e操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       targetFeedback: '&e你的票数已被编辑为 &3[votes]&e 操作玩家 &3[senderDisplayName]&e.'
   votes:
     help:
@@ -3707,14 +3709,14 @@ command:
       args: (玩家名称)
     info:
       topLine: '&e----- 票数排行榜 &e-----'
-      list: '&e[place]. &6[playerDisplayName]: &e[votes]'
+      list: '&e[place]. &3[playerDisplayName]: &e[votes]'
       ownLine: '&2[place]. &2[playerDisplayName]: &2[votes]'
   walkspeed:
     help:
       info: '&e设置玩家的行走速度从0到10'
       args: '[玩家名称] [amount]'
     info:
-      feedback: '&e已将行走速度设置为 &3[amount]&e 操作玩家 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e已将行走速度设置为 &3[amount]&e 操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       targetfeedback: '&e你的行走速度已被设置为 &3[amount]&e 操作玩家 &3[senderDisplayName]&e.'
       max: '&e行走速度最大只能设置为 &6[max]&e.'
   warn:
@@ -3724,15 +3726,15 @@ command:
     info:
       noSelfWarning: '&c你无法警告自己'
       cantBan: '&c不能警告这个玩家'
-      messageToAll: '&6[playerDisplayName] &c被管理员 &6[senderDisplayName] &c警告了，原因:&6[reason]'
-      banedSilent: '&7[&8Silent&7]&6[playerDisplayName] &c被管理员 &6[senderDisplayName] &c静默警告了，原因: &6[reason]'
+      messageToAll: '&3[playerDisplayName] &c被管理员 &3[senderDisplayName] &c警告了，原因:&6[reason]'
+      banedSilent: '&7[&8Silent&7]&3[playerDisplayName] &c被管理员 &3[senderDisplayName]
+        &c静默警告了，原因: &6[reason]'
   warnings:
     help:
       info: '&e检查球员的警告'
       args: (玩家名称)
     info:
-      totalPoints: '&7---- &e[playerDisplayName] &e违规总分: &6[totalPoints]
-        &7----'
+      totalPoints: '&7---- &e[playerDisplayName] &e违规总分: &6[totalPoints] &7----'
       noWarnings: '&e玩家没有任何警告'
       list: '&7[place]. &e[time] &6警告者 [warnedBy] &c原因: &7[warnedFor]'
       hover:
@@ -3800,7 +3802,7 @@ command:
       info: '&e打开工作台'
       args: (玩家名称)
     info:
-      feedback: '&e你为玩家 &3[playerDisplayName]&e打开了工作台 (&3[offon]&e).'
+      feedback: '&e你为玩家 &3[playerDisplayName]&e打开了工作台 (&2[offon]&e).'
       targetfeedback: '&3[senderDisplayName]&e 为你打开了工作台.'
   world:
     help:
