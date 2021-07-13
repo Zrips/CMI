@@ -797,12 +797,12 @@ command:
       args: (-p:playerName) (reason) (-s)
     info:
       # This only determines message in title message and not message shown in chat. For chat message check config.yml file
-      afkTitle: '&eYou are now AFK'
+      afkTitle: '&eВы теперь AFK'
       afkSubTitle:
-      - '&2Don''t eat to much cookies!'
-      - '&2Nice day for fishing'
-      - '&2Afk, again?'
-      - '&2Where are you?'
+      - '&2Не ешьте много печенья!'
+      - '&2Хороший день для рыбалки'
+      - '&2Afk, снова?'
+      - '&2Где ты?'
   afkcheck:
     help:
       info: '&eПроверка статуса игрока'
@@ -878,7 +878,7 @@ command:
       targetfeedback: '&eИгрок &3[senderDisplayName]&e открыл наковальню для вас.'
   anvilrepaircost:
     help:
-      info: '&eSet items repair cost'
+      info: '&eУстановить стоимость починки предметов'
       args: (playerName) [amount]
       explanation:
       - 'Например:'
@@ -889,10 +889,10 @@ command:
       - /repaircost Zrips clear
       - /repaircost Zrips add 10
     info:
-      current: '&eCurrent items base repair cost: &6[cost]&e.'
-      noitem: '&cNot holding any item in hand.'
-      cantDetermineCost: '&cCan''t determine base repair cost for this item.'
-      selffeedback: '&eBase repair cost was set to &3[amount] &efor &3[playerDisplayName]&e
+      current: '&eБазовая стоимость починки текущих предметов: &6[cost]&e.'
+      noitem: '&cВы не держите в руке какой-либо предмет.'
+      cantDetermineCost: '&cНевозможно определить базовую стоимость починки этого предмета..'
+      selffeedback: '&eБазовая стоимость починки была установлена на &3[amount] &eдля предмета в руке&3[playerDisplayName]&e
         item in hand (&3[offon]&e).'
       targetfeedback: '&eYour item repair cost was set to &3[amount]&e by &3[senderDisplayName]&e.'
   armorstand:
@@ -981,12 +981,12 @@ command:
       cooldown: '&7Предмет находится на перезарядке. Подождите [time]'
   autorecharge:
     help:
-      info: '&eToggle auto flight recharge'
+      info: '&eПереключение автоматической подзарядки в полете'
       args: (playerName) [exp/money/off] (-s)
     info:
-      disabled: '&eAuto recharge disabled'
-      moneyEnabled: '&eEnabled automatic flight charge recharging by using &6money'
-      expEnabled: '&eEnabled automatic flight charge recharging by using &2exp'
+      disabled: '&eАвтоматическая подзарядка отключена'
+      moneyEnabled: '&eВключена автоматическая подзарядка полёта с помощью &6денег'
+      expEnabled: '&eВключена автоматическая подзарядка полетё с помощью &2exp'
   back:
     help:
       info: '&eТелепортация к последнему сохраненному местоположению'
@@ -999,8 +999,8 @@ command:
       info: '&eПроверить баланс игрока'
       args: (playerName)
     info:
-      balance: '&eBalance: &6[money]'
-      balanceOther: '&6[playerDisplayName] &ebalance: &6[money]'
+      balance: '&eБаланс: &6[money]'
+      balanceOther: '&eБаланс &6[playerDisplayName]&e: &6[money]'
   baltop:
     help:
       info: '&eПосмотреть топ по балансу'
@@ -1035,7 +1035,7 @@ command:
       args: ''
   bbroadcast:
     help:
-      info: '&eSends special message to all players on all servers'
+      info: '&eОтправляет специальное сообщение всем игрокам на всех серверах'
       args: (!) [message] (-s:[serverName,serverName])
       explanation:
       - If message starts with ! then clean message will be shown
@@ -2063,7 +2063,7 @@ command:
       private: '&cЭто местоположение точки дома является приватным!'
       remove: '&cShift + Правый клик, чтобы удалить точку дома'
       notAccessible: '&cHome location world (&7[worldName]&c) doesn''t exist!'
-      guiTitle: '&8Точки дома игрока &0[playerDisplayName] &8homes [current]/[max]'
+      guiTitle: '&8Точки дома игрока &0[playerDisplayName] &8[current]/[max]'
   homes:
     help:
       info: '&eСписок точек домов.'
@@ -2265,10 +2265,10 @@ command:
       - '&7Cell: &e[id]'
       - '&7Left: &e[time]'
       - '&7Reason: &e[reason]'
-      newHomes: '&fHomes: &e[count] '
-      newMail: '&fMail: &e[count] '
-      newWarnings: '&fWarnings: &e[count] '
-      newAlert: 'Alert '
+      newHomes: '&fДома: &e[count] '
+      newMail: '&fПочта: &e[count] '
+      newWarnings: '&fПредупреждения: &e[count] '
+      newAlert: 'Тревога '
       newAlertHover:
       - '&7Left: &e[left]'
       - '&7For: &e[reason]'
@@ -3573,7 +3573,7 @@ command:
       args: (playerName)
     info:
       enchantWorth: '&eСтоимость зачарования: &7[price]'
-      enchantFailChance: '&4eШанс неудачи: &7[chance]%'
+      enchantFailChance: '&4Шанс неудачи: &7[chance]%'
       enchantFailed: '&cНе удалось. &7[enchant]&c уровень &7[level] &eс шансом &7[chance]%
         &cнеудачи'
       enchantLevelChance: '&cШанс понижения уровня: &7[chance]%'
@@ -3589,11 +3589,11 @@ command:
       cantScavenge: '&cНе удалось переработать'
       insertItem: '&2Положите предмет в слот выше'
       scavengeCost: '&8Стоимость переработки: [cost]'
-      moreTitle: 'Incorrect amount: [input]/[required]'
+      moreTitle: 'Неверное количество: [input]/[required]'
       moreLore:
       - '&bYou need more of this item.'
       - '&bRequires atleast &e[amount]'
-      title: '&2Мусорщик'
+      title: '&2Переработка зачарований'
   schedule:
     help:
       info: '&eРасписание запуска'
@@ -3651,7 +3651,7 @@ command:
       feedback: '&eИгрок &6[playerDisplayName] [offon] &eбыл в сети &6[time]&eназад!'
   select:
     help:
-      info: '&eManage selection area'
+      info: '&eУправление областью выбора'
       args: (pos1/pos2/shift/expand/contract/clear) (amount)
   sell:
     help:
@@ -3714,7 +3714,7 @@ command:
         старые или выберите другое имя точки дома.'
       slotTaken: '!actionbar!&cДомашний слот уже используется &7[homeName]&c, рассмотрите
         другой'
-      setIcon: '!actionbar:3!&7Set home icon as &6[material] &7material'
+      setIcon: '!actionbar:3!&7Установить значок дома как &6[material] &7материал'
   setmotd:
     help:
       info: Установить MOTD сервера
