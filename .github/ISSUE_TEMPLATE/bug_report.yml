@@ -1,8 +1,6 @@
 name: Bug Report
 description: Create a bug report to help us improve our CMI.
-title: ''
 labels: bug report
-assignees: ''
 body:
   - type: markdown
     attributes:
@@ -16,8 +14,8 @@ body:
       label: Description of Issue
       description: |
         Please provide a very concise description of your issue.
-      validations:
-        required: true
+    validations:
+      required: true
   - type: input
     id: server-version
     attributes:
@@ -55,17 +53,14 @@ body:
       description: Please provide us with any relevant plugins (with versions)
       placeholder: Vault 1.7.3
   - type: checkboxes
+    id: agreement-section
     attributes:
       label: Agreements
-      id: agreement-section
       description: Please agree to the following.
       options:
         - label: My server is supported by CMI.
-          id: agreement-section-supported
           required: true
         - label: My version of CMI at the time of this report is up to date.
-          id: agreement-section-latest
           required: true
         - label: I have searched the github and asked around before making this report.
-          id: agreement-section-searched
           required: true
