@@ -4,6 +4,7 @@ labels: bug report
 body:
   - type: markdown
     attributes:
+      preview_only: true
       value: |
         This page is intended to help us resolve issues with CMI as fast as possible. 
         Please take your time and fill out this form to the best of your abilities.
@@ -40,7 +41,7 @@ body:
       placeholder: Paste any errors in here.
       render: shell
   - type: textarea
-    id: console-errors
+    id: config-sections
     attributes:
       label: Relevant Config Sections
       description: Avoid pasting in whole configs & sensitive data.
