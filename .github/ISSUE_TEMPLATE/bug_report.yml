@@ -16,28 +16,20 @@ body:
         Please provide a very concise description of your issue.
     validations:
       required: true
-  - type: input
-    id: server-version
-    attributes:
-      label: Server Version
-      description: Please provide us with the output of `/version`
-      placeholder: e.g. Paper 1.17.1 build 100
-    validations:
-      required: true
   - type: textarea
     id: cmi-version
     attributes:
-      label: CMI Version
-      description: Please provide us with the output of `/cmi version`
+      label: Version Information
+      description: Please provide us with the full output of `/cmi version`.
       render: shell
     validations:
       required: true
   - type: textarea
     id: console-errors
     attributes:
-      label: Error
+      label: Errors
       description: If they are too big consider providing a pastebin link.
-      placeholder: Paste any errors in here.
+      placeholder: Paste any errors you have in here.
       render: shell
   - type: textarea
     id: config-sections
