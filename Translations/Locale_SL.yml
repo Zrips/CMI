@@ -844,7 +844,7 @@ command:
       - '&6command.alert.info.inform &e- če si želite ogledati gesla ob prijavi igralca'
     info:
       inform:
-      - '&e!Alert!******** &6[name] &4se je prijavil! &e*******!Alert!'
+      - '&e******** &6[name] &4se je prijavil! &e*******'
       reason: '&eRazlog opozorila: &6[reason]'
       removed: '&6[playerDisplayName] &eodstranjen iz opozorilne liste'
       added: '&eOpozorilo bo poslano vsem administratorjem, če &6[playerDisplayName] &ese igralec pridruži v naslednjih 24H'

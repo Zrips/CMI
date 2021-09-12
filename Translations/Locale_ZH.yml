@@ -834,7 +834,7 @@ command:
       - '&6command.alert.info.inform &e- 當玩家上線可看到提醒'
     info:
       inform:
-      - '&e!Alert!******** &6[name] &4上線了! &e*******!Alert!'
+      - '&e******** &6[name] &4上線了! &e*******'
       reason: '&e提示原因: &6[reason]'
       removed: '&6[playerDisplayName] &e已從提示列表中移除'
       added: '&e如果玩家 &6[playerDisplayName] &e在接下來24小時內上線的話，上線提示消息將被發送給每個管理員'

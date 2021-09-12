@@ -873,7 +873,7 @@ command:
       - '&6command.alert.info.inform &e- to see alerts on player login'
     info:
       inform:
-      - '&4!Alert!******** &6[name] &6Se připojil! &4*******!Alert!'
+      - '&4******** &6[name] &6Se připojil! &4*******'
       reason: '&eDůvod Alertu: &6[reason]'
       removed: '&6[playerDisplayName] &ebyl smazán z Alert Listu'
       added: '&eZpráva Alertu bude odeslaná všem Administrátorům pokud se hráč &6[playerDisplayName]

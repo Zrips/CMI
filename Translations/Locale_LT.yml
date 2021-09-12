@@ -808,7 +808,7 @@ command:
         prisijungimą'
     info:
       inform:
-      - '&c!Alert!******** &7[name] &4prisijungė į serverį! &c*******!Alert!'
+      - '&c******** &7[name] &4prisijungė į serverį! &c*******'
       reason: '&cPriežastis: &7[reason]'
       removed: '&7[playerDisplayName] &cištrintas iš sąrašo'
       added: '&7Įspėjimo žinutę išsiųs visiems administratoriams, kai &b[playerDisplayName]

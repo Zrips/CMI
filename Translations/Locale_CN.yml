@@ -108,7 +108,7 @@ command:
       - '&6command.alert.info.inform &e- 有此权限可看到提醒'
     info:
       inform:
-      - '&e!Alert!******** &6[name] &4登录服务器了! &e*******!Alert!'
+      - '&e******** &6[name] &4登录服务器了! &e*******'
       reason: '&e提醒原因: &6[reason]'
       removed: '&3[playerDisplayName] &e已从提醒列表中移除'
       added: '&3[playerDisplayName] &e在24小时内上线的话，提示消息将发送给每个管理员'

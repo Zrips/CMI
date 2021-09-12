@@ -853,7 +853,7 @@ command:
       - '&6command.alert.info.inform &9- to see alerts on player login'
     info:
       inform:
-      - '&9!Alert!******** &6[name] &4sa pripojil! &9*******!Alert!'
+      - '&9******** &6[name] &4sa pripojil! &9*******'
       reason: '&9Dôvod Alertu: &6[reason]'
       removed: '&6[playerDisplayName] &9zmazaný z Alert Listu'
       added: '&9Správa Alertu bude odoslaná všetkým Administrátorom ak sa hráč &6[playerDisplayName]

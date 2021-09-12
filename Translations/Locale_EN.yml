@@ -838,7 +838,7 @@ command:
       - '&6command.alert.info.inform &e- to see alerts on player login'
     info:
       inform:
-      - '&e!Alert!******** &6[name] &4just logged in! &e*******!Alert!'
+      - '&e******** &6[name] &4just logged in! &e*******'
       reason: '&eAlert reason: &6[reason]'
       removed: '&6[playerDisplayName] &eremoved from alert list'
       added: '&eAlert message will be sent to all administrators, if &6[playerDisplayName]
