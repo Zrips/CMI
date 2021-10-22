@@ -2068,7 +2068,7 @@ command:
       jailListArea: ' &7[area] '
       jailListAreaHover: '&eDefiniere Bereich neu'
       jailRemoved: '&eGefängnis (&6[jail]&e) wurde entfernt'
-      jailOutside: '&eDefiniere Außenbereich neu'
+      jailOutside: '&eTeleportposition außerhalb vom Gefängnis gesetzt'
       jailArea: '&eÄndere Bereich von &6[jail]'
       cellRemoved: '&eZelle (&6[cellId]&e) wurde vom Gefängis &6[jail] &eentfernt.'
   jaillist:
