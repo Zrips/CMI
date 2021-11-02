@@ -2607,8 +2607,9 @@ command:
       - /cmi mute zrips 1h Pour insulte
     info:
       mutedFor: '&e[playerDisplayName] muted pour &6[time]'
-      muted: '&eTu es mute poour &6[time]'
+      muted: '&eTu es mute pour &6[time]'
       reason: '&eRaison: &7[reason]'
+      badTimeRanges: '&cYou can''t mute for longer than [time] &6([seconds])'
   mutechat:
     help:
       info: '&eEmpêcher les messages publics'
@@ -4211,9 +4212,9 @@ command:
       info: '&eVérifier les avertissements des joueurs'
       args: (playerName)
     info:
-      totalPoints: '&7---- &e[playerDisplayName] &etotal des points d''infraction: &6[totalPoints]
-        &7----'
-      noWarnings: '&eLe noueur n''a aucun avertissement'
+      totalPoints: '&7---- &e[playerDisplayName] &etotal des points d''infraction:
+        &6[totalPoints] &7----'
+      noWarnings: '&eLe joueur n''a aucun avertissement'
       list: '&7[place]. &e[time] &6par [warnedBy] &cpour: &7[warnedFor]'
       hover:
       - '&7Expire dans: &e[time]'
