@@ -57,7 +57,7 @@ info:
   prefix: '&e[&aCMI&e] '
   NoPermission: '&cУ вас нет разрешения!'
   CantHavePermission: '&cУ вас нет разрешения на это!'
-  WrongGroup: '&cYou are in wrong group for this!'
+  WrongGroup: '&cВы находитесь в неверной группе для этого!'
   NoPlayerPermission: '&c[playerName] не имеет разрешения: [permission]'
   Ingame: '&cВы можете использовать это только в игре!'
   NoInformation: '&cИнформация не найдена!'
