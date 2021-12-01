@@ -1116,7 +1116,7 @@ command:
       - Если сообщение начинается с !, тогда будет показано чистое сообщение
       - Миры могут быть определены для трансляции сообщений только в этих мирах
     info:
-      format: '&e[&4ОБЪЯВЛЕНИЕ&e] &2[message]'
+      format: '&e[&4&lОБЪЯВЛЕНИЕ&e] &2[message]'
   burn:
     help:
       info: '&eПоджечь игрока'
@@ -1148,30 +1148,30 @@ command:
       args: '[create/join/leave/list/invite/kick/listrooms] (chatName/playerName)
         (-private) (-locked) (-persistent)'
     info:
-      joined: '&eJoined chat room: &7[chatRoomName]'
-      joinedInfo: '&e[playerDisplayName] &7joined chat room'
-      alreadyIn: '&eYou are already in &7[chatRoomName] chat room'
-      left: '&eLeft &7[chatRoomName] &echat room'
-      leftInfo: '&e[playerDisplayName] &7left chat room'
-      invite: '&6[playerDisplayName] &einvites you to join chat room: &7[chatRoomName]'
-      sentInvite: '&eInvited &6[playerDisplayName] &eto join chat room: &7[chatRoomName]'
+      joined: '&eВы зашли в комнату: &7[chatRoomName]'
+      joinedInfo: '&e[playerDisplayName] &7присоединился'
+      alreadyIn: '&eВы уже находитесь в чате &7[chatRoomName]'
+      left: '&eЧат &7[chatRoomName] &eпокинут'
+      leftInfo: '&e[playerDisplayName] &7покинул чат'
+      invite: '&6[playerDisplayName] &eприглашает вас в чат: &7[chatRoomName]'
+      sentInvite: '&eВы пригласили &6[playerDisplayName] &eв чат: &7[chatRoomName]'
       format: '&3|&7[chatRoomName]&3| &6[playerDisplayName]: &r[message]'
-      nobody: '&4Nobody is in chat room'
-      notOwner: '&4Only chat owner can do this'
-      wrongName: '&4Wrong chat room name'
-      takenName: '&4Chat room name is taken, use different one'
-      notIn: '&4User is not in chat room'
-      cantJoin: '&4Chat room is private and you don''t have invitation'
-      kicked: '&6[playerDisplayName] &ekicked from chat room'
-      cantleave: '&6Can''t leave locked room'
-      gotKicked: '&4You got kicked from &7[chatRoomName] &4chat room'
+      nobody: '&4В чате никого нет
+      notOwner: '&4Только владелец чата может это сделать'
+      wrongName: '&4Неверное имя чата'
+      takenName: '&4Имя чат-комнаты занято, используйте другое'
+      notIn: '&4Пользователь не в чате'
+      cantJoin: '&4Чат является частным, и у вас нет приглашения'
+      kicked: '&6[playerDisplayName] &eбыл кикнут из чата'
+      cantleave: '&6Не могу выйти из заблокированой комнаты'
+      gotKicked: '&4Вы были кикнуты из чата &7[chatRoomName]'
       list: '&e[chatRoomName]&e: &7[list]'
       globalList: '&7[number]. [joined]&e[chatRoomName][private]&e: &7[count][expires]'
       globalListPrivate: '&2(P)'
       globalListJoined: '&2+'
       globalListHover:
-        Owner: '&7Owner: [playerDisplayName]'
-        Ends: ' &7Expires in: [time]'
+        Owner: '&7Владелец: [playerDisplayName]'
+        Ends: ' &7Истекает через: [time]'
         Names: '&7[playerDisplayName]'
   checkaccount:
     help:
@@ -1253,9 +1253,8 @@ command:
       - cmi clear +armors - will remove armor type items
       - cmi clear +armorslots - will remove items from armorslots
     info:
-      clearFeedback: '&eYou have removed &6[amount] &eitems from &3[playerDisplayName]&e
-        inventory (&3[offon]&e).'
-      target: '&6[amount] &eitems got removed from your inventory by &3[senderDisplayName]&e.'
+      clearFeedback: '&eВы удалили &6[amount] &eпредметов из инвентаря игрока &3[playerDisplayName]&e'
+      target: '&6[amount] &eпредметов были удалены из вашего инвентаря игроком &3[senderDisplayName]&e.'
       confirm: '&7Нажмите, чтобы подтвердить очистку инвентаря. &cВсе предметы будут
         удалены!'
   clearchat:
@@ -1651,10 +1650,10 @@ command:
       lastDamage: '&eПоследняя причина повреждения: &6[cause]'
       tamed: '&eПрирученный: &6[state]'
       owner: '&eВладелец: &6[playerDisplayName]'
-      grows: '&eGrows up in: &6[time]'
+      grows: '&eВырастет через: &6[time]'
       horse: '&eHorse: jump &6[jump]&eblocks, speed &6[speed]&eblocks/sec'
-      villager: '&eProfession: &7[profession] &eLvl: &7[lvl] &eType: &7[type]'
-      subTypes: '&eSub Types: &6[list]'
+      villager: '&eПрофессия: &7[profession] &eУровень: &7[lvl] &eТип: &7[type]'
+      subTypes: '&eПод-типы: &6[list]'
   entitynbt:
     help:
       info: '&eПроверка информации об сущности'
@@ -1774,7 +1773,7 @@ command:
       - '&cShift и левый клик +10.'
       - '&eПравый клик +100.'
       - '&cShift и правый клик +1000.'
-      - '&eMiddle Mouse +10000. Cost: &7[amount10000]'
+      - '&eСреднее колёсико мыши +10000. Цена: &7[amount10000]'
       - ''
       changeAmount: '&e([amount]&e)'
       cost: '&eCharged &6[amount] &efor &6[charge] &eflight charges'
@@ -1946,7 +1945,7 @@ command:
         шляпу!'
       incorrect: '&3Incorrect item in head slot, cant replace with new one. Remove
         it manually'
-      cantUse: '&3Can''t use this item as a hat'
+      cantUse: '&3Нельзя использовать этот предмет как головной убор'
   head:
     help:
       info: '&eВыдать голову игрока'
