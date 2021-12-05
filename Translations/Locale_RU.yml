@@ -349,8 +349,8 @@ info:
     DEEP_OCEAN: Глубокий океан
     DESERT: Пустыня
     DESERT_HILLS: Пустынные холмы
-    EXTREME_HILLS: Extreme hills
-    EXTREME_HILLS_WITH_TREES: Extreme hills with trees
+    EXTREME_HILLS: Экстремальные холмы
+    EXTREME_HILLS_WITH_TREES: Экстремальные холмы с деревьями
     FOREST: Лес
     FOREST_HILLS: Лесные холмы
     FROZEN_OCEAN: Замерзший океан
@@ -361,9 +361,9 @@ info:
     JUNGLE: Джунгли
     JUNGLE_EDGE: Край джунглей
     JUNGLE_HILLS: Холмы джунглей
-    MESA: Mesa
-    MESA_CLEAR_ROCK: Mesa clear rock
-    MESA_ROCK: Mesa rock
+    MESA: Пустошь
+    MESA_CLEAR_ROCK: Пустые скалы пустоши
+    MESA_ROCK: Скалы пустоши
     MUSHROOM_ISLAND: Грибной остров
     MUSHROOM_ISLAND_SHORE: Берег Грибного острова
     MUTATED_BIRCH_FOREST: Мутировавший березовый лес
@@ -375,9 +375,9 @@ info:
     MUTATED_ICE_FLATS: Мутировавшие ледяные равнины
     MUTATED_JUNGLE: Мутировавшие джунгли
     MUTATED_JUNGLE_EDGE: Мутировавший край джунглей
-    MUTATED_MESA: Mutated mesa
+    MUTATED_MESA: Мутрировшая пустошь
     MUTATED_MESA_CLEAR_ROCK: Мутировавшая прозрачная горная порода
-    MUTATED_MESA_ROCK: Mutated mesa rock
+    MUTATED_MESA_ROCK: Мутировавшие скалы пустоши
     MUTATED_PLAINS: Мутировавшие равнины
     MUTATED_REDWOOD_TAIGA: Мутировавшая тайга из секвойи
     MUTATED_REDWOOD_TAIGA_HILLS: Мутировавшие таежные холмы из красного дерева
@@ -394,7 +394,7 @@ info:
     RIVER: Река
     ROOFED_FOREST: Крытый лес
     SAVANNA: Саванна
-    SAVANNA_ROCK: Savanna rock
+    SAVANNA_ROCK: Скалы саванны
     SKY: Небо
     SMALLER_EXTREME_HILLS: Smaller extreme hills
     STONE_BEACH: Каменный пляж
@@ -566,9 +566,9 @@ info:
     fast_digging:
     - Fast digging
     slow_digging:
-    - Slow digging
+    - Медленное копание
     increase_damage:
-    - Increase damage
+    - Увеличенный урон
     heal:
     - Heal
     harm:
@@ -586,33 +586,33 @@ info:
     water_breathing:
     - Water breathing
     invisibility:
-    - Invisibility
+    - Невидимость
     blindness:
-    - Blindness
+    - Слепота
     night_vision:
-    - Night vision
+    - Ночное видение
     hunger:
-    - Hunger
+    - Голод
     weakness:
-    - Weakness
+    - Слабость
     poison:
-    - Poison
+    - Яд
     wither:
-    - Wither
+    - Иссушение
     health_boost:
-    - Health boost
+    - Буст здоровья
     absorption:
     - Absorption
     saturation:
     - Saturation
     glowing:
-    - Glowing
+    - Свечение
     levitation:
-    - Levitation
+    - Левитация
     luck:
-    - Luck
+    - Удача
     unluck:
-    - Unluck
+    - Неудача
 direction:
   n: Север
   ne: Северо-Восток
