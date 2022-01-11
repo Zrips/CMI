@@ -97,7 +97,7 @@ info:
     counter: '!actionbar!&6--> &e[time] &6<--'
     DontMove: '!title!!subtitle!&6不要移動'
     Boss:
-      DontMove: '&4Don''t move for &7[autoTimeLeft] &4seconds!'
+      DontMove: '&4在&7[autoTimeLeft] &4秒內請不要移動!'
       WaitFor: '&4等待 &7[autoTimeLeft] &4秒!'
   Spawner: '&r[type] 生怪磚'
   FailedSpawnerMine: '!actionbar!&c生成生磚失敗. &7[percent]% &c掉落機率'
