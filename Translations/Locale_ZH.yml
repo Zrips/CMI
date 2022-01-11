@@ -73,7 +73,7 @@ info:
   NoCommandWhileSleeping: '&c不能在睡覺時執行指令!'
   cantFindCommand: '&5無法找到此指令: &7[%1]&5 你要找的指令是 &7[%2]&5?'
   nolocation: '&4找不到適合的位置'
-  PurgeNotEnabled: '&c清掃機制未在config中啟用'
+  PurgeNotEnabled: '&c清除機制未在config中啟用'
   FeatureNotEnabled: '&c該機制未啟用'
   TeamManagementDisabled: '&7當 DisableTeamManagement 設置為 true 時，此功能將被限制功能!'
   ModuleNotEnabled: '&c該功能未啟用!'
