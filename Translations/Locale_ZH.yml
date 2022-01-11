@@ -70,7 +70,7 @@ info:
   Searching: '&e正在搜尋玩家數據，請稍等...'
   NoPlayer: '&c找不到這個玩家'
   NoCommand: '&c未知指令'
-  NoCommandWhileSleeping: '&c不能睡覺時執行指令!'
+  NoCommandWhileSleeping: '&c不能在睡覺時執行指令!'
   cantFindCommand: '&5無法找到此指令: &7[%1]&5 你要找的指令是 &7[%2]&5?'
   nolocation: '&4找不到適合的位置'
   PurgeNotEnabled: '&c合併機制未在config中啟用'
