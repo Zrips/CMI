@@ -56,8 +56,8 @@ info:
   # Use !prefix! in any locale line to automatically include this prefix
   prefix: '&e[&aCMI&e] '
   NoPermission: '&c你沒有權限'
-  CantHavePermission: '&cYou can''t have this permission!'
-  WrongGroup: '&cYou are in wrong group for this!'
+  CantHavePermission: '&c你無法擁有此權限!'
+  WrongGroup: '&c你在這個錯誤的組中!'
   NoPlayerPermission: '&c[playerName] 沒有權限: [permission]'
   Ingame: '&c你只能在遊戲中這麼做'
   NoInformation: '&c找不到資訊'
@@ -73,10 +73,9 @@ info:
   NoCommandWhileSleeping: '&c不能睡覺時執行指令!'
   cantFindCommand: '&5無法找到此指令: &7[%1]&5 你要找的指令是 &7[%2]&5?'
   nolocation: '&4找不到適合的位置'
-  PurgeNotEnabled: '&c合並機制未在config中啟用'
+  PurgeNotEnabled: '&c合併機制未在config中啟用'
   FeatureNotEnabled: '&c該機制未啟用'
-  TeamManagementDisabled: '&7This feature will have limited functionalaty while DisableTeamManagement
-    is set to true!'
+  TeamManagementDisabled: '&7當 DisableTeamManagement 設置為 true 時，此功能將被限制功能!'
   ModuleNotEnabled: '&c該功能未啟用!'
   versionNotSupported: '&c伺服器版本不支持此特性'
   bungeeNoGo: '&c此功能在基於bungee伺服器上無法作用'
@@ -110,7 +109,7 @@ info:
   ShulkerBox: 界伏盒
   CantuseShulkerBox: '&c與玩家戰鬥時，無法使用界伏盒.
     Wait: [time]'
-  CantUseNonEncrypted: '!actionbar!&cCommands on this item are not encrypted. 無法使用它們!'
+  CantUseNonEncrypted: '!actionbar!&c此項目上的命令未加密. 無法使用它們!'
   CantDecode: '!actionbar!&c無法解碼 消息/指令. Key file contains wrong
     key for this task. 通知伺服器管理員這項訊息'
   Show: '&e展示'
@@ -158,23 +157,21 @@ info:
   flyingToHigh: '&c你不能再飛得更高了, 最大高度限制是 &6[max]&c!'
   specializedItemFail: '&c無法根據物品數量值:&7[value]確定具體物品'
   sunSpeeding: Sleeping [count] of [total] [hour] hour [speed]X speed
-  sleepersRequired: '!actionbar!&f[sleeping] &7of &f[required] &7sleeping from required
-    for night time speedup'
+  sleepersRequired: '!actionbar! &7&f[required] &7個人中有 &f[sleeping] 個人需要睡覺，才能加速晚上'
   sunSpeedingTitle: '&7[hour]'
   skippingNight: '!title!&7跳過晚上'
   sunSpeedingSubTitle: '&f[count]&7/&f[total] &7(&f[speed]X&7)'
-  repairConfirm: '&e點擊來確認 &7[items] &eitem repair for &7[cost]'
-  bookDate: '&7Written at &f[date]'
+  repairConfirm: '&e點擊來確認修復 &7[items] &e要花 &7[cost]'
+  bookDate: '&7在 &f[date] &7時寫的'
   maintenance: '&7維護模式'
   notSet: 未設定
-  mapLimit: '&c不能超過 30 000 000 個方塊'
+  mapLimit: '&c不能超過 30,000,000 個方塊'
   startedEditingPainting: '&e開始畫布編輯，點擊其它方塊取消'
   canceledEditingPainting: '&e你取消了畫布編輯'
   changedPainting: '!actionbar!&e將畫布更名為 &6[name] &eID為 &6[id]'
   noSpam: '!title!&c不要洗頻!'
   noCmdSpam: '!title!&c指令使用頻率太快！'
-  spamConsoleInform: '&cPlayer (&7[playerName]&c) triggered (&7[rules]&c) chat filter
-    with:&r [message]'
+  spamConsoleInform: '&c玩家 (&7[playerName]&c) 觸發了聊天過濾的 (&7[rules]&c) ,玩家的訊息: &r [message]'
   lookAtSign: '&e請指向一個告示牌'
   lookAtBlock: '&e請指向一個方塊'
   lookAtEntity: '&e請指向一個實體'
@@ -189,7 +186,7 @@ info:
     Offline: '&c離線'
     not: '&c這個伺服器不在群組下'
     noserver: '&c找不到這個伺服器'
-    server: '&eServer: &7[name]'
+    server: '&e伺服器: &7[name]'
   variables:
     Online: '&6在線'
     Offline: '&c離線'
@@ -211,7 +208,7 @@ info:
     warmup: '&e不死圖騰效果: [time]'
     cantConsume: '&e不死圖騰使用被取消，因為還在冷卻中！'
   Inventory:
-    FullDrop: '&5Not all items fit in your inventory. They have been dropped on ground'
+    FullDrop: '&5你的背包有不能在你背包的物品. 已經被丟棄在地上了'
   InventorySave:
     info: '&8Info: &8[playerDisplayName]'
     saved: '&e[time] &e背包已保存 ID: &e[id]'
@@ -245,7 +242,7 @@ info:
   vanishSymbolOff: ''
   afkSymbolOn: '&8[&7離開&8]&r'
   afkSymbolOff: ''
-  nextPageConsole: '&fFor next page perform &5[command]'
+  nextPageConsole: '&f對於下一頁，執行 &5[command]'
   prevPage: '&2----<< &6上一頁 '
   prevPageGui: '&6上一頁 '
   prevPageClean: '&6上 '
@@ -260,15 +257,15 @@ info:
   lastPageHover: '&7>|'
   pageCount: '&2[current]&7/&2[total]'
   pageCountHover: '&2[totalEntries]'
-  skullOwner: '!actionbar!&7Owner:&r [playerName]'
-  beeinfo: '!actionbar!&7Honey level: &e[level]&7/&e[maxlevel] &7Bees inside: &e[count]&7/&e[maxcount]'
+  skullOwner: '!actionbar!&7擁有者:&r [playerName]'
+  beeinfo: '!actionbar!&7蜂巢級別: &e[level]&7/&e[maxlevel] &7蜜蜂數量: &e[count]&7/&e[maxcount]'
   circle: '&3圓形'
   square: '&5正方形'
   protectedArea: '&c保護區域. 不可以這樣做.'
   valueToLong: '&e數值過長，最長: [max]'
   valueToShort: '&e數值過短，最短: [min]'
   pvp:
-    noGodDamage: '!actionbar!&cYou can''t damage players while being immortal'
+    noGodDamage: '!actionbar!&c你不能在上帝模式時傷害玩家'
   InvEmpty:
     armor: '&e你應該清空裝備欄!'
     hand: '&e你應該清空手中物品!'
@@ -578,69 +575,69 @@ info:
     - 無限
   PotionEffectAliases:
     speed:
-    - speed
+    - 速度
     slow:
-    - slow
+    - 緩慢
     fast_digging:
-    - fast_digging
+    - 挖掘加速
     slow_digging:
-    - slow_digging
+    - 挖掘疲勞
     increase_damage:
-    - increase_damage
+    - 立即傷害
     heal:
-    - heal
+    - 立即治療
     harm:
-    - harm
+    - 立即傷害
     jump:
-    - jump
+    - 跳躍提升
     confusion:
-    - confusion
+    - 噁心
     regeneration:
-    - regeneration
+    - 回復
     damage_resistance:
-    - damage_resistance
+    - 抗性
     fire_resistance:
-    - fire_resistance
+    - 抗性
     water_breathing:
-    - water_breathing
+    - 水下呼吸
     invisibility:
-    - invisibility
+    - 隱形
     blindness:
-    - blindness
+    - 失明
     night_vision:
-    - night_vision
+    - 夜視
     hunger:
-    - hunger
+    - 飢餓
     weakness:
-    - weakness
+    - 虛弱
     poison:
-    - poison
+    - 中毒
     wither:
-    - wither
+    - 凋零
     health_boost:
-    - health_boost
+    - 生命值提升
     absorption:
-    - absorption
+    - 吸收
     saturation:
-    - saturation
+    - 飽食
     glowing:
-    - glowing
+    - 發光
     levitation:
-    - levitation
+    - 漂浮
     luck:
-    - luck
+    - 幸運
     unluck:
-    - unluck
+    - 霉運
     slow_falling:
-    - Slow falling
+    - 緩降
     conduit_power:
-    - Conduit power
+    - 海靈祝福
     dolphins_grace:
-    - Dolphins grace
+    - 海豚悠游
     bad_omen:
-    - Bad omen
+    - 不祥之兆
     hero_of_the_village:
-    - Hero of the village
+    - 村莊英雄
 direction:
   n: 北
   ne: 東北
@@ -776,7 +773,7 @@ Ender:
 Chat:
   localPrefix: ''
   shoutPrefix: '&c[S]&r'
-  shoutDeduction: '!actionbar!&cDeducted &e[amount] &cfor shout'
+  shoutDeduction: '!actionbar!&c因為喊 (shout) 扣除&e[amount] &c'
   # Use \n to add new line
   publicHover: '&e發送時間: &6%server_time_hh:mm:ss%'
   privateHover: '&e發送時間: &6%server_time_hh:mm:ss%'
@@ -827,7 +824,7 @@ command:
       current: '&e當前 &3[playerDisplayName] &e的空氣值: &3[amount]'
   alert:
     help:
-      info: '&e當玩家上線，提醒管理員'
+      info: '&e當玩家上線時，提醒管理員'
       args: '[playerName] (reason)'
       explanation:
       - '&e權限:'
@@ -858,7 +855,7 @@ command:
       editInfo: '&e點擊貼上舊內容，或者輸入 &6cancel &e來取消，或者輸入 &6remove &e來移除一行'
   anvil:
     help:
-      info: '&eOpen anvil'
+      info: '&e打開鐵砧'
       args: (playerName)
     info:
       feedback: '&eYou have opened anvil for &3[playerDisplayName]&e (&3[offon]&e).'
@@ -988,8 +985,8 @@ command:
       info: '&e向所有伺服器上的所有玩家廣播特殊消息'
       args: (!) [message] (-s:[serverName,serverName])
       explanation:
-      - 如果消息開頭是英文感嘆號 ! 那麼將會顯示簡化消息
-      - Servers can be defined to broadcast messages only in those servers
+      - 如果消息開頭是英文驚嘆號 ! 那麼將會顯示簡化消息
+      - 可以將伺服器定義為僅在這些伺服器中廣播消息
     info:
       format: '&e[&4Broadcast&e] &2[message]'
   blockcycling:
@@ -1081,7 +1078,7 @@ command:
       add: '&e為 &6[playerDisplayName]&e 增加了 &6[amount]元 &e生怪磚生成費用'
       set: '&e將 &6[playerDisplayName] &e的生怪磚生成費用設定為 &6[amount]元 &e'
       clear: '&e清除了 &6[playerDisplayName] &e的所有怪磚生成費用'
-      reset: '&e重置 &6[playerDisplayName] &e的怪磚生成收費群組'
+      reset: '&e重置 &6[playerDisplayName] &e的生怪磚生成收費群組'
       take: '&e從 &6[playerDisplayName] &e收取了&6[amount]元 &e生怪磚生成費用'
   chat:
     help:
@@ -1193,7 +1190,7 @@ command:
     info:
       feedback: '&e你清空了玩家 &3[playerDisplayName]&e 的背包 (&3[offon]&e).'
       targetfeedback: '&e你的背包被 &3[senderDisplayName]&e 清空了'
-      confirm: '&7點擊確認清空背包. &c所有物品將被清楚!'
+      confirm: '&7點擊確認清空背包. &c所有物品將被清除!'
   clearchat:
     help:
       info: '&e清除聊天室'
@@ -1344,7 +1341,7 @@ command:
       unCuffed: '&6[playerDisplayName] &e不再是限制狀態'
       free: '&e你自由了，不再受任何限制'
       gotCuffed: '&e你現在受到了管理員的限制'
-      cuffedInfo: '&eYou are cuffed'
+      cuffedInfo: '&e你被銬上了 '
       cantCuff: '&c你不能限制這個玩家!'
   customrecipe:
     help:
@@ -1371,7 +1368,7 @@ command:
       info: '&e禁止附魔'
       args: '[enchant/id] (disable/enable)'
     info:
-      title: 建國以後禁止魔法
+      title: 附魔禁用
       feedback: '&6[enchantName] &e附魔當前狀態是 [state]'
   dispose:
     help:
@@ -1381,7 +1378,7 @@ command:
       title: '&c請放入所有不需要的垃圾'
   distance:
     help:
-      info: '&e檢查2點之間的距離'
+      info: '&e檢查兩點之間的距離'
       args: (playerName) (playerName)
     info:
       feedback: '&7距離: &e[dist] &7x:&e[x] &7y:&e[y] &7z:&e[z] &7方向:&e[dir]'
@@ -1395,7 +1392,7 @@ command:
       sentOffer: '&e捐贈給 &6[playerDisplayName]&e. 請等待玩家接受'
       gotOffer: '&e從 &6[sourceDisplayName]&e獲得 &6[type]&eX&6[amount] &e. 請點擊接受.'
       doesnthave: '&e玩家不再擁有此物品'
-      'no': '&eNo pending donations'
+      'no': '&e沒有待處理的捐款'
       list: '&7[number]. &e[playerDisplayName] &e- &7[material] &6x &e[amount]'
   dsign:
     help:
@@ -1428,7 +1425,7 @@ command:
     info:
       color: '&e當前顏色 - &c[red],&2[green],&9[blue] &eHex:&6#[hex]'
       custom: '&e啟用自定義顏色模式： &6[mode]'
-      bound: '&eSoulBound to: &6'
+      bound: '&e靈魂綁定到: &6'
       boundName: '[playerName]'
   editctext:
     help:
@@ -1479,15 +1476,15 @@ command:
       info: '&e編輯地標'
       args: (warpName)
     info:
-      exists: '&cWarp by this name (&7[newName]&c) already exists. Pick different
-        one'
-      updated: '&eUpdated name from &7[oldName]&e into &7[newName]'
+      exists: '&c此地標名稱 (&7[newName]&c) 已經存在.
+        請選別的'
+      updated: '&e從 &7[oldName]&e 更新名稱為 &7[newName]'
       placeItem: '&2設置用於顯示地標圖標的物品'
       placeOffItem: '&2放置物品來設置自定義物品'
       autoLore: '&2自動lore生成: [state]'
       group: '&2Group: &7[group]'
-      newGroup: '&eEnter new group name'
-      randomizeYaw: '&2Randomize direction: [state]'
+      newGroup: '&e輸入新的組名'
+      randomizeYaw: '&2隨機方向: [state]'
       permission: '&2需要權限: [state]'
       reqPermission: '&2無權限: [state]'
       hidden: '&2Hidden: [state]'
@@ -1523,10 +1520,10 @@ command:
       cleared: '&e清除了物品上所有的附魔，被執行玩家 &3[playerDisplayName]&e (&3[offon]&e).'
       noitem: '&c玩家手上必須拿著物品！'
       invalidEnchant: '&c你不能附魔上面有非法附魔的物品'
-      clearedInvalid: '&eRemoved &6[amount] &einvalid enchantments from item'
+      clearedInvalid: '&e從物品中移除了 &6[amount] &e個無效的附魔'
       inccorectId: '&e無效的附魔名稱或者ID'
-      wrongItem: '&eWrong item in your hand'
-      enchantlimit: '&cYou dont have access to this enchantment'
+      wrongItem: '&e你手上的東西錯了'
+      enchantlimit: '&c您無權使用此附魔'
       levellimit: '&c附魔等級太高，最高等級不能超過 &e[level].'
       posible: '&e可行的附魔: '
       posibleList: '&6[enchant]'
@@ -1542,11 +1539,11 @@ command:
       feedback: '&e你正在編輯 &3[playerDisplayName] &e的終界箱 (&3[offon]&e).'
   endgateway:
     help:
-      info: '&eToggle end gateway beam'
+      info: '&e切換終界折躍門光束(Beam)'
       args: ''
     info:
-      'off': '&7Beam was toggled &eOff'
-      'on': '&7Beam was toggled &6On'
+      'off': '&7光束已&e關閉'
+      'on': '&7光束已&6開啟'
   entityinfo:
     help:
       info: '&e查詢實體資訊'
@@ -1591,7 +1588,7 @@ command:
       targetfeedback: '&e你被玩家 &3[senderDisplayName]&e 撲滅了身上的火'
   feed:
     help:
-      info: '&e恢覆飢餓值'
+      info: '&e恢復飢餓值'
       args: '[playerName]'
     info:
       feedback: '&e你餵飽了玩家 &3[playerDisplayName]&e (&3[offon]&e).'
@@ -1636,8 +1633,8 @@ command:
       InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]
         &6已找到: &e[found]'
       scanList: '&2[number]. &7X:&f[x] &7Z:&f[z]'
-      finished: '&e掃描完成, 請使用 &6/cmi fixchunk fix &e來修覆損壞區塊 &c區塊會重新生成，該操作不可逆！'
-      fixed: '&2[number] &e個區塊已修覆'
+      finished: '&e掃描完成, 請使用 &6/cmi fixchunk fix &e來修復損壞區塊 &c區塊會重新生成，該操作不可逆！'
+      fixed: '&2[number] &e個區塊已修復'
       total: '&e正在掃描 [current]/[until] 總量 [total]'
       stats:
       - '&e************************************************************'
@@ -1792,7 +1789,7 @@ command:
       tnt: ' &e激活的TNT: &6[tnt]'
       boat: ' &e船: &6[boat]'
       minecart: ' &e礦車: &6[minecart]'
-      nothing: '&e伺服器很幹凈，沒有垃圾需要移除'
+      nothing: '&e伺服器很乾淨，沒有垃圾需要移除'
   haspermission:
     help:
       info: '&e檢查玩家是否有某權限'
@@ -1800,7 +1797,7 @@ command:
     info:
       title: '&6[playerDisplayName] &e-> &6[permission]'
       none: '&e權限未設置，且玩家不是 OP. 結果為 &6[state]'
-      softSet: '&eSet by plugin.yml to &6[state]'
+      softSet: '&e由 plugin.yml 設置為 &6[state]'
       hardSet: '&e因某些插件的限制，難以設置為 &6[state] &e'
       notHardSet: '&e沒有設置難度, 可能導致&e某些情況&c出錯'
       ops: '&e結果為 &6[state] &e因為玩家是 OP'
@@ -1812,8 +1809,8 @@ command:
       feedback: '&6享受你的新帽子吧!'
       targetfeedback: '&3[senderDisplayName]&6 更換了你的頭戴帽子!'
       fullinv: '&3[playerDisplayName] &6的背包已滿, 不能改變帽子!'
-      incorrect: '&3Incorrect item in head slot, cant replace with new one. Remove
-        it manually'
+      incorrect: '&3頭部物品欄中的物品不正確，無法更換新物品.
+        請盡快移除它'
   head:
     help:
       info: '&e獲得玩家的頭顱'
@@ -1837,8 +1834,8 @@ command:
       - 需要 cmi.command.helpop.inform 權限才能看到求助資訊
     info:
       message: '&c[OP求助]&4[&7[senderDisplayName]&4]&r&c [message]'
-      feedback: '&c[Help]&7Your question was submitted to online staff'
-      offline: '&c[Help]&7There are no staff members currently online, try later'
+      feedback: '&c[Help]&7您的問題已提交給在線的工作人員'
+      offline: '&c[Help]&7目前沒有工作人員在線，請稍後再試'
   hideflags:
     help:
       info: '&e隱藏物品NBT標簽'
@@ -1860,13 +1857,13 @@ command:
       intervalLore:
       - '&7每多少秒讓動態懸浮字更新一次'
       - '&7如果是靜態懸浮字請設置為 -1'
-      pageInterval: '&7Change page every &6[second] &7seconds'
+      pageInterval: '&7每 &6[second] &7秒更改全息圖頁面'
       pageIntervalLore:
-      - '&7How often, in seconds, hologram page is changed automatically'
-      pageIntervalNoPages: '&4This hologram doesn''t have any pages yet'
+      - '&7自動更改全息圖頁面的頻率（以秒為單位）'
+      pageIntervalNoPages: '&4此全息圖還沒有任何頁面'
       text: '&7字符間距 &6[space]'
       usync: '&7文本同步更改: &6[state]'
-      reqPermission: '&7Requires permission to see: &6[state]'
+      reqPermission: '&需要權限才能看: &6[state]'
       teleport: '&7傳送到懸浮字所在位置'
       icon: '&7圖標間距 &6[space]'
       iconLore:
@@ -1880,23 +1877,23 @@ command:
       relocate: '&7移動懸浮字'
       relocateLore:
       - '&7移動懸浮字至你當前位置'
-      los: '&7Consider line of sight: &6[state]'
+      los: '&7現在在告示牌的行數: &6[state]'
       losLore:
       - '&7Check interval: [interval]'
       interact: '&7是否可交互: &6[state]'
-      commands: '&7Commands:'
+      commands: '&7指令:'
       particles: '&7是否顯示粒子效果: &6[state]'
       big: '&7大按鈕: &6[state]'
       bigLore:
       - '&7務必記住大按鈕模式'
       - '&7會阻止你通過'
       order: '&7向下移動: &6[state]'
-      autoButton: '&7Automatically generate pagination buttons'
+      autoButton: '&7自動的生成分頁按鈕'
       autoButtonLore:
-      - '&eCurrent hologram doesnt have any pages create'
-      - '&eUse &6!nextpage! &eas a new line to make next page'
-      autoButtonForward: '&2This hologram already has forwards button created'
-      autoButtonBackward: '&2This hologram already has backwards button created'
+      - '&e目前的全息圖沒有任何頁面創建'
+      - '&e在新的一行輸入 &6!nextpage! &e來製作下一頁'
+      autoButtonForward: '&2這個全息圖已創建往前按鈕'
+      autoButtonBackward: '&2這個全息圖已創建後退按鈕 '
       moveX: '&7X:&e[x]'
       moveY: '&7Y:&e[y]'
       moveZ: '&7Z:&e[z]'
@@ -1922,7 +1919,7 @@ command:
       noHomes: '&c沒有已保存的家'
       private: '&c這個家是私有的'
       remove: '&cShift+右鍵來移除家'
-      guiTitle: '&0[playerDisplayName] &8homes [current]/[max]'
+      guiTitle: '&0[playerDisplayName] &8的家 [current]/[max]'
   homes:
     help:
       info: '&e查詢家的列表'
@@ -1948,10 +1945,10 @@ command:
       notPublic: ' &7[NotPublic]'
       reqPerm: ' &2[ReqPerm]'
       noPerm: ' &7[ReqPerm]'
-      permHover: ' &eRequires &7[permission] &epermission to place this sign'
+      permHover: ' &e需要權限: &7[permission] &e才能放置告示牌'
       editSign: ' &e[EditSignLines]'
       publicHover: '&e改變公共狀態'
-      createdPublic: '&e創新新的交互告示牌'
+      createdPublic: '&e創建新的交互告示牌'
       list: '&e[place]. &6[name]'
       listType: ' &e[type]    '
       editCommands: '&e編輯指令'
@@ -2013,10 +2010,10 @@ command:
       converted: '&e導入: &6[done]&e/&6[total] &e名玩家'
       convertedWarps: '&e導入 &6[amount] &e個地標'
       noInfo: '&c你必須指定你想導入什麼舊數據'
-      savingInProgress: '&eData will be saved into data base in next couple minutes
-        depending on how many entries we need to save'
+      savingInProgress: '&e資料將在這幾分鐘內保存至資料庫
+        時間取決於有多少資料"<'
       HDfile: '&c找不到HolographicDisplays插件數據庫文件.導入中止.'
-      HDexist: '&cHologram by &7[name] &cname already exists. Skipping.'
+      HDexist: '&c全息圖 &7[name] &c已經存在. 跳過.'
       HDfailed: '&c無法加載 全息圖 (&7[name]&c)'
       HDimported: '&e導入 &7[amount]個 &e全息圖'
   importoldusers:
@@ -2032,7 +2029,7 @@ command:
       args: '[playerName/uuid]'
     info:
       feedback:
-        uuid: '&e貼上UUID至聊天框內'
+        uuid: '&e貼上UUID至聊天欄內'
         ouuid: '&eShift + left click to paste online uuid into chat box'
       newName: '&6[playerName]'
       newBalance: '&7(&e[balance]&7) '
@@ -2066,8 +2063,8 @@ command:
       newTurnedOnColor: '&a'
       newTurnedOffColor: '&7'
       newOp: 'OP '
-      newGod: 'God '
-      newFly: 'CanFly&6([flying]&6) '
+      newGod: '上帝模式 '
+      newFly: '可以飛&6([flying]&6) '
       newFlying: 飛行中
       newFlyHover: '&7飛行速度: &6[flyspeed]'
       newFlyTemp: '&7離時飛行: &6[time]'
@@ -2077,7 +2074,7 @@ command:
       newSneaking: Sneaking
       newSprint: 衝刺
       newWalkSpeed: '&7走路速度: &6[walkspeed]'
-      newGameMode: '&fMode: &6[gameMode] '
+      newGameMode: '&f模式: &6[gameMode] '
       newGameModeHover:
       - '[sprint]'
       - '[sneaking]'
@@ -2086,36 +2083,36 @@ command:
       - '[hunger]'
       - '[saturation]'
       - '[exp]'
-      newHp: '&7HP: &6[hp]&e/&6[maxhp]'
-      newAir: '&7Air: &6[leftAir]&e/&6[totalAir]'
-      newHunger: '&7Hunger: &6[food]&e/&620'
-      newSaturation: '&7Saturation +&6[saturation]&e'
-      newExp: '&7Exp: &6[totalexp]&7exp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&7lvl&e)'
-      newPos: '&fPos '
+      newHp: '&7血量: &6[hp]&e/&6[maxhp]'
+      newAir: '&7氧氣: &6[leftAir]&e/&6[totalAir]'
+      newHunger: '&7飢餓度: &6[food]&e/&620'
+      newSaturation: '&7飽食度 +&6[saturation]&e'
+      newExp: '&7經驗: &6[totalexp]&7exp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&7lvl&e)'
+      newPos: '&f位置 '
       newPosHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
       newAfk: 'AFK '
-      newAfkHover: '&6Afk for last: [time]'
-      newBed: '&fBed '
+      newAfkHover: '&6最後的AFK: [time]'
+      newBed: '&f床 '
       newBedHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
-      newDeath: '&fDeath '
+      newDeath: '&f死亡 '
       newDeathHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
-      newBack: '&fBack '
+      newBack: '&f返回 '
       newBackHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
-      newRespawn: '&fRespawn '
+      newRespawn: '&f重生 '
       newRespawnHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
       newSee: '◕‿◕ '
       newSeeHover: '&6能看到你'
       newSeeHoverNot: '&2不能看到你'
       newBanned: '被禁止 '
       newBannedHover:
-      - '&7Banned by: &e[name]'
-      - '&7Left: &e[left]'
-      - '&7For: &e[reason]'
+      - '&7被 &e[name] &7禁止'
+      - '&7剩餘: &e[left] 時間'
+      - '&7原因: &e[reason]'
       newMuted: '靜言'
       newMutedHover:
       - '&7Left: &e[left]'
       - '&7For: &e[reason]'
-      newShadowMutedHover: '&4Shadow mute'
+      newShadowMutedHover: '&4隱形禁言'
       newCuffed: 'Cuffed '
       newJailed: '入獄 '
       newJailedHover:
@@ -2123,7 +2120,7 @@ command:
       - '&7Cell: &e[id]'
       - '&7Left: &e[time]'
       - '&7Reason: &e[reason]'
-      newHomes: '&fHomes: &e[count] '
+      newHomes: '&f家: &e[count] '
       newMail: '&fMail: &e[count] '
       newWarnings: '&f警告: &e[count] '
       newAlert: '警報 '
@@ -2135,7 +2132,7 @@ command:
       - '&7聊天室: &e[name]'
       - '&7Users in: &e[count]'
       nList:
-      - '&e------------- [enableColor]Enabled [disableColor]Disabled&e -------------'
+      - '&e------------- [enableColor]啟用 [disableColor]禁用&e -------------'
       - '&e| [name][balance][UUID][ip]'
       - '&e| [OP][god][fly][gameMode][afk][see]'
       - '&e| [banned][muted][cuffed][jailed][alert][chatroom]'
@@ -2203,10 +2200,10 @@ command:
       related: "&7相關帳戶:\n&f[list]    "
   item:
     help:
-      info: '&eGive item to yourself'
+      info: '&e給自己物品'
       args: '[itemname] (amount)'
       explanation:
-      - Name and lore supports placeholders
+      - '物品名稱和物品描述支持Placeholders'
       - 'Example: /give stone'
       - /give stone 5 n Stonehenge
       - /give stick e knockback:1
@@ -2219,12 +2216,12 @@ command:
       - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
   itemframe:
     help:
-      info: '&eManage item frames'
+      info: '&e管理展示框'
       args: (invisible/fixed/invulnerable)
     info:
       enabled: Enabled
       disabled: Disabled
-      feedback: '&e[count] &6item frames are invisible around you'
+      feedback: '&e[count] &6個展示框已在你周圍隱形'
   iteminfo:
     help:
       info: '&e顯示物品資訊'
@@ -2311,8 +2308,8 @@ command:
     info:
       jailList: '&6[place]. &e[jailName] &7Cells:&e[cellCount] &7Jailed:&6[count]'
       cellList: '&6[place]. &7Id:&e[cellId] &7Jailed:&6[count]'
-      cellJailedList: '&6[place]. &e[playerDisplayName] &7release in &e[time]'
-      Release: '&7Click to release'
+      cellJailedList: '&6[place]. &e[playerDisplayName] &7將在 &e[time] &7 後釋放'
+      Release: '&7點擊釋放'
   jump:
     help:
       info: '&e跳至目標方塊'
@@ -2330,7 +2327,7 @@ command:
       cantKick: '&e你不能踢出這個玩家'
       messageToAll: '&6[playerDisplayName] &e從伺服器被踢出'
       kickReason: ' &e理由: &6[reason]'
-      all: '&eKicked &6[amount] &eplayers from server'
+      all: '&eK從伺服器踢出 &6[amount] &e個玩家'
   killall:
     help:
       info: '&e擊殺周圍的怪物'
@@ -2371,7 +2368,7 @@ command:
       canUseIn: '&e距離下一次可用還有: [time]'
       cooldown: '&e冷卻: [time]'
       noKit: '&e沒有叫這個名字的禮包'
-      kitDoesntExist: '&eCan''t find kit ([kitName])'
+      kitDoesntExist: '&e無法發現禮包 ([kitName])'
       noKitAccess: '&c你沒有權限使用這個禮包'
       noFoundKit: '&e無任何禮包，請先創建一個'
       givenKit: '&e你將禮包 &6[kit] &e給予了 &6[playerDisplayName]'
@@ -2454,7 +2451,7 @@ command:
       Clone: '&e從背包裡貼上物品'
       CloneExtra:
       - '&e右鍵點擊同時貼上盔甲欄物品'
-      - '&e再次點擊恢覆'
+      - '&e再次點擊恢復'
       timeDelay: '&e延遲: &6[time]'
       usages: '&e可使用 &6[times] &e次'
       usagesUnlimited: '&6無限制'
@@ -2475,10 +2472,10 @@ command:
       - '&e這個決定了你打什麼指令能獲得禮包'
       displayName: '&7DisplayName: &r&f[name]'
       editDisplayName:
-      - '&eClick to change display name'
-      - '&eThis only used for visual purposes'
+      - '&e點擊更改顯示名稱'
+      - '&e這只用於視覺效果'
       kitGroup: '&e禮包組: &6[group]'
-      dropItems: '&eDrop item if full: &6[state]'
+      dropItems: '&e背包已滿時丟棄物品: &6[state]'
       commands: '&e指令:'
       conditions: '&e獲得條件:'
       desc: '&e描述:'
@@ -2519,14 +2516,14 @@ command:
       feedback: '!actionbar!&6[&f發射!&6]'
   lfix:
     help:
-      info: '&e修覆周圍區塊的光照'
+      info: '&e修復周圍區塊的光照'
       args: (range) (playerName)
     info:
-      NoMore: '&e修覆範圍不能大於伺服器的目視區塊範圍，已自動設置為可設置最大範圍'
-      startFixing: '&e已找到 &6[amount] &e個區塊待修覆，正在開始'
-      InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]'
-      Finished: '&e光照修覆已完成'
-      Stopped: '&e光照修覆已停止'
+      NoMore: '&e修復範圍不能大於伺服器的目視區塊範圍，已自動設置為可設置最大範圍'
+      startFixing: '&e已找到 &6[amount] &e個區塊待修復，正在開始'
+      InfoShow: '&6TPS: &3[tps] &6剩餘 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]'
+      Finished: '&e光照修復已完成'
+      Stopped: '&e光照修復已停止'
   list:
     help:
       info: '&e顯示在線玩家列表'
@@ -2656,7 +2653,7 @@ command:
       notSet: '&c中心未設置'
       set: '&2中心已設置'
       noBlocks: '&c沒有足夠的方塊'
-      used: '&7Used: &7[blocks]'
+      used: '&7使用的: &7[blocks]'
       Action:
         Name:
           X: X
@@ -2684,8 +2681,8 @@ command:
           Rotate90H: '&e順時針旋轉 &690 &e度'
           Rotate90HC: '&e逆時針旋轉 &690 &e度'
           Rotate180H: '&e旋轉 &6180 &e度'
-          Pause: '&e暫停仿制'
-          Location: '&e設置仿制中心'
+          Pause: '&e暫停鏡像'
+          Location: '&e設置鏡像中心'
   mobhead:
     help:
       info: '&e獲得生物頭顱'
@@ -2693,9 +2690,9 @@ command:
     info:
       got: '&e獲得 &6[type] &e頭顱'
       base: '&7基礎掉落機率: &f[chance]%'
-      personal: '&7Drop chance for you: &f[chance]%'
+      personal: '&7你的掉落機率: &f[chance]%'
       headSpecific: '&7頭部掉落機率: &f[chance]%'
-      criteria: '&7Criteria: &f[criteria]%'
+      criteria: '&7標準: &f[criteria]%'
       title: '&7[current]&8/&7[total]'
   money:
     help:
@@ -2735,8 +2732,8 @@ command:
       TargetMsg: '&7[&8[senderDisplayName] &7-> &8我&7]&r&f [message]'
       SenderMsg: '&7[&8我 &7-> &8[playerDisplayName]&7]&r&f [message]'
       consoleMsg: '[[senderDisplayName] -> [playerDisplayName]] [message]'
-      noPM: '&c玩家現在不接受私人消息'
-      badGroup: '&cCan''t send private messages to this group of players'
+      noPM: '&c該玩家現在不接受私人訊息'
+      badGroup: '&c無法向這組的玩家發送私人訊息'
   msgtoggle:
     help:
       info: '&e切換私人消息狀態'
@@ -2768,7 +2765,7 @@ command:
     info:
       mutedFor: '&e公共聊天停止接收，持續 &6[time]'
       isMuted: '!actionbar!&e公共聊天停止接收，持續 &6[time]'
-      muteReason: '&4Mute reason: &7[reason]'
+      muteReason: '&4原因: &7[reason]'
   nameplate:
     help:
       info: '&e設置玩家名前綴和後綴'
@@ -2860,7 +2857,7 @@ command:
       args: (playerName)
     info:
       feedback: '&ePing: &6[ping]'
-      selffeedback: '&eYour ping is &6[ping]ms'
+      selffeedback: '&e你的延遲: &6[ping]ms'
       customMessage: '[message]'
   placeholders:
     help:
@@ -2869,7 +2866,7 @@ command:
     info:
       list: '&e[place]. &6[placeholder]'
       outputResult: ' &e結果: &6[result]'
-      parse: '&6[placeholder] &eby [source] &6result &8|&f[result]&8|'
+      parse: '&6[placeholder] &eby [source] &6結果 &8|&f[result]&8|'
   playercollision:
     help:
       info: '&e設置玩家的碰撞模式'
@@ -2917,10 +2914,10 @@ command:
       particleAmount: '&e粒子效果數量: &6[amount]'
       particlePercent: '&e兩邊減少的粒子百分比: &6[amount]%'
       activationRange: '&e激活範圍: &6[amount]'
-      particlePermission: '&eShow particles without permission: &6[state]'
+      particlePermission: '&e顯示沒有權限的粒子: &6[state]'
       bungeeTeleport: '&e傳送到確切的bungee位置: [state]'
       requiresPermission: '&e需要 &7[perm] &e權限來使用: [state]'
-      kickBack: '&ePrevent enter without permission: [state]'
+      kickBack: '&e防止沒有權限進入: [state]'
       informPermission: '&e通知缺少權限: [state]'
       teleportToLocation: '&e傳送至傳送門位置'
       teleportToTarget: '&e傳送至傳送門目的地'
@@ -2982,7 +2979,7 @@ command:
     info:
       check: '&e玩家個人時間: &6[24h] &e或者 &6[12h] &e或者 &6[ticks]ticks'
       frozen: ' &c(-)'
-      gotreseted: '&6[playerDisplayName] &e的個人時間已恢覆為默認'
+      gotreseted: '&6[playerDisplayName] &e的個人時間已恢復為默認'
       gotfrozen: '&6[playerDisplayName] &e的個人時間已停止'
       gotunfrozen: '&6[playerDisplayName] &e的個人時間已繼續'
       setto: '&6[playerDisplayName]&e 將時間設置為 &6[24h] &e或者 &6[12h] &e或者 &6[ticks]ticks &e'
@@ -2998,7 +2995,7 @@ command:
       args: (playerName) [sun/rain/reset] (-s)
     info:
       check: '&e個人天氣: &6[weather]'
-      gotreseted: '&6[playerDisplayName] &e的個人天氣已恢覆為默認'
+      gotreseted: '&6[playerDisplayName] &e的個人天氣已恢復為默認'
       setto: '&e玩家 &6[playerDisplayName]&e 個人天氣已被設置為 &6[weather] &e'
       gotset: '&e你的個人天氣已被設置為 &6[weather]'
       reset: '&e個人天氣已重置'
@@ -3072,8 +3069,8 @@ command:
       args: (playerName) (rankName) (confirm)
     info:
       noRank: ' &e你沒有和你相關的排名'
-      requiresPrevious: ' &eYou cant rankup to this rank. It requires you to have
-        &6[rank] &erank(`s)'
+      requiresPrevious: ' &e你還不能升到這個排名. 它需要你有
+        &6[rank] &e排名(`s)'
       list: '&e選擇一個你想要提升排名的數據: '
       confirm: '&e點擊確認提升至 &6[rank]'
   realname:
@@ -3095,7 +3092,7 @@ command:
       info: '&e重新讀取插件'
       args: ''
     info:
-      feedback: '&6插件重新讀取完成 繁體中文翻譯 by Nil'
+      feedback: '&6插件重新讀取完成 繁體中文翻譯 by TWME'
       failedConfig: '&4載入 config 文件失敗！請檢查有無語法錯誤！'
       failedLocale: '&4載入語言文件失敗！請檢查有無語法錯誤！'
   removehome:
@@ -3128,16 +3125,16 @@ command:
       - cmi.command.repair.hand - 允許修理手上的物品
       - cmi.command.repair.armor - 允許修理盔甲欄裡的物品
       - cmi.command.repair.all - 允許修理所有物品
-      - cmi.command.repair.repairshare.bypass - 不添加共享修覆保護地修覆物品
+      - cmi.command.repair.repairshare.bypass - 不添加共享修復保護地修復物品
     info:
       feedback: '&e已成功修復 &3[playerDisplayName]&e-(&3[offon]&e) 的 &3[amount]&e 件物品.'
       feedbackMoney: '&eYou have repaired &3[amount]&e items for &3[playerDisplayName]&e
         (&3[offon]&e). Cost: &7[cost]'
-      itemOwner: '&e上一次修覆由: &6[owner]'
+      itemOwner: '&e上一次修復由: &6[owner]'
       cantUse: '!title!&c你不能使用這個!subtitle!&e請自己修理這個!'
   repaircost:
     help:
-      info: '&e設置修覆物品花費'
+      info: '&e設置修復物品花費'
       args: (playerName) [amount]
       explanation:
       - 'Example:'
@@ -3148,11 +3145,11 @@ command:
       - /repaircost Zrips clear
       - /repaircost Zrips add 10
     info:
-      current: '&e當前物品基礎修覆花費: &6[cost]&e.'
+      current: '&e當前物品基礎修復花費: &6[cost]&e.'
       noitem: '&c必須把物品拿在手上'
-      cantDetermineCost: '&c無法為這件物品指定基礎修覆花費'
-      selffeedback: '&e玩家 &3[playerDisplayName]&e-(&3[offon]&e) 基礎修覆金額設置為 &3[amount] &e.'
-      targetfeedback: '&3[senderDisplayNaame]&e 將你的基礎修覆金額設置為 &3[amount]&e .'
+      cantDetermineCost: '&c無法為這件物品指定基礎修復花費'
+      selffeedback: '&e玩家 &3[playerDisplayName]&e-(&3[offon]&e) 基礎修復金額設置為 &3[amount] &e.'
+      targetfeedback: '&3[senderDisplayNaame]&e 將你的基礎修復金額設置為 &3[amount]&e .'
   replaceblock:
     help:
       info: '&e替換你周圍的方塊'
@@ -3215,7 +3212,7 @@ command:
       tpLimit: '&e正在冷卻中，請再等待 &6[time] &e然後重試'
       IncorrectLocation: '&6無法找到安全的傳送位置, 請再等待 &e[time] &6然後重試'
       teleported: '!actionbar!&6已傳送!!!'
-      waiting: '!actionbar!&6Looking for suitable location. Please wait'
+      waiting: '!actionbar!&6尋找適合的位置. 請稍等'
   sameip:
     help:
       info: '&e列出通過同IP登入的玩家'
@@ -3523,7 +3520,7 @@ command:
       explanation: '&2Buy price is only used in detecting posible exploits'
   shadowmute:
     help:
-      info: '&eMute player without telling him that he is muted'
+      info: '&e將玩家靜音而不告訴他他已被靜音'
       args: '[playerName] (time) (-s) (reason)'
   shakeitoff:
     help:
@@ -3672,7 +3669,7 @@ command:
       spawnedEntities: '&e生成了 &6[entities] &e實體 '
       spawnedPasangers: '&e以及 &6[passengers] &e騎著的實體'
       nothingSpawned: '&e沒有實體生成'
-      cantSpawn: '&eCan''t spawn this type of entity'
+      cantSpawn: '&e無法生成此種實體'
   staffmsg:
     help:
       info: '&e在管理員聊天頻道聊天'
@@ -3829,7 +3826,7 @@ command:
     info:
       Platform: ' &e系統: &6[platform] &e(&6[os]&e) &e運行線程: &6[threads]'
       Tps: ' &eTPS: &6[tps]'
-      CpuUsage: ' &eCpu 使用: &6[cpuusage]% &e(&6[cores] cores&e)'
+      CpuUsage: ' &eCpu 使用: &6[cpuusage]% &e(&6[cores] 核&e)'
       Uptime:
         main: ' &e運營時間: '
         weeks: '&e[weeks] &6周 '
@@ -3838,8 +3835,7 @@ command:
         mins: '&e[mins] &6分 '
         secs: '&e[secs] &6秒 '
       MemoryUsage: ' &e內存使用: &6[percent]% &e(&6[current]&e/&6[max] MB&e)'
-      MemoryUsageHover: "&f空閑: &7[free] \n&f可用: &7[allocated] \n&f最大: &7[max] \n&f總\
-        計: &7[total]"
+      MemoryUsageHover: "&f空閒: &7[free] \n&f可用: &7[allocated] \n&f最大: &7[max] \n&f總計: &7[total]"
       Java: ' &eJava 版本: &6[mainV].[majorV].[minorV]&e(&6[update]&e) Build: &6[build]'
       DiskUsage: ' &e磁盤占用: &6[percent]% &e(&6[current]&e/&6[max] GB&e)'
       Worlds: '&e [number]. &6[world] &e[chunks] 個區塊 &6[entities] 個實體 &e[tiles] 個tiles
@@ -3868,7 +3864,7 @@ command:
     info:
       same: '&e目標玩家數據和源玩家數據已準備完畢'
       transferred: '&6[sourceName] &e的玩家數據成功轉移至 &6[Name]'
-      failed: '&cFailed to switch player data'
+      failed: '&c轉移玩家數據失敗'
   tablistupdate:
     help:
       info: '&e強制玩家更新TAB列表'
@@ -3877,11 +3873,11 @@ command:
       updated: '&eTab列表已更新'
   tagtoggle:
     help:
-      info: '&e切換聊天艾特音效'
+      info: '&e切換聊天TAG音效'
       args: (playerName)
     info:
-      feedbackDisabled: '&e禁用艾特音效'
-      feedbackEnabled: '&e啟用艾特音效'
+      feedbackDisabled: '&e禁用TAG音效'
+      feedbackEnabled: '&e啟用TAG音效'
   tempban:
     help:
       info: '&e暫時封鎖玩家'
@@ -4002,11 +3998,11 @@ command:
       message: '&f[messsage]'
   togglecompass:
     help:
-      info: '&eShow or hide compass bossbar'
+      info: '&e顯示/隱藏羅盤在怪物血量條'
       args: ''
     info:
-      ToggleOff: '&eBoss bar compass got disabled'
-      ToggleOn: '&6Boss bar compass got enabled'
+      ToggleOff: '&e已關閉羅盤顯示'
+      ToggleOn: '&6已開啟羅盤顯示'
   toggleshiftedit:
     help:
       info: '&e切換可用shift編輯告示牌'
@@ -4019,7 +4015,7 @@ command:
       info: '&e顯示/隱藏不死圖騰的冷卻條'
       args: ''
     info:
-      toggle: '&eTotem cooldown bar toggled ([state]&e)'
+      toggle: '&e顯示/隱藏不死圖騰的冷卻條 ([state]&e)'
   top:
     help:
       info: '&e傳送至你所在坐標的最高點'
@@ -4032,7 +4028,7 @@ command:
       feedback: '&e已傳送至玩家 &3[sourceDisplayName]-(&3[offon]&e) &e的位置.'
       bad:
         msg: '&c將要傳送至的地點不安全，原因： [reason]'
-        extraMsg: '&e使用 &6/tpbypass &e來無視危險，你只有 [time] 操作時間'
+        extraMsg: '&e使用 &6/tpbypass &e來無視危險，你只有 [time] 的操作時間'
         lava: '&c有岩漿'
         void: '&c是虛空'
         suffocation: '&c會窒息'
@@ -4074,7 +4070,7 @@ command:
       args: '[playerName]'
     info:
       gotRequest: '&6[senderDisplayName] &e請求你傳送到他那裡'
-      accept: '&6Click to accept teleportation request!'
+      accept: '&6點擊接受傳送請求!'
   tpall:
     help:
       info: '&e將所有玩家傳送至你所在位置'
@@ -4092,8 +4088,8 @@ command:
       started: '&e傳送開始!'
       current: '&e當前已傳送 &3[amount] &e，已有 &3[files] &e個文件被檢索'
       total: '&e總傳送量 &3[amount] &e，被檢索文件數量 &3[files] &e'
-      WorldNotFound: '&eWorld by given &7[name] &ename is not loaded. Make sure its
-        correct one. We will use as it is.'
+      WorldNotFound: '&e給予的世界名: &7[name] &e未加載. Make sure its
+        請確保給予的名稱正確. 我們將照著您給予的名稱執行.'
   tpbypass:
     help:
       info: '&e無視傳送到的位置是否安全'
@@ -4218,10 +4214,10 @@ command:
       unmutedTarget: '&e你現在能發言了'
   unmutechat:
     help:
-      info: '&eUnmute public chat'
+      info: '&e解除公開聊天室禁言''
       args: (-s)
     info:
-      unmuted: '&eUnmuted public chat'
+      unmuted: '&e解除公開聊天室禁言''
   usermeta:
     help:
       info: '&e設置玩家的 meta data'
@@ -4251,7 +4247,7 @@ command:
       targetUnvanish: '&6[playerDisplayName] &e不再是隱身狀態'
       list: '&e[place]. &6[playerDisplayName] &e(&6[offon]&e)'
       noVanished: '&e沒有隱身的玩家'
-      noMsg: '&cCant send messages while vanished. Update this in vanishedit'
+      noMsg: '&c在隱形時無法發送訊息. 在隱形編輯器更改此選項'
   vanishedit:
     help:
       info: '&e編輯玩家的隱身狀態'
