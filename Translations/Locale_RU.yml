@@ -57,14 +57,14 @@ info:
   prefix: '&e[&aCMI&e] '
   NoPermission: '&cУ вас нет разрешения!'
   CantHavePermission: '&cУ вас нет разрешения на это!'
-  WrongGroup: '&cYou are in wrong group for this!'
+  WrongGroup: '&cВы находитесь в неверной группе для этого!'
   NoPlayerPermission: '&c[playerName] не имеет разрешения: [permission]'
   Ingame: '&cВы можете использовать это только в игре!'
   NoInformation: '&cИнформация не найдена!'
   Console: '&6Администратор'
   FromConsole: '&cВы можете использовать это только из консоли!'
   NotOnline: '&cИгрок не в сети!'
-  NobodyOnline: '&cНет никого в сети!'
+  NobodyOnline: '&cНикого нет в сети!'
   Same: '&cНе удалось открыть собственный инвентарь для редактирования!'
   cantLoginWithDifCap: '&cНе удалось войти под другим ником! Старый ник: &e[oldName]&c.
     Текущий: &e[currentName]'
@@ -349,8 +349,8 @@ info:
     DEEP_OCEAN: Глубокий океан
     DESERT: Пустыня
     DESERT_HILLS: Пустынные холмы
-    EXTREME_HILLS: Extreme hills
-    EXTREME_HILLS_WITH_TREES: Extreme hills with trees
+    EXTREME_HILLS: Экстремальные холмы
+    EXTREME_HILLS_WITH_TREES: Экстремальные холмы с деревьями
     FOREST: Лес
     FOREST_HILLS: Лесные холмы
     FROZEN_OCEAN: Замерзший океан
@@ -361,9 +361,9 @@ info:
     JUNGLE: Джунгли
     JUNGLE_EDGE: Край джунглей
     JUNGLE_HILLS: Холмы джунглей
-    MESA: Mesa
-    MESA_CLEAR_ROCK: Mesa clear rock
-    MESA_ROCK: Mesa rock
+    MESA: Пустошь
+    MESA_CLEAR_ROCK: Пустые скалы пустоши
+    MESA_ROCK: Скалы пустоши
     MUSHROOM_ISLAND: Грибной остров
     MUSHROOM_ISLAND_SHORE: Берег Грибного острова
     MUTATED_BIRCH_FOREST: Мутировавший березовый лес
@@ -375,9 +375,9 @@ info:
     MUTATED_ICE_FLATS: Мутировавшие ледяные равнины
     MUTATED_JUNGLE: Мутировавшие джунгли
     MUTATED_JUNGLE_EDGE: Мутировавший край джунглей
-    MUTATED_MESA: Mutated mesa
+    MUTATED_MESA: Мутрировшая пустошь
     MUTATED_MESA_CLEAR_ROCK: Мутировавшая прозрачная горная порода
-    MUTATED_MESA_ROCK: Mutated mesa rock
+    MUTATED_MESA_ROCK: Мутировавшие скалы пустоши
     MUTATED_PLAINS: Мутировавшие равнины
     MUTATED_REDWOOD_TAIGA: Мутировавшая тайга из секвойи
     MUTATED_REDWOOD_TAIGA_HILLS: Мутировавшие таежные холмы из красного дерева
@@ -394,7 +394,7 @@ info:
     RIVER: Река
     ROOFED_FOREST: Крытый лес
     SAVANNA: Саванна
-    SAVANNA_ROCK: Savanna rock
+    SAVANNA_ROCK: Скалы саванны
     SKY: Небо
     SMALLER_EXTREME_HILLS: Smaller extreme hills
     STONE_BEACH: Каменный пляж
@@ -566,9 +566,9 @@ info:
     fast_digging:
     - Fast digging
     slow_digging:
-    - Slow digging
+    - Медленное копание
     increase_damage:
-    - Increase damage
+    - Увеличенный урон
     heal:
     - Heal
     harm:
@@ -586,33 +586,33 @@ info:
     water_breathing:
     - Water breathing
     invisibility:
-    - Invisibility
+    - Невидимость
     blindness:
-    - Blindness
+    - Слепота
     night_vision:
-    - Night vision
+    - Ночное видение
     hunger:
-    - Hunger
+    - Голод
     weakness:
-    - Weakness
+    - Слабость
     poison:
-    - Poison
+    - Яд
     wither:
-    - Wither
+    - Иссушение
     health_boost:
-    - Health boost
+    - Буст здоровья
     absorption:
     - Absorption
     saturation:
     - Saturation
     glowing:
-    - Glowing
+    - Свечение
     levitation:
-    - Levitation
+    - Левитация
     luck:
-    - Luck
+    - Удача
     unluck:
-    - Unluck
+    - Неудача
 direction:
   n: Север
   ne: Северо-Восток
@@ -1116,7 +1116,7 @@ command:
       - Если сообщение начинается с !, тогда будет показано чистое сообщение
       - Миры могут быть определены для трансляции сообщений только в этих мирах
     info:
-      format: '&e[&4ОБЪЯВЛЕНИЕ&e] &2[message]'
+      format: '&e[&4&lОБЪЯВЛЕНИЕ&e] &2[message]'
   burn:
     help:
       info: '&eПоджечь игрока'
@@ -1148,30 +1148,30 @@ command:
       args: '[create/join/leave/list/invite/kick/listrooms] (chatName/playerName)
         (-private) (-locked) (-persistent)'
     info:
-      joined: '&eJoined chat room: &7[chatRoomName]'
-      joinedInfo: '&e[playerDisplayName] &7joined chat room'
-      alreadyIn: '&eYou are already in &7[chatRoomName] chat room'
-      left: '&eLeft &7[chatRoomName] &echat room'
-      leftInfo: '&e[playerDisplayName] &7left chat room'
-      invite: '&6[playerDisplayName] &einvites you to join chat room: &7[chatRoomName]'
-      sentInvite: '&eInvited &6[playerDisplayName] &eto join chat room: &7[chatRoomName]'
+      joined: '&eВы зашли в комнату: &7[chatRoomName]'
+      joinedInfo: '&e[playerDisplayName] &7присоединился'
+      alreadyIn: '&eВы уже находитесь в чате &7[chatRoomName]'
+      left: '&eЧат &7[chatRoomName] &eпокинут'
+      leftInfo: '&e[playerDisplayName] &7покинул чат'
+      invite: '&6[playerDisplayName] &eприглашает вас в чат: &7[chatRoomName]'
+      sentInvite: '&eВы пригласили &6[playerDisplayName] &eв чат: &7[chatRoomName]'
       format: '&3|&7[chatRoomName]&3| &6[playerDisplayName]: &r[message]'
-      nobody: '&4Nobody is in chat room'
-      notOwner: '&4Only chat owner can do this'
-      wrongName: '&4Wrong chat room name'
-      takenName: '&4Chat room name is taken, use different one'
-      notIn: '&4User is not in chat room'
-      cantJoin: '&4Chat room is private and you don''t have invitation'
-      kicked: '&6[playerDisplayName] &ekicked from chat room'
-      cantleave: '&6Can''t leave locked room'
-      gotKicked: '&4You got kicked from &7[chatRoomName] &4chat room'
+      nobody: '&4В чате никого нет
+      notOwner: '&4Только владелец чата может это сделать'
+      wrongName: '&4Неверное имя чата'
+      takenName: '&4Имя чат-комнаты занято, используйте другое'
+      notIn: '&4Пользователь не в чате'
+      cantJoin: '&4Чат является частным, и у вас нет приглашения'
+      kicked: '&6[playerDisplayName] &eбыл кикнут из чата'
+      cantleave: '&6Не могу выйти из заблокированой комнаты'
+      gotKicked: '&4Вы были кикнуты из чата &7[chatRoomName]'
       list: '&e[chatRoomName]&e: &7[list]'
       globalList: '&7[number]. [joined]&e[chatRoomName][private]&e: &7[count][expires]'
       globalListPrivate: '&2(P)'
       globalListJoined: '&2+'
       globalListHover:
-        Owner: '&7Owner: [playerDisplayName]'
-        Ends: ' &7Expires in: [time]'
+        Owner: '&7Владелец: [playerDisplayName]'
+        Ends: ' &7Истекает через: [time]'
         Names: '&7[playerDisplayName]'
   checkaccount:
     help:
@@ -1253,9 +1253,8 @@ command:
       - cmi clear +armors - will remove armor type items
       - cmi clear +armorslots - will remove items from armorslots
     info:
-      clearFeedback: '&eYou have removed &6[amount] &eitems from &3[playerDisplayName]&e
-        inventory (&3[offon]&e).'
-      target: '&6[amount] &eitems got removed from your inventory by &3[senderDisplayName]&e.'
+      clearFeedback: '&eВы удалили &6[amount] &eпредметов из инвентаря игрока &3[playerDisplayName]&e'
+      target: '&6[amount] &eпредметов были удалены из вашего инвентаря игроком &3[senderDisplayName]&e.'
       confirm: '&7Нажмите, чтобы подтвердить очистку инвентаря. &cВсе предметы будут
         удалены!'
   clearchat:
@@ -1651,10 +1650,10 @@ command:
       lastDamage: '&eПоследняя причина повреждения: &6[cause]'
       tamed: '&eПрирученный: &6[state]'
       owner: '&eВладелец: &6[playerDisplayName]'
-      grows: '&eGrows up in: &6[time]'
+      grows: '&eВырастет через: &6[time]'
       horse: '&eHorse: jump &6[jump]&eblocks, speed &6[speed]&eblocks/sec'
-      villager: '&eProfession: &7[profession] &eLvl: &7[lvl] &eType: &7[type]'
-      subTypes: '&eSub Types: &6[list]'
+      villager: '&eПрофессия: &7[profession] &eУровень: &7[lvl] &eТип: &7[type]'
+      subTypes: '&eПод-типы: &6[list]'
   entitynbt:
     help:
       info: '&eПроверка информации об сущности'
@@ -1686,10 +1685,10 @@ command:
       targetfeedback: '&eВы были потушены игроком &3[senderDisplayName]&e.'
   falldistance:
     help:
-      info: '&eSet players falldistance'
+      info: '&eУстанавливает игроку дистанцию падения'
       args: (playerName) (number) (-s)
     info:
-      feedback: '&eYou have set fall distance to &3[amount]&e for &3[playerDisplayName]&e
+      feedback: '&eВы поставили дистанцию падения игроку &3[playerDisplayName]&e на &3[amount]&e
         (&3[offon]&e).'
   feed:
     help:
@@ -1774,7 +1773,7 @@ command:
       - '&cShift и левый клик +10.'
       - '&eПравый клик +100.'
       - '&cShift и правый клик +1000.'
-      - '&eMiddle Mouse +10000. Cost: &7[amount10000]'
+      - '&eСреднее колёсико мыши +10000. Цена: &7[amount10000]'
       - ''
       changeAmount: '&e([amount]&e)'
       cost: '&eCharged &6[amount] &efor &6[charge] &eflight charges'
@@ -1946,7 +1945,7 @@ command:
         шляпу!'
       incorrect: '&3Incorrect item in head slot, cant replace with new one. Remove
         it manually'
-      cantUse: '&3Can''t use this item as a hat'
+      cantUse: '&3Нельзя использовать этот предмет как головной убор'
   head:
     help:
       info: '&eВыдать голову игрока'
@@ -2191,35 +2190,35 @@ command:
       - '[ip][country]'
       - '[ping]'
       - '[firstLogin]'
-      newNameHoverNick: '&7Nick: &f[nick]'
-      newNameHoverGroup: '&7Group: &f[group]'
-      newNameHoverKnownAs: '&7Also known as: &f[nameList]'
-      newNameHoverIp: '&7Ip: &f[ip]'
-      newNameHoverPing: '&7Ping: &f[ping]'
+      newNameHoverNick: '&7Никнейм: &f[nick]'
+      newNameHoverGroup: '&7Группа: &f[group]'
+      newNameHoverKnownAs: '&7Также известен как: &f[nameList]'
+      newNameHoverIp: '&7IP: &f[ip]'
+      newNameHoverPing: '&7Пинг: &f[ping]'
       newNameHoverCountry: ' &7[country] &f(&2[countryCode]&f) [city]'
-      newFirstLogin: '&7First login: &6[firstLogin]'
-      newPlaytime: '&7PlayTime: &6[time]'
+      newFirstLogin: '&7FПервый вход: &6[firstLogin]'
+      newPlaytime: '&7Время игры: &6[time]'
       newOnline: '[state] for: &6[logoff]'
-      newOnlineStateOn: '&2Online'
-      newOnlineStateOff: '&7Offline'
+      newOnlineStateOn: '&2Онлайн'
+      newOnlineStateOff: '&7Оффлайн'
       newUUID: '&fUUID '
       newUUIDHover: '&7UUID: &6[UUID]'
-      newOUUIDHover: '&7OnlineUUID: &6[OUUID]'
+      newOUUIDHover: '&7Онлайн UUID: &6[OUUID]'
       newTurnedOnColor: '&a'
       newTurnedOffColor: '&7'
       newOp: 'OP '
-      newGod: 'God '
+      newGod: 'Бог '
       newFly: 'CanFly&6([flying]&6) '
       newFlying: Flying
-      newFlyHover: '&7Fly speed: &6[flyspeed]'
-      newFlyTemp: '&7Temporary fly: &6[time]'
+      newFlyHover: '&7Скорость полета: &6[flyspeed]'
+      newFlyTemp: '&7Временный полет: &6[time]'
       newFlyCharge: '&7Flight charge: &6[charge]'
       newElytraFlyHover: '&7Flying with elytra'
       newGodHover: '&7TempGod for: &e[time]'
       newSneaking: Sneaking
-      newSprint: Sprinting
-      newWalkSpeed: '&7Walk speed: &6[walkspeed]'
-      newGameMode: '&fMode: &6[gameMode] '
+      newSprint: Бежит
+      newWalkSpeed: '&7Скорость ходьбы: &6[walkspeed]'
+      newGameMode: '&fИгровой режим: &6[gameMode] '
       newGameModeHover:
       - '[sprint]'
       - '[sneaking]'
@@ -2228,9 +2227,9 @@ command:
       - '[hunger]'
       - '[saturation]'
       - '[exp]'
-      newHp: '&7HP: &6[hp]&e/&6[maxhp]'
-      newAir: '&7Air: &6[leftAir]&e/&6[totalAir]'
-      newHunger: '&7Hunger: &6[food]&e/&620'
+      newHp: '&7Здоровье: &6[hp]&e/&6[maxhp]'
+      newAir: '&7Воздух: &6[leftAir]&e/&6[totalAir]'
+      newHunger: '&7Голод: &6[food]&e/&620'
       newSaturation: '&7Saturation +&6[saturation]&e'
       newExp: '&7Exp: &6[totalexp]&7exp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&7lvl&e)'
       newPos: '&fМестоположение '
@@ -2248,34 +2247,34 @@ command:
       newSee: '◕‿◕ '
       newSeeHover: '&6Может видеть вас'
       newSeeHoverNot: '&2Не может видеть вас'
-      newBanned: 'Banned '
+      newBanned: 'Заблокирован '
       newBannedHover:
-      - '&7Banned by: &e[name]'
-      - '&7Left: &e[left]'
-      - '&7For: &e[reason]'
+      - '&7Заблокирован: &e[name]'
+      - '&7Осталось: &e[left]'
+      - '&7Прична: &e[reason]'
       newMuted: 'Muted '
       newMutedHover:
-      - '&7Left: &e[left]'
-      - '&7For: &e[reason]'
+      - '&7Осталось: &e[left]'
+      - '&7Причина: &e[reason]'
       newShadowMutedHover: '&4Shadow mute'
-      newCuffed: 'Cuffed '
-      newJailed: 'Jailed '
+      newCuffed: 'Повязан '
+      newJailed: 'Посажен '
       newJailedHover:
-      - '&7Jail: &e[jail]'
-      - '&7Cell: &e[id]'
-      - '&7Left: &e[time]'
-      - '&7Reason: &e[reason]'
+      - '&7Тюрьма: &e[jail]'
+      - '&7Камера: &e[id]'
+      - '&7Осталось: &e[time]'
+      - '&7Причина: &e[reason]'
       newHomes: '&fДома: &e[count] '
       newMail: '&fПочта: &e[count] '
       newWarnings: '&fПредупреждения: &e[count] '
       newAlert: 'Тревога '
       newAlertHover:
-      - '&7Left: &e[left]'
-      - '&7For: &e[reason]'
-      newChatRoom: 'ChatRoom '
+      - '&7Осталось: &e[left]'
+      - '&7Причина: &e[reason]'
+      newChatRoom: 'ЧатКомната '
       newChatRoomHover:
-      - '&7ChatRoom: &e[name]'
-      - '&7Users in: &e[count]'
+      - '&7Чат Комната: &e[name]'
+      - '&7Игроков внутри: &e[count]'
       nList:
       - '&e------------- [enableColor]Enabled [disableColor]Disabled&e -------------'
       - '&e| [name][balance][UUID][ip]'
@@ -2371,23 +2370,23 @@ command:
       deleted: '&eRemoved model data: &6[value]'
   itemframe:
     help:
-      info: '&eManage item frames'
+      info: '&eИзменять рамки'
       args: (invisible/fixed/invulnerable)
     info:
       enabled: Enabled
       disabled: Disabled
-      feedback: '&e[count] &6item frames are invisible around you'
+      feedback: '&e[count] &6рамок теперь невидимы вокруг тебя'
   iteminfo:
     help:
       info: '&eПоказать информацию о предмете'
       args: (playerName)
     info:
-      nameMat: ' &eName: &7[name] &eMaterial: &7[material]'
-      mojangHover: '&eMojang Name: &7[name]'
-      display: ' &eDisplay Name: &7[display]'
-      lore: ' &eLore:'
+      nameMat: ' &eИмя: &7[name] &eМатериал: &7[material]'
+      mojangHover: '&eИмя Mojang: &7[name]'
+      display: ' &eОтображаемое имя: &7[display]'
+      lore: ' &eОписание:'
       loreLine: '   &5[loreLine]'
-      enchants: ' &eEnchants: &7[enchants]'
+      enchants: ' &eЗачарования: &7[enchants]'
       entityType: ' &eТип сущности: &6[type]'
       customModel: ' &eCustom Model Data: &6[data]'
       durability: ' &eПрочность: &6[current]&e/&6[max]'
@@ -2497,13 +2496,13 @@ command:
       all: '&eКикнуто &6[amount] &eигроков с сервера'
   kill:
     help:
-      info: '&eKill player'
+      info: '&eУбить игрока'
       args: '[playerName] (-force) (damageCause) (-s) (-lightning)'
     info:
-      cantKill: '&6Can''t kill, protected by another plugin, game/god mode. Use -forced
-        variable'
-      lackOfAccess: '&6Can''t use force kill without permission.'
-      killed: '&6Killed [playerDisplayName]'
+      cantKill: '&6CНелья убить, защищено другим плагином, режимом игры/режимом бога. Используйте флайг
+        -forced'
+      lackOfAccess: '&6Нельзя использовать принудительное убийство без разрешения.'
+      killed: '&6[playerDisplayName] убит'
   killall:
     help:
       info: '&eУбить мобов вокруг вас'
@@ -2978,7 +2977,7 @@ command:
     info:
       mutedFor: '&eПубличный чат отключен на &6[time]'
       isMuted: '!actionbar!&eПубличный чат отключен на &6[time]'
-      muteReason: '&4Mute reason: &7[reason]'
+      muteReason: '&4Причина мута: &7[reason]'
   nameplate:
     help:
       info: '&eУстановить префикс, суффикс или цвет имени игрока'
@@ -3143,7 +3142,7 @@ command:
       particleAmount: '&eКоличество частиц: &6[amount]'
       particlePercent: '&eПроцент сторон частиц: &6[amount]%'
       activationRange: '&eДиапазон активации: &6[amount]'
-      particlePermission: '&eShow particles without permission: &6[state]'
+      particlePermission: '&eПоказывать частицы без разрешения: &6[state]'
       bungeeTeleport: '&eТелепортация в точное местоположение bungee: [state]'
       requiresPermission: '&eТребуется разрешение &7[perm] &eдля использования: [state]'
       kickBack: '&ePrevent enter without permission: [state]'
@@ -3492,8 +3491,8 @@ command:
       give: '&eПредмет &6[name] &eвыдан'
       removed: '&eПредмет &6[name] &eудален'
       saved: '&eПредмет &6[name] &eсохранен'
-      uiTitle: 'Category: [category] &8[current]&7/&8[total]'
-      name: '&7Name: &f[name]'
+      uiTitle: 'Категория: [category] &8[current]&7/&8[total]'
+      name: '&7Имя: &f[name]'
       category: '&7Category: &f[category]'
   sc:
     help:
@@ -3591,8 +3590,8 @@ command:
       scavengeCost: '&8Стоимость переработки: [cost]'
       moreTitle: 'Неверное количество: [input]/[required]'
       moreLore:
-      - '&bYou need more of this item.'
-      - '&bRequires atleast &e[amount]'
+      - '&bТебе нужно больше этих предметов.'
+      - '&bНужно как минимум &e[amount]'
       title: '&2Переработка зачарований'
   schedule:
     help:
