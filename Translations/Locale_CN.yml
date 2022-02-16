@@ -3641,7 +3641,7 @@ command:
       itemPickup: '&e可以捡起物品'
       mobAggro: '&e怪物敌对'
       interaction: '&e物理性交互'
-      noisyChest: '&e嘈杂的胸部''s'
+      noisyChest: '&e切换是否静默开箱'
       informOnLeave: '&e显示下线消息'
       informOnJoin: '&e显示上线消息'
       nightVision: '&e自动获得夜视'
