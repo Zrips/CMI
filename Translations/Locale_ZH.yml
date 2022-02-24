@@ -1451,7 +1451,7 @@ command:
       info: '&e編輯本地文件'
       args: (keyword(-s))
     info:
-      found: '&7********* &eFound: [found] &7*********'
+      found: '&7********* &e發現: [found] &7*********'
   editplaytime:
     help:
       info: '&e編輯玩家的遊戲時間'
@@ -2067,7 +2067,7 @@ command:
       newFlyTemp: '&7離時飛行: &6[time]'
       newFlyCharge: '&7飛行費用: &6[charge]'
       newElytraFlyHover: '&7使用鞘翅飛'
-      newGodHover: '&7TempGod for: &e[time]'
+      newGodHover: '&7暫時無敵: &e[time]'
       newSneaking: Sneaking
       newSprint: 衝刺
       newWalkSpeed: '&7走路速度: &6[walkspeed]'
