@@ -1588,7 +1588,7 @@ command:
       info: '&e更改物品 lore'
       args: (-p:[玩家名称]) [linenumber/*] [remove=移除/insert=插入/ 新的lore]
     info:
-      feedback: '&你将一行lore改为了 &r&5[loreLine]&e 操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
+      feedback: '&e你将一行lore改为了 &r&5[loreLine]&e 操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       noitem: '&c必须把物品拿在手上.'
       removed: '&e物品的lore行 &6[line] &e被移除，被操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
       inserted: '&e物品的lore行 &6[line] &e被插入，被操作玩家 &3[playerDisplayName]&e (&2[offon]&e).'
@@ -3208,7 +3208,7 @@ command:
       Tps: ' &eTPS: &6[tps]'
       CpuUsage: ' &eCpu 使用: &6[cpuusage]% &e(&6[cores] cores&e)'
       Uptime:
-        main: ' &e运营时间: '
+        main: ' &e运行时间: '
         weeks: '&e[weeks] &6周 '
         days: '&e[days] &6天 '
         hours: '&e[hours] &6时 '
