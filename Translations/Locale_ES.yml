@@ -58,6 +58,7 @@
 # ATTENTION! As of 9.0.0.0 CMI version some of the locale lines got moved to CMILib file. This is to centralize some of most used ones across multiple plugins.
 # After you update locale in CMILib file perform /CMIL RELOAD command for changes to take effect
 info:
+  CommandFormat: '&cIncorrect command format'
   ServerSwitchOut: ' &6[playerDisplayName] &eswitched server to &6[serverName]'
   ServerSwitchIn: ' &6[playerDisplayName] &ecame from &6[serverName] &eserver'
 command:
@@ -1431,21 +1432,30 @@ command:
       list: '&eHogares: &6'
       listNonePrivate: '&7'
       listPrivate: '&2'
-      click: '&aClic para aparecer en &2[home]&a.'
+      click: '\n&aClic para aparecer en &2[home]&a.'
       teleported: '&eHas aparecido en el hogar (&6[home]&e).'
       noHomes: '&cNo has establecido ningún hogar.'
       private: '&c¡Este hogar es privado!'
-      remove: '&8Mayús + Botón Derecho ► Elimina el hogar.'
+      remove: '&8Mayús + Botón Derecho ► Eliminar el hogar.'
       notAccessible: '&c¡No existe el mundo &7[worldName] &cdonde se estableció el
         hogar!'
       guiTitle: '&eHogares de &6[playerDisplayName] &8(&7[current]/[max]&8)'
   homes:
     help:
-      info: Muestra una lista de hogares.
+      info: Muestra la lista de hogares.
       args: (nombreJugador/near:[distancia])
     info:
-      nearList: '&7[number]. &e[playerDisplayName] &6[homeName] &7a [distance] bloques
-        hacia &e[direction]&7.'
+      nearList: '&7[number]. &e[playerDisplayName] &6[homeName] &7a [distance] bloques hacia &e[direction]&7.'
+      closeButton: '&cCerrar.'
+      infoButton: '&7Información.'
+      bedButton: '&7Posición de la Cama.'
+      homeButton: '&7Posición del Hogar.'
+      deathButton: '&7Posición de la Última Muerte.'
+      lore: |-
+        &7
+        &8Mundo: &7[world]
+        &8Coordenadas: &f[x]&7:&f[y]&7:&f[z]
+      pickerLore: '&8Botón Central ► Cambiar icono.'
   hunger:
     help:
       info: Determina el nivel de hambre de un jugador.
@@ -3163,6 +3173,8 @@ command:
       slotTaken: '!actionbar!&cLa posición ya está siendo utilizado por el hogar &7[homeName]&c,
         utliliza otra posición.'
       setIcon: '!actionbar:3!&7El icono del hogar se a establecido como &6[material]&7.'
+      tooManyInWorld: '&cYou cant have any more homes in this world. Max &6[max]&c
+        allowed, you have &6[current]'
   setmotd:
     help:
       info: Especifica el mensaje del día (motd) del servidor.
@@ -3312,7 +3324,8 @@ command:
       info: Abre una mesa de herrería.
       args: (nombreJugador)
     info:
-      feedback: '&eHas abierto una mesa de herrería para &3[playerDisplayName]&e &8(estando [offon])&e.'
+      feedback: '&eHas abierto una mesa de herrería para &3[playerDisplayName]&e &8(estando
+        [offon])&e.'
       targetfeedback: '&3[senderDisplayName]&e te ha abierto una mesa de herrería.'
   socialspy:
     help:
@@ -3612,7 +3625,8 @@ command:
       info: Abre un Cortapiedras.
       args: (nombreJugador)
     info:
-      feedback: '&eHas abierto un Cortapiedras para &3[playerDisplayName]&e &8(estando [offon])&e.'
+      feedback: '&eHas abierto un Cortapiedras para &3[playerDisplayName]&e &8(estando
+        [offon])&e.'
       targetfeedback: '&3[senderDisplayName]&e te ha abierto un Cortapiedras.'
   sudo:
     help:
@@ -4106,7 +4120,7 @@ command:
       CMIB: '&7CMIB '
       newVault: '&eVault: &6[version] &7| '
       Modules: '&eMódulos: &a[enabled] activados &ey &c[disabled] desactivados &7([list])\n&7Archivo
-        de Idioma: &8v21.10.07\n&7Traducido por: &8C4BR3R4 (c4br3r4.es)'
+        de Idioma: &8v21.10.16\n&7Traducido por: &8C4BR3R4 (c4br3r4.es)'
       Bungee: ' &eBungeeCord '
       CMILib: '&eVersión de CMILib: &6[version] '
       cmilVersionNew: '&e► [newVersion]'
