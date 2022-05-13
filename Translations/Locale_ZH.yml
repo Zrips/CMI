@@ -3089,7 +3089,7 @@ command:
       info: '&e重新讀取插件'
       args: ''
     info:
-      feedback: '&6插件重新讀取完成 繁體中文翻譯 by TWME'
+      feedback: '&6插件重新讀取完成'
       failedConfig: '&4載入 config 文件失敗！請檢查有無語法錯誤！'
       failedLocale: '&4載入語言文件失敗！請檢查有無語法錯誤！'
   removehome:
@@ -4210,10 +4210,10 @@ command:
       unmutedTarget: '&e你現在能發言了'
   unmutechat:
     help:
-      info: '&e解除公開聊天室禁言''
+      info: '&e解除公開聊天室禁言'
       args: (-s)
     info:
-      unmuted: '&e解除公開聊天室禁言''
+      unmuted: '&e解除公開聊天室禁言'
   usermeta:
     help:
       info: '&e設置玩家的 meta data'
