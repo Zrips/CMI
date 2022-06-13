@@ -2941,7 +2941,7 @@ command:
     info:
       NoMore: '&e範圍不能大於 32 區塊，已自動設置為最大範圍'
       startSending: '&e已找到 &6[amount] &e個區塊待加載，正在開始...'
-      InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]'
+      InfoShow: '&6TPS: &3[tps] &6剩餘 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]'
       Finished: '&e已完成，可能需要花一點時間來加載你周圍的區塊'
   prewards:
     help:
@@ -3168,7 +3168,7 @@ command:
       speedChange: '&e替換速度設置為 [amount]'
       autospeedChange: '&e自動調速設置為 [state]'
       messagesChange: '&e資訊輸出設置為 [state]'
-      infoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6替換:
+      infoShow: '&6TPS: &3[tps] &6剩餘 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6替換:
         &e[found]'
       finished: '&e替換已完成!!! 替換了: &6[amount] &e個方塊! 耗時 &6[time]&e.'
   reply:
@@ -4191,7 +4191,7 @@ command:
     info:
       removed: '&e移除 -[list]'
       startScanning: '&e已找到 &6[amount] &e個區塊可卸載，正在開始...'
-      InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]
+      InfoShow: '&6TPS: &3[tps] &6剩餘 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]
         &6卸載區塊: &e[found]'
       Finished: '&e完成!!! 卸載了: &6[amount] &e個區塊! 耗時 &6[minutes] &e分 &6[seconds] &e秒'
   unmute:
