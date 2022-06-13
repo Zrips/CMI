@@ -4360,7 +4360,7 @@ command:
       - '[creator]'
       creator: '&e創建者: &6[creator]'
       noWarpByName: '&c沒有叫這個名字的地標'
-      noAccess: '&c無法訪問此Warp'
+      noAccess: '&c無法訪問此地標'
       guiTitle: '&6地標'
       pageTitles:
       - '&2Warps 1'
@@ -4368,7 +4368,7 @@ command:
       - '&0Warps 3'
   warpgroups:
     help:
-      info: '&e列出Warp組'
+      info: '&e列出地標組'
       args: ''
     info:
       list: '&e[number]. &7[group] &6(&e[amount]&6)'
@@ -4388,8 +4388,8 @@ command:
       - /sun 1h
       - /sun 10m
     info:
-      setTo: '&eSet &6[world] &eweather to &6[weather] &efor next &6[time]'
-      currentState: '&6[world] &e-> &6[weather] &efor next &6[time]'
+      setTo: '&e設置 &6[world] &e天氣為 &6[weather] &e下一個 &6[time]'
+      currentState: '&6[world] &e-> &6[weather] &e下一個 &6[time]'
       sunny: 晴天
       rainy: 下雨
       thundering: 雷暴
