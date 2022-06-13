@@ -912,7 +912,7 @@ command:
         gravity: '&7受重力影響'
         glow: '&7發光'
         invulnerable: '&7無敵'
-        name: '&7Name'
+        name: '&7名字'
         interactable: '&7可交互'
   attachcommand:
     help:
