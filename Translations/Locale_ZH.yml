@@ -1075,7 +1075,7 @@ command:
       cantBreak: '&e你不能破壞這個，因為你不在能量群組內'
       minusCd: '&e生怪磚生成冷卻時間減少&6[sec]&e秒'
       add: '&e為 &6[playerDisplayName]&e 增加了 &6[amount]元 &e生怪磚生成費用'
-      set: '&e將 &6[playerDisplayName] &e的生怪磚生成費用設定為 &6[amount]元 &e'
+      set: '&e將 &6[playerDisplayName] &e的生怪磚生成費用設定為 &6[amount] &e元'
       clear: '&e清除了 &6[playerDisplayName] &e的所有怪磚生成費用'
       reset: '&e重置 &6[playerDisplayName] &e的生怪磚生成收費群組'
       take: '&e從 &6[playerDisplayName] &e收取了&6[amount]元 &e生怪磚生成費用'
