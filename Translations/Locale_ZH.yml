@@ -4392,7 +4392,7 @@ command:
       currentState: '&6[world] &e-> &6[weather] &e下一個 &6[time]'
       sunny: 晴天
       rainy: 下雨
-      thundering: 雷暴
+      thundering: 暴風雨
   whowas:
     help:
       info: '&e顯示玩家之前的名字'
