@@ -1820,7 +1820,7 @@ command:
     info:
       feedback: '&e你治癒了 &3[playerDisplayName]&e-(&3[offon]&e).'
       feedbackMulti: '&e你回復了 &e玩家 &3[count]血.'
-      targetfeedback: '&e你被玩家 &3[senderDisplayName]&e 治愈了'
+      targetfeedback: '&e你被玩家 &3[senderDisplayName]&e 治癒了'
   helpop:
     help:
       info: '&e向伺服器管理員求助'
