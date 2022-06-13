@@ -4287,7 +4287,7 @@ command:
       info: '&e編輯玩家票數'
       args: (playerName) [add/set/take/clear] [amount] (-s)
       explanation:
-      - 'Example:'
+      - '例子:'
       - /voteedit Zrips
       - /voteedit add 10
       - /voteedit take 10
