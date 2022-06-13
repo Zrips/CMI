@@ -3472,7 +3472,7 @@ command:
       feedback: '&6出生點設置在了 ([world],[x],[y],[z])!'
       group: ' &e([group])'
       rng: ' &e(Rng: [rng])'
-      respawn: '&7單擊以將此 出生點 點設置為可能的重生位置'
+      respawn: '&7單擊以將此 出生點 設置為可能的重生位置'
   setwarp:
     help:
       info: '&e設置地標'
