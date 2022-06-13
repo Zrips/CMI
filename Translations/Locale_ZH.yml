@@ -647,7 +647,7 @@ direction:
   w: 西
   nw: 西北
 modify:
-  middlemouse: '&2滑鼠中鍵單擊進行編輯'
+  middlemouse: '&2滑鼠中鍵點擊進行編輯'
   newItem: '&7放置新物品'
   newLine: '&2<新的一行>'
   newLineHover: '&2添加新的一行'
@@ -737,7 +737,7 @@ econ:
   charged: '!actionbar!&f花費: &6[amount]'
   notEnoughMoney: '&c你沒有足夠的現金. 還需要 (&6[amount]&c)'
   tooMuchMoney: '&c你現金太多了'
-  commandCost: '&7此指令的價格為 &6[cost] &7重複此操作或單擊此處確認'
+  commandCost: '&7此指令的價格為 &6[cost] &7重複此操作或點擊此處確認'
 Elytra:
   Speed: '&e速度: &6[speed]&ekm/h'
   SpeedBoost: ' &2+ '
