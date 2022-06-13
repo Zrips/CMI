@@ -1815,7 +1815,7 @@ command:
       targetFeedback: '&3[senderDisplayName]&e 給你玩家 &3[headName] &e的頭顱!'
   heal:
     help:
-      info: '&e治愈玩家'
+      info: '&e治癒玩家'
       args: '[playerName] (healamount/healpercent)'
     info:
       feedback: '&e你治癒了 &3[playerDisplayName]&e-(&3[offon]&e).'
