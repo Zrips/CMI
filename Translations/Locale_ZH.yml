@@ -1716,7 +1716,7 @@ command:
     info:
       feedback: '&6將 &e[amount] &6x &e[itemname] &6(&e[customitemname]&6) 給予玩家 &e[playerDisplayName]'
       maxLimit: '&c一次不可獲得多於&7[max]的物品'
-      notItem: '&c我們無法給您這個, 因為這個不是物品'
+      notItem: '&c我們無法給你這個, 因為這個不是物品'
       maxLimitResize: '&c你不可獲得多於 &7[max]. &c調整限制.'
   giveall:
     help:
