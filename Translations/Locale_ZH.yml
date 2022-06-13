@@ -2384,7 +2384,7 @@ command:
     info:
       notCd: '&e禮包未在冷卻中'
       reset: '&e玩家 &6[playerDisplayName]&e 的禮包 (&6[kit]&e) 的冷卻時間已重置，被操作玩家 '
-      resetAll: '&eKit (&6[kit]&e) cooldown got reset for &6[count] &eplayers'
+      resetAll: '&e已將禮包 (&6[kit]&e)  的冷卻時間對 &6[count] &e位玩家 重置'
       list: '&e[place]. &6[kit] &e[time]'
       listHover: '&e點擊重置'
       noCd: '&e沒有冷卻中的禮包'
