@@ -3130,7 +3130,7 @@ command:
       info: '&e設置修復物品花費'
       args: (playerName) [amount]
       explanation:
-      - 'Example:'
+      - '範例:'
       - /repaircost 10
       - /repaircost set 10
       - /repaircost add 10
