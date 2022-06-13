@@ -3288,7 +3288,7 @@ command:
       autospeedChange: '&e自動調速設置為 [state]'
       messagesChange: '&e資訊輸出設置為 [state]'
       NoInfo: '&e無資訊'
-      infoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6已找到: &e[found]'
+      infoShow: '&6TPS: &3[tps] &6剩餘 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6已找到: &e[found]'
       Teleport: '&e點擊傳送'
       scanList: '&2[number]. &e[place] &6[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
       scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
