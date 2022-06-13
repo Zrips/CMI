@@ -661,7 +661,7 @@ modify:
   addSymbol: ' &2+'
   addSymbolHover: '&2新建'
   cancelSymbol: ' &7&l[X]'
-  cancelSymbolHover: '&aCancel'
+  cancelSymbolHover: '&a取消'
   acceptSymbol: ' &2[!] '
   acceptSymbolHover: '&2接受'
   denySymbol: ' &4[X] '
@@ -685,7 +685,7 @@ modify:
   commandList: ' &e[command]  '
   emptyLine: '&7[Empty line]'
   commandEdit: '&e編輯列表'
-  lineAddInfo: '&eEnter new line. Type &6cancel &eto cancel'
+  lineAddInfo: '&e輸入新的一行. 輸入 &6cancel &e來取消'
   commandAddInfo: '&e輸入一個新指令，或使用 &6cancel &e取消'
   commandAddInformationHover: "&e[playerName] 代表玩家變數 \n&e 想給指令加延遲請使用: \n&edelay! 5\
     \ \n&e支持特殊指令 獲得更多資訊 \n&ehttps://www.zrips.net/cmi/commands/specialized/"
@@ -734,7 +734,7 @@ Information:
 econ:
   disabled: '&c經濟已禁用，你不能使用這個指令'
   noMoney: '&c你的錢不夠'
-  charged: '!actionbar!&fCharged: &6[amount]'
+  charged: '!actionbar!&f花費: &6[amount]'
   notEnoughMoney: '&c你沒有足夠的現金. 還需要 (&6[amount]&c)'
   tooMuchMoney: '&c你現金太多了'
   commandCost: '&7此指令的價格為 &6[cost] &7重複此操作或單擊此處確認'
@@ -758,7 +758,7 @@ NetherPortal:
 Location:
   Title: '&8玩家位置'
   Killer: '&e擊殺者: &6[killer]'
-  OneLiner: '&eLocation: &6[location]'
+  OneLiner: '&e位置: &6[location]'
   DeathReason: '&e死亡原因: &6[reason]'
   Full: '&7[world] &f[x]&7:&f[y]&7:&f[z]'
   World: '&e世界: &6[world]'
@@ -1043,8 +1043,8 @@ command:
       - /cmi bossbarmsg all -p:-1 -n:testbar - 將會給叫這個名字的bossbar血條充盈度減少百分之一 progresion
         bar by name
       - /cmi bossbarmsg all -s:10 -n:testbar - 代表bossbar血條的分節，比如 10 分節
-      - /cmi bossbarmsg all -sec:5 - will count for 5 seconds from 0 to 5
-      - /cmi bossbarmsg all -sec:-5 - will count for 5 seconds from 5 to 0
+      - /cmi bossbarmsg all -sec:5 - 從 0 到 5 將花費 5 秒
+      - /cmi bossbarmsg all -sec:-5 - 從 5 到 0 將花費 5 秒
       - https://www.zrips.net/cmi/commands/bossbarmsg-handling/
   broadcast:
     help:
@@ -1263,8 +1263,7 @@ command:
     info:
       wrongworld: '&c該世界不存在'
       feedback: '&e你設置了玩家 &3[playerDisplayName] &e的指南針指向玩家 &3[sourceDisplayName] &e所在位置'
-      feedbackCustom: '&e你設置了玩家 &3[playerDisplayName] &e的指南針指向坐標 &3[x] [z] [world]
-        &e位置'
+      feedbackCustom: '&e你設置了玩家 &3[playerDisplayName] &e的指南針指向坐標 &3[x] [z] [world] &e位置'
       targetFeedback: '&e你的指南針指向位置已被設置為玩家 &3[sourceDisplayName] &e所站位置， 操作者 &3[senderName]&e.'
       targetFeedbackCustom: '&e你的指南針指向位置已被設置為 &3[x] [z] [world] &e位置 操作者 &3[sourceDisplayName]&e.'
       reset: '&e指南針指向已重置'
@@ -1510,7 +1509,7 @@ command:
       info: '&e附魔物品'
       args: (playerName) [enchant] [level]
       explanation:
-      - -o will take item from offhand
+      - -o 將從副手拿走物品
     info:
       feedback: '&e你給物品附魔了 &3[enchant]:[level]&e 被執行玩家 &3[playerDisplayName]&e (&3[offon]&e).'
       removed: '&e你從物品上移除了 &3[enchant] &e附魔，被執行玩家 &3[playerDisplayName]&e (&3[offon]&e).'
@@ -1627,8 +1626,7 @@ command:
       autospeedChange: '&e自動速度設置為 [state]'
       messagesChange: '&e資訊輸出設置為 [state]'
       NoInfo: '&e無資訊，請先開始掃描！'
-      InfoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed]
-        &6已找到: &e[found]'
+      InfoShow: '&6TPS: &3[tps] &6剩餘 &e[left] &6(&e[min]m:[sec]s&6) &6速度: &e[speed] &6已找到: &e[found]'
       scanList: '&2[number]. &7X:&f[x] &7Z:&f[z]'
       finished: '&e掃描完成, 請使用 &6/cmi fixchunk fix &e來修復損壞區塊 &c區塊會重新生成，該操作不可逆！'
       fixed: '&2[number] &e個區塊已修復'
@@ -1718,7 +1716,7 @@ command:
     info:
       feedback: '&6將 &e[amount] &6x &e[itemname] &6(&e[customitemname]&6) 給予玩家 &e[playerDisplayName]'
       maxLimit: '&c一次不可獲得多於&7[max]的物品'
-      notItem: '&cWe can''t give you this, its not an item'
+      notItem: '&c我們無法給您這個, 因為這個不是物品'
       maxLimitResize: '&c你不可獲得多於 &7[max]. &c調整限制.'
   giveall:
     help:
@@ -1751,8 +1749,8 @@ command:
     info:
       feedback: '&e你為 &3[playerDisplayName]&e-(&3[offon]&e) &3[boolean]&e [color]發光 &e.'
       targetfeedback: '&3[senderDisplayName]&e 幫你 &3[boolean]&e [color]發光.'
-      title: Pick glow color
-      incorrect: '&4Incorrect color name'
+      title: 選擇發光顏色
+      incorrect: '&4顏色名稱不正確'
   gm:
     help:
       info: '&e設置玩家的遊戲模式'
@@ -1783,7 +1781,7 @@ command:
       exporbs: ' &e經驗球: &6[exporbs]'
       blocks: ' &e掉落的方塊: &6[blocks]'
       projectiles: ' &e彈射物: &6[projectiles]'
-      tnt: ' &e激活的TNT: &6[tnt]'
+      tnt: ' &e點燃的TNT: &6[tnt]'
       boat: ' &e船: &6[boat]'
       minecart: ' &e礦車: &6[minecart]'
       nothing: '&e伺服器很乾淨，沒有垃圾需要移除'
@@ -1820,8 +1818,8 @@ command:
       info: '&e治愈玩家'
       args: '[playerName] (healamount/healpercent)'
     info:
-      feedback: '&e你治愈了 &3[playerDisplayName]&e-(&3[offon]&e).'
-      feedbackMulti: '&e你回覆了 &e玩家 &3[count]血.'
+      feedback: '&e你治癒了 &3[playerDisplayName]&e-(&3[offon]&e).'
+      feedbackMulti: '&e你回復了 &e玩家 &3[count]血.'
       targetfeedback: '&e你被玩家 &3[senderDisplayName]&e 治愈了'
   helpop:
     help:
@@ -1898,7 +1896,7 @@ command:
       - '&e一次改變 0.01 ，按住shift可一次改變 0.1'
       list: '&6[place]&e. [name]'
       addInfo: '&e輸入新一行的文本. 輸入 &6cancel &e取消. 額外變數: &6ICON:&7[Value] &6SICON:&7[Value]&e
-        where &7Value&e- &7[MaterialName-amount]%enchanted%&e, &7%itemInHand%&e, &7Head:[headOwner]'
+        where &7Value&e- &7[MaterialName-amount]%enchanted%&e, &7%itemInHand%&e, &7頭顱:[headOwner]'
   hologrampages:
     help:
       info: '&e更改全息圖頁面'
@@ -1985,20 +1983,20 @@ command:
       args: '[playerName] (command)'
   ignore:
     help:
-      info: '&e無視玩家'
+      info: '&e忽略玩家'
       args: (playerName/uuid/all)
       explanation:
       - cmi.command.ignore.bypass - 跳過無視玩家列表
     info:
-      self: '&c你想要無視自己？你腦子進水了嗎？'
-      added: '&e你無視了 &6[playerDisplayName]'
-      addedAll: '&eNow you ignoring everyone'
-      all: '&eEveryone'
-      removed: '&e你不再無視 &6[playerDisplayName]'
-      removedAll: '&eYou no longer ignoring everyone'
+      self: '&c你想要忽略自己？你腦子進水了嗎？'
+      added: '&e你忽略了 &6[playerDisplayName]'
+      addedAll: '&e現在你忽略所有人'
+      all: '&e所有人'
+      removed: '&e你不再忽略 &6[playerDisplayName]'
+      removedAll: '&e你不再忽略所有人'
       list: '&e[place]. [playerDisplayName]  '
-      ignoringYou: '&c[playerDisplayName] &e無視了你'
-      empty: '&7Ignore list is empty'
+      ignoringYou: '&c[playerDisplayName] &e忽略了你'
+      empty: '&7忽略列表為空'
   importfrom:
     help:
       info: '&e從其他插件裡導入數據'
@@ -2007,8 +2005,7 @@ command:
       converted: '&e導入: &6[done]&e/&6[total] &e名玩家'
       convertedWarps: '&e導入 &6[amount] &e個地標'
       noInfo: '&c你必須指定你想導入什麼舊數據'
-      savingInProgress: '&e資料將在這幾分鐘內保存至資料庫
-        時間取決於有多少資料"<'
+      savingInProgress: '&e資料將在這幾分鐘內保存至資料庫時間取決於有多少資料"<'
       HDfile: '&c找不到HolographicDisplays插件數據庫文件.導入中止.'
       HDexist: '&c全息圖 &7[name] &c已經存在. 跳過.'
       HDfailed: '&c無法加載 全息圖 (&7[name]&c)'
@@ -2068,7 +2065,7 @@ command:
       newFlyCharge: '&7飛行費用: &6[charge]'
       newElytraFlyHover: '&7使用鞘翅飛'
       newGodHover: '&7暫時無敵: &e[time]'
-      newSneaking: Sneaking
+      newSneaking: 蹲下中
       newSprint: 衝刺
       newWalkSpeed: '&7走路速度: &6[walkspeed]'
       newGameMode: '&f模式: &6[gameMode] '
@@ -2114,7 +2111,7 @@ command:
       newJailed: '入獄 '
       newJailedHover:
       - '&監獄: &e[jail]'
-      - '&7細胞(?): &e[id]'
+      - '&7牢房: &e[id]'
       - '&7剩下: &e[time]'
       - '&7原因: &e[reason]'
       newHomes: '&f家: &e[count] '
@@ -2570,7 +2567,7 @@ command:
       add: '&e新的IP (&6[ip]&e) 已被添加至玩家 &6[playerDisplayName]'
       remove: '&eIp (&6[ip]&e) 已被從玩家 &6[playerDisplayName] &e的列表中移除'
       clear: '&e所有IP已被從玩家 &6[playerDisplayName] &e的列表中移除'
-      ipNotFound: '&cIp 未找到'
+      ipNotFound: '&cIP 未找到'
       empty: '&c列表為空'
       list: '&6[place]&e. &6[ip]'
   mail:
@@ -2645,7 +2642,7 @@ command:
     info:
       started: '&e鏡像複製已開始'
       stopped: '&6鏡像複製已結束'
-      tooFar: '&c你距離鏡像中心太遠了 (最大半徑 &6[blocks] &c方塊). 仿制已暫停'
+      tooFar: '&c你距離鏡像中心太遠了 (最大半徑 &6[blocks] &c方塊). 複製已暫停'
       title: 鏡像複製
       notSet: '&c中心未設置'
       set: '&2中心已設置'
@@ -2784,7 +2781,7 @@ command:
       args: '[newNickName/off] (playerName)'
       explanation:
       - '改變暱稱: cmi.command.nick.different'
-      - 無視暱稱長度限制 cmi.command.nick.bypass.length
+      - '無視暱稱長度限制 cmi.command.nick.bypass.length'
     info:
       changed: '&e暱稱已改變為 &r[newNickName] &e，舊暱稱是 &r[oldNickName]'
       changedTarget: '&e你的暱稱&e被 &r[senderDisplayName] 改為 &r[newNickName]'
@@ -2827,7 +2824,7 @@ command:
       info: '&e播放自定義粒子動畫'
       args: ''
       explanation:
-      - 使用方法在 http://www.zrips.net/cmi/extra/particles/
+      - '使用方法在 http://www.zrips.net/cmi/extra/particles/'
   patrol:
     help:
       info: '&e巡邏'
@@ -3020,7 +3017,7 @@ command:
       requiredExp: ' &e經驗: [color][current]&e/&6[needed]'
       requiredVotes: ' &e票數: [color][current]&e/&6[needed]'
       requiredPerm: ' &e權限: '
-      requiredMcmmo: ' &eMcmmo: '
+      requiredMcmmo: ' &eMcMMO: '
       requiredMcmmoList: ' &e[color][name]'
       requiredMcmmoListHover: ' &e[color][current]&e/&6[needed]'
       requiredMcmmoPower: mcmmo能量
@@ -3089,7 +3086,7 @@ command:
       info: '&e重新讀取插件'
       args: ''
     info:
-      feedback: '&6插件重新讀取完成 繁體中文翻譯 by TWME'
+      feedback: '&6插件重新讀取完成'
       failedConfig: '&4載入 config 文件失敗！請檢查有無語法錯誤！'
       failedLocale: '&4載入語言文件失敗！請檢查有無語法錯誤！'
   removehome:
@@ -3125,8 +3122,7 @@ command:
       - cmi.command.repair.repairshare.bypass - 不添加共享修復保護地修復物品
     info:
       feedback: '&e已成功修復 &3[playerDisplayName]&e-(&3[offon]&e) 的 &3[amount]&e 件物品.'
-      feedbackMoney: '&e你以為 &3[playerDisplayName]&e 修理  &3[amount]&e 件物品
-        (&3[offon]&e). 花費: &7[cost]'
+      feedbackMoney: '&e你以為 &3[playerDisplayName]&e 修理  &3[amount]&e 件物品(&3[offon]&e). 花費: &7[cost]'
       itemOwner: '&e上一次修復由: &6[owner]'
       cantUse: '!title!&c你不能使用這個!subtitle!&e請自己修理這個!'
   repaircost:
@@ -3150,10 +3146,9 @@ command:
   replaceblock:
     help:
       info: '&e替換你周圍的方塊'
-      args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range
-        in chunks/g]&e y &6[max height]'
+      args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range in chunks/g]&e y &6[max height]'
       explanation:
-      - '&6SubCommands:'
+      - '&6子命令:'
       - '&e- &6pause &e- 暫停替換'
       - '- &6continue &e- 繼續替換'
       - '- &6stop &e- 停止替換'
@@ -3293,8 +3288,7 @@ command:
       autospeedChange: '&e自動調速設置為 [state]'
       messagesChange: '&e資訊輸出設置為 [state]'
       NoInfo: '&e無資訊'
-      infoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6已找到:
-        &e[found]'
+      infoShow: '&6TPS: &3[tps] &6剩余 &e[left] &6(&e[time]&6) &6速度: &e[speed] &6已找到: &e[found]'
       Teleport: '&e點擊傳送'
       scanList: '&2[number]. &e[place] &6[amount] &8(&7X:&f[x] &7Y:&f[y] &7Z:&f[z]&8)'
       scanListChecked: '&7[number]. [place] [amount] (X:[x] Y:[y] Z:[z])'
@@ -3325,19 +3319,19 @@ command:
       enchantLevelChance: '&c等級降低的機率: &7[chance]%'
       gotIngredients: '&e你得到了 [itemList]'
       gotIngredientsFormat: '&6[material]&7-&6[amount]'
-      itemBroke: '&cItem broke with [chance]% break chance'
-      confirm: '&2確認清除. Cost: &c[price]'
+      itemBroke: '&c物品以 [chance]% 機率損壞'
+      confirm: '&2確認清除. 花費: &c[price]'
       itemBreakChance: '&c物品損毀機率: [chance]%'
-      itemBreakChanceExtra: '&c[durability]% durability adds [chance]% break chance'
-      itemBreak: '&cItem will break on click!'
+      itemBreakChanceExtra: '&c[durability]% 耐久度增加 [chance]% 機率損壞'
+      itemBreak: '&c物品將在點擊時損壞!'
       ingredientReturnChance: '&7成分退回機會: [chance]%'
       cantScavenge: '&c無法清除'
-      insertItem: '&2Insert item in a slot above'
+      insertItem: '&2在上方的欄位中插入物品'
       scavengeCost: '&8清除成本: [cost]'
       moreTitle: '金額不正確: [input]/[required]'
       moreLore:
       - '&b您需要更多此物品.'
-      - '&bRequires atleast &e[amount]'
+      - '&b至少需要 &e[amount]'
       title: '&2Scavenger'
   schedule:
     help:
@@ -4210,10 +4204,10 @@ command:
       unmutedTarget: '&e你現在能發言了'
   unmutechat:
     help:
-      info: '&e解除公開聊天室禁言''
+      info: '&e解除公開聊天室禁言'
       args: (-s)
     info:
-      unmuted: '&e解除公開聊天室禁言''
+      unmuted: '&e解除公開聊天室禁言'
   usermeta:
     help:
       info: '&e設置玩家的 meta data'
