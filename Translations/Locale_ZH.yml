@@ -3445,7 +3445,7 @@ command:
       private: ' &2(私有)'
       noMore: '&c你已經達到可設置家的最大數量'
       noOverwrite: '&c你不能直接創建已有名字的家來覆蓋舊的家 你只能先刪掉舊的，或者換個新名字'
-      slotTaken: '!actionbar!&c家的欄位已被 &7[homeName] &c使用, 請使用另一個'
+      slotTaken: '!actionbar!&c這個名字已被 &7[homeName] &c使用, 請使用另一個'
   setmotd:
     help:
       info: 設置伺服器MOTD
