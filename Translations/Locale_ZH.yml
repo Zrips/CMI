@@ -1,7 +1,7 @@
 # 支持全彩色碼和一些變量
 # 請記住，某些變量對某些行不起作用，對其他行起作用 :)
 # 把它們放在現在的地方，一切都會好起來的 :)
-# 有些行可以設置全是域變量. 對於將受到影響的玩家。 在示例 /heal Zrips 中，將使用 Zrips 數據
+# 有些行可以設置全是域變量. 對於將受到影響的玩家。 在示例 /heal Zrips 中，將使用 Zrips 資料
 # [serverName] 顯示伺服器名稱
 # [playerName] 顯示玩家ID
 # [playerDisplayName] 顯示玩家的暱稱
@@ -67,7 +67,7 @@ info:
   NobodyOnline: '&c伺服器裡沒有玩家'
   Same: '&c你不能打開你自己的背包'
   cantLoginWithDifCap: '&c請注意名字的大小寫! 舊名字:&e[oldName]&c. 當前名字: &e[currentName]'
-  Searching: '&e正在搜尋玩家數據，請稍等...'
+  Searching: '&e正在搜尋玩家資料，請稍等...'
   NoPlayer: '&c找不到這個玩家'
   NoCommand: '&c未知指令'
   NoCommandWhileSleeping: '&c不能在睡覺時執行指令!'
@@ -105,10 +105,9 @@ info:
   Elevator:
     created: '&e創建電梯告示牌'
   CantPlaceSpawner: '&e你不能把一個生怪磚放置的距離另一個那麼近，距離至少要大於 (&6[range]&e)'
-  ChunksLoading: '&e世界區塊數據正在加載中，請稍等...'
+  ChunksLoading: '&e世界區塊資料正在加載中，請稍等...'
   ShulkerBox: 界伏盒
-  CantuseShulkerBox: '&c與玩家戰鬥時，無法使用界伏盒.
-    Wait: [time]'
+  CantuseShulkerBox: '&c與玩家戰鬥時，無法使用界伏盒.等待時間: [time]'
   CantUseNonEncrypted: '!actionbar!&c此項目上的指令未加密. 無法使用它們!'
   CantDecode: '!actionbar!&c無法解碼 消息/指令. 密鑰文件包含此任務的錯誤密鑰. 通知伺服器管理員這項訊息'
   Show: '&e展示'
@@ -187,7 +186,7 @@ info:
     noserver: '&c找不到這個伺服器'
     server: '&e伺服器: &7[name]'
   variables:
-    Online: '&6在線'
+    Online: '&6線上'
     Offline: '&c離線'
     TrueColor: '&2'
     FalseColor: '&4'
@@ -212,8 +211,8 @@ info:
     info: '&8資訊: &8[playerDisplayName]'
     saved: '&e[time] &e背包已保存 ID: &e[id]'
     NoSavedInv: '&e該玩家沒有已保存的背包'
-    NoEntries: '&4數據存在，但是沒有已保存的背包'
-    CantFind: '&e找不到此ID的背包數據'
+    NoEntries: '&4資料存在，但是沒有已保存的背包'
+    CantFind: '&e找不到此ID的背包資料'
     TopLine: '&e*************** [playerDisplayName] 已保存背包 ***************'
     List: '&eid: &6[id]&e. &6[time]'
     KillerSymbol: '&c ☠'
@@ -834,7 +833,7 @@ command:
       reason: '&e提示原因: &6[reason]'
       removed: '&6[playerDisplayName] &e已從提示列表中移除'
       added: '&e如果玩家 &6[playerDisplayName] &e在接下來24小時內上線的話，上線提示消息將被發送給每個管理員'
-      online: '&6[playerDisplayName] &e當前在線'
+      online: '&6[playerDisplayName] &e目前在線上'
   aliaseditor:
     help:
       info: '&e指令簡寫編輯'
@@ -1120,7 +1119,7 @@ command:
       nonIpList: '&e帳戶: &6'
       nonIpName: '&6[name]'
       click: '&e點擊查詢 &6[name] &e的帳戶'
-      noData: '&c沒有數據'
+      noData: '&c沒有資料'
   checkban:
     help:
       info: '&e封鎖玩家'
@@ -1499,7 +1498,7 @@ command:
       - /cmi effect zrips nightvision 60 1 - 將給玩家 Zrips 60 秒夜視效果
       - /cmi effect zrips nightvision +10 - 將給玩家 Zrips 當前的夜視效果再加10秒
       - /cmi effect zrips nightvision -10 - 將給玩家 Zrips 當前的夜視效果減去10秒
-      - /cmi effect all health_boost 60 1 - 將給所有 在線玩家 60 秒 health_boost效果
+      - /cmi effect all health_boost 60 1 - 將給所有 線上玩家 60 秒 health_boost效果
     info:
       feedback: '&e藥水效果 &6[effect] &e已被添加至 &3[playerDisplayName]&e 並持續 &6[sec]秒&e
         ，藥水等級 &6[power] &e(&3[offon]&e).'
@@ -1829,17 +1828,17 @@ command:
       - 需要 cmi.command.helpop.inform 權限才能看到求助資訊
     info:
       message: '&c[OP求助]&4[&7[senderDisplayName]&4]&r&c [message]'
-      feedback: '&c[Help]&7您的問題已提交給在線的工作人員'
-      offline: '&c[Help]&7目前沒有工作人員在線，請稍後再試'
+      feedback: '&c[Help]&7您的問題已提交給在線上的工作人員'
+      offline: '&c[Help]&7目前沒有工作人員線上，請稍後再試'
   hideflags:
     help:
-      info: '&e隱藏物品NBT標簽'
+      info: '&e隱藏物品NBT標籤'
       args: (playerName) [flagName/clear]
     info:
-      feedback: '&e你給物品添加了新的NBT標簽，被操作者 &3[playerDisplayName]&e (&3[offon]&e).'
-      cleared: '&e你清除了物品上所有的NBT標簽，被操作者 &3[playerDisplayName]&e (&3[offon]&e).'
+      feedback: '&e你給物品添加了新的NBT標籤，被操作者 &3[playerDisplayName]&e (&3[offon]&e).'
+      cleared: '&e你清除了物品上所有的NBT標籤，被操作者 &3[playerDisplayName]&e (&3[offon]&e).'
       noitem: '&c必須把物品拿在手上'
-      inccorectId: '&e無效的NBT標簽名稱'
+      inccorectId: '&e無效的NBT標籤名稱'
   hologram:
     help:
       info: '&e創建懸浮字'
@@ -1979,7 +1978,7 @@ command:
       args: '[playerName] (command)'
   ifonline:
     help:
-      info: '&e只有玩家處於在線狀態時才執行指令'
+      info: '&e只有玩家處於線上狀態時才執行指令'
       args: '[playerName] (command)'
   ignore:
     help:
@@ -1999,20 +1998,20 @@ command:
       empty: '&7忽略列表為空'
   importfrom:
     help:
-      info: '&e從其他插件裡導入數據'
+      info: '&e從其他插件裡導入資料'
       args: '[essentials] [home/warp/nick/logoutlocation/money]'
     info:
       converted: '&e導入: &6[done]&e/&6[total] &e名玩家'
       convertedWarps: '&e導入 &6[amount] &e個地標'
-      noInfo: '&c你必須指定你想導入什麼舊數據'
+      noInfo: '&c你必須指定你想導入什麼舊資料'
       savingInProgress: '&e資料將在這幾分鐘內保存至資料庫時間取決於有多少資料"<'
-      HDfile: '&c找不到HolographicDisplays插件數據庫文件.導入中止.'
+      HDfile: '&c找不到HolographicDisplays插件資料庫文件.導入中止.'
       HDexist: '&c全息圖 &7[name] &c已經存在. 跳過.'
       HDfailed: '&c無法加載 全息圖 (&7[name]&c)'
       HDimported: '&e導入 &7[amount]個 &e全息圖'
   importoldusers:
     help:
-      info: '&e從世界文件夾playerdata裡導入玩家數據，請注意這可能導致卡頓'
+      info: '&e從世界文件夾playerdata裡導入玩家資料，請注意這可能導致卡頓'
       args: ''
     info:
       starting: '&e開始導入'
@@ -2256,7 +2255,7 @@ command:
       step: ' &6->: &6[name]'
       final: '&e[value]'
       list: '&e- &r[value]'
-      noNbt: '&e物品上沒有任何NBT標簽'
+      noNbt: '&e物品上沒有任何NBT標籤'
   jail:
     help:
       info: '&e將玩家關進監獄一段時間'
@@ -2489,7 +2488,7 @@ command:
       noCd: '&e上面沒有使用的禮包 0'
   lastonline:
     help:
-      info: '&e顯示之前 x 分鐘內所有在線玩家'
+      info: '&e顯示之前 x 分鐘內所有線上玩家'
       args: '[timeRange/list/stop] [page]'
     info:
       searching: '&e搜尋 &6[checked]&e/&6[total] &e(&6[found]&e)'
@@ -2520,7 +2519,7 @@ command:
       Stopped: '&e光照修復已停止'
   list:
     help:
-      info: '&e顯示在線玩家列表'
+      info: '&e顯示線上玩家列表'
       args: ''
       explanation:
       - '權限: '
@@ -2537,8 +2536,8 @@ command:
       - '[staffLine]'
       - '[groupLine]'
       - '&7========================'
-      staffL: '&e管理員在線: &f[list]'
-      adminL: '&e在線玩家: &f[list]'
+      staffL: '&e管理員在線上: &f[list]'
+      adminL: '&e線上玩家: &f[list]'
       hiddenPref: '&e&7[H]'
       hiddenCount: '&e&7([amount])'
       groupL: '&e[groupName]: &f[list]'
@@ -2616,7 +2615,7 @@ command:
       - '&e權限: '
       - '&6cmi.fullserver.bypass &e- 伺服器玩家滿了仍然可以進入伺服器'
     info:
-      changed: '&e已將伺服器最大人數從 &6[old] &e修改為 &6[new]&e. 當前在線: &6[current]'
+      changed: '&e已將伺服器最大人數從 &6[old] &e修改為 &6[new]&e. 現在在線上有 &6[current] 位'
   me:
     help:
       info: '&e給玩家發送特殊的/me消息'
@@ -2633,7 +2632,7 @@ command:
       targetfeedback: '&3[senderDisplayName]&e 向你打開了 &6[type] &e交易窗'
   migratedatabase:
     help:
-      info: '&e改變存儲系統，轉移所有數據'
+      info: '&e改變儲存系統，轉移所有資料'
       args: ''
   mirror:
     help:
@@ -2881,8 +2880,8 @@ command:
       args: '[page]'
     info:
       topLine: '&e----- 遊戲時間排行榜 &e-----'
-      scanning: '&e當前正在掃描數據, 請稍後再試'
-      loading: '&e數據未加載完成. 待加載完成後掃描會自動開始'
+      scanning: '&e當前正在掃描資料, 請稍後再試'
+      loading: '&e資料未加載完成. 待加載完成後掃描會自動開始'
       list: '&e[number]. [playerDisplayName] &e- &6[time]'
       place: '&6[playerDisplayName] &e的名次是第 &6[place] &e名'
   point:
@@ -2945,7 +2944,7 @@ command:
       Finished: '&e已完成，可能需要花一點時間來加載你周圍的區塊'
   prewards:
     help:
-      info: '&e查詢在線獎勵'
+      info: '&e查詢線上獎勵'
       args: (playerName)
     info:
       list: '&e[place]. &6[rewardName] &e獎勵將於 &6[time] &e後發放'
@@ -2953,8 +2952,8 @@ command:
       listOneTime: '&e[place]. &6[rewardName]'
       claim: ' &2獲得獎勵'
       claimAmount: ' &2獲得了(x[amount])!'
-      claimHover: '&2點擊獲得在線獎勵!'
-      inform: '!actionbar!&2有未領取的在線獎勵! /prewards'
+      claimHover: '&2點擊獲得線上獎勵!'
+      inform: '!actionbar!&2有未領取的線上獎勵! /prewards'
   ptime:
     help:
       info: '&e設置針對玩家的時間'
@@ -3002,7 +3001,7 @@ command:
       - -cost 如果為之前的等級排名定義,將向玩家收取金錢,exp或物品
     info:
       noPrev: '&e找不到任何之前的排名'
-      list: '&e選擇一個你想要降低排名的數據: '
+      list: '&e選擇一個你想要降低排名的資料: '
       confirm: '&e點擊確認降低至 &6[rank]'
       downranked: '&e已降低排名至 &6[rank]'
   rankinfo:
@@ -3065,7 +3064,7 @@ command:
       noRank: ' &e你沒有和你相關的排名'
       requiresPrevious: ' &e你還不能升到這個排名. 它需要你有
         &6[rank] &e排名(`s)'
-      list: '&e選擇一個你想要提升排名的數據: '
+      list: '&e選擇一個你想要提升排名的資料: '
       confirm: '&e點擊確認提升至 &6[rank]'
   realname:
     help:
@@ -3098,7 +3097,7 @@ command:
       removed: '&e家 (&6[home]&e) 已移除'
   removeuser:
     help:
-      info: '&e移除一個玩家及其所有數據'
+      info: '&e移除一個玩家及其所有資料'
       args: '[uuid/duplicates]'
     info:
       removed: '&e玩家 (&6[uuid]&e) 已移除'
@@ -3224,7 +3223,7 @@ command:
       info: '&e保存每個玩家的背包'
       args: '&3(daysRange/-online)'
       explanation:
-      - -online 該變數代表只保存在線玩家的背包
+      - -online 該變數代表只保存線上玩家的背包
     info:
       saving: '[simbol] &2已檢查: &e[checked]&2 總人數: &e[total]&2 已保存: &e[saved] &2已跳過:
         &e[skipped] [simbol]'
@@ -3365,7 +3364,7 @@ command:
     info:
       started: '&e搜尋中 '
       current: '&e當前找到 &3[amount] &e個結果，已搜尋了 &3[files] &e個文件'
-      nothingfound: '&e未找到任何數據'
+      nothingfound: '&e未找到任何資料'
       totalfound: '&e總共找到 &3[amount] &e個結果，已搜尋了 &3[files] &e個玩家'
       location:
         ender: '&3終界箱'
@@ -3399,7 +3398,7 @@ command:
       sellInfo: '&8出售價格: &2[price]'
   sendall:
     help:
-      info: '&e將所有在線玩家送去某子服'
+      info: '&e將所有線上玩家送去某子服'
       args: '[serverName]'
   server:
     help:
@@ -3807,14 +3806,14 @@ command:
       args: (playerName) [add/take/set] [statistic] (subType) [amount] (-s)
     info:
       cantSet: '&c無法設置這種統計類型'
-      reqSubType: '&c你需要進一步指定 &6[type] &c這種統計數據的子分類'
-      set: '&e已將舊數據 &6[old] &e修改為新數據 &6[new] &e，操作數據 &6[statistic] &e(&6[extra]&e)'
+      reqSubType: '&c你需要進一步指定 &6[type] &c這種統計資料的子分類'
+      set: '&e已將舊資料 &6[old] &e修改為新資料 &6[new] &e，操作資料 &6[statistic] &e(&6[extra]&e)'
   status:
     help:
       info: '&e顯示伺服器狀態'
       args: ''
     info:
-      Platform: ' &e系統: &6[platform] &e(&6[os]&e) &e運行線程: &6[threads]'
+      Platform: ' &e系統: &6[platform] &e(&6[os]&e) &e執行緒: &6[threads]'
       Tps: ' &eTPS: &6[tps]'
       CpuUsage: ' &eCPU 使用率: &6[cpuusage]% &e(&6[cores] 核&e)'
       Uptime:
@@ -3847,14 +3846,14 @@ command:
       message: '&6[playerDisplayName] &e剛剛結束了他自己的生命'
   switchplayerdata:
     help:
-      info: '&e將某玩家所有數據轉移至另一個玩家'
+      info: '&e將某玩家所有資料轉移至另一個玩家'
       args: '[sourcePlayerName/uuid] [targetPlayerName/uuid]'
       explanation:
-      - 使用 UUID 可以完成更精確的數據轉移
+      - 使用 UUID 可以完成更精確的資料轉移
     info:
-      same: '&e目標玩家數據和源玩家數據已準備完畢'
-      transferred: '&6[sourceName] &e的玩家數據成功轉移至 &6[Name]'
-      failed: '&c轉移玩家數據失敗'
+      same: '&e目標玩家資料和源玩家資料已準備完畢'
+      transferred: '&6[sourceName] &e的玩家資料成功轉移至 &6[Name]'
+      failed: '&c轉移玩家資料失敗'
   tablistupdate:
     help:
       info: '&e強制玩家更新 Tab 列表'
