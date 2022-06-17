@@ -13,7 +13,7 @@
 # [gameMode] 顯示玩家遊戲模式
 # [prefix] 如果有,顯示目標玩家前綴
 # [suffix] 如果有,顯示目標玩家後綴
-# 顯示發送行命令的控制台或玩家。 例如 Zrips 執行 /heal Zhax 然後將顯示 Zrips 
+# 顯示發送行指令的控制台或玩家。 例如 Zrips 執行 /heal Zhax 然後將顯示 Zrips 
 # [senderName] 顯示發送者玩家ID
 # [senderDisplayName]顯示發送玩家的顯示名稱
 # [senderLvl] 顯示發送的玩家的等級
@@ -109,7 +109,7 @@ info:
   ShulkerBox: 界伏盒
   CantuseShulkerBox: '&c與玩家戰鬥時，無法使用界伏盒.
     Wait: [time]'
-  CantUseNonEncrypted: '!actionbar!&c此項目上的命令未加密. 無法使用它們!'
+  CantUseNonEncrypted: '!actionbar!&c此項目上的指令未加密. 無法使用它們!'
   CantDecode: '!actionbar!&c無法解碼 消息/指令. 密鑰文件包含此任務的錯誤密鑰. 通知伺服器管理員這項訊息'
   Show: '&e展示'
   Remove: '&c移除'
@@ -436,7 +436,7 @@ info:
     magma_cube: 熔岩史萊姆
     minecart: 礦車
     minecart_chest: 箱子礦車
-    minecart_command: 命令方塊礦車
+    minecart_command: 指令方塊礦車
     minecart_furnace: 動力礦車
     minecart_hopper: 漏斗礦車
     minecart_mob_spawner: 生怪磚礦車
@@ -846,7 +846,7 @@ command:
       commandListDelay: ' &6[command]  '
       permReq: '&需要自定義權限: &6[state]'
       permReqExplanation: '&7需要權限 &6cmi.customalias.[alias] &7來使用'
-      newAliasInfo: '&e輸入新的命令別名,然後按Enter鍵'
+      newAliasInfo: '&e輸入新的指令別名,然後按Enter鍵'
       addInfo: '&e輸入新的指令，或者輸入 &6cancel &e取消'
       addInformationHover: "&e全服變數支持 \n&e想給指令添加延遲: \n&edelay! 5 \n&e新增的變數可用於根據  其位\
         置插入變數 \n&e$1 將獲得新指令提供的變數  並將其放在相應位置 \n&e$1- 將從這一處獲得所有 變數並將其插入原指令 \n&efromConsole!\
@@ -1140,7 +1140,7 @@ command:
       list: '&e[place]. &f[command] &7[args]'
       hover: '&e[desc]'
       variableColor: '&f'
-      noCommandFound: '&7找不到此關鍵字的命令'
+      noCommandFound: '&7找不到此關鍵字的指令'
   checkexp:
     help:
       info: '&e查詢玩家經驗'
@@ -1157,8 +1157,8 @@ command:
       hover: '&e[desc]'
       others: |-
         &4
-        ---->在其他玩家上使用命令時<----
-        &c需要基本命令
+        ---->在其他玩家上使用指令時<----
+        &c需要基本指令
       permissionColor: '&6'
       cmdPermissionColor: '&2'
       variableColor: '&f'
@@ -1318,7 +1318,7 @@ command:
       info: '&e發送tellraw類型訊息'
       args: '[playerName/all] [formattedMessage]'
       explanation:
-      - 用法與 http://www.zrips.net/cmi/custom-text/ aka customtext 命令中所示的相同
+      - 用法與 http://www.zrips.net/cmi/custom-text/ aka customtext 指令中所示的相同
   ctext:
     help:
       info: '&e顯示自定義內容'
@@ -2998,7 +2998,7 @@ command:
       info: '&e降低你的排名'
       args: (playerName) (rankName) (confirm)
       explanation:
-      - -cmd 將執行為先前排名等級定義的命令s
+      - -cmd 將執行為先前排名等級定義的指令s
       - -cost 如果為之前的等級排名定義,將向玩家收取金錢,exp或物品
     info:
       noPrev: '&e找不到任何之前的排名'
@@ -3148,7 +3148,7 @@ command:
       info: '&e替換你周圍的方塊'
       args: '&eid &6[blockName:data/id:data]&e w &6[blockName:data/id:data] &er &6[range in chunks/g]&e y &6[max height]'
       explanation:
-      - '&6子命令:'
+      - '&6子指令:'
       - '&e- &6pause &e- 暫停替換'
       - '- &6continue &e- 繼續替換'
       - '- &6stop &e- 停止替換'
