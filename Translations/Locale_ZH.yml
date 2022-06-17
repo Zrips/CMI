@@ -4134,8 +4134,8 @@ command:
       tps: '&eTPS: '
       # Custom tps range can be defined and you can have as many of them as you want
       tpsList: '&e[3] [10] [30] [60] [600]'
-      explanation: '&7One block &e60 &7seconds. Max &e600 &7seconds'
-      minMax: '&7Max: [max] &7Min: [min]'
+      explanation: '&7一個塊 &e60 &7秒. 最大 &e600 &7秒'
+      minMax: '&7最大: [max] &7最小: [min]'
   tptoggle:
     help:
       info: '&e切換玩家的可傳送狀態'
