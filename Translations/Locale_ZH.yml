@@ -3857,10 +3857,10 @@ command:
       failed: '&c轉移玩家數據失敗'
   tablistupdate:
     help:
-      info: '&e強制玩家更新TAB列表'
+      info: '&e強制玩家更新 Tab 列表'
       args: (playerName)
     info:
-      updated: '&eTab列表已更新'
+      updated: '&eTab 列表已更新'
   tagtoggle:
     help:
       info: '&e切換聊天TAG音效'
