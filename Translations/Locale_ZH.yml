@@ -1594,9 +1594,9 @@ command:
       info: '&e按名稱查找最近的生物群落'
       args: '&3(biomeName/stop/stopall)'
     info:
-      infoShow: '&6TPS: &3[tps] &6Left &e[left] &6(&e[time]&6) &6Speed: &e[speed]'
+      infoShow: '&6TPS: &3[tps] &6剩下 &e[left] &6(&e[time]&6) &6速度: &e[speed]'
       stopped: '&e已停止!'
-      cantFindBiome: '&e找不到您想要的生物群系. 已檢查 &6[amount] &echunks'
+      cantFindBiome: '&e找不到您想要的生物群系. 已檢查 &6[amount] &e區塊'
       teleportedTo: '&e傳送至 &6[biome] &e生物群系'
   fixchunk:
     help:
