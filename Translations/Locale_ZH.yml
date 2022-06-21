@@ -708,7 +708,7 @@ Potion:
   NoPotions: '&e無'
 Information:
   Title: '&8玩家資訊'
-  Health: '&eH血量: &6[Health]/[maxHealth]'
+  Health: '&e血量: &6[Health]/[maxHealth]'
   Hunger: '&e飢餓值: &6[Hunger]'
   Saturation: '&e飽食度: &6[Saturation]'
   Exp: '&e經驗: &6[Exp]'
