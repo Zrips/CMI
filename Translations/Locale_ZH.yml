@@ -3729,13 +3729,13 @@ command:
       Inspected: '&eInspected &6[list]'
       InspectDispenser: '&e發射器:&6[value]'
       InspectDropper: '&e投擲器:&6[value]'
-      InspectHopper: '&e漏鬥:&6[value]'
+      InspectHopper: '&e漏斗:&6[value]'
       Statistics:
         LEAVE_GAME: 退出遊戲
         PLAY_ONE_TICK: 遊戲時間
         TIME_SINCE_DEATH: 上次死亡距今
         TIME_SINCE_REST: 上次重置死亡至今
-        SNEAK_TIME: 下蹲時間
+        SNEAK_TIME: 蹲下時間
         ACOUNT_AGE: 進入伺服器時長
         TRAVEL: 移動距離
         WALK_ONE_CM: 行走距離
