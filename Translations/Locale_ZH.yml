@@ -1000,7 +1000,7 @@ command:
       RealName: ' &e真實名稱: &6[name]'
       TempLight: ' &e溫度: &6[temp]&e, 光 - 方塊: &6[blevel]&e, 天空: &6[slevel]&e,
         overral: &6[level]'
-      Resistance: ' &e硬度: &6[mining]&e, 抗暴度: &6[explosion]'
+      Resistance: ' &e硬度: &6[mining]&e, 抗爆度: &6[explosion]'
       noteBlock: ' &e音: &6[tone] &e八度: &6[octave] &6樂器: &e[instrument]
         &6Pitch: &7[pitch]'
       BlockState: ' &7[state]: &f[value]'
@@ -1213,7 +1213,7 @@ command:
       privatemessage: ' &e私人聊天: '
       nickname: ' &e暱稱: '
       signs: ' &e告示牌: '
-      books: ' &eBooks: '
+      books: ' &e書: '
       me: ' &eMe: '
       None: '&e-'
   colorpicker:
