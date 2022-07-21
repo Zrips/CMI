@@ -3089,7 +3089,7 @@ command:
       info: '&e重新讀取插件'
       args: ''
     info:
-      feedback: '&6插件重新讀取完成 繁體中文翻譯 by TWME'
+      feedback: '&6插件重新讀取完成'
       failedConfig: '&4載入 config 文件失敗！請檢查有無語法錯誤！'
       failedLocale: '&4載入語言文件失敗！請檢查有無語法錯誤！'
   removehome:
@@ -3737,13 +3737,13 @@ command:
       Inspected: '&eInspected &6[list]'
       InspectDispenser: '&e發射器:&6[value]'
       InspectDropper: '&e投擲器:&6[value]'
-      InspectHopper: '&e漏鬥:&6[value]'
+      InspectHopper: '&e漏斗:&6[value]'
       Statistics:
         LEAVE_GAME: 退出遊戲
         PLAY_ONE_TICK: 遊戲時間
         TIME_SINCE_DEATH: 上次死亡距今
         TIME_SINCE_REST: 上次重置死亡至今
-        SNEAK_TIME: 下蹲時間
+        SNEAK_TIME: 蹲下時間
         ACOUNT_AGE: 進入伺服器時長
         TRAVEL: 移動距離
         WALK_ONE_CM: 行走距離
@@ -3823,18 +3823,18 @@ command:
     info:
       Platform: ' &e系統: &6[platform] &e(&6[os]&e) &e運行線程: &6[threads]'
       Tps: ' &eTPS: &6[tps]'
-      CpuUsage: ' &eCpu 使用: &6[cpuusage]% &e(&6[cores] 核&e)'
+      CpuUsage: ' &eCpu 使用率: &6[cpuusage]% &e(&6[cores] 核&e)'
       Uptime:
-        main: ' &e運營時間: '
+        main: ' &e運行時間: '
         weeks: '&e[weeks] &6周 '
         days: '&e[days] &6天 '
         hours: '&e[hours] &6時 '
         mins: '&e[mins] &6分 '
         secs: '&e[secs] &6秒 '
-      MemoryUsage: ' &e內存使用: &6[percent]% &e(&6[current]&e/&6[max] MB&e)'
-      MemoryUsageHover: "&f空閒: &7[free] \n&f可用: &7[allocated] \n&f最大: &7[max] \n&f總計: &7[total]"
+      MemoryUsage: ' &e記憶體使用率: &6[percent]% &e(&6[current]&e/&6[max] MB&e)'
+      MemoryUsageHover: "&f閒置: &7[free] \n&f可用: &7[allocated] \n&f最大: &7[max] \n&f總計: &7[total]"
       Java: ' &eJava 版本: &6[mainV].[majorV].[minorV]&e(&6[update]&e) Build: &6[build]'
-      DiskUsage: ' &e磁盤占用: &6[percent]% &e(&6[current]&e/&6[max] GB&e)'
+      DiskUsage: ' &e硬碟使用率: &6[percent]% &e(&6[current]&e/&6[max] GB&e)'
       Worlds: '&e [number]. &6[world] &e[chunks] 個區塊 &6[entities] 個實體 &e[tiles] 個tiles
         &6[players] 個玩家'
   sudo:
