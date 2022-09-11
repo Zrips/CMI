@@ -644,7 +644,7 @@ modify:
     \ Delay in Befehlen einzusetzen: \n&edelay! 5 \n&eSpezialisierte Befehle werden unterstützt.\
     \ Mehr Infos auf \n&ehttp://www.zrips.net/cmi/commands/specialized/"
   commandEditInfo: '&eKlick hier um den alten Text einzufügen. Schreibe &6cancel &eum
-    die Aktion abzubrechen. Schreibe &6remove &eum die Zeile zu löschen.'
+    die Aktion abzubrechen.'
   commandEditInfoHover: '&eKlicke hier um den alten Text einzufügen'
 warp:
   list: '&e[pos]. &6[warpName] &f- &7[worldName] ([x]:[y]:[z])'
