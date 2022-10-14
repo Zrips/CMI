@@ -1812,13 +1812,13 @@ command:
       newGod: 'Бог '
       newFly: 'CanFly&6([flying]&6) '
       newFlying: Flying
-      newFlyHover: '&7Скорость полета: &6[flyspeed]'
-      newFlyTemp: '&7Временный полет: &6[time]'
-      newFlyCharge: '&7Flight charge: &6[charge]'
+      newFlyHover: '&7Скорость полёта: &6[flyspeed]'
+      newFlyTemp: '&7Временный полёт: &6[time]'
+      newFlyCharge: '&7Заряд полёта: &6[charge]'
       newElytraFlyHover: '&7Flying with elytra'
-      newGodHover: '&7TempGod for: &e[time]'
-      newNoDamageHover: '&7No Damage Ticks for: &e[time]'
-      newSneaking: Sneaking
+      newGodHover: '&7Временный режим бога на: &e[time]'
+      newNoDamageHover: '&7Без дамага на: &e[time]'
+      newSneaking: Крадется
       newSprint: Бежит
       newWalkSpeed: '&7Скорость ходьбы: &6[walkspeed]'
       newGameMode: '&fИгровой режим: &6[gameMode] '
@@ -1978,8 +1978,8 @@ command:
       info: '&eИзменять рамки'
       args: (invisible/fixed/invulnerable)
     info:
-      enabled: Enabled
-      disabled: Disabled
+      enabled: Включено
+      disabled: Выключено
       feedback: '&e[count] &6рамок теперь невидимы вокруг тебя'
   iteminfo:
     help:
@@ -2149,7 +2149,7 @@ command:
       canUseIn: "&eМожно использовать снова через: \n[time]"
       cooldown: "&eЗадержка: \n[time]"
       noKit: '&cНе удалось найти набор с этим именем'
-      kitDoesntExist: '&eCan''t find kit ([kitName])'
+      kitDoesntExist: '&eНевозможно найти кит ([kitName])'
       noKitAccess: '&cУ вас нет доступа к этому набору'
       noFoundKit: '&eНе удалось найти доступные наборы'
       givenKit: '&eВы выдали набор &6[kit] &eигроку &6[playerDisplayName]'
@@ -2160,7 +2160,7 @@ command:
       left: '&6Левый &eклик, чтобы получить'
       right: '&6Правый &eклик для предосмотра'
       take: '&6Получите этот набор!'
-      open: '&7Items from &8[kitName] &7kit!'
+      open: '&7Предметы с кита &8[kitName]&7!'
       eye: ' &e☬'
       use: '&2'
       cantuse: '&7'
@@ -2745,11 +2745,11 @@ command:
         &eна вашей текущей позиции'
       bungeeSet: '&eПереместитесь в нужное место и нажмите на это сообщение, чтобы
         указать местоположение телепорта.'
-      bungeeSetConfirmed: '&eBungee portal (&6[portal]&e) location set from &6[sourceServer]
-        &eserver to &e[location]'
-      bungeeSetEmpty: '&eInitiated portal location set at &6[serverName] &eserver,
-        but no one is online in this server. This action will not complete until some
-        one joins it'
+      bungeeSetConfirmed: '&eМестоположение портала (&6[portal]&e) установлено с сервера &6[sourceServer]
+        &eна &e[location]'
+      bungeeSetEmpty: '&eИнициированное местоположение портала установлено на сервере &6[serverName] &e,
+        но на этом сервере никого нет в сети. Это действие не будет завершено до тех пор, пока кто-то
+        не зайдет на сервер'
       List: '&e[color][portalName]'
       redefine: '&eПереопределить область из текущего выделения'
       particles: '&eЧастицы: &6[state]'
@@ -2760,7 +2760,7 @@ command:
       particlePermission: '&eПоказывать частицы без разрешения: &6[state]'
       bungeeTeleport: '&eТелепортация в точное местоположение bungee: [state]'
       requiresPermission: '&eТребуется разрешение &7[perm] &eдля использования: [state]'
-      kickBack: '&ePrevent enter without permission: [state]'
+      kickBack: '&eЗапретить вход без разрешения: [state]'
       informPermission: '&eИнформировать о недостающем разрешении: [state]'
       teleportToLocation: '&eТелепортация в расположение портала'
       teleportToTarget: '&eТелепортация к целевому порталу'
