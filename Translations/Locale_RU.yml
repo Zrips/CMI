@@ -1384,7 +1384,7 @@ command:
       args: ''
   generateworth:
     help:
-      info: '&eAuto generate posible item worth values'
+      info: '&eАвтоматически генерировать возможные значения стоимости предмета'
       args: ''
   getbook:
     help:
@@ -3403,7 +3403,7 @@ command:
       result: '&2Крафтов из &7[result]&f(&7[amount]&f)'
       ingridientsPrice: '&cЦена ингредиента: &7[price]'
       resultPrice: '&cМожет быть продан за: &7[price]'
-      explanation: '&2Buy price is only used in detecting posible exploits'
+      explanation: '&2Цена покупки используется только для обнаружения возможных эксплойтов.'
   shadowmute:
     help:
       info: '&eЗатыкает игрока но без оповещения об этом'
@@ -3529,13 +3529,13 @@ command:
       args: ''
     info:
       type: '&7Change type: &e[type]'
-      nextIn: '&7Next spawn in: &e[time]'
-      nearby: '&7MaxNearBy entities: &e[count]'
-      maxdelay: '&7Max Spawn Delay: &e[count]'
-      mindelay: '&7Min Spawn Delay: &e[count]'
-      prange: '&7Required player range: &e[range]'
-      spawncount: '&7Spawn Count: &e[count]'
-      spawnrange: '&7Spawn Range: &e[range]'
+      nextIn: '&7Следующий спавн через: &e[time]'
+      nearby: '&7MaxNearBy мобов: &e[count]'
+      maxdelay: '&7Максимальная задержка спавна: &e[count]'
+      mindelay: '&7Минимальная задержка спавна: &e[count]'
+      prange: '&7Требуемый диапазон игроков: &e[range]'
+      spawncount: '&7Количество спавнов: &e[count]'
+      spawnrange: '&7Диапазон появления: &e[range]'
   spawnmob:
     help:
       info: '&eСоздать сущность в вашем местоположении'
