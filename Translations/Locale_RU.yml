@@ -245,7 +245,7 @@ info:
     subinv: '&eВаш суб инвентарь должен быть пустым!'
     subinvslots: '&eВаш суб инвентарь должен иметь как минимум &6[count] &eпустых
       слотов!'
-  CommandFormat: '&cIncorrect command format'
+  CommandFormat: '&cНекорректный формат команды'
   ServerSwitchOut: ' &6[playerDisplayName] &eswitched server to &6[serverName]'
   ServerSwitchIn: ' &6[playerDisplayName] &ecame from &6[serverName] &eserver'
 warp:
@@ -283,14 +283,14 @@ Information:
   Money: '&eБаланс: &6[money]'
   Group: '&eРанг: &6[group]'
 econ:
-  commandCost: '&7This command cost is &6[cost] &7repeat it or click here to confirm'
+  commandCost: '&7Эта команда стоит &6[cost] &7введите её ещё раз или нажмите здесь чтобы подтвердить'
   disabled: '&cНевозможно использовать эту команду, ибо поддержка экономики отключена'
 Elytra:
   Speed: '&eСкорость: &6[speed]&eкм/ч'
   SpeedBoost: ' &a+ '
   SpeedSuperBoost: ' &2+ '
   CanUse: '&cУ вас нет разрешения, чтобы одеть элитры!'
-  CantGlide: '&cCan''t use elytra here!'
+  CantGlide: '&cНевозможно использовать Элитры здесь!'
   Charging: '&eЗаряд: &f[percentage]%'
 NetherPortal:
   ToHigh: '&cПортал слишком большой, максимальная высота &6[max]&c!'
@@ -472,7 +472,7 @@ command:
       glow: '&7Свечение'
       invulnerable: '&7Неуязвимость'
       name: '&7Видимое имя'
-      nameEdit: '&7Middle mouse click to edit name'
+      nameEdit: '&7Колесико мыши чтобы изменить имя'
       interactable: '&7Взаимодействие'
       explanation: '&8Левая или правая кнопка мыши регулирует значение'
       explanation2: '&8Удерживайте SHIFT, чтобы сделать его в 10 раз быстрее'
@@ -484,29 +484,29 @@ command:
       canceled: '&eПроцесс копирования стойки для брони отменен'
       updated: '&eСтойка для брони обновлена'
       positionLabel: '&7Open position options'
-      saveLabel: '&7Open template saver'
-      saveButton: '&7Save'
-      saveTitle: '&8Pick what you want to save'
+      saveLabel: '&7Открыть сохраненные примеры'
+      saveButton: '&7Сохранить'
+      saveTitle: '&8Выбери что ты хочешь сохранить'
       receivedItem: '&eReceived special armor stand into your inventory'
-      armorStandItem: '&7ArmorStand Template: &6[name]'
+      armorStandItem: '&7Пример Стойки для Брони: &6[name]'
       action:
-        helmet: '&7Helmet'
-        chest: '&7Chest'
+        helmet: '&7Шлем'
+        chest: '&7Сундук'
         offhand: '&7Offhand'
-        mainhand: '&7Mainhand'
-        leggings: '&7Leggings'
-        boots: '&7Boots'
-        name: '&7Name'
-        body: '&7Body'
+        mainhand: '&7Главная рука'
+        leggings: '&7Поножи'
+        boots: '&7Ботинки'
+        name: '&7Имя'
+        body: '&7Тело'
         plate: '&7Plate'
-        size: '&7Size'
-        visible: '&7Visible'
-        arms: '&7Arms'
-        gravity: '&7Gravity'
+        size: '&7Размер'
+        visible: '&7Видимый'
+        arms: '&7Руки'
+        gravity: '&7Гравитация'
         glow: '&7Glow'
         invulnerable: '&7Invulnerable'
         interactable: '&7Interactable'
-        head: '&7Head'
+        head: '&7Голова'
         torso: '&7Torso'
         leftArm: '&7Leftarm'
         rightArm: '&7Rightarm'
@@ -1384,7 +1384,7 @@ command:
       args: ''
   generateworth:
     help:
-      info: '&eAuto generate posible item worth values'
+      info: '&eАвтоматически генерировать возможные значения стоимости предмета'
       args: ''
   getbook:
     help:
@@ -1812,13 +1812,13 @@ command:
       newGod: 'Бог '
       newFly: 'CanFly&6([flying]&6) '
       newFlying: Flying
-      newFlyHover: '&7Скорость полета: &6[flyspeed]'
-      newFlyTemp: '&7Временный полет: &6[time]'
-      newFlyCharge: '&7Flight charge: &6[charge]'
+      newFlyHover: '&7Скорость полёта: &6[flyspeed]'
+      newFlyTemp: '&7Временный полёт: &6[time]'
+      newFlyCharge: '&7Заряд полёта: &6[charge]'
       newElytraFlyHover: '&7Flying with elytra'
-      newGodHover: '&7TempGod for: &e[time]'
-      newNoDamageHover: '&7No Damage Ticks for: &e[time]'
-      newSneaking: Sneaking
+      newGodHover: '&7Временный режим бога на: &e[time]'
+      newNoDamageHover: '&7Без дамага на: &e[time]'
+      newSneaking: Крадется
       newSprint: Бежит
       newWalkSpeed: '&7Скорость ходьбы: &6[walkspeed]'
       newGameMode: '&fИгровой режим: &6[gameMode] '
@@ -1978,8 +1978,8 @@ command:
       info: '&eИзменять рамки'
       args: (invisible/fixed/invulnerable)
     info:
-      enabled: Enabled
-      disabled: Disabled
+      enabled: Включено
+      disabled: Выключено
       feedback: '&e[count] &6рамок теперь невидимы вокруг тебя'
   iteminfo:
     help:
@@ -2149,7 +2149,7 @@ command:
       canUseIn: "&eМожно использовать снова через: \n[time]"
       cooldown: "&eЗадержка: \n[time]"
       noKit: '&cНе удалось найти набор с этим именем'
-      kitDoesntExist: '&eCan''t find kit ([kitName])'
+      kitDoesntExist: '&eНевозможно найти кит ([kitName])'
       noKitAccess: '&cУ вас нет доступа к этому набору'
       noFoundKit: '&eНе удалось найти доступные наборы'
       givenKit: '&eВы выдали набор &6[kit] &eигроку &6[playerDisplayName]'
@@ -2160,7 +2160,7 @@ command:
       left: '&6Левый &eклик, чтобы получить'
       right: '&6Правый &eклик для предосмотра'
       take: '&6Получите этот набор!'
-      open: '&7Items from &8[kitName] &7kit!'
+      open: '&7Предметы с кита &8[kitName]&7!'
       eye: ' &e☬'
       use: '&2'
       cantuse: '&7'
@@ -2745,11 +2745,11 @@ command:
         &eна вашей текущей позиции'
       bungeeSet: '&eПереместитесь в нужное место и нажмите на это сообщение, чтобы
         указать местоположение телепорта.'
-      bungeeSetConfirmed: '&eBungee portal (&6[portal]&e) location set from &6[sourceServer]
-        &eserver to &e[location]'
-      bungeeSetEmpty: '&eInitiated portal location set at &6[serverName] &eserver,
-        but no one is online in this server. This action will not complete until some
-        one joins it'
+      bungeeSetConfirmed: '&eМестоположение портала (&6[portal]&e) установлено с сервера &6[sourceServer]
+        &eна &e[location]'
+      bungeeSetEmpty: '&eИнициированное местоположение портала установлено на сервере &6[serverName] &e,
+        но на этом сервере никого нет в сети. Это действие не будет завершено до тех пор, пока кто-то
+        не зайдет на сервер'
       List: '&e[color][portalName]'
       redefine: '&eПереопределить область из текущего выделения'
       particles: '&eЧастицы: &6[state]'
@@ -2760,7 +2760,7 @@ command:
       particlePermission: '&eПоказывать частицы без разрешения: &6[state]'
       bungeeTeleport: '&eТелепортация в точное местоположение bungee: [state]'
       requiresPermission: '&eТребуется разрешение &7[perm] &eдля использования: [state]'
-      kickBack: '&ePrevent enter without permission: [state]'
+      kickBack: '&eЗапретить вход без разрешения: [state]'
       informPermission: '&eИнформировать о недостающем разрешении: [state]'
       teleportToLocation: '&eТелепортация в расположение портала'
       teleportToTarget: '&eТелепортация к целевому порталу'
@@ -3403,7 +3403,7 @@ command:
       result: '&2Крафтов из &7[result]&f(&7[amount]&f)'
       ingridientsPrice: '&cЦена ингредиента: &7[price]'
       resultPrice: '&cМожет быть продан за: &7[price]'
-      explanation: '&2Buy price is only used in detecting posible exploits'
+      explanation: '&2Цена покупки используется только для обнаружения возможных эксплойтов.'
   shadowmute:
     help:
       info: '&eЗатыкает игрока но без оповещения об этом'
@@ -3529,13 +3529,13 @@ command:
       args: ''
     info:
       type: '&7Change type: &e[type]'
-      nextIn: '&7Next spawn in: &e[time]'
-      nearby: '&7MaxNearBy entities: &e[count]'
-      maxdelay: '&7Max Spawn Delay: &e[count]'
-      mindelay: '&7Min Spawn Delay: &e[count]'
-      prange: '&7Required player range: &e[range]'
-      spawncount: '&7Spawn Count: &e[count]'
-      spawnrange: '&7Spawn Range: &e[range]'
+      nextIn: '&7Следующий спавн через: &e[time]'
+      nearby: '&7MaxNearBy мобов: &e[count]'
+      maxdelay: '&7Максимальная задержка спавна: &e[count]'
+      mindelay: '&7Минимальная задержка спавна: &e[count]'
+      prange: '&7Требуемый диапазон игроков: &e[range]'
+      spawncount: '&7Количество спавнов: &e[count]'
+      spawnrange: '&7Диапазон появления: &e[range]'
   spawnmob:
     help:
       info: '&eСоздать сущность в вашем местоположении'
