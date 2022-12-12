@@ -3408,7 +3408,7 @@ command:
       args: (playerName) (-s)
     info:
       gotSmited: '&eВас ударили молнией!'
-      targetSmited: '&eУдаряем молнией цель!'
+      targetSmited: '&eУдаряем цель молнией!'
   smithingtable:
     help:
       info: '&eООткрыть кузнечный стол'
