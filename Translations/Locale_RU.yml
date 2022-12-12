@@ -337,7 +337,7 @@ command:
       permRequirements: Permission
       permReqExplanation: '&7Требуется &6cmi.customalias.[alias]&7, чтобы использовать
         это'
-      tab: ' TabComplete'
+      tab: ' Завершение по TAB'
       tabCompleteExplanation: '&7Когда отключено, завершение по нажатию TAB не будет работать'
       tabCompletes: '&2Завершения по TAB: '
       cTab: ' Кастомный TAB'
