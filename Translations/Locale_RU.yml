@@ -3411,7 +3411,7 @@ command:
       targetSmited: '&eУдаряем цель молнией!'
   smithingtable:
     help:
-      info: '&eООткрыть кузнечный стол'
+      info: '&eОткрыть кузнечный стол'
       args: (playerName)
     info:
       feedback: '&eВы открыли кузнечный стол для &3[playerDisplayName]&e (&3[offon]&e).'
