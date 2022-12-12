@@ -625,7 +625,7 @@ command:
         &6[time]&e.'
   cartographytable:
     help:
-      info: '&eOpen cartography table'
+      info: '&eОткрыть картографический стол'
       args: (playerName) (-s)
     info:
       feedback: '&eВы открыли картографический стол для &3[playerDisplayName]&e (&3[offon]&e).'
