@@ -717,7 +717,7 @@ command:
       list: '&e[place]. &f[command] &7[args]'
       hover: '&e[desc]'
       variableColor: '&f'
-      noCommandFound: '&7No commands found by this keyword'
+      noCommandFound: '&7По этому ключевому слову не найдено ни одной команды'
   checkexp:
     help:
       info: '&eПроверить количество опыта игрока'
@@ -1037,7 +1037,7 @@ command:
         чтобы отменить это действие'
       deleted: '&eПользовательский текст (&6[ctext]&e) был удален'
       createdNew: '&eПользовательский текст (&6[ctext]&e) был создан'
-      hidden: '&eHidden: &6[state]'
+      hidden: '&eСпрятан: &6[state]'
       autoPage: '&eАвто страница: &6[state]'
       autoAlias: '&eАвто алиас: &6[state]'
       permReq: '&eТребуется разрешение: &6[state]'
@@ -1163,7 +1163,7 @@ command:
       tamed: '&eПрирученный: &6[state]'
       owner: '&eВладелец: &6[playerDisplayName]'
       grows: '&eВырастет через: &6[time]'
-      horse: '&eHorse: jump &6[jump]&eblocks, speed &6[speed]&eblocks/sec'
+      horse: '&eЛошадь: прыжок &6[jump]&eблоков, скорость &6[speed]&eблоков/сек'
       villager: '&eПрофессия: &7[profession] &eУровень: &7[lvl] &eТип: &7[type]'
       subTypes: '&eПод-типы: &6[list]'
   entitynbt:
