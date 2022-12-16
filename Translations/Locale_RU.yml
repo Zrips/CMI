@@ -3719,23 +3719,23 @@ command:
         PICKUP: Поднято предметов
         KILL_ENTITY: Убито монстров
         STRIDER_ONE_CM: Strider travel
-        INTERACT_WITH_BLAST_FURNACE: Interaction with blast furnace
-        INTERACT_WITH_SMOKER: Interaction with smoker
-        INTERACT_WITH_LECTERN: Interaction with lectern
-        INTERACT_WITH_CAMPFIRE: Interaction with campfire
-        INTERACT_WITH_CARTOGRAPHY_TABLE: Interaction with cartography table
-        INTERACT_WITH_LOOM: Interaction with loom
-        INTERACT_WITH_STONECUTTER: Interaction with stonecutter
-        INTERACT_WITH_ANVIL: Interaction with anvil
-        INTERACT_WITH_GRINDSTONE: Interaction with grindstone
-        INTERACT_WITH_SMITHING_TABLE: Interaction with smithing table
+        INTERACT_WITH_BLAST_FURNACE: Взаимодействие с плавильной печью
+        INTERACT_WITH_SMOKER: Взаимодействие с коптильней
+        INTERACT_WITH_LECTERN: Взаимодействие с кафедрой
+        INTERACT_WITH_CAMPFIRE: Взаимодействие с костром
+        INTERACT_WITH_CARTOGRAPHY_TABLE: Взаимодействие с столом картографа
+        INTERACT_WITH_LOOM: Взаимодействие с ткацким станком
+        INTERACT_WITH_STONECUTTER: Взаимодействие с Камнерезом 
+        INTERACT_WITH_ANVIL: Взаимодействие с наковальней
+        INTERACT_WITH_GRINDSTONE: Взаимодействие с точилом
+        INTERACT_WITH_SMITHING_TABLE: Взаимодействие с кузнечным столом
         BELL_RING: Bell rings
         RAID_TRIGGER: Raid triggers
         RAID_WIN: Raid wins
         TARGET_HIT: Target hits
-        OPEN_BARREL: Opened barrels
+        OPEN_BARREL: Открытых бочек
         DROP_COUNT: Drop count
-        TOTAL_WORLD_TIME: Time in world
+        TOTAL_WORLD_TIME: Время в мире
   statsedit:
     help:
       info: '&eРедактирование статистики игроков'
