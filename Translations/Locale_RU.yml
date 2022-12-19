@@ -3654,7 +3654,7 @@ command:
         USE_ITEM: Использовано предметов
         PICKUP: Поднято предметов
         KILL_ENTITY: Убито монстров
-        STRIDER_ONE_CM: Strider travel
+        STRIDER_ONE_CM: Путешествий на страйдере
         INTERACT_WITH_BLAST_FURNACE: Взаимодействие с плавильной печью
         INTERACT_WITH_SMOKER: Взаимодействие с коптильней
         INTERACT_WITH_LECTERN: Взаимодействие с кафедрой
@@ -3665,13 +3665,13 @@ command:
         INTERACT_WITH_ANVIL: Взаимодействие с наковальней
         INTERACT_WITH_GRINDSTONE: Взаимодействие с точилом
         INTERACT_WITH_SMITHING_TABLE: Взаимодействие с кузнечным столом
-        BELL_RING: Bell rings
-        RAID_TRIGGER: Raid triggers
-        RAID_WIN: Raid wins
-        TARGET_HIT: Target hits
-        OPEN_BARREL: Открытых бочек
-        DROP_COUNT: Drop count
-        TOTAL_WORLD_TIME: Время в мире
+        BELL_RING: Ударов в колокол
+        RAID_TRIGGER: Вызвано рейдов
+        RAID_WIN: Побед в рейдах
+        TARGET_HIT: Попаданий в цель
+        OPEN_BARREL: Открыто бочек
+        DROP_COUNT: Выбрашено предметов
+        TOTAL_WORLD_TIME: Времени в мире
   statsedit:
     help:
       info: '&eРедактирование статистики игроков'
