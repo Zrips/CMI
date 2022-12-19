@@ -3670,7 +3670,7 @@ command:
         RAID_WIN: Побед в рейдах
         TARGET_HIT: Попаданий в цель
         OPEN_BARREL: Открыто бочек
-        DROP_COUNT: Выбрашено предметов
+        DROP_COUNT: Выброшено предметов
         TOTAL_WORLD_TIME: Времени в мире
   statsedit:
     help:
