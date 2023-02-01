@@ -2,11 +2,11 @@
 
 This is the official issue tracker for CMI.
 
-CMI isn't currently open soruce. It's a premium plugin that you can get through [SpigotMC](https://www.spigotmc.org/resources/3742/). It requires [CMILib](https://www.spigotmc.org/resources/87610/) to run.
+CMI isn't currently open source. It's a premium plugin that you can get through [SpigotMC](https://www.spigotmc.org/resources/3742/). It requires [CMILib](https://www.spigotmc.org/resources/87610/) to run.
 
 Aside from issues you can also request features for CMI here.
 
-If you are having any issues regarding payments and/or other private matters, please message `Zrips` on [Spigot](https://www.spigotmc.org/conversations/add?to=Zrips). (pre-sales [FAQ](https://www.zrips.net/faq/))
+If you are having any issues regarding payments and/or other private matters, please message `Zrips` on [Spigot](https://www.spigotmc.org/conversations/add?to=Zrips). 
 
 Be sure to check out the [FAQ](https://www.zrips.net/faq) page if you have any pre-sales questions.
 
@@ -20,7 +20,7 @@ Bug reports should be posted under the [Issues](https://github.com/Zrips/CMI/iss
 
 ## Suggestions and Feature Requests
 
-Before making a suggestion, please ensure that there are no other discussions that relate to your suggestion. If nobody has, you're free to make your own discussion.
+Before making a suggestion, please ensure that there are no other discussions that relate to your suggestion. If there are no relevant discussions, you're free to make your own discussion.
 
 Suggestions should be posted under the [Discussions](https://github.com/Zrips/CMI/discussions) tab.
 
