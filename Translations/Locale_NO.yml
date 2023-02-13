@@ -1,7 +1,7 @@
 # Full color code support and some variables
-# Keep in mind that variables wont work for some lines, when it will for anothers :)
-# Just keep them where there are now and everything will be ok :)
-# Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+# Keep in mind that variables won't work for some lines, when it will for others :)
+# Just keep them where they are now and everything will be ok :)
+# Some lines can have global variables set for player who will be effected. In example /heal Zrips then Zrips data will be used
 # [serverName] to show server name
 # [playerName] to show target player name
 # [playerDisplayName] to show target player display name
@@ -36,14 +36,14 @@
 # [sourcePrefix] to show source player prefix if possible
 # [sourceSuffix] to show source player suffix if possible
 # ***********************************************
-# Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
-# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+# Some lines support the option to send them to custom places like action bar, title, sub title or even create JSON/clickable messages
+# If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. Example: !toast! -t:goal -icon:paper Hello world!
 # If line starts with !actionbar! then player will get action bar message defined after this variable
 # If line starts with !actionbar:[seconds]! then player will get action bar message for defined amount of time
-# If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, in example !broadcast!!title!
-# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+# If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, for example !broadcast!!title!
+# If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown to player. In case it's used after !broadcast! then everyone who is online will get this custom text message
 # If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
-# If line starts with !bosbar:[name]-[timer]! then player will get bossbar message defined after this variable, in addition you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
+# If line starts with !bosbar:[name]-[timer]! then player will get bossbar message defined after this variable. In addition, you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
 # To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
 # <T> and </T> required, other is optional
 # Use /n to break line
@@ -96,16 +96,13 @@ info:
   IncorrectLocation: "&4Lokasjonen er definert feil!"
   NameChange: "&6[playerDisplayName] &elogget inn, også kjent som: &6[namelist]"
   Cooldowns: "&eCooldown er aktivert for &6[cmd] &event &6[time]"
-  specializedCooldowns:
-    "&eCooldown er aktivert for denne kommandoen, vennligst vent
-    &6[time]"
-  CooldownOneTime: "&eDenne kommandoen kan brukes kun en gang"
   WarmUp:
     canceled: "&eKommandoen ble kansellert fordi du beveget på deg"
     counter: "!actionbar!&6--> &e[time] &6<--"
     DontMove: "!title!!subtitle!&6Stå stille!"
     Boss:
       DontMove: "&4Ikke beveg deg før om &7[autoTimeLeft] &4sekunder!"
+      WaitFor: "&4Vent for &7[autoTimeLeft] &4seconds!"
   Spawner: "&r[type] Fremkaller"
   Elevator:
     created: "&eOpprettet heisskilt"
@@ -178,7 +175,7 @@ info:
     "!actionbar!&f[sleeping] &7av &f[required] &7sovende er påkrevd
     for at natten skal gå raskere"
   sunSpeedingTitle: "&7[hour]"
-  skippingNight: "!title!&7Skipping entire night"
+  skippingNight: "!title!&7Hopper over hele natten"
   sunSpeedingSubTitle: "&f[count]&7/&f[total] &7(&f[speed]X&7)"
   repairConfirm:
     "&eKlikk for å bekrefte gjenstanden &7[items] &e blir reparert for
@@ -294,7 +291,7 @@ info:
   valueToLong: "&eVerdien er for lang. Maks: [max]"
   valueToShort: "&eVerdien er for kort. Min: [min]"
   pvp:
-    noGodDamage: "!actionbar!&cYou can't damage players while being immortal"
+    noGodDamage: "!actionbar!&cDu kan ikke skade andre spillere mens du er udødelig"
   InvEmpty:
     armor: "&ePlassene for rustning må være tomme!"
     hand: "&eHånden din må være tom!"
@@ -740,7 +737,7 @@ afk:
     "&eStab medlemmet er AFK og svarer kanskje ikke. Prøv å ta kontakt
     med oss på Discord."
 BossBar:
-  hpBar: "&f[victim] &e[max]&f/&e[current] &f(&c-[damage]&f)"
+  hpBar: "&f[victim] &e[current]&f/&e[max] &f(&c-[damage]&f)"
 Potion:
   Effects: "&8Brygg effekter"
   List: "&e[PotionName] [PotionAmplifier] &eVarighet: &e[LeftDuration] &esek"
@@ -826,7 +823,7 @@ command:
       cmdFormat: "&6/[command]&f[arguments]"
       helpPageDescription: "&e* [description]"
       explanation: "&e * [explanation]"
-      title: "&e------ ======= &6CMI&e &e======= ------"
+      title: "&e------ ======= &6Hjelp&e &e======= ------"
   nocmd:
     help:
       info: "&eViser alle tilgjengelige kommandoer"
@@ -834,13 +831,13 @@ command:
   actionbarmsg:
     help:
       info: "&eSender action bar meldinger til en spiller"
-      args: "[spillerNavn] [melding]"
+      args: "[spillernavn/all] (-s:[sekunder]) [melding]"
     info:
-      message: "&f[messsage]"
+      message: "&f[message]"
   afk:
     help:
-      info: "&eVeksler afk modus"
-      args: (spillerNavn)
+      info: "&eVeksler afk modus. Årsak kan oppgis"
+      args: (-p:spillernavn) (årsak)
   afkcheck:
     help:
       info: "&eSjekk spillerens afk status"
@@ -862,7 +859,7 @@ command:
       info: "&eVarsle administrasjonen når spilleren logger inn"
       args: "[spillerNavn] (årsak)"
       explanation:
-        - "&eTillatelse:"
+        - "&eTillatelser:"
         - "&6command.alert.info.inform &e- for å se varsler om pålogging av spiller"
     info:
       inform:
@@ -905,7 +902,7 @@ command:
   armorstand:
     help:
       info: "&eÅpne redigering for rustningstativ"
-      args: (last)
+      args: (last/near)
     info:
       cantClick: "&cDu kan ikke gjøre dette. Noen redigerer dette rustningstativet."
       tooFar: "&cRustningstativet er for langt unna"
@@ -943,22 +940,29 @@ command:
   attachcommand:
     help:
       info: "&eKnytter en kommando til en gjenstand"
-      args: "[command] eller -c"
+      args: "[command/-clear]"
       explanation:
         - Separer kommandoer med ;;
         - Du kan definere om du ønsker å kjøre kommandoen med venstre eller høyre museklikk.
         - Klikk !left! for å utføre kommando med venstre museklikk
         - Klikk !right! for å utføre kommando med høyre museklikk
+        - "!limiteduse:[amount]! definerer hvor mange ganger du kan bruke denne gjenstanden"
+        - "!safelimiteduse:[amount]! vil ikke fjerne gjenstanden etter at den er oppbrukt"
+        - "!cc! utfører kommando fra konsoll, krever cmi.command.attachcommand.cc
+          tillatelse"
+        - "!cooldownn:[amount]! legger til cooldown på gjenstand."
+        - "[interactedPlayer] setter inn navnet på spilleren du samhandler med mens du holder elementet"
+        - Globale variabler fungerer i tillegg med [itemUses]
     info:
       list: " &e[id]. &6[cmd]"
-      noCmds: " &eThere is no comamnds attached to this item"
+      noCmds: " &eDet er ingen kommandoer knyttet til denne gjenstanden"
       uses: "&eItem usages: &6[amount]"
-      usesLeft: "!actionbar!&eItem uses left: &6[itemUses]"
-      cooldown: "&7Item is on cooldown. Wait [time]"
+      usesLeft: "!actionbar!&eGjenværende gjenstand uses: &6[itemUses]"
+      cooldown: "&7Item er på cooldown. Vent [time]"
   back:
     help:
       info: "&eTeleporterer tilbake til sist lagrede sted"
-      args: ""
+      args: (spillerNavn) (-s)
     info:
       noinfo: "&4Det er ingen lagrede steder å gå tilbake til!"
       feedback: "&eReturnerte til siste lagrede sted (&6[worldName]&e,&6[x]&e,&6[y]&e,&6[z]&e)!"
@@ -1021,7 +1025,7 @@ command:
       args: ""
     info:
       Info: " &eId: &6[id][data] &eMateriale: &6[name][ndata]"
-      RealName: " &eEkte name: &6[name]"
+      RealName: " &eEkte navn: &6[name]"
       TempLight:
         " &eTemperatur: &6[temp]&e, Lys - blokk: &6[blevel]&e, himmel: &6[slevel]&e,
         generelt: &6[level]"
@@ -1052,8 +1056,9 @@ command:
     help:
       info: "&eSender en boss bar melding til en spiller"
       args:
-        "[spillerNavn/all] (-t:[timeToKeepFor]) (-n:nameOfBar) (-p:[maxValue/current])
-        (-c:[color]) [melding]"
+        '[spillerNavn/all] (-sec:[sekunder])(-t:[timeToKeepFor]) (-n:nameOfBar)
+        (-p:[maxValue/current]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"command;;command2")
+        (-a:[ticks]) [melding] (-cancel:nameOfBar)'
       explanation:
         - PlaceHolderAPI er støttet i progresjonen og i selve meldingen
         - Tid defineres på vanlig måte, som 1s er ett sekund og 1m er ett minutt. Dette
@@ -1065,13 +1070,18 @@ command:
         - maks og gjeldende verdier bestemmer bar oppfylling, PlaceHolderAPI variabler
           kan brukes til dynamiske oppdateringer
         - "Eksempler:"
-        - /cmi bossbar Zrips BossBarTitle
+        - /cmi bossbar Baktus_79 BossBarTitle
         - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:testbar
           -c:red &2Tittelen på linjen %server_online%/%server_max_players% &e%cmi_user_name%
+
+        - /cmi bossbarmsg all -s:10 -n:testbar - vil sette bossbar stil til 10 segmenter
+          av bar navn
+        - /cmi bossbarmsg all -sec:5 - vil telle for 5 sekunder fra 0 til 5
+        - /cmi bossbarmsg all -sec:-5 - vil telle for 5 sekunder fra 5 til 0
   broadcast:
     help:
       info: "&eSender en spesiell melding til alle spillere"
-      args: "[message]"
+      args: "[melding]"
       explanation:
         - Hvis melding starter med ! så blir ren melding vist
     info:
@@ -1103,7 +1113,9 @@ command:
   chat:
     help:
       info: "&eChat med spilleren i eget chatterom"
-      args: "[spillerNavn/leave]"
+      args:
+        "[create/join/leave/list/invite/kick/listrooms] (chatNavn/spillerNavn)
+        (-private)"
     info:
       joined: "&eBle med i chatterom: &7[chatRoomName]"
       joinedInfo: "&e[playerDisplayName] &7ble med i chatterommet"
@@ -1145,7 +1157,7 @@ command:
       noData: "&cDet er ingen arkiv for denne brukeren"
   checkban:
     help:
-      info: "&eBannlys spiller"
+      info: "&eSjekk en spiller's ban status"
       args: (spillerNavn)
     info:
       list: "&6[place]&e. &e[playerDisplayName] &6[time]"
@@ -1187,7 +1199,7 @@ command:
   cheque:
     help:
       info: "&eKonverter penger til sjekk"
-      args: "[beløp]"
+      args: (spillerNavn) [beløp]
     info:
       transfered: "&eOverført &6[amount] &etil din konto. Ny saldo: &6[balance]"
       chequeName: "&eSjekk for &6[amount]"
@@ -1199,7 +1211,7 @@ command:
   clear:
     help:
       info: "&eTøm spillerens inventar"
-      args: "[spillerNavn] (-s)"
+      args: (spillerNavn) (gjenstand(-antall)) (-s) (+clearType)
       explanation:
         - "Mulige inventartyper: quickbar, inventory, partinventory, weapons, armorslots,
           tools, armors, mainhand, offhand"
@@ -1269,20 +1281,21 @@ command:
   commandspy:
     help:
       info: "&eVeksle spionmodus for kommandoer"
-      args: (spillerNavn)
+      args: (spillerNavn) (-s)
       explanation:
         - cmi.command.commandspy.hide - Skjul utførte kommandoer fra commandspy
     info:
-      command: "&8CommandSpy&7[&8[senderDisplayName]&7]&7: [command]"
+      command: "&5C&2CommandSpy&7[&8[senderDisplayName]&7]&7: &f[command]"
       toggled: "&eSpionmodus for kommandoer ble satt til &6[state]"
   compass:
     help:
       info: "&eStill spillerens kompasspunkt til din lokasjon"
-      args: "[kildeNavn] (spillerNavn) (x) (y) (z) (verdenNavn) (-s)"
+      args: (målNavn) (kildeNavn) (x) (z) (verdenNavn) (reset) (-s)
       explanation:
         - "Eksempel: /cmi compass Zhax"
-        - /cmi compass Zrips Zhax
-        - /cmi compass LT_Craft 0 0 0 Zrips -s
+        - /cmi compass Zhax Zrips
+        - /cmi compass Zhax LT_Craft 0 0 -s
+        - /cmi compass reset Zhax
     info:
       wrongworld: "&cDin definerte verden eksisterer ikke!"
       feedback:
@@ -1308,7 +1321,9 @@ command:
   counter:
     help:
       info: "&eStart teller for nærgående spillere"
-      args: "[join/leave/start] (t:tid) (r:rekkevidde) (-f)"
+      args:
+        "[join/leave/start] (t:tid) (r:[rekkevidde/-1]) (c:[verden:x:y:z]) (msg:custom_message)
+        (-f)"
       explanation:
         - "&eTilganger:"
         - "&6cmi.command.counter.force &e- å tvinge teller på alle innen rekkevidde "
@@ -1350,7 +1365,7 @@ command:
   ctext:
     help:
       info: "&eVis egendefinert tekst"
-      args: "[cText]"
+      args: "[cText] (spillerNavn/all) (kildeSpillerNavn)"
     info:
       list: "&eEgendefinert tekst: &6"
       check: "&eSe: &6[text]"
@@ -1385,7 +1400,7 @@ command:
   dback:
     help:
       info: "&eReturner til dødslokasjonen"
-      args: ""
+      args: (spillerNavn) (-s)
     info:
       noinfo: "&4Det er ingen lagrede lokasjoner å returnere til!"
       feedback: "&6Returnerte til siste lagrede lokasjonen ([world],[x],[y],[z])!"
@@ -1422,12 +1437,12 @@ command:
         "&eDu fikk &6[type]&eX&6[amount] &esom donasjon fra &6[sourceDisplayName]&e.
         Klikk for å akseptere."
       doesnthave: "&eSpilleren har ikke denne gjenstander mer"
-      "no": "&eNo pending donations"
+      "no": "&eIngen ventende donasjoner"
       list: "&7[number]. &e[playerDisplayName] &e- &7[material] &6x &e[amount]"
   dsign:
     help:
       info: "&eBehandle dynamiske skilt"
-      args: ""
+      args: (new)
       explanation:
         - Se på skiltet og utfør /cmi dsign new
     info:
@@ -1452,7 +1467,9 @@ command:
   dye:
     help:
       info: "&eSett farge på lær rustning"
-      args: (spillerNavn) (red,gree,blue/hexCode/colorName/random/clear) (-s)
+      args:
+        (spillerNavn) (red,green,blue/hexCode/colorName/random/clear/rainbow/day/biome/health)
+        (-s)
     info:
       color: "&eNåværende farge - &c[red],&2[green],&9[blue] &eHex:&6#[hex]"
       custom: "&eAktiver egendefinert fargemodus: &6[mode]"
@@ -1514,7 +1531,7 @@ command:
   editwarp:
     help:
       info: "&eRediger varper"
-      args: (varpNavn)
+      args: (varpNavn) (nyttNavn)
     info:
       exists:
         "&cVarp med navnet (&7[newName]&c) eksisterer allerede. Bruk et annet
@@ -1534,7 +1551,7 @@ command:
   effect:
     help:
       info: "&eLegger til bryggeffekt på spiller. Bruk clear for å fjerne alle effekter"
-      args: "[spillerNavn] [effekt] [varighet] [multipliser]"
+      args: "[spillerNavn/all] [effekt/clear] (varighet) (multipliser) (-s) (-visual)"
       explanation:
         - "Eksempler:"
         - /cmi effect zrips nightvision 60 1 - gir 60 sekunder med nattsyn for Zrips
@@ -1548,7 +1565,9 @@ command:
   enchant:
     help:
       info: "&eFortryll gjenstander"
-      args: (spillerNavn) [fortryllelse] [level]
+      args:
+        (spillerNavn) [fortryllelse] [level] (-o) (-onlyvalid) (-keeponlyvalid) (-inform)
+        (-s) (-i:[itemName(:data)])
       explanation:
         - -o fjerner gjenstand i den andre hånden
     info:
@@ -1575,7 +1594,7 @@ command:
   ender:
     help:
       info: "&eÅpner spillerens ender kiste"
-      args: "[spillerNavn]"
+      args: "(spillerNavn)"
       explanation:
         - cmi.command.ender.preventmodify - forhindrer modifikasjon av inventaret
         - cmi.enderedit - tillater å redigere inventaret
@@ -1639,7 +1658,7 @@ command:
   findbiome:
     help:
       info: "&eFinn nærmeste biom med navn"
-      args: "&3(biomNavn/stop)"
+      args: "&3(biomNavn/stop/stopall)"
     info:
       infoShow:
         "&6TPS: &3[tps] &6Gjenværende &e[left] &6(&e[time]&6) &6Hastighet:
@@ -1703,20 +1722,20 @@ command:
       newCharge: "&eNy level: &6[charge]"
       bossbar: "&2>> &fFlypoeng [charge][changeAmount]&7/&f[max] &2<<"
       guiTitle: "&8Flypoeng"
+      buttonExp: "&6Skaff flypoeng med exp"
+      buttonMoney: "&6Kjøp flypoeng med penger"
+      max: "&6Allerede maks poeng"
       lore:
         - ""
         - "&6Skift venstreklikk +10. Koster: &7[amount10]"
         - "&6Skift høyreklikk +1000. Koster: &7[amount1000]"
         - "&eVenstreklikk +1. Koster: &7[amount1]"
         - "&eHøyreklikk +100. Koster: &7[amount100]"
-      buttonExp: "&6Skaff flypoeng med exp"
-      buttonMoney: "&6Kjøp flypoeng med penger"
-      max: "&6Allerede maks poeng"
       changeAmount: "&e([amount]&e)"
   fly:
     help:
       info: "&eSett spillerens flymodus true eller false"
-      args: "[spillerNavn] [true/false]"
+      args: "(spillerNavn) (true/false) (-s)"
     info:
       feedback: "&eDu har satt fly til &3[boolean]&e for &3[playerDisplayName]&e (&3[offon]&e)."
       targetFeedback: "&eDin flymodus er satt til &3[boolean]&e av &3[senderDisplayName]&e."
@@ -1794,13 +1813,13 @@ command:
         - "&ecmi giveall h Zrips"
         - "&ecmi giveall inv Zrips"
     info:
-      starting: "&6Starting to give items for all players, this can take some time."
-      running: "&6[amount] already got item, still running."
-      feedback: "&6Finished. &e[amount] &6players got item."
+      starting: "&6Starter å gi alle spillere items, dette kan ta litt tid."
+      running: "&6[amount] motokk allerede item, fortsetter."
+      feedback: "&6Fullført. &e[amount] &6spillere mottok gjenstand."
   glow:
     help:
       info: "&eAngi spilleres glødemodus"
-      args: (spillerNavn) [true/false/farge]
+      args: (spillerNavn) [true/false/farge/gui]
       explanation:
         - "Eksempel: /glow Zrips red"
         - "Tilgang: cmi.command.glow.[color] - lar deg angi spesiell glødefarge"
@@ -1813,7 +1832,7 @@ command:
   gm:
     help:
       info: "&eAngi spillerens spillmodus"
-      args: "[spillerNavn] [spillmodus]"
+      args: "(spillerNavn) [spillmodus]"
     info:
       feedback:
         "&eDu har satt spillmodus til &3[gameMode]&e på &3[playerDisplayName]&e
@@ -1831,7 +1850,7 @@ command:
   groundclean:
     help:
       info: "&eFjerner unødvendige gjenstander fra serveren"
-      args: ""
+      args: (+cb) (+cm) (+ci) (+b) (+sh) (+tnt) (+all) (-w:[verdenNavn])
       explanation:
         - +cm vil inkludere gruvevogner
         - +cb vil inkludere båter
@@ -1877,14 +1896,14 @@ command:
   head:
     help:
       info: "&eFå hode til spillere"
-      args: "[kildeNavn] (spillerNavn) (-s)"
+      args: "[kildeNavn] (spillerNavn) (-s) (antall)"
     info:
       Feedback: "&6Hodet til &3[headName] &6ble laget!"
       targetFeedback: "&eDu fikk hodet til &3[headName] &eav &3[senderDisplayName]&e!"
   heal:
     help:
       info: "&eHelbred spiller"
-      args: "[spillerNavn] (antall/prosent)"
+      args: "[spillerNavn/all] (antall/prosent)"
     info:
       feedback: "&eDu har helbredet &3[playerDisplayName]&e (&3[offon]&e)."
       feedbackMulti: "&eDu har helbredet &3[count] &espillere."
@@ -1902,7 +1921,7 @@ command:
   hideflags:
     help:
       info: "&eSkjul gjenstandets flagg"
-      args: (spillerNavn) [flaggNavn]
+      args: (spillerNavn) [flaggNavn/clear] (flaggNavn)
     info:
       feedback:
         "&eDu har lagt til et nytt flagg på gjenstanden til &3[playerDisplayName]&e
@@ -1978,7 +1997,7 @@ command:
   home:
     help:
       info: "&eSett hjem lokasjon"
-      args: (hjemNavn) (spillerNavn)
+      args: (hjemNavn) (spillerNavn) (hvemSomSkalTeleporteres)
     info:
       list: "&eHjem: &6"
       listNonePrivate: "&f"
@@ -1992,7 +2011,7 @@ command:
   homes:
     help:
       info: "&eSe liste over hjem"
-      args: (spillerNavn)
+      args: (spillerNavn/nærme:[range])
     info:
       nearList:
         "&7[number]. &e[playerDisplayName] &6[homeName] &7[distance] blokker
@@ -2000,7 +2019,7 @@ command:
   hunger:
     help:
       info: "&eSett spillerens sult"
-      args: "[spillerNavn] [antall]"
+      args: "[spillerNavn] [antall] (-s)"
     info:
       feedback: "&eDu har satt sult til &3[hunger]&e for &3[playerDisplayName]&e (&3[offon]&e)."
       targetfeedback: "&eDin sult er satt til &3[hunger]&e av &3[senderDisplayName]&e."
@@ -2082,7 +2101,7 @@ command:
   importfrom:
     help:
       info: "&eImporter data fra andre plugins"
-      args: "[essentials]"
+      args: "[essentials/hd] [home/warp/nick/logoutlocation/money/mail]"
     info:
       converted: "&eKonvertert: &6[done]&e/&6[total] &ebrukere"
       convertedWarps: "&eKonvertert &6[amount] &evarper"
@@ -2121,11 +2140,11 @@ command:
         - "[knownAs]"
         - "[onlineoffline]"
         - "[playtime]"
-      newIp: " &fIP"
+      newIp: "&fIP "
       newIpHover:
         - "[ip][country]"
-        - "[firstLogin]"
         - "[ping]"
+        - "[firstLogin]"
       newNameHoverNick: "&7Kallenavn: &f[nick]"
       newNameHoverGroup: "&7Gruppe: &f[group]"
       newNameHoverKnownAs: "&7Også kjent som: &f[nameList]"
@@ -2137,14 +2156,14 @@ command:
       newOnline: "[state] i: &6[logoff]"
       newOnlineStateOn: "&2Pålogget"
       newOnlineStateOff: "&7Frakoblet"
-      newUUID: " &fUUID"
+      newUUID: "&fUUID "
       newUUIDHover: "&7UUID: &6[UUID]"
       newOUUIDHover: "&7PåloggetUUID: &6[OUUID]"
       newTurnedOnColor: "&a"
       newTurnedOffColor: "&7"
-      newOp: OP
-      newGod: Gud
-      newFly: KanFly&6([flying]&6)
+      newOp: "OP "
+      newGod: "Gud "
+      newFly: "KanFly&6([flying]&6) "
       newFlying: Flyr
       newFlyHover: "&7Fly hastighet: &6[flyspeed]"
       newFlyTemp: "&7Midlertidig fly: &6[time]"
@@ -2154,7 +2173,7 @@ command:
       newSneaking: Sniker
       newSprint: Løper
       newWalkSpeed: "&7Gå hastighet: &6[walkspeed]"
-      newGameMode: "&fModus: &6[gameMode]"
+      newGameMode: "&fModus: &6[gameMode] "
       newGameModeHover:
         - "[sprint]"
         - "[sneaking]"
@@ -2170,31 +2189,31 @@ command:
       newExp: "&7Exp: &6[totalexp]&7exp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&7lvl&e)"
       newPos: "&fPos "
       newPosHover: "&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)"
-      newAfk: AFK
+      newAfk: "AFK "
       newAfkHover: "&6Afk for last: [time]"
       newBed: "&fSeng "
       newBedHover: "&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)"
       newDeath: "&fDød "
       newDeathHover: "&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)"
-      newBack: "&fBack "
+      newBack: "&fTilbake "
       newBackHover: "&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)"
       newRespawn: "&fRespawn "
       newRespawnHover: "&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)"
-      newSee: ◕‿◕
+      newSee: "◕‿◕ "
       newSeeHover: "&6Kan se deg"
       newSeeHoverNot: "&2Kan ikke se deg"
-      newBanned: Bannlyst
+      newBanned: "Bannlyst "
       newBannedHover:
         - "&7Bannlyst av: &e[name]"
         - "&7Igjen: &e[left]"
         - "&7For: &e[reason]"
-      newMuted: Dempet
+      newMuted: "Dempet "
       newMutedHover:
         - "&7Igjen: &e[left]"
         - "&7For: &e[reason]"
       newShadowMutedHover: "&4Skyggedempet"
-      newCuffed: Lenket
-      newJailed: Fengslet
+      newCuffed: "Lenket "
+      newJailed: "Fengslet "
       newJailedHover:
         - "&7Fengsel: &e[jail]"
         - "&7Celle: &e[id]"
@@ -2240,11 +2259,11 @@ command:
   invload:
     help:
       info: "&eLast inn lagret inventar"
-      args: (kildeNavn) (målNavn) [id]
+      args: (kildeNavn) (målNavn) [id/last]
   invremove:
     help:
       info: "&eFjern lagret inventar for spiller"
-      args: (spillerNavn) [id/all]
+      args: (spillerNavn) [id/all/last]
   invremoveall:
     help:
       info: "&eFjern alle lagrede inventar"
@@ -2254,7 +2273,7 @@ command:
   invsave:
     help:
       info: "&eLagre inventar"
-      args: (spillerNavn)
+      args: (spillerNavn) (id) (-s)
   ipban:
     help:
       info: "&eBannlys ip"
@@ -2319,7 +2338,7 @@ command:
   itemlore:
     help:
       info: "&eEndre beskrivelse på gjenstand"
-      args: "[spillerNavn] [linjenummer] [remove/insert/ new lore line]"
+      args: (-p:[spillerNavn]) [linjenummer/*] [remove/insert/ new lore line]
     info:
       feedback:
         "&eDu har endret beskrivelsen til '&r&5[loreLine]&e' for &3[playerDisplayName]&e
@@ -2336,7 +2355,7 @@ command:
   itemname:
     help:
       info: "&eEndre navn på gjenstand"
-      args: "[spillerNavn] [remove/your new item name]"
+      args: (-p:[spillerNavn]) [remove/your new item name]
     info:
       feedback:
         "&eDu har endret navn på gjenstand til [itemname]&e for &3[playerDisplayName]&e
@@ -2356,7 +2375,7 @@ command:
   jail:
     help:
       info: "&eSett en spiller i fengsel for en tidsperiode"
-      args: "[spillerNavn] (tid) (fengselNavn) (celleId)"
+      args: "[spillerNavn] (tid) (fengselNavn) (celleId) (r:årsak)"
     info:
       jailed: "&eDu satte &6[playerDisplayName] &ei fengsel for [time]"
       jailedPlayer: "&6[playerDisplayName] &eble satt i fengsel for [time]"
@@ -2396,7 +2415,7 @@ command:
   jaillist:
     help:
       info: "&eFengselsliste"
-      args: (jailName) (cellId)
+      args: (fengselNavn) (celleId)
     info:
       jailList: "&6[place]. &e[jailName] &7Cells:&e[cellCount] &7Fengslet:&6[count]"
       cellList: "&6[place]. &7Id:&e[cellId] &7Fengslet:&6[count]"
@@ -2411,7 +2430,7 @@ command:
   kick:
     help:
       info: "&eSpark spiller med egendefinert melding"
-      args: "[spillerNavn] (melding)"
+      args: "[spillerNavn] (melding) (-s)"
       explanation:
         - cmi.command.kick.bypass - forhindre fra å bli sparket ut
     info:
@@ -2424,8 +2443,8 @@ command:
     help:
       info: "&eDrep monstre rundt deg"
       args:
-        (-monsters/-pets/-npc/-golems/-animals/-ambient/-armorstand/-named/-f/-lightning/-list/[mobType])
-        (avstand) (-s)
+        (-monsters/-pets/-npc/-animals/-ambient/-named/-f/-lightning/-list/-m:[mobType])
+        (-r:avstand) (-s) (-w:[verdenNavn])
     info:
       infoList: "&2[category]&e: &7[amount] &e([list]&e)"
       removedList: "&6[type]&e: &7[amount]"
@@ -2476,7 +2495,7 @@ command:
   kitcdreset:
     help:
       info: "&eTilbakestill tiden på settet"
-      args: (settNavn) (spillerNavn)
+      args: (settNavn) (spillerNavn/all)
     info:
       notCd: "&eSettet er ikke i en cooldown fase"
       reset: "&eCooldown for settet (&6[kit]&e) ble tilbakestilt for &6[playerDisplayName]"
@@ -2596,14 +2615,14 @@ command:
   lastonline:
     help:
       info: "&eVis spilte spillere de siste x minuttene"
-      args: "[tidsområde/list/stop] [side]"
+      args: (-p:[side])
     info:
       searching: "&eSøker &6[checked]&e/&6[total] &e(&6[found]&e)"
       List: " &6[place]&e. &2[name] &e-> &6[time]."
   launch:
     help:
       info: "&eAvfyr i retningen du ser eller i vinkel"
-      args: (spillerNavn) (p:[kraft]) (a:[vinkel]) (d:[retning])
+      args: (spillerNavn) (p:[kraft]) (a:[vinkel]) (d:[retning]) (loc:[x]:[y]:[z])
       explanation:
         - cmi launch - vil avfyre deg i retningen du ser
         - cmi launch p:3.2 - vil avfyre deg med kraft 3.2
@@ -2620,7 +2639,7 @@ command:
   lfix:
     help:
       info: "&eFiks lys i chunker rundt deg"
-      args: (område) (spillerNavn)
+      args: (område) (spillerNavn) (stop/stopall)
     info:
       NoMore:
         "&eOmråde kan ikke overstige visningsområdet satt på serveren. Endre
@@ -2638,11 +2657,11 @@ command:
       explanation:
         - "Tillatelser: "
         - cmi.command.list.admin
-        - "cmi.command.list.group.[number]"
         - cmi.command.list.staff
         - cmi.command.list.hidden
+        - cmi.command.list.group.[number]
     info:
-      # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on, you can have as many of those as you want and order them by your own liking
+      # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on. You can have as many of those as you want and order them by your own liking
       List:
         - "&7========================"
         - "&eSpillere pålogget &6[amount][hidden]&e/&6[maxamount]"
@@ -2652,10 +2671,12 @@ command:
         - "&7========================"
       staffL: "&7Stab: &f[list]"
       adminL: "&8Admin: &f[list]"
-      hiddenPref: "&e&7[G]"
+      hiddenPref: "&e&7[H]"
       hiddenCount: "&e&7([amount])"
       groupL: "&6[groupName]: &f[list]"
       player: "%cmi_user_afk_symbol%&f[playerDisplayName]"
+      # Add as many groups as you wish. By default there are only 10. To create a new one, copy and paste one line and add increment into lines name. (group11, group12, etc)
+      # Player need to have appropriate permission node to be placed in group cmi.command.list.group.[groupnumber]. Bigger numbers have higher priority
       groups:
         group1: "&eGruppe1: &f[list]"
         group2: "&eGruppe2: &f[list]"
@@ -2671,7 +2692,7 @@ command:
   lockip:
     help:
       info: "&eForhindrer innlogging fra forskjellige ip"
-      args: "[spillerNavn] [add/remove/list/clear] [ip]"
+      args: "(spillerNavn) [add/remove/list/clear] [ip]"
     info:
       CantLogin: "&cDu kan ikke logge inn fra denne IP adressen"
       add: "&eNy ip (&6[ip]&e) ble lagt til på &6[playerDisplayName]"
@@ -2683,7 +2704,7 @@ command:
   mail:
     help:
       info: "&eSjekk eller send post"
-      args: "[send/clear] [spillerNavn] (melding)"
+      args: "[send/clear/read] [spillerNavn] (melding)"
     info:
       sentMail: "&eSendt post til &6[playerDisplayName]"
       gotMail: "!actionbar!&eDu har mottatt post fra &6[senderDisplayName]"
@@ -2701,11 +2722,11 @@ command:
     info:
       sentMail: "&eSendt &6[amount] &epost"
       clearMail: "&6[amount] &epost har blitt fjernet"
-      removedMail: "&eFjernet &6[amount] &epost"
+      removedMail: "&eFjernet &6[amount] &epost(er)"
   maintenance:
     help:
       info: "&eSett serveren i vedlikeholdsmodus"
-      args: (melding)
+      args: (true/false) (melding)
       explanation:
         - cmi.command.maintenance.bypass - omgå vedlikeholdsmodus
     info:
@@ -2738,7 +2759,7 @@ command:
   merchant:
     help:
       info: "&eÅpne handelsvinduet"
-      args: "[type] [spillerNavn]"
+      args: "[type] (spillerNavn)"
     info:
       incorrect: "&cFeil yrke."
       feedback:
@@ -2752,7 +2773,7 @@ command:
   mirror:
     help:
       info: "&eStarter speiling av blokker plassering/fjern."
-      args: "[start/stop]"
+      args: "(start/stop)"
     info:
       started: "&eSpeiling startet"
       stopped: "&6Speiling stoppet"
@@ -2806,7 +2827,9 @@ command:
   money:
     help:
       info: "&eSjekk pengesaldoen"
-      args: "[handling] [spillerNavn] [antall]"
+      args:
+        "[handling] [spillerNavn/all/alloffline] [antall][%rand/1-1000%][1%[min-max]][spillerNavn]]
+        (-s)"
     info:
       newBalance: "&6[playerDisplayName] &eny saldo: &6[money]"
       paid: "&eDu har sendt &6[amount] &etil &6[playerDisplayName]"
@@ -2815,14 +2838,16 @@ command:
       noMoney: "&cDu har ikke nok penger"
       worldGroups: "&cDu kan ikke sende penger på tvers av verdener"
       self: "&cDu kan ikke sende penger til deg selv"
-      confirm: "&eKlikk for å bekrefte overføring av &6[money] &etil &6[playerDisplayName]"
+      confirm:
+        "&eKlikk for å bekrefte overføring av &6[money] &etil &6[playerDisplayName]
+        &a&l[✔]"
       notAccepting: "&eDenne brukeren godtar ikke betalinger fra spillere"
       giveAll: "&eDet ble gitt ut &6[totalAmount] &etil &6[playerCount] &espillere"
       takeAll: "&eTok &6[totalAmount] &efra &6[playerCount] &espillere"
   more:
     help:
       info: "&eFyller gjenstandsbunken opp til det maksimale antallet"
-      args: (spillerNavn)
+      args: (spillerNavn) (-clone/[antall])
       explanation:
         - "&eTillatelser:"
         - " &6cmi.command.more.oversize &e- Få større bunker enn standard"
@@ -2853,7 +2878,7 @@ command:
   mute:
     help:
       info: "&eDemp spiller"
-      args: "[spillerNavn] (tid) (-s)"
+      args: "[spillerNavn] (tid) (-s) (årsak)"
       explanation:
         - "Eksempler: "
         - /cmi mute zrips 1m
@@ -2878,14 +2903,14 @@ command:
   nameplate:
     help:
       info: "&eSett spillerens navnskilt prefiks eller suffiks"
-      args: (spillerNavn) (-pref:[prefiks]) (-suf:[suffiks])
+      args: (spillerNavn) (-pref:[prefiks]) (-suf:[suffiks]) (-c:[colorCode])
     info:
       feedback: "&eDu har oppdatert navnskiltet til &3[playerDisplayName]&e (&3[offon]&e)."
       targetfeedback: "&eDitt navnskilt ble oppdatert"
   near:
     help:
-      info: "&eVeksle afk modus"
-      args: (spillerNavn)
+      info: "&eSjekk hvem som er i nærheten av deg"
+      args: (distanse)
     info:
       nope: "&eIngen er nær deg"
       list: "&e[place]. &6[playerDisplayName] &e- &7[distance]m"
@@ -2893,7 +2918,7 @@ command:
   nick:
     help:
       info: "&eEndre spillernavn"
-      args: "[nyttKallenavn] (spillerNavn)"
+      args: "[nyttKallenavn/off] (spillerNavn) (-s)"
       explanation:
         - "For å endre til et annet kallenavn: cmi.command.nick.different"
         - For å omgå lengdebeskyttelsen bruk cmi.command.nick.bypass.length
@@ -2939,7 +2964,7 @@ command:
   panimation:
     help:
       info: "&eSpill av tilpasset partikkelanimasjon"
-      args: ""
+      args: (variabel/spilerNavn/stopAll) (stop)
       explanation:
         - Informasjon om bruk finner du på http://www.zrips.net/cmi/extra/particles/
   patrol:
@@ -2949,12 +2974,12 @@ command:
     info:
       noPatrol: "&eFor øyeblikket er det ingen spillere du kan patruljere"
       Patroling: "&eFor øyeblikket patruljeres: &6[playerDisplayName]"
-      lastPatrol: "&eSist gang patruljert &6[time]&eago"
+      lastPatrol: "&eSist gang patruljert for &6[time]&esiden"
       notes: "&eHar &6[amount] &enotater"
   pay:
     help:
       info: "&eUtfør pengetransaksjon"
-      args: "[spillerNavn] [antall]"
+      args: "[spillerNavn] [antall] (-s)"
   paytoggle:
     help:
       info: "&eVeksle betalinger fra en annen spiller"
@@ -2965,7 +2990,7 @@ command:
   ping:
     help:
       info: "&eVis spillerens ping"
-      args: (spillerNavn)
+      args: (spillerNavn/melding)
     info:
       feedback: "&ePing: &6[ping]"
       selffeedback: "&eDin ping er &6[ping]ms"
@@ -2973,7 +2998,7 @@ command:
   placeholders:
     help:
       info: "&eListe med alle plassholdere"
-      args: ""
+      args: (parse) (plassholder) (spillerNavn)
     info:
       list: "&e[place]. &6[placeholder]"
       outputResult: " &eresultat: &6[result]"
@@ -2981,7 +3006,7 @@ command:
   playercollision:
     help:
       info: "&eSett spilleres kollisjon modus"
-      args: (spillerNavn) [true/false]
+      args: (spillerNavn) [true/false] (-s)
     info:
       feedback:
         "&eDu har satt kollisjon til &3[boolean]&e for &3[playerDisplayName]&e
@@ -3009,11 +3034,11 @@ command:
   point:
     help:
       info: "&ePek på blokk"
-      args: ""
+      args: (partikkelNavn) (spillerNavn) (-self) (tid) (-s:[hastighet])
   portals:
     help:
       info: "&eDefiner portaler"
-      args: (new) (portalNavn)
+      args: (new/nærmeste) (portalNavn)
     info:
       collides: "&cKolliderer med portalen &6[portalName]"
       exist: "&cPortal med dette navnet finnes allerede"
@@ -3138,7 +3163,7 @@ command:
   rankinfo:
     help:
       info: "&eDin rang informasjon"
-      args: (gradNavn)
+      args: (spillerNavn) (gradNavn)
     info:
       distanceCM: "[value]cm"
       distanceM: "[value]m"
@@ -3192,7 +3217,7 @@ command:
   rankup:
     help:
       info: "&eRanger til neste rang"
-      args: (rangNavn) (confirm)
+      args: (spillerNavn) (rangNavn) (confirm)
     info:
       noRank: " &eDu har ikke noen rang knyttet til deg"
       requiresPrevious:
@@ -3326,7 +3351,7 @@ command:
       noOneToReplay: "&eDet er ingen å svare"
   resetdbfields:
     help:
-      info: "&eTilbakestiller spesifikke databaskolonner til standardverdien"
+      info: "&eTilbakestiller spesifikke databasekolonner til standardverdien"
       args: "[kolonneNavn] (-w:[verdenNavn]) (-p:[spillerNavn])"
     info:
       feedback: "&eOppdatert &7[amount] &espillere"
@@ -3384,11 +3409,11 @@ command:
       saving:
         "[simbol] &2sjekket: &e[checked]&2 fra &e[total]&2 lagret: &e[saved]
         &2hoppet over: &e[skipped] [simbol]"
-      saved: "&eLAgring ferdig. Lagret: &6[saved] &eHoppet over: &6[skipped]"
+      saved: "&eLagring ferdig. Lagret: &6[saved] &eHoppet over: &6[skipped]"
   saveditems:
     help:
       info: "&eLagre eller administrer lagrede gjenstander"
-      args: "[save/get/remove/list] (savedItemName) (-t:spillerNavn) (-s)"
+      args: "[save/get/remove/list] (savedItemName) (-t:spillerNavn) (-a:amount) (-s)"
     info:
       info:
         - "&fVenstreklikk for å få gjenstanden"
@@ -3401,7 +3426,7 @@ command:
   sc:
     help:
       info: "&eStarter skiltkopieringsprosess"
-      args: ""
+      args: (spillerNavn)
     info:
       punch:
         "&eSlå på skiltet for å lime inn tekst, eller slå på en vilkårlig blokk
@@ -3410,7 +3435,7 @@ command:
       updated: "&eSkilt oppdatert"
   scan:
     help:
-      info: "&eSkanner verdenen fir gjenstander"
+      info: "&eSkanner verdenen for gjenstander"
       args: ""
       explanation:
         - "&6UnderKommandoer:"
@@ -3561,7 +3586,7 @@ command:
   sell:
     help:
       info: "&eSelg gjenstander fra inventaret"
-      args: (all/blocks/hand)
+      args: (all/blocks/hand/same/gui)
     info:
       total: "&eTjente &6[total] &eav å selge &6[amount] &egjenstander. Ny saldo &6[balance]"
       close: "&8Plasser gjenstander du vil selge"
@@ -3573,7 +3598,7 @@ command:
   server:
     help:
       info: "&eKoble til bungeecord server"
-      args: "[serverNavn] (spillerNavn)"
+      args: "[serverNavn] (spillerNavn) (-f)"
   serverlist:
     help:
       info: "&eVis server liste"
@@ -3604,7 +3629,7 @@ command:
   sethome:
     help:
       info: "&eAngi hjem lokasjon"
-      args: (hjemNavn)
+      args: (hjemNavn) (spillerNavn) (-p) (-l:verdenNavn;x;y;z) (blokk/Material) (slotNummer)
       explanation:
         - cmi.command.sethome.unlimited
         - -l vil definere egendefinert lokasjon for nytt home, dette krever tillatelsen cmi.command.sethome.customloc
@@ -3729,7 +3754,7 @@ command:
   sit:
     help:
       info: "&eSitt der du er"
-      args: (spillerNavn) (-s)
+      args: ""
     info:
       onSit: "!actionbar!&eNå sitter du"
       onStandUp: "!actionbar!&eNå sitter du ikke lenger"
@@ -3737,7 +3762,7 @@ command:
   skin:
     help:
       info: "&eEndrer spillerens utseende"
-      args: "[skinName/off] (spillerNavn)"
+      args: "[skinName/off/update] (spillerNavn) (-s)"
     info:
       changed: "&eEndret utseende til &6[skinOwner]"
       failed: "&eKunne ikke endre utseende"
@@ -3747,7 +3772,7 @@ command:
   smite:
     help:
       info: "&eSlå bakken eller spilleren med lynet"
-      args: (spillerNavn)
+      args: (spillerNavn) (-s)
     info:
       gotSmited: "&eDu ble rammet av lynet!"
   socialspy:
@@ -3768,7 +3793,7 @@ command:
   sound:
     help:
       info: "&eSpill av lyd"
-      args: "[lyd] (-p:[pitch]) (-v:[volum]) (spillerNavn) (verden) (x) (y) (z)"
+      args: "[lyd] (-p:[pitch]) (-v:[volum]) (spillerNavn/-all) (verden) (x) (y) (z) (-s)"
     info:
       playing:
         "&eSpiller av &6[sound] &epå lokasjon [world] [x]:[y]:[z] \n&eTonehø\
@@ -3841,7 +3866,7 @@ command:
   staffmsg:
     help:
       info: "&eSender meldinger til stabkanalen"
-      args: "[melding]"
+      args: "[melding/toggle/on/off]"
     info:
       message: "&2[Stab]&4[&7[senderDisplayName]&4]&r&c [message]"
       toggledOn:
@@ -3980,7 +4005,7 @@ command:
         CRAFT_ITEM: Gjenstander laget
         USE_ITEM: Gjenstander brukt
         PICKUP: Gjenstander plukket opp
-        KILL_ENTITY: Monster drap
+        KILL_ENTITY: Monster drept
   statsedit:
     help:
       info: "&eRediger spillerstatistikk"
@@ -3991,7 +4016,7 @@ command:
       set: "&eEndret fra &6[old] &etil verdi &6[new] &efor &6[statistic] &e(&6[extra]&e)"
   status:
     help:
-      info: "&eVis server status"
+      info: "&eShow server status"
       args: ""
     info:
       Platform: " &ePlattform: &6[platform] &e(&6[os]&e) &eKjørede tråder: &6[threads]"
@@ -4018,7 +4043,7 @@ command:
   sudo:
     help:
       info: "&eTving en annen spiller til å utføre kommando"
-      args: "[spillerNavn] (kommando)"
+      args: "[spillerNavn] (kommando/c:[tekst])"
       explanation:
         - cmi.command.sudo.bypass - beskytter spilleren mot å bli tullet med
     info:
@@ -4061,6 +4086,8 @@ command:
       explanation:
         - Maks bannlysninger per periode avhengig av cmi.command.tempban.max.[antall]
         - I tilfelle spilleren ikke har definert verdi, vil 60 sekunder være maks verdi
+        - "Eksempel: "
+        - /cmi tempban zrips 5m For swearing
     info:
       messageToAll:
         "&6[playerDisplayName] &eble midlertidig bannlyst av &6[senderDisplayName]
@@ -4190,7 +4217,7 @@ command:
   titlemsg:
     help:
       info: "&eSender tittel melding til spiller"
-      args: "[spillerNavn] [tittel %subtitle% undertekst]"
+      args: "[spillerNavn] [tittel %subtitle% undertekst]" (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])'
     info:
       message: "&f[messsage]"
   toast:
@@ -4289,7 +4316,7 @@ command:
   tpallworld:
     help:
       info: "&eTeleporter ALLE spillere fra en spesifikk verden"
-      args: "[verdenNavn]"
+      args: "[verdenNavn] (verdenNavn;x;y;z(;yaw;pitch)) (-a)"
       explanation:
         - -a variabel vil teleportere alle som ikke er i en eksisterende verden til
           mållokasjon
@@ -4345,14 +4372,14 @@ command:
   tppos:
     help:
       info: "&eTeleporter til lokasjon"
-      args: (spillerNavn) [x] [y] [z] (verden) (pitch) (yaw)
+      args: (spillerNavn) [x] [y] [z] (verden) (pitch) (yaw) (-rng:[rekkevidde])
     info:
       feedback: "&eDu har blitt teleportert ([world],[x],[y],[z])."
       feedbackOther: "&e[playerDisplayName] har blitt teleportert ([world],[x],[y],[z])."
   tps:
     help:
       info: "&eSe server tps status"
-      args: ""
+      args: (-spikes)
     info:
       tps: "&eTPS: "
       # Custom tps range can be defined and you can have as many of them as you want
@@ -4369,14 +4396,14 @@ command:
   tree:
     help:
       info: "&eFremkall et tre der du ser"
-      args: (TreType)
+      args: (TreType) (-p:[spillerNavn])
     info:
       feedback: "&6[tree] &eble fremkallet."
       cantSpawn: "&cKan ikke fremkalle (&e[tree]&c) på denne blokken."
   unban:
     help:
       info: "&eOpphev bannlysning spiller"
-      args: "[spillerNavn] (-s)"
+      args: "[spillerNavn/ip] (-s)"
     info:
       unBaned: "!broadcast!&6[playerDisplayName] &eikke lenger bannlyst"
       unBanedSilent: "&7[&8Stille&7]&6[playerDisplayName] &eikke lenger bannlyst"
@@ -4395,7 +4422,7 @@ command:
       args: (gjenstandNavn)
     info:
       converted: "&eKonvertert blokkene &7[blocks] &etil &7[items]"
-      nothing: "&cDet er ingenting i ditt invetar som kan bli konvertert."
+      nothing: "&cDet er ingenting i ditt inventar som kan bli konvertert."
   unjail:
     help:
       info: "&eOpprett fengsel med navn"
@@ -4436,7 +4463,7 @@ command:
   usermeta:
     help:
       info: "&eAdministrer metadata for spillere"
-      args: "[spillerNavn] [add/remove/clear/list] (nøkkel) (verdi)"
+      args: "[spillerNavn] [add/remove/clear/list] (nøkkel) (verdi) (-s)"
       explanation:
         - Enhver meta kan bli vist med plassholderen %cmi_user_meta_[key]%
     info:
@@ -4450,7 +4477,7 @@ command:
   util:
     help:
       info: "&eAdministrasjonsverktøy"
-      args: (fjernseter)
+      args: (fjernseter/testtarget)
     info:
       removedSits: "&eFjernet &6[count] &etomme seter fra alle verdener."
   vanish:
@@ -4505,7 +4532,7 @@ command:
   viewrange:
     help:
       info: "&eEndre visningsområdet"
-      args: "[rekkevidde]"
+      args: "[rekkevidde] (spillerNavn)"
     info:
       changed: "&eVisningsområdet endret til rekkevidde &6[range]"
       NoProtocolLib: "&cDenne funksjonen krever ProtocolLib!"
@@ -4587,7 +4614,7 @@ command:
   warp:
     help:
       info: "&eTeleporterer til varp lokasjon"
-      args: (varpNavn) (spillerNavn)
+      args: (varpNavn) (spillerNavn) (-s)
     info:
       list: "&eVarp: &6"
       click: "&eKlikk for å teleportere til &6[warp]"
@@ -4608,7 +4635,7 @@ command:
         - "&0Varp 3"
   weather:
     help:
-      info: "&eKontrollerer serverværet"
+      info: "&eKontroller serverværet"
       args: (sun/rain/storm) (lock/duration) (verdennavn/all)
       explanation:
         - "Tidsformat kan ha: s/m/h/d/w/M/Y"
@@ -4653,7 +4680,7 @@ command:
   worth:
     help:
       info: "&eSjekk verdien på en gjenstand"
-      args: (all/blocks/hand)
+      args: (all/blocks/hand/material)
     info:
       worthless: "&eVerdiløs"
       basePrice: "&6[itemName]&e(&7[amount]&e) -> &f[price]"
