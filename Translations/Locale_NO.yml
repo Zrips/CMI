@@ -57,7 +57,7 @@ info:
   prefix: "&e[&aCMI&e] "
   NoPermission: "&cDu har ikke tillatelse til dette!"
   CantHavePermission: "&cDu kan ikke ha denne tillatelsen!"
-  WrongGroup: "&cYou are in wrong group for this!"
+  WrongGroup: "&cDu er i feil gruppe for dette!"
   NoPlayerPermission: "&c[playerName] har ikke denne tillatelsen: [permission]"
   Ingame: "&cDu kan bare bruke denne i spillet!"
   NoInformation: "&cKan ikke finne informasjonen!"
@@ -74,7 +74,7 @@ info:
   NoCommand: "&cDet er ingen kommando med det navnet!"
   NoCommandWhileSleeping: "&cCan't perform commands while sleeping!"
   cantFindCommand: "&5Kunne ikke finne kommandoen &7[%1]&5. Mente du egentlig &7[%2]&5?"
-  nolocation: "&4Can't find suitable location"
+  nolocation: "&4Fant ikke bruktbar lokasjon"
   PurgeNotEnabled: "&cPurge funksjonen er ikke aktivert i konfigurasjonen!"
   FeatureNotEnabled: "&cDenne funksjonen er ikke aktivert!"
   TeamManagementDisabled:
@@ -102,11 +102,11 @@ info:
     DontMove: "!title!!subtitle!&6Stå stille!"
     Boss:
       DontMove: "&4Ikke beveg deg før om &7[autoTimeLeft] &4sekunder!"
-      WaitFor: "&4Vent for &7[autoTimeLeft] &4seconds!"
+      WaitFor: "&4Vent for &7[autoTimeLeft] &4sekunder!"
   Spawner: "&r[type] Fremkaller"
   Elevator:
     created: "&eOpprettet heisskilt"
-  CantPlaceSpawner: "&eKan ikke plassere en spawner så nær en annen spawner (&6[range]&e)"
+  CantPlaceSpawner: "&eKan ikke plassere en fremkaller så nær en annen fremkaller (&6[range]&e)"
   ChunksLoading:
     "&eChunk data for verden blir fortsatt lastet inn. Vent litt og prøv
     igjen."
@@ -268,7 +268,7 @@ info:
   vanishSymbolOff: ""
   afkSymbolOn: "&e&oAfk"
   afkSymbolOff: ""
-  nextPageConsole: "&fFor next page perform &5[command]"
+  nextPageConsole: "&fFor neste side utfør &5[command]"
   prevPage: "&2----<< &6Forrige "
   prevPageGui: "&6Forrige side "
   prevPageClean: "&6Forrige "
@@ -313,13 +313,13 @@ info:
     dryout: tørke ut
     entity_attack: Angrep
     entity_explosion: Eksplosjon
-    entity_sweep_attack: entity sweep attack
+    entity_sweep_attack: entity sweep angrep
     fall: Fall
     falling_block: Falling block
     fire: Brann
     fire_tick: Brann
     fly_into_wall: Fly inn i en vegg
-    hot_floor: Magma block
+    hot_floor: Magma blokk
     lava: Lava
     lightning: Lyn
     magic: Magi
