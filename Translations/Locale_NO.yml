@@ -96,6 +96,8 @@ info:
   IncorrectLocation: "&4Lokasjonen er definert feil!"
   NameChange: "&6[playerDisplayName] &elogget inn, også kjent som: &6[namelist]"
   Cooldowns: "&eCooldown er aktivert for &6[cmd] &event &6[time]"
+  specializedCooldowns: "&eNedtelling er igang for denne kommandoen, vent &6[time]"
+  CooldownOneTime: "&eDenne kommandoen kan bare brukes en gang!"
   WarmUp:
     canceled: "&eKommandoen ble kansellert fordi du beveget på deg"
     counter: "!actionbar!&6--> &e[time] &6<--"
@@ -284,7 +286,7 @@ info:
   pageCount: "&2[current]&7/&2[total]"
   pageCountHover: "&2[totalEntries]"
   skullOwner: "!actionbar!&7Eier:&r [playerName]"
-  beehive: "!actionbar!&7Honning nivå: &e[level]&7/&e5 &7Bier på innsiden: &e[count]&7/&e3"
+  beeinfo: "!actionbar!&7Honning nivå: &e[level]&7/&e5 &7Bier på innsiden: &e[count]&7/&e3"
   circle: "&3Sirkel"
   square: "&5Firkant"
   protectedArea: "&cBeskyttet område. Kan ikke gjøre dette her."
