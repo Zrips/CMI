@@ -43,7 +43,7 @@
 # If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, in example !broadcast!!title!
 # If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
 # If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
-# If line starts with !bosbar:[name]-[timer]! then player will get bossbar message defined after this variable, in addition you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
+# If line starts with !bossbar:[name]-[timer]! then player will get bossbar message defined after this variable, in addition you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
 # To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
 # <T> and </T> required, other is optional
 # Use /n to break line
@@ -52,25 +52,245 @@
 # <CC> performs command from console once
 # <CCI> performs command from console every time player clicks text
 # <URL> includes url
-# 
-# 
-# 
+#
+#
+#
 # ATTENTION! As of 9.0.0.0 CMI version some of the locale lines got moved to CMILib file. This is to centralize some of most used ones across multiple plugins.
 # After you update locale in CMILib file perform /CMIL RELOAD command for changes to take effect
+
 info:
-  CommandFormat: '&cIncorrect command format'
-  ServerSwitchOut: ' &6[playerDisplayName] &eswitched server to &6[serverName]'
-  ServerSwitchIn: ' &6[playerDisplayName] &ecame from &6[serverName] &eserver'
+  Same: '&c¡No puedes modificar tu propio inventario!'
+  cantLoginWithDifCap: '&c¡No puedes conectarte usando el mismo nombre en mayúsculas!
+    Nombre anterior: &4[oldName] &c| Nombre actual: &4[currentName]'
+  Searching: '&e¡Buscando datos del jugador! &7Esta tarea puede tardar algo de tiempo
+    en finalizar!'
+  NoCommandWhileSleeping: '&c¡No puedes utilizar comandos mientras duermes!'
+  PurgeNotEnabled: '&c¡La función de purga no está activada en el archivo de configuración!'
+  TeamManagementDisabled: '&7¡Esta módulo se encuentra limitado porque la función
+    DisableTeamManagement está activada (true) en el archivo de configuración!'
+  NoGameMode: '&c¡Por favor, usa &40&c/&41&c/&42&c/&43 &co &4Survival&c/&4Creative&c/&4Adventure&c/&4Spectator
+    &co &4s&c/&4c&c/&4a&c/&4sp&c!'
+  NameChange: '&6[playerDisplayName] &ea jugado con los siguientes nombres: &6[namelist]'
+  Cooldowns: '&eDebes esperar &6[time] &epara volver usar este comando.'
+  specializedCooldowns: '&eDebes esperar &6[time] &epara volver a usar este comando.'
+  specializedRunning: '&eLa acción se está procesando, por favor espera &6[time]&e.'
+  CooldownOneTime: '&eEste comando es de un solo uso.'
+  WarmUp:
+    canceled: '!title!!subtitle!&c¡Te has movido!'
+    counter: '!title!&6No te muevas!subtitle!&4[time]'
+    DontMove: '!title!&6¡No te muevas!'
+    Boss:
+      DontMove: '&c¡No te muevas durante &4[autoTimeLeft]&c!'
+      WaitFor: '&c¡Espera &4[autoTimeLeft] &csegundos!'
+  Spawner: '&eGenerador de &r[type]'
+  FailedSpawnerMine: '!actionbar!&cNo has obtenido el generador. Está al &7[percent]%
+    &cde probabilidad de obtenerlo.'
+  ClickSpawner: '!actionbar!&7[percent]% &ede probabilidad de obtenerlo.'
+  Elevator:
+    created: '&eSe ha creado un Trasto Mágico.'
+  CantPlaceSpawner: '&eNo se puede colocar el Generador de Monstruos tan cerca de
+    otro generador (&6[range]&e)'
+  ChunksLoading: '&eAún se está generando el sector del mundo. Espera un poco y vuelve
+    a intentarlo.'
+  CantUseNonEncrypted: '!actionbar!&cLos comandos de este objeto no están cifrados.
+    ¡No es posible usarlos!'
+  CantDecode: '!actionbar!&cNo se puede descifrar el mensaje/comando. El archivo que
+    contiene una clave incorrecta para esta tarea. Informa al administrador sobre
+    este problema.'
+  CantTeleport: '&eNo puedes aparecer en otro lugar porque llevas demasiados objetos
+    limitados. Desplázate sobre ellos para ver los objetos máximos permitidos.'
+  BlackList: '&e[material] [amount] &6Máximo: [max]'
+  wrongPortal: '&cEstás en un portal incorrecto.'
+  ItemWillBreak: '!actionbar!&e¡La herramienta (&6[itemName]&e) está a punto de romperse!
+    &6[current]&e/&6[max]'
+  ArmorWillBreak: '!actionbar!&e¡El [itemName] se romperá pronto! &e[current]&6/&e[max]'
+  flyingToHigh: '&cNo puedes volar tan alto, el máximo es de &6[max] &cbloques!'
+  specializedItemFail: '&cNo se puede determinar el objeto del comando especializado
+    del valor: &7[value]'
+  sunSpeeding: '&7[hour]H | Durmiendo [count] de [total] al [speed]% de velocidad.'
+  sleepersRequired: '&7[&4!&7] &6[sleeping] &ede &6[required] &ejugadores durmiendo
+    para pasar la noche al instante.'
+  sunSpeedingTitle: '&7[hour]H'
+  skippingNight: '!title!&7Despertarás!subtitle!&7En un instante.'
+  sunSpeedingSubTitle: '&7[count]&8/&7[total] &8(&7x[speed]&8)'
+  repairConfirm: '&7[&4!&7] &ePulsa aquí para confirmar si quieres reparar &7[items]
+    &epor valor de &7[cost]&e.'
+  bookDate: '&7Escrito el &f[date]&7.'
+  maintenance: '&7Servidor en Modo Mantenimiento.'
+  mapLimit: '&cNo puedes ir más allá de 30.000.000 bloques.'
+  startedEditingPainting: '&eAhora puedes cambiar la imagen del cuadro usando la rueda
+    del ratón. Golpea en otro bloque para terminar.'
+  canceledEditingPainting: '&eYa no puedes cambiar la imagen del Cuadro.'
+  changedPainting: '!actionbar!&eHas cambiado la imagen del Cuadro. ID: &6[id] &eNombre:
+    &6[name]&e.'
+  noSpam: '!title!&c¡No puedes repetir siempre lo mismo!'
+  noCmdSpam: '!title!&c¡No puedes repetir comandos sucesivamente!'
+  spamConsoleInform: '&4[playerName] &cestá haciendo saltar (&7[rules]&c) el filtro
+    del chat con:&r [message]'
+  # This line can have extra variables: [totalUsers] [onlinePlayers]
+  FirstJoin: '&6¡[playerDisplayName]&e, este servidor te da la bienvenida!'
+  LogoutCustom: '&7[&4-&7] &4[prefix][playerDisplayName] &cse ha ido.'
+  LoginCustom: '&7[&2+&7] &aHa entrado &2[prefix][playerDisplayName]&a.'
+  deathlocation: '&eHas muerto en las coordenadas x:&6[x]&e, y:&6[y]&e, z:&6[z] &edel
+    mundo &6[world]&e.'
+  book:
+    exploit: '&cNo puedes crear un libro que contenga más de [amount] páginas.'
+  combat:
+    CantUseShulkerBox: '&cNo puedes usar la Caja de Shulker durante el combate contra
+      otro jugador. Espera: [time]'
+    CantUseCommand: '!actionbar!&cNo puedes usar este comando durante el combate contra
+      otro jugador. Espera: [time]'
+    bossBarPvp: '&cModo Combate [autoTimeLeft]'
+    bossBarPve: '&7Modo Cazador [autoTimeLeft]'
+  noSchedule: '&cNo se encuentra ninguna programación con este nombre.'
+  totem:
+    cooldown: '&eReutilización del Talismán: [time]'
+    warmup: '&eEfecto del Talismán: [time]'
+    cantConsume: '&eSe ha denegado el uso del Talismán debido al tiempo de espera
+      de reutilización.'
+  InventorySave:
+    info: '&7Información sobre &f[playerDisplayName]&7.'
+    saved: '&e[time] &eInventario guardado con la ID: &e[id]'
+    NoSavedInv: '&eEste jugador no tiene ningún inventario guardado.'
+    NoEntries: '&4¡El archivo existe, pero no se ha encontrado el inventario!'
+    CantFind: '&eNo se encuentra el inventario con esta ID.'
+    TopLine: '&6&m       &r&6【 &eInventarios de &6[playerDisplayName] guardados &6】&6&m       &r'
+    List: '&eID &6[id] &e► &6[time]'
+    KillerSymbol: '&c ☠'
+    Click: '&ePulsa para ver el inventario guardado ([id]).'
+    IdDontExist: '&4¡Esta ID no existe!'
+    Deleted: '&e¡El inventario guardado se ha eliminado correctamente!'
+    Restored: '&eHas restaurado el inventario &6[sourcename] del jugador &6[targetname]&e.'
+    GotRestored: '&eSe ha restaurado el inventario de &6[sourcename] &eguardado el
+      &6[time]&e.'
+    LoadForSelf: '&eCargar este inventario para tí.'
+    LoadForOwner: '&eCargar este inventario para el propietario.'
+    NextInventory: '&eSiguiente inventario.'
+    PreviousInventory: '&eInventario anterior.'
+    Editable: '&eModo edición &aActivado&e.'
+    NonEditable: '&eModo edición &cDesactivado&e.'
+  vanishSymbolOn: '&8[&7Oculto&8]&r'
+  vanishSymbolOff: ''
+  afkSymbolOn: '&c■'
+  afkSymbolOff: '&a■'
+  beeinfo: '!actionbar!&7Cantidad de Miel: &e[level]&7/&e[maxlevel] &7| Abejas en
+    el interior: &e[count]&7/&e[maxcount]'
+  pvp:
+    noGodDamage: '!actionbar!&cNo puedes causar daño siendo inmortal.'
+  pve:
+    noGodDamage: '!actionbar!&cNo puedes causar daño siendo inmortal.'
+  InvEmpty:
+    armor: '&e¡Los huecos de tu armadura deben estar vacíos.!'
+    hand: '&e¡Tu mano debe estar vacía!'
+    maininv: '&e¡Tu inventario principal debe estar vacío!'
+    maininvslots: '&e¡Tu inventario principal debe tener como mínimo &6[count] &ehuecos
+      vacíos!'
+    inv: '&e¡Tu inventario debe estar vacío.!'
+    offhand: '&e¡Tu mano no dominante debe estar vacía!'
+    quickbar: '&e¡Tu cinturón debe estar vacío!'
+    quickbarslots: '&e¡Tu cinturón debe tener como mínimo &6[count] &ehuecos vacíos!'
+    subinv: '&e¡Tu subcinturón debe estar vacío!'
+    subinvslots: '&e¡Tu subcinturón debe tener como mínimo &6[count] &ehuecos vacíos!'
+  Relog: '&ePuede que tengas que reconectarte para que los cambios surtan efecto.'
+  time:
+    # Mainly for placeholder playtime output
+    # Use + sign at the start of line to force include it even if specific and previous time values are 0
+    # Use - sign at the start of line if you want to include it only if its value isn't 0. If entire output results into empty line, then we will output seconds value
+    days: '&2[d]&7d:'
+    hours: '&2[h]&7h '
+    minutes: '&2[m]&7m '
+    seconds: '&2[s]&7s'
+  CommandFormat: '&cEl formato del comando no es correcto.'
+  ServerSwitchOut: ' &6[playerDisplayName] &ese ha ido al servidor &6[serverName]&e.'
+  ServerSwitchIn: ' &6[playerDisplayName] &eviene del servidor &6[serverName]&e.'
+  months: '&6[months] meses '
+  oneMonth: '&6[months] mes '
+  weeks: '&6[weeks] semanas '
+  oneWeek: '&6[weeks] semana '
+warp:
+  list: '&e[pos]. &6[warpName] &7► [worldName] ([x]:[y]:[z])'
+afk:
+  'off': '&aActivo'
+  MayNotRespond: '&eEl jugador no responde, está ausente.'
+  MayNotRespondStaff: '&eEl moderador está ausente y no te va a responder. Prueba
+    contactando por otro medio.'
+BossBar:
+  hpBar: '&8[[victim]&8] &2&o-[damage]&r &8► &4[current] &8[&7[max]&8]'
+Potion:
+  Effects: '&8Efecto de la poción.'
+  List: '&e[PotionName] [PotionAmplifier] &eDuración: &e[LeftDuration] &eseg'
+  NoPotions: '&eNinguna.'
+Information:
+  Title: '&cInformación sobre el jugador.'
+  Health: '&eSalud: &6[Health]&e/&6[maxHealth]'
+  Hunger: '&eHambre: &6[Hunger]'
+  Saturation: '&eSaturación: &6[Saturation]'
+  Exp: '&eExperiencia: &6[Exp]'
+  NotEnoughExp: '&eNo tiene suficiente experiencia: &6[Exp]'
+  NotEnoughExpNeed: '&eNo tiene suficiente experiencia: &6[Exp]/[need]'
+  tooMuchExp: '&eDemasiada experiencia: &6[Exp]/[need]'
+  NotEnoughVotes: '&eNo tiene suficientes votos: &6[votes]'
+  TooMuchVotes: '&eDemasiados votos: &6[votes]'
+  BadGameMode: '&cNo puedes hacer esto con este modo de juego.'
+  BadArea: '&cNo puedes hacer esto aquí.'
+  GameMode: '&eModo de Juego: &6[GameMode]'
+  Flying: '&eVolando: &6[Flying]'
+  Uuid: '&6[uuid]'
+  FirstConnection: '&ePrimera conexión: &6[time]'
+  Lastseen: '&eÚltima sesión: &6[time]'
+  Onlinesince: '&eConectado desde: &6[time]'
+  Money: '&eDinero: &6[money]'
+  Group: '&eGrupo: &6[group]'
+econ:
+  commandCost: '&7Este comando tiene un coste de &6[cost]&7.\n&8&oRepite el comando
+    o pulsa sobre el mensaje para confirmar.'
+  disabled: '&cNo puedes usar este comando con el sistema económico desactivado.'
+Elytra:
+  Speed: '&eVelocidad: &6[speed] &ekm/h'
+  SpeedBoost: ' &2+ '
+  SpeedSuperBoost: ' &6+++ '
+  CanUse: '&c¡No puedes colocarte las alas sin permiso!'
+  CantGlide: '&c¡Aquí no puedes usar las alas!'
+  Charging: '&eImpulso al &6[percentage]&e%.'
+NetherPortal:
+  ToHigh: '&c¡El Portal es demasiado alto, el máximo es &6[max]&c!'
+  ToWide: '&c¡El Portal es demasiado ancho, el máximo es &6[max]&c!'
+  Creation: '!actionbar!&7¡Se ha creado un Portal al Inframundo de [height]x[width]!'
+  Disabled: '&c¡La creación de portales está desactivada en la configuración!'
+Ender:
+  Title: '&7Abrir Cofre de Ender.'
+Chat:
+  localPrefix: ''
+  shoutPrefix: '&c[S]&r'
+  LocalNoOne: '!actionbar!&cNadie te está leyendo, introduce ! antes del texto para
+    enviar el mensaje por el chat general.'
+  shoutDeduction: '!actionbar!&cCastigado &e[amount] &cpor gritar.'
+  # Use \n to add new line
+  publicHover: '&7Enviado a las %server_time_HH:mm:ss%'
+  privateHover: '&7Enviado a las %server_time_HH:mm:ss%'
+  staffHover: '&7Enviado a las %server_time_HH:mm:ss%'
+  helpopHover: '&7Enviado a las %server_time_HH:mm:ss%'
+  link: '&8[&4&oENLACE&8]&r'
+  item: '&7[[amount]%cmi_iteminhand_displayname%&7]'
+  itemAmount: ' x[amount]'
+  itemEmpty: '&7[Puño vacío]'
+Spy:
+  Chat:
+    msg: '&2Espía&7[&8[senderDisplayName] &7► &8[playerDisplayName]&7]&7 [message]'
+    custom: '&2Espía&8[senderDisplayName] &7► &4|&8[place]&4|&7 [message]'
+  Command:
+    msg: '&5Control &7de Comandos [&8[senderDisplayName]&7]&7: &7[command]'
+  Sign:
+    msg: '&5Control &2de Cartel&7[&8[senderDisplayName]&7]&7: &7[text]'
 command:
   help:
     output:
-      usage: '&6&m--------------&r\n&3Comando:&r %usage%'
+      usage: '&6&m              &r\n&3Comando:&r %usage%'
       cmdInfoFormat: '&6[command] &7► [description]'
       cmdFormat: '&6/[command]\n&3Argumentos:&e[arguments]'
-      helpPageDescription: '&3Descripción básica: &7[description]\n&8&oIntroduce un
-        &7&o? &8&odespués de este comando para ver la descripción extendida.'
+      helpPageDescription: '&3Descripción: &7[description]'
       explanation: '&7[explanation]'
-      title: '&6&m-------&r&6【 &eComandos de CMI &6】&m-------'
+      title: '&6&m       &r&6【 &eComandos de CMI &6】&m       &r'
   nocmd:
     help:
       info: Muestra todos los comandos disponibles.
@@ -118,7 +338,8 @@ command:
       args: '[nombreJugador] (razón)'
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcommand.alert.info.inform &7► Muestra un aviso cuando se conecta un jugador.'
+      - '&3◆ &ecommand.alert.info.inform &7► Muestra un aviso cuando se conecta un
+        jugador.'
     info:
       inform:
       - '&e!Atención!******** &6¡[name] &4acaba de conectarse! &e*******!Atención!'
@@ -177,12 +398,12 @@ command:
       args: (nombreJugador) [cantidad]
       explanation:
       - '&3&nEjemplos:'
-      - /repaircost 10
-      - /repaircost set 10
-      - /repaircost add 10
-      - /repaircost take 10
-      - /repaircost Zrips clear
-      - /repaircost Zrips add 10
+      - '&3◆ &6/repaircost &e10'
+      - '&3◆ &6/repaircost &eset 10'
+      - '&3◆ &6/repaircost &eadd 10'
+      - '&3◆ &6/repaircost &etake 10'
+      - '&3◆ &6/repaircost &eZrips clear'
+      - '&3◆ &6/repaircost &eZrips add 10'
     info:
       current: '&eCoste base de los objetos a reparar: &6[cost]&e.'
       noitem: '&cNo llevas ningún objeto en la mano.'
@@ -192,6 +413,10 @@ command:
         que sostienes sea de &3[amount] &8(estando &7[offon]&8).'
       targetfeedback: '&3[senderDisplayName] &eha determinado que el objeto que sostienes
         tenga un coste de reparación de &3[amount]&e.'
+  armoreffect:
+    help:
+      info: Modifica los efectos de la armadura.
+      args: '[potionEffect]'
   armorstand:
     help:
       info: Abre el Editor del Soporte de Armadura.
@@ -204,7 +429,7 @@ command:
       coordX: '&cX'
       coordY: '&2Y'
       coordZ: '&eZ'
-      body: '&7Rotación del Peto: &f[amount]'
+      body: '&7Rotación del Soporte: &f[amount]'
       head: '&7Cabeza [coord]&7: &f[amount]'
       torso: '&7Torso [coord]&7: &f[amount]'
       leftArm: '&7Brazo izquierdo [coord]&7: &f[amount]'
@@ -216,34 +441,39 @@ command:
       items: '&3[displayName]&e[type]'
       plate: '&7Mostrar Base'
       size: '&7Tamaño Pequeño'
-      visible: '&7Mostrar Soporte'
+      visible: '&7Mostrar el Soporte de Armadura'
       arms: '&7Mostrar Brazos'
-      gravity: '&7Mostrar Gravedad'
+      gravity: '&7Activar Gravedad'
       glow: '&7Mostrar Aura'
       invulnerable: '&7Invulnerable'
       name: '&7Mostrar Nombre'
-      nameEdit: '&8Botón Central ► Modificar el nombre.'
-      interactable: '&7Interaccionable'
-      explanation: '&8Botón Izquierdo ► Aumentar el Valor.\n&8Botón Derecho ► Disminuir
-        el valor.'
-      explanation2: '&8Mantener Mayús ► Modificar el valor x10.'
-      disableGravity: '&eDesactiva la función de Gravedad si quieres usar esta característica.'
+      nameEdit: '&8⌨ Botón Central ➟ Modificar el nombre.'
+      interactable: '&7Impedir la Interacción'
+      explanation: '&8⌨ Botón Izquierdo ➟ Aumentar el Valor.\n&8⌨ Botón Derecho ➟
+        Disminuir el valor.'
+      explanation2: '&8⌨ Mantener Mayús ➟ Modificar el valor x10.'
+      disableGravity: '&cDesactiva la Gravedad para usar esto.'
       copyLabel: '&7Abre el Clonador.'
-      copyTitle: '&3Selecciona lo que quieres clonar.'
+      copyTitle: '&cSelecciona lo que quieres clonar.'
       click: '&eGolpea el Soporte de Armadura para clonarlo, o golpea cualquier otro
         bloque para cancelar la acción.'
       canceled: '&cSe a cancelado el proceso de clonación del Soporte de Armadura.'
       updated: '&eSoporte de Armadura actualizado.'
+      positionLabel: '&7Modificar la posición'
+      saveLabel: '&7Guarda un Soporte de Armadura como Plantilla'
+      saveButton: '&7Guardar'
+      saveTitle: '&cSelecciona lo que quieres guardar.'
+      receivedItem: '&eHas recibido, en tu inventario, un Soporte de Armadura especial.'
+      armorStandItem: '&7Soporte de Armadura. Plantilla: &6[name]'
       action:
-        head: '&7Cabeza'
+        helmet: '&7Casco'
+        chest: '&7Torso'
+        offhand: '&7Mano'
+        mainhand: '&7Mano Dominante'
+        leggings: '&7Perneras'
+        boots: '&7Botas'
+        name: '&7Nombre'
         body: '&7Cuerpo'
-        torso: '&7Torso'
-        leftArm: '&7ArmaIzq.'
-        rightArm: '&7ArmaDer.'
-        leftLeg: '&7PiernaIzq.'
-        rightLeg: '&7PiernaDer.'
-        pos: '&7Pos'
-        updateitems: '&7Actualizarobjetos'
         plate: '&7Placa'
         size: '&7Tamaño'
         visible: '&7Visible'
@@ -251,29 +481,34 @@ command:
         gravity: '&7Gravedad'
         glow: '&7Aura'
         invulnerable: '&7Invulnerable'
-        name: '&7Nombre'
         interactable: '&7Interactuable'
+        head: '&7Cabeza'
+        torso: '&7Torso'
+        leftArm: '&7ArmaIzq.'
+        rightArm: '&7ArmaDer.'
+        leftLeg: '&7PiernaIzq.'
+        rightLeg: '&7PiernaDer.'
   attachcommand:
     help:
       info: Asocia comandos a un objeto.
       args: '[comando/-clear]'
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Puedes definir si el comando se ejecuta con el botón izquierdo o derecho
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Puedes definir si el comando se ejecuta con el botón izquierdo o derecho
         del ratón.'
-      - '&7Usa &f;; &7para separar los comandos.'
-      - '&3&nVariables de comando:'
-      - '&b!left! &7► Ejecuta el comando con el botón izquierdo del ratón.'
-      - '&b!right! &7► Ejecuta el comando con el botón derecho del ratón.'
-      - '&b!limiteduse:[cantidad]! &7► Define cuantas veces se puede usar el comando.'
-      - '&b!safelimiteduse:[cantidad]! &7► Elimina el objeto después de todos los
-        usos.'
-      - '&b!cc! &7► Ejecuta el comando desde la consola, solo si tiene el permiso
-        &fcmi.command.attachcommand.cc'
-      - '&b!cooldownn:[cantidad]! &7► Añade un tiempo de uso.'
-      - '&b[interactedPlayer] &7► Inserta el nombre del jugador con el que se interactua
-        mientras se mantiene el objeto.'
-      - '&b[itemUses] &7► Define variables globales adicionales.'
+      - '&3◆ &7Usa &e;; &7para separar los comandos.'
+      - '&3&nVariables:'
+      - '&3◆ &e!left! &7► Ejecuta el comando con el botón izquierdo del ratón.'
+      - '&3◆ &e!right! &7► Ejecuta el comando con el botón derecho del ratón.'
+      - '&3◆ &e!limiteduse:[cantidad]! &7► Define cuantas veces se puede usar el comando.'
+      - '&3◆ &e!safelimiteduse:[cantidad]! &7► Elimina el objeto después de todos
+        los usos.'
+      - '&3◆ &e!cc! &7► Ejecuta el comando desde la consola, solo si tiene el permiso
+        &ecmi.command.attachcommand.cc&7.'
+      - '&3◆ &e!cooldownn:[cantidad]! &7► Añade un tiempo de uso.'
+      - '&3◆ &e[interactedPlayer] &7► Inserta el nombre del jugador con el que se
+        interactúa mientras se mantiene el objeto.'
+      - '&3◆ &e[itemUses] &7► Define variables globales adicionales.'
     info:
       list: ' &e[id]. &6[cmd]'
       uses: '&eCantidad de usos: &6[amount]'
@@ -307,10 +542,12 @@ command:
       info: Muestra la lista de los jugadores más ricos.
       args: (nombreJugador)
     info:
-      topLine: '&6&m-------&r&6【 &3Jugadores más Ricos &6】&m-------'
+      topLine: '&6&m       &r&6【 &3Jugadores más Ricos &6】&m       &r'
       topLineHover: '&eSaldo total del servidor: &6[total]'
       list: '&2[place]. &e[playerDisplayName]: &e[balance]'
       ownLine: '&2[place]. &e[playerDisplayName]: &6[balance]'
+      # Set to empty field if you want to not show hover over message
+      hover: '&2[playerName]'
       recalculating: '&2Se está recopilando la información de los jugadores más ricos,
         por favor, espera unos segundos y vuelve a intentarlo.'
   ban:
@@ -319,7 +556,7 @@ command:
       args: '[nombreJugador] (razón) (-s)'
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.ban.bypass &7► Evita poder ser expulsado.'
+      - '&3◆ &ecmi.command.ban.bypass &7► Evita poder ser expulsado.'
     info:
       # Make sure that OverrideLoginMessage is enabled in config file
       message: '&c¡Has sido expulsado permanentemente de este servidor!'
@@ -340,9 +577,9 @@ command:
       info: Envía mensajes especiales a todos los jugadores de todos los servidores.
       args: (!) [mensaje] (-s:[nombreServidor,nombreServidor])
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Si el mensaje empieza con &f! &7no se mostrará el prefijo.'
-      - '&7Usa el argumento &f-s: &7para definir que servidores mostrarán el mensaje.'
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Si el mensaje empieza con &e! &7no se mostrará el prefijo.'
+      - '&3◆ &7Usa el argumento &e-s: &7para definir que servidores mostrarán el mensaje.'
     info:
       format: '&7[&4Difusión&7] &3[message].'
   blockcycling:
@@ -363,6 +600,8 @@ command:
       noteBlock: ' &eTono: &6[tone] &7| &eOctava: &6[octave] &7| &eInstrumento: &6[instrument]
         &7| &eInclinación: &6[pitch]&e.'
       BlockState: ' &e[state]: &6[value]'
+      BlockHitBox: ' &eAlto: &6[height] &7| &eAncho: &6[width] &7| &eFondo: &6[length]'
+      BlockHitBoxHover: '&eDesde Arriba: &6[top] &7| &eDesde Abajo: &6[bottom]'
   blocknbt:
     help:
       info: Muestra la información NBT del bloque.
@@ -388,36 +627,40 @@ command:
         (-p:[valorMax/actual]) (-c:[color]) (-s:[1,6,10,12,20]) (-cmd:"comando;;comando2")
         (-a:[ticks]) [mensaje] (-cancel:nombreDeLaBarra)'
       explanation:
-      - '&3&nDescripción extendida:'
-      - Se puede utilizar PlaceHolderAPI para mostrar la progresión
-      - Puedes definir el tiempo en diferentes valores, siendo 1s un segundo y 1m
-        un minuto. Este tiempo determinará cuanto tiempo se mostrará la barra antes
-        de desaparecer automáticamente.
-      - '&7El argumento &f-n: &7es opcional y al definirla, la barra se actualizará
+      - '&3&nAclaraciones:'
+      - '&3◆ Se puede utilizar PlaceHolderAPI para mostrar la progresión.'
+      - '&3◆ Puedes definir el tiempo en diferentes valores, siendo 1s un segundo
+        y 1m un minuto. Este tiempo determinará cuanto tiempo se mostrará la barra
+        antes de desaparecer automáticamente.'
+      - '&3◆ El argumento &e-n &7es opcional y al definirla, la barra se actualizará
         con la nueva información.'
-      - 'Los colores pueden ser: red, green, pink, purple, white, yellow'
-      - Los valores máximos determinan el llenado de la barra, se pueden usar variables
-        PlaceHolderAPI para mostrar información dinámica
+      - '&3◆ Los colores pueden ser: red, green, pink, purple, white, yellow'
+      - '&3◆ Los valores máximos determinan el llenado de la barra, se pueden usar
+        variables PlaceHolderAPI para mostrar información dinámica.'
       - '&3&nEjemplos:'
-      - /cmi bossbar C4BR3R4 nombreDeLaBarra
-      - /cmi bossbarmsg all -t:1s -p:%server_max_players%/%server_online% -n:prueba
-        -c:red &2Rango de la barra %server_online%/%server_max_players% &e%cmi_user_name%
-      - /cmi bossbarmsg all -p:+1 -n:prueba &7► Añade un uno por ciento a la progresión
-        de la barra.
-      - /cmi bossbarmsg all -p:-1 -n:prueba &7► Quita un uno por ciento a la progresión
-        de la barra.
-      - /cmi bossbarmsg all -s:10 -n:prueba &7► Muestra una barra de 10 segmentos.
-      - /cmi bossbarmsg all -sec:5 &7► Cuenta durante 5 segundos de 0 a 5.
-      - /cmi bossbarmsg all -sec:-5 &7► Cuenta durante 5 segundos de 5 a 0.
-      - 'Más información en: http://www.zrips.net/cmi/commands/bossbarmsg-handling/'
+      - '&3◆ &6/cmi bossbar &eYoMismito nombreDeLaBarra'
+      - '&3◆ &6/cmi bossbarmsg &eall -t:1s -p:%server_max_players%/%server_online%
+        -n:prueba -c:red &2Título de la barra %server_online%/%server_max_players%
+        &e%cmi_user_name%'
+      - '&3◆ &6/cmi bossbarmsg &eall -p:+1 -n:prueba &7► Añade un uno por ciento a
+        la progresión de la barra.'
+      - '&3◆ &6/cmi bossbarmsg &eall -p:-1 -n:prueba &7► Quita un uno por ciento a
+        la progresión de la barra.'
+      - '&3◆ &6/cmi bossbarmsg &eall -s:10 -n:prueba &7► Muestra una barra de 10 segmentos.'
+      - '&3◆ &6/cmi bossbarmsg &eall -sec:5 &7► Cuenta durante 5 segundos de 0 a 5.'
+      - '&3◆ &6/cmi bossbarmsg &eall -sec:-5 &7► Cuenta durante 5 segundos de 5 a
+        0.'
+      - '&3&nAyuda:'
+      - '&3◆ Más información en http://www.zrips.net/cmi/commands/bossbarmsg-handling/'
   broadcast:
     help:
       info: Muestra mensajes especiales a todos los jugadores.
       args: (!) [mensaje] (-w:[nombreMundo,nombreMundo])
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Si el mensaje empieza con &f! &7se mostrará el mensaje sin el prefijo.'
-      - Si se especifica el nombre del mundo, el mensaje solo se mostrará en ese mundo.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Si el mensaje empieza con &e! &7se mostrará el mensaje sin el prefijo.'
+      - '&3◆ &7Si se especifica el nombre del mundo, el mensaje solo se mostrará en
+        ese mundo.'
     info:
       format: '&7[&4Difusión&7] &3[message].'
   burn:
@@ -502,14 +745,14 @@ command:
       args: (jugador/ip)
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.checkaccount.showip'
+      - '&3◆ &ecmi.command.checkaccount.showip'
     info:
       place: '&6► &2[place]. &e'
       ip: '&e[ip]: '
       name: '&6[name] &e(&6[times] &econexiones).'
       nonIpList: '&eCuentas: &6'
       nonIpName: '&6[name]'
-      click: '&eClic para comprobar la cuenta de &6[name]&e.'
+      click: '&ePulsa encima para comprobar la cuenta de &6[name]&e.'
       noData: '&cNo hay información guardada de este usuario.'
   checkban:
     help:
@@ -524,20 +767,20 @@ command:
       bannedWhen: '&eExpulsado desde: &6[date]'
   checkcommand:
     help:
-      info: Muestra comandos usando palabras clave.
+      info: Busca comandos usando palabras clave.
       args: (palabra clave)
     info:
       list: '&e[place]. &6[command] &7[args]'
       hover: '&e[desc]'
       variableColor: '&f'
-      noCommandFound: '&7No se han encontrado comandos con esta palabra.'
+      noCommandFound: '&7No se han encontrado comandos con los datos introducidos.'
   checkexp:
     help:
       info: Comprueba el nivel de experiencia de un jugador.
       args: (nombreJugador)
     info:
-      current: '&eNivel: &6[currentLevel] &e| Experiencia: &6[levelExp] &e| Experiencia
-        Total: &6[exp]&e.'
+      current: '&eNivel: &6[currentLevel] &e| Experiencia: &6[levelExp] &e| Experiencia total:
+        &6[exp]&e.'
       need: '&eExperiencia necesaria para el siguiente nivel: &6[missingExp]&e.'
   checkperm:
     help:
@@ -559,8 +802,7 @@ command:
       info: Convierte dinero en un cheque.
       args: (nombreJugador) [cantidad]
     info:
-      transfered: '&eSe han ingresado &6[amount] &een tu cuenta. &7Tu nuevo saldo
-        es de &f[balance]&7.'
+      transferred: '&eSe han transferido &6[amount] &een tu cuenta. Ahora tienes &6[balance]&e.'
       chequeName: '&eCheque por valor de &6[amount]&e.'
       chequeLore:
       - '&r&7Documento emitido por &f[playerDisplayName]&7.'
@@ -574,21 +816,28 @@ command:
       info: Elimina el contenido del inventario de un jugador.
       args: (nombreJugador) (objeto(-cantidad)) (-s) (+tipo)
       explanation:
-      - '&3&nDescripción extendida:'
-      - El tipo debe comenzar con el signo +
-      - Se pueden usar varios tipos.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7El tipo debe comenzar con el signo &e+&7.'
+      - '&3◆ &7Se pueden usar varios tipos (separados por espacios).'
       - '&3&nTipos posibles:'
-      - '&bquickbar, inventory, partinventory, weapons, armorslots, tools, armors,
-        mainhand, offhand'
+      - '&3◆ &equickbar &7► Solo si se encuentra en el cinturón.'
+      - '&3◆ &einventory &7► Solo si se encuentra en el inventario.'
+      - '&3◆ &epartinventory &7► Solo parte del inventario.'
+      - '&3◆ &eweapons &7► Solo armas.'
+      - '&3◆ &earmorslots &7► Solo si se encuentra en las ranuras de la armadura.'
+      - '&3◆ &etools &7► Solo herramientas.'
+      - '&3◆ &earmors &7► Solo objetos de tipo armadura.'
+      - '&3◆ &emainhand &7► Solo el objeto de la mano dominante.'
+      - '&3◆ &eoffhand &7► Solo el objeto de la otra mano.'
       - '&3&nEjemplos:'
-      - cmi clear +armors &7► Elimina los objetos de tipo armadura del jugador.
-      - cmi clear +armorslots &7► Elimina los objetos existentes de los huecos de
-        la armadura.
+      - '&3◆ &6/cmi clear &e+armors &7► Elimina los objetos de tipo armadura del jugador.'
+      - '&3◆ &6/cmi clear &e+armorslots &7► Elimina los objetos existentes en las
+        ranuras de la armadura.'
     info:
       clearFeedback: '&eHas eliminado &6[amount] &eobjetos del inventario de &3[playerDisplayName]
         &8(estando &7[offon]&8).'
       target: '&3[senderDisplayName] &eha eliminado &6[amount] &eobjetos de tu inventario.'
-      confirm: '&7Clic para confirmar la eliminación del inventario. &c¡Todos los
+      confirm: '&7Pulsa para confirmar la eliminación del inventario. &c¡Todos los
         objetos serán eliminados!'
   clearchat:
     help:
@@ -596,7 +845,7 @@ command:
       args: (self) (-s)
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.clearchat.bypass &7► Impide que el chat pueda ser vaciado.'
+      - '&3◆ &ecmi.command.clearchat.bypass &7► Impide que el chat pueda ser vaciado.'
     info:
       information: '&eEl chat ha sido vaciado por &6[senderDisplayName]&e.'
   clearender:
@@ -617,6 +866,8 @@ command:
       nickname: ' &eNombre: '
       signs: ' &eCarteles: '
       books: ' &eLibros: '
+      itemname: ' &eNombre Objeto: '
+      itemlore: ' &eDescripción: '
       me: ' &eYo: '
       None: '&e-'
   colorpicker:
@@ -630,40 +881,30 @@ command:
       - '[closeColor]Color alternativo ► [colorName]:'
       - '[closeColor]⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛ [colorHex]'
       - '&8'
-      - '&8Mayús+Clic para añadir el color alternativo.'
+      - '&8⌨ Mayús + Botón Izquierdo ➟ Añadir el color alternativo.'
   colors:
     help:
       info: Muestra todos los colores.
       args: (nombreJugador)
     info:
       List:
-      - '&6&m--------------------------------------------------'
+      - '&6&m                                                 &r'
       - '       &0&%0  &1&%1  &2&%2  &3&%3  &4&%4  &5&%5  &6&%6  &7&%7'
       - '       &8&%8  &9&%9  &a&%a  &b&%b  &c&%c  &d&%d  &e&%e  &f&%f'
       - '       &%k - &kMágico&r      &%l - &lNegrita'
       - '       &%m - &mTachado&r     &%n - &nSubrallado'
       - '       &%o - &oCursiva&r      &%r - &rNormal'
-      - '&6&m--------------------------------------------------'
-  commandspy:
-    help:
-      info: Controla el uso de comandos.
-      args: (nombreJugador) (-s)
-      explanation:
-      - '&3&nPermiso asociado:'
-      - '&bcmi.command.commandspy.hide &7► Evita ser controlado por el uso de comandos.'
-    info:
-      command: '&5Control de Comandos de &3[senderDisplayName] &5► &e[command]'
-      toggled: '&eSe ha &6[state] &eel control de uso de comandos.'
+      - '&6&m                                                 &r'
   compass:
     help:
       info: Determina hacia donde apunta la brújula del jugador.
       args: (jugadorOrigen) (jugadorDestino) (x) (z) (mundo) (reset) (-s)
       explanation:
       - '&3&nEjemplos:'
-      - /cmi compass C4BR3R4
-      - /cmi compass C4BR3R4 &4Y&can&4C&cab
-      - /cmi compass Prueba 0 0 &4Y&can&4C&cab -s
-      - /cmi compass reset C4BR3R4
+      - '&3◆ &6/cmi compass &eYoMismito'
+      - '&3◆ &6/cmi compass &eYoMismito Mundo_Principal'
+      - '&3◆ &6/cmi compass &ePrueba 0 0 Mundo_Principal -s'
+      - '&3◆ &6/cmi compass &ereset YoMismito'
     info:
       wrongworld: '&c¡El mundo definido no existe!'
       feedback: '&eHas establecido que la brújula de &3[playerDisplayName] &eapunte
@@ -676,7 +917,7 @@ command:
       reset: '&eSe ha &6restablecido &ela dirección hacia donde apunta la brújula.'
   condense:
     help:
-      info: Desfragmenta los objetos en bloques.
+      info: Defragmenta los objetos en bloques.
       args: (objeto)
     info:
       converted: '&eHas desfragmentado &7[items] &eobjetos en &7[blocks] &ebloques.'
@@ -687,16 +928,16 @@ command:
       args: '[join/leave/start] (t:tiempo) (r:[distancia/-1]) (c:[mundo:x:y:z]) (msg:mensaje_personalizado)
         (-f)'
       explanation:
-      - '&7Usa el argumento &f-f &7para forzar el uso del contador de todos los jugadores
-        que se encuentran a la distancia definida.'
+      - '&3◆ &7Usa el argumento &e-f &7para forzar el uso del contador de todos los
+        jugadores que se encuentran a la distancia definida.'
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.counter.force &7► Obliga al jugador a usar el contador.'
-      - '&bcmi.command.counter.time &7► Determina el tiempo personalizado.'
-      - '&bcmi.command.counter.range &7► Determina la distancia personalizada.'
-      - '&bcmi.command.counter.msg &7► Define el mensaje personalizado.'
-      - '&bcmi.command.counter.autojoin &7► Inicia el contador al conectarse.'
+      - '&3◆ &ecmi.command.counter.force &7► Obliga al jugador a usar el contador.'
+      - '&3◆ &ecmi.command.counter.time &7► Determina el tiempo personalizado.'
+      - '&3◆ &ecmi.command.counter.range &7► Determina la distancia personalizada.'
+      - '&3◆ &ecmi.command.counter.msg &7► Define el mensaje personalizado.'
+      - '&3◆ &ecmi.command.counter.autojoin &7► Inicia el contador al conectarse.'
       - '&3&nEjemplos:'
-      - /cmi counter start r:30 t:7 msg:Mensaje_personalizado -f
+      - '&3◆ &6/cmi counter &estart r:30 t:7 msg:Mensaje_personalizado -f'
     info:
       join: '&eContador de conexión'
       leave: '&eContador de desconexión'
@@ -708,7 +949,7 @@ command:
       info: Tiempos de juego detallados.
       args: (nombreJugador)
     info:
-      moreDetails: '&8Clic para obtener más detalles'
+      moreDetails: '&8Pulsa para obtener más detalles.'
       title: '&fTiempos de &7[playerDisplayName]&f.'
       date: '&8El día &7[date]'
       time: '&8Desde las &7[hour]:00 &8hasta las &7[nextHour]:00'
@@ -728,8 +969,9 @@ command:
       info: Muestra un texto personalizado y bonito.
       args: '[nombreJugador/all] [mensajeFormateado]'
       explanation:
-      - '&3&nDescripción extendida:'
-      - Usar como se indica en http://www.zrips.net/cmi/custom-text/ (alias customtext).
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usar como se indica en &ehttp://www.zrips.net/cmi/custom-text/ &7(conocido
+        también como comando customtext).'
   ctext:
     help:
       info: Muestra un texto personalizado (CustomText).
@@ -759,12 +1001,19 @@ command:
       removed: '&eReceta eliminada: [id]. Para que este cambio surta efecto completamente,
         debes reiniciar el servidor.'
       noRecipe: '&eNo hay ninguna receta personalizada con esta ID.'
-      edit: '&8Modificar receta (&6[type]&8).'
-      addNew: '&eAñadir nueva receta (&6[type]&e).'
-      shapelessRecipe: '&6Crear una nueva receta sin forma.'
-      shapedRecipe: '&eCrear una nueva receta con forma.'
-      furnaceRecipe: '&2Crear una nueva receta de horno.'
-      mainTitle: '&8recetas personalizadas (&7[current]&8/&7[total]&8)'
+      edit: '&8Modificar una receta (&6[type]&8).'
+      addNew: '&eNueva receta (&6[type]&e).'
+      shapelessRecipe: '&6Crear receta sin diseño.'
+      shapedRecipe: '&eCrear receta con diseño.'
+      furnaceRecipe: '&2Crear receta para el Horno.'
+      campfireRecipe: '&2Crear receta para la Hoguera.'
+      smithingRecipe: '&2Crear receta para la Mesa de Herrería.'
+      stonecuttingRecipe: '&2Crear receta para el Cortapiedras'
+      blastingRecipe: '&2Crear receta para el Alto Horno.'
+      smokingRecipe: '&2Crear receta para el Ahumador.'
+      exact: '&2Necesario ingredientes exactos: [state]'
+      exists: '&4Parece que ya existe una receta como ésta.'
+      mainTitle: '&3Recetas personalizadas (&7[current]&8/&7[total]&8)'
   dback:
     help:
       info: Vuelve al lugar de muerte.
@@ -785,6 +1034,7 @@ command:
       args: (nombreJugador)
     info:
       title: '&cColoca todos los objetos que no necesites'
+      cant: '&cNo puedes deshacerte de este objeto.'
   distance:
     help:
       info: Comprueba la distancia entre dos puntos.
@@ -802,36 +1052,42 @@ command:
       sentOffer: '&eHas enviado el regalo a &6[playerDisplayName]&e. Esperando que
         sea aceptado.'
       gotOffer: '&6[sourceDisplayName] &ete regala &6[amount] unidades de &6[type]&e.
-        Clic para aceptarlo.'
+        Pulsa para aceptarlo.'
       doesnthave: '&e¡Lástima! El jugador ya no tiene este objeto.'
       'no': '&eNo hay donaciones pendientes.'
       list: '&7[number]. &e[playerDisplayName] &e► &7[material] &6x &e[amount]'
+  down:
+    help:
+      info: Aparece en el próximo hueco que tienes debajo.
+      args: '[nombreJuagador] (-s)'
+    info:
+      notFound: '&eNo se ha encontrado hueco debajo.'
   dsign:
     help:
       info: Administra los carteles dinámicos.
       args: (new)
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Mira un cartel y utiliza &f/cmi dsign new &7para crear un cartel dinámico.'
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Mira un cartel y utiliza &6/cmi dsign &enew &7para crear un cartel
+        dinámico.'
     info:
       howTo: '&cEste cartel no es dinámico, para crearlo utiliza &4/cmi dsign new&c.'
-      gui: '&6&m--------------&r&6【 &3Cartel Dinámico &6】&m--------------&r\n&7Clica
-        aquí para personalizar.\n'
+      gui: '&6&m       &r&6【 &3Cartel Dinámico &6】&m       &r\n&7Pulsa aquí para personalizar.\n'
       guiHover: '&7Determina los valores personalizados de este cartel dinámico.'
       individual: '&eCondición: [state]&e.'
       individualLore:
-      - '&aActivado &7- Se mostrará información personalizada para cada jugador.'
-      - '&aActivado &7- Se actualizarán los placeholders del jugador.'
-      - '&cDesactivado &7- El cartel se actualizará físicamente.'
-      - '&cDesactivado &7- Es más eficiente pero más limitado al mismo tiempo.'
+      - '&aActivado &7► Se mostrará información personalizada para cada jugador.'
+      - '&aActivado &7► Se actualizarán los placeholders del jugador.'
+      - '&cDesactivado &7► El cartel se actualizará físicamente.'
+      - '&cDesactivado &7► Es más eficiente pero más limitado al mismo tiempo.'
       interval: '&eActualizar cada &6[second] &esegundos.'
       intervalLore:
-      - '&7- Determina la frecuencia de actualización, de la información dinámica
+      - '&7◆ Determina la frecuencia de actualización, de la información dinámica
         del cartel.'
-      - '&7- Esto también define la velocidad de desplazamiento de líneas.'
+      - '&7◆ Esto también define la velocidad de desplazamiento de líneas.'
       range: '&eDistancia de activación: &6[blocks] &ebloques.'
       rangeLore:
-      - '&7- Determina el radio de activación, para que se actualice este cartel.'
+      - '&7◆ Determina el radio de activación, para que se actualice este cartel.'
   dye:
     help:
       info: Color de la armadura.
@@ -853,31 +1109,34 @@ command:
       addInfo: '&8Introduce el texto de la nueva línea.\n&8► Introduce &7cancel &8para
         anular la acción.'
       addInformationHover: '&ePuedes utilizar placeholders.\n Puedes utilizar mensajes\
-        \ clicables utilizando la siguiente estructura: \n &e<T>&rTexto&e</T><H>&rTexto\
+        \ pulsables utilizando la siguiente estructura: \n &e<T>&rTexto&e</T><H>&rTexto\
         \ emergente&e</H><C>&rComando&e</C><SC>&rTexto a pegar en el chat&e</SC> usar\
         \ &6<T>&6</T> &ey su contenido es obligatorio. \n Usa \\u005Cn para crear\
         \ un salto de línea. \n &eSi tienes que usar más de un comando en el mensaje\
         \ JSON usa <Next> \n &6<CC> &eSirve para ejecutar el comando por consola una\
-        \ vez. \n &6<CCI> &eEjecuta el comando cada vez que el jugador clica el texto.\
-        \ \n &6<URL> &epermite añadir una dirección web y redirigir al jugador a la\
-        \ página web.'
+        \ vez. \n &6<CCI> &eEjecuta el comando cada vez que el jugador pulsa sobre
+        el texto.\ \ \n &6<URL> &epermite añadir una dirección web y redirigir al
+        jugador a la\ \ página web.'
       newInfo: '&8Introduce el nombre del nuevo Texto Personalizado.\n&8► Introduce
         &7cancel &8para anular la acción.'
       deleteInfo: '&8Introduce &7confirm &8para borrar el texto.\n&8► Introduce &7cancel
         &8para anular la acción.'
       deleted: '&eEl texto personalizado (&6[ctext]&e) ha sido eliminado.'
       createdNew: '&eEl texto personalizado (&6[ctext]&e) ha sido creado.'
+      hidden: '&eOcultar: &6[state]'
       autoPage: '&ePágina auto.: &6[state]'
       autoAlias: '&eAlias auto.: &6[state]'
       permReq: '&eNecesita el permiso: &6[state]'
-      listTitle: '&eCText''s'
-      listFormat: '&6[name]&7: &r[extra]'
+      pageLabel: ' &e<PageLabel>'
+      pageLabelHover: '&e[value]'
+      listTitle: '&eTextos Personalizados (CText)'
+      listFormat: '&6[name] &7► &r[extra]'
   editlocale:
     help:
       info: Modifica el archivo de idioma.
       args: (palabraClave(-s))
     info:
-      found: '&6&m------------&r&2  &eEncontrado: [found] &6&m------------'
+      found: '&6&m       &r&2  &eEncontrado: [found] &6&m       &r'
   editplaytime:
     help:
       info: Modifica el tiempo jugado de los jugadores.
@@ -926,18 +1185,18 @@ command:
         los efectos.
       args: '[nombreJugador/all] [efecto/clear] (duración) (multiplicador) (-s) (-visual)'
       explanation:
-      - '&3&nDescripción extendida:'
-      - Usa el argumento &f-visual &7para añadir un efecto de burbujas y un icono
-        en la esquina superior derecha.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usa el argumento &e-visual &7para añadir un efecto de burbujas y un
+        icono en la esquina superior derecha.'
       - '&3&nEjemplos:'
-      - /cmi effect C4BR3R4 nightvision 60 1 &7► Proporciona a C4BR3R4 60 segundos
-        de visión nocturna.
-      - /cmi effect C4BR3R4 nightvision +10 &7► Añade 10 segundos más de visión nocturna
-        al tiempo restante.
-      - /cmi effect C4BR3R4 nightvision -10 &7► Quita 10 segundos de visión nocturna
-        al tiempo restante.
-      - /cmi effect all health_boost 60 1 &7► Aumenta un corazón a todos los jugadores
-        conectados.
+      - '&3◆ &6/cmi effect &eYoMismito nightvision 60 1 &7► Proporciona a YoMismito
+        60 segundos de visión nocturna.'
+      - '&3◆ &6/cmi effect &eYoMismito nightvision +10 &7► Añade 10 segundos más de
+        visión nocturna al tiempo restante.'
+      - '&3◆ &6/cmi effect &eYoMismito nightvision -10 &7► Quita 10 segundos de visión
+        nocturna al tiempo restante.'
+      - '&3◆ &6/cmi effect &eall health_boost 60 1 &7► Aumenta un corazón a todos
+        los jugadores conectados.'
     info:
       feedback: '&eSe han añadido &6[sec] segundos de &6[effect] &ea &3[playerDisplayName]&e
         &econ potencia &6[power] &8(estando [offon])&e.'
@@ -949,8 +1208,8 @@ command:
       args: (nombreJugador) [encantamiento] [nivel] (-o) (-onlyvalid) (-keeponlyvalid)
         (-inform) (-s) (-i:[nombreObjeto(:datos)])
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Usa el argumento &f-o &7para retirar el objeto de la mano.'
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usa el argumento &e-o &7para retirar el objeto de la mano.'
     info:
       feedback: '&eHas encantado el objeto de &3[playerDisplayName] con &3[enchant]:[level]
         &8(estando [offon])&e.'
@@ -967,16 +1226,16 @@ command:
       wrongItem: '&eTienes un objeto no válido en tu mano.'
       enchantlimit: '&cNo puedes usar este encantamiento.'
       levellimit: '&cEl nivel es demasiado alto, el nivel máximo es de &e[level].'
-      posible: '&eEncantamientos posibles: '
-      posibleList: '&6[enchant]'
+      possible: '&eEncantamientos disponibles: '
+      possibleList: '&8► &6[enchant]'
   ender:
     help:
       info: Abrir el Cofre de Ender de los jugadores.
       args: (nombreJugador)
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.ender.preventmodify &7► Evita la modificación del contenido.'
-      - '&bcmi.enderedit &7► Permite la modificación del contenido.'
+      - '&3◆ &ecmi.command.ender.preventmodify &7► Evita la modificación del contenido.'
+      - '&3◆ &ecmi.enderedit &7► Permite la modificación del contenido.'
     info:
       title: '&8Cofre de Ender de &3[playerDisplayName]'
       feedback: '&eEstás modificando el contenido del Cofre de Ender de &3[playerDisplayName]
@@ -1012,22 +1271,22 @@ command:
       info: Modifica los puntos de experiencia de un jugador.
       args: '[nombreJugador] [add/set/take/clear] [cantidad][%rand/10-20%]'
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Usa &fL &7para especificar el nivel (en vez de modificar los puntos).'
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usa &eL &7para especificar el nivel (en vez de modificar los puntos).'
       - '&3&nEjemplos:'
-      - /exp 10
-      - /exp add 10
-      - /exp set 10L
-      - /exp take 10
-      - /exp C4BR3R4 clear
-      - /exp C4BR3R4 add 10
+      - '&3◆ &6/cmi exp &e10'
+      - '&3◆ &6/cmi exp &eadd 10'
+      - '&3◆ &6/cmi exp &eset 10L'
+      - '&3◆ &6/cmi exp &etake 10'
+      - '&3◆ &6/cmi exp &eYoMismito clear'
+      - '&3◆ &6/cmi exp &eYoMismito add 10'
     info:
-      current: '&e[playerDisplayName] &etiene &3[lvl] &eniveles y &3[currentExp] &epuntos
-        de experiencia &7(o lo que es lo mismo &f[exp] &7puntos de experiencia en
-        total)&e.'
-      selfFeedback: '&eSe ha determinado que la cantidad de puntos de experiencia
-        de &6[playerDisplayName] sea de &3[exp] &8(estando [offon])&e.'
-      targetFeedback: '&6[senderDisplayName] &eha cambiado tu experiencia por &3[exp]&e.'
+      current: '&e[playerDisplayName] &etiene &5[lvl] &eniveles y &5[currentExp] &epuntos
+        de experiencia &7(o lo que es lo mismo &f[exp] &7puntos de experiencia en total)&e.'
+      selfFeedback: '&eSe ha determinado que la cantidad de puntos de experiencia de &6[playerDisplayName]
+        sea de &5[exp] &8(estando [offon])&e.'
+      targetFeedback: '&6[senderDisplayName] &eha determinado que tu experiencia sea de
+        &5[exp]&e.'
   ext:
     help:
       info: Extinguir las llamas de un jugador.
@@ -1058,29 +1317,29 @@ command:
       infoShow: '&6TPS: &3[tps] &6| Quedan &e[left] &6(&e[time]&6) &6| Velocidad:
         &e[speed]&6.'
       stopped: '&e¡Proceso detenido!'
-      cantFindBiome: '&eNo se encuentra el bioma. Comprobados &6[amount] &echunks.'
+      cantFindBiome: '&eNo se encuentra el bioma. Se han comprobado &6[amount] &esectores.'
       teleportedTo: '&eHas aparecido el el bioma &6[biome]&e.'
   fixchunk:
     help:
-      info: Buscar chunks dañados.
-      args: 'w [mundo] r [distancia en chunks] c [x:z]&e '
+      info: Buscar sectores dañados.
+      args: 'w [mundo] r [distancia en sectores] c [x:z]&e '
       explanation:
       - '&3&nSubComandos:'
-      - '&estats &7► Muestra el estado actual de búsqueda.'
-      - '&epause &7► Congela la búsqueda.'
-      - '&econtinue &7► Continúa la búsqueda.'
-      - '&estop &7► Detiene la búsqueda.'
-      - '&espeed [amount] &7► Determina la velocidad de búsqueda.'
-      - '&eautospeed [true/false] &7► Activa o desactiva la velocidad automática de
-        búsqueda.'
-      - '&emessages [true/false] &7► Muestra o no los mensajes informativos.'
+      - '&3◆ &estats &7► Muestra el estado actual de búsqueda.'
+      - '&3◆ &epause &7► Congela la búsqueda.'
+      - '&3◆ &econtinue &7► Continúa la búsqueda.'
+      - '&3◆ &estop &7► Detiene la búsqueda.'
+      - '&3◆ &espeed [amount] &7► Determina la velocidad de búsqueda.'
+      - '&3◆ &eautospeed [true/false] &7► Activa o desactiva la velocidad automática
+        de búsqueda.'
+      - '&3◆ &emessages [true/false] &7► Muestra o no los mensajes informativos.'
       - '&3&nEjemplos:'
-      - /fixchunk w &4Y&can&4C&cab
-      - /fixchunk w &4Y&can&4C&cab r 50 c 1024:-2048
-      - /fixchunk w &4Y&can&4C&cab r g
-      - /fixchunk fix
+      - '&3◆ &6/cmi fixchunk &ew Mundo_Principal'
+      - '&3◆ &6/cmi fixchunk &ew Mundo_Principal r 50 c 1024:-2048'
+      - '&3◆ &6/cmi fixchunk &ew Mundo_Principal r g'
+      - '&3◆ &6/cmi fixchunk &efix'
     info:
-      startScanning: '&eSe van a buscar errores en &6[amount] &echunks.'
+      startScanning: '&eSe van a buscar errores en &6[amount] &esectores.'
       paused: '&eBúsqueda detenida temporalmente, para continuar usa &6/cmi fixchunk
         continue.'
       continuing: '&eBúsqueda restablecida'
@@ -1090,23 +1349,23 @@ command:
       autospeedChange: '&eSe ha [state] la velocidad automática.'
       messagesChange: '&eMensaje de información [state]&e.'
       NoInfo: '&eNo hay información.'
-      InfoShow: '&eChunks restantes &6[left] &e(&6[min]m:[sec]s&e) || TPS: &6[tps]
-        &e(&6Vel.: &6[speed]&e) || Encontrados &6[found] &echunks en mal estado.'
+      InfoShow: '&eSectores restantes &6[left] &e(&6[min]m:[sec]s&e) || TPS: &6[tps]
+        &e(&6Vel.: &6[speed]&e) || Se han encontrado &6[found] &esectores en mal estado.'
       scanList: '&7[number] &8► &7X:&f[x] &7Z:&f[z]'
       finished: '&eBúsqueda de errores finalizada. Usa &6/cmi fixchunk fix &epara
-        reparar los errores encontrados. &c¡ATENCIÓN! Los chunks serán regenerados.'
-      fixed: '&6[number] &echunks regenerados.'
+        reparar los errores encontrados. &c¡ATENCIÓN! Los sectores serán regenerados.'
+      fixed: '&6[number] &esectores regenerados.'
       total: '&eBuscando [current]/[until] del total de [total]&e.'
       stats:
-      - '&6&m--------------------------------------------------'
-      - '&6► &eChunks: &6[checked]/[total]'
+      - '&6&m                                                  &r'
+      - '&6► &eSectores: &6[checked]/[total]'
       - '&6► &eDistancia de búsqueda: &6[range]'
       - '&6► &eVelocidad de búsqueda: &6[scanspeed] &e(&6[autospeed]&e)'
       - '&6► &eVelocidad real: &6[cps] CPS &e(&6[avgcps] &ede media)'
       - '&6► &eMundo: &6[world]'
-      - '&6► &eEncontrados: &6[found] &echunks'
+      - '&6► &eEncontrados: &6[found] &esectores'
       - '&6► &eTiempo: &6[min] min [sec] seg'
-      - '&6&m--------------------------------------------------'
+      - '&6&m                                                   &r'
   flightcharge:
     help:
       info: Comprueba y administra los impulsos de vuelo.
@@ -1123,11 +1382,11 @@ command:
       buttonMoney: '&aRecarga la habilidad de vuelo usando Dinero.'
       max: '&eHas alcanzado la habilidad de vuelo máxima.'
       amounts:
-      - '&eBotón Izquierdo +1 ► Coste: &7[amount1]'
-      - '&6Mayús Izquierdo +10 ► Coste: &7[amount10]'
-      - '&eBotón Derecho +100 ► Coste: &7[amount100]'
-      - '&6Mayús Derecho +1000 ► Coste: &7[amount1000]'
-      - '&eBotón Central +10000 ► Coste: &7[amount10000]'
+      - '&e⌨ Botón Izquierdo +1 ➟ Coste: &7[amount1]'
+      - '&6⌨ Mayús Izquierdo +10 ➟ Coste: &7[amount10]'
+      - '&e⌨ Botón Derecho +100 ➟ Coste: &7[amount100]'
+      - '&6⌨ Mayús Derecho +1000 ➟ Coste: &7[amount1000]'
+      - '&e⌨ Botón Central +10000 ➟ Coste: &7[amount10000]'
       - ''
       changeAmount: '&7[amount]'
       cost: '&eHas cambiado &6[amount] &eunidades de &6[charge] &epara recargar el
@@ -1171,7 +1430,7 @@ command:
       args: ''
   getbook:
     help:
-      info: Obtén un libro a partir de un Texto Personalizado (customText).
+      info: Obtén un libro a partir de un Texto Personalizado (CText).
       args: '[Texto] (nombreJugador)'
     info:
       list: '&eLibros: &6'
@@ -1182,20 +1441,20 @@ command:
       info: Entrega un objeto a un jugador.
       args: (nombreJugador) [objeto/hand] (cantidad/nombreJugador)
       explanation:
-      - '&3&nDescripción extendida:'
-      - El nombre y la descripción (lore) admiten placeholders.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7El nombre y la descripción (lore) admiten placeholders.'
       - '&3&nEjemplos:'
-      - /give stone
-      - /give C4BR3R4 stone 5 n Stonehenge
-      - /give stick e knockback:1
-      - /give C4BR3R4 sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
-      - /cmi give C4BR3R4 sponge 1 e Knockback:%rand/1-5%
-      - /cmi give C4BR3R4 sponge %rand/1-10%
-      - /give sponge a maxhealth:5:mainhand
-      - /give diamond_sword unbreakable
-      - /give mob_spawner:creeper
-      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
-      - /give potion:speed-true-true
+      - '&3◆ &6/cmi give &estone'
+      - '&3◆ &6/cmi give &eYoMismito stone 5 n Stonehenge'
+      - '&3◆ &6/cmi give &estick e knockback:1'
+      - '&3◆ &6/cmi give &eYoMismito sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%'
+      - '&3◆ &6/cmi give &eYoMismito sponge 1 e Knockback:%rand/1-5%'
+      - '&3◆ &6/cmi give &eYoMismito sponge %rand/1-10%'
+      - '&3◆ &6/cmi give &esponge a maxhealth:5:mainhand'
+      - '&3◆ &6/cmi give &ediamond_sword unbreakable'
+      - '&3◆ &6/cmi give &emob_spawner:creeper'
+      - '&3◆ &6/cmi give &eminecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}'
+      - '&3◆ &6/cmi give &epotion:speed-true-true'
     info:
       feedback: '&3[playerDisplayName] &6ha obtenido &b[amount] &e[itemname] &6(&e[customitemname]&6)'
       maxLimit: '&cNo puedes obtener mas de &7[max] &cobjetos de una vez.'
@@ -1207,22 +1466,22 @@ command:
       info: Entrega objetos a todos los jugadores.
       args: '[objeto] (cantidad) (e|l|n|offline)'
       explanation:
-      - '&3&nDescripción extendida:'
-      - Entrega un objeto usando su nombre o su ID.
-      - Se puede definir la cantidad.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Entrega un objeto usando su nombre o su ID.'
+      - '&3◆ &7Se puede definir la cantidad.'
       - '&3&nDefinición de Argumentos:'
-      - '&ee &7► Define el encantamiento del objeto.'
-      - '&el &7► Define la descripción del objeto.'
-      - '&en &7► Define el nombre del objeto.'
-      - '&eh &7► Seguido del nombre del jugador se entregará el objeto en su mano.'
-      - '&einv &7► Seguido del nombre del jugador se entregará su inventario al resto
-        de jugadores.'
-      - '&eoffline &7► Entrega también el objeto a los jugadores desconectados.'
-      - '&e-s &7► No informa al jugador sobre la acción realizada.'
+      - '&3◆ &ee &7► Define el encantamiento del objeto.'
+      - '&3◆ &el &7► Define la descripción del objeto.'
+      - '&3◆ &en &7► Define el nombre del objeto.'
+      - '&3◆ &eh &7► Seguido del nombre del jugador se entregará el objeto en su mano.'
+      - '&3◆ &einv &7► Seguido del nombre del jugador se entregará su inventario al
+        resto de jugadores.'
+      - '&3◆ &eoffline &7► Entrega también el objeto a los jugadores desconectados.'
+      - '&3◆ &e-s &7► No informa al jugador sobre la acción realizada.'
       - '&3&nEjemplos:'
-      - /cmi giveall stone 1 n &2Uber_stone l &3Stone_lore offline
-      - /cmi giveall h C4BR3R4
-      - /cmi giveall inv C4BR3R4
+      - '&3◆ &6/cmi giveall &estone 1 n Uber_stone l Stone_lore offline'
+      - '&3◆ &6/cmi giveall &eh YoMismito'
+      - '&3◆ &6/cmi giveall &einv YoMismito'
     info:
       starting: '&6Iniciando la entrega de objetos a los jugadores. Depende de la
         cantidad puede llevar un tiempo.'
@@ -1234,9 +1493,9 @@ command:
       args: (nombreJugador) [true/false/color/gui]
       explanation:
       - '&3&nEjemplos:'
-      - /glow C4BR3R4 red
+      - '&3◆ &6/glow &eYoMismito red'
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.glow.[color] &7► Permite establecer el aura de un determinado
+      - '&3◆ &ecmi.command.glow.[color] &7► Permite establecer el aura de un determinado
         color.'
     info:
       feedback: '&eHas determinado que el aura de &3[playerDisplayName] sea [color]
@@ -1245,7 +1504,7 @@ command:
         &ey esté &3[boolean]&e.'
       title: Selecciona el color
       incorrect: '&4Nombre de color incorrecto.'
-      lore: '&2Clic para seleccionar el color.'
+      lore: '&2Pulsa sobre el color para seleccionarlo.'
       noPerm: '&4Sin permisos establecidos.'
   gm:
     help:
@@ -1258,12 +1517,12 @@ command:
         sea &3[gameMode]&e.'
   god:
     help:
-      info: Establece el modo Dios del jugador.
+      info: Establece el Modo Invencible del jugador.
       args: '[nombreJugador] (true/false) (-s)'
     info:
-      feedback: '&eEl modo Dios de &3[playerDisplayName]&e está &3[boolean] &8(estando
-        [offon])&e.'
-      targetfeedback: '&3[senderDisplayName] &eha &3[boolean] &etu modo Dios.'
+      feedback: '&eEl Modo Invencible de &3[playerDisplayName]&e está &3[boolean]
+        &8(estando [offon])&e.'
+      targetfeedback: '&3[senderDisplayName] &eha &3[boolean] &etu Modo Invencible.'
   grindstone:
     help:
       info: Abre el afilador.
@@ -1276,13 +1535,13 @@ command:
       info: Limpia el servidor de objetos innecesarios.
       args: (+cb) (+cm) (+ci) (+b) (+sh) (+tnt) (+all) (-w:[mundo])
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&e+cm &7► Incluye la limpieza de las Vagonetas.'
-      - '&e+cb &7► Incluye la limpieza de las Barcas.'
-      - '&e+sh &7► Incluye la limpieza de las Cajas de Shulker.'
-      - '&e+ci &7► Incluye la limpieza de Armas y Armaduras.'
-      - '&e+tnt &7► Define si quieres incluir el TNT preparado.'
-      - '&e+b &7► Envía una difusión a todos los jugadores sobre el proceso.'
+      - '&3&nDefinición de Argumentos:'
+      - '&3◆ &e+cm &7► Incluye la limpieza de las Vagonetas.'
+      - '&3◆ &e+cb &7► Incluye la limpieza de las Barcas.'
+      - '&3◆ &e+sh &7► Incluye la limpieza de las Cajas de Shulker.'
+      - '&3◆ &e+ci &7► Incluye la limpieza de Armas y Armaduras.'
+      - '&3◆ &e+tnt &7► Define si quieres incluir el TNT preparado.'
+      - '&3◆ &e+b &7► Envía una difusión a todos los jugadores sobre el proceso.'
     info:
       removed: '&eSe han eliminado:[list]'
       items: ' &6[items] &eobjetos,'
@@ -1338,8 +1597,8 @@ command:
       info: Envía mensajes de a los miembros de la administración.
       args: '[mensaje]'
       explanation:
-      - '&3Permiso necesario:'
-      - '&bcmi.command.helpop.inform &7► Permite ver los mensajes.'
+      - '&3&nPermiso necesario:'
+      - '&3◆ &ecmi.command.helpop.inform &7► Permite ver los mensajes.'
     info:
       message: '&c¡ATENCIÓN &4[senderDisplayName] &csolicita tu ayuda!&r &4[message]&4.'
       feedback: '&c[!] &7Tu solicitud ha sido enviada a la moderación en línea.'
@@ -1362,7 +1621,7 @@ command:
     info:
       howTo: '&cPara crear un nuevo holograma ejecuta el comando &e/cmi hologram new
         &6[nombre]'
-      gui: '&6&m-------&r&6【 &3Editor del Holograma &6】&m-------&r'
+      gui: \n&6&m         &r&6【 ✎ &3Editor del Holograma &6】&m         &r\n
       guiHover: '&7Abre el menú de configuración del holograma.'
       interval: '&eActualizar la información cada &6[second] &esegundos.'
       intervalLore:
@@ -1403,6 +1662,16 @@ command:
       - '&7evita que puedas moverte cerca del holograma.'
       order: '&7Base inferior: &6[state]'
       commands: '&7Comandos:'
+      newMethod: '&7Usar el nuevo método: &6[state]'
+      hoverParticles: '&7Mostrar partículas flotantes: &6[state]'
+      stabilizedParticles: '&7Partículas estabilizadas: &6[state]'
+      particleCount: '&7Partículas: &6[count]'
+      particleType: '&7Tipo de partículas: &6[type]'
+      particleSpacing: '&7Espaciado de partículas: &6[amount]'
+      particleHeight: '&7Altura de partículas: &6[amount]'
+      particleWidth: '&7Ancho de partículas: &6[amount]'
+      particleOffsetX: '&7Compensación X de partículas: &6[amount]'
+      particleOffsetY: '&7Compensación Y de partículas: &6[amount]'
       autoButton: '&7Generar automáticamente los botones de paginación.'
       autoButtonLore:
       - '&eEste holograma no tiene ninguna página creada.'
@@ -1432,11 +1701,12 @@ command:
       list: '&eHogares: &6'
       listNonePrivate: '&7'
       listPrivate: '&2'
-      click: '\n&aClic para aparecer en &2[home]&a.'
+      click: \n&aPulsa para aparecer en &2[home]&a.
       teleported: '&eHas aparecido en el hogar (&6[home]&e).'
       noHomes: '&cNo has establecido ningún hogar.'
       private: '&c¡Este hogar es privado!'
-      remove: '&8Mayús + Botón Derecho ► Eliminar el hogar.'
+      remove: '&8⌨ Mayús + Botón Derecho ➟ Eliminar el hogar.'
+      missingBed: '&cNo se encuentra la cama establecida como hogar.'
       notAccessible: '&c¡No existe el mundo &7[worldName] &cdonde se estableció el
         hogar!'
       guiTitle: '&eHogares de &6[playerDisplayName] &8(&7[current]/[max]&8)'
@@ -1445,8 +1715,9 @@ command:
       info: Muestra la lista de hogares.
       args: (nombreJugador/near:[distancia])
     info:
-      nearList: '&7[number]. &e[playerDisplayName] &6[homeName] &7a [distance] bloques hacia &e[direction]&7.'
-      closeButton: '&cCerrar.'
+      nearList: '&7[number]. &e[playerDisplayName] &6[homeName] &7a [distance] bloques
+        hacia &e[direction]&7.'
+      closeButton: '&c❌ Cerrar.'
       infoButton: '&7Información.'
       bedButton: '&7Posición de la Cama.'
       homeButton: '&7Posición del Hogar.'
@@ -1455,7 +1726,7 @@ command:
         &7
         &8Mundo: &7[world]
         &8Coordenadas: &f[x]&7:&f[y]&7:&f[z]
-      pickerLore: '&8Botón Central ► Cambiar icono.'
+      pickerLore: '&8⌨ Botón Central ➟ Cambiar icono.'
   hunger:
     help:
       info: Determina el nivel de hambre de un jugador.
@@ -1477,15 +1748,15 @@ command:
       permHover: '&7Es necesario el permiso:\n&7[permission]'
       editSign: ' &7[Modificar]'
       publicHover: |-
-        &7Clic para cambiar el estado.
+        &7Pulsa para cambiar el estado.
         &8
         &8Introduce [ic:[name]] en la primera línea
         &8de un cartel para vincular esta función.
       createdPublic: '&eSe ha creado un nuevo comando interactivo.'
       list: '&8[place]. &6[name]&r'
       listType: ' &e[type]    '
-      editCommands: '&7Clic para modificar los comandos.'
-      editBlocks: '&7Clic para modificar las asociaciones.'
+      editCommands: '&7Pulsa para modificar los comandos.'
+      editBlocks: '&7Pulsa para modificar las asociaciones.'
       addBlock: '&7Asociar al bloque que estás mirando.'
       addEntity: '&7Asociar a la entidad que estás mirando.'
       manageCommands: '&7Cambiar al modo edición de comandos.'
@@ -1526,8 +1797,8 @@ command:
       info: Ignora un jugador.
       args: (jugador/uuid/all)
       explanation:
-      - '&3Permiso asociado:'
-      - '&bcmi.command.ignore.bypass &7► Evita ser ignorado.'
+      - '&3&nPermiso asociado:'
+      - '&3◆ &ecmi.command.ignore.bypass &7► Evita ser ignorado.'
     info:
       self: '&cNo seas tonto, no puedes ignorarte a tí mismo.'
       added: '&eEstás ignorando a &3[playerDisplayName]'
@@ -1566,8 +1837,8 @@ command:
       args: '[nombreJugador/uuid]'
     info:
       feedback:
-        uuid: '&8Botón Izquierdo ► Copia la UUID en el chat.'
-        ouuid: '&8Mayús + Botón Izquierdo ► Copia la UUID Online en el chat.'
+        uuid: '&8⌨ Botón Izquierdo ➟ Copia la UUID en el chat.'
+        ouuid: '&8⌨ Mayús + Botón Izquierdo ➟ Copia la UUID Online en el chat.'
       newName: '&6[playerName]'
       newBalance: '&eDinero: &6[balance]'
       newDisplayName: '&7Nombre mostrado: &r[playerDisplayName]'
@@ -1590,9 +1861,9 @@ command:
       newNameHoverPing: '&ePing: &6[ping]'
       newNameHoverCountry: '\n&ePaís: &6[country] &8(&7[countryCode]&8)'
       newFirstLogin: '&ePrimera Conexión: &6[firstLogin]'
-      newPlaytime: '&eTiempo jugado: &6[time]'
+      newPlaytime: '&aTiempo de juego: &6[time]'
       newOnline: '[state] hace: &6[logoff]'
-      newOnlineStateOn: '&eConectado'
+      newOnlineStateOn: '&aConectado'
       newOnlineStateOff: '&cDesconectado'
       newUUID: '&7UUID'
       newUUIDHover: '&eUUID: &6[UUID]'
@@ -1600,19 +1871,19 @@ command:
       newTurnedOnColor: '&a'
       newTurnedOffColor: '&7'
       newOp: OP
-      newGod: Dios
+      newGod: Modo Invencible
       newFly: '[flying]'
       newFlying: Volando
       newFlyHover: '&eVelocidad de Vuelo: &6[flyspeed]'
       newFlyTemp: '&7Vuelo Temporal: &6[time]'
       newFlyCharge: '&7Impulso de Vuelo: &6[charge]'
       newElytraFlyHover: '&7Volando con Élitros'
-      newGodHover: '&7Modo Dios temporal: &6[time]'
+      newGodHover: '&7Modo Invencible temporal: &6[time]'
       newNoDamageHover: '&7Sin daño en: &e[time]'
       newSneaking: Agachado
       newSprint: Corriendo
       newWalkSpeed: '&eVelocidad Andando: &6[walkspeed]'
-      newGameMode: '&eModo &2[gameMode]'
+      newGameMode: '&eModo: &2[gameMode]'
       newGameModeHover:
       - '[sprint]'
       - '[sneaking]'
@@ -1624,39 +1895,44 @@ command:
       newHp: '&eSalud: &6[hp] &ede &6[maxhp]'
       newAir: '&eOxígeno: &6[leftAir] &ede &6[totalAir]'
       newHunger: '&eHambre: &6[food] &ede &620'
-      newSaturation: '&eSaturación &6+[saturation]&e'
-      newExp: '&eExperiencia: &6[totalexp] &epuntos &8► &6[currentexp]&e/&6[needexp]
-        &7(&6[level] &eniveles&e)'
+      newSaturation: '&eSaturación: &6+[saturation]&e'
+      newExp: '&eExperiencia: &5[totalexp] &epuntos &8► &5[currentexp]&e/&5[needexp] &7(&5[level]
+        &eniveles&e)'
       newPos: '&7Posición'
-      newPosHover: '&ePosición actual del jugador:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Clic
-        para generar el comando de aparición en el chat.'
-      newAfk: Ausente (AFK)
+      newPosHover: '&ePosición actual del jugador:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Pulsa
+        para insertar el comando de aparición en el chat.'
+      newAfk: Ausente
       newAfkHover: '&eAusente durante &6[time]'
+      AfkInHover: '&eSe quedará Ausente en &6[time]'
       newBed: '&7Cama'
-      newBedHover: '&ePosición de la Cama:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Clic
-        para generar el comando de aparición en el chat.'
+      newBedHover: '&ePosición de la Cama:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Pulsa
+        para insertar el comando de aparición en el chat.'
       newDeath: '&7Muerto'
-      newDeathHover: '&ePosición de la última muerte:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Clic
-        para generar el comando de aparición en el chat.'
+      newDeathHover: '&ePosición de la última muerte:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Pulsa
+        para insertar el comando de aparición en el chat.'
       newBack: '&7Regreso'
-      newBackHover: '&ePosición de Regreso:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Clic
-        para generar el comando de aparición en el chat.'
-      newRespawn: '&7Spawn'
-      newRespawnHover: '&ePosición del Spawn asignado:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Clic
-        para generar el comando de aparición en el chat.'
-      newSee: ◕‿◕
+      newBackHover: '&eLugar de Regreso:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Pulsa
+        para insertar el comando de aparición en el chat.'
+      newRespawn: '&7Inicio'
+      newRespawnHover: '&eLugar de Inicio asignado:\n&e► &6[world] &6[x]&e,&6[y]&e,&6[z]\n&8Pulsa
+        para insertar el comando de aparición en el chat.'
+      inv: '&7Inventario'
+      ender: '&7Ender'
+      newSee: ☺
       newSeeHover: '&aVisible'
       newSeeHoverNot: '&cOculto'
-      newBanned: Baneado
+      vanished: '(O) '
+      vanishedHover: '&6Invisible'
+      newBanned: Expulsado
       newBannedHover:
-      - '&7Baneado por: &e[name]'
+      - '&7Expulsado por: &e[name]'
       - '&7Hasta: &e[left]'
       - '&7Razón: &e[reason]'
-      newMuted: 'Silenciado '
+      newMuted: Silenciado
       newMutedHover:
       - '&7Restante: &e[left]'
       - '&7Razón: &e[reason]'
-      newShadowMutedHover: '&4Silenciado sordo'
+      newShadowMutedHover: '&4Silenciado y Ensordecido'
       newCuffed: Bloqueado
       newJailed: Encarcelado
       newJailedHover:
@@ -1675,25 +1951,27 @@ command:
       newChatRoomHover:
       - '&7Canal: &e[name]'
       - '&7Miembros: &e[count]'
-      nList:
-      - '&6&m-----&r&6【 &3Información sobre el Jugador &6】&m-----'
+      List:
+      - '&6&m     &r&6【 &3Información sobre el Jugador &6】&m     &r'
       - '&6| [name] &7|&r [UUID] &7|&r [ip]'
       - '&6| [OP] &7|&r [god] &7|&r [fly] &7|&r [gameMode] &7|&r [afk] &7|&r [see]'
       - '&6| [banned] &7|&r [muted] &7|&r [cuffed] &7|&r [jailed] &7|&r [alert] &7|&r
         [chatroom]'
-      - '&6| [pos] &7|&r [bed] &7|&r [respawn] &7|&r [death] &7|&r [back]'
+      - '&6| &c[&r[pos]&c]&r &c[&r[bed]&c]&r &c[&r[respawn]&c]&r &c[&r[death]&c]&r
+        &c[&r[back]&c]&r &c[&r[ender]&c]&r &c[&r[inv]&c]&r'
       - '&6| [homes] &7|&r [mail] &7|&r [warnings]'
       - '&6| [balance]'
-      - '&6&m--------------------------------------------------'
+      - '&6&m                                                  &r'
+      - '&8► Opción activada = [enableColor]■ &8| ► Opción desactivada = [disableColor]■'
   inv:
     help:
       info: Abre el inventario del jugador.
       args: '[nombreJugador]'
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.inv.preventmodify &7► Evita que se pueda modificar el inventario.'
-      - '&bcmi.invedit &7► Permite que se pueda modificar el inventario.'
-      - '&bcmi.command.inv.location &7► Muestra la localización de los jugadores.'
+      - '&3◆ &ecmi.command.inv.preventmodify &7► Evita que se pueda modificar el inventario.'
+      - '&3◆ &ecmi.invedit &7► Permite que se pueda modificar el inventario.'
+      - '&3◆ &ecmi.command.inv.location &7► Muestra la localización de los jugadores.'
     info:
       feedback: '&eEstás modificando el inventario de &3[playerDisplayName] &8(estando
         [offon])&e.'
@@ -1729,9 +2007,9 @@ command:
       args: '[ip/nombreJugador] (razón) (-s)'
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.banip.bypass &7► Impide ser bloqueado por la IP.'
+      - '&3◆ &ecmi.command.banip.bypass &7► Impide ser bloqueado por la IP.'
     info:
-      message: '&c¡Tu ip ha sido bloqueada en este servidor!'
+      message: '&c¡Tu IP ha sido bloqueada en este servidor!'
       messageToAll: '&6[senderDisplayName] &eha expulsado permanentemente a &6[playerDisplayName]
         &epor: &6[reason]&e.'
       banedSilent: '&7[&8Modo Oculto&7] &6[senderDisplayName] &eha expulsado permanentemente
@@ -1753,19 +2031,19 @@ command:
       info: Obtén un objeto.
       args: '[nombreObjeto] (cantidad)'
       explanation:
-      - '&3&nDescripción extendida:'
-      - El nombre y la descripción (lore) admiten placeholders.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7El nombre y la descripción (lore) admiten placeholders.'
       - '&3&nEjemplos:'
-      - /give stone
-      - /give stone 5 n Stonehenge
-      - /give stick e knockback:1
-      - /give sponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%
-      - /cmi give sponge 1 e Knockback:%rand/1-5%
-      - /cmi give sponge %rand/1-10%
-      - /give sponge a maxhealth:5:mainhand
-      - /give diamond_sword unbreakable
-      - /give mob_spawner:creeper
-      - /give minecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}
+      - '&3◆ &6/cmi give &estone'
+      - '&3◆ &6/cmi give &estone 5 n Stonehenge'
+      - '&3◆ &6/cmi give &estick e knockback:1'
+      - '&3◆ &6/cmi give &esponge l Got_item_on:_%date/YY/MM/dd-HH:mm:ss%'
+      - '&3◆ &6/cmi give &esponge 1 e Knockback:%rand/1-5%'
+      - '&3◆ &6/cmi give &esponge %rand/1-10%'
+      - '&3◆ &6/cmi give &esponge a maxhealth:5:mainhand'
+      - '&3◆ &6/cmi give &ediamond_sword unbreakable'
+      - '&3◆ &6/cmi give &emob_spawner:creeper'
+      - '&3◆ &6/cmi give &eminecraft:diamond_helmet 1 0 {ench:[{id:0,lvl:100},{id:2,lvl:100},{id:34,lvl:100}]}'
   itemcmdata:
     help:
       info: Comprueba o modifica el modelo personalizado de los objetos (custom model
@@ -1781,8 +2059,8 @@ command:
       info: Gestiona los marcos.
       args: (invisible/fixed/invulnerable)
     info:
-      enabled: '&2Activado'
-      disabled: '&4Desactivado'
+      enabled: '&a☑ Activado'
+      disabled: '&c☒ Desactivado'
       feedback: '&eHay &6[count] &emarcos invisibles alrededor tuyo.'
   iteminfo:
     help:
@@ -1790,14 +2068,15 @@ command:
       args: (nombreJugador)
     info:
       nameMat: ' &eNombre: &7[name] &eMaterial: &7[material]'
-      mojangHover: '&eNombre de Mojang: &7[name]'
+      mojangHover: '&eNombre original: &7[name]'
       display: ' &eNombre Mostrado: &7[display]'
       lore: ' &eDescripción:'
       loreLine: '   &5[loreLine]'
       enchants: ' &eEncantamientos: &7[enchants]'
       entityType: ' &eTipo de Entidad: &6[type]'
-      customModel: ' &eCustom Model Data: &6[data]'
+      customModel: ' &eDatos de Modelo Personalizado: &6[data]'
       durability: ' &eDurabilidad: &6[current]&e/&6[max]'
+      stackSize: ' &eTamaño Máximo del Paquete: &6[size]'
   itemlore:
     help:
       info: Cambia la descripción del objeto.
@@ -1822,6 +2101,7 @@ command:
       removed: '&3[playerDisplayName] &eha eliminado el nombre del objeto &8(estando
         [offon])&e.'
       blocked: '&eNo se puede cambiar el nombre de este objeto.'
+      maxLength: '&cEl nuevo valor excede la longitud máxima de &4[length] &ccaracteres.'
   itemnbt:
     help:
       info: Muestra información NBT del objeto.
@@ -1861,17 +2141,18 @@ command:
       createdJail: '&eSe ha creado correctamente la cárcel (&6[jail]&e).'
       createdCell: '&eSe ha creado correctamente la celda (&6[jail]&e:&6[cellId]&e).'
       collides: '&cChoca con la cárcel &6[jailName]&e.'
-      jailList: '&2[place]. &6[jail] &2► &eCeldas:&6[cells] &eEncarcelados: &6[amount]    '
       editCells: '&eEditar/Añadir las celdas de la cárcel.'
-      cellList: '&eID de celda: &6[id] &e|Encarcelados: &6[amount]    '
-      jailListTp: ' &7[salida] '
+      cList: '&eID de celda: &6[id] &7| &eEncarcelados: &6[amount]'
       jailListTpHover: '&eDetermina el lugar de aparición al salir de la cárcel.'
-      jailListArea: ' &7[área] '
       jailListAreaHover: '&eRedefine el área de la cárcel.'
       jailRemoved: '&eSe ha eliminado la cárcel (&6[jail]&e).'
       jailOutside: '&eSe ha establecido el destino de salida de la cárcel.'
       jailArea: '&eSe ha vuelto a redefinir la cárcel de &6[jail]&e.'
       cellRemoved: '&eSe ha eliminado la celda (&6[cellId]&e) de &6[jail]&e.'
+      list: '&eCeldas: &6[cells] &7| &eEncarcelados: &6[amount] &2[jail]'
+      listTp: '[tp] '
+      listArea: '&7[area] '
+      areaShow: '&7[S] '
   jaillist:
     help:
       info: Muestra la lista de cárceles.
@@ -1880,7 +2161,7 @@ command:
       jailList: '&6[place]. &e[jailName] &7| Celdas:&e[cellCount] &7| Encarcelados:&6[count]'
       cellList: '&6[place]. &7Id:&e[cellId] &7| Encarcelados:&6[count]'
       cellJailedList: '&6[place]. &e[playerDisplayName] &7será liberado en &e[time]&7.'
-      Release: '&7Clic para liberar.'
+      Release: '&7Pulsa para liberar.'
   jump:
     help:
       info: Aparece en el lugar que estás mirando.
@@ -1894,7 +2175,7 @@ command:
       args: '[nombreJugador/all] (mensaje) (-s)'
       explanation:
       - '&3Permiso asociado:'
-      - '&bcmi.command.kick.bypass &7► Impide ser expulsado.'
+      - '&3◆ &ecmi.command.kick.bypass &7► Impide ser expulsado.'
     info:
       defaultMessage: '&eExpulsado del servidor.'
       cantKick: '&eNo puedes expulsar a este jugador.'
@@ -1907,7 +2188,8 @@ command:
       args: '[nombreJugador] (-force) (causadelDaño) (-s) (-lightning)'
     info:
       cantKill: '&eNo es posible asesinar al jugador, posiblemente debido al modo
-        dios, el modo de juego o la interacción de otro plugin. Usa la variable &6-forced&e.'
+        invencible, el modo de juego o la interacción de otro plugin. Usa la variable
+        &6-forced&e.'
       lackOfAccess: '&6No es posible forzar el asesinato sin permisos.'
       killed: '&eSe ha asesinado a &6[playerDisplayName]&e.'
   killall:
@@ -1933,16 +2215,16 @@ command:
       args: '[equipamiento] (nombreJugador)'
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.kit.[equipamiento] &7► Permite usar un equipamiento en particular.'
-      - '&bcmi.kit.bypass.money &7► Ignora el requisito de dinero.'
-      - '&bcmi.kit.bypass.exp &7► Ignora el requisito de experiencia.'
-      - '&bcmi.kit.bypass.onetimeuse &7► Permite ser usado más de una vez.'
+      - '&3◆ &ecmi.kit.[equipamiento] &7► Permite usar un equipamiento en particular.'
+      - '&3◆ &ecmi.kit.bypass.money &7► Ignora el requisito de dinero.'
+      - '&3◆ &ecmi.kit.bypass.exp &7► Ignora el requisito de experiencia.'
+      - '&3◆ &ecmi.kit.bypass.onetimeuse &7► Permite ser usado más de una vez.'
       - '&3&nEjemplo:'
-      - /cmi kit Emergencia C4BR3R4 &7► Entrega el equipamiento al jugador llamado
-        C4BR3R4.
+      - '&3◆ &6/cmi kit &eBasico YoMismito &7► Entrega el equipamiento al jugador
+        llamado YoMismito.'
     info:
       noMoney: '&eNo tienes suficiente dinero. Necesitas &6[cost] &ey tienes &6[balance]&e.'
-      noExp: '&eNo tienes suficiente experiencia. Necesitas &6[cost] &ey tienes &6[balance]&e.'
+      noExp: '&dNo tienes suficiente experiencia. Necesitas &5[cost] &dy tienes &5[balance]&d.'
       noCondition: '&cTe faltan requisitos para poder obtener este equipamiento: &4[condition]'
       oneTime: '&c¡Este equipamiento ya lo has usado y es de un solo uso!'
       cantUseNow: '&cNo puedes usar este equipamiento hasta dentro de &6[time]&e.'
@@ -1960,8 +2242,8 @@ command:
       nameCanUse: '&aEquipamiento ► &2[kitName]'
       nameCantUse: '&cEquipamiento ► &4[kitName]'
       group: '&ePertenece al grupo &6[group]&e.'
-      left: \n&7Botón Izquierdo ► Obtener.
-      right: '&7Botón Derecho ► Ver contenido, disponibilidad y costes.'
+      left: \n&8⌨ Botón Izquierdo ➟ Obtener.
+      right: '&8⌨ Botón Derecho ➟ Ver contenido, disponibilidad y costes.'
       take: '&6¡Obtener este equipamiento!'
       open: '&7¡Objetos del equipamiento &8[kitName]&7!'
       eye: ' &e☬'
@@ -1979,7 +2261,7 @@ command:
       resetAll: '&eSe ha reiniciado el tiempo de reutilización del equipamiento &6[kit]
         &ede &6[count] &ejugadores.'
       list: '&2[place]. &6[kit] &e[time]'
-      listHover: '&eClic para reiniciar.'
+      listHover: '&ePulsa para reiniciar.'
       noCd: '&eEste equipamiento no tiene tiempo de reutilización.'
   kiteditor:
     help:
@@ -1987,16 +2269,16 @@ command:
       args: ''
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.kit.[nombreEquipamiento] &7► Permite usar el equipamiento en particular.'
-      - '&bcmi.kit.bypass.money &7► Ignora el requisito de dinero.'
-      - '&bcmi.kit.bypass.exp &7► Ignora el requisito de experiencia.'
+      - '&3◆ &ecmi.kit.[nombreEquipamiento] &7► Permite usar el equipamiento en particular.'
+      - '&3◆ &ecmi.kit.bypass.money &7► Ignora el requisito de dinero.'
+      - '&3◆ &ecmi.kit.bypass.exp &7► Ignora el requisito de experiencia.'
       - '&3&nEjemplo:'
-      - /cmi kiteditor &7► Muestra la lista de equipamientos.
+      - '&3◆ &6/cmi kiteditor &7► Muestra la lista de equipamientos.'
     info:
       kits: '&eEquipamientos: '
       iconSet: '&eSe ha establecido un nuevo icono para el equipamiento &6[kitname]&e.'
       kitExists: '&e¡Ya existe un equipamiento con este nombre!'
-      deleteConfirm: '&e¡Clica aquí si realmente quieres eliminar el equipamiento
+      deleteConfirm: '&e¡Pulsa aquí si realmente quieres eliminar el equipamiento
         (&6[kitname]&e)!'
       deleteConfirmFinal: '&c¡Esta acción es irreversible!'
       kitRemoved: '&eEquipamiento (&6[kitname]&e) eliminado.'
@@ -2022,17 +2304,17 @@ command:
       commandsListTitle: '&e✎ &6Comandos:'
       conditionsListTitle: '&e✎ &6Condiciones:'
       descListTitle: '&e✎ &6Descripción:'
-      ListTitleHover: '&8Clic para volver a abrir la GUI'
+      ListTitleHover: '&8Pulsa para volver a abrir la Interfaz.'
       ListEditKitHover: '&cModificar &6[kitname]'
       ListAdd: ' &8[&2+&8]'
       ListAddHover: '&2Añadir nuevo'
       guiClickery:
-      - '&8Botón Izquierdo ► Aumenta el valor'
-      - '&8Botón Derecho ► Disminuye el valor.'
+      - '&8⌨ Botón Izquierdo ➟ Aumenta el valor'
+      - '&8⌨ Botón Derecho ➟ Disminuye el valor.'
       - ''
-      - '&8Mantener Mayús ► Aumenta el valor x10.'
-      - '&8Clica repetidamente para aumentar el valor rápidamente.'
-      - '&8Deja de clicar durante 1 segundo para volver al valor x1.'
+      - '&8⌨ Mantener Mayús ➟ Aumenta el valor x10.'
+      - '&8  Pulsa repetidamente para aumentar el valor rápidamente.'
+      - '&8  Deja de pulsar durante 1 segundo para volver al valor x1.'
       OffHand: '&eColoca aquí el Escudo.'
       Helmet: '&eColoca aquí el Casco.'
       Chest: '&eColoca aquí el Peto.'
@@ -2046,11 +2328,12 @@ command:
       despiteWeightExtra:
       - '&eEl jugador no tiene acceso al equipamiento, pero puede ver el contenido.'
       Slot: '&eHueco: &6[slot]'
+      Page: '&ePage: &6[page]'
       SlotAuto: '&6Automático'
       Clone: '&eIntroduce todos los objetos de tu inventario.'
       CloneExtra:
-      - '&7Botón Derecho ► Para incluir los elementos de tu armadura.'
-      - '&8Volver a clicar para deshacer los cambios.'
+      - '&7⌨ Botón Derecho ➟ Incluir los elementos de tu armadura.'
+      - '&8⌨ Volver a Pulsar ➟ Deshacer los cambios.'
       timeDelay: '&eTiempo de Reutilización: &6[time]'
       usages: '&eSe puede usar: &6[times]'
       withoutUsage: '&eMostrar con usos agotados: &6[state]'
@@ -2062,17 +2345,17 @@ command:
       enabled: '&aEquipamiento &2activado'
       disabled: '&cEquipamiento &4desactivado'
       delete: '&4Eliminar equipamiento.'
-      clickToSwitch: '&7Clic para cambiar el estado.'
-      clickToEdit: '&7Clic para modificar.'
+      clickToSwitch: '&7Pulsa para cambiar el estado.'
+      clickToEdit: '&7Pulsa para modificar.'
       editConfigName:
-      - '&7Clic para cambiar el nombre del equipamiento.'
+      - '&7Pulsa para cambiar el nombre del equipamiento.'
       - '&8Establece el nodo del permiso.'
       editCommandName:
-      - '&7Clic para cambiar el nombre del comando.'
+      - '&7Pulsa para cambiar el nombre del comando.'
       - '&8Establece el comando necesario para obtener este equipamiento.'
       displayName: '&eNombre a Mostrar: &6[name]'
       editDisplayName:
-      - '&7Clic para cambiar el nombre a mostrar.'
+      - '&7Pulsa para cambiar el nombre a mostrar.'
       - '&8Esto solo se utiliza con fines visuales.'
       kitGroup: '&eGrupo: &6[group]'
       dropItems: '&eSoltar objetos si no hay espacio: &6[state]'
@@ -2092,7 +2375,7 @@ command:
       reset: '&eEl número de usos del Equipamiento (&6[kit]&e) ha sido reiniciado
         por &6[playerDisplayName]&e.'
       list: '&e[place]. &6[kit] &e[used]/[usages]'
-      listHover: '&eClic para reiniciar.'
+      listHover: '&ePulsa para reiniciar.'
       noCd: '&eNo hay equipamientos que se hayan usado más de 0 veces.'
   lastonline:
     help:
@@ -2108,27 +2391,27 @@ command:
       args: (nombreJugador) (p:[potencia]) (a:[ángulo]) (d:[dirección]) (loc:[x]:[y]:[z])
       explanation:
       - '&3&nEjemplos:'
-      - /cmi launch &7► Te lanza hacia donde estás mirando.
-      - /cmi launch p:3.2 &7► Te lanza con potencia 3.2
-      - /cmi launch p:2.5 a:25 &7► Te lanza en la dirección que estás mirando con
-        un ángulo de 25 grados y potencia 2.5
-      - /cmi launch C4BR3R4 d:east &7► Lanza a C4BR3R4 hacia el Este con el mismo
-        ángulo que estás mirando.
-      - /cmi launch C4BR3R4 d:0 &7► Lanza a C4BR3R4 al Sur (0 grados) en el mismo
-        ángulo que estás mirando.
-      - /cmi launch d:45 a:30 p:2 &7► Te lanza hacia el Suroeste con 30 grados de
-        ángulo y potencia 2.
-      - /cmi launch loc:150:120:123 &7► Te lanza a la posición determinada.
+      - '&3◆ &6/cmi launch &7► Te lanza hacia donde estás mirando.'
+      - '&3◆ &6/cmi launch &ep:3.2 &7► Te lanza con potencia 3.2'
+      - '&3◆ &6/cmi launch &ep:2.5 a:25 &7► Te lanza en la dirección que estás mirando
+        con un ángulo de 25 grados y potencia 2.5'
+      - '&3◆ &6/cmi launch &eYoMismito d:east &7► Lanza a YoMismito hacia el Este
+        con el mismo ángulo que estás mirando.'
+      - '&3◆ &6/cmi launch &eYoMismito d:0 &7► Lanza a YoMismito al Sur (0 grados)
+        en el mismo ángulo que estás mirando.'
+      - '&3◆ &6/cmi launch &ed:45 a:30 p:2 &7► Te lanza hacia el Suroeste con 30 grados
+        de ángulo y potencia 2.'
+      - '&3◆ &6/cmi launch &eloc:150:120:123 &7► Te lanza a la posición determinada.'
     info:
       feedback: '!actionbar!&6[&e¡Salta pollito!&6]'
   lfix:
     help:
-      info: Corrige los fallos de iluminación de los chunks cercanos.
+      info: Corrige los fallos de iluminación de los sectores cercanos.
       args: (distancia) (nombreJugador) (stop/stopall)
     info:
       NoMore: '&eLa distancia no puede ser superior a la distancia de visualización
         del servidor. Cambia la distancia máxima permitida.'
-      startFixing: '&eSe han encontrado &6[amount] &echunks que se pueden corregir
+      startFixing: '&eSe han encontrado &6[amount] &esectores que se pueden corregir
         ¡Iniciando!'
       InfoShow: '&6TPS: &3[tps] &6| Quedan &e[left] &6(&e[min]m:[sec]s&6) &6| Velocidad:
         &e[speed]&6.'
@@ -2140,26 +2423,26 @@ command:
       args: ''
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.list.admin'
-      - '&bcmi.command.list.staff'
-      - '&bcmi.command.list.hidden'
-      - '&bcmi.command.list.group[número]'
+      - '&3◆ &ecmi.command.list.admin'
+      - '&3◆ &ecmi.command.list.staff'
+      - '&3◆ &ecmi.command.list.hidden'
+      - '&3◆ &ecmi.command.list.group.[número]'
     info:
       # [groupLine] can be replaced with specific grouped names like [group1] and [group2] and so on, you can have as many of those as you want and order them by your own liking
       List:
-      - '&6&m--------------------------------------------------'
+      - '&6&m                                                  &r'
       - '[adminLine]'
       - '[staffLine]'
-      - '&6&m--------------------------------------------------'
+      - '&6&m                                                  &r'
       - '[groupLine]'
       - '&7'
       - '&8&oHay &7&o[amount][hidden] &8&ojugadores conectados (de &7&o[maxamount]&8&o).'
-      - '&6&m--------------------------------------------------'
-      staffL: '&4Moderadores: &c[list]'
-      adminL: '&cAdministradores: &4[list]'
+      - '&6&m                                                  &r'
+      staffL: '&4Moderadores ► &c[list]'
+      adminL: '&cAdministradores ► &4[list]'
       hiddenPref: '&e&7[H]'
       hiddenCount: '&e&7([amount])'
-      groupL: '&6[groupName]s: &e[list]'
+      groupL: '&6[groupName] ► &e[list]'
       player: '%cmi_user_afk_symbol% [playerDisplayName]'
       # Add as many groups as you wish, by default there is only 10, to create new one, just copy paste one line and add increment into lines name, like group11 or group12 and so on.
       # ATTENTION! group names should be in 'group[number]' format, where you have word 'group' followed by number. This is required and you cant have custom names as they are not required, but we are using number provided to determine which group goes after which
@@ -2178,7 +2461,7 @@ command:
       noGroupLine: '&eLista'
   lockip:
     help:
-      info: Previene la conexión de un jugador con diferente IP.
+      info: Evita la conexión de un jugador con diferente IP.
       args: '[nombreJugador] [add/remove/list/clear] [ip]'
     info:
       CantLogin: '&cNo puedes conectarte con esta dirección IP'
@@ -2207,7 +2490,7 @@ command:
       noMailsById: '&eNo hay correo de este ID de jugador.'
       noMails: '&aNo tienes ningún correo nuevo.'
       mailHover: '&aEnviado por: &2[senderName]\n&eEl día: &6[time]'
-      mailHoverExpires: '\n&cCaduca en: &4[time]\n\n&8&oClic para responder.'
+      mailHoverExpires: '\n&cCaduca en: &4[time]\n\n&8&oPulsa para responder.'
       mailList: '&3[senderDisplayName] ► &b[mail]'
       waitingMail: '&7[&4!&7] Tienes [amount] mensaje de correo sin leer. &7[&cLEER&7]'
   mailall:
@@ -2223,8 +2506,8 @@ command:
       info: Coloca el servidor en modo mantenimiento.
       args: (mensaje)
       explanation:
-      - '&3Permiso asociado:'
-      - '&bcmi.command.maintenance.bypass &7► Ignora el modo mantenimiento.'
+      - '&3&nPermiso asociado:'
+      - '&3◆ &ecmi.command.maintenance.bypass &7► Ignora el modo mantenimiento.'
     info:
       feedback: '&eEl servidor está en modo mantenimiento. Vuelve más tarde.'
       set: '&eEl servidor tiene &6[state] &eel modo mantenimiento con el mensaje:
@@ -2243,9 +2526,9 @@ command:
       info: Cambia la cantidad máxima de jugadores que se pueden conectar al servidor.
       args: '[cantidad]'
       explanation:
-      - '&3Permiso asociado:'
-      - '&bcmi.fullserver.bypass &7► Permite entrar en el servidor cuando este está
-        lleno.'
+      - '&3&nPermiso asociado:'
+      - '&3◆ &ecmi.fullserver.bypass &7► Permite entrar en el servidor cuando este
+        está lleno.'
     info:
       changed: '&eSe ha cambiado el límite máximo de jugadores de &6[old] &ea &6[new]&e.
         Ahora hay conectados &6[current] &ejugadores.'
@@ -2330,13 +2613,12 @@ command:
     info:
       newBalance: '&6[playerDisplayName] &etiene ahora &6[money]&e.'
       paid: '&eHas pagado &6[amount] &ea &6[playerDisplayName]&e.'
-      gotMoney: '&6[senderDisplayName] &ete ha pagado &6[amount]. &eAhora tienes &6[money]&e.'
-      gotMoneyGive: '&eHas obtenido &6[amount]&e. Ahora tienes &6[money]&e.'
-      lostMoney: '&eSe han retirado &6[amount] &ede tu saldo. Ahora tienes: &6[money]'
-      noMoney: '&cNo tienes suficiente dinero.'
+      gotMoney: '&6[senderDisplayName] &ete ha pagado &6[amount]. &8Ahora tienes &7[money]&8.'
+      gotMoneyGive: '&eHas obtenido &6[amount]&e. &8Ahora tienes &7[money]&8.'
+      lostMoney: '&eSe han retirado &6[amount] &ede tu saldo. &8Ahora tienes &7[money]&8.'
       worldGroups: '&cNo puedes enviar dinero a través de diferentes mundos.'
       self: '&cNo te puedes enviar dinero a tí mismo.'
-      confirm: '&eClic para confirmar el envío de &6[money] &ea &6[playerDisplayName]&e.'
+      confirm: '&ePulsa para confirmar el envío de &6[money] &ea &6[playerDisplayName]&e.'
       notAccepting: '&eEste usuario no acepta pagos de otros jugadores.'
       giveAll: '&eEntregar &6[totalAmount] &ea &6[playerCount] &ejugadores.'
       takeAll: '&eSe ha obtenido &6[totalAmount] &ede &6[playerCount] &ejugadores.'
@@ -2344,49 +2626,42 @@ command:
         debido a la limitación de dinero que puedes tener.'
   more:
     help:
-      info: Obtén el stack completo de un objeto.
+      info: Obtén el paquete completo de un tipo de bloque.
       args: (nombreJugador) (-clone/[cantidad])
       explanation:
-      - '&3Permiso asociado:'
-      - '&bcmi.command.more.oversize &7► Permite obtener stacks de mayor tamaño.'
+      - '&3&nPermiso asociado:'
+      - '&3◆ &ecmi.command.more.oversize &7► Permite obtener un paquete de mayor tamaño.'
     info:
-      feedback: '&3[playerDisplayName] &eha obtenido el stack completo de &3[amount]
+      feedback: '&3[playerDisplayName] &eha obtenido un paquete completo de &3[amount]
         &8(estando [offon])&e.'
   msg:
     help:
       info: Envía un mensaje a un jugador.
       args: '[nombreJugador] [mensaje]'
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Si el mensaje comienza con &f! &7se mostrará el mensaje sin el nombre del
-        remitente.'
-      - '&7Si el mensaje comienza con &f!- &7se mostrará el mensaje sin el nombre
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Si el mensaje comienza con &e! &7se mostrará el mensaje sin el nombre
+        del remitente.'
+      - '&3◆ &7Si el mensaje comienza con &e!- &7se mostrará el mensaje sin el nombre
         del remitente y sin opción de respuesta.'
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.msg.clean &7► Permite enviar mensajes sin remitente.'
-      - '&bcmi.command.msg.noreply &7► Impide responder a un mensaje.'
+      - '&3◆ &bcmi.command.msg.clean &7► Permite enviar mensajes sin remitente.'
+      - '&3◆ &bcmi.command.msg.noreply &7► Impide responder a un mensaje.'
     info:
       TargetMsg: '&7[&7[senderDisplayName] &7► &8Yo&7]&3 [message]'
       SenderMsg: '&7[&7Yo &7► &8[playerDisplayName]&7]&3 [message]'
       consoleMsg: '&7[&7[senderDisplayName] &7► [playerDisplayName]&7]&3 [message]'
       noPM: '&cEl jugador no acepta mensajes privados por ahora.'
       badGroup: '&cNo se pueden enviar mensajes privados a este grupo de jugadores.'
-  msgtoggle:
-    help:
-      info: Permite o Bloquea los mensajes privados.
-      args: (nombreJugador)
-    info:
-      feedbackOn: '&7Se admiten mensajes privados.'
-      feedbackOff: '&7No se admiten mensajes privados.'
   mute:
     help:
       info: Silencia un jugador.
       args: '[nombreJugador] (tiempo) (-s) (razón)'
       explanation:
       - '&3&nEjemplos:'
-      - /cmi mute C4BR3R4 1m &7► Silencia a C4BR3R4 durante un minuto.
-      - /cmi mute C4BR3R4 1h Abuso de la autoridad &7► Silencia a C4BR3R4 durante
-        una hora por...
+      - '&3◆ &6/cmi mute &eYoMismito 1m &7► Silencia a YoMismito durante un minuto.'
+      - '&3◆ &6/cmi mute &eYoMismito 1h Abuso de la autoridad &7► Silencia a YoMismito
+        durante una hora por...'
     info:
       mutedFor: '&e[playerDisplayName] ha sido silenciado &6[time]'
       muted: '&eHas sido silenciado &6[time]'
@@ -2398,8 +2673,8 @@ command:
       args: (tiempo) (-s)
       explanation:
       - '&3&nEjemplos:'
-      - /cmi mutechat 1m
-      - /cmi mutechat 1h
+      - '&3◆ &6/cmi mutechat &e1m'
+      - '&3◆ &6/cmi mutechat &e1h'
     info:
       mutedFor: '&eEl chat ha sido bloqueado &6[time]&e.'
       isMuted: '!actionbar!&eEl chat ha sido bloqueado &6[time]&e.'
@@ -2409,9 +2684,9 @@ command:
       info: Determina el prefijo o sufijo de la etiqueta del jugador.
       args: (nombreJugador) (-pref:[prefijo]) (-suf:[sufijo]) (-c:[códigoColor])
       explanation:
-      - '&3&nDetalles:'
-      - Usa _ para añadir un espacio y __ para añadir variables bajo el nombre, como
-        por ejemplo placeholders y similares.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usa &e_ &7para añadir un espacio y &e__ &7para añadir variables debajo
+        del nombre, como por ejemplo placeholders y similares.'
     info:
       feedback: '&eHas cambiado la etiqueta de &3[playerDisplayName] &8(estando [offon])&e.'
       targetfeedback: '&7[&4!&7] Tu etiqueta de jugador se ha actualizado.'
@@ -2430,9 +2705,9 @@ command:
       args: '[nuevoAlias/off] (nombreJugador) (-s)'
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.nick.different &7► Permite cambiar el nombre por un alias.'
-      - '&bcmi.command.nick.bypass.length &7► Ignora la restricción de longitud de
-        nombre.'
+      - '&3◆ &ecmi.command.nick.different &7► Permite cambiar el nombre por un alias.'
+      - '&3◆ &ecmi.command.nick.bypass.length &7► Ignora la restricción de longitud
+        de nombre.'
     info:
       changed: '&eEl nuevo alias es &r[newNickName] &een vez de &r[oldNickName]&e.'
       changedTarget: '&eTu alias ahora es &r[newNickName] &ey ha sido cambiado por
@@ -2472,13 +2747,46 @@ command:
       args: ''
     info:
       feedback: '&6► &7[number] &8► &e[playerName]'
+  options:
+    help:
+      info: Modifica las opciones personales.
+      args: (nombreJugador) (opción) (enable/disable/status) (-s)
+      explanation:
+      - '&3&nOpciones disponibles:'
+      - '&3◆ &evisibleHolograms &7► Muestra los hologramas.'
+      - '&3◆ &eshiftSignEdit &7► Edición rápida de carteles.'
+      - '&3◆ &etotemBossBar &7► Información del talismán.'
+      - '&3◆ &ebassBarCompass &7► Brújula en la barra superior.'
+      - '&3◆ &etagSound &7► Sonido al ser mencionado.'
+      - '&3◆ &echatSpy &7► Moderación del chat.'
+      - '&3◆ &ecmdSpy &7► Moderación de comandos.'
+      - '&3◆ &esignSpy &7► Moderación de carteles.'
+      - '&3◆ &eacceptingPM &7► Recepción de mensajes privados.'
+      - '&3◆ &eacceptingTPA &7► Permitir aparecer a tu lado.'
+      - '&3◆ &eacceptingMoney &7► Recibir dinero.'
+    info:
+      title: '&3Opciones'
+      state: \n[state]
+      feedback: '&2[description]: [state]'
+      option:
+        visibleHolograms: '&eMuestra los &6Hologramas&e.'
+        shiftSignEdit: '&eActiva la edición rápida de &6Carteles&e.'
+        totemBossBar: '&eMuestra la información del &6Talismán&e.'
+        bassBarCompass: '&eMuestra la &6Brújula &een la barra superior.'
+        tagSound: '&eActiva el sonido de aviso al ser &6Mencionado &epor el chat.'
+        chatSpy: '&eMuestra todo lo que se escribe por el &6Chat&e.'
+        cmdSpy: '&eMuestra todos los &6Comandos &eejecutados por los jugadores.'
+        signSpy: '&eMuestra todo lo que se escribe en los &6Carteles&e.'
+        acceptingPM: '&ePermite la recepción de &6Mensajes Privados&e.'
+        acceptingTPA: '&ePermite a otros jugadores &6Aparecer &ea tu lado.'
+        acceptingMoney: '&ePermite recibir &6Dinero &ede otros jugadores.'
   panimation:
     help:
       info: Reproduce animaciones de partículas personalizadas.
       args: ''
       explanation:
-      - '&3&nDescripción extendida:'
-      - Puedes encontrar información sobre como usarlo en http://www.zrips.net/cmi/extra/particles/
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Puedes encontrar información sobre como usarlo en &ehttp://www.zrips.net/cmi/extra/particles/&7.'
   patrol:
     help:
       info: Vigila cada uno de los jugadores conectados.
@@ -2492,13 +2800,6 @@ command:
     help:
       info: Realiza una transacción de dinero.
       args: '[nombreJugador] [cantidad] (-s)'
-  paytoggle:
-    help:
-      info: Permite o impide las transacciones monetarias de otros jugadores.
-      args: (nombreJugador)
-    info:
-      feedbackDisabled: '&eAhora aceptas pagos de otro jugador.'
-      feedbackEnabled: '&eNo aceptas pagos de otro jugador.'
   ping:
     help:
       info: Muestra el ping del jugador.
@@ -2559,9 +2860,9 @@ command:
       locationSet: '&eSe ha creado, en tu posición, el lugar de destino del portal
         &6[portalName]&e.'
       removed: '&eEl portal &6[portalName] &eha sido eliminado.'
-      click: '&eClic para determinar la posición de aparición del portal &6[portalName]
+      click: '&ePulsa para determinar la posición de aparición del portal &6[portalName]
         &een tu posición actual.'
-      bungeeSet: '&eDirígete al lugar y clica sobre este mensaje para determinar la
+      bungeeSet: '&eDirígete al lugar y pulsa sobre este mensaje para determinar la
         posición de aparición.'
       bungeeSetConfirmed: '&eSe ha posicionado el Portal Bungee (&6[portal]&e) en
         las coordenadas &6[location] &edel servidor &6[sourceServer]&e.'
@@ -2589,7 +2890,7 @@ command:
       setSafeLocation: '&eDetermina un lugar de aparición externo y protegido.'
       save: '&eGuardar cambios en el archivo.'
       removePortal: '&cEliminar el Portal'
-      cantUsePortal: '&7[&4!&7] No puedes usar este portal. Prueba aumentando tu Rango.'
+      cantUsePortal: '&7[&4!&7] No puedes usar este portal. Prueba aumentando tu rango.'
   pos:
     help:
       info: Muestra donde se encuentra un jugador.
@@ -2597,7 +2898,7 @@ command:
     info:
       feedback: '&e[playerDisplayName] &eestá en la posición X:&6[x] &eY:&6[y] &eZ:&6[z]
         &edel mundo &6[world] (y está &3[offon]&e)'
-      feedbackRegion: '&eChunk &6[chunkx]&e:&6[chunkz]&e | Región &6[regionx]&e:&6[regionz]'
+      feedbackRegion: '&eSector &6[chunkx]&e:&6[chunkz]&e | Región &6[regionx]&e:&6[regionz]'
       feedbackDirection: '&eDirección &6[direction] &e(&6[degrees] &egrados)'
       feedbackBiome: '&e| Bioma: &6[biome]'
       feedbackLight: '&e| Nivel de iluminación: &6[lightLevel]'
@@ -2605,15 +2906,15 @@ command:
       normalCoord: '&e| Coordenadas del Mundo Principal: &e(&6[x]&e:&6[y]&e:&6[z]&e)'
   preview:
     help:
-      info: Carga los chunks alrededor de una distancia determinada.
+      info: Carga los sectores alrededor de una distancia determinada.
       args: '[distancia] (distanciaInterior)'
     info:
-      NoMore: '&eLa distancia no puede ser mayor de 32 chunks. Cambia el máximo permitido.'
-      startSending: '&eSe van a cargar &6[amount] &echunks. ¡Iniciando el proceso!'
+      NoMore: '&eLa distancia no puede ser mayor de 32 sectores. Cambia el máximo
+        permitido.'
+      startSending: '&eSe van a cargar &6[amount] &esectores. ¡Iniciando el proceso!'
       InfoShow: '&6TPS: &3[tps] &6| Quedan &e[left] &6(&e[min]m:[sec]s&6) &6| Velocidad:
         &e[speed]'
-      Finished: '&eProceso terminado. Puede que tú tardes un tiempo en cargar todos
-        los chunks.'
+      Finished: '&eProceso terminado. Puede que tu tardes en cargar todos los sectores.'
   prewards:
     help:
       info: Muestra las recompensas por tiempo.
@@ -2624,31 +2925,38 @@ command:
       listOneTime: '&8[place]. &6[rewardName].'
       claim: ' &8[&2Reclamar&8]'
       claimAmount: ' &8[&2Reclamar x[amount]&8]'
-      claimHover: '&7Clica aquí para obtener la recompensa.'
+      claimHover: '&7Pulsa aquí para obtener la recompensa.'
       inform: <T>&7[&4!&7] Reclama tus recompensas. Usa el comando</T><Next><T>&6
-        /recompensas</T><H>&7&oClic para ejecutar.</H><C>recompensas</C><Next><T>&7.</T>
+        /recompensas</T><H>&7&oPulsa para ejecutar.</H><C>recompensas</C><Next><T>&7.</T>
   ptime:
     help:
-      info: Controla el tiempo horario de un jugador de forma personal.
+      info: Especifica la hora de un jugador concreto.
       args: ''
       explanation:
       - '&3&nEjemplos:'
-      - /ptime 13:00:00
-      - /ptime 1pm
-      - /ptime 13
-      - /ptime 7000ticks
-      - /ptime C4BR3R4 1pm
-      - /ptime freeze
-      - /ptime unfreeze
-      - /ptime realtime
-      - /ptime reset
+      - '&3◆ &6/cmi ptime &e13:00:00 &7► Cambia la hora del jugador a la 1 de la tarde
+        (usando este formato).'
+      - '&3◆ &6/cmi ptime &e1pm &7► Cambia la hora del jugador a la 1 de la tarde
+        (usando este formato).'
+      - '&3◆ &6/cmi ptime &e13 &7► Cambia la hora del jugador a la 1 de la tarde (usando
+        este formato).'
+      - '&3◆ &6/cmi ptime &e7000ticks &7► Cambia la hora del jugador a la 1 de la
+        tarde (usando este formato).'
+      - '&3◆ &6/cmi ptime &eYoMismito 1pm &7► Cambia la hora del jugador llamado YoMismito
+        a la 1 de la tarde.'
+      - '&3◆ &6/cmi ptime &efreeze &7► Congela la hora del jugador.'
+      - '&3◆ &6/cmi ptime &eunfreeze &7► Descongela la hora del jugador.'
+      - '&3◆ &6/cmi ptime &erealtime &7► Sincroniza la hora del jugador con la hora
+        real.'
+      - '&3◆ &6/cmi ptime &ereset &7► Restablece la hora del jugador.'
     info:
-      check: '&eHora personal: &6[24h] &eo &6[12h] &eo &6[ticks] ticks'
+      check: '&eTiempo horario personal: &6[24h]H &7([12h] ó [ticks] ticks).'
       frozen: ' &c(-)'
-      gotreseted: '&6[playerDisplayName] &ese ha restaurado el tiempo'
-      gotfrozen: '&6[playerDisplayName] &ese ha congelado el tiempo'
-      gotunfrozen: '&6[playerDisplayName] &ese ha descongelado el tiempo'
-      setto: '&eHora establecida a &6[24h] &eo &6[12h] &eo &6[ticks] ticks &ede &6[playerDisplayName]'
+      gotreseted: '&6[playerDisplayName] &ese ha restaurado tu tiempo horario.'
+      gotfrozen: '&6[playerDisplayName] &ese ha congelado tu tiempo horario.'
+      gotunfrozen: '&6[playerDisplayName] &ese ha descongelado tu tiempo horario.'
+      setto: '&6[playerDisplayName] &ese ha determinado que tu tiempo horario sea
+        las &6[24h]H &7([12h] ó [ticks] ticks).'
   purge:
     help:
       info: Elimina la información de un jugador que ha estado inactivo x días (de
@@ -2672,15 +2980,15 @@ command:
       info: Vuelve a un Rango (inferior).
       args: (nombreJugador) (Rango) (confirm) (-cmd) (-cost)
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Usa el argumento &f-cmd &7para ejecutar el comando definido en el Rango
+      - '&3&nAclaraciones:'
+      - '&3◆ &7el argumento &e-cmd &7para ejecutar el comando definido en el rango
         anterior.'
-      - '&7Usa el argumento &f-cost &7para retirar el dinero, la experiencia o los
-        objetos definidos en el Rango anterior.'
+      - '&3◆ &7Usa el argumento &e-cost &7para retirar el dinero, la experiencia o los objetos
+        definidos en el rango anterior.'
     info:
       noPrev: '&eNo se encuentran &6Rango &einferiores.'
-      list: '&eClica sobre el Rango al que quieres &cvolver&e: '
-      confirm: '&eClic aquí para confirmar que quieres &cvolver &eal &6Rango &ede
+      list: '&ePulsa sobre el Rango al que quieres &cvolver&e: '
+      confirm: '&ePulsa aquí para confirmar que quieres &cvolver &eal &6Rango &ede
         &6[rank]&e.'
       downranked: '&eHas vuelto al &6Rango &ede &6[rank]&e.'
   rankinfo:
@@ -2691,34 +2999,39 @@ command:
       distanceCM: '[value] cm'
       distanceM: '[value] m'
       distanceKm: '[value] km'
-      requiredMoney: '&6| [color]► &eDinero → [color][current] &e/ &6[needed]'
-      requiredExp: '&6| [color]► &eExperiencia → [color][current] &e/ &6[needed]'
-      requiredVotes: '&6| [color]► &eVotos → [color][current] &e/ &6[needed]'
-      requiredPerm: '&6| &e► Otros Requisitos → '
-      requiredMcmmo: '&6| &e► Requisitos de mcMMO → '
-      requiredMcmmoList: '&e[color][name]&e'
-      requiredMcmmoListHover: '&e[color][current] &e/ &6[needed]'
+      requiredMoney: '[color]■ &eDinero ► [color][current] &7de &6[needed]'
+      requiredExp: '[color]■ &eExperiencia ► [color][current] &7de &6[needed]'
+      requiredVotes: '[color]■ &eVotaciones ► [color][current] &7de &6[needed]'
+      requiredPerm: '&6■ &eRequisito ► '
+      requiredMcmmo: '&6■ &emcMMO ► '
+      requiredMcmmoList: '[color][name]&e'
+      requiredMcmmoListHover: '[color][current] &7de &6[needed]'
       requiredMcmmoPower: '&ePotencia'
-      requiredJobs: '&eProfesión: '
-      requiredJobsList: '&e[color][name]'
-      requiredJobsListHover: '&e[color][current] &e/ &6[needed]'
+      requiredAurelium: '&6■ &eHabilidad ► '
+      requiredAureliumList: '&e[color][name] '
+      requiredAureliumListHover: ' &e[color][current]&e/&6[needed]'
+      requiredJobs: '&6■ &eProfesión ► '
+      requiredJobsList: '[color][name]'
+      requiredJobsListHover: '&e[color][current] &7de &6[needed]'
       requiredJobsTotalLevel: '&eNivel Total'
-      requiredItem: '&6| [color]► &eObjetos → '
-      requiredItemsList: '&e[color][name]'
-      requiredItemListHover: '&e[color][current] &e/ &6[needed]'
-      currentRank: \n&6&m-----&r&6【 &aEl Rango actual es &2[rankName] &6】&m-----
-      elseCurrentRank: \n&6&m-----&r&6【&aEl Rango actual de &2[playerDisplayName]
-        &aes &2[rankName] &6】&m-----
-      rankNameLine: '&6| &7Requisitos ([rankupState]) &7del Rango de [rankName]:'
-      canRankup: '&aconseguidos'
-      cantRankup: '&cno conseguidos'
-      requiredStats: '&6| [color]► &e[name][extra] &e→ [color][current] &7de [needed]'
+      requiredItem: '[color]■ &eObjetos ► '
+      requiredItemsList: '[color][name]'
+      requiredItemListHover: '[color][current] &7de &6[needed]'
+      currentRank: '\n&6&m                                                    &r\n&2✔
+        Tu actual rango es: [rankName]'
+      elseCurrentRank: \n&6&m       &r&6【&aEl rango actual de &2[playerDisplayName]
+        &aes &2[rankName] &6】&m       &r
+      rankNameLine: '[rankupState] &cTu siguiente rango es: %cmi_user_nextranks%\n\n&7&nRequisitos
+        necesarios:'
+      canRankup: '&2✔'
+      cantRankup: '&4✘'
+      requiredStats: '[color]■ &e[name][extra] &e► [color][current] &7de &6[needed]'
       requiredStatsExtra: ': [type]'
-      nextRanks: '&6| &7El siguiente Rango es &7'
-      finalRank: '&6| &7Este es el último Rango.'
-      noRank: ' &cNo se encuentra el Rango.'
-      check: '&7Clic para ver el progreso del Rango [rank].'
-      progressBarHover: '&7El progreso del Rango está al [percent]%.'
+      nextRanks: '&8&oPuedes ver los requisitos del rango de: '
+      finalRank: '&8&oEste es el último rango.'
+      noRank: ' &cNo se encuentra el rango.'
+      check: '&7Pulsa para ver los requisitos del rango de [rank].'
+      progressBarHover: '&7El progreso del rango está al [percent]%.'
   ranklist:
     help:
       info: Muestra la lista de los posibles Rango.
@@ -2726,19 +3039,19 @@ command:
     info:
       list: '&2[place]. &6[rankName] [currentRankMarker]'
       currentRankMarker: '&2◄◄◄ Tu Rango.'
-      hoverNext: "&6Next: \n[rankList]"
-      hoverLast: '&2Last rank'
+      hoverNext: "&6Rango siguiente: \n[rankList]"
+      hoverLast: '&2Último Rango.'
   rankset:
     help:
       info: Cambia el Rango de un jugador.
       args: (nombreJugador) [Rango] (-cmd) (-cost)
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Usa el argumento &f-cmd &7para ejecutar el comando configurado al obtener
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usa el argumento &e-cmd &7para ejecutar el comando configurado al obtener
         el Rango.'
-      - '&7Usa el argumento &f-cost &7para retirar el dinero, la experiencia o los
-        objetos configurados para conseguir el Rango, y es más, el jugador obtendrá
-        el Rango aunque no tenga el suficiente dinero, experiencia u objetos.'
+      - '&3◆ &7Usa el argumento &e-cost &7para retirar el dinero, la experiencia o los objetos
+        configurados para conseguir el rango, y es más, el jugador obtendrá el rango
+        aunque no tenga el suficiente dinero, experiencia u objetos.'
     info:
       set: '&6[playerDisplayName] &eobstenta ahora, el &6Rango &ede &6[rankName]&e.'
   rankup:
@@ -2747,11 +3060,11 @@ command:
       args: (nombreJugador) (Rango) (confirm)
     info:
       noRank: ' &eNo tienes ningún &6Rango&e.'
-      requiresPrevious: ' &ePara obtener este Rango es necesario poseer el Rango
-        &6[rank]&e.'
-      list: '&eClica sobre el &6Rango &eque quieres obtener: '
-      confirm: '&6&m--------------------------------------------------&r\n&7[&4!&7]
-        &eHas conseguido el &6Rango &ede &6[rank]&e.\n   &7&oClica aquí para obtenerlo.'
+      requiresPrevious: ' &ePara obtener este rango es necesario poseer el Rango
+        [rank]&e.'
+      list: '&ePulsa sobre el &6Rango &eque quieres obtener: '
+      confirm: '&7[&4!&7] &ePuedes conseguir el &6Rango &ede &6[rank] &epulsando
+        sobre este mensaje.'
   realname:
     help:
       info: Comprueba el nombre real de los jugadores.
@@ -2782,7 +3095,7 @@ command:
       info: Elimina un Hogar.
       args: (nombreHogar) (nombreJugador)
     info:
-      remove: '&cClic para eliminar.'
+      remove: '&cPulsa para eliminar.'
       removed: '&eHogar (&6[home]&e) eliminado.'
       list: '&c[home]'
   removeuser:
@@ -2797,7 +3110,7 @@ command:
       info: Elimina un warp.
       args: (nombreWarp)
     info:
-      remove: '&cClic para eliminar'
+      remove: '&cPulsa para eliminar.'
       removed: '&eWarp (&6[warp]&e) eliminado.'
       notYours: '&c¡Este warp no lo has creado tu!'
   repair:
@@ -2806,12 +3119,12 @@ command:
       args: '[hand/armor/all] (nombreJugador)'
       explanation:
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.repair.hand &7► Permite reparar los objetos en mano.'
-      - '&bcmi.command.repair.armor &7► Permite reparar los objetos de las ranuras
+      - '&3◆ &ecmi.command.repair.hand &7► Permite reparar los objetos en mano.'
+      - '&3◆ &ecmi.command.repair.armor &7► Permite reparar los objetos de las ranuras
         de la armadura.'
-      - '&bcmi.command.repair.all &7► Permite reparar todos los objetos.'
-      - '&bcmi.command.repair.repairshare.bypass &7► Permite reparar objetos que no
-        pueden ser reparados.'
+      - '&3◆ &ecmi.command.repair.all &7► Permite reparar todos los objetos.'
+      - '&3◆ &ecmi.command.repair.repairshare.bypass &7► Permite reparar objetos que
+        no pueden ser reparados.'
     info:
       feedback: '&eHas reparado &3[amount] &eobjetos de &3[playerDisplayName] &8(estando
         [offon])&e.'
@@ -2831,23 +3144,23 @@ command:
   replaceblock:
     help:
       info: Sustituye bloques cercanos del mundo actual.
-      args: id [bloque:data/id:data] w [bloque:data/id:data] r [distancia en chunks/g]
+      args: id [bloque:data/id:data] w [bloque:data/id:data] r [distancia en sectores/g]
         y [altura máxima]
       explanation:
-      - '&6Sub-Comandos:'
-      - '&epause &7► Detiene el proceso.'
-      - '&econtinue &7► Reanuda el proceso.'
-      - '&estop &7► Cancela el proceso.'
-      - '&espeed [cantidad] &7► Determina la velocidad actual del procesamiento.'
-      - '&eautospeed [true/false] &7► Activa o desactiva la velocidad automática.'
-      - '&emessages [true/false] &7► Activa o desactiva los mensajes de información.'
+      - '&6&nSub-Comandos:'
+      - '&3◆ &epause &7► Detiene el proceso.'
+      - '&3◆ &econtinue &7► Reanuda el proceso.'
+      - '&3◆ &estop &7► Cancela el proceso.'
+      - '&3◆ &espeed [cantidad] &7► Determina la velocidad actual del procesamiento.'
+      - '&3◆ &eautospeed [true/false] &7► Activa o desactiva la velocidad automática.'
+      - '&3◆ &emessages [true/false] &7► Activa o desactiva los mensajes de información.'
       - '&3&nEjemplos:'
-      - /cmi replaceblock id 52 w stone r 10
-      - /cmi replaceblock id 52,gold_block w stone r 15 y 100
-      - /cmi replaceblock id 52 w air r g y 100
-      - /cmi replaceblock id iron_ore%75 w stone%90,dirt%5 r g
+      - '&3◆ &6/cmi replaceblock id &e52 w stone r 10'
+      - '&3◆ &6/cmi replaceblock id &e52,gold_block w stone r 15 y 100'
+      - '&3◆ &6/cmi replaceblock id &e52 w air r g y 100'
+      - '&3◆ &6/cmi replaceblock id &eiron_ore%75 w stone%90,dirt%5 r g'
     info:
-      startScanning: '&eHay que buscar en &6[amount] &echunks. ¡Iniciando el proceso!'
+      startScanning: '&eHay que buscar en &6[amount] &esectores. ¡Iniciando el proceso!'
       paused: '&eSustitución detenida temporalmente, para continuar usa &6/cmi blockreplace
         continue.'
       continuing: '&eRetomando la sustitución.'
@@ -2883,8 +3196,8 @@ command:
       info: Monta la entidad que se está mirando.
       args: ''
       explanation:
-      - '&3Permiso asociado:'
-      - '&bcmi.command.ride.[tipoEntidad] &7► Permite montar criaturas.'
+      - '&3&nPermiso asociado:'
+      - '&3◆ &ecmi.command.ride.[tipoEntidad] &7► Permite montar criaturas.'
     info:
       riding: '&eEstás montando &6[entityName]&e.'
       cantRide: '&cNo puedes montar la entidad (&6[entityName]&c).'
@@ -2896,12 +3209,12 @@ command:
       info: Aparece en un lugar aleatorio.
       args: (nombreJugador) (mundo)
     info:
-      posible: '&eMundos posibles: &6[worlds]'
+      possible: '&eMundos disponibles: &6[worlds]'
       tpLimit: '&eNo puedes volver a aparecer tan rápidamente, por favor espera &6[time]
         &emás y vuelve a intentarlo.'
       IncorrectLocation: '&6No se encuentra el lugar correcto de aparición, por favor
         espera &e[time] &6y vuelve a intentarlo.'
-      teleported: '!actionbar!&6¡¡¡Magia!!!'
+      teleported: '!actionbar!&6¡¡¡Experiencia!!!'
       waiting: '!actionbar!&6Buscando un lugar adecuado. Espera por favor.'
   sameip:
     help:
@@ -2923,8 +3236,8 @@ command:
       info: Guarda el inventario de todos los jugadores.
       args: (días/-online)
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Puedes usar el argumento &f-online &7para guardar únicamente los inventarios
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Puedes usar el argumento &e-online &7para guardar únicamente los inventarios
         de los jugadores conectados.'
     info:
       saving: '[simbol] &2Comprobados: &e[checked]&2 de &e[total] &2| Guardado: &e[saved]
@@ -2938,8 +3251,8 @@ command:
         (-s)'
     info:
       info:
-      - '&7Botón Izquierdo ► Obtener el objeto.'
-      - '&7Botón Central ► Eliminar el objeto.'
+      - '&7⌨ Botón Izquierdo ➟ Obtener el objeto.'
+      - '&7⌨ Botón Central ➟ Eliminar el objeto.'
       got: '&eSe ha obtenido el objeto llamado &6[name]&e.'
       give: '&eSe ha entregado el objeto llamado &6[name]&e.'
       removed: '&eSe ha eliminado el objeto llamado &6[name]&e.'
@@ -2961,33 +3274,33 @@ command:
       info: Busca objetos en el mundo actual.
       args: ''
       explanation:
-      - '&3&nSub-Comandos:'
-      - '&estats &7► Muestra estadísticas sobre la búsqueda.'
-      - '&epause &7► Para la búsqueda.'
-      - '&econtinue &7► Continúa la búsqueda.'
-      - '&estop &7► Detiene la búsqueda.'
-      - '&espeed [amount] &7► Determina la velocidad de búsqueda.'
-      - '&eautospeed [true/false] &7► Activa o desactiva la velocidad automática.'
-      - '&emessages [true/false] &7► Activa o desactiva los mensajes de información.'
+      - '&3&nSubcomandos:'
+      - '&3◆ &estats &7► Muestra estadísticas sobre la búsqueda.'
+      - '&3◆ &epause &7► Para la búsqueda.'
+      - '&3◆ &econtinue &7► Continúa la búsqueda.'
+      - '&3◆ &estop &7► Detiene la búsqueda.'
+      - '&3◆ &espeed [amount] &7► Determina la velocidad de búsqueda.'
+      - '&3◆ &eautospeed [true/false] &7► Activa o desactiva la velocidad automática.'
+      - '&3◆ &emessages [true/false] &7► Activa o desactiva los mensajes de información.'
       - '&3&nArgumentos:'
-      - '&eid &6[id:data]'
-      - '&eq &6[cantidad mínima]'
-      - '&er &6[distancia en chunks] &7► Usa una &fg &7en vez de la distancia para
-        buscar en todo el mundo.'
-      - '&en &6[nombre del objeto]'
-      - '&el &6[descripción del objeto]'
-      - '&eh &7► Usa la información del objeto de tu mano.'
-      - '&ee &6[nombre del encantamiento]'
-      - '&eelvl &6[nivel mínimo del encantamiento]'
-      - '&eoversize'
-      - '&epurge &7► Elimina los objetos encontrados, si la característica correspondiente
+      - '&3◆ &eid &6[id:data]'
+      - '&3◆ &eq &6[cantidad mínima]'
+      - '&3◆ &er &6[distancia en sectores] &7► Usa una &eg &7en vez de la distancia
+        para buscar en todo el mundo.'
+      - '&3◆ &en &6[nombre del objeto]'
+      - '&3◆ &el &6[descripción del objeto]'
+      - '&3◆ &eh &7► Usa la información del objeto que tienes en tu mano.'
+      - '&3◆ &ee &6[nombre del encantamiento]'
+      - '&3◆ &eelvl &6[nivel mínimo del encantamiento]'
+      - '&3◆ &eoversize'
+      - '&3◆ &epurge &7► Elimina los objetos encontrados, si la característica correspondiente
         está activada en el archivo de configuración.'
       - '&3&nEjemplos:'
-      - /scan id 52 r 30
-      - /scan id diamond_block r g q 32
+      - '&3◆ &6/scan id &e52 r 30'
+      - '&3◆ &6/scan id &ediamond_block r g q 32'
     info:
-      loadingChunkInfo: '&e¡Cargando información sobre el chunk!'
-      startScanning: '&eHay que buscar en &6[amount] &echunks. ¡Iniciando el proceso!'
+      loadingChunkInfo: '&e¡Cargando información sobre el sector!'
+      startScanning: '&eHay que buscar en &6[amount] &esectores. ¡Iniciando el proceso!'
       paused: '&eBúsqueda detenida temporalmente, para continuar usa &6/cmi scan continue&e.'
       continuing: '&eCuntinuando la búsqueda...'
       stoped: '&eBúsqueda detenida. Puedes comprobar el resultado usando &6/cmi scan
@@ -3004,8 +3317,8 @@ command:
       edit: ' &e(Editar)'
       total: '&eComprobados [current]/[until] de [total] en total.'
       Stats:
-      - '&6&m--------------------------------------------------'
-      - '&6► &eChunks: &6[checked]&e/&6[total]'
+      - '&6&m                                                  &r'
+      - '&6► &eSectores: &6[checked]&e/&6[total]'
       - '&6► &eDistancia de búsqueda: &6[range]'
       - '&6► &eVelocidad de búsqueda: &6[scanspeed] &e(&6[autospeed]&e)'
       - '&6► &eMundo: &6[world]'
@@ -3015,7 +3328,7 @@ command:
       - '&6► &eCantidad: &6más de [qty]'
       - '&6► &eNombre: &6[name]'
       - '&6► &eDescripción: &6[lore]'
-      - '&6&m--------------------------------------------------'
+      - '&6&m                                                  &r'
   scavenge:
     help:
       info: Desmonta objetos y recupera encantamientos.
@@ -3029,7 +3342,7 @@ command:
       gotIngredients: '&aHas recuperado: [itemList]'
       gotIngredientsFormat: '&2[material] &ax&2[amount]'
       itemBroke: '&cEl objeto se ha roto con una probabilidad del &4[chance]%&c.'
-      confirm: '&cClic para &4CONFIRMAR &cpor valor de &4[price]&c.'
+      confirm: '&cPulsa para &4CONFIRMAR &cpor valor de &4[price]&c.'
       itemBreakChance: '&4► &7Probabilidad de pérdida de objetos del &f[chance]%&7.'
       itemBreakChanceExtra: '&4► &7Incremento de pérdida de objetos del &f[chance]%&7,
         &8causado\n  &8por el [durability]% de durabilidad del objeto.'
@@ -3053,8 +3366,8 @@ command:
       info: Modifica las líneas de un cartel.
       args: '[línea] [texto]'
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Usa &f/ n &7para añadir una línea.'
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usa &e/ n &7para añadir una línea.'
   search:
     help:
       info: Busca objetos/encantamientos/modo de vuelo/salud/modo de juego y/o cualquier
@@ -3062,20 +3375,20 @@ command:
       args: ''
       explanation:
       - '&3&nArgumentos:'
-      - '&eid [id:data] '
-      - '&ename [nombre_de_objeto_personalizado] '
-      - '&elore [descripción_personalizada] '
-      - '&eenchant [mínimo nivel de encantamiento] '
-      - '&epotion [mínimo efecto de poción personalizado] '
-      - '&efly [true o false] '
-      - '&egm [0/1/2/3 o survival/creative/adventure/spectator] '
-      - '&emaxhp [nivel mínimo de salud que tiene el jugador] '
-      - '&egod [true/false]'
-      - '&eoversize'
+      - '&3◆ &eid [id:data] '
+      - '&3◆ &ename [nombre_de_objeto_personalizado] '
+      - '&3◆ &elore [descripción_personalizada] '
+      - '&3◆ &eenchant [mínimo nivel de encantamiento] '
+      - '&3◆ &epotion [mínimo efecto de poción personalizado] '
+      - '&3◆ &efly [true o false] '
+      - '&3◆ &egm [0/1/2/3 o survival/creative/adventure/spectator] '
+      - '&3◆ &emaxhp [nivel mínimo de salud que tiene el jugador] '
+      - '&3◆ &egod [true/false]'
+      - '&3◆ &eoversize'
       - '&3&nEjemplos:'
-      - /search gm 1
-      - /search id 52
-      - /search lore Descripcion_de_prueba
+      - '&3◆ &6/search &egm 1'
+      - '&3◆ &6/search &eid 52'
+      - '&3◆ &6/search &elore Descripcion_de_prueba'
     info:
       started: '&eBuscando... '
       current: '&eSe han encontrado &6[amount] &ede &6[files] &earchivos.'
@@ -3092,7 +3405,7 @@ command:
         &7Este proceso tardará más tiempo en concluirse.
       reglist: '&7[number]. &6[name]'
       list: '&7[number]. [location] &6[name]'
-      listhover: '&7Clic para abrir.'
+      listhover: '&7Pulsa para abrir.'
   seen:
     help:
       info: Muestra cuando se conectó por última vez un jugador.
@@ -3109,8 +3422,8 @@ command:
       info: Vende objetos.
       args: (all/blocks/hand/same/gui)
     info:
-      total: '&eHas vendido &6[amount] &eobjetos por valor de &6[total]&e.\n&7Ahora
-        tienes &f[balance]&7.'
+      total: '&aHas vendido &2[amount] &aobjetos por valor de &6[total]&a.\n&8Ahora
+        tienes &7[balance]&8.'
       close: '&cIntroduce los objetos a vender.'
       sellInfo: '&aVender todo por: &2[price]'
   sendall:
@@ -3128,6 +3441,7 @@ command:
     info:
       listOnline: '&7[place]. &2[serverName] &6[count]&7/&6[max]'
       listOffline: '&7[place]. &c[serverName] &60&7/&60'
+      consoleInfo: ' &f(&2[ip]&f:&2[port]&f)'
   servertime:
     help:
       info: Muestra la hora del servidor.
@@ -3147,41 +3461,41 @@ command:
       info: Especifica el lugar de aparición de la primera conexión del jugador.
       args: (nombreJugador)
     info:
-      feedback: '&eSe ha determinado el lugar de aparición de la primera conexión
+      feedback: '&e¡Se ha establecido el lugar de aparición de la primera conexión
         del jugador (&6[world]&e,&6[x]&e,&6[y]&e,&6[z]&e)!'
   sethome:
     help:
       info: Crea un Hogar.
       args: (nombre) (nombreJugador) (-p) (-l:worldName;x;y;z) (objeto/Bloque) (númeroHueco)
       explanation:
-      - '&3&nDescripción extendida:'
-      - se define el argumento &f-l &7para determinar la posición del nuevo hogar
-        será necesario el permiso correspondiente.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Si se define el argumento &e-l &7para determinar la posición del nuevo
+        hogar, será necesario el permiso correspondiente.'
       - '&3&nPermiso asociado:'
-      - '&bcmi.command.sethome.unlimited &7► Anula la limitación del número de hogares.'
-      - '&bcmi.command.sethome.customloc &7► Permiso necesario para determinar la
-        posición del nuevo hogar.'
+      - '&3◆ &ecmi.command.sethome.unlimited &7► Anula la limitación del número de
+        hogares.'
+      - '&3◆ &ecmi.command.sethome.customloc &7► Permiso necesario para determinar
+        la posición del nuevo hogar.'
     info:
       set: '&e¡Has creado el hogar (&7[homeName]&e)!'
       setBed: '&eHas creado un lugar de aparición en la cama.'
       private: ' &2(hogar privado)'
       noMore: '&cNo puedes crear más hogares.'
-      exist: "&cHome location with this name (&6[name]&c) already exists! \n&eClick\
-        \ to confirm overwrite."
+      exist: "&c¡Ya existe un lugar con este nombre (&6[name]&c)! \n&ePulsa para sobrescribir."
       noOverwrite: '&cNo tienes permiso para sustituir hogares. Elimina primero el
         hogar o introduce un nombre diferente para crear otro.'
       slotTaken: '!actionbar!&cLa posición ya está siendo utilizado por el hogar &7[homeName]&c,
-        utliliza otra posición.'
+        utiliza otra posición.'
       setIcon: '!actionbar:3!&7El icono del hogar se a establecido como &6[material]&7.'
-      tooManyInWorld: '&cYou cant have any more homes in this world. Max &6[max]&c
-        allowed, you have &6[current]'
+      tooManyInWorld: '&cNo puedes tener más hogares en este mundo. Tienes &6[current]
+        &chogares y puedes tener &6[max]&c.'
   setmotd:
     help:
       info: Especifica el mensaje del día (motd) del servidor.
       args: '[nuevoMensaje] (-s)'
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Usa &f\n &7para crear una línea nueva.'
+      - '&3&nAclaraciones:'
+      - '&3◆ Usa &e\n &7para crear un salto de línea.'
     info:
       changed: '&eMensaje del día (motd) cambiado por:'
   setrt:
@@ -3194,33 +3508,33 @@ command:
         [type]'
   setspawn:
     help:
-      info: Especifica el punto de aparición del comando spawn.
+      info: Especifica el lugar de aparición del comando /spawn.
       args: (nombreJugador) (true/false) (-g:[grupo]) (-rng:[distancia]) (-w:mundo,mundo_nether)
         (loc:[mundo;x;y;z;yaw;pitch])
       explanation:
-      - '&3&nDescripción extendida:'
-      - Más información sobre el uso del comando en https://www.spigotmc.org/wiki/cmi-basic-utilities/
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Más información sobre el uso del comando en &ehttps://www.spigotmc.org/wiki/cmi-basic-utilities/&7.'
     info:
-      feedback: '&eSe ha determinado el punto de aparición de &6/spawn &een el mundo
-        &6[world] &ey coordenadas &6[x],[y],[z]&e'
+      feedback: '&eSe ha determinado el lugar de aparición del comando &6/spawn &een
+        el mundo &6[world] &ey coordenadas &6[x],[y],[z]&e'
       group: ' &epara el Grupo &6[group]&e'
       rng: ' &ey Radio &6[rng]&e.'
-      respawn: '&7Clic para determinar este lugar como punto de aparición alternativo.'
+      respawn: '&7Pulsa para determinar esta posición como lugar de aparición alternativo.'
   setwarp:
     help:
       info: Especifica el lugar de un warp.
       args: '[nombreDelWarp] (true/false) (hand) (hueco) (autoDescripción) (-g:[Grupo])'
       explanation:
       - '&3&nEjemplos:'
-      - /cmi setwarp prueba &7► Crea un warp simple con el nombre prueba.
-      - /cmi setwarp prueba true &7► Crea un warp que necesita el permiso &fcmi.command.warp.prueba
-        &7para poder usarlo.
-      - /cmi setwarp prueba hand &7► Crea un warp estableciendo el objeto que sostienes
-        como icono en la GUI de los warps.
-      - /cmi setwarp prueba 13 &7► Crea un warp usando el hueco número 13 de la GUI
-        de los warps (1-54).
-      - /cmi setwarp prueba true hand 13 &7► Crea un warp usando todas los ejemplos
-        anteriores en un solo comando.
+      - '&3◆ &6/cmi setwarp &eprueba &7► Crea un warp simple con el nombre prueba.'
+      - '&3◆ &6/cmi setwarp &eprueba true &7► Crea un warp que necesita el permiso
+        &fcmi.command.warp.prueba &7para poder usarlo.'
+      - '&3◆ &6/cmi setwarp &eprueba hand &7► Crea un warp estableciendo el objeto
+        que sostienes como icono en la interfaz de los warps.'
+      - '&3◆ &6/cmi setwarp &eprueba 13 &7► Crea un warp usando el hueco número 13
+        de la interfaz de los warps (1-54).'
+      - '&3◆ &6/cmi setwarp &eprueba true hand 13 &7► Crea un warp usando todas los
+        ejemplos anteriores en un solo comando.'
     info:
       newSet: '&eSe ha creado un nuevo warp llamado &6[warp]&e.'
       noSet: '&cYa existe un warp con este nombre.'
@@ -3230,21 +3544,21 @@ command:
       info: Cambia el precio de un objeto.
       args: (objeto) -s:(precioVenta)
     info:
-      setSell: '&aVende el objeto al precio de &2[amount]&a.'
-      setBuy: '&cCompra el objeto al precio de &4[amount]&c.'
+      setSell: '&7Cambiar precio de Venta ± [amount]'
+      setBuy: '&7Cambiar precio de Compra ± [amount]'
       notInUse: '&7Utilizado principalmente para la detección de posibles explotaciones
         del objeto.'
-      sellPrice: '&aPrecio de venta actual = &6[amount]'
-      buyPrice: '&cPrecio de compra actual = &6[amount]'
+      sellPrice: \n&ePrecio de Venta = &6[amount]
+      buyPrice: '&aPrecio de Compra = &2[amount]'
       exploit: '&4¡Atención posible EXPLOTACIÓN!'
-      ingridient: '&aIngredientes necesarios:'
-      ingridients: '&7[amount] unidades de [ingridient] = &e[price]'
-      notSet: '&cVenta sin definir.'
-      notSetBuy: '&7Compra sin definir'
-      result: '&aFabricación de [amount] &2[result]&a:'
-      ingridientsPrice: '&cPrecio de los ingredientes = &6[price]'
-      resultPrice: '&cPrecio de venta resultante = &6[price]'
-      explanation: '&2El precio de compra solo se usa para detectar posibles explotaciones.'
+      ingredient: '&2Ingredients'
+      ingredients: '&7[ingredient]&f(&7[amount]&f) = &e[price]'
+      notSet: '&7Precio de Venta sin definir.'
+      notSetBuy: '&7Precio de Compra sin definir'
+      result: '\n&b&nResultado de Fabricación de &3&n[amount] [result]&b&n:'
+      ingredientsPrice: '&cPrecio del ingrediente: &7[price]'
+      resultPrice: '&bSe puede vender por: &3[price]'
+      explanation: \n&8El precio de compra solo se usa para\n&8detectar posibles explotaciones.
   shadowmute:
     help:
       info: Silencia a un jugador sin decírselo.
@@ -3260,24 +3574,13 @@ command:
     help:
       info: Lanza un proyectil.
       args: (nombreJugador) (-t:jugadorDeDestino) (tipo) (velocidad)
-  signspy:
-    help:
-      info: Activa o desactiva el control de colocación de carteles.
-      args: (nombreJugador)
-      explanation:
-      - '&3Permiso asociado:'
-      - '&bcmi.command.signspy.hide &7► Evita que los carteles creados puedan ser
-        controlados.'
-    info:
-      text: '&5Control de Carteles de &7[&8[senderDisplayName]&7]&7: &r[text]'
-      toggled: '&eHas &6[state] &eel control de colocación de carteles.'
   silence:
     help:
       info: Silencia el chat.
       args: ''
       explanation:
       - '&3Permiso asociado:'
-      - '&bcmi.command.silence.bypass &7► Evita ser silenciado en el chat.'
+      - '&3◆ &ecmi.command.silence.bypass &7► Evita ser silenciado en el chat.'
     info:
       enabled: '&eModo silencio &2Activado&e.'
       disabled: '&eModo silencio &cDesactivado&e.'
@@ -3287,13 +3590,15 @@ command:
       info: Silencia los cofres.
       args: ''
       explanation:
-      - '&3&nDescripción extendida:'
-      - Los jugadores que te rodean no verán la animación de apertura del cofre y
-        tampoco lo oirán abrirse.
-      - '&7Para que esta característica funcione ha de estar instalado el plugin &fProtocolLib&7.'
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Los jugadores que te rodean no verán la animación de apertura del cofre
+        y tampoco lo oirán abrirse.'
+      - '&3◆ &7Para que esta característica funcione ha de estar instalado el plugin
+        &eProtocolLib&7.'
     info:
       feedback: '&eHas &3[offon] &eel modo silencioso de cofres.'
       onOpen: '&eHas abierto el cofre silenciosamente.'
+      cantOpen: '&cNo se puede abrir. Aún no se ha generado el cofre.'
   sit:
     help:
       info: Siéntate en el lugar donde te encuentras.
@@ -3327,16 +3632,6 @@ command:
       feedback: '&eHas abierto una mesa de herrería para &3[playerDisplayName]&e &8(estando
         [offon])&e.'
       targetfeedback: '&3[senderDisplayName]&e te ha abierto una mesa de herrería.'
-  socialspy:
-    help:
-      info: Controla los mensajes que envían los jugadores.
-      args: (nombreJugador)
-    info:
-      msg: '&5Control de Mensajes de &7[&8[senderDisplayName] &7► &8[playerDisplayName]&7]
-        &5► &f[message]'
-      custom: '&5Control de Mensajes de &7[&8senderDisplayName] &7► &4|&8[place]&4|&f
-        [message]'
-      toggled: '&eHas &6[state] &eel control de mensajes.'
   solve:
     help:
       info: Resuelve una ecuación.
@@ -3356,12 +3651,12 @@ command:
         &eCabezada: &6[pitch] &eVolumen: &6[volume]"
   spawn:
     help:
-      info: Aparece en el inicio.
+      info: Aparece en el Inicio.
       args: (nombreJugador)
     info:
-      notset: '&4¡No se ha determinado el punto de aparición del inicio!'
+      notset: '&4¡No se ha establecido el lugar de aparición del Inicio!'
       feedback: '&6¡Has aparecido en el inicio!'
-      feedbackother: '&e[playerDisplayName] &6ha sido forzado a aparecer en el inicio.'
+      feedbackother: '&e[playerDisplayName] &6ha sido forzado a aparecer en el Inicio.'
   spawner:
     help:
       info: Determina el tipo de Generador (spawner).
@@ -3377,7 +3672,7 @@ command:
       info: Modifica un Generador (spawner).
       args: ''
     info:
-      type: '&eGenerador de &6[type]&e\n&8► Clic para cambiar el tipo de generador.'
+      type: '&eGenerador de &6[type]&e\n&8► Pulsa para cambiar el tipo de generador.'
       nextIn: '&eSiguiente generación en &6[time]'
       nearby: '&eEntidades Máximas Cercanas: &6[count]'
       maxdelay: '&eIntervalo Máximo de Generación: &6[count]'
@@ -3390,43 +3685,47 @@ command:
       info: Genera una entidad en el lugar donde te encuentras.
       args: '[TipoDeEntidad]'
       explanation:
-      - '&3&nDescripción extendida:'
-      - El primer argumento siempre debe ser el nombre de la entidad principal
-      - 'Puedes definir el estado de la entidad como: baby, adult, dumb, tamed, n-[nombre],
-        upwards, glow, skull-[nombre], helmet-[objeto], chest-[objeto], legs-[objeto],
-        boots-[objeto], mhand-[objeto], ohand-[objeto], effect-levitation/10/1-speed/10/2.'
+      - '&3&nAclaraciones:'
+      - '&3◆ El primer argumento siempre debe ser el nombre de la entidad principal.'
+      - '&3◆ Puedes definir el estado de la entidad como: baby, adult, dumb, tamed,
+        n-[nombre], upwards, glow, skull-[nombre], helmet-[objeto], chest-[objeto],
+        legs-[objeto], boots-[objeto], mhand-[objeto], ohand-[objeto], effect-levitation/10/1-speed/10/2.'
       - '&3&nArgumentos de las Criaturas:'
-      - '&eSheep &7► white, brown, red, rainbow etc... primed_tnt &7► [ticks], incendiary'
-      - '&eHorse &7► white, chestnut, creamy, darkbrown, gray, black'
-      - '&eOcelot &7► red, siamese, wild, black experience_orb &7► [número]'
-      - '&eSkeleton &7► wither, Creeper &7► charged Wolf &7► angry'
-      - '&eZombie &7► villager, blacksmith, butcher, farmer, priest, librarian'
-      - '&eVillager &7► blacksmith, butcher, farmer, priest, librarian'
-      - '&eSlime, MagmaCube &7► tamaño a partir de 1. slime:3'
-      - '&eArmorStands &7► nogravity, noplate, arms, noarms, small'
-      - '&eShulkerBullet &7► [target], bounce'
+      - '&3◆ &eSheep &7► white, brown, red, rainbow etc... primed_tnt &7► [ticks],
+        incendiary'
+      - '&3◆ &eHorse &7► white, chestnut, creamy, darkbrown, gray, black'
+      - '&3◆ &eOcelot &7► red, siamese, wild, black experience_orb &7► [número]'
+      - '&3◆ &eSkeleton &7► wither, Creeper &7► charged Wolf &7► angry'
+      - '&3◆ &eZombie &7► villager, blacksmith, butcher, farmer, priest, librarian'
+      - '&3◆ &eVillager &7► blacksmith, butcher, farmer, priest, librarian'
+      - '&3◆ &eSlime, MagmaCube &7► tamaño a partir de 1. slime:3'
+      - '&3◆ &eArmorStands &7► nogravity, noplate, arms, noarms, small'
+      - '&3◆ &eShulkerBullet &7► [target], bounce'
       - '&3&nArgumentos adicionales:'
-      - '&eps:zombie:priest:baby-1 &7► pasajero con cantidad'
-      - '&ehp:20 &7► Salud.'
-      - '&esp:3 &7► Genera criaturas aleatoriamente en el rango especificado.'
-      - '&es:4 &7► Velocidad de las criaturas.'
-      - '&et:[nombreJogador] &7► Define que tipo de criaturas atacará.'
-      - '&eq:10 &7► Cantidad de criaturas que se generarán.'
-      - '&e[nombreJugador] &7► Genera criaturas en la posición del jugador.'
-      - '&eloc:123/13.0/-15/Mundo &7► Lugar de generación. El nombre del mundo es
-        opcional si el comando se usa en el juego.'
+      - '&3◆ &eps:zombie:priest:baby-1 &7► Pasajero con cantidad.'
+      - '&3◆ &ehp:20 &7► Salud.'
+      - '&3◆ &esp:3 &7► Genera criaturas aleatoriamente en el rango especificado.'
+      - '&3◆ &es:4 &7► Velocidad de las criaturas.'
+      - '&3◆ &et:[nombreJogador] &7► Define que tipo de criaturas atacará.'
+      - '&3◆ &eq:10 &7► Cantidad de criaturas que se generarán.'
+      - '&3◆ &e[nombreJugador] &7► Genera criaturas en la posición del jugador.'
+      - '&3◆ &eloc:123/13.0/-15/Mundo &7► Lugar de generación. El nombre del mundo
+        es opcional si el comando se usa en el juego.'
       - '&3&nEjemplos:'
-      - /cmi spawnmob horse:baby:tamed:n-Caballito
-      - /cmi spawnmob zombie:skull-C4BR3R4:n-ZombiGruñón:mhand-Diamond_Sword
-      - /cmi spawnmob sheep:adult:rainbow ps:chicken:baby:n-Pollo_en_Oveja q:10 sp:10
-        hp:50 s:2
+      - '&3◆ &6/cmi spawnmob &ehorse:baby:tamed:n-Caballito'
+      - '&3◆ &6/cmi spawnmob &ezombie:skull-YoMismito:n-ZombiGruñón:mhand-Diamond_Sword'
+      - '&3◆ &6/cmi spawnmob &esheep:adult:rainbow ps:chicken:baby:n-Pollo_en_Oveja
+        q:10 sp:10 hp:50 s:2'
     info:
       wrongEntityName: '&eNombre de entidad incorrecta.'
-      wrongPlayerName: '&eNombre de jugador incorrecto.'
       spawnedEntities: '&eSe han generado &6[entities] &ecriaturas '
       spawnedPasangers: '&ey &6[passengers] &epasajeros.'
       nothingSpawned: '&eNO se han generado criaturas.'
       cantSpawn: '&eNo se puede generar este tipo de criatura.'
+  speed:
+    help:
+      info: Establece la velocidad al andar o volar de un jugador.
+      args: (nombreJugador) [velocidad] (-s)
   staffmsg:
     help:
       info: Envía mensajes al canal de moderación.
@@ -3452,7 +3751,7 @@ command:
       Sleep: '&eVeces acostado: &6[value]'
       Joined: '&ePrimera conexión: &6[time]'
       Jumps: '&eSaltos: &6[value]'
-      SinceDeath: '&eÚltima muerte: &6[value]'
+      SinceDeath: '&eLongevidad: &6[value]'
       Deaths: '&eMuertes: &6[value]'
       DeathsByMonsters: '&eMuertes por Monstruos: &6[value]'
       TotalDistance: '&eDistancia recorrida: &6[value]'
@@ -3470,7 +3769,7 @@ command:
       Horse: '&eA Caballo: &6[value]'
       Elytra: '&eVolado con Élitros: &6[value]'
       Damage: '&eDaño &6[dealt] &e| Daño &6[taken]'
-      DamageDealt: '&eprovocado: &6[value]'
+      DamageDealt: '&einfligido: &6[value]'
       DamageTaken: '&erecibido: &6[value]'
       JUMP: '&eSaltos: &6[value]'
       Kills: '&eExterminaciones de &6'
@@ -3486,16 +3785,16 @@ command:
       ItemsBroken: '&eRotos &6[value]&e,'
       ItemsCrafted: '&eCreados &6[value]&e,'
       ItemsEnchanted: '&eEncantados &6[value]&e.'
-      Opened: '&eAbierto &6[list]&e,'
+      Opened: '&eAperturas de: &6[list]&e,'
       OpenChest: '&eCofres &6[value]&e,'
       OpenEnder: '&eCofres de Ender &6[value]&e,'
       OpenShulker: '&eCajas de Shulker &6[value]&e,'
-      Interacted: '&eInteractuado &6[list]&e,'
+      Interacted: '&eInteracciones con: &6[list]&e,'
       InteractBeacon: '&eBalizas &6[value]&e,'
       InteractBrewingStand: '&eSoporte de Pociones &6[value]&e,'
       InteractCraftTable: '&eMesas de Trabajo &6[value]&e,'
       InteractFurnace: '&eHornos &6[value]&e.'
-      Inspected: '&eInspecionado &6[list]&e,'
+      Inspected: '&eInspecciones de: &6[list]&e,'
       InspectDispenser: '&eDispensadores &6[value]&e,'
       InspectDropper: '&eLanzadores &6[value]&e,'
       InspectHopper: '&eTolvas &6[value]&e.'
@@ -3505,7 +3804,7 @@ command:
         TIME_SINCE_DEATH: Tiempo desde la última muerte
         TIME_SINCE_REST: Tiempo desde la última sesión
         SNEAK_TIME: Agachado
-        ACOUNT_AGE: Inicio de Sesión
+        ACOUNT_AGE: Sesiones iniciadas
         TRAVEL: Desplazado
         WALK_ONE_CM: Caminado
         CROUCH_ONE_CM: Agachado
@@ -3520,7 +3819,7 @@ command:
         MINECART_ONE_CM: Desplazado en Vagoneta
         BOAT_ONE_CM: Desplazado en Barca
         PIG_ONE_CM: Desplazado en Cerdo
-        HORSE_ONE_CM: Desplazado en Caballo
+        HORSE_ONE_CM: Desplazado a Caballo
         AVIATE_ONE_CM: Volado con Élitros
         JUMP: Saltado
         DAMAGE_DEALT: Daño ejercido
@@ -3531,15 +3830,15 @@ command:
         DAMAGE_ABSORBED: Daño absorbido
         DAMAGE_RESISTED: Daño resistido
         DEATHS: Muertes
-        ENTITY_KILLED_BY: Asesinado por
-        MOB_KILLS: Seres eliminados
-        PLAYER_KILLS: Jugadores Asesinados
+        ENTITY_KILLED_BY: Criaturas asesinadas por
+        MOB_KILLS: Monstruos eliminados
+        PLAYER_KILLS: Jugadores asesinados
         ITEM_ENCHANTED: Objetos encantados
-        ANIMALS_BRED: Animales alimentados
+        ANIMALS_BRED: Animales criados
         FISH_CAUGHT: Peces capturados
         TALKED_TO_VILLAGER: Hablado con Aldeanos
         TRADED_WITH_VILLAGER: Comerciado con Aldeanos
-        CAKE_SLICES_EATEN: Porciones de Pastel comidos
+        CAKE_SLICES_EATEN: Trozos de Pastel comidos
         CAULDRON_FILLED: Calderos rellenados
         CAULDRON_USED: Calderos usados
         ARMOR_CLEANED: Armaduras limpiadas
@@ -3556,7 +3855,7 @@ command:
         ENDERCHEST_OPENED: Cofre de Ender abierto
         NOTEBLOCK_PLAYED: Bloque de Notas activado
         NOTEBLOCK_TUNED: Bloque de Notas configurado
-        FLOWER_POTTED: Flores en Macetero
+        FLOWER_POTTED: Maceteros plantados
         RECORD_PLAYED: Discos escuchados
         SLEEP_IN_BED: Dormido
         SHULKER_BOX_OPENED: Cajas de Shulker abiertas
@@ -3583,7 +3882,7 @@ command:
         BELL_RING: Campanas usadas
         RAID_TRIGGER: Invasiones activadas
         RAID_WIN: Invasiones defendidas
-        TARGET_HIT: Veces Impactadas
+        TARGET_HIT: Impactos
         OPEN_BARREL: Barriles abiertos
         DROP_COUNT: Objetos soltados
         TOTAL_WORLD_TIME: Permanecido en el Mundo
@@ -3618,8 +3917,8 @@ command:
       Java: ' &eJava: &6v[mainV].[majorV].[minorV] &e(&6[update]&e) &7|| &eCompilación:
         &6[build]'
       DiskUsage: ' &eEspacio Usado: &6[current] GB &ede &6[max] GB &e(&6[percent]%&e)'
-      Worlds: ' &eMundo &6[number] &8► &6[world]&e: &6[chunks] &eChunks, &6[entities]
-        &eCriaturas, &6[tiles] &epartes y &6[players] &ejugadores.'
+      Worlds: ' &7Mundo [number] &8| &6[world] &8► &6[chunks] &eSectores, &6[entities]
+        &eCriaturas, &6[tiles] &ePartes y &6[players] &eJugadores.'
   stonecutter:
     help:
       info: Abre un Cortapiedras.
@@ -3634,7 +3933,7 @@ command:
       args: '[nombreJugador] (comando/c:[Texto])'
       explanation:
       - '&3&nPermiso asociado:'
-      - '&bcmi.command.sudo.bypass &7► Evita que se pueda usar esta función.'
+      - '&3◆ &ecmi.command.sudo.bypass &7► Evita que se pueda usar esta función.'
     info:
       performed: '&eSe ha forzado a &6[playerDisplayName] usar el comando ''&6[command]&e''&e.'
   suicide:
@@ -3650,8 +3949,8 @@ command:
       info: Trasfiere la información de un jugador a otro.
       args: '[nombreJugadorOrigen/uuid] [nombreJugadorDestino/uuid]'
       explanation:
-      - '&3&nDescripción extendida:'
-      - Usa la UUID para que no hayan confusiones si los nombres son parecidos.
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usa la UUID para que no hayan confusiones si los nombres son parecidos.'
     info:
       same: '&eEl jugador de origen y el de destino son el mismo.'
       transferred: '&eLa información de &6[sourceName] &ese ha cambiado por la de
@@ -3659,32 +3958,25 @@ command:
       failed: '&cFallo al cambiar los datos del jugador.'
   tablistupdate:
     help:
-      info: Actualiza la tabla de jugadores.
-      args: (nombreJugador)
+      info: Actualiza la información de la tabla de jugadores.
+      args: (nombreJugador) (-s)
     info:
-      updated: '&eLa lista de jugadores ha sido actualizada.'
-  tagtoggle:
-    help:
-      info: Activa o desactiva el sonido para las menciones.
-      args: (nombreJugador)
-    info:
-      feedbackDisabled: '&cSe ha &4desactivado &cel sonido de las menciones.'
-      feedbackEnabled: '&aSe ha &2activado &ael sonido de las menciones.'
+      updated: '&eSe ha actualizado la tabla de jugadores.'
   tempban:
     help:
       info: Expulsa a un jugador temporalmente (por tiempo definido).
       args: '[nombreJugador] [tiempo] (razón) (-s)'
       explanation:
-      - '&3&nDescripción extendida:'
-      - En caso de que el jugador no tenga definido ningún permiso, el valor máximo
-        será de 60 segundos.
+      - '&3&nAclaraciones:'
+      - '&3◆ En caso de que el jugador no tenga definido ningún permiso, el valor
+        máximo será de 60 segundos.'
       - '&3&nPermisos asociados:'
-      - '&bcmi.command.tempban.max.[cantidad] &7► Determina el tiempo máximo permitido.'
-      - '&bcmi.command.tempban.max.unlimited &7► Anula la restricción de tiempo de
-        expulsión.'
+      - '&3◆ &ecmi.command.tempban.max.[cantidad] &7► Determina el tiempo máximo permitido.'
+      - '&3◆ &ecmi.command.tempban.max.unlimited &7► Anula la restricción de tiempo
+        de expulsión.'
       - '&3&nEjemplo:'
-      - /cmi tempban C4BR3R4 5m Por decir groserías &7► Expulsa del servidor a C4BR3R4
-        durante 5 minutos por...
+      - '&3◆ &6/cmi tempban &7YoMismito 5m Por decir groserías &7► Expulsa del servidor
+        a YoMismito durante 5 minutos por...'
     info:
       message: '&4¡&cExpulsado temporalmente&4!'
       messageToAll: '&6[senderDisplayName] &eha expulsado a &6[playerDisplayName]
@@ -3701,7 +3993,7 @@ command:
       args: '[ip/nombreJugador] [tiempo] (razón) (-s)'
       explanation:
       - '&3&nPermiso asociado:'
-      - '&bcmi.command.banip.bypass &7► Impide ser bloqueado por la IP.'
+      - '&3◆ &ecmi.command.banip.bypass &7► Impide ser bloqueado por la IP.'
     info:
       message: '&c¡Has sido expulsado temporalmente por el administrador!'
       messageToAll: '&6[senderDisplayName] &eha expulsado temporalmente a &6[playerDisplayName]
@@ -3715,11 +4007,14 @@ command:
       args: '[nombreJugador] (tiempoEnSegundos) (-s)'
       explanation:
       - '&3&nEjemplos:'
-      - /tfly C4BR3R4 30 &7► Activa el Modo Vuelo durante los próximos 30 segundos.
-      - /tfly C4BR3R4 +30 &7► Añade 30 segundos adicionales al modo vuelo.
-      - /tfly C4BR3R4 0 &7► Activa el Modo Vuelo hasta que el jugador se desconecte.
-      - /tfly C4BR3R4 &7► Comprueba si el jugador tiene activado el Modo Vuelo y por
-        cuanto tiempo.
+      - '&3◆ &6/cmi tfly &eYoMismito 30 &7► Activa el Modo Vuelo durante los próximos
+        30 segundos.'
+      - '&3◆ &6/cmi tfly &eYoMismito +30 &7► Añade 30 segundos adicionales al modo
+        vuelo.'
+      - '&3◆ &6/cmi tfly &eYoMismito 0 &7► Activa el Modo Vuelo hasta que el jugador
+        se desconecte.'
+      - '&3◆ &6/cmi tfly &eYoMismito &7► Comprueba si el jugador tiene activado el
+        Modo Vuelo y por cuanto tiempo.'
     info:
       setTimedFly: '&eHas activado el modo vuelo de &6[playerDisplayName] &edurante
         &6[time]&e.'
@@ -3739,61 +4034,71 @@ command:
       disabled: '&e¡Se ha desactivado el modo vuelo!'
   tgod:
     help:
-      info: Activa el Modo Dios de un jugador por tiempo definido o hasta que se desconecte.
+      info: Activa el Modo Invencible de un jugador por tiempo definido o hasta que
+        se desconecte.
       args: '[nombreJugador] (tiempoEnSegundos) (-s)'
       explanation:
       - '&3&nEjemplos:'
-      - /tgod C4BR3R4 30 &7► Activa el Modo Dios durante los próximos 30 segundos.
-      - /tgod C4BR3R4 0 &7► Activa el Modo Dios hasta que se desconecte el jugador.
-      - /tgod C4BR3R4 &7► Comprueba si el jugador tiene activado el modo Dios y por
-        cuanto tiempo.
+      - '&3◆ &6/cmi tgod &eYoMismito 30 &7► Activa el Modo Invencible durante los
+        próximos 30 segundos.'
+      - '&3◆ &6/cmi tgod &eYoMismito 0 &7► Activa el Modo Invencible hasta que se
+        desconecte el jugador.'
+      - '&3◆ &6/cmi tgod &eYoMismito &7► Comprueba si el jugador tiene activado el
+        Modo Invencible y por cuanto tiempo.'
     info:
-      setTimedGod: '&eHas activado el modo Dios de &6[playerDisplayName] &edurante
+      setTimedGod: '&eHas activado el Modo Invencible de &6[playerDisplayName] &edurante
         &6[time]&e.'
-      setUntilRelogGod: '&eHas activado el modo Dios de &6[playerDisplayName] &ehasta
-        que se desconecte.'
-      targetTimedEnabled: '&3[senderDisplayName] &ete ha activado el modo Dios durante
-        &6[time]&e.'
-      targetUntilRelogEnabled: '&3[senderDisplayName] &eha activado tu modo Dios hasta
-        que te desconectes.'
-      setFor: '&eModo Dios activado para los próximos &6[time]&e.'
-      setForRelog: '&eModo Dios activado hasta que te desconectes.'
-      notSet: '&eeste jugador no tiene activado el modo Dios'
-      willBeDisabled: '&eEl modo Dios será desactivado en [time]'
-      disabled: '&e¡Modo Dios desactivado!'
+      setUntilRelogGod: '&eHas activado el Modo Invencible de &6[playerDisplayName]
+        &ehasta que se desconecte.'
+      targetTimedEnabled: '&3[senderDisplayName] &ete ha activado el Modo Invencible
+        durante &6[time]&e.'
+      targetUntilRelogEnabled: '&3[senderDisplayName] &eha activado tu Modo Invencible
+        hasta que te desconectes.'
+      setFor: '&eModo Invencible activado durante &6[time]&e.'
+      setForRelog: '&eModo Invencible activado hasta que te desconectes.'
+      notSet: '&eEste jugador no tiene activado el Modo Invencible.'
+      willBeDisabled: '&cPerderas el Modo Invencible en &4[time]'
+      disabled: '&7[&4!&7] &7Has perdido el Modo Invencible.'
   time:
     help:
-      info: Controla el tiempo horario del mundo.
+      info: Controla la hora, minutos y segundos.
       args: (tiempo) (mundo) (alter [valor]) (-smooth)
       explanation:
       - '&3&nEjemplos:'
-      - /day
-      - /night
-      - /time 13:00:00
-      - /time 1pm
-      - /time 13 &7► Determina las 13h para el mundo donde te encuentras.
-      - /time 7000ticks
-      - /time 1pm Creativo &7► Determina la 1 de la tarde del mundo llamado Creativo.
-      - /time 1pm all &7► Determina la 1 de la tarde en todos los mundos.
-      - /time add 0:30 &7► Añade 30 minutos más a la hora actual.
-      - /time take 0:30 &7► Quita 30 minutos a la hora actual.
-      - /time freeze &7► Congela el tiempo.
-      - /time unfreeze &7► Descongela el tiempo.
-      - /time realtime &7► Sincroniza la hora del mundo con la hora real.
-      - /time autorealtime start/stop
+      - '&3◆ &6/cmi &eday &7► Cambia la hora a las 6 de la mañana.'
+      - '&3◆ &6/cmi &enight &7► Cambia la hora a las 12 de lanoche.'
+      - '&3◆ &6/cmi time &e13:00:00 &7► Cambia la hora a la 1 de la tarde (usando
+        este formato).'
+      - '&3◆ &6/cmi time &e1pm &7► Cambia la hora a la 1 de la tarde (usando este
+        formato).'
+      - '&3◆ &6/cmi time &e13 &7► Cambia la hora a la 1 de la tarde (usando este formato).'
+      - '&3◆ &6/cmi time &e7000ticks &7► Cambia la hora a la 1 de la tarde (usando
+        este formato)'
+      - '&3◆ &6/cmi time &e1pm Creativo &7► Cambia la hora a la 1 de la tarde del
+        mundo llamado Creativo.'
+      - '&3◆ &6/cmi time &e1pm all &7► Cambia la hora a la 1 de la tarde en todos
+        los mundos.'
+      - '&3◆ &6/cmi time &eadd 0:30 &7► Añade 30 minutos más a la hora actual.'
+      - '&3◆ &6/cmi time &etake 0:30 &7► Resta 30 minutos menos a la hora actual.'
+      - '&3◆ &6/cmi time &efreeze &7► Congela la hora.'
+      - '&3◆ &6/cmi time &eunfreeze &7► Descongela la hora.'
+      - '&3◆ &6/cmi time &erealtime &7► Sincroniza la hora con la hora real.'
+      - '&3◆ &6/cmi time &eautorealtime start/stop &7► Inicia o detiene el sincronizado
+        horario.'
     info:
-      check: '&eEn &6[world] &eson las &6[24h] H &8(o las &7[12h] &8o &7[ticks] ticks&8)&7.'
-      frozen: ' &c(-)'
+      check: '&eSon las &6[24h]H &7([12h] ó [ticks] ticks) &een el mundo &6[world]&e.'
+      frozen: ' &cCongelado.'
       frozenTime: '&eCongelar el tiempo.'
-      real: ' &6(+)'
+      real: ' &2Sincronización real.'
       realTime: '&eSincronización con la hora local.'
-      autorealstart: '&eSe ha iniciado la sincronización horaria real del mundo &6[world]&e.'
-      autorealstop: '&eSe ha detenido la sincronización horaria real del mundo &6[world]&e.'
-      gotfrozen: '&eSe ha congelado el tiempo del mundo &6[world]&e.'
-      gotunfrozen: '&eSe ha descongelado el tiempo del mundo &6[world]&e.'
-      cantset: '&eNo se puede establecer el tiempo con este valor'
-      setto: '&eEn &6[world] &eahora son las &6[24h] &8(o las &7[12h] &8o &7[ticks]
-        ticks&8)'
+      autorealstart: '&eSe ha &asincronizado &eel tiempo horario del mundo &6[world]
+        &econ el tiempo horario real.'
+      autorealstop: '&eSe ha &cdesincronizado &eel tiempo horario del mundo &6[world]
+        &econ el tiempo horario real.'
+      gotfrozen: '&eSe ha &ccongelado &eel tiempo horario del mundo &6[world]&e.'
+      gotunfrozen: '&eSe ha &adescongelado &cel tiempo horario del mundo &6[world]&e.'
+      cantset: '&eNo se puede establecer el tiempo horario con este valor.'
+      setto: '&eAhora son las &6[24h]H &7([12h] ó &7[ticks] ticks) &een el mundo &6[world]&e.'
   titlemsg:
     help:
       info: Envía un título a uno o todos los jugadores.
@@ -3807,27 +4112,6 @@ command:
       args: '[nombreJugador/all] (-t:[challenge/goal/task]) (-icon:[objeto]) [mensaje]'
     info:
       message: '&5[messsage]'
-  togglecompass:
-    help:
-      info: Muestra u oculta la brújula de la barra de información.
-      args: ''
-    info:
-      ToggleOff: '&aHas activado la brújula.'
-      ToggleOn: '&cHas desactivado la brújula.'
-  toggleshiftedit:
-    help:
-      info: Activa o desactiva la función de edición de carteles.
-      args: ''
-    info:
-      feedbackDisabled: '&cSe ha desactivado la función de edición de carteles vía
-        Mayús.'
-      feedbackEnabled: '&aSe ha activado la función de edición de carteles vía Mayús.'
-  toggletotem:
-    help:
-      info: Muestra u oculta la barra de tiempo restante del Talismán.
-      args: ''
-    info:
-      toggle: '&eSe ha &6[state] &ela Barra de uso del Talismán.'
   top:
     help:
       info: Aparece en la superficie de tu posición.
@@ -3841,13 +4125,13 @@ command:
       bad:
         msg: '&cEl lugar de aparición no es un lugar seguro: [reason]&e.'
         extraMsg: '&eUsa &6/tpbypass &epara omitir esta advertencia. Tienes &6[time]&e.'
-        lava: '&eHay Lava'
-        void: '&eEstá el Vacío'
-        suffocation: '&cPuedes ahogarte.'
-        unknown: '&cDesconocido.'
-        plugin: '&cplugin de terceros.'
+        lava: hay Lava
+        void: está el Vacío
+        suffocation: puedes ahogarte
+        unknown: desconocido
+        plugin: está controlado por otro plugin
       notAllowed: '&cNo puedes aparecer con este jugador.'
-      prevented: '&cNo puedes aparecer en otro lugar por intervención de otro plugin.'
+      prevented: '&cNo puedes aparecer en otro sitio porque interviene otro plugin.'
   tpa:
     help:
       info: Pregunta a un jugador si puedes aparecer con el.
@@ -3887,7 +4171,7 @@ command:
       requestSent: '&eHas preguntado a &6[playerDisplayName] &esi quiere aparecer
         contigo.'
       gotRequest: '&6¡[senderDisplayName] &eha solicitado que aparezcas a su lado!'
-      accept: '&6¡Clic para aceptar la solicitud!'
+      accept: '&6¡Pulsa para aceptar la solicitud!'
   tpall:
     help:
       info: Mueve todos los jugadores a tu posición.
@@ -3899,8 +4183,8 @@ command:
       info: Mueve todos los jugadores a un mundo determinado.
       args: '[mundo] (mundo;x;y;z(;yaw;pitch)) (-a)'
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7El argumento &f-a &7moverá todos los jugadores de un mundo inexistente
+      - '&3&nAclaraciones:'
+      - '&3◆ &7El argumento &e-a &7moverá todos los jugadores de un mundo inexistente
         al mundo definido.'
     info:
       started: '&e¡Movimiento iniciado!'
@@ -3959,24 +4243,17 @@ command:
         &6[x],[y],[z] &edel mundo &6[world].'
   tps:
     help:
-      info: Comprueba los TPS del servidor.
+      info: Comprueba el estado del servidor (TPS).
       args: ''
     info:
-      tps: '&eTPS: '
+      tps: '&eTicks Por Segundo (TPS): '
       # Custom tps range can be defined and you can have as many of them as you want
-      tpsList: '&e[3] &7| [10] &7| [30] &7| [60] &7| [600]'
+      tpsList: '&e[3] &7| &e[10] &7| &e[30] &7| &e[60] &7| &e[600]'
       explanation: '&7Cada bloque representa &e60 &7segundos. Máximo &e600 &7segundos.'
       minMax: ' &7| Máx: [max] &7| Mín: [min]'
       hover:
       - '[tpscolor][tps]'
       - '&7[time]'
-  tptoggle:
-    help:
-      info: Permite o bloquea las acciones de aparición de un jugador.
-      args: (nombreJugador) (on/off/status) (-s)
-    info:
-      feedback: '&eEstado de aparición ► &6[state]'
-      feedbackOther: '&eEstado de aparición de &6[playerDisplayName] &e► &6[state]'
   tree:
     help:
       info: Genera un árbol en el lugar donde miras.
@@ -4018,20 +4295,20 @@ command:
       unjailedTarget: '&a¡Has sido liberado del encarcelamiento!'
   unloadchunks:
     help:
-      info: Descarga chunks de la memoria del servidor.
+      info: Descarga sectores de la memoria del servidor.
       args: (-f)
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Usando el argumento &f-f &7provocará que todos los chunks se descarguen
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Usando el argumento &e-f &7provocará que todos los sectores se descarguen
         a la vez.'
     info:
       removed: '&eSe han eliminado -[list]'
-      startScanning: '&eSe han encontrado &6[amount] &echunks para descargar. ¡Iniciando
+      startScanning: '&eSe han encontrado &6[amount] &esectores a descargar. ¡Iniciando
         la descarga!'
       InfoShow: '&6TPS: &3[tps] &6de &e[left] &6(&e[min]m:[sec]s&6) &6| Velocidad:
         &e[speed] &6| Descargado: &e[found]'
-      Finished: '&e¡¡¡Tarea finalizada!!! Se han descargado &6[amount] &echunks en
-        &6[minutes] &eminutos y &6[seconds] &esegundos.'
+      Finished: '&e¡¡¡Tarea finalizada!!! Se han descargado &6[amount] &esectores
+        en &6[minutes] &eminutos y &6[seconds] &esegundos.'
   unmute:
     help:
       info: Desbloquea a un jugador el uso del chat.
@@ -4051,8 +4328,8 @@ command:
       info: Administra los meta datos de los jugadores.
       args: '[nombreJugador] [add/remove/clear/list] (clave) (valor) (-s)'
       explanation:
-      - '&3&nDescripción extendida:'
-      - '&7Cualquier meta-dato se puede mostrar con el placeholder &f%cmi_user_meta_[key]%'
+      - '&3&nAclaraciones:'
+      - '&3◆ &7Cualquier metadato se puede mostrar con el placeholder &e%cmi_user_meta_[key]%&7.'
     info:
       added: '&eA &6[playerDisplayName] &ese ha añadido el meta-dato con la clave
         &6[key] &ey el valor &6[value]'
@@ -4096,7 +4373,7 @@ command:
       informOnJoin: '&eMostrar mensaje de conexión.'
       nightVision: '&eVisión nocturna.'
       bossbar: '&eMostrar mensaje de invisibilidad.'
-      afkcommands: '&eModo AFK.'
+      afkcommands: '&eModo ausente (AFK).'
       PrivateMessages: '&eMensajes privados.'
       relogDisable: '&eDesactivar invisibilidad al volver a entrar.'
       noMessages: '&eNo puedes enviar mensajes.'
@@ -4105,6 +4382,7 @@ command:
       stopPlaytime: '&eDetener el tiempo de juego.'
       sleepIgnore: '&eIgnorar el tiempo durmiendo.'
       joinVanished: '&eConectarse siempre en modo invisible.'
+      deathMessages: '&eMostrar mensajes de muerte.'
       bossbarTitle: '&cEres Invisible.'
   version:
     help:
@@ -4112,37 +4390,37 @@ command:
       args: ''
     info:
       cmiVersion: '&eVersión de CMI: &6[version]'
-      cmiVersionNew: '&e► &c[newVersion]'
+      cmiVersionNew: '&e► &2[newVersion]'
       dbType: '\n&eBase de Datos: &6[db]'
       newServer: '&eVersión del Servidor: &6[version]'
       Economy: '&eEconomía de CMI: &6[state] &7| '
       Chat: '&eChat de CMI: &6[state] '
       CMIB: '&7CMIB '
       newVault: '&eVault: &6[version] &7| '
-      Modules: '&eMódulos: &a[enabled] activados &ey &c[disabled] desactivados &7([list])\n&7Archivo
-        de Idioma: &8v21.10.16\n&7Traducido por: &8C4BR3R4 (c4br3r4.es)'
+      Modules: '&eMódulos activados: &2[enabled] &7| &eMódulos desactivados: &4[disabled]
+        &7(&r[list]&7).\n\n&8¡&7Archivo de Idioma traducido por C4BR3R4.es &8► &7Versión: 23.03.20&8!'
       Bungee: ' &eBungeeCord '
       CMILib: '&eVersión de CMILib: &6[version] '
-      cmilVersionNew: '&e► [newVersion]'
+      cmilVersionNew: '&e► &2[newVersion]'
   viewrange:
     help:
       info: Cambia la distancia de visionado.
       args: '[distancia] (nombreJugador)'
     info:
-      changed: '&eSe ha cambiado la distancia de visionado a &6[range] &echunks.'
+      changed: '&eSe ha cambiado la distancia de visionado a &6[range] &esectores.'
       NoProtocolLib: '&cEsta función necesita ProtocolLib!'
-      NoMore: '&eLa distancia no puede ser mayor de 32 chunks.'
+      NoMore: '&eLa distancia no puede ser mayor de 32 sectores.'
   voteedit:
     help:
       info: Controla los votos de los jugadores.
       args: (nombreJugador) [add/set/take/clear] [cantidad] (-s)
       explanation:
       - '&3&nEjemplos:'
-      - /voteedit C4BR3R4
-      - /voteedit add 10
-      - /voteedit take 10
-      - /voteedit C4BR3R4 clear
-      - /voteedit C4BR3R4 add 10
+      - '&3◆ &6/voteedit &eYoMismito'
+      - '&3◆ &6/voteedit &eadd 10'
+      - '&3◆ &6/voteedit &etake 10'
+      - '&3◆ &6/voteedit &eYoMismito clear'
+      - '&3◆ &6/voteedit &eYoMismito add 10'
     info:
       currentVotes: '&e[playerDisplayName] &eha votado &6[votes] &eveces.'
       selfFeedback: '&3[playerDisplayName] &etiene ahora &3[votes] &evotos &8(estando
@@ -4164,7 +4442,7 @@ command:
       info: Muestra los jugadores que más han votado.
       args: (nombreJugador)
     info:
-      topLine: '&6&m-----&r&6【 &3Posición según el número de votos &6】&m-----'
+      topLine: '&6&m       &r&6【 &3Posición según el número de votos &6】&m       &r'
       list: '&2[place]. &6[playerDisplayName] &7(con &f[votes] &7votos)'
       ownLine: '&2[place]. &2[playerDisplayName] &a◄◄◄ Tu posición &7(con &f[votes]
         &7votos)'
@@ -4194,7 +4472,7 @@ command:
       info: Muestra las advertencias de los jugadores.
       args: (nombreJugador)
     info:
-      totalPoints: '&6&m----------&r&6【 &3ADVERTENCIAS &6】&m----------\n&7► &4[playerDisplayName]
+      totalPoints: '&6&m       &r&6【 &3ADVERTENCIAS &6】&m       &r\n&7► &4[playerDisplayName]
         &cacumula &4[totalPoints] &cpuntos de advertencia'
       noWarnings: '&aNo tienes ningún punto de advertencia.'
       list: '&7[place]. &eAdvertido por &6[warnedBy] &eel &6[time] &e► &6[warnedFor]&e.'
@@ -4234,17 +4512,17 @@ command:
       info: Controla el clima del servidor.
       args: (sun/rain/storm) (lock/duración) (mundo/all)
       explanation:
-      - '&3&nDescripción extendida:'
-      - 'La duración de tiempo puede ser: s/m/h/d/w/M/Y'
+      - '&3&nAclaraciones:'
+      - '&3◆ La duración de tiempo puede ser: s/m/h/d/w/M/Y'
       - '&3&nEjemplos:'
-      - /sun
-      - /rain
-      - /storm
-      - /sun lock
-      - /sun 120
-      - /sun &4Y&can&4C&cab
-      - /sun 1h
-      - /sun 10m
+      - '&3◆ &6/sun'
+      - '&3◆ &6/rain'
+      - '&3◆ &6/storm'
+      - '&3◆ &6/sun &elock'
+      - '&3◆ &6/sun &e120'
+      - '&3◆ &6/sun &eMundo_Principal'
+      - '&3◆ &6/sun &e1h'
+      - '&3◆ &6/sun &e10m'
     info:
       setTo: '&eSe ha determinado que estará &6[weather] &edurante al menos &6[time]
         &een el mundo &6[world]&e.'
@@ -4253,14 +4531,6 @@ command:
       sunny: soleado
       rainy: lloviendo
       thundering: tronando
-  whowas:
-    help:
-      info: Muestra los nombres que han usado los jugadores.
-      args: '[nombreJugador]'
-    info:
-      list: ' &8[place]. &6[name] &8► &e[date]'
-      info: ' &e[playerName] &6[uuid]'
-      original: '&eNombre original.'
   workbench:
     help:
       info: Abre la Mesa de Trabajo.
@@ -4275,26 +4545,26 @@ command:
       args: (normal/nether/end/1/2/3...) (nombreJugador) (-s)
       explanation:
       - '&3&nPermiso asociado:'
-      - '&bcmi.command.world.[nombreMundo] &7► Permite que el jugador pueda aparecer
+      - '&3◆ &ecmi.command.world.[nombreMundo] &7► Permite que el jugador pueda aparecer
         en el mundo especificado.'
     info:
       here: '&eYa estás aquí.'
   worth:
     help:
-      info: Muestra el valor monetario de los objetos.
+      info: Muestra el valor monetario de los objetos que llevas.
       args: (all/bloques/hand/objeto)
     info:
       worthless: '&cSin Precio.'
       damaged: ' &6(&2[percent]% &6de daño)'
       shulker: '&6Elimina los objetos de la caja de Shulker antes de venderla.'
       repair: '&eDebes reparar el objeto antes de poder venderlo.'
-      basePrice: '&7► &6[itemName] &ex &6[amount] &e= &6[price]'
+      basePrice: '&7► &6[amount] &ex &6[itemName] &e= &6[price]'
       fullPrice: '&7A [price] la unidad.'
-      total: '&2&m--------------------------------------------------\n&r  &aImporte
-        total = &2[total]'
+      total: '&2&m                                                  &r\n&r  &aImporte
+        Total = &2[total]'
   worthlist:
     help:
-      info: Muestra el valor monetario establecido para cada objeto.
+      info: Muestra el valor monetario de cada uno de los objetos.
       args: (nombreJugador)
     info:
       type: '&3[type]'
