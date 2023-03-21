@@ -1,0 +1,553 @@
+# Defines hover over infomation about player who died. Use basic placeholders like %cmi_user_name% to include any information you would want
+# Set this like to '' if you want to avoid including hover over message
+PlayerHover:
+- ''
+# Defines hover over infomation about player who killed. Use basic placeholders like %cmi_user_name% to include any information you would want
+# Set this like to '' if you want to avoid including hover over message
+KillerHover:
+- ''
+Escaping:
+- '&7, mientras escapaba de &2[sourceDisplayName]&7.'
+- '&7, mientras luchaba contra &2[sourceDisplayName]&7.'
+RunningAway:
+- '&7, mientra huía de &2[mobName]&7.'
+- '&7, mientras luchaba contra &2[mobName]&7.'
+Player:
+  General:
+  - '&2[playerDisplayName] &7ha sido asesinado por &2[sourceDisplayName]&7.'
+  - '&2[playerDisplayName] &7ha sufrido las consecuencias del puño de &2[sourceDisplayName]&7.'
+  - '&2[playerDisplayName] &7ha sido golpeado hasta la muerte por &2[sourceDisplayName]&7.'
+  Item:
+  - '&2[playerDisplayName] &7ha sido asesinado por el &2[item] &7de &2[sourceDisplayName]&7.'
+  Projectile:
+  - '&2[playerDisplayName] &7ha sido asesinado con una &2[type] &7de &2[sourceDisplayName]&7.'
+  Fireball:
+  - '&2[playerDisplayName] &7ha sido incendiado por &2[sourceDisplayName]&7.'
+  Firework:
+  - '&2[playerDisplayName] &7ha explotado por culpa de un &2[sourceDisplayName]&7.'
+FallingBlocks:
+  Anvil:
+    General:
+    - '&2[playerDisplayName] &7ha sido aplastado por la caída de un yunque.'
+    - '&2[playerDisplayName] &7ha sido aplastado por un yunque.'
+    - '&2[playerDisplayName] &7ha golpeado un yunque con la cabeza.'
+Block:
+  Cactus:
+    General:
+    - '&2[playerDisplayName] &7ha intentado abrazar un cactus.'
+    - '&2[playerDisplayName] &7se ha acercado demasiado a un cactus.'
+    - '&2[playerDisplayName] &7empujó a un cactus, pero el cactus se la devolvió.'
+    - '&2[playerDisplayName] &7abrazó a un cactus.'
+    - '&2[playerDisplayName] &7ha sido derrotado por un cactus.'
+  Dispenser:
+    Arrow:
+    - '&2[playerDisplayName] &7ha sido asesinado por un dispensador con flechas.'
+    Splash_potion:
+    - '&2[playerDisplayName] &7ha muerto debido a la onda expansiva de una poción.'
+    - '&2[playerDisplayName] &7ha resbalado por el vertido de una poción.'
+  Magma_block:
+    General:
+    - '&2[playerDisplayName] &7ha descubierto que el suelo era de lava.'
+    - '&2[playerDisplayName] &7ignoraba que los Cubos de Magma atacaran.'
+    - '&8El Cubo de Magma ha sido más rápido que &2[playerDisplayName]&7.'
+  Sweet_berry_bush:
+    General:
+    - '&2[playerDisplayName] &7ha sido pinchado hasta la muerte por un arbusto de
+      bayas dulces.'
+  Lava:
+    General:
+    - '&2[playerDisplayName] &7ha intentado nadar en la lava.'
+  Pointed_dripstone:
+    General:
+    - '&2[playerDisplayName] &7ha sido empalado en una estalagmita.'
+Custom:
+  Block_explosion:
+    General:
+    - '&2[playerDisplayName] &7ha muerto debido al [diseño del juego].'
+  Fall:
+    Low:
+      General:
+      - '&2[playerDisplayName] &7se ha roto las piernas.'
+      - '&2[playerDisplayName] &7ha peleado contra la gravedad, y ha perdido.'
+      - '&2[playerDisplayName] &7creía que la gravedad era solo una teoría.'
+      - '&2[playerDisplayName] &7ha conocido personalmente la gravedad.'
+      - '&7A &2[playerDisplayName] &7se le olvidó pensar.'
+    High:
+      General:
+      - '&2[playerDisplayName] &7ha caído desde demasiada altura.'
+      - '&2[playerDisplayName] &7ha caído desde muy alto.'
+      - '&7A &2[playerDisplayName] &7se le olvidó activar el cheto para volar.'
+      - '&2[playerDisplayName] &7hizo puenting sin cuerda.'
+      - '&2[playerDisplayName] &7quería llegar a la Luna.'
+      - '&2[playerDisplayName] &7aún no sabe para qué sirve la tecla Mayús.'
+      - '&2[playerDisplayName] &7aparentemente no sabe volar.'
+      - '&2[playerDisplayName] &7ahora sabe como funcionan unas alas de los chinos.'
+  Fire:
+    General:
+    - '&2[playerDisplayName] &7se ha incendiado.'
+    - '&2[playerDisplayName] &7pensó que detenerse en el fuego era buena idea.'
+    - '&2[playerDisplayName] &7se ha carbonizado.'
+    - '&7Es obvio que &2[playerDisplayName] &7no está hecho a prueba de altas temperaturas.'
+    - '&2[playerDisplayName] &7se ha dado cuenta de que el fuego... quemaaaa.'
+    - '&2[playerDisplayName] &7tenía frío..., tenía.'
+    - '&8El fuego ha consumido a &2[playerDisplayName]&7.'
+    - '&2[playerDisplayName] &7se ha calentado demasiado.'
+  Fire_tick:
+    General:
+    - '&2[playerDisplayName] &7ha muerto calcinado.'
+    - '&2[playerDisplayName] &7se ha quemado hasta quedar en cenizas.'
+    - '&2[playerDisplayName] &7se ha carbonizado.'
+    - '&7Es obvio que &2[playerDisplayName] &7no está hecho a prueba de altas temperaturas.'
+    - '&7El fuego ha consumido a &2[playerDisplayName]&7.'
+  Lightning:
+    General:
+    - '&2[playerDisplayName] &7ha sido alcanzado por un rayo.'
+    - '&2[playerDisplayName] &7ha sufrido las consecuencias del conjuro /lighting.'
+    - '&2[playerDisplayName] &7se ha convertido en llama.'
+    - '&7Thor ha desintegrado a [playerDisplayName]&7.'
+    - '&2[playerDisplayName] &7se ha electrocutado.'
+    - '&2[playerDisplayName] &7andaba bajo la lluvia.'
+    - '&2[playerDisplayName] &7se resguardó bajo un árbol durante la tormenta.'
+    - '&2[playerDisplayName] &7ha recibido una carga electrostática.'
+  Suffocation:
+    General:
+    - '&2[playerDisplayName] &7se ha asfixiado en una pared.'
+    - '&2[playerDisplayName] &7ha sido machacado.'
+  Custom:
+    General:
+    - '&2[playerDisplayName] &7simplemente, ha muerto.'
+  Drowning:
+    General:
+    - '&2[playerDisplayName] &7se ha ahogado.'
+    - '&2[playerDisplayName] &7creía que podía respirar bajo el agua.'
+  Freeze:
+    General:
+    - '&2[playerDisplayName] &7se ha congelado.'
+    - '&2[playerDisplayName] &7no se ha puesto el abrigo.'
+  Suicide:
+    General:
+    - '&2[playerDisplayName] &7se ha quitado la vida.'
+  Void:
+    General:
+    - '&2[playerDisplayName] &7se ha caído por debajo del mundo.'
+  EndCrystal:
+    General:
+    - '&2[playerDisplayName] &7se ha roto como un cristal.'
+  Wither:
+    General:
+    - '&2[playerDisplayName] &7se ha marchitado.'
+  Fly_into_wall:
+    General:
+    - '&2[playerDisplayName] &7ha experimentado la energía cinética.'
+    - '&2[playerDisplayName] &7ha aprendido qué es la conservación del momento.'
+Projectile:
+  Arrow:
+  - '&2[playerDisplayName] &7ha sido atravesado por una flecha.'
+  - '&2[playerDisplayName] &7ha sido atravesado gravemente.'
+  Spectral_arrow:
+  - '&2[playerDisplayName] &7ha sido atravesado por una flecha espectral.'
+  Tipped_arrow:
+  - '&2[playerDisplayName] &7ha sido rajado por una flecha afilada.'
+  Fireball:
+  - '&2[playerDisplayName] &7ha muerto practicando malabares con una bola de fuego.'
+  Firework:
+  - '&2[playerDisplayName] &7ha muerto con un golpe de efecto.'
+Mob:
+  Primed_tnt:
+    General:
+    - '&2[playerDisplayName]... &7voló.'
+  Elder_guardian:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Wither_skeleton:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Stray:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Husk:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Zombie_villager:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Skeleton_horse:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Zombie_horse:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Armor_stand:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Donkey:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Mule:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Evoker:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Vex:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Vindicator:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Illusioner:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Creeper:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Skeleton:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Spider:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Giant:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Zombie:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Slime:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Ghast:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Zombified_piglin:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Enderman:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Cave_spider:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Silverfish:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Blaze:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Magma_cube:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Ender_dragon:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Wither:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Bat:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Witch:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Endermite:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Guardian:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Shulker:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Pig:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Sheep:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Cow:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Chicken:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Squid:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Wolf:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Mushroom_cow:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Snowman:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Ocelot:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Iron_golem:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Horse:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Rabbit:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Polar_bear:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Llama:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Parrot:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Villager:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Turtle:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Phantom:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Cod:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Salmon:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Pufferfish:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Tropical_fish:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Drowned:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Dolphin:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Cat:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Panda:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Pillager:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Ravager:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Trader_llama:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Wandering_trader:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Fox:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Bee:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Hoglin:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Piglin:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Strider:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Zoglin:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Piglin_brute:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Axolotl:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Glow_squid:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Goat:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]&7.'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Allay:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Frog:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Tadpole:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Warden:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Camel:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
