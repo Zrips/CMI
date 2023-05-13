@@ -236,7 +236,7 @@ Elytra:
 NetherPortal:
   ToHigh: '&cПортал слишком большой, максимальная высота &6[max]&c!'
   ToWide: '&cПортал слишком широкий, максимальная ширина &6[max]&c!'
-  Creation: '!actionbar!&7Created [height]x[width] nether portal!'
+  Creation: '!actionbar!&7Портал размером [height]x[width] создан!'
   Disabled: '&cСоздание портала отключено!'
 Ender:
   Title: '&7Открыть сундук эндера'
@@ -794,7 +794,7 @@ command:
       nickname: ' &eНик: '
       signs: ' &eТаблички: '
       books: ' &eКниги: '
-      me: ' &eМне: '
+      me: ' &eЯ: '
       None: '&e-'
   colorpicker:
     help:
@@ -1163,7 +1163,7 @@ command:
       tamed: '&eПрирученный: &6[state]'
       owner: '&eВладелец: &6[playerDisplayName]'
       grows: '&eВырастет через: &6[time]'
-      horse: '&eHorse: jump &6[jump]&eblocks, speed &6[speed]&eblocks/sec'
+      horse: '&eЛошадь: прыгает на &6[jump]&eблоков, скорость &6[speed]&eблоков/сек'
       villager: '&eПрофессия: &7[profession] &eУровень: &7[lvl] &eТип: &7[type]'
       subTypes: '&eПод-типы: &6[list]'
   entitynbt:
@@ -1395,7 +1395,7 @@ command:
         &3[playerDisplayName]&e (&3[offon]&e).'
       targetfeedback: '&eВаш [color] цвет &eустановлен на &3[boolean]&e игроком &3[senderDisplayName]&e.'
       title: Выбрать цвет свечения
-      incorrect: '&4Некорректное название цвет'
+      incorrect: '&4Некорректное название цвета'
       lore: '&2Нажмите, чтобы выбрать цвет'
       noPerm: '&4Пока что нет разрешения'
   gm:
@@ -2921,8 +2921,8 @@ command:
     info:
       feedback: '&eВы починили &3[amount]&e предметов игроку &3[playerDisplayName]&e
         (&3[offon]&e).'
-      nothing: '&eNothing to repair'
-      cant: '&eCan''t repair this item'
+      nothing: '&eНечего чинить'
+      cant: '&eНельзя починить этот предмет'
       feedbackMoney: '&eВы отремонтировали &3[amount]&e предметов игроку &3[playerDisplayName]&e
         (&3[offon]&e). Стоимость: &7[cost]'
       itemOwner: '&eПоследний ремонт: &6[owner]'
@@ -3735,8 +3735,8 @@ command:
         совпадают
     info:
       same: '&eЦелевые и исходные пользователи совпадают'
-      transferred: '&6[sourceName] &eданные были переключены на &6[Name]'
-      failed: '&cНе удалось сменить данные'
+      transferred: '&6[sourceName] &eданные были переданы на &6[Name]'
+      failed: '&cНе удалось передать данные'
   tablistupdate:
     help:
       info: '&eПринудительное обновление таблиста для всех или конкретного игрока'
@@ -4061,7 +4061,7 @@ command:
       args: '[playerName/ip] (-s)'
     info:
       unBaned: '!broadcast!&eИгрок &6[playerDisplayName] &eразбанен'
-      unBanedSilent: '&7[&8Безшумно&7] &eИгрок &6[playerDisplayName] &eразбанен'
+      unBanedSilent: '&7[&8Бесшумно&7] &eИгрок &6[playerDisplayName] &eразбанен'
       notBanned: '&eИгрок &6[playerDisplayName] &eне забанен'
   unbreakable:
     help:
@@ -4286,9 +4286,9 @@ command:
       noAccess: '&cНет доступа к этому варпу'
       guiTitle: '&6Варпы'
       pageTitles:
-      - '&2Warps 1'
-      - '&8Warps 2'
-      - '&0Warps 3'
+      - '&2Варпы 1'
+      - '&8Варпы 2'
+      - '&0Варпы 3'
   warpgroups:
     help:
       info: '&eПоказывает список варпов'
