@@ -522,7 +522,7 @@ command:
       defaultReason: '&eНарушение правил сервера'
       messageToAll: '&eИгрок &6[playerDisplayName] &eбыл забанен игроком &6[senderDisplayName]
         &eпо причине: &6[reason]'
-      banedSilent: '&7[&8Безшумно&7] &eИгрок &6[playerDisplayName] &eбыл забанен игроком
+      banedSilent: '&7[&8Бесшумно&7] &eИгрок &6[playerDisplayName] &eбыл забанен игроком
         &6[senderDisplayName] &eпо причине: &6[reason]'
       noSelfBan: '&cВы не можете забанить себя'
       cantBan: '&cВы не можете забанить этого игрока'
@@ -3765,7 +3765,7 @@ command:
       message: '&cВременно заблокированы!'
       messageToAll: '&eИгрок &6[playerDisplayName] &eбыл временно забанен игроком
         &6[senderDisplayName] &eна: &6[time] &eпо причине: &6[reason]'
-      banedSilent: '&7[&8Безшумно&7] &eИгрок &6[playerDisplayName] &eбыл временно
+      banedSilent: '&7[&8Бесшумно&7] &eИгрок &6[playerDisplayName] &eбыл временно
         забанен игроком &6[senderDisplayName] &eна: &6[time] &eпо причине: &6[reason]'
       time: '&eВы будете разбанены через &6[time]'
       badTime: '&cВремя определено неправильно'
@@ -3780,7 +3780,7 @@ command:
       message: '&cВы были забанены!'
       messageToAll: '&7Игрок &6[playerDisplayName] &7был забанен по IP на &7[time]&7игроком
         &6[senderDisplayName]&7: &6[reason]'
-      banedSilent: '&7[&8Безшумно&7] &7Игрок &6[playerDisplayName] &7был забанен по
+      banedSilent: '&7[&8Бесшумно&7] &7Игрок &6[playerDisplayName] &7был забанен по
         IP на &7[time]&7: &6[reason]'
   tfly:
     help:
@@ -4253,7 +4253,7 @@ command:
       cantBan: '&cНе удалось предупредить этого игрока'
       messageToAll: '&cИгрок &6[playerDisplayName] &cполучил предупреждение от игрока
         &6[senderDisplayName] &cпо причине: &6[reason]'
-      banedSilent: '&7[&8Безшумно&7] &cИгрок &6[playerDisplayName] &cполучил предупреждение
+      banedSilent: '&7[&8Бесшумно&7] &cИгрок &6[playerDisplayName] &cполучил предупреждение
         от игрока &6[senderDisplayName] &cпо причине: &6[reason]'
   warnings:
     help:
