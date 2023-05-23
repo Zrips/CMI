@@ -4219,7 +4219,7 @@ command:
   titlemsg:
     help:
       info: "&eSender tittel melding til spiller"
-      args: "[spillerNavn] [tittel %subtitle% undertekst]" (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])'
+      args: "[spillerNavn] [tittel %subtitle% undertekst] (-in:[ticks]) (-out:[ticks]) (-keep:[ticks])"
     info:
       message: "&f[messsage]"
   toast:
