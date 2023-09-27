@@ -1,61 +1,120 @@
+
 # Full color code support and some variables
+
 # Keep in mind that variables wont work for some lines, when it will for anothers :)
+
 # Just keep them where there are now and everything will be ok :)
+
 # Some lines can have global variables set. For player who will be effected. In example /heal Zrips then Zrips data will be used
+
 # [serverName] to show server name
+
 # [playerName] to show target player name
+
 # [playerDisplayName] to show target player display name
+
 # [lvl] to show target player level
+
 # [exp] to show target player total exp
+
 # [hp] to show target player health
+
 # [maxHp] to show target player max health
+
 # [hunger] to show target player hunger level
+
 # [gameMode] to show target player gamemode
+
 # [prefix] to show target player prefix if possible
+
 # [suffix] to show target player suffix if possible
+
 # Sender is console or player who performs command. In example Zrips performs /heal Zhax then Zrips data will be used
+
 # [senderName] to show Sender player name
+
 # [senderDisplayName] to show Sender player display name
+
 # [senderLvl] to show Sender player level
+
 # [senderExp] to show Sender player total exp
+
 # [senderHp] to show Sender player health
+
 # [senderMaxHp] to show Sender player max health
+
 # [senderHunger] to show Sender player hunger level
+
 # [senderGameMode] to show Sender player gamemode
+
 # [senderPrefix] to show Sender player prefix if possible
+
 # [senderSuffix] to show Sender player suffix if possible
+
 # Source is player which is being used for extra info. In example Zrips performs /tp Zhax Zrips then Zhax data will be used as its location is being taken for new player location
+
 # [sourceName] to show source player name
+
 # [sourceDisplayName] to show source player display name
+
 # [sourceLvl] to show source player level
+
 # [sourceExp] to show source player total exp
+
 # [sourceHp] to show source player health
+
 # [sourceMaxHp] to show source player max health
+
 # [sourceHunger] to show source player hunger level
+
 # [sourceGameMode] to show source player gamemode
+
 # [sourcePrefix] to show source player prefix if possible
+
 # [sourceSuffix] to show source player suffix if possible
+
 # ***********************************************
+
 # Some lines supports option to send them to custom places, like action bar, title, sub title or even create JSON/clickable messages
+
 # If line starts with !toast! then player will get toast message (advancement popup, only 1.12 and up). Some extra variables can be used to define type and icon. example: !toast! -t:goal -icon:paper Hello world!
+
 # If line starts with !actionbar! then player will get action bar message defined after this variable
+
 # If line starts with !actionbar:[seconds]! then player will get action bar message for defined amount of time
+
 # If line starts with !broadcast! then everyone will receive message. You can add extra !toast! !actionbar! or !title! to send message for everyone to specific place, in example !broadcast!!title!
+
 # If line starts with !customtext:[cTextName]! then custom text will be taken by name provided and shown for player. In case its used after !broadcast! then everyone who is online will get this custom text message
+
 # If line starts with !title! then player will get title message defined after this variable, in addition it can contain !subtitle! which will add subtitle message
-# If line starts with !bosbar:[name]-[timer]! then player will get bossbar message defined after this variable, in addition you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
+
+# If line starts with !bossbar:[name]-[timer]! then player will get bossbar message defined after this variable, in addition you can define how long this message will be visible. You need to define bossbar name which can be anything you want, but lines with same name will override each other to prevent stacking
+
 # To include clickable messages: <T>Text</T><H>Hover text</H><C>command</C><SC>Suggested text</SC>
+
 # <T> and </T> required, other is optional
+
 # Use /n to break line
+
 # To have more than one JSON message use <Next>
+
 # <C> performs command as a player who clicked
+
 # <CC> performs command from console once
+
 # <CCI> performs command from console every time player clicks text
+
 # <URL> includes url
-#
-#
-#
+
+# 
+
+# 
+
+# 
+
 # ATTENTION! As of 9.0.0.0 CMI version some of the locale lines got moved to CMILib file. This is to centralize some of most used ones across multiple plugins.
+
 # After you update locale in CMILib file perform /CMIL RELOAD command for changes to take effect
 
 info:
@@ -80,7 +139,6 @@ info:
     Boss:
       DontMove: '&4Не рухайтесь &f[autoTimeLeft] &4секунд!'
       WaitFor: '&4Зачекайте &7[autoTimeLeft] &4секунд!'
-  Spawner: '&rСпавнер [type]'
   FailedSpawnerMine: '!actionbar!&cНе вдалося роздобути спаунер. &7[percent]% &cшанс
     втрачено'
   ClickSpawner: '!actionbar!&7[percent]% &eВипустити шанс'
@@ -91,10 +149,13 @@ info:
   ChunksLoading: '&eДані світу ще завантажуються. Зачекайте трохи та повторіть спробу.'
   CantUseNonEncrypted: '!actionbar!&c&lКоманди цього предмета не зашифровані. Не можу
     їх використати!'
+  CantUseTrident: '!actionbar!&cНаразі не можна використовувати тризуб з заклинанням
+    розриву!'
   CantDecode: '!actionbar!&c&lНе можу декодувати повідомлення чи команду. Файл містить
     неправильний ключ для цього завдання. Про це повідомте адміністрації сервера'
   CantTeleport: '&eВи не можете телепортуватись, тому що у вас занадто багато обмежених
     предметів. Прокрутіть цей рядок, щоб побачити максимальну кількість предметів.'
+  CantTeleportDistance: '&eНа жаль, ви не можете телепортуватися на &6[amount] &eблоків!'
   BlackList: '&e[material] [amount] &6Максимум: [max]'
   wrongPortal: '&cВи перебуваєте в неправильній зоні впливу'
   ItemWillBreak: '!actionbar!&e&lВаш предмет (&6&l[itemName]&e&l) скоро зламається!
@@ -184,15 +245,25 @@ info:
       &eпорожніх слотів!'
     subinv: '&eВаш суб інвентар має бути порожнім!'
     subinvslots: '&eВаш субінвентар повинен мати не менше &6[count] &eпорожніх слотів!'
+  Relog: '&eRelog might be needed for change to take effect'
+  IncorrectColor: '&4Неправильно визначено колір!'
+  time:
+    # Mainly for placeholder playtime output
+    # Use + sign at the start of line to force include it even if specific and previous time values are 0
+    # Use - sign at the start of line if you want to include it only if its value isn't 0. If entire output results into empty line, then we will output seconds value
+    days: '&2[d]&7d:'
+    hours: '&2[h]&7h '
+    minutes: '&2[m]&7m '
+    seconds: '&2[s]&7s'
   CommandFormat: '&cНеправильний формат команди'
-  ServerSwitchOut: '&6[playerDisplayName] &eswitched server to &6[serverName]'
+  ServerSwitchOut: '&6[playerDisplayName] &eпереключив сервер на &6[serverName]'
   ServerSwitchIn: '&6[playerDisplayName] &eприйшли з &6[serverName] &eсервера'
 warp:
   list: '&e[pos]. &6[warpName] &f- &f[worldName] ([x]:[y]:[z])'
 afk:
   'off': '&fГрає'
   MayNotRespond: '&eГравець в AFK і не може відповідати'
-  MayNotRespondStaff: '&eАдмін АФК і може відповідати. Спробуйте зв''язатися через
+  MayNotRespondStaff: '&eАдмін АФК і не може відповідати. Спробуйте зв''язатися через
     discord'
 BossBar:
   hpBar: '&f[victim] &e[max]&f/&e[current] &f(&c-[damage]&f)'
@@ -228,7 +299,7 @@ econ:
   disabled: '&cВи не можете використовувати цю команду, якщо економічна підтримка
     відключена'
 Elytra:
-  Speed: '&eШвидкість: &6[speed]&ekm/h'
+  Speed: '&eШвидкість: &6[speed]&eкм/г'
   SpeedBoost: '&2+'
   SpeedSuperBoost: '&2+'
   CanUse: '&cНеможливо одягнути елітри без дозволу!'
@@ -244,7 +315,7 @@ Ender:
 Chat:
   localPrefix: '&a[L]&r '
   shoutPrefix: '&e[G]&r '
-  LocalNoOne: '!actionbar!&cТебе ніхто не чує, пиши! перед повідомленням для глобального
+  LocalNoOne: '!actionbar!&cТебе ніхто не чує, пиши ! перед повідомленням для глобального
     чату'
   shoutDeduction: '!actionbar!&c&lУ вас знято &e&l[amount] &c&lза повідомлення, оспрямоване
     у глобальний чат'
@@ -329,12 +400,8 @@ command:
       added: '&eПовідомлення про вхід гравця буде надіслано всім адміністраторам,
         якщо &6[playerDisplayName] &eзайде протягом доби'
       online: '&eГравець &6[playerDisplayName] &eзнаходиться в мережі'
-  alertlist:
-    help:
-      info: '&eПерелік усіх записаних сповіщень'
-      args: ''
-    info:
-      list: '&e[place]. &6[playerDisplayName] &e[time] &7Причина: [reason]'
+      add: '&2Add extra day'
+      list: ' &e[place]. &6[playerDisplayName] &e[time] &7Reason: [reason]'
   aliaseditor:
     help:
       info: '&eРедактор Аліасов'
@@ -392,6 +459,10 @@ command:
         предмет у руці(&3[offon]&e).'
       targetfeedback: '&eВартість ремонту вашого товару була встановлена на &3[amount]&e
         гравцем &3[senderDisplayName]&e.'
+  armoreffect:
+    help:
+      info: '&eЗмінює ефекти броні'
+      args: '[potionEffect]'
   armorstand:
     help:
       info: '&eВідкрити редактор стендів броні'
@@ -437,7 +508,7 @@ command:
       saveButton: '&7Зберегти'
       saveTitle: '&8Виберіть те, що ви хочете зберегти'
       receivedItem: '&eОтримана спеціальна броня стоїть у вашому інвентарі'
-      armorStandItem: '&7ArmorStand Template: &6[name]'
+      armorStandItem: '&7Шаблон ArmorStand: &6[name]'
       action:
         helmet: '&7Шолом'
         chest: '&7Нагрудник'
@@ -512,6 +583,8 @@ command:
       topLineHover: '&eУсього на сервері: &6[total]'
       list: '&e[place]. &6[playerDisplayName]: &e[balance]'
       ownLine: '&2[place]. &2[playerDisplayName]: &2[balance]'
+      # Set to empty field if you want to not show hover over message
+      hover: '&2[playerName]'
       recalculating: '&2Розраховується топ багатіїв, зачекайте кілька секунд і повтори
         спробу'
   ban:
@@ -562,6 +635,10 @@ command:
       noteBlock: '&eТон: &6[tone] &eОктава: &6[octave] &6Інструмент: &e[instrument]
         &6Висота: &f[pitch]'
       BlockState: '&f[state]: &f[value]'
+      BlockHitBox: ' &7Зростання: &f[height] &7Довжина: &f[length] &7Ширина: &f[width]'
+      BlockHitBoxHover: '&7Згори: &f[top] &7Знизу: &f[bottom]'
+      Books: ' &eКниги: &6[list]'
+      Enchant: '&6[name]:&e[level] '
   blocknbt:
     help:
       info: '&eПоказувати інформацію про блок NBT'
@@ -611,9 +688,9 @@ command:
       info: '&eНадсилає спеціальне повідомлення всім гравцям'
       args: '[повідомлення]'
       explanation:
-      - Якщо повідомлення починається з! то буде показано чисте повідомлення
+      - Якщо повідомлення починається з ! то буде показано чисте повідомлення
     info:
-      format: '&e[&4Broadcast&e] &2[message]'
+      format: '&e[&4Оголошення&e] &2[message]'
   burn:
     help:
       info: '&eПідпалити гравця'
@@ -623,11 +700,11 @@ command:
       targetfeedback: '&eВас підпалив &3[senderDisplayName]&e на &6[time]&e.'
   cartographytable:
     help:
-      info: '&eВідкрита картографічна таблиця'
+      info: '&eВідкрита картографічний стіл'
       args: (playerName)
     info:
-      feedback: '&eВи відкрили таблицю картографії для &3[playerDisplayName]&e (&3[offon]&e).'
-      targetfeedback: '&3[senderDisplayName]&e відкрила для вас таблицю картографії.'
+      feedback: '&eВи відкрили картографічний стіл для &3[playerDisplayName]&e (&3[offon]&e).'
+      targetfeedback: '&3[senderDisplayName]&e відкрив для вас картографічний стіл.'
   charges:
     help:
       info: '&eПоказує роздачі спавнерів'
@@ -640,9 +717,9 @@ command:
       noGroup: '&eГрупа не призначена'
       cantBreak: '&eВи не можете зламати, доки не буде призначено групу'
       minusCd: '&e Мінус &6[sec]&eсек на перезавантаження'
-      add: '&eДобавив &6[amount] &eспавнерів гравцеві &6[playerDisplayName]'
+      add: '&eДодав &6[amount] &eспавнерів гравцеві &6[playerDisplayName]'
       set: '&eВстановив &6[amount] &eспавнерів гравцю &6[playerDisplayName]'
-      clear: '&eВидалено всі нерести, щоб гравець &6[playerDisplayName]'
+      clear: '&eВидалено всі нарести, щоб гравець &6[playerDisplayName]'
       reset: '&eСкинути групу нерестовищ до гравця &6[playerDisplayName]'
       take: '&eПриняв &6[amount] &eспавнерів гравців &6[playerDisplayName]'
   chat:
@@ -682,6 +759,12 @@ command:
         Owner: '&7Власник: [playerDisplayName]'
         Ends: '&7Випливає через: [time]'
         Names: '&7[playerDisplayName]'
+  chatcolor:
+    help:
+      info: '&eВиберіть колір чату'
+      args: (playerName)
+    info:
+      reset: '&6Скинути'
   checkaccount:
     help:
       info: '&eПеревірити гравця на наявність інших облікових записів'
@@ -702,7 +785,7 @@ command:
       args: (Нік гравця)
     info:
       list: '&6[place]&e. &e[playerDisplayName] &6[time]'
-      permanent: '&3Навіки'
+      permanent: '&3Назавжди'
       bannedUntil: '&eЧас: &6[time]'
       reason: '&eПричина: &6[reason]'
       bannedBy: '&eЗабанив: &6[sourceDisplayName]'
@@ -741,7 +824,7 @@ command:
       info: '&eКонвертувати гроші, щоб перевірити'
       args: (Нік гравця) [кількість]
     info:
-      transfered: '&eПереклад &6[amount] &eна ваш рахунок. Новий баланс: &6[balance]'
+      transferred: '&eПерераховано &6[amount] &eна ваш рахунок. Новий баланс: &6[balance]'
       chequeName: '&eПеревірити наявність &6[amount]'
       chequeLore:
       - '&r&fВидано &f[senderDisplayName]'
@@ -791,6 +874,8 @@ command:
       nickname: '&eНІК:'
       signs: '&eТаблички:'
       books: '&eКниги:'
+      itemname: ' &eItemName: '
+      itemlore: ' &eItemLore: '
       me: '&e/me:'
       None: '&e-'
   colorpicker:
@@ -923,6 +1008,13 @@ command:
       shapelessRecipe: '&6Зробити новий безформний рецепт'
       shapedRecipe: '&eЗробити новий рецепт'
       furnaceRecipe: '&2Зробити новий рецепт печі'
+      campfireRecipe: '&2Зробити новий рецепт шашлику'
+      smithingRecipe: '&2Зробити новий рецепт ковальства'
+      stonecuttingRecipe: '&2Зробити новий рецепт обробки каменю'
+      blastingRecipe: '&2Зробити новий рецепт дробеструйної обробки'
+      smokingRecipe: '&2Зробити новий рецепт копчення'
+      exact: '&2Потрібні точні інгредієнти: [state]'
+      exists: '&4Схоже, такий рецепт вже існує'
       mainTitle: '&fРецепти користувача (&f[current]&f/&f[total]&f)'
   dback:
     help:
@@ -941,9 +1033,10 @@ command:
   dispose:
     help:
       info: '&eУтилізувати непотрібні предмети'
-      args: (НІк Гравця)
+      args: (Нік Гравця)
     info:
       title: '&cПокладіть всі елементи тут'
+      cant: '&cВи не можете утилізувати цей предмет'
   distance:
     help:
       info: '&eПеревірити відстань між двома точками'
@@ -964,6 +1057,12 @@ command:
       doesnthave: '&eУ игрока больше нет этого предмета'
       'no': '&eНемає очікуваних пожертвувань'
       list: '&f[number]. &e[playerDisplayName] &e- &f[material] &6x &e[amount]'
+  down:
+    help:
+      info: '&eТелепортує на один поверх вниз'
+      args: '[playerName] (-s) (max)'
+    info:
+      notFound: '&eНемає відповідного місця'
   dsign:
     help:
       info: '&eУправління динамічними знаками'
@@ -1023,6 +1122,8 @@ command:
       autoPage: '&eАвтоматична сторінка: &6[state]'
       autoAlias: '&eАвто Прив''язка: &6[state]'
       permReq: '&eПотрібен дозвіл: &6[state]'
+      pageLabel: ' &e<PageLabel>'
+      pageLabelHover: '&e[value]'
       listTitle: '&eCText''s'
       listFormat: '&6[name]&7: &r[extra]'
   editlocale:
@@ -1059,7 +1160,7 @@ command:
       autoLore: '&2Автоматичне знання: [state]'
       group: '&2Група: &7[group]'
       newGroup: '&eВведіть нову назву групи'
-      displayName: '&2DisplayName: &7[displayName]'
+      displayName: '&2Показуване ім''я: &7[displayName]'
       newDisplayName: '&eВведіть нове коротке ім''я'
       randomizeYaw: '&2Рандомізувати напрямок: [state]'
       permission: '&2Потрібне право на користування: [state]'
@@ -1099,8 +1200,8 @@ command:
         (&3[offon]&e).'
       removed: '&eВи видалили чарівність &3[enchant] &eз предмета для &3[playerDisplayName]&e
         (&3[offon]&e).'
-      cleared: '&eОчищені &3ВСЕ &eчарування з предмета для&3[playerDisplayName]&e
-        (&3[offon]&e).'
+      clear: '&eЗнято зачарування з предмета для &3[playerDisplayName]'
+      clearOne: '&eВидалено зачарування &3[enchant] &eз предмета для &3[playerDisplayName]'
       noitem: '&cПредмет має бути в руці.'
       invalidEnchant: '&cУ вас немає дозволу на зачарування предмета за допомогою
         недійсної чари'
@@ -1109,8 +1210,9 @@ command:
       wrongItem: '&eНеправильний предмет у руці'
       enchantlimit: '&cУ вас немає доступу до цього зачарування'
       levellimit: '&cРівень зачарування перевищено, максимальний рівень &e[level].'
-      posible: '&eМожливі зачарування:'
-      posibleList: '&6[enchant]'
+      conflict: '&cСуперечливі чари &7[enchant1] &c-> &7[enchant2]'
+      possible: '&eМожливі чари: '
+      possibleList: '&6[enchant]'
   ender:
     help:
       info: '&eВідкриває ендер-скриньку гравців'
@@ -1258,9 +1360,9 @@ command:
       max: '&6Вже повністю заряджений'
       amounts:
       - '&eКлацніть лівою кнопкою миші +1. Вартість: &7[amount1]'
-      - '&6Shift left +10. Cost: &7[amount10]'
+      - '&6Лівий shift +10. Вартість: &7[amount10]'
       - '&eКлацніть правою кнопкою миші +100. Вартість: &7[amount100]'
-      - '&6Shift right +1000. Вартість: &7[amount1000]'
+      - '&6Правий shift +1000. Вартість: &7[amount1000]'
       - '&eСередня мишка +10000. Вартість: &7[amount10000]'
       - null
       changeAmount: '&e([amount]&e)'
@@ -1427,7 +1529,7 @@ command:
       notHardSet: '&eНе насильно встановлений, може призвести до &cFalse &eу деяких
         випадках'
       ops: '&eРезультати, &6[state], &eВказують, що гравець - це OP'
-      minMax: '&eMin: &6[min] &eMax: &6[max]'
+      minMax: '&eМін: &6[min] &eМакс: &6[max]'
   hat:
     help:
       info: '&eРозміщує предмет у вас на голові як капелюх.'
@@ -1534,6 +1636,33 @@ command:
       particleWidth: '&7Додаткова ширина частинок: &6[amount]'
       particleOffsetX: '&7Зміщення частинок X: &6[amount]'
       particleOffsetY: '&7Зміщення частинок Y: &6[amount]'
+      locationRange: '&7Змінити місце розташування та діапазон'
+      interactions: '&7Змінити взаємодію'
+      newDisplayMethod: '&7Використовуйте новий метод відображення: &6[state]'
+      enabled: '&7Активовано: &6[state]'
+      followType: '&7Слідкуйте за шрифтом: &6[type]'
+      doubleSided: '&7Двосторонній: &6[state]'
+      holoYaw: '&7Позіхни: &6[angle]'
+      holoPitch: '&7Подача: &6[angle]'
+      pitchLimits: |-
+        &4Коли кут нахилу не дорівнює 0 градусів
+        &4взаємодія з голограмною підтримкою
+        буде вимкнена
+      alignment: '&7Вирівнювання тексту: &6[type]'
+      shadow: '&7Тінь від тексту: &6[state]'
+      textAlpha: '&7Прозорість тексту: &6[alpha]'
+      bgAlpha: '&7Прозорість фону: &6[alpha]'
+      bgColor: '&7Колір фону: &6[color]'
+      scaleWidth: '&7Ширина шкали: &6[scale]'
+      scaleHeight: '&7Висота шкали: &6[scale]'
+      lightLevels: '&7Рівні освітлення'
+      levels: |-
+        &7Небо: &6[sky]
+        &7Блок: &6[block]
+      iconScale: '&7Шкала іконок: &6[scale]'
+      iconPitch: '&7Іконографія: &6[angle]'
+      iconYaw: '&7Похитування ікони: &6[angle]'
+      reset: '&7Натисніть &6Q &7щоб скинути'
       autoButton: '&fЗгенерувати кнопки нумерації сторінок'
       autoButtonLore:
       - '&eПоточна голограма не'
@@ -1550,7 +1679,7 @@ command:
       - '&fУвімкніть бар-компас &6/togglecompass'
       - '&fдля кращої орієнтації у напрямках'
       - '&eЗміна на 0,01 або утримання'
-      - '&eshift змінити на 0,1'
+      - '&eShift змінити на 0,1'
       listFormat: '&6[name]&7: &r[extra]'
       addInfo: '&eВведіть новий рядок. Використовуйте &6cancel &eдля скасування. Додаткові
         змінні: &6ICON:&f[Value] &6SICON:&f[Value]&e значення&e- &f[MaterialName-amount]%enchanted%&e,
@@ -1572,7 +1701,7 @@ command:
       noHomes: '&cУ вас немає встановлених точок будинку'
       private: '&cЦе розташування будинку є приватним!'
       remove: '&cШифт+Правий клік, щоб видалити будинки'
-      missingBed: '&cMissing bed for your home location'
+      missingBed: '&cВідсутнє ліжко для вашого будинку'
       notAccessible: '&cСвіт домашнього розташування (&7[worldName]&c) не існує!'
       guiTitle: '&0[playerDisplayName] &fСетхоми [current]/[max]'
   homes:
@@ -1587,8 +1716,12 @@ command:
       bedButton: '&7Розташування ліжка'
       homeButton: '&7локація дому'
       deathButton: '&7Місце смерті'
+      slot: '&7Слот: &e[slot]'
+      private: '&7Приватна: &e[state]'
+      favorite: '&7Улюблена: &e[state]'
       lore: "&7[world]\r\n&f[x]&7:&f[y]&7:&f[z]"
-      pickerLore: '&7Клацніть середнім клацанням миші, щоб змінити піктограму'
+      picker: '&7Натисніть, щоб змінити іконку'
+      edit: '&7Натисніть Q, щоб редагувати'
   hunger:
     help:
       info: '&eВстановлює голод гравцю'
@@ -1751,11 +1884,12 @@ command:
       newAir: '&fПовітря: &6[leftAir]&e/&6[totalAir]'
       newHunger: '&fГолод: &6[food]&e/&620'
       newSaturation: '&fНасичення +&6[saturation]&e'
-      newExp: '&fExp: &6[totalexp]&fexp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&flvl&e)'
+      newExp: '&fДосвід: &6[totalexp]&fexp -> &6[currentexp]&e/&6[needexp] &e(&6[level]&flvl&e)'
       newPos: '&fПозиція &f'
       newPosHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
       newAfk: '&f AFK &f'
-      newAfkHover: '&6Afk for last: [time]'
+      newAfkHover: '&6Afk за останній: [time]'
+      AfkInHover: '&6Afk в: [time]'
       newBed: '&fЛіжко'
       newBedHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
       newDeath: '&fПомер &f'
@@ -1764,7 +1898,9 @@ command:
       newBackHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
       newRespawn: '&fТочка відродження &f'
       newRespawnHover: '&6[world] (&e[x]&6:&e[y]&6:&e[z]&6)'
-      newSee: ◕‿◕ Слава Україні <3
+      inv: '&fInv '
+      ender: '&fEnder '
+      newSee: ◕‿◕
       newSeeHover: '&6Бачть вас'
       newSeeHoverNot: '&2Не бачить вас'
       vanished: (V)
@@ -1797,12 +1933,12 @@ command:
       newChatRoomHover:
       - '&fКімната чату: &e[name]'
       - '&fГравців: &e[count]'
-      nList:
-      - '&e------------- [enableColor]Вкл. [disableColor]Викл.&e -------------'
+      List:
+      - '&e------------- [enableColor]Enabled [disableColor]Disabled&e -------------'
       - '&e| [name][balance][UUID][ip]'
       - '&e| [OP][god][fly][gameMode][afk][see]'
       - '&e| [banned][muted][cuffed][jailed][alert][chatroom]'
-      - '&e| [pos][bed][respawn][death][back]'
+      - '&e| [pos][bed][respawn][death][back][ender][inv]'
       - '&e| [homes][mail][warnings]'
       - '&e-----------------------------------------'
   inv:
@@ -1932,6 +2068,7 @@ command:
       noitem: '&cВи не тримаєте предмет у руці.'
       removed: '&eІм''я предмета видалено для &3[playerDisplayName]&e (&3[offon]&e).'
       blocked: '&eЦей предмет заблоковано від перейменування'
+      maxLength: '&cНове значення задовге. Максимальна довжина &e[length] &cсимволів'
   itemnbt:
     help:
       info: '&eПоказати інформацію предмета NBT'
@@ -1970,17 +2107,18 @@ command:
       createdJail: '&eНова в''язниця вдало створена (&6[jail]&e)'
       createdCell: '&eСтворено нову тюремну камеру (&6[jail]&e:&6[cellId]&e)'
       collides: '&cСтикається з &eв''язницею &6[jailName]'
-      jailList: '&e[place]. &6[jail] &eКамери:&6[cells] &eКількість ув''язнених: &6[amount]'
       editCells: '&eЗмінити список камер'
-      cellList: '&eID камери:&6[id] &eв''язниці: &6[amount]'
-      jailListTp: '&f[tp]'
+      cList: '&eId: &6[id] &eJailed: &6[amount]'
       jailListTpHover: '&eВстановити розташування телепорту на виході'
-      jailListArea: '&f[area]'
       jailListAreaHover: '&eПеревизначити область'
       jailRemoved: '&eВ''язниця (&6[jail]&e) видалена'
       jailOutside: '&eВстановити нове зовнішнє розташування'
       jailArea: '&eПеревизначена область для &6[jail]'
       cellRemoved: '&eВилучена камера (&6[cellId]&e) в''язниці &6[jail]'
+      list: '&eCells: &6[cells] &eJailed: &6[amount] &2[jail]'
+      listTp: '[tp] '
+      listArea: '&7[area] '
+      areaShow: '&7[S] '
   jaillist:
     help:
       info: '&eСписок В''язниць'
@@ -1988,6 +2126,7 @@ command:
     info:
       jailList: '&6[place]. &e[jailName] &fКамери:&e[cellCount] &fВ''язні:&6[count]'
       cellList: '&6[place]. &fId:&e[cellId] &fВ''язень:&6[count]'
+      jailedBy: '&6Jailed by: &e[playerDisplayName]'
       cellJailedList: '&6[place]. &e[playerDisplayName] &fвизволення через &e[time]'
       Release: '&fНатисніть, щоб звільнити'
   jump:
@@ -2209,6 +2348,8 @@ command:
     info:
       searching: '&eПошук &6[checked]&e/&6[total] &e(&6[found]&e)'
       List: '&6[place]&e. &2[name] &e➟ &6[time].'
+      timeFrame: '&eLast hour (&6[time1]&e), 24 hours (&6[time2]&e), 7 days (&6[time3]&e),
+        30 days (&6[time4]&e)'
   launch:
     help:
       info: '&eЗапуск у напрямку, куди ви дивитеся, або під кутом'
@@ -2234,7 +2375,7 @@ command:
     info:
       NoMore: '&eДіапазон не може бути більшим за діапазон подання сервера.'
       startFixing: '&eЗнайдено &6[amount] &eчанків для фіксу. Старт...!'
-      InfoShow: '&6TPS: &3[tps] &6Осталось &e[left] &6(&e[min]m:[sec]s&6) &6Швидкість:
+      InfoShow: '&6TPS: &3[tps] &6Залишилось &e[left] &6(&e[min]m:[sec]s&6) &6Швидкість:
         &e[speed]'
       Finished: '&eФікс світла закінчено'
       Stopped: '&eСтоп'
@@ -2432,7 +2573,6 @@ command:
         &6[money]'
       gotMoneyGive: '&eВи отримали &6[amount]&e. Баланс: &6[money]'
       lostMoney: '&6[amount]&e Було знято з вашого баланс. Залишилося: &6[money]'
-      noMoney: '&cУ вас не вистачає грошей'
       worldGroups: '&cВи не можете надсилати гроші між різними світовими групами'
       self: '&cВи не можете надсилати гроші собі'
       confirm: '&eКлацніть, щоб підтвердити переведення суми &6[money] &eгравцю &6[playerDisplayName]'
@@ -2455,14 +2595,13 @@ command:
       info: '&eНадіслати особисте повідомлення гравцеві'
       args: '[Нік гравця] [повідомлення]'
       explanation:
-      - Якщо повідомлення починається з! то буде показано чисте повідомлення без імені
-        відправника
+      - Якщо повідомлення починається з ! то буде показано чисте повідомлення без
+        імені відправника
       - Потрібен дозвіл cmi.command.msg.clean
     info:
       TargetMsg: '{#1df52c}[senderDisplayName]{#15dfe6} -> {#1df52c}вам:{#15dfe6}
         [message]'
       SenderMsg: '{#1df52c}ви{#15dfe6} -> {#1df52c}[playerDisplayName]:{#15dfe6} [message]'
-      consoleMsg: '[[senderDisplayName] -> [playerDisplayName]] [message]'
       noPM: '&cГравець не приймає особисті повідомлення'
       badGroup: '&cНе можу надсилати особисті повідомлення цій групі гравців'
   mute:
@@ -2558,22 +2697,29 @@ command:
     help:
       info: '&eЗмінити особисті параметри'
       args: (playerName) (option) (enable/disable/status) (-s)
+      explanation:
+      - 'Можливі дії: visibleHolograms, shiftSignEdit, totemBossBar, bassBarCompass,
+        tagSound, chatSpy, cmdSpy, signSpy, acceptingPM, acceptingTPA, acceptingMoney,
+        chatbubble'
     info:
       title: '&8Параметри'
-      state: '&2State: [state]'
+      state: '&2Штат: [state]'
       feedback: '&2[description]: [state]'
       option:
         visibleHolograms: '&eВидимі голограми'
         shiftSignEdit: '&eПідписати зміну редагування'
-        totemBossBar: '&eTotem BossBar'
-        bassBarCompass: '&eCompass BossBar'
+        totemBossBar: '&eТотем BossBar'
+        bassBarCompass: '&eКомпас BossBar'
         tagSound: '&eЗвук тегування чату'
         chatSpy: '&eШпигун чату'
         cmdSpy: '&eCommand spy'
-        signSpy: '&eSign spy'
+        signSpy: '&eЗнак шпигуна'
         acceptingPM: '&eПрийом приватних повідомлень'
         acceptingTPA: '&eПрийом телепортації до вас'
         acceptingMoney: '&eПрийом грошових платежів'
+        chatbubble: '&eБульбашки в чаті'
+        pmSound: '&eЗвуки приватних повідомлень'
+        rideMe: '&eГравці можуть катати вас'
   panimation:
     help:
       info: '&eВідтворити анімацію частинок'
@@ -2663,6 +2809,8 @@ command:
       redefine: '&eПеревизначення області від поточного вибору'
       particles: '&eЕфект: &6[state]'
       particleType: '&eТип ефекту: &6[type]'
+      particleColor: '&eКолір частинок: &6[color]'
+      particleSize: '&eРозмір частинок: &6[size]'
       particleAmount: '&eКількість частинок: &6[amount]'
       particlePercent: '&eВідсоток сторін частинок: &6[amount]%'
       activationRange: '&eДіапазон активації: &6[amount]'
@@ -2783,6 +2931,9 @@ command:
       requiredMcmmoList: '&e[color][name]'
       requiredMcmmoListHover: '&e[color][current]&e/&6[needed]'
       requiredMcmmoPower: Сила
+      requiredAurelium: ' &eАврелій: '
+      requiredAureliumList: '&e[color][name] '
+      requiredAureliumListHover: ' &e[color][current]&e/&6[needed]'
       requiredJobs: '&eПрофесії:'
       requiredJobsList: '&e[color][name]'
       requiredJobsListHover: '&e[color][current]&e/&6[needed]'
@@ -2809,7 +2960,7 @@ command:
     info:
       list: '&e[place]. [currentRankMarker]&6[rankName][currentRankMarker]'
       currentRankMarker: '&6+'
-      hoverNext: "&6Next: \r\n[rankList]"
+      hoverNext: "&6Наступний: \r\n[rankList]"
       hoverLast: '&2Останній ранг'
   rankset:
     help:
@@ -2843,6 +2994,19 @@ command:
       args: (Назва)
     info:
       type: '&0[type]'
+      types:
+        Shaped: Shaped
+        Shapeless: Shapeless
+        Furnace: Furnace
+        Blasting: Blasting
+        Campfire: Campfire
+        Cooking: Cooking
+        Merchant: Merchant
+        Smoking: Smoking
+        Stonecutting: Stonecutting
+        Smithing: Smithing
+        Complex: Complex
+        Unknown: Unknown
       page: '&0[current]&f/&0[total]'
       noRecipes: '&cНеможливо знайти рецепти для цього предмета'
   reload:
@@ -2970,7 +3134,7 @@ command:
       info: '&eТелепортація у випадкове місце'
       args: (Нік гравця) (назва світу)
     info:
-      posible: '&eМожливі світи: &6[worlds]'
+      possible: '&eМожливі світи: &6[worlds]'
       tpLimit: '&eВи не можете телепортуватися так швидко, будь ласка &6[time] &eі
         спробуй знову'
       IncorrectLocation: '&6Не можу знайти рівне місце для посадки, будь ласка, почекай
@@ -3193,6 +3357,7 @@ command:
     info:
       listOnline: '&f[place]. &2[serverName] &6[count]&f/&6[max]'
       listOffline: '&f[place]. &c[serverName] &60&f/&60'
+      consoleInfo: ' &f(&2[ip]&f:&2[port]&f)'
   servertime:
     help:
       info: '&eПоказує час сервера'
@@ -3223,6 +3388,7 @@ command:
       set: '&eВи створили будинок з ім''ям &6[homeName]&e!'
       setBed: '&eМісце відродження для ліжка'
       private: '&2(private)'
+      maxFavorites: '&cВи можете мати лише &e[amount] &cулюблених будинків одночасно'
       noMore: '&cВи досягли максимально допустимої межі точок будинку'
       exist: "&cМісцезнаходження будинку  назвою (&6[name]&c) вже існує! \r\n&eНат\
         исніть, щоб підтвердити перезапис."
@@ -3232,7 +3398,7 @@ command:
         дивись інший'
       setIcon: '!actionbar:3!&7Встановити домашню піктограму як &6[material] &7матеріал'
       tooManyInWorld: '&cВи не можете мати більше будинків у цьому світі. Максимально
-        &6[max]&c allowed, you have &6[current]'
+        &6[max]&c дозволено, у вас є &6[current]'
   setmotd:
     help:
       info: Встановлення motd
@@ -3289,12 +3455,12 @@ command:
       sellPrice: '&fЦіна продажу: &e[amount]'
       buyPrice: '&fЦіна покупки: &2[amount]'
       exploit: '&4Можливо, експлойт!'
-      ingridient: '&2Інгредієнти'
-      ingridients: '&f[ingridient]&f(&f[amount]&f) = &e[price]'
+      ingredient: '&2Інгредієнти'
+      ingredients: '&7[ingredient]&f(&7[amount]&f) = &e[price]'
       notSet: '&eціна не встановлена'
       notSetBuy: '&7Ціна покупки не встановлена'
       result: '&2Крафтиться в &f[result]&f(&f[amount]&f)'
-      ingridientsPrice: '&cЦіна інгредієнтів: &f[price]'
+      ingredientsPrice: '&cЦіна інгредієнтів: &7[price]'
       resultPrice: '&cМоже бути проданий за: &f[price]'
       explanation: '&2Ціна покупки використовується лише для виявлення можливих експлойтів'
   shadowmute:
@@ -3334,6 +3500,7 @@ command:
     info:
       feedback: '&eВи переключили режим тихого відкриття на &3[offon].'
       onOpen: '&eВідкриваємо скриню, тихо.'
+      cantOpen: '&cНеможливо відкрити. Лут ще не згенеровано.'
   sit:
     help:
       info: '&eСядьте у будь-якому місці'
@@ -3408,8 +3575,8 @@ command:
     info:
       type: '&7Тип зміни: &e[type]'
       nextIn: '&7Наступний спавн о: &e[time]'
-      nearby: '&7MaxNearBy entities: &e[count]'
-      maxdelay: '&7Max Spawn Delay: &e[count]'
+      nearby: '&7MaxNearBy сутностей: &e[count]'
+      maxdelay: '&7Максимальна затримка спавну: &e[count]'
       mindelay: '&7Мінімальна затримка спавну: &e[count]'
       prange: '&7Необхідний діапазон гравців: &e[range]'
       spawncount: '&7Кількість спавнів: &e[count]'
@@ -3451,14 +3618,13 @@ command:
         q:10 sp:10 hp:50 s:2'
     info:
       wrongEntityName: '&eНеправильне ім''я істоти'
-      wrongPlayerName: '&eНеправильне ім''я гравця'
       spawnedEntities: '&eСтворено &6[entities] &eістот'
       spawnedPasangers: '&eі &6[passengers] &eнаїзників'
       nothingSpawned: '&eІстоти не створені'
       cantSpawn: '&eТаке тут спаунити непристойно!'
   speed:
     help:
-      info: '&eSet players walk or fly speed'
+      info: '&eВстановіть гравцям швидкість ходьби або польоту'
       args: (playerName) [amount] (-s)
   staffmsg:
     help:
@@ -3701,7 +3867,7 @@ command:
       messageToAll: '&6[playerDisplayName] &eотримав тимчасовий бан від гравця &6[senderDisplayName]
         &eна: &6[time] &eпричина: &6[reason]'
       banedSilent: '&f[&fSilent&f]&6[playerDisplayName] &eотримав тимчасовий бан від
-        гравця &6[senderDisplayName] &efor: &6[time] &eпричина: &6[reason]'
+        гравця &6[senderDisplayName] &eна: &6[time] &eпричина: &6[reason]'
       time: '&eВи будете розбанені через &6[time]'
       badTime: '&cЧас визначено неправильно'
       badTimeRanges: '&cВи не можете забанити довше, ніж на [time] &6([seconds])'
@@ -3733,11 +3899,13 @@ command:
         на [time]'
       addTimedFly: '&eВи додали гравцю &6[playerDisplayName]&e тимчасовий політ [addTime]
         ([time])'
+      takeTimedFly: '&eВи взяли [addTime] ([time]) для &6[playerDisplayName]&e'
       setUntilRelogFly: '&eВи встановили &6[playerDisplayName]&e тимчасовий політ
         до навантаження.'
       targetTimedEnabled: '&eВам увімкнув тимчасовий політ гравець &3[senderDisplayName]&e
         на час [time].'
       targetTimedEnabledAdd: '&eВи маєте додатковий час для режиму Fly [addTime] ([time]).'
+      targetTimedEnabledTake: '&eВаш час польоту скоротився на [addTime] ([time]).'
       targetUntilRelogEnabled: '&eВам додав тимчасовий політ &3[senderDisplayName]&e
         перед перезавантаженням'
       setFor: '&eРежим тимчасового польоту включено [time]'
@@ -3790,7 +3958,7 @@ command:
       - /time realtime
       - /time autorealtime start/stop
     info:
-      check: '&eЧас: &6[24h] &eілі &6[12h] &eілі &6[ticks] тіков &eв світі &6[world]'
+      check: '&eЧас: &6[24h] &eілі &6[12h] &eілі &6[ticks] тіків &eв світі &6[world]'
       frozen: '&c(-)'
       frozenTime: '&eЗастиглий час'
       real: '&6(+)'
@@ -3948,7 +4116,7 @@ command:
       tps: '&eTPS:'
       tpsList: '&e[3] [10] [30] [60] [600]'
       explanation: '&fОдин блок в &e60 &fсекунд. Максимум &e600 &fсекунд'
-      minMax: '&fMaкс: [max] &fМін: [min]'
+      minMax: '&fМакс: [max] &fМін: [min]'
       hover:
       - '[tpscolor][tps]'
       - '&7[time]'
@@ -4074,6 +4242,7 @@ command:
       stopPlaytime: '&eЧас відтворення перестане збільшуватися'
       sleepIgnore: '&eІгнорувати для підрахунку сну'
       joinVanished: '&eЗавжди приєднуйтесь у режимі зникнення'
+      deathMessages: '&eShow death message'
       bossbarTitle: '&fУ режимі покращеної невидимості'
   version:
     help:
@@ -4215,14 +4384,6 @@ command:
       sunny: сонячна погода
       rainy: Дощова погода
       thundering: ураганна погода
-  whowas:
-    help:
-      info: '&eПоказує старі імена гравців'
-      args: '[Нік гравця]'
-    info:
-      list: '&e[place]. &6[name] - &e[date]'
-      info: '&e[playerName] &6[uuid]'
-      original: '&eСправжнє ім''я'
   workbench:
     help:
       info: '&eВідкрити верстак'
