@@ -2507,16 +2507,16 @@ command:
       badTimeRanges: '&c您不能禁言超过 [time] &6([seconds])'
   mutechat:
     help:
-      info: '&e屏蔽公共消息'
+      info: '&e全服禁言'
       args: (time) (-s) (reason)
       explanation:
       - '例子: '
       - /cmi mutechat 1m
       - '/cmi mutechat 1h '
     info:
-      mutedFor: '&e公共聊天被屏蔽了 &6[time]'
-      isMuted: '!actionbar!&e公共聊天已被屏蔽 &6[time]'
-      muteReason: '&4屏蔽原因: &7[reason]'
+      mutedFor: '&e全服禁言了 &6[time]'
+      isMuted: '!actionbar!&e全服禁言了 &6[time]'
+      muteReason: '&4禁言原因: &7[reason]'
   nameplate:
     help:
       info: '&e设置玩家的名字前缀、后缀或颜色'
