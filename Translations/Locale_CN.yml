@@ -118,7 +118,7 @@
 # 在您更新CMILib文件中的区域设置后,执行/CMIL RELOAD命令以使更改生效
 
 info:
-  Same: '&c无法打开您自己的库存进行编辑!'
+  Same: '&c无法打开您自己的背包进行编辑!'
   cantLoginWithDifCap: '&c无法使用不同的名称大小写登录!旧名称:&e[oldName]&c.当前名称:&e[currentName]'
   Searching: '&e正在搜索玩家数据,请稍候,这可能需要一些时间来完成!'
   NoCommandWhileSleeping: '&c无法在睡眠时执行命令!'
@@ -2189,7 +2189,7 @@ command:
       Slot: '&e槽位: &6[slot]'
       Page: '&e页面: &6[page]'
       SlotAuto: '&6自动'
-      Clone: '&e从库存中复制物品'
+      Clone: '&e从背包中复制物品'
       CloneExtra:
       - '&e使用右键包括装备'
       - '&e再次点击撤销更改'
