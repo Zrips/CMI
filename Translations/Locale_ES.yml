@@ -300,7 +300,7 @@ command:
       info: Muestra un mensaje en encima del cinturón.
       args: '[jugador/all] [mensaje]'
     info:
-      message: '&c[messsage].'
+      message: '&f[messsage]'
   afk:
     help:
       info: Cambia a modo ausente (afk).
