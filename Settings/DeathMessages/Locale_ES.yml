@@ -1,3 +1,5 @@
+# Defines prefix for all death messages
+Prefix: '&5💀 &r'
 # Defines hover over infomation about player who died. Use basic placeholders like %cmi_user_name% to include any information you would want
 # Set this like to '' if you want to avoid including hover over message
 PlayerHover:
@@ -10,7 +12,7 @@ Escaping:
 - '&7, mientras escapaba de &2[sourceDisplayName]&7.'
 - '&7, mientras luchaba contra &2[sourceDisplayName]&7.'
 RunningAway:
-- '&7, mientra huía de &2[mobName]&7.'
+- '&7, mientras huía de &2[mobName]&7.'
 - '&7, mientras luchaba contra &2[mobName]&7.'
 Player:
   General:
@@ -64,6 +66,9 @@ Custom:
   Block_explosion:
     General:
     - '&2[playerDisplayName] &7ha muerto debido al [diseño del juego].'
+  Starvation:
+    General:
+    - '&2[playerDisplayName] &7ha muerto de hambre.'
   Fall:
     Low:
       General:
@@ -551,3 +556,8 @@ Mob:
     - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]'
     Item:
     - '&2[playerDisplayName] &7ha sido asesinado con el &2[item] &7de &2[mobName]&7.'
+  Sniffer:
+    General:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName]'
+    Item:
+    - '&2[playerDisplayName] &7ha sido asesinado por &2[mobName] &7con &2[item]'
