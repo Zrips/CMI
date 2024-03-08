@@ -3401,12 +3401,12 @@ command:
       playingMultiple: "&e为 &6[amount] &e玩家播放 &6[sound] \n&e音高: &6[pitch] &e音量: &6[volume]"
   spawn:
     help:
-      info: '&e传送回刷怪笼位置'
+      info: '&e传送回出生点位置'
       args: (playerName) (-s)
     info:
-      notset: '&4刷怪笼未设置!'
-      feedback: '&6你被传送到刷怪笼.'
-      feedbackother: '&e[playerDisplayName] &6被传送到刷怪笼.'
+      notset: '&4出生点未设置!'
+      feedback: '&6你被传送到出生点.'
+      feedbackother: '&e[playerDisplayName] &6被传送到出生点.'
   spawner:
     help:
       info: '&e设置刷怪笼'
@@ -4024,7 +4024,7 @@ command:
       itemPickup: '&e可以拾起物品'
       mobAggro: '&e怪物可以目标'
       interaction: '&e可以进行物理交互'
-      noisyChest: '&e嘈杂的箱子'
+      noisyChest: '&e打开箱子有声音和动画'
       informOnLeave: '&e显示离开信息'
       informOnJoin: '&e显示加入信息'
       nightVision: '&e应用夜视效果'
