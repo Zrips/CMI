@@ -1,120 +1,62 @@
-
 # 全彩代码支持和一些变量
-
 # 请记住,对于某些行,变量不起作用,而对于其他行,则会起作用 :)
-
 # 只需将它们保留在现在的位置,一切都会没问题 :)
-
 # 有些行可以设置全局变量.例如,对于将受到影响的玩家.例如 /heal Zrips,那么将使用 Zrips 的数据
-
 # [serverName] 显示服务器名称
-
 # [playerName] 显示目标玩家名称
-
 # [playerDisplayName] 显示目标玩家显示名称
-
 # [lvl] 显示目标玩家等级
-
 # [exp] 显示目标玩家总经验
-
 # [hp] 显示目标玩家生命值
-
 # [maxHp] 显示目标玩家最大生命值
-
 # [hunger] 显示目标玩家饥饿值
-
 # [gameMode] 显示目标玩家游戏模式
-
 # [prefix] 显示目标玩家前缀(如果可能)
-
 # [suffix] 显示目标玩家后缀(如果可能)
-
+#
 # 发送者是执行命令的控制台或玩家.例如,Zrips 执行 /heal Zhax,那么将使用 Zrips 的数据
-
 # [senderName] 显示发送者玩家名称
-
 # [senderDisplayName] 显示发送者玩家显示名称
-
 # [senderLvl] 显示发送者玩家等级
-
 # [senderExp] 显示发送者玩家总经验
-
 # [senderHp] 显示发送者玩家生命值
-
 # [senderMaxHp] 显示发送者玩家最大生命值
-
 # [senderHunger] 显示发送者玩家饥饿值
-
 # [senderGameMode] 显示发送者玩家游戏模式
-
 # [senderPrefix] 显示发送者玩家前缀(如果可能)
-
 # [senderSuffix] 显示发送者玩家后缀(如果可能)
-
+#
 # 源是被用作额外信息的玩家.例如,Zrips 执行 /tp Zhax Zrips,那么将使用 Zhax 的数据,因为其位置将用于新玩家的位置
-
 # [sourceName] 显示源玩家名称
-
 # [sourceDisplayName] 显示源玩家显示名称
-
 # [sourceLvl] 显示源玩家等级
-
 # [sourceExp] 显示源玩家总经验
-
 # [sourceHp] 显示源玩家生命值
-
 # [sourceMaxHp] 显示源玩家最大生命值
-
 # [sourceHunger] 显示源玩家饥饿值
-
 # [sourceGameMode] 显示源玩家游戏模式
-
 # [sourcePrefix] 显示源玩家前缀(如果可能)
-
 # [sourceSuffix] 显示源玩家后缀(如果可能)
-
-# ***********************************************
-
+#
 # 有些行支持将它们发送到自定义位置的选项,比如操作栏、标题、副标题,甚至创建JSON/可点击消息
-
 # 如果行以!toast!开头,玩家将收到提示消息(进度弹出窗口,仅限1.12及以上版本).一些额外的变量可以用来定义类型和图标.例如:!toast! -t:goal -icon:paper 你好世界!
-
 # 如果行以!actionbar!开头,玩家将收到此变量后定义的操作栏消息
-
 # 如果行以!actionbar:[秒数]!开头,玩家将在定义的时间内收到操作栏消息
-
 # 如果行以!broadcast!开头,则每个人都将收到消息.您可以添加额外的!toast! !actionbar!或!title!来将消息发送给每个人的特定位置,例如:!broadcast!!title!
-
 # 如果行以!customtext:[cTextName]!开头,则将按提供的名称获取自定义文本,并显示给玩家.如果在!broadcast!之后使用,则在线的每个人都将获得此自定义文本消息
-
 # 如果行以!title!开头,则玩家将在此变量后定义的标题消息,此外它可以包含!subtitle!,这将添加副标题消息.可以使用!title:4.5!定义可选时间,这将保持标题消息4.5秒
-
 # 如果行以!bossbar:[名称]-[计时器]!开头,则玩家将在此变量后定义的bossbar消息,此外您可以定义此消息将可见的时间.您需要定义bossbar名称,它可以是任何您想要的,但具有相同名称的行将互相覆盖,以防止堆叠
-
+#
 # 要包含可点击消息:<T>文本</T><H>悬停文本</H><C>命令</C><SC>建议文本</SC>
-
 # <T>和</T>是必需的,其他是可选的
-
 # 使用/n来换行
-
 # 要有多个JSON消息,请使用<Next>
-
 # <C>作为点击的玩家执行命令
-
 # <CC>一次从控制台执行命令
-
 # <CCI>每次玩家点击文本时从控制台执行命令
-
 # <URL>包括URL
-
-# 
-
-# 
-
-# 
-
+#
 # 注意!从9.0.0.0 CMI版本开始,一些区域设置行已移至CMILib文件.这是为了集中一些跨多个插件中最常用的区域设置.
-
 # 在您更新CMILib文件中的区域设置后,执行/CMIL RELOAD命令以使更改生效
 
 info:
@@ -320,27 +262,27 @@ command:
       helpPageDescription: '&e* [description]'
       explanation: '&e * [explanation]'
       title: '&e------ ======= &6帮助&e &e======= ------'
-    nocmd:
-      help:
-        info: '&e显示所有可用命令'
-        args: ''
-    actionbarmsg:
-      help:
-        info: '&e向玩家发送操作栏消息'
-        args: '[playerName/all] (-s:[seconds]) [message]'
-      info:
-        message: '&f[message]'
-    afk:
-      help:
-        info: '&e切换AFK模式.可以提供原因'
-        args: (-p:playerName) (reason) (-s)
-      info:
-        afkTitle: '&e您现在是AFK状态'
-        afkSubTitle:
-        - '&2别吃太多饼干了!'
-        - '&2钓鱼的好天气'
-        - '&2又AFK了?'
-        - '&2你在哪里?'
+  nocmd:
+    help:
+      info: '&e显示所有可用命令'
+      args: ''
+  actionbarmsg:
+    help:
+      info: '&e向玩家发送操作栏消息'
+      args: '[playerName/all] (-s:[seconds]) [message]'
+    info:
+      message: '&f[message]'
+  afk:
+    help:
+      info: '&e切换AFK模式.可以提供原因'
+      args: (-p:playerName) (reason) (-s)
+    info:
+      afkTitle: '&e您现在是挂机状态'
+      afkSubTitle:
+        - '&2少吃点饭'
+        - '&2又是摸鱼的一天'
+        - '&2挂机? 又来?'
+        - '&2你搁哪呢?'
   afkcheck:
     help:
       info: '&e检查玩家的AFK状态'
