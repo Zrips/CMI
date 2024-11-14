@@ -20,4 +20,4 @@ jobs:
           exempt-issue-labels: "pinned,important"
           exempt-pr-labels: "work-in-progress,do-not-close"
           stale-issue-label: "stale"
-          operations-per-run: 50
+          operations-per-run: 100
